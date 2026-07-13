@@ -1,0 +1,112 @@
+# =============================================================================
+# AI 智能学习平台 Docker Compose 编排文件
+# AI-Learn-v0.1
+# =============================================================================
+
+name: ai-learn
+
+services:
+  # ---------------------------------------------------------------------------
+  # PostgreSQL 16 - 主数据库
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: ai-learn-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: learning_platform
+      POSTGRES_INITDB_ARGS: "-E UTF-8"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d learning_platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - ai-learn-net
+
+  # ---------------------------------------------------------------------------
+  # Redis 7 - 缓存 & 会话存储
+  # ---------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: ai-learn-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - ai-learn-net
+
+  # ---------------------------------------------------------------------------
+  # Backend - FastAPI 后端服务
+  # ---------------------------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ai-learn-backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/learning_platform
+      REDIS_URL: redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - ai-learn-net
+
+  # ---------------------------------------------------------------------------
+  # Frontend - Next.js 前端服务
+  # ---------------------------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ai-learn-frontend
+    restart: unless-stopped
+    environment:
+      API_PROXY_TARGET: http://backend:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - ai-learn-net
+
+# =============================================================================
+# 持久化卷
+# =============================================================================
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+# =============================================================================
+# 自定义桥接网络
+# =============================================================================
+networks:
+  ai-learn-net:
+    driver: bridge

@@ -1,0 +1,54 @@
+"use client";
+
+import React from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { AlertTriangle, RefreshCw } from "lucide-react";
+
+interface ErrorStateProps {
+  /** 错误标题 */
+  title?: string;
+  /** 错误描述 */
+  message?: string;
+  /** 重试回调 */
+  onRetry?: () => void;
+  /** 重试按钮文字 */
+  retryLabel?: string;
+  className?: string;
+}
+
+export function ErrorState({
+  title = "出了点问题",
+  message = "很抱歉，加载内容时遇到了问题。请稍后再试。",
+  onRetry,
+  retryLabel = "重试",
+  className,
+}: ErrorStateProps) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col items-center justify-center rounded-card-md border border-dashed border-red-200 bg-red-50/50 py-16 px-8",
+        className,
+      )}
+    >
+      {/* 错误图标 */}
+      <div className="mb-4 rounded-full bg-red-100 p-3">
+        <AlertTriangle className="h-6 w-6 text-brand-red" />
+      </div>
+
+      {/* 标题 */}
+      <h3 className="text-base font-semibold text-gray-700">{title}</h3>
+
+      {/* 描述 */}
+      <p className="mt-1 max-w-sm text-center text-sm text-brand-gray">{message}</p>
+
+      {/* 重试按钮 */}
+      {onRetry && (
+        <Button variant="outline" className="mt-6" onClick={onRetry}>
+          <RefreshCw className="mr-2 h-4 w-4" />
+          {retryLabel}
+        </Button>
+      )}
+    </div>
+  );
+}

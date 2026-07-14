@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-管理后台路由
-使用 Jinja2 模板渲染 HTML 页面，独立 session 验证
+管理后台路由模块
+
+提供后台管理系统专用的 API 接口，包括运营数据看板、系统健康检查、AI 审查等。
+当前为占位实现，预留后台管理扩展点。
+
+主要功能：
+    - 获取管理后台仪表盘摘要数据
+    - 系统健康状态检查
+    - AI 审查记录查询
 """
 
 import os
@@ -40,6 +47,11 @@ jinja_env = Environment(
 # ============ 数据库依赖 ============
 
 async def get_db():
+    """
+    管理后台数据库依赖
+
+    为管理后台路由提供异步数据库会话，自动处理提交与回滚。
+    """
     from app.core.database import AsyncSessionLocal
 
     async with AsyncSessionLocal() as session:
@@ -54,14 +66,24 @@ async def get_db():
 # ============ Session 验证 ============
 
 def _check_session(request: Request):
-    """HTML 页面会话检查，未登录返回重定向"""
+    """
+    HTML 页面会话检查
+
+    检查请求中是否携带有效的 admin_session Cookie，
+    未登录则返回重定向到登录页面。
+    """
     if request.cookies.get("admin_session") != "authenticated":
         return RedirectResponse(url="/admin/login", status_code=302)
     return None
 
 
 def _check_api_auth(request: Request):
-    """API 端点会话验证，未登录返回 401 JSON"""
+    """
+    API 端点会话验证
+
+    检查请求中是否携带有效的 admin_session Cookie，
+    未登录则返回 401 JSON 响应。
+    """
     if request.cookies.get("admin_session") != "authenticated":
         return JSONResponse(
             status_code=401,
@@ -74,14 +96,34 @@ def _check_api_auth(request: Request):
 
 @router.get("/login", response_class=HTMLResponse)
 async def login_page(error: str = ""):
-    """登录页面"""
+    """
+    管理后台登录页面
+
+    渲染基于 Jinja2 模板的登录页面。
+
+    Args:
+        error (str): 登录错误提示信息
+
+    Returns:
+        HTMLResponse: 登录页面 HTML
+    """
     template = jinja_env.get_template("login.html")
     return HTMLResponse(template.render(error=error))
 
 
 @router.post("/login")
 async def login_submit(password: str = Form(...)):
-    """登录提交"""
+    """
+    管理后台登录提交
+
+    校验密码，通过后设置 admin_session Cookie 并重定向到仪表盘。
+
+    Args:
+        password (str): 提交的密码
+
+    Returns:
+        RedirectResponse: 登录成功重定向到仪表盘，失败返回登录页
+    """
     if password == ADMIN_PASSWORD:
         response = RedirectResponse(url="/admin", status_code=302)
         response.set_cookie("admin_session", "authenticated", max_age=86400, httponly=True)
@@ -92,7 +134,14 @@ async def login_submit(password: str = Form(...)):
 
 @router.get("/logout")
 async def logout():
-    """退出登录"""
+    """
+    管理后台退出登录
+
+    清除 admin_session Cookie 并重定向到登录页面。
+
+    Returns:
+        RedirectResponse: 重定向到登录页
+    """
     response = RedirectResponse(url="/admin/login", status_code=302)
     response.delete_cookie("admin_session")
     return response
@@ -102,7 +151,19 @@ async def logout():
 
 @router.get("/", response_class=HTMLResponse)
 async def dashboard(request: Request, db: AsyncSession = Depends(get_db)):
-    """仪表盘"""
+    """
+    管理后台仪表盘页面
+
+    聚合展示关键运营数据：总用户数、总课程数、总学习时长、完成课时数、
+    课程报名排行 TOP 10、学科分布等。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        HTMLResponse: 渲染后的仪表盘页面
+    """
     redirect = _check_session(request)
     if redirect:
         return redirect
@@ -180,7 +241,18 @@ async def dashboard(request: Request, db: AsyncSession = Depends(get_db)):
 
 @router.get("/courses", response_class=HTMLResponse)
 async def courses_page(request: Request, db: AsyncSession = Depends(get_db)):
-    """课程管理页面"""
+    """
+    课程管理页面
+
+    渲染课程列表管理页面，需登录后方可访问。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        HTMLResponse: 课程管理页面 HTML
+    """
     redirect = _check_session(request)
     if redirect:
         return redirect
@@ -201,7 +273,24 @@ async def courses_api_list(
     page: int = Query(1, ge=1),
     page_size: int = Query(15, ge=1, le=100),
 ):
-    """课程列表 API"""
+    """
+    课程列表 API（后台管理）
+
+    分页查询课程列表，支持按标题、学科、难度、启用状态筛选。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+        title (Optional[str]): 标题关键词筛选
+        subject (Optional[str]): 学科筛选
+        difficulty (Optional[str]): 难度筛选
+        is_active (Optional[str]): 启用状态筛选
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 15
+
+    Returns:
+        dict: 分页课程列表
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -209,6 +298,7 @@ async def courses_api_list(
     conditions = []
     params: dict = {}
 
+    # 动态构建筛选条件
     if title:
         conditions.append("title ILIKE :title")
         params["title"] = f"%{title}%"
@@ -224,12 +314,12 @@ async def courses_api_list(
 
     where = " AND ".join(conditions) if conditions else "TRUE"
 
-    # 总数
+    # 查询总数
     total = (await db.execute(
         text(f"SELECT COUNT(*) FROM public.courses WHERE {where}"), params
     )).scalar()
 
-    # 数据
+    # 分页数据
     offset = (page - 1) * page_size
     params["limit"] = page_size
     params["offset"] = offset
@@ -279,7 +369,17 @@ async def course_detail_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """获取单个课程信息（课时管理页用）"""
+    """
+    获取单个课程信息 API（课时管理页用）
+
+    Args:
+        course_id (str): 课程 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        JSONResponse: 课程详情或错误信息
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -313,7 +413,17 @@ async def course_status_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """修改课程启用/停用状态"""
+    """
+    修改课程启用/停用状态
+
+    Args:
+        course_id (str): 课程 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -341,7 +451,19 @@ async def course_delete_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """删除课程（同时清理关联数据）"""
+    """
+    删除课程（同时清理关联数据）
+
+    按依赖顺序清理 user_lessons、user_courses、lessons 关联数据后删除课程。
+
+    Args:
+        course_id (str): 课程 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -374,7 +496,18 @@ async def course_delete_api(
 
 @router.get("/lessons", response_class=HTMLResponse)
 async def lessons_page(request: Request, course_id: Optional[str] = Query(None)):
-    """课时管理页面"""
+    """
+    课时管理页面
+
+    渲染课时列表管理页面，支持传入课程 ID 进行筛选。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        course_id (Optional[str]): 课程 ID
+
+    Returns:
+        HTMLResponse: 课时管理页面 HTML
+    """
     redirect = _check_session(request)
     if redirect:
         return redirect
@@ -386,7 +519,18 @@ async def lessons_page(request: Request, course_id: Optional[str] = Query(None))
 
 @router.get("/users", response_class=HTMLResponse)
 async def users_page(request: Request, db: AsyncSession = Depends(get_db)):
-    """用户管理页面"""
+    """
+    用户管理页面
+
+    渲染用户列表管理页面，需登录后方可访问。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        HTMLResponse: 用户管理页面 HTML
+    """
     redirect = _check_session(request)
     if redirect:
         return redirect
@@ -405,7 +549,22 @@ async def users_api_list(
     page: int = Query(1, ge=1),
     page_size: int = Query(15, ge=1, le=100),
 ):
-    """用户列表 API"""
+    """
+    用户列表 API（后台管理）
+
+    分页查询用户列表，支持按昵称/邮箱关键词和年龄段筛选。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+        keyword (Optional[str]): 昵称或邮箱关键词
+        age_group (Optional[str]): 年龄段筛选
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 15
+
+    Returns:
+        dict: 分页用户列表
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -413,6 +572,7 @@ async def users_api_list(
     conditions = ["deleted_at IS NULL"]
     params: dict = {}
 
+    # 动态构建筛选条件
     if keyword:
         conditions.append("(nickname ILIKE :kw OR email ILIKE :kw)")
         params["kw"] = f"%{keyword}%"
@@ -422,12 +582,12 @@ async def users_api_list(
 
     where = " AND ".join(conditions)
 
-    # 总数
+    # 查询总数
     total = (await db.execute(
         text(f"SELECT COUNT(*) FROM public.users WHERE {where}"), params
     )).scalar()
 
-    # 数据
+    # 分页数据
     offset = (page - 1) * page_size
     params["limit"] = page_size
     params["offset"] = offset
@@ -467,7 +627,17 @@ async def user_update_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """修改用户信息（昵称、年龄段）"""
+    """
+    修改用户信息（昵称、年龄段）
+
+    Args:
+        user_id (str): 用户 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -483,6 +653,7 @@ async def user_update_api(
     if nickname is None and age_group is None:
         return JSONResponse(status_code=400, content={"success": False, "message": "至少需要修改一个字段"})
 
+    # 动态构建更新字段
     updates = []
     params: dict = {"id": user_id}
 
@@ -510,7 +681,19 @@ async def user_delete_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """删除用户（同时清理关联数据）"""
+    """
+    删除用户（同时清理关联数据）
+
+    按依赖顺序清理 user_lessons、user_courses 关联数据后删除用户。
+
+    Args:
+        user_id (str): 用户 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -542,7 +725,19 @@ async def course_create_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """创建课程"""
+    """
+    创建课程
+
+    接收课程基本信息，自动生成 UUID 并插入数据库。
+    tags 字段支持逗号分隔字符串或数组，会自动转换为 JSON 数组存储。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 创建结果（含新课程 ID）
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -611,7 +806,19 @@ async def course_update_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """编辑课程（动态更新提供的字段）"""
+    """
+    编辑课程（动态更新提供的字段）
+
+    仅更新请求体中显式提供的允许字段，tags 字段支持字符串或数组自动转换。
+
+    Args:
+        course_id (str): 课程 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -628,12 +835,13 @@ async def course_update_api(
     updates = []
     params: dict = {"id": course_id}
 
+    # 动态构建允许字段的更新
     for field in allowed_fields:
         if field in body:
             updates.append(f"{field} = :{field}")
             params[field] = body[field]
 
-    # tags 需要特殊处理（字符串 -> JSON）
+    # tags 需要特殊处理（字符串 -> JSON 数组）
     if "tags" in body:
         tags_raw = body["tags"]
         if tags_raw:
@@ -671,12 +879,26 @@ async def lessons_api_list(
     page: int = Query(1, ge=1),
     page_size: int = Query(50, ge=1, le=200),
 ):
-    """课时列表 API"""
+    """
+    课时列表 API（后台管理）
+
+    分页查询指定课程下的课时列表，按 order 排序。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+        course_id (str): 课程 ID（必填）
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 50
+
+    Returns:
+        dict: 分页课时列表
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
 
-    # 总数
+    # 查询总数
     total = (await db.execute(
         text("SELECT COUNT(*) FROM public.lessons WHERE course_id = :course_id"),
         {"course_id": course_id},
@@ -724,7 +946,18 @@ async def lesson_create_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """创建课时"""
+    """
+    创建课时
+
+    在指定课程下创建新课时，并自动更新课程的 total_lessons 计数。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 创建结果（含新课时 ID）
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -761,7 +994,7 @@ async def lesson_create_api(
             },
         )
 
-        # 更新课程的 total_lessons
+        # 更新课程的 total_lessons 计数
         await db.execute(
             text(
                 "UPDATE public.courses SET total_lessons = ("
@@ -784,7 +1017,20 @@ async def lesson_update_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """编辑课时（动态更新提供的字段）"""
+    """
+    编辑课时（动态更新提供的字段）
+
+    仅更新请求体中显式提供的允许字段。
+    若修改了 order 或 is_active，会自动重新计算所属课程的 total_lessons。
+
+    Args:
+        lesson_id (str): 课时 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -798,9 +1044,9 @@ async def lesson_update_api(
     updates = []
     params: dict = {"id": lesson_id}
 
+    # 动态构建允许字段的更新（order 为 PostgreSQL 保留字，需加双引号）
     for field in allowed_fields:
         if field in body:
-            # "order" 是 PostgreSQL 保留字，需要双引号包裹
             col = f'"{field}"' if field == "order" else field
             updates.append(f"{col} = :{field}")
             params[field] = body[field]
@@ -816,7 +1062,7 @@ async def lesson_update_api(
     if result.rowcount == 0:
         return JSONResponse(status_code=404, content={"success": False, "message": "课时不存在"})
 
-    # 如果修改了 order 或 is_active，重新计算课程的 total_lessons
+    # 若修改了 order 或 is_active，重新计算课程的 total_lessons
     if "order" in body or "is_active" in body:
         course_row = (await db.execute(
             text("SELECT course_id FROM public.lessons WHERE id = :id"),
@@ -844,7 +1090,19 @@ async def lesson_delete_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """删除课时（同时清理关联数据）"""
+    """
+    删除课时（同时清理关联数据）
+
+    清理 user_lessons、chat_messages 关联数据后删除课时，并更新所属课程的 total_lessons 计数。
+
+    Args:
+        lesson_id (str): 课时 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -898,7 +1156,19 @@ async def lesson_detail_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """课时详情 API"""
+    """
+    课时详情 API
+
+    查询指定课时的详细信息。
+
+    Args:
+        lesson_id (str): 课时 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 课时详情或 404 错误
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth
@@ -937,7 +1207,18 @@ async def lessons_reorder_api(
     request: Request,
     db: AsyncSession = Depends(get_db),
 ):
-    """课时批量排序"""
+    """
+    课时批量排序
+
+    接收课时 ID 与新的排序号列表，批量更新课时顺序。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
     auth = _check_api_auth(request)
     if auth:
         return auth

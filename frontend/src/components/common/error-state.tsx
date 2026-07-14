@@ -1,3 +1,13 @@
+/**
+ * 错误状态组件
+ *
+ * 功能说明：
+ * - 当数据加载失败时展示的错误界面
+ * - 支持自定义错误标题、描述和重试按钮
+ * - 提供重试操作回调，方便用户重新加载
+ * - 使用红色主题视觉提示
+ */
+
 "use client";
 
 import React from "react";
@@ -5,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 
+/** 错误状态属性 */
 interface ErrorStateProps {
   /** 错误标题 */
   title?: string;
@@ -17,6 +28,15 @@ interface ErrorStateProps {
   className?: string;
 }
 
+/**
+ * 错误状态组件
+ * @param title - 错误标题
+ * @param message - 错误描述
+ * @param onRetry - 重试回调函数
+ * @param retryLabel - 重试按钮文字
+ * @param className - 额外类名
+ * @returns 错误状态展示界面
+ */
 export function ErrorState({
   title = "出了点问题",
   message = "很抱歉，加载内容时遇到了问题。请稍后再试。",

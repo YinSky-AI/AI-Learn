@@ -1,9 +1,25 @@
 """
+backend/app/ai/prompts/summary.py
+
 会话总结 Prompt 模板
+
+本模板集合用于 L8 SummaryAgent 的 Hermes 五环机制，
+支持从会话数据中提炼记忆、创建 Skill 和更新用户画像。
 
 版本: v0.1.0
 Agent: SummaryAgent (L8)
 用途: Hermes五环 — 记忆策划、Skill创建、Skill自改进、跨会话召回、用户建模
+
+包含模板：
+- build_memory_distill_prompt: 环1 记忆策划，提炼 ≤5 条高价值记忆
+- build_skill_creation_prompt: 环2 Skill创建，将成功模式蒸馏为可复用 Skill
+- build_user_profile_update_prompt: 环5 用户建模，更新能力估计和行为模式
+
+记忆类型：
+- error_pattern: 用户反复犯的错误模式
+- preference: 用户偏好（题型、场景等）
+- quality_insight: 质量洞察
+- behavior_pattern: 行为模式（答题时长、连胜后放松等）
 """
 
 PROMPT_VERSION = "v0.1.0"

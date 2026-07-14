@@ -1,9 +1,19 @@
 """
+backend/app/ai/prompts/course_intent.py
+
 课程意图理解 Prompt 模板
+
+本模板用于 L1 CourseIntentAgent，将用户自然语言输入转化为结构化的课程意图参数。
+通过明确的输出格式和判断规则，确保 LLM 输出可被稳定解析。
 
 版本: v0.1.0
 Agent: CourseIntentAgent (L1)
 用途: 理解用户课程选择，补齐结构化参数
+
+设计要点：
+- 输出格式为严格的 JSON Schema，便于下游解析
+- 包含年龄分级、难度、题型推荐等推断规则
+- 支持模糊输入处理，必要时请求用户澄清
 """
 
 PROMPT_VERSION = "v0.1.0"

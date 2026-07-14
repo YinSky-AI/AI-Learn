@@ -1,3 +1,13 @@
+/**
+ * 空状态组件
+ *
+ * 功能说明：
+ * - 当列表或页面没有数据时展示的占位界面
+ * - 支持自定义图标、标题、描述
+ * - 支持操作按钮（回调或跳转链接）
+ * - 用于课程列表空、搜索结果空等场景
+ */
+
 "use client";
 
 import React from "react";
@@ -5,6 +15,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+/** 空状态属性 */
 interface EmptyStateProps {
   /** 图标 */
   icon?: React.ReactNode;
@@ -21,6 +32,17 @@ interface EmptyStateProps {
   className?: string;
 }
 
+/**
+ * 空状态组件
+ * @param icon - 图标
+ * @param title - 标题
+ * @param description - 描述文字
+ * @param actionLabel - 按钮文字
+ * @param onAction - 按钮点击回调
+ * @param href - 跳转链接
+ * @param className - 额外类名
+ * @returns 空状态展示界面
+ */
 export function EmptyState({
   icon,
   title,

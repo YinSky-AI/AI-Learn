@@ -1,3 +1,14 @@
+/**
+ * 我的学习页面
+ *
+ * 功能说明：
+ * - 展示用户的学习统计（总课程、学习中、已完成、总进度）
+ * - 分区域展示：继续学习、推荐课程、已完成课程
+ * - 使用骨架屏加载状态
+ * - 空状态引导用户去探索页面
+ * - 横向卡片展示继续学习的课程（带进度条）
+ */
+
 "use client";
 
 import React, { useEffect } from "react";
@@ -23,6 +34,10 @@ import { cn, getSubjectBgClass } from "@/lib/utils";
 import { SUBJECT_LABELS } from "@/types";
 import { useLearningStore } from "@/stores/learning-store";
 
+/**
+ * 我的学习页面组件
+ * @returns 学习管理页面
+ */
 export default function LearningPage() {
   const { courses, isLoading, fetchCourses } = useLearningStore();
 

@@ -1,6 +1,14 @@
-/* ============================================
-   API 客户端 - 封装 fetch + JWT Token 管理
-   ============================================ */
+/**
+ * API 客户端 - 封装 fetch + JWT Token 管理
+ *
+ * 功能说明：
+ * - 封装 HTTP 请求，统一处理请求头、超时、重试
+ * - JWT Token 自动附加到请求头（Authorization: Bearer）
+ * - Token 过期自动刷新，刷新期间排队等待的请求自动重试
+ * - 429 限流自动退避重试，网络错误自动重试
+ * - 统一的错误解析（支持 FastAPI 格式和通用格式）
+ * - 浏览器端走相对路径 /api，服务端直接连后端
+ */
 
 import type { ApiResponse, ApiError } from "@/types/api";
 
@@ -30,7 +38,7 @@ interface RequestOptions extends Omit<RequestInit, "body"> {
 /** 后端业务响应码 */
 const SUCCESS_CODES = ["SUCCESS", "000000", 200, "200"];
 
-/** Token 管理工具 */
+/** Token 管理工具（localStorage 读写 + 过期检查） */
 export const TokenManager = {
   getAccessToken(): string | null {
     if (typeof window === "undefined") return null;
@@ -54,6 +62,7 @@ export const TokenManager = {
     localStorage.removeItem(REFRESH_TOKEN_KEY);
   },
 
+  /** 解析 JWT Payload 检查是否过期 */
   isTokenExpired(token: string): boolean {
     try {
       const payload = JSON.parse(atob(token.split(".")[1]));
@@ -80,7 +89,10 @@ function onTokenRefreshed(token: string) {
   refreshSubscribers = [];
 }
 
-/** 刷新 Token */
+/**
+ * 刷新 Token
+ * @returns 新的 access_token
+ */
 async function refreshAccessToken(): Promise<string> {
   const refreshToken = TokenManager.getRefreshToken();
   if (!refreshToken) {
@@ -105,7 +117,12 @@ async function refreshAccessToken(): Promise<string> {
   return tokenData.access_token;
 }
 
-/** 构建 URL（附加查询参数，支持相对路径） */
+/**
+ * 构建 URL（附加查询参数，支持相对路径）
+ * @param endpoint - API 端点路径
+ * @param params - 查询参数对象
+ * @returns 完整 URL
+ */
 function buildUrl(endpoint: string, params?: Record<string, string | number | boolean | undefined>): string {
   let urlStr = `${API_BASE_URL}${endpoint}`;
   if (params) {
@@ -121,7 +138,12 @@ function buildUrl(endpoint: string, params?: Record<string, string | number | bo
   return urlStr;
 }
 
-/** 核心 API 请求函数 */
+/**
+ * 核心 API 请求函数
+ * @param endpoint - API 端点
+ * @param options - 请求配置
+ * @returns 响应数据
+ */
 async function request<T>(endpoint: string, options: RequestOptions = {}): Promise<T> {
   const { body, params, skipAuth = false, timeout = 15000, headers: customHeaders, ...rest } = options;
 

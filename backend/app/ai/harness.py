@@ -1,13 +1,11 @@
 """
-AI Harness 编排入口 — 管理完整的 8 层闭环控制流程
+backend/app/ai/harness.py
 
-职责：
-- 编排 8 层 Agent 的执行流程
-- 错误处理、重试、降级
-- 记录 ToolCallLog
-- 内嵌 FeedbackAggregator 子组件
-- 注入 ControlSignal 到下一次循环
-- 管理 HarnessRun 生命周期
+AI Harness 编排入口 —— 管理完整的 8 层闭环控制流程
+
+本模块为 AI 出题系统的中央编排器，负责协调 8 层 Agent 的有序执行、
+错误处理、反馈汇聚与工具调用审计。Harness 本身不直接承担业务判题逻辑，
+只负责流程编排和生命周期管理。
 
 执行流程：
 L1 CourseIntentAgent → L2 QuestionPlannerAgent → L3 QuestionMemoryAgent
@@ -16,6 +14,14 @@ L1 CourseIntentAgent → L2 QuestionPlannerAgent → L3 QuestionMemoryAgent
 → L7 FeedbackAggregator（内嵌）
 → ToolHarness（保存题目、日志）
 → L8 SummaryAgent（可选，会话结束时）
+
+核心职责：
+1. 编排 8 层 Agent 的执行流程
+2. 错误处理、重试、降级
+3. 记录 ToolCallLog
+4. 内嵌 FeedbackAggregator 子组件
+5. 注入 ControlSignal 到下一次循环
+6. 管理 HarnessRun 生命周期
 
 关键约束：
 - Harness 只负责编排和审计，不直接承担业务判题
@@ -131,12 +137,22 @@ class AIHarness:
 
     @property
     def feedback(self) -> FeedbackAggregator:
-        """获取 FeedbackAggregator 实例"""
+        """
+        获取 FeedbackAggregator 实例
+
+        Returns:
+            内嵌的反馈聚合器实例，用于读取控制信号
+        """
         return self._feedback
 
     @property
     def error_logger(self) -> ErrorLogger:
-        """获取 ErrorLogger 实例"""
+        """
+        获取 ErrorLogger 实例
+
+        Returns:
+            内嵌的错误日志记录器实例
+        """
         return self._error_logger
 
     async def generate(
@@ -625,8 +641,18 @@ class AIHarness:
         """
         过滤通过的题目
 
-        条件：QC 通过 AND 安全审查 PASS
+        通过条件：QC 检查通过 AND 安全审查 PASS。
+        任一环节未通过则题目被过滤掉，不进入最终输出。
+
+        Args:
+            questions: 生成的全部题目列表
+            qc_results: 质量检查结果列表
+            safety_results: 安全审查结果列表
+
+        Returns:
+            通过双重审查的题目列表
         """
+        # 构建 ID 到结果的映射，便于快速查找
         qc_map = {r.get("question_id", ""): r for r in qc_results}
         safety_map = {r.get("question_id", ""): r for r in safety_results}
 
@@ -639,9 +665,14 @@ class AIHarness:
             qc_passed = qc.get("passed", False)
             safety_passed = safety.get("verdict") == "PASS"
 
+            # 双重检查均通过才保留
             if qc_passed and safety_passed:
                 passed.append(q)
 
+        logger.info(
+            f"[Harness] 题目过滤: 原始={len(questions)} | 通过={len(passed)} | "
+            f"过滤={len(questions) - len(passed)}"
+        )
         return passed
 
     async def _save_questions(
@@ -649,7 +680,18 @@ class AIHarness:
         batch_id: str,
         questions: list[dict],
     ) -> None:
-        """保存通过的题目"""
+        """
+        保存通过审查的题目到数据库
+
+        将最终通过质量检查和安全审查的题目批量持久化，
+        同时记录批次元信息以便后续追溯。
+
+        Args:
+            batch_id: 批次唯一标识
+            questions: 通过审查的题目列表
+        """
+        logger.info(f"[Harness] 开始保存题目 | batch_id={batch_id} | count={len(questions)}")
+
         await self._save_tool.save_batch(
             batch_id=batch_id,
             user_id=self._run_context.user_id,
@@ -683,7 +725,16 @@ class AIHarness:
         """
         记录工具调用日志
 
-        所有工具调用必须记录。
+        所有工具调用必须记录到运行上下文中，确保全流程可追溯。
+        记录内容包含步骤名、工具名、输入输出摘要、状态及错误信息。
+
+        Args:
+            step_name: 步骤名称（如 intent / plan / generate / quality / safety 等）
+            tool_name: 工具名称
+            input_summary: 输入摘要字典
+            output_summary: 输出摘要字典（可选）
+            status: 执行状态，默认为 succeeded
+            error_message: 错误信息（可选）
         """
         if self._run_context:
             record = ToolCallRecord(
@@ -696,10 +747,18 @@ class AIHarness:
                 error_message=error_message,
             )
             self._run_context.tool_call_logs.append(record)
+            logger.debug(
+                f"[Harness] 工具调用记录: step={step_name} | tool={tool_name} | status={status}"
+            )
 
     async def _persist_tool_logs(self) -> None:
-        """持久化工具调用日志和审计日志"""
+        """
+        持久化工具调用日志和审计日志
+
+        当前版本仅在内存中记录，待数据库模型就绪后将写入 ToolCallLog 表。
+        """
         if not self._run_context or not self._db_available():
+            logger.debug("[Harness] 数据库不可用，跳过工具日志持久化")
             return
 
         # TODO: 当数据库模型就绪后持久化 ToolCallLog
@@ -710,7 +769,12 @@ class AIHarness:
             )
 
     def _db_available(self) -> bool:
-        """检查数据库是否可用"""
+        """
+        检查数据库是否可用
+
+        Returns:
+            数据库会话已注入且不为 None 时返回 True
+        """
         return self._memory_tool._db_session is not None
 
     async def run_summary(
@@ -721,18 +785,27 @@ class AIHarness:
         """
         执行会话总结（L8 SummaryAgent）
 
+        在出题流程结束后调用，触发 Hermes 五环机制：
+        记忆策划、Skill 创建、Skill 自改进、跨会话召回、用户建模。
+
         Args:
-            session_data: 会话数据
+            session_data: 完整会话数据（包含生成记录、质量检查结果、用户交互等）
             user_id: 用户 ID
 
         Returns:
-            总结结果
+            总结结果字典，包含 memory_items、skill_file、profile_update
         """
+        logger.info(f"[Harness] 触发 L8 会话总结 | user={user_id}")
         return await self._summary.execute_summary(
             session_data=session_data,
             user_id=user_id,
         )
 
     def get_run_context(self) -> Optional[HarnessRunContext]:
-        """获取当前运行上下文"""
+        """
+        获取当前运行上下文
+
+        Returns:
+            当前 HarnessRunContext 实例，若未开始运行则返回 None
+        """
         return self._run_context

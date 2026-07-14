@@ -1,3 +1,13 @@
+/**
+ * 主布局组件
+ *
+ * 功能说明：
+ * - 组合侧边栏、顶部栏、主内容区和移动端底部导航
+ * - 支持侧边栏折叠/展开（桌面端）
+ * - 移动端使用 Sheet 抽屉展示侧边栏
+ * - 自适应响应式布局
+ */
+
 "use client";
 
 import React, { useState } from "react";
@@ -7,10 +17,16 @@ import { MobileNav } from "./mobile-nav";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
+/** 主布局属性 */
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
+/**
+ * 主布局组件
+ * @param children - 页面主内容
+ * @returns 带侧边栏和顶部栏的布局结构
+ */
 export function MainLayout({ children }: MainLayoutProps) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);

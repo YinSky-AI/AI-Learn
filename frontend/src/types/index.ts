@@ -1,8 +1,13 @@
-/* ============================================
-   AI学习平台 - 全局 TypeScript 类型定义
-   ============================================ */
+/**
+ * AI学习平台 - 全局 TypeScript 类型定义
+ *
+ * 功能说明：
+ * - 定义项目中所有核心数据结构的 TypeScript 类型
+ * - 包括用户、课程、课时、学习记录、AI 对话等
+ * - 提供学科、难度、年龄组等常量映射
+ */
 
-/** 年龄分级 */
+/** 年龄分级（6-9岁、10-12岁、13-15岁、16-18岁） */
 export type AgeGroup = "06-09" | "10-12" | "13-15" | "16-18";
 
 /** 学科类型 */
@@ -18,7 +23,7 @@ export type Subject =
 /** 难度等级 */
 export type DifficultyLevel = "beginner" | "intermediate" | "advanced";
 
-/** 内容格式 */
+/** 内容格式（视频、文本、互动、测验、游戏） */
 export type ContentFormat = "video" | "text" | "interactive" | "quiz" | "game";
 
 /** 用户角色 */
@@ -28,6 +33,7 @@ export type UserRole = "student" | "parent" | "teacher" | "admin";
 export type Gender = "male" | "female" | "other";
 
 /* ---------- 学科配置 ---------- */
+/** 学科配置接口 */
 export interface SubjectConfig {
   key: Subject;
   name: string;
@@ -40,6 +46,7 @@ export interface SubjectConfig {
 }
 
 /* ---------- 用户相关 ---------- */
+/** 用户基础信息 */
 export interface User {
   id: string;
   username: string;
@@ -59,6 +66,7 @@ export interface User {
   updatedAt: string;
 }
 
+/** 完整用户资料（含统计、成就、徽章等） */
 export interface UserProfile extends User {
   stats: UserStats;
   achievements: Achievement[];
@@ -67,6 +75,7 @@ export interface UserProfile extends User {
   skills: Skill[];
 }
 
+/** 用户学习统计 */
 export interface UserStats {
   totalLearningTime: number; // 分钟
   completedCourses: number;
@@ -78,6 +87,7 @@ export interface UserStats {
   weeklyProgress: number;
 }
 
+/** 连续学习记录 */
 export interface Streak {
   current: number;
   longest: number;
@@ -85,6 +95,7 @@ export interface Streak {
   history: string[]; // 最近30天活跃日期
 }
 
+/** 成就 */
 export interface Achievement {
   id: string;
   title: string;
@@ -96,6 +107,7 @@ export interface Achievement {
   category: string;
 }
 
+/** 徽章 */
 export interface Badge {
   id: string;
   name: string;
@@ -106,6 +118,7 @@ export interface Badge {
   condition: string;
 }
 
+/** 技能 */
 export interface Skill {
   name: string;
   subject: Subject;
@@ -116,6 +129,7 @@ export interface Skill {
 }
 
 /* ---------- 课程相关 ---------- */
+/** 课程 */
 export interface Course {
   id: string;
   slug?: string;
@@ -141,6 +155,7 @@ export interface Course {
   updatedAt: string;
 }
 
+/** 课时 */
 export interface Lesson {
   id: string;
   courseId: string;
@@ -154,6 +169,7 @@ export interface Lesson {
   resources: Resource[];
 }
 
+/** 资源 */
 export interface Resource {
   id: string;
   title: string;
@@ -162,6 +178,7 @@ export interface Resource {
 }
 
 /* ---------- 学习记录 ---------- */
+/** 学习会话 */
 export interface LearningSession {
   id: string;
   userId: string;
@@ -175,6 +192,7 @@ export interface LearningSession {
 }
 
 /* ---------- AI 对话 ---------- */
+/** 聊天消息 */
 export interface ChatMessage {
   id: string;
   role: "user" | "assistant" | "system";
@@ -186,6 +204,7 @@ export interface ChatMessage {
   };
 }
 
+/** AI 响应 */
 export interface AIResponse {
   message: string;
   suggestions?: string[];
@@ -194,6 +213,7 @@ export interface AIResponse {
 }
 
 /* ---------- 筛选条件 ---------- */
+/** 课程筛选条件 */
 export interface CourseFilter {
   subject?: Subject;
   difficulty?: DifficultyLevel;
@@ -205,6 +225,7 @@ export interface CourseFilter {
 }
 
 /* ---------- 难度标签映射 ---------- */
+/** 难度中文标签 */
 export const DIFFICULTY_LABELS: Record<DifficultyLevel, string> = {
   beginner: "入门",
   intermediate: "进阶",
@@ -212,6 +233,7 @@ export const DIFFICULTY_LABELS: Record<DifficultyLevel, string> = {
 };
 
 /* ---------- 学科名称映射 ---------- */
+/** 学科中文名称 */
 export const SUBJECT_LABELS: Record<Subject, string> = {
   math: "数学",
   science: "科学",
@@ -223,6 +245,7 @@ export const SUBJECT_LABELS: Record<Subject, string> = {
 };
 
 /* ---------- 年龄组映射 ---------- */
+/** 年龄组中文标签 */
 export const AGE_GROUP_LABELS: Record<AgeGroup, string> = {
   "06-09": "6-9岁",
   "10-12": "10-12岁",

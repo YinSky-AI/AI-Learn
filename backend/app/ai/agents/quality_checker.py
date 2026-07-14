@@ -1,11 +1,26 @@
 """
-Layer5 QualityCheckAgent — 快速质量检查
+backend/app/ai/agents/quality_checker.py
 
-职责：快速检查答案正确性、适龄性、难度匹配、重复度
+Layer5 QualityCheckAgent —— 快速质量检查模块
+
+本模块对每道生成题目执行四维快速检查，是质量闭环的关键环节。
+每道题必检、不遗漏，未通过题目将被过滤并触发 FeedbackAggregator 的纠正信号。
+
+检查维度与权重：
+1. 答案正确性（权重40%）
+2. 适龄性（权重25%）
+3. 难度匹配（权重20%）
+4. 重复度（权重15%）
+
 层级位置：L5
 输入：GeneratedQuestions (L4)
 输出：QuickCheckResult（question_id, passed, score, issues, deviation）
 接口契约：QuickCheckResult -> FeedbackAggregator (L7)
+
+设计特点：
+- 使用极低 temperature（0.1）确保检查结果稳定一致
+- 服务端强制阈值校验（QUALITY_PASS_THRESHOLD = 60），防止 LLM 误判
+- JSON 解析失败时默认不通过，保守策略确保质量
 """
 
 from __future__ import annotations

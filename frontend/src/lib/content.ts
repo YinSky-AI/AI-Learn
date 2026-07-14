@@ -1,10 +1,17 @@
-/* ============================================
-   内容获取工具 - Mock 数据 & 内容工具函数
-   ============================================ */
+/**
+ * 内容获取工具 - Mock 数据 & 内容工具函数
+ *
+ * 功能说明：
+ * - 提供固定的 12 门课程 Mock 数据（用于演示和离线场景）
+ * - 定义学科、难度、年龄组的常量列表
+ * - 为各课程的课时生成 Markdown 内容（专属模板 + 通用模板）
+ * - 生成欢迎语、获取星期名称等辅助函数
+ * - 课时名称和类型采用固定模板循环分配
+ */
 
 import type { Course, Subject, DifficultyLevel, AgeGroup, Lesson, ContentFormat } from "@/types";
 
-/** 学科图标映射 */
+/** 学科图标映射（Lucide 图标名称） */
 export const SUBJECT_ICONS: Record<Subject, string> = {
   math: "Calculator",
   science: "FlaskConical",
@@ -273,21 +280,31 @@ const FIXED_COURSES: Course[] = [
   },
 ];
 
-/** 生成 Mock 课程数据（固定数据，非随机） */
+/**
+ * 生成 Mock 课程数据（固定数据，非随机）
+ * @param count - 返回课程数量（默认 12）
+ * @returns 课程数组
+ */
 export function getMockCourses(count: number = 12): Course[] {
   return FIXED_COURSES.slice(0, count);
 }
 
-/** 获取固定课程详情 */
+/**
+ * 获取固定课程详情
+ * @param courseId - 课程 ID
+ * @returns 课程对象或 undefined
+ */
 export function getMockCourseDetail(courseId: string): Course | undefined {
   return FIXED_COURSES.find((c) => c.id === courseId);
 }
 
-/** ============================================
-   课程内容生成 - 为每门课的每个课时生成 Markdown 内容
-   ============================================ */
+/**
+ * ============================================
+ * 课程内容生成 - 为每门课的每个课时生成 Markdown 内容
+ * ============================================
+ */
 
-/** 课程主题内容模板 */
+/** 课程主题内容模板（按学科和课程 ID 组织） */
 const COURSE_CONTENT_TEMPLATES: Record<string, Record<string, Record<string, string>>> = {
   math: {
     "course-1": {
@@ -1477,7 +1494,7 @@ for i in range(1, 100):
   },
 };
 
-/** 通用课时内容模板（用于未特别定义的课程） */
+/** 通用课时内容模板（用于未配置专属内容的课程） */
 const GENERIC_LESSON_CONTENT: Record<string, string> = {
   video: `## 视频学习：{title}
 
@@ -1610,6 +1627,12 @@ const GENERIC_LESSON_CONTENT: Record<string, string> = {
 /**
  * 获取课时内容
  * 优先使用课程专属内容，其次使用通用模板
+ * @param courseId - 课程 ID
+ * @param lessonTitle - 课时标题
+ * @param lessonType - 课时类型
+ * @param duration - 课时时长（分钟）
+ * @param description - 课时描述
+ * @returns Markdown 内容字符串
  */
 export function getLessonContent(courseId: string, lessonTitle: string, lessonType: ContentFormat, duration: number, description: string): string {
   // 查找课程所属学科
@@ -1621,7 +1644,7 @@ export function getLessonContent(courseId: string, lessonTitle: string, lessonTy
     return COURSE_CONTENT_TEMPLATES[subject][courseId][lessonTitle];
   }
 
-  // 使用通用模板
+  // 使用通用模板并替换变量
   const template = GENERIC_LESSON_CONTENT[lessonType] || GENERIC_LESSON_CONTENT.text;
   return template
     .replace(/\{title\}/g, lessonTitle)
@@ -1629,7 +1652,7 @@ export function getLessonContent(courseId: string, lessonTitle: string, lessonTy
     .replace(/\{description\}/g, description);
 }
 
-/** 固定的课时名称和类型 */
+/** 固定的课时名称和类型模板（循环使用） */
 const LESSON_TEMPLATES: Array<{ title: string; type: Lesson["type"] }> = [
   { title: "课程导学", type: "video" },
   { title: "基础概念", type: "text" },
@@ -1649,7 +1672,11 @@ const LESSON_TEMPLATES: Array<{ title: string; type: Lesson["type"] }> = [
   { title: "创意任务", type: "interactive" },
 ];
 
-/** 生成 Mock 课时数据（固定数据，非随机） */
+/**
+ * 生成 Mock 课时数据（固定数据，非随机）
+ * @param courseId - 课程 ID
+ * @returns 课时数组
+ */
 export function getMockLessons(courseId: string): Lesson[] {
   const course = getMockCourseDetail(courseId);
   const lessonCount = course ? course.totalLessons : 12;
@@ -1671,7 +1698,11 @@ export function getMockLessons(courseId: string): Lesson[] {
   });
 }
 
-/** 获取欢迎语 */
+/**
+ * 获取欢迎语（根据当前时间段）
+ * @param nickname - 用户昵称
+ * @returns 欢迎语字符串
+ */
 export function getWelcomeMessage(nickname: string): string {
   const hour = new Date().getHours();
   let greeting: string;
@@ -1684,7 +1715,11 @@ export function getWelcomeMessage(nickname: string): string {
   return `${greeting}，${nickname}！今天想学点什么？`;
 }
 
-/** 获取星期几的中文名 */
+/**
+ * 获取星期几的中文名
+ * @param date - 日期对象
+ * @returns "星期X"
+ */
 export function getWeekdayName(date: Date): string {
   const days = ["日", "一", "二", "三", "四", "五", "六"];
   return `星期${days[date.getDay()]}`;

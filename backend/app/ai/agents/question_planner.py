@@ -1,11 +1,27 @@
 """
-Layer2 QuestionPlannerAgent — 出题规划
+backend/app/ai/agents/question_planner.py
 
-职责：规划题型、数量、难度分布
+Layer2 QuestionPlannerAgent —— 出题规划模块
+
+本模块根据课程意图参数和系统反馈控制信号，制定具体的出题方案，
+包括题型分布、数量分配和难度配比，为题目生成提供明确的执行计划。
+
+核心职责：
+1. 解析 IntentParams 和 ControlSignal
+2. 规划题型分布与数量分配
+3. 根据 PID 调整建议动态修正难度和数量
+4. 检测规划偏差并声明
+
 层级位置：L2
 输入：IntentParams (L1) + ControlSignal (L7)
 输出：PlanResult（plan_id, question_plan, adjusted_params, deviation_declaration）
 接口契约：PlanResult -> QuestionGeneratorAgent (L4)
+
+规划规则：
+- 题目总数接近请求数量（±20% 容差）
+- 难度分布遵循"金字塔原则"：基础题40%，中等题40%，挑战题20%
+- 当 ControlSignal 建议调整时，必须在规划中体现并声明偏差
+- 提供降级默认规划，确保 LLM 输出异常时系统仍可运行
 """
 
 from __future__ import annotations

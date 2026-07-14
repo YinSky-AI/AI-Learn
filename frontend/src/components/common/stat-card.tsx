@@ -1,3 +1,13 @@
+/**
+ * 统计卡片组件
+ *
+ * 功能说明：
+ * - 展示标签、数值和图标，用于仪表盘数据展示
+ * - 支持趋势指示（上升/下降百分比）
+ * - 多种预设颜色主题（蓝、绿、橙、红、紫）
+ * - 悬停时带轻微放大动画（framer-motion）
+ */
+
 "use client";
 
 import React from "react";
@@ -5,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 
+/** 统计卡片属性 */
 interface StatCardProps {
   label: string;
   value: string | number;
@@ -17,6 +28,7 @@ interface StatCardProps {
   className?: string;
 }
 
+/** 颜色主题映射 */
 const COLOR_MAP = {
   blue: "bg-blue-50 text-brand-blue",
   green: "bg-green-50 text-brand-green",
@@ -25,6 +37,16 @@ const COLOR_MAP = {
   purple: "bg-purple-50 text-purple-600",
 };
 
+/**
+ * 统计卡片组件
+ * @param label - 标签文字
+ * @param value - 数值
+ * @param icon - 图标组件
+ * @param trend - 趋势数据（可选）
+ * @param color - 颜色主题
+ * @param className - 额外类名
+ * @returns 统计卡片
+ */
 export function StatCard({
   label,
   value,

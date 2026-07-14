@@ -1,11 +1,27 @@
 """
-Layer4 QuestionGeneratorAgent — 题目生成
+backend/app/ai/agents/question_generator.py
 
-职责：生成题目、选项、答案、解析
+Layer4 QuestionGeneratorAgent —— 题目生成模块
+
+本模块是 AI 出题系统的核心生成层（L4），负责根据规划结果和记忆上下文
+生成高质量的教育题目，包括题干、选项、答案和解析。
+
+核心职责：
+1. 接收 PlanResult、MemoryContext 和 ControlSignal
+2. 构建精细化 Prompt（含适龄性要求、避免列表、Skill 提示等）
+3. 调用 LLM 批量生成题目
+4. 解析并规范化输出为 GeneratedQuestions
+5. 检测难度漂移并声明偏差
+
 层级位置：L4
 输入：PlanResult (L2) + MemoryContext (L3) + ControlSignal (L7)
 输出：GeneratedQuestions（questions, generation_meta, deviation_declaration）
 接口契约：GeneratedQuestions -> QualityCheckAgent (L5)
+
+设计特点：
+- 使用较高 max_tokens（8192）支持批量生成
+- 对生成结果做服务端校验（过滤无题干或答案的题目）
+- 自动检测难度漂移并生成偏差声明
 """
 
 from __future__ import annotations

@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-学习服务
-处理学习会话创建、答题、会话完成等业务逻辑
+学习会话服务模块
+
+提供学习会话的生命周期管理业务逻辑，包括会话创建、答题提交、会话完成与统计查询。
+所有操作均绑定到具体用户，答题后自动判题并更新会话统计。
+
+主要功能：
+    - 创建学习会话（绑定知识点与难度）
+    - 提交答案（自动判题、更新统计）
+    - 完成会话（状态标记与统计结算）
+    - 会话统计与历史列表查询
 """
 
 import uuid
@@ -23,6 +31,15 @@ async def create_session(
 ) -> LearningSession:
     """
     创建学习会话
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        knowledge_node_id (uuid.UUID): 知识点 UUID
+        difficulty_level (str): 难度等级
+
+    Returns:
+        LearningSession: 新创建的学习会话 ORM 对象
     """
     session = LearningSession(
         id=uuid.uuid4(),
@@ -43,6 +60,16 @@ async def get_session_by_id(
 ) -> LearningSession:
     """
     根据 ID 获取学习会话
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        session_id (uuid.UUID): 学习会话 UUID
+
+    Returns:
+        LearningSession: 学习会话 ORM 对象
+
+    Raises:
+        HTTPException: 会话不存在时抛出 404
     """
     stmt = select(LearningSession).where(LearningSession.id == session_id)
     result = await db.execute(stmt)
@@ -64,21 +91,36 @@ async def submit_answer(
 ) -> Answer:
     """
     提交答案
-    1. 获取题目，判断正误
-    2. 创建答题记录
-    3. 更新会话统计
+
+    完整的答题处理流程：
+        1. 获取并校验会话状态（必须为 in_progress）
+        2. 查询题目并判断正误（不区分大小写的字符串比较）
+        3. 创建答题记录
+        4. 更新会话统计（总题数、正确数）
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        session_id (uuid.UUID): 学习会话 UUID
+        question_id (uuid.UUID): 题目 UUID
+        user_answer (str): 用户提交的答案
+        time_spent_seconds (int): 答题用时（秒）
+
+    Returns:
+        Answer: 答题记录 ORM 对象
+
+    Raises:
+        HTTPException: 会话不存在、已结束或题目不存在时抛出
     """
-    # 获取会话
+    # 获取会话并校验状态
     session = await get_session_by_id(db, session_id)
 
-    # 检查会话状态
     if session.status != "in_progress":
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail={"code": "BIZ_001", "message": "该学习会话已结束"},
         )
 
-    # 获取题目
+    # 获取题目信息
     stmt = select(Question).where(Question.id == question_id)
     result = await db.execute(stmt)
     question = result.scalar_one_or_none()
@@ -89,7 +131,7 @@ async def submit_answer(
             detail={"code": "BIZ_001", "message": "题目不存在"},
         )
 
-    # 判断正误
+    # 判断正误（去除空白并不区分大小写比较）
     is_correct = user_answer.strip().upper() == question.correct_answer.strip().upper()
 
     # 创建答题记录
@@ -120,6 +162,18 @@ async def complete_session(
 ) -> LearningSession:
     """
     完成学习会话
+
+    将指定会话状态从 in_progress 标记为 completed，并记录完成时间。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        session_id (uuid.UUID): 学习会话 UUID
+
+    Returns:
+        LearningSession: 更新后的学习会话对象
+
+    Raises:
+        HTTPException: 会话不存在或已结束时抛出
     """
     session = await get_session_by_id(db, session_id)
 
@@ -143,33 +197,42 @@ async def get_session_stats(
 ) -> dict:
     """
     获取学习会话统计信息
+
+    聚合指定会话的答题数据，包括总题数、正确数、正确率、答题总用时、会话持续时间等。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        session_id (uuid.UUID): 学习会话 UUID
+
+    Returns:
+        dict: 会话统计字典
     """
     session = await get_session_by_id(db, session_id)
 
-    # 计算总用时
-    if session.completed_at and session.started_at:
-        total_time = int(
-            (session.completed_at - session.started_at).total_seconds()
-        )
-    else:
-        total_time = int(
-            (datetime.now(timezone.utc) - session.started_at).total_seconds()
-        )
+    total = session.total_questions or 0
+    correct = session.correct_count or 0
+    accuracy = int(correct * 100 / total) if total > 0 else 0
 
-    # 计算正确率
-    accuracy = (
-        (session.correct_count / session.total_questions * 100)
-        if session.total_questions > 0
-        else 0.0
+    # 计算答题总用时（从 Answer 表聚合）
+    stmt = select(func.sum(Answer.time_spent_seconds)).where(
+        Answer.session_id == session_id
     )
+    result = await db.execute(stmt)
+    total_time = result.scalar_one_or_none() or 0
+
+    # 计算会话持续时间（已结束取完成时间，未结束取当前时间）
+    started_at = session.started_at or datetime.now(timezone.utc)
+    ended_at = session.completed_at or datetime.now(timezone.utc)
+    session_duration = int((ended_at - started_at).total_seconds())
 
     return {
-        "session_id": session.id,
+        "session_id": str(session_id),
+        "total_questions": total,
+        "correct_count": correct,
+        "accuracy": accuracy,
+        "total_time": total_time,
+        "session_duration": session_duration,
         "status": session.status,
-        "correct_count": session.correct_count,
-        "total_questions": session.total_questions,
-        "accuracy_rate": round(accuracy, 1),
-        "total_time_seconds": total_time,
     }
 
 

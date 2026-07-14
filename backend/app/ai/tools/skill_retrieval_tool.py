@@ -1,13 +1,26 @@
 """
-Skill 检索工具 — SkillRetrievalTool
+backend/app/ai/tools/skill_retrieval_tool.py
 
-检索 Skill 存储目录中匹配的 Skill 文件。
-用于 SummaryAgent 跨会话召回（Hermes 环4）和
-QuestionMemoryAgent 注入 Skill 策略提示。
+Skill 检索工具 —— SkillRetrievalTool
+
+本模块负责从 Skill 存储目录中检索与当前出题场景匹配的 Skill 文件，
+为 QuestionMemoryAgent 提供策略提示，支持 SummaryAgent 的跨会话召回（Hermes 环4）。
+
+核心功能：
+- 扫描 Skill 目录并解析 YAML frontmatter
+- 基于触发条件、文件名和内容的匹配度排序
+- 提取 Skill 中的执行步骤、用户偏好和常见陷阱
+- 内存缓存机制，避免重复磁盘 I/O
 
 关键约束：
-- Skill 文件大小不超过 15KB
+- Skill 文件大小不超过 15KB（MAX_SKILL_SIZE）
 - 触发条件必须明确可匹配
+- 仅解析 .md 格式的 Skill 文件
+- 目录变更后自动重新加载缓存
+
+Skill 文件格式：
+- YAML frontmatter 定义元数据（name, trigger, version, success_count）
+- Markdown body 包含执行步骤、用户偏好记录、常见陷阱
 """
 
 from __future__ import annotations

@@ -1,11 +1,19 @@
 """
-AI Provider 封装 — OpenAI API 调用
+backend/app/ai/provider.py
 
-功能：
-- 支持流式 SSE 输出
-- 错误重试（指数退避）
-- Token 用量记录
+AI Provider 封装 —— OpenAI API 调用管理模块
+
+本模块负责与 DeepSeek / OpenAI 等大模型 API 的交互，提供统一的异步调用接口。
+核心功能：
+- 支持流式 SSE 输出（generate_stream）
+- 错误重试机制（指数退避）
+- Token 用量记录与统计
 - 多模型支持
+
+设计原则：
+- 所有 AI 调用必须经过本模块，禁止旁路调用
+- 超时、重试、降级策略集中管理
+- Token 用量透明可观测
 
 v0.1 约束：
 - 不实现联网搜索
@@ -96,11 +104,26 @@ class AIProvider:
         self._total_requests = 0
 
     def _record_usage(self, usage: Optional[dict[str, Any]]) -> dict[str, int]:
-        """记录 Token 用量"""
+        """
+        记录 Token 用量
+
+        累加本次请求的 Token 消耗到全局统计中，便于成本监控和用量告警。
+
+        Args:
+            usage: API 返回的用量字典，包含 prompt_tokens / completion_tokens / total_tokens
+
+        Returns:
+            标准化后的用量字典
+        """
         if usage:
+            # 累加各维度 Token 数
             self._total_prompt_tokens += usage.get("prompt_tokens", 0)
             self._total_completion_tokens += usage.get("completion_tokens", 0)
             self._total_requests += 1
+            logger.debug(
+                f"[AIProvider] Token 用量记录: prompt={usage.get('prompt_tokens', 0)} | "
+                f"completion={usage.get('completion_tokens', 0)}"
+            )
             return {
                 "prompt_tokens": usage.get("prompt_tokens", 0),
                 "completion_tokens": usage.get("completion_tokens", 0),
@@ -312,7 +335,12 @@ class AIProvider:
 
     @property
     def total_usage(self) -> dict[str, int]:
-        """获取累计 Token 用量"""
+        """
+        获取累计 Token 用量
+
+        Returns:
+            包含 prompt_tokens、completion_tokens、total_tokens、total_requests 的字典
+        """
         return {
             "prompt_tokens": self._total_prompt_tokens,
             "completion_tokens": self._total_completion_tokens,
@@ -321,7 +349,12 @@ class AIProvider:
         }
 
     def reset_usage(self) -> None:
-        """重置 Token 用量统计"""
+        """
+        重置 Token 用量统计
+
+        通常在新的统计周期开始时调用（如单次 Harness Run 结束后）。
+        """
+        logger.info("[AIProvider] Token 用量统计已重置")
         self._total_prompt_tokens = 0
         self._total_completion_tokens = 0
         self._total_requests = 0
@@ -332,14 +365,28 @@ _provider_instance: Optional[AIProvider] = None
 
 
 def get_ai_provider() -> AIProvider:
-    """获取全局 AI Provider 实例（单例）"""
+    """
+    获取全局 AI Provider 实例（单例模式）
+
+    首次调用时自动初始化，后续调用返回同一实例。
+    单例模式确保全局共享同一个连接池和用量统计。
+
+    Returns:
+        AIProvider 全局实例
+    """
     global _provider_instance
     if _provider_instance is None:
+        logger.info("[AIProvider] 初始化全局 Provider 实例")
         _provider_instance = AIProvider()
     return _provider_instance
 
 
 def reset_ai_provider() -> None:
-    """重置全局 AI Provider 实例（用于测试）"""
+    """
+    重置全局 AI Provider 实例（用于测试和故障恢复）
+
+    重置后下次调用 get_ai_provider() 将创建新实例。
+    """
     global _provider_instance
+    logger.info("[AIProvider] 全局 Provider 实例已重置")
     _provider_instance = None

@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-进度服务
-处理学习进度统计、趋势分析等
+学习进度服务模块
+
+提供用户学习进度的多维度统计业务逻辑，包括总览、学科进度、最近活动、难度分布等。
+数据来源于 LearningSession（AI 答题）和 UserLesson（课时完成）等多表聚合。
+
+主要功能：
+    - 学习进度总览（会话数、答题数、正确率、总用时）
+    - 某学科的学习进度（知识点覆盖率、正确率）
+    - 最近学习活动记录
+    - 各难度级别的答题分布与正确率
 """
 
 import uuid
-from typing import Optional
+from typing import List, Optional
 
 from sqlalchemy import select, func, case
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -19,7 +27,16 @@ async def get_user_learning_progress(
     user_id: uuid.UUID,
 ) -> dict:
     """
-    获取用户总体学习进度
+    获取用户学习进度总览
+
+    聚合用户的学习会话与答题数据，返回核心学习指标。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+
+    Returns:
+        dict: 学习进度总览数据字典
     """
     # 总会话数
     total_sessions_stmt = select(func.count()).where(
@@ -81,6 +98,16 @@ async def get_subject_progress(
 ) -> dict:
     """
     获取某学科的学习进度
+
+    统计用户在指定学科下的学习数据：已学知识点数、覆盖率、答题正确率。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        subject_code (str): 学科编码
+
+    Returns:
+        dict: 学科进度数据字典
     """
     # 该学科下已学习的知识点数
     nodes_stmt = (
@@ -132,9 +159,19 @@ async def get_recent_sessions(
     db: AsyncSession,
     user_id: uuid.UUID,
     limit: int = 10,
-) -> list:
+) -> List[LearningSession]:
     """
-    获取最近的学习会话
+    获取最近的学习活动
+
+    查询用户最近的学习会话记录，按开始时间倒序排列。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        limit (int): 返回记录数限制，默认 10
+
+    Returns:
+        List[LearningSession]: 最近学习会话列表
     """
     stmt = (
         select(LearningSession)
@@ -149,9 +186,18 @@ async def get_recent_sessions(
 async def get_difficulty_distribution(
     db: AsyncSession,
     user_id: uuid.UUID,
-) -> dict:
+) -> List[dict]:
     """
-    获取用户各难度的答题分布
+    获取各难度的答题分布
+
+    按难度级别分组聚合用户的答题数据，返回各难度的答题总数、正确数与正确率。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+
+    Returns:
+        List[dict]: 各难度的答题分布列表
     """
     stmt = (
         select(

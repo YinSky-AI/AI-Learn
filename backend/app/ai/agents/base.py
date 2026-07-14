@@ -1,18 +1,25 @@
 """
-Agent 基类 — 统一接口
+backend/app/ai/agents/base.py
 
-所有 Agent 必须继承 BaseAgent，实现统一的执行接口：
+Agent 基类 —— 统一接口与生命周期管理模块
+
+本模块定义了所有 Agent 必须继承的抽象基类 BaseAgent，标准化执行接口：
 - 输入 Schema（Pydantic BaseModel）
 - LLM 调用（通过 AIProvider）
 - 输出 Schema（Pydantic BaseModel）
 - 偏差声明（deviation_declaration）
 
-每个 Agent 的职责：
+每个 Agent 的标准职责：
 1. 接收结构化输入
 2. 构建 Prompt（通过 Prompt 模板）
 3. 调用 LLM 获取响应
 4. 解析响应为结构化输出
 5. 如果输出偏离设定值，声明偏差
+
+设计原则：
+- execute() 方法提供统一的错误捕获、日志记录和性能度量
+- 子类只需实现 _build_prompt() 和 _parse_response()
+- 所有异常自动上报 ErrorLogger，确保不丢失错误信息
 """
 
 from __future__ import annotations
@@ -233,26 +240,29 @@ class BaseAgent(ABC):
         """
         安全解析 JSON 字符串
 
-        尝试从 LLM 输出中提取 JSON，处理各种边界情况。
+        尝试从 LLM 输出中提取 JSON，处理各种边界情况：
+        1. 直接解析纯 JSON 文本
+        2. 从 Markdown 代码块（```json ... ```）中提取
+        3. 从文本中查找第一个 { 或 [ 开始的 JSON 片段
 
         Args:
             text: 可能包含 JSON 的文本
 
         Returns:
-            解析后的 Python 对象
+            解析后的 Python 对象（dict / list / str 等）
 
         Raises:
-            json.JSONDecodeError: 无法解析时
+            json.JSONDecodeError: 所有提取策略均失败时抛出
         """
         text = text.strip()
 
-        # 尝试直接解析
+        # 策略1: 尝试直接解析
         try:
             return json.loads(text)
         except json.JSONDecodeError:
             pass
 
-        # 尝试提取 JSON 块（可能被 markdown 代码块包裹）
+        # 策略2: 尝试提取 JSON 块（可能被 markdown 代码块包裹）
         import re
 
         # 匹配 ```json ... ``` 或 ``` ... ```
@@ -264,7 +274,7 @@ class BaseAgent(ABC):
             except json.JSONDecodeError:
                 continue
 
-        # 尝试找到第一个 { 或 [ 开始的 JSON
+        # 策略3: 尝试找到第一个 { 或 [ 开始的 JSON
         for start_char in ["{", "["]:
             start_idx = text.find(start_char)
             if start_idx >= 0:
@@ -273,6 +283,8 @@ class BaseAgent(ABC):
                 except json.JSONDecodeError:
                     continue
 
+        # 所有策略失败，记录日志并抛出异常
+        logger.warning(f"[BaseAgent] JSON 解析失败，原始文本前200字: {text[:200]}")
         raise json.JSONDecodeError(f"无法从文本中提取 JSON: {text[:200]}", "", 0)
 
     async def _report_error(

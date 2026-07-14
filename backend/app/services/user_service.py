@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-用户服务
-处理用户信息查询、更新、行为模型管理
+用户服务模块
+
+提供用户信息管理、行为档案、学习统计等核心业务逻辑。
+所有函数均通过异步数据库会话操作，返回 ORM 对象或 Pydantic 响应模型。
+
+主要功能：
+    - 用户查询（按 ID、按邮箱）
+    - 用户信息更新（部分字段更新）
+    - 行为档案查询与更新
+    - 连续学习天数与积分管理
+    - 学习统计数据聚合（多表查询）
 """
 
 import uuid
@@ -22,6 +31,16 @@ async def get_user_by_id(
 ) -> User:
     """
     根据 ID 获取用户
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+
+    Returns:
+        User: 用户 ORM 对象
+
+    Raises:
+        HTTPException: 用户不存在或已删除时抛出 404
     """
     stmt = select(User).where(User.id == user_id, User.deleted_at.is_(None))
     result = await db.execute(stmt)
@@ -40,6 +59,13 @@ async def get_user_by_email(
 ) -> Optional[User]:
     """
     根据邮箱获取用户
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        email (str): 用户邮箱
+
+    Returns:
+        Optional[User]: 用户对象，不存在则返回 None
     """
     stmt = select(User).where(User.email == email, User.deleted_at.is_(None))
     result = await db.execute(stmt)
@@ -53,10 +79,20 @@ async def update_user(
 ) -> User:
     """
     更新用户信息
+
+    采用部分更新策略，仅更新请求体中提供的非 None 字段。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        update_data (UserUpdate): 更新数据
+
+    Returns:
+        User: 更新后的用户对象
     """
     user = await get_user_by_id(db, user_id)
 
-    # 只更新非 None 字段
+    # 只更新非 None 字段（exclude_unset=True 确保仅设置请求中显式传入的字段）
     update_dict = update_data.model_dump(exclude_unset=True)
     for field, value in update_dict.items():
         setattr(user, field, value)
@@ -72,6 +108,13 @@ async def get_user_profile(
 ) -> UserProfileResponse:
     """
     获取用户行为档案
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+
+    Returns:
+        UserProfileResponse: 用户行为档案响应模型
     """
     user = await get_user_by_id(db, user_id)
     return UserProfileResponse(
@@ -91,6 +134,14 @@ async def update_behavior_profile(
 ) -> User:
     """
     更新用户行为模型
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        profile_data (dict): 新的行为模型数据（JSON 格式）
+
+    Returns:
+        User: 更新后的用户对象
     """
     user = await get_user_by_id(db, user_id)
     user.behavior_profile = profile_data
@@ -106,9 +157,18 @@ async def update_streak(
 ) -> User:
     """
     更新用户连续学习天数
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        increment (int): 增量（正数为增加，负数为减少），默认 1
+
+    Returns:
+        User: 更新后的用户对象
     """
     user = await get_user_by_id(db, user_id)
     user.streak_days += increment
+    # 确保连续天数不为负数
     if user.streak_days < 0:
         user.streak_days = 0
     db.add(user)
@@ -123,6 +183,14 @@ async def add_score(
 ) -> User:
     """
     增加用户积分
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        points (int): 增加的积分数（可为负数表示扣减）
+
+    Returns:
+        User: 更新后的用户对象
     """
     user = await get_user_by_id(db, user_id)
     user.total_score += points
@@ -137,14 +205,23 @@ async def get_user_stats(
 ) -> UserStatsResponse:
     """
     获取用户学习统计
-    综合统计 LearningSession（AI答题）和 UserLesson（课时完成）数据
+
+    综合聚合 LearningSession（AI 答题）和 UserLesson（课时完成）等多表数据，
+    返回用户的学习时长、课时完成数、课程进度等核心指标。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+
+    Returns:
+        UserStatsResponse: 用户学习统计响应模型
     """
     from app.models.learning import Answer, LearningSession
     from app.models.course import UserLesson
 
     user = await get_user_by_id(db, user_id)
 
-    # ===== 学习时间统计（从 UserLesson 表） =====
+    # ===== 学习时间统计（从 UserLesson 表聚合） =====
     today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
 
     # 今日学习分钟数
@@ -175,7 +252,6 @@ async def get_user_stats(
     week_hours = round(week_seconds / 3600, 1)
 
     # ===== 课时完成统计（从 UserLesson 表） =====
-    # 已完成课时数
     stmt = select(func.count(UserLesson.id)).where(
         UserLesson.user_id == str(user_id),
         UserLesson.completed == True,
@@ -199,6 +275,7 @@ async def get_user_stats(
     result = await db.execute(stmt)
     in_progress_courses = result.scalar_one_or_none() or 0
 
+    # 计算总体课程完成进度百分比
     total_courses = in_progress_courses + completed_courses
     overall_progress = int((completed_courses / total_courses) * 100) if total_courses > 0 else 0
 

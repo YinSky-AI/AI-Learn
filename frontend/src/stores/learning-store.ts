@@ -1,6 +1,13 @@
-/* ============================================
-   学习状态管理 - Zustand Store
-   ============================================ */
+/**
+ * 学习状态管理 - Zustand Store
+ *
+ * 功能说明：
+ * - 管理课程列表、课程详情、课时、AI 对话等学习相关状态
+ * - 支持从后端 API 获取数据，失败时 fallback 到 Mock 数据
+ * - 已登录用户合并后端学习进度，未登录用户使用本地存储
+ * - AI 对话使用 SSE 流式响应，支持实时显示内容
+ * - 课时完成后自动同步到后端（已登录）和本地存储（所有用户）
+ */
 
 import { create } from "zustand";
 import type { Course, CourseFilter, Lesson, ChatMessage, Subject, DifficultyLevel, AgeGroup } from "@/types";
@@ -14,7 +21,11 @@ import {
   clearLocalChatHistory,
 } from "@/lib/local-storage";
 
-/** 将后端 API 返回的课程字段映射为前端 Course 类型 */
+/**
+ * 将后端 API 返回的课程字段映射为前端 Course 类型
+ * @param apiCourse - 后端返回的原始课程对象
+ * @returns 前端 Course 对象
+ */
 function mapApiCourse(apiCourse: any): Course {
   const id = apiCourse.id ?? apiCourse.slug ?? "";
   return {
@@ -39,7 +50,11 @@ function mapApiCourse(apiCourse: any): Course {
   };
 }
 
-/** 将后端 API 返回的课时字段映射为前端 Lesson 类型 */
+/**
+ * 将后端 API 返回的课时字段映射为前端 Lesson 类型
+ * @param apiLesson - 后端返回的原始课时对象
+ * @returns 前端 Lesson 对象
+ */
 function mapApiLesson(apiLesson: any): Lesson {
   return {
     id: apiLesson.id ?? "",
@@ -55,6 +70,7 @@ function mapApiLesson(apiLesson: any): Lesson {
   };
 }
 
+/** 学习状态接口 */
 interface LearningState {
   /** 课程列表 */
   courses: Course[];
@@ -91,9 +107,9 @@ interface LearningState {
   setFilter: (filter: Partial<CourseFilter>) => void;
   /** 重置筛选 */
   resetFilter: () => void;
-  /** 发送 AI 消息 */
+  /** 发送 AI 消息（SSE 流式） */
   sendAIMessage: (message: string) => Promise<void>;
-  /** 开始学习当前课时 */
+  /** 标记当前课时完成并切换到下一课时 */
   startLearning: () => Promise<void>;
   /** 报名课程 */
   enrollCourse: (courseId: string) => Promise<void>;
@@ -103,6 +119,7 @@ interface LearningState {
   setLoading: (loading: boolean) => void;
 }
 
+/** 默认筛选条件 */
 const DEFAULT_FILTER: CourseFilter = {
   sortBy: "popular",
   page: 1,
@@ -123,6 +140,11 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   totalPages: 1,
   currentPage: 1,
 
+  /**
+   * 获取课程列表
+   * 优先从后端获取，失败时 fallback 到 Mock 数据
+   * @param filter - 筛选条件（可选）
+   */
   fetchCourses: async (filter?: CourseFilter) => {
     set({ isLoading: true });
     try {
@@ -230,6 +252,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     }
   },
 
+  /**
+   * 获取课程详情
+   * 优先从后端获取，失败时 fallback 到 Mock 数据
+   * 合并本地存储的课时完成状态和聊天记录
+   * @param courseId - 课程 ID
+   */
   fetchCourseDetail: async (courseId: string) => {
     set({ isLoading: true });
     try {
@@ -332,19 +360,29 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     }
   },
 
+  /** 设置当前课时 */
   setCurrentLesson: (lesson) => set({ currentLesson: lesson }),
 
+  /**
+   * 更新筛选条件并重新获取课程
+   * @param partialFilter - 部分筛选条件
+   */
   setFilter: (partialFilter) => {
     const newFilter = { ...get().filter, ...partialFilter, page: 1 };
     set({ filter: newFilter });
     get().fetchCourses(newFilter);
   },
 
+  /** 重置筛选条件 */
   resetFilter: () => {
     set({ filter: DEFAULT_FILTER });
     get().fetchCourses(DEFAULT_FILTER);
   },
 
+  /**
+   * 发送 AI 消息（SSE 流式响应）
+   * @param message - 用户消息内容
+   */
   sendAIMessage: async (message) => {
     const userMessage: ChatMessage = {
       id: `msg-${Date.now()}`,
@@ -496,6 +534,10 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     }
   },
 
+  /**
+   * 标记当前课时完成并切换到下一课时
+   * 同步到后端（已登录）和本地存储（所有用户）
+   */
   startLearning: async () => {
     const { currentLesson, currentLessons, currentCourse } = get();
     if (!currentLesson || !currentCourse) return;
@@ -546,6 +588,10 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     }
   },
 
+  /**
+   * 报名课程
+   * @param courseId - 课程 ID
+   */
   enrollCourse: async (courseId: string) => {
     try {
       await apiClient.post(`/v1/user/courses/${courseId}/enroll`);
@@ -560,6 +606,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     }
   },
 
+  /** 清空当前课程的对话历史 */
   clearChat: () => {
     const { currentCourse } = get();
     if (currentCourse) {
@@ -568,10 +615,14 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     set({ chatMessages: [] });
   },
 
+  /** 设置加载状态 */
   setLoading: (loading) => set({ isLoading: loading }),
 }));
 
-/** 便捷 Hook：获取带筛选功能的课程列表 */
+/**
+ * 便捷 Hook：获取带筛选功能的课程列表
+ * 封装常用筛选条件的设置方法
+ */
 export function useCourseFilter() {
   const store = useLearningStore();
   return {

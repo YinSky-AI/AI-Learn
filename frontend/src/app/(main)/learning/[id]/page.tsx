@@ -1,3 +1,15 @@
+/**
+ * 课程详情与学习页面
+ *
+ * 功能说明：
+ * - 展示课程信息、课时大纲、当前课时内容
+ * - 课程大纲支持点击切换课时
+ * - AI 学习助手面板（SSE 流式对话）
+ * - 未登录用户提示登录
+ * - 完成所有课时后显示祝贺界面
+ * - 支持 Markdown 内容渲染
+ */
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -41,6 +53,10 @@ import { cn } from "@/lib/utils";
 import { LoadingSkeleton } from "@/components/common/loading-skeleton";
 import { MarkdownRenderer } from "@/components/common/markdown-renderer";
 
+/**
+ * 课程详情与学习页面组件
+ * @returns 课程学习界面
+ */
 export default function LearningPage() {
   const params = useParams();
   const courseId = params.id as string;
@@ -48,6 +64,7 @@ export default function LearningPage() {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const [loginPrompt, setLoginPrompt] = useState(false);
 
+  // 从学习 store 获取课程详情和课时数据
   const {
     currentCourse: course,
     currentLessons: lessons,
@@ -61,12 +78,14 @@ export default function LearningPage() {
     startLearning,
   } = useLearningStore();
 
+  // 根据课程 ID 加载课程详情
   useEffect(() => {
     if (courseId) {
       fetchCourseDetail(courseId);
     }
   }, [courseId, fetchCourseDetail]);
 
+  // 加载中或课程不存在时显示骨架屏
   if (isLoading || !course) {
     return (
       <MainLayout>
@@ -78,9 +97,15 @@ export default function LearningPage() {
   // 判断所有课时是否已完成
   const allCompleted = lessons.length > 0 && lessons.every((l) => l.completed);
 
+  // 计算已完成课时数和总进度
   const completedCount = lessons.filter((l) => l.completed).length;
   const progress = Math.round((completedCount / lessons.length) * 100);
 
+  /**
+   * 根据课时类型返回对应图标
+   * @param type - 课时类型
+   * @returns 对应的 Lucide 图标组件
+   */
   const lessonTypeIcon = (type: string) => {
     switch (type) {
       case "video":

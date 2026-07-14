@@ -1,3 +1,15 @@
+/**
+ * 侧边栏组件
+ *
+ * 功能说明：
+ * - 展示 Logo、主导航链接、用户信息和折叠按钮
+ * - 支持折叠/展开状态切换
+ * - 当前页面高亮显示（带指示器动画）
+ * - 已登录用户显示头像、昵称、等级和设置/退出按钮
+ * - 未登录用户显示登录入口
+ * - 使用 framer-motion 实现折叠/展开的过渡动画
+ */
+
 "use client";
 
 import React from "react";
@@ -30,11 +42,18 @@ const NAV_ITEMS = [
   { label: "我的", href: "/profile", icon: User },
 ];
 
+/** 侧边栏属性 */
 interface SidebarProps {
   collapsed?: boolean;
   onToggle?: () => void;
 }
 
+/**
+ * 侧边栏组件
+ * @param collapsed - 是否折叠
+ * @param onToggle - 折叠/展开切换回调
+ * @returns 侧边栏导航组件
+ */
 export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   const pathname = usePathname();
   const user = useAuthStore((s) => s.user);
@@ -67,6 +86,7 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
       <ScrollArea className="flex-1 py-4">
         <nav className="flex flex-col gap-1 px-3">
           {NAV_ITEMS.map((item) => {
+            // 判断当前导航项是否激活（精确匹配或子路径匹配）
             const isActive =
               pathname === item.href || pathname.startsWith(item.href + "/");
             const Icon = item.icon;

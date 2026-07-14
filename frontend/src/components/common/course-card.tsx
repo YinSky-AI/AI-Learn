@@ -1,3 +1,14 @@
+/**
+ * 课程卡片组件
+ *
+ * 功能说明：
+ * - 展示课程封面（学科色块）、标题、时长、评分、难度标签
+ * - 支持三种变体：默认（纵向）、compact（紧凑）、horizontal（横向）
+ * - 显示学习进度条和已完成课时数
+ * - 悬停时带浮起动画效果（framer-motion）
+ * - 点击跳转课程详情页
+ */
+
 "use client";
 
 import React from "react";
@@ -11,16 +22,25 @@ import { SUBJECT_LABELS, DIFFICULTY_LABELS } from "@/types";
 import type { Course } from "@/types";
 import { motion } from "framer-motion";
 
+/** 课程卡片属性 */
 interface CourseCardProps {
   course: Course;
   className?: string;
   variant?: "default" | "compact" | "horizontal";
 }
 
+/**
+ * 课程卡片组件
+ * @param course - 课程数据
+ * @param className - 额外类名
+ * @param variant - 卡片变体（default / compact / horizontal）
+ * @returns 课程卡片
+ */
 export function CourseCard({ course, className, variant = "default" }: CourseCardProps) {
   const subjectBg = getSubjectBgClass(course.subject);
   const courseUrl = `/learning/${course.slug || course.id}`;
 
+  // 横向布局（用于继续学习列表）
   if (variant === "horizontal") {
     return (
       <Link href={courseUrl}>
@@ -42,7 +62,7 @@ export function CourseCard({ course, className, variant = "default" }: CourseCar
                 {SUBJECT_LABELS[course.subject]}
               </span>
             </div>
-            {/* 信息 */}
+            {/* 课程信息 */}
             <div className="flex-1 overflow-hidden">
               <h3 className="truncate text-sm font-semibold text-gray-900 group-hover:text-brand-blue">
                 {course.title}
@@ -70,6 +90,7 @@ export function CourseCard({ course, className, variant = "default" }: CourseCar
     );
   }
 
+  // 默认/紧凑布局（纵向卡片）
   return (
     <Link href={courseUrl}>
       <motion.div
@@ -120,7 +141,7 @@ export function CourseCard({ course, className, variant = "default" }: CourseCar
               </span>
             </div>
 
-            {/* 进度条 */}
+            {/* 进度条（仅在有进度时显示） */}
             {course.progress > 0 && (
               <div className="mt-3">
                 <div className="mb-1 flex items-center justify-between text-xs">

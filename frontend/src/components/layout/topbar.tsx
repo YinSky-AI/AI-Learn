@@ -1,3 +1,15 @@
+/**
+ * 顶部栏组件
+ *
+ * 功能说明：
+ * - 移动端汉堡菜单按钮
+ * - 全局搜索框（支持回车跳转探索页）
+ * - 通知、消息图标（带红点提示）
+ * - 用户头像下拉菜单（个人中心、退出登录）
+ * - 未登录状态显示登录入口
+ * - 点击外部自动关闭下拉菜单
+ */
+
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
@@ -16,10 +28,16 @@ import {
 import { useAuthStore } from "@/stores/auth-store";
 import { cn } from "@/lib/utils";
 
+/** 顶部栏属性 */
 interface TopbarProps {
   onMenuClick?: () => void;
 }
 
+/**
+ * 顶部栏组件
+ * @param onMenuClick - 移动端菜单按钮点击回调
+ * @returns 顶部导航栏
+ */
 export function Topbar({ onMenuClick }: TopbarProps) {
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
@@ -41,6 +59,9 @@ export function Topbar({ onMenuClick }: TopbarProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [dropdownOpen]);
 
+  /**
+   * 处理退出登录
+   */
   const handleLogout = () => {
     setDropdownOpen(false);
     logout();

@@ -1,8 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-AI 生成相关模型
-包含 GeneratedQuestionBatch, GeneratedQuestion, QuestionQualityCheck,
-HarnessRun, ToolCallLog, Skill, SessionMemory, ErrorLog, EvolutionRecord
+AI 生成相关模型定义模块
+
+定义 AI 自适应学习系统的核心数据模型，包括：
+- 题目生成批次（GeneratedQuestionBatch）
+- AI 生成题目（GeneratedQuestion）
+- 题目质量检查（QuestionQualityCheck）
+- AI Harness 执行记录（HarnessRun）
+- 工具调用日志（ToolCallLog）
+- AI 技能（Skill）
+- 会话记忆（SessionMemory）
+- 错误日志（ErrorLog）
+- 进化记录（EvolutionRecord）
+
+这些模型支撑 AI 的题目生成、质量评估、错误处理和自我进化能力，
+是平台区别于传统题库的关键智能化基础设施。
 """
 
 from sqlalchemy import (
@@ -17,8 +29,24 @@ from app.models import Base
 
 class GeneratedQuestionBatch(BaseModel, Base):
     """
-    AI 生成题目批次
-    记录每次 AI 出题请求的上下文和结果状态
+    AI 生成题目批次模型
+
+    记录每次 AI 出题请求的完整上下文（年龄分级、学科、主题、难度等）和生成结果状态。
+    一个批次包含多条 GeneratedQuestion 记录，支持批量生成和质量追踪。
+
+    Attributes:
+        user_id: 发起生成的用户 ID
+        age_group_code: 生成时使用的年龄分级
+        subject_code: 学科编码
+        course_topic: 课程主题
+        difficulty_level: 难度等级
+        question_types: 请求的题型列表（JSONB）
+        question_count: 请求生成数量
+        learning_goal: 学习目标描述
+        status: 批次状态（pending / passed / failed / partial）
+        prompt_version: Prompt 模板版本号
+        harness_run_id: 关联的 Harness 执行记录 ID（可选）
+        generated_questions: 批次内生成的题目列表（一对多，级联删除）
     """
 
     __tablename__ = "generated_question_batches"
@@ -70,8 +98,32 @@ class GeneratedQuestionBatch(BaseModel, Base):
 
 class GeneratedQuestion(BaseModel, Base):
     """
-    AI 生成题目知识库
-    沉淀历史生成题，用于去重、复习和错题变式
+    AI 生成题目模型
+
+    存储 AI 生成的题目内容，形成可沉淀的知识库。
+    支持去重（similarity_hash）、变式关联（parent_question_id）和质量追踪（quality_status）。
+    历史生成题可用于复习、错题变式和 AI 自我进化训练。
+
+    Attributes:
+        batch_id: 所属生成批次 ID（外键，级联删除）
+        user_id: 用户 ID（外键）
+        knowledge_node_id: 可选关联的知识点 ID
+        subject_code: 学科编码
+        course_topic: 课程主题
+        difficulty_level: 难度等级
+        question_type: 题型
+        question_body: 题干内容
+        options: 选项（JSONB）
+        correct_answer: 正确答案
+        explanation: 解析
+        knowledge_tags: 知识点标签（JSONB）
+        source_prompt: 生成使用的 Prompt 或摘要
+        similarity_hash: 去重指纹哈希
+        quality_status: 质量状态（unchecked / passed / failed）
+        parent_question_id: 变式题来源 ID（自关联，可选）
+        language: 题目语言（默认 zh-CN）
+        batch_rel: 关联的批次对象（多对一）
+        quality_checks: 关联的质量检查记录（一对多）
     """
 
     __tablename__ = "generated_questions"
@@ -147,8 +199,20 @@ class GeneratedQuestion(BaseModel, Base):
 
 class QuestionQualityCheck(BaseModel, Base):
     """
-    题目质量检查记录
-    记录对 AI 生成题目的各项质量检查结果
+    题目质量检查记录模型
+
+    对 AI 生成的题目执行多维度质量检查（答案正确性、年龄适宜性、难度一致性、
+    重复度、安全性等），记录每项检查的结果和得分。
+    质量检查是 AI 自我纠错和进化的重要数据来源。
+
+    Attributes:
+        generated_question_id: 被检查的题目 ID（外键，级联删除）
+        check_type: 检查类型（answer / age / difficulty / duplicate / safety）
+        status: 检查结果状态（passed / failed / warning）
+        score: 检查得分（可选）
+        message: 检查说明或失败原因
+        checker_version: 检查器版本号
+        question_rel: 关联的题目对象（多对一）
     """
 
     __tablename__ = "question_quality_checks"
@@ -188,8 +252,23 @@ class QuestionQualityCheck(BaseModel, Base):
 
 class HarnessRun(BaseModel, Base):
     """
-    AI Harness 执行记录
-    记录一次 AI 调用链的完整执行情况
+    AI Harness 执行记录模型
+
+    记录一次完整的 AI 调用链（Harness）的执行情况，从输入到输出的全链路追踪。
+    Harness 是 AI 系统的编排框架，一次执行可能涉及意图识别、规划、记忆检索、
+    生成、质量检查等多个步骤。
+
+    Attributes:
+        user_id: 用户 ID（外键，级联删除）
+        run_type: 执行类型（question_generation / variant_generation / ai_explain）
+        status: 执行状态（running / succeeded / failed）
+        input_payload: 输入参数（JSONB）
+        output_summary: 输出摘要（JSONB）
+        model_usage: Token、模型、耗时等使用信息（JSONB）
+        error_message: 错误信息（失败时）
+        started_at: 开始时间
+        completed_at: 结束时间（可选）
+        tool_calls: 关联的工具调用日志列表（一对多）
     """
 
     __tablename__ = "harness_runs"
@@ -246,8 +325,22 @@ class HarnessRun(BaseModel, Base):
 
 class ToolCallLog(BaseModel, Base):
     """
-    工具调用日志
-    记录 AI Harness 中每个工具步骤的调用情况
+    工具调用日志模型
+
+    记录 AI Harness 执行链中每个工具步骤的详细调用情况，
+    包括输入输出摘要、耗时和错误信息。用于 Harness 性能分析和故障排查。
+
+    Attributes:
+        harness_run_id: 所属 Harness Run ID（外键，级联删除）
+        step_name: 步骤名称（intent / plan / memory / generate / quality / save）
+        tool_name: 工具名称
+        input_summary: 输入摘要（JSONB）
+        output_summary: 输出摘要（JSONB）
+        latency_ms: 耗时（毫秒）
+        status: 执行状态（succeeded / failed）
+        error_message: 错误信息（失败时）
+        error_type: 错误类型（SAFE_AUDIT / QUALITY_FAIL / PERF_DEGRADE / LOGIC_ERROR）
+        harness_run_rel: 关联的 Harness Run 对象（多对一）
     """
 
     __tablename__ = "tool_call_logs"
@@ -295,8 +388,22 @@ class ToolCallLog(BaseModel, Base):
 
 class Skill(BaseModel, Base):
     """
-    技能文件
-    存储 AI 学到的技能模板，用于优化后续生成
+    AI 技能模型
+
+    存储 AI 在多次生成过程中积累的技能模板（Skill），
+    技能包含触发条件和内容模板，用于优化后续同类题目的生成质量。
+    技能有版本管理，通过成功/失败计数和质量得分评估有效性。
+
+    Attributes:
+        name: Skill 唯一名称
+        trigger_conditions: 触发条件（JSONB，学科、主题、年龄、难度等）
+        version: 版本号（默认 1）
+        content: Skill 内容（Markdown 格式）
+        success_count: 使用成功次数
+        failure_count: 使用失败次数
+        last_used_at: 最后使用时间
+        quality_score_avg: 平均质量得分
+        is_active: 是否启用
     """
 
     __tablename__ = "skills"
@@ -323,8 +430,20 @@ class Skill(BaseModel, Base):
 
 class SessionMemory(BaseModel, Base):
     """
-    会话记忆
-    存储 AI 在会话中积累的记忆（错误模式、偏好、质量洞察等）
+    会话记忆模型
+
+    存储 AI 在与用户交互过程中积累的记忆片段，包括错误模式、用户偏好、
+    质量洞察和行为模式。记忆有过期时间（TTL），过期后自动失效。
+
+    Attributes:
+        user_id: 用户 ID（外键，级联删除）
+        memory_type: 记忆类型（error_pattern / preference / quality_insight / behavior_pattern）
+        content: 结构化记忆内容文本
+        confidence: 置信度（0-1）
+        ttl_days: 生存天数（默认 90）
+        related_topic: 关联主题
+        expires_at: 过期时间
+        is_expired: 是否已过期
     """
 
     __tablename__ = "session_memories"
@@ -360,8 +479,23 @@ class SessionMemory(BaseModel, Base):
 
 class ErrorLog(BaseModel, Base):
     """
-    错误日志
-    记录 AI 调用链中的错误信息，用于审计和进化
+    错误日志模型
+
+    记录 AI 调用链中的详细错误信息，包括错误类型、严重度、上下文和受影响的输出。
+    错误日志是 AI 系统审计、故障排查和自我进化的核心数据来源。
+
+    Attributes:
+        harness_run_id: 关联的 Harness 执行 ID（外键，可选）
+        agent_name: 出错的 Agent 名称
+        step_name: 出错步骤名称
+        error_type: 错误类型（SAFE_AUDIT / QUALITY_FAIL / PERF_DEGRADE / LOGIC_ERROR）
+        error_code: 错误编码（E001-E399）
+        severity: 严重度（P0 / P1 / P2）
+        raw_error: 原始错误信息
+        context: 错误上下文（JSONB）
+        affected_output: 受影响的输出（JSONB）
+        routing_target: 路由目标 Agent（错误路由时）
+        auto_fix_attempted: 是否尝试自动修复
     """
 
     __tablename__ = "error_logs"
@@ -410,8 +544,21 @@ class ErrorLog(BaseModel, Base):
 
 class EvolutionRecord(BaseModel, Base):
     """
-    进化记录
-    记录 AI 系统的自我进化事件（Skill 创建/更新、记忆清理、策略调整等）
+    进化记录模型
+
+    记录 AI 系统的自我进化事件，包括 Skill 创建/更新、记忆清理、策略调整等。
+    每次进化记录变更前后的快照和质量得分，支持效果评估和回滚操作。
+
+    Attributes:
+        evolution_type: 进化类型（skill_created / skill_updated / memory_cleaned / strategy_changed）
+        trigger_reason: 触发原因描述
+        target_name: 进化目标名称
+        change_content: 变更内容（JSONB）
+        before_snapshot: 变更前快照（JSONB）
+        after_snapshot: 变更后快照（JSONB）
+        quality_before: 变更前质量分
+        quality_after: 变更后质量分
+        rolled_back: 是否已回滚
     """
 
     __tablename__ = "evolution_records"

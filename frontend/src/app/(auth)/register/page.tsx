@@ -1,3 +1,14 @@
+/**
+ * 注册页面
+ *
+ * 功能说明：
+ * - 提供新用户注册表单，包含用户名、昵称、邮箱、密码、年龄、性别等字段
+ * - 实时密码强度检测（弱/中/强）
+ * - 密码确认一致性校验
+ * - 注册成功后自动登录并跳转首页
+ * - 使用 auth-store 进行认证状态管理
+ */
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -24,6 +35,11 @@ import {
 import { useAuthStore } from "@/stores/auth-store";
 import { AGE_GROUP_LIST } from "@/lib/content";
 
+/**
+ * 计算密码强度
+ * @param password - 密码字符串
+ * @returns 包含强度等级、标签和颜色的对象
+ */
 function getPasswordStrength(password: string): { level: number; label: string; color: string } {
   if (!password) return { level: 0, label: "", color: "" };
   let score = 0;
@@ -39,6 +55,10 @@ function getPasswordStrength(password: string): { level: number; label: string; 
   return { level: 3, label: "强", color: "bg-green-500" };
 }
 
+/**
+ * 注册页面组件
+ * @returns 注册表单页面
+ */
 export default function RegisterPage() {
   const router = useRouter();
   const register = useAuthStore((s) => s.register);
@@ -51,6 +71,7 @@ export default function RegisterPage() {
     clearError();
   }, [clearError]);
 
+  // 表单数据状态
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -64,21 +85,33 @@ export default function RegisterPage() {
   const [passwordValue, setPasswordValue] = useState("");
   const strength = getPasswordStrength(passwordValue);
 
+  /**
+   * 更新表单字段
+   * @param key - 字段名
+   * @param value - 字段值
+   */
   const updateForm = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
+  // 本地表单校验错误状态
   const [localError, setLocalError] = useState<string | null>(null);
 
+  /**
+   * 处理表单提交
+   * @param e - 表单提交事件
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLocalError(null);
     useAuthStore.getState().clearError();
 
+    // 密码一致性校验
     if (formData.password !== formData.confirmPassword) {
       setLocalError("两次输入的密码不一致");
       return;
     }
+    // 密码长度校验
     if (formData.password.length < 6) {
       setLocalError("密码长度至少为6位");
       return;

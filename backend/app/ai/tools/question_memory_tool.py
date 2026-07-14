@@ -1,14 +1,26 @@
 """
-题目知识库检索工具 — QuestionMemoryTool
+backend/app/ai/tools/question_memory_tool.py
 
-使用 PostgreSQL tsvector + pg_trgm 做相似题检索。
+题目知识库检索工具 —— QuestionMemoryTool
+
+本模块提供生成题目知识库的多维度检索能力，是 L3 QuestionMemoryAgent 的数据支撑层。
+使用 PostgreSQL 原生全文检索和模糊匹配能力，实现高效的相似题检测和去重。
+
 v0.1 不实现联网搜索，不调用搜索 API。
 
-功能：
-- 全文检索（tsvector）: 按题干内容、课程主题、知识点标签搜索
-- 模糊匹配（pg_trgm）: 检测相似题目用于去重
-- 历史错题检索
-- 用户偏好检索
+核心功能：
+- 全文检索（tsvector）：按题干内容、课程主题、知识点标签搜索
+- 模糊匹配（pg_trgm）：检测相似题目用于去重
+- 历史错题检索：分析用户答题记录中的错误模式
+- 用户偏好检索：提取题型、场景、难度倾向等偏好
+
+检索策略（v0.1）：
+- 使用 PostgreSQL tsvector 对 question_body、course_topic、knowledge_tags 建全文检索索引
+- 使用 pg_trgm 对 question_body 做模糊匹配
+- 按用户维度沉淀，优先服务该用户的去重、复习和错题变式
+
+注意：v0.1 的"知识库"是历史生成题 + 答题记录 + 题目指纹的长期沉淀，
+不是预置教材库或外部资料库。
 """
 
 from __future__ import annotations

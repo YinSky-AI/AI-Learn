@@ -1,11 +1,21 @@
 """
-审计日志工具 — AuditLogTool
+backend/app/ai/tools/audit_log_tool.py
 
-记录 AI Harness 中的审计信息，包括：
-- 安全审查结果
-- 质量检查结果
-- 偏差信号
-- 控制信号
+审计日志工具 —— AuditLogTool
+
+本模块负责记录 AI Harness 执行过程中的全部审计事件，
+构建可追溯的审计链路，支持安全合规和故障排查。
+
+记录的审计信息包括：
+- 安全审查结果（SafetyAudit）
+- 质量检查结果（QualityCheck）
+- 控制信号（ControlSignal）
+- 工具调用记录（ToolCallRecord）
+
+设计特点：
+- 内存缓存 + 批量持久化架构，降低数据库写入压力
+- 所有记录携带时间戳和 run_id，支持跨会话关联
+- 审计与业务逻辑解耦，不影响主流程性能
 """
 
 from __future__ import annotations

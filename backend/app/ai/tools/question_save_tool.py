@@ -1,12 +1,24 @@
 """
-题目保存工具 — QuestionSaveTool
+backend/app/ai/tools/question_save_tool.py
 
-将生成的题目保存到数据库（GeneratedQuestion 表）。
-同时记录生成批次（GeneratedQuestionBatch 表）。
+题目保存工具 —— QuestionSaveTool
+
+本模块负责将经过质量检查和安全审查的题目批量持久化到数据库，
+同时记录生成批次元信息，构建完整的题目生命周期档案。
+
+持久化对象：
+- GeneratedQuestion 表：单道题目详情（题干、选项、答案、解析、标签等）
+- GeneratedQuestionBatch 表：批次元信息（用户、主题、难度、 Harness Run ID 等）
 
 关键约束：
-- 安全审查否决的题目不进入知识库
+- 安全审查否决的题目不进入知识库（在 Harness 层已过滤）
 - 所有保存操作记录 ToolCallLog
+- 无数据库会话时降级运行，记录警告日志，不阻断主流程
+
+设计特点：
+- 异步批量保存，减少数据库往返
+- 异常内部捕获，返回结构化结果（saved_count / skipped_count / error）
+- 携带完整批次元信息，支持后续追溯和分析
 """
 
 from __future__ import annotations

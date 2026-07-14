@@ -1,11 +1,25 @@
 """
-Layer1 CourseIntentAgent — 课程意图理解
+backend/app/ai/agents/course_intent.py
 
-职责：理解用户课程选择，补齐结构化参数
+Layer1 CourseIntentAgent —— 课程意图理解模块
+
+本模块为 8 层闭环控制架构的入口层（L1），负责将用户的自然语言输入
+转化为结构化的课程意图参数，为下游出题规划提供标准化输入。
+
+职责：
+1. 解析用户课程选择意图
+2. 推断缺失参数（年龄分级、学科、难度等）
+3. 补齐结构化参数 IntentParams
+
 层级位置：L1（闭环入口）
 输入：用户原始输入 + 可选的已知参数（年龄、学科）
 输出：IntentParams（age_group, subject, course_topic, difficulty, question_types, question_count, learning_goal）
 接口契约：IntentParams -> QuestionPlannerAgent (L2)
+
+设计特点：
+- 使用低 temperature（0.3）确保输出稳定可预期
+- 对必填字段做服务端二次校验，防止 LLM 遗漏
+- 自动规范化难度值到标准枚举
 """
 
 from __future__ import annotations

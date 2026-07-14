@@ -1,3 +1,14 @@
+/**
+ * 登录页面
+ *
+ * 功能说明：
+ * - 提供用户登录表单，包含用户名、密码输入
+ * - 支持密码显示/隐藏切换
+ * - 表单校验（非空校验）
+ * - 登录成功后自动跳转到首页
+ * - 使用 auth-store 进行认证状态管理
+ */
+
 "use client";
 
 import React, { useState } from "react";
@@ -9,7 +20,11 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useAuthStore } from "@/stores/auth-store";
 
-/** 将 error 转换为用户友好的提示文字 */
+/**
+ * 将 error 转换为用户友好的提示文字
+ * @param error - 未知类型的错误对象
+ * @returns 用户友好的错误提示字符串
+ */
 function getErrorMessage(error: unknown): string {
   if (typeof error === "string") return error;
   if (error && typeof error === "object") {
@@ -20,24 +35,34 @@ function getErrorMessage(error: unknown): string {
   return "登录失败，请检查用户名和密码";
 }
 
+/**
+ * 登录页面组件
+ * @returns 登录表单页面
+ */
 export default function LoginPage() {
   const router = useRouter();
   const login = useAuthStore((s) => s.login);
   const isLoading = useAuthStore((s) => s.isLoading);
   const error = useAuthStore((s) => s.error);
 
+  // 表单状态
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [success, setSuccess] = useState(false);
   const [fieldErrors, setFieldErrors] = useState({ username: false, password: false });
 
+  /**
+   * 处理表单提交
+   * @param e - 表单提交事件
+   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // 校验非空
     const hasEmptyUsername = !username.trim();
     const hasEmptyPassword = !password.trim();
     setFieldErrors({ username: hasEmptyUsername, password: hasEmptyPassword });
-    // 空字段校验
+    // 空字段校验：任一字段为空则提示错误
     if (hasEmptyUsername || hasEmptyPassword) {
       useAuthStore.setState({ error: "请输入用户名和密码" });
       return;

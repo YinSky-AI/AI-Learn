@@ -1,14 +1,31 @@
+/**
+ * 认证初始化组件
+ *
+ * 功能说明：
+ * - 应用启动时检查本地存储的 JWT Token
+ * - 验证 Token 是否过期，过期则清除
+ * - 尝试恢复用户登录状态（获取用户资料和统计）
+ * - 处理 401 未授权错误（清除无效 Token）
+ * - 其他错误（限流、网络）保留 Token，下次刷新重试
+ * - 无渲染输出（return null）
+ */
+
 "use client";
 
 import { useEffect, useRef } from "react";
 import { useAuthStore } from "@/stores/auth-store";
 import { TokenManager } from "@/lib/api-client";
 
+/**
+ * 认证初始化组件
+ * @returns null（无渲染）
+ */
 export function AuthInitializer() {
   const initialized = useRef(false);
   const fetchProfile = useAuthStore((s) => s.fetchProfile);
   const fetchUserStats = useAuthStore((s) => s.fetchUserStats);
 
+  // 应用启动时执行一次认证恢复逻辑
   useEffect(() => {
     if (initialized.current) return;
     initialized.current = true;

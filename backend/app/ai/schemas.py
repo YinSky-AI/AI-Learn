@@ -1,8 +1,11 @@
 """
-AI 出题 Harness 系统 — 接口契约 Schema 定义
+backend/app/ai/schemas.py
 
-基于 agents/06_sub_agent_tasks.md §2.11 定义的 Agent 间接口契约。
-所有 Schema 使用 Pydantic BaseModel，确保类型安全。
+AI 出题 Harness 系统 —— 接口契约 Schema 定义模块
+
+本模块定义了 8 层闭环控制架构中各 Agent 之间的数据接口契约，
+基于 agents/06_sub_agent_tasks.md §2.11 规范实现。
+所有 Schema 使用 Pydantic BaseModel，确保类型安全、运行时校验和序列化能力。
 
 接口契约表：
 - IntentParams: CourseIntentAgent(L1) -> QuestionPlannerAgent(L2)
@@ -14,10 +17,15 @@ AI 出题 Harness 系统 — 接口契约 Schema 定义
 - QualityTrendReport: QualityReviewAgent(L6) -> FeedbackAggregator
 - ControlSignal: FeedbackAggregator(L7) -> L2/L3/L4
 - MemoryItem: SummaryAgent(L8) -> SessionMemory表
-- SkillFile: SummaryAgent(L8) -> Skill存储
+- SkillFileData: SummaryAgent(L8) -> Skill存储
 - UserProfileUpdate: SummaryAgent(L8) -> User表
 - ErrorEvent: ErrorLogger -> ErrorLog表
 - ToolCallRecord: 工具调用日志
+
+设计原则：
+- 每个 Schema 明确标注生产者和消费者
+- 字段注释包含取值范围、默认值和业务含义
+- 枚举类型约束取值空间，防止非法值流入下游
 """
 
 from __future__ import annotations

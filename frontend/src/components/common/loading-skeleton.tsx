@@ -1,9 +1,19 @@
+/**
+ * 加载骨架屏组件
+ *
+ * 功能说明：
+ * - 提供多种预设类型的骨架屏（课程卡片、列表、详情、仪表盘、个人中心）
+ * - 支持自定义重复次数和额外类名
+ * - 在数据加载期间展示占位 UI，提升用户体验
+ */
+
 "use client";
 
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
+/** 加载骨架屏属性 */
 interface LoadingSkeletonProps {
   /** 骨架屏类型 */
   type?: "course-card" | "list" | "detail" | "dashboard" | "profile";

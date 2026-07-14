@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-课程与课时模型
-包含 Course、Lesson、用户学习记录、AI对话历史
+课程与课时模型定义模块
+
+定义课程（Course）、课时（Lesson）、用户课程关联（UserCourse）、
+用户课时记录（UserLesson）和 AI 对话历史（ChatMessage）数据模型。
+
+该模块支撑平台的核心学习流程：
+- 课程管理：课程信息的创建、查询和展示
+- 课时编排：课时在课程内的顺序组织和内容管理
+- 学习进度追踪：记录用户课程和课时的完成状态
+- AI 辅导对话：存储用户与 AI 助教的多轮对话历史
 """
 
 from typing import List, Optional
@@ -25,7 +33,30 @@ from app.models import Base
 
 
 class Course(BaseModel, Base):
-    """课程模型"""
+    """
+    课程模型
+
+    定义平台课程的基本信息、分类属性和关联关系。
+    课程是课时的容器，通过 subject、age_group、difficulty 等维度进行分类。
+
+    Attributes:
+        title: 课程标题
+        description: 课程描述（富文本）
+        subject: 学科分类（如 math、chinese）
+        age_group: 适用年龄段编码
+        difficulty: 难度等级（beginner/intermediate/advanced）
+        duration: 课程总时长（分钟）
+        rating: 课程评分（默认 4.0）
+        enroll_count: 报名人数统计
+        image_url: 封面图 URL
+        total_lessons: 总课时数
+        tags: 标签列表（JSON 数组）
+        is_active: 是否上架启用
+        sort_order: 排序权重
+        slug: URL 友好标识符
+        lessons: 关联的课时列表（一对多）
+        user_courses: 用户学习记录列表（一对多）
+    """
 
     __tablename__ = "courses"
 
@@ -85,7 +116,24 @@ class Course(BaseModel, Base):
 
 
 class Lesson(BaseModel, Base):
-    """课时模型"""
+    """
+    课时模型
+
+    定义课程内的具体学习单元，支持多种内容类型（视频、文本、互动、测验、游戏）。
+    课时通过 order 字段在课程内排序，通过 course_id 关联所属课程。
+
+    Attributes:
+        course_id: 所属课程 ID（外键，级联删除）
+        title: 课时标题
+        description: 课时描述
+        type: 内容类型（video/text/interactive/quiz/game）
+        duration: 课时时长（分钟）
+        order: 在课程内的展示顺序
+        content: 课时内容（富文本/Markdown）
+        is_active: 是否启用
+        course: 关联的课程对象（多对一）
+        user_lessons: 用户课时完成记录（一对多）
+    """
 
     __tablename__ = "lessons"
 
@@ -130,7 +178,21 @@ class Lesson(BaseModel, Base):
 
 
 class UserCourse(BaseModel, Base):
-    """用户课程关联（学习进度）"""
+    """
+    用户课程关联模型（学习进度）
+
+    记录用户与课程的关联关系，追踪用户在某门课程上的学习进度。
+    同一用户同一课程仅有一条记录（通过唯一约束保证）。
+
+    Attributes:
+        user_id: 用户 ID（外键，级联删除）
+        course_id: 课程 ID（外键，级联删除）
+        progress: 学习进度百分比（0-100）
+        completed_lessons: 已完成课时数量
+        status: 学习状态（enrolled/completed）
+        last_accessed_at: 最近访问时间
+        course: 关联的课程对象（多对一）
+    """
 
     __tablename__ = "user_courses"
 
@@ -173,7 +235,20 @@ class UserCourse(BaseModel, Base):
 
 
 class UserLesson(BaseModel, Base):
-    """用户课时完成记录"""
+    """
+    用户课时完成记录模型
+
+    记录用户对具体课时的完成情况，包括是否完成和学习用时。
+    同一用户同一课时仅有一条记录（通过唯一约束保证）。
+
+    Attributes:
+        user_id: 用户 ID（外键，级联删除）
+        lesson_id: 课时 ID（外键，级联删除）
+        course_id: 课程 ID（外键，级联删除）
+        completed: 是否已完成
+        time_spent_seconds: 学习用时（秒）
+        lesson: 关联的课时对象（多对一）
+    """
 
     __tablename__ = "user_lessons"
 
@@ -211,7 +286,20 @@ class UserLesson(BaseModel, Base):
 
 
 class ChatMessage(BaseModel, Base):
-    """AI 对话历史"""
+    """
+    AI 对话历史模型
+
+    存储用户与 AI 助教的多轮对话消息，支持关联到具体课程和课时上下文。
+    消息角色分为 user（用户提问）和 assistant（AI 回答）。
+
+    Attributes:
+        user_id: 用户 ID（外键，可选，游客模式可为空）
+        course_id: 关联课程 ID（外键，可选）
+        lesson_id: 关联课时 ID（外键，可选）
+        role: 消息角色（user/assistant）
+        content: 消息内容（富文本/Markdown）
+        context: 上下文信息（JSON，如引用知识点、学习进度等）
+    """
 
     __tablename__ = "chat_messages"
 

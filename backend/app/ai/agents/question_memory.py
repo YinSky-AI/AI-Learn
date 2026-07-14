@@ -1,15 +1,30 @@
 """
-Layer3 QuestionMemoryAgent — 记忆检索
+backend/app/ai/agents/question_memory.py
 
-职责：检索生成题目知识库、历史题、错题、用户偏好，去重上下文
+Layer3 QuestionMemoryAgent —— 记忆检索与去重模块
+
+本模块负责检索生成题目知识库中的历史题目、用户错题和偏好信息，
+构建去重上下文和策略提示，防止重复出题并优化生成质量。
+
+核心职责：
+1. 检索相似题目（用于去重）
+2. 检索用户历史错题模式
+3. 检索用户偏好（题型、场景、难度倾向）
+4. 整合 Skill 策略提示
+5. 利用 LLM 对检索结果做智能筛选和排序
+
 层级位置：L3
 输入：PlanResult (L2) + ControlSignal (L7)
 输出：MemoryContext（avoid_list, recent_feedback, user_preferences, skill_hints）
 接口契约：MemoryContext -> QuestionGeneratorAgent (L4)
 
+检索策略（v0.1）：
+- 使用 PostgreSQL tsvector 对 question_body、course_topic、knowledge_tags 建全文检索索引
+- 使用 pg_trgm 对 question_body 做模糊匹配
+- 按用户维度沉淀，优先服务该用户的去重、复习和错题变式
+
 v0.1 约束：
 - 生成题目知识库是"历史生成题 + 用户答题记录 + 题目标签 + 题目指纹"的长期沉淀
-- 使用 PostgreSQL tsvector + pg_trgm 做相似题检索
 - 不实现联网搜索
 """
 

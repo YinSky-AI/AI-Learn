@@ -1,3 +1,14 @@
+/**
+ * 知识探索页面
+ *
+ * 功能说明：
+ * - 课程列表展示，支持学科、难度、年龄组筛选和排序
+ * - 搜索框防抖处理（500ms）
+ * - 支持从 URL 查询参数同步关键词筛选
+ * - 使用 Suspense 处理 useSearchParams 的客户端 hydration
+ * - 空状态和加载骨架屏展示
+ */
+
 "use client";
 
 import React, { useEffect, useState, useRef, useCallback } from "react";
@@ -15,6 +26,10 @@ import { motion } from "framer-motion";
 
 import { Suspense } from "react";
 
+/**
+ * 探索页面内容主体组件
+ * @returns 课程列表与筛选区域
+ */
 function ExplorePageContent() {
   const searchParams = useSearchParams();
   const {
@@ -28,15 +43,19 @@ function ExplorePageContent() {
     resetFilter,
   } = useLearningStore();
 
-  // 搜索框防抖
+  // 搜索框防抖：本地输入状态
   const [searchInput, setSearchInput] = useState(filter.keyword || "");
   const debounceTimer = useRef<NodeJS.Timeout>();
 
-  // 初始化时同步搜索框值
+  // 初始化时同步搜索框值（URL 参数或筛选状态变更时）
   useEffect(() => {
     setSearchInput(filter.keyword || "");
   }, [filter.keyword]);
 
+  /**
+   * 处理关键词变更（防抖 500ms）
+   * @param value - 输入的关键词
+   */
   const handleKeywordChange = useCallback((value: string) => {
     setSearchInput(value);
     if (debounceTimer.current) clearTimeout(debounceTimer.current);
@@ -45,13 +64,14 @@ function ExplorePageContent() {
     }, 500);
   }, [setFilter]);
 
-  // 组件卸载时清除定时器
+  // 组件卸载时清除定时器，避免内存泄漏
   useEffect(() => {
     return () => {
       if (debounceTimer.current) clearTimeout(debounceTimer.current);
     };
   }, []);
 
+  // 监听 URL 查询参数变化，同步筛选条件
   useEffect(() => {
     const keyword = searchParams.get("keyword");
     if (keyword) {
@@ -61,6 +81,7 @@ function ExplorePageContent() {
     }
   }, [searchParams, fetchCourses, setFilter]);
 
+  // 各筛选条件变更处理器
   const handleSubjectChange = (value?: Subject) => setFilter({ subject: value });
   const handleDifficultyChange = (value?: DifficultyLevel) => setFilter({ difficulty: value });
   const handleAgeGroupChange = (value?: AgeGroup) => setFilter({ ageGroup: value });

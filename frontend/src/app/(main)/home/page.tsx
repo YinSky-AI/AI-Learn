@@ -1,3 +1,15 @@
+/**
+ * 首页（仪表盘）
+ *
+ * 功能说明：
+ * - 展示用户欢迎语、学习统计数据
+ * - 搜索课程入口（支持回车跳转探索页）
+ * - 继续学习课程列表和推荐课程
+ * - 学习进度环形图、成就展示
+ * - 使用 framer-motion 实现入场动画
+ * - 已登录用户显示个性化数据，未登录显示默认数据
+ */
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -27,17 +39,26 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+/**
+ * 首页组件
+ * @returns 仪表盘页面
+ */
 export default function HomePage() {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");
+
+  // 从认证 store 获取用户信息和统计
   const user = useAuthStore((s) => s.user);
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const stats = useAuthStore((s) => s.stats);
   const fetchUserStats = useAuthStore((s) => s.fetchUserStats);
+
+  // 从学习 store 获取课程列表
   const courses = useLearningStore((s) => s.courses);
   const isLoading = useLearningStore((s) => s.isLoading);
   const fetchCourses = useLearningStore((s) => s.fetchCourses);
 
+  // 页面加载时获取课程列表和用户统计
   useEffect(() => {
     fetchCourses({ pageSize: 8 });
     if (isAuthenticated) {
@@ -45,16 +66,22 @@ export default function HomePage() {
     }
   }, [fetchCourses, isAuthenticated, fetchUserStats]);
 
+  // 根据登录状态生成欢迎语
   const welcomeMessage = isAuthenticated
     ? getWelcomeMessage(user?.nickname || "同学")
     : "欢迎来到AI学堂";
+
+  // 有进度但未完成的课程（继续学习）
   const continueCourses = isAuthenticated
     ? courses.filter((c) => c.progress > 0 && c.progress < 100).slice(0, 4)
     : [];
+
+  // 推荐课程（排除已在继续学习的课程）
   const recommendedCourses = courses
     .filter((c) => !continueCourses.some((cc) => cc.id === c.id))
     .slice(0, 4);
 
+  // 容器动画配置：子元素依次入场
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -63,6 +90,7 @@ export default function HomePage() {
     },
   };
 
+  // 子元素动画配置：从下方淡入
   const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },

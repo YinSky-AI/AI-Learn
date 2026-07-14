@@ -1,11 +1,16 @@
 """
-ErrorLogger 中间件 — 错误捕获、分类和路由
+backend/app/ai/error_logger.py
 
-职责：
-- 实时捕获所有 Agent 执行过程中的错误和异常
-- 四类分类（SAFE_AUDIT / QUALITY_FAIL / PERF_DEGRADE / LOGIC_ERROR）
-- 路由到对应的处理 Agent
-- 记录错误日志到 ErrorLog 表
+ErrorLogger 中间件 —— 错误捕获、分类和路由模块
+
+本模块作为系统级外环监控组件，实时捕获所有 Agent 执行过程中的错误和异常，
+执行标准化分类、严重度评估和路由决策，确保问题可被正确跟踪和处理。
+
+核心职责：
+1. 实时捕获所有 Agent 执行过程中的错误和异常
+2. 四类分类（SAFE_AUDIT / QUALITY_FAIL / PERF_DEGRADE / LOGIC_ERROR）
+3. 路由到对应的处理 Agent
+4. 记录错误日志到 ErrorLog 表
 
 关键约束：
 - ErrorLogger 不得自行修复错误，只分类和路由
@@ -79,7 +84,12 @@ class ErrorLogger:
         self._persist_callback = callback
 
     def reset(self) -> None:
-        """重置错误缓存（新 run 开始时调用）"""
+        """
+        重置错误缓存（新 run 开始时调用）
+
+        每次新的 Harness Run 开始前必须调用，避免历史错误干扰当前会话统计。
+        """
+        logger.debug(f"[ErrorLogger] 重置错误缓存，清除 {len(self._events)} 条历史事件")
         self._events.clear()
         self._counters.clear()
 
@@ -282,45 +292,77 @@ class ErrorLogger:
 
     @property
     def events(self) -> list[ErrorEvent]:
-        """获取当前 run 的所有错误事件"""
+        """
+        获取当前 run 的所有错误事件
+
+        Returns:
+            错误事件列表的副本（修改不影响内部状态）
+        """
         return self._events.copy()
 
     @property
     def counters(self) -> dict[str, int]:
-        """获取错误计数"""
+        """
+        获取错误计数
+
+        Returns:
+            按错误类型汇总的计数字典
+        """
         return dict(self._counters)
 
     @property
     def has_critical_errors(self) -> bool:
-        """是否存在严重错误（P0）"""
+        """
+        是否存在严重错误（P0）
+
+        Returns:
+            存在 P0 级错误时返回 True，表示需要立即阻断
+        """
         return any(e.severity == ErrorSeverity.P0 for e in self._events)
 
     @property
     def total_errors(self) -> int:
-        """错误总数"""
+        """
+        错误总数
+
+        Returns:
+            当前 run 中已捕获的错误事件总数
+        """
         return len(self._events)
 
     async def flush(self) -> list[ErrorEvent]:
         """
         刷新错误事件（持久化并清空缓存）
 
+        在 Harness Run 结束时调用，将当前会话的所有错误事件写入持久化存储。
+
         Returns:
             刷新前的错误事件列表
         """
         events = self._events.copy()
+        logger.info(f"[ErrorLogger] 开始刷新，共 {len(events)} 条错误事件")
 
         if self._persist_callback and events:
             try:
                 await self._persist_callback(events)
-                logger.info(f"[ErrorLogger] 持久化 {len(events)} 条错误事件")
+                logger.info(f"[ErrorLogger] 持久化 {len(events)} 条错误事件成功")
             except Exception as e:
                 logger.error(f"[ErrorLogger] 持久化失败: {e}")
+        else:
+            logger.debug("[ErrorLogger] 无持久化回调或无事件，跳过持久化")
 
         self.reset()
         return events
 
     def get_summary(self) -> dict[str, Any]:
-        """获取错误摘要"""
+        """
+        获取错误摘要
+
+        生成当前 run 的错误统计摘要，用于报告和监控。
+
+        Returns:
+            包含错误总数、严重错误标志、计数器和最近 5 条事件的摘要字典
+        """
         return {
             "total_errors": self.total_errors,
             "has_critical": self.has_critical_errors,

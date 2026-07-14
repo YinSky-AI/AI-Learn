@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-AI 出题服务
-处理题目生成请求、批次管理、质量检查等
+AI 出题服务模块
+
+提供 AI 题目生成任务的管理业务逻辑，包括批次创建、查询、变式题生成等。
+实际题目内容由外部 AI Harness 异步填充，本模块负责状态管理与记录查询。
+
+主要功能：
+    - 创建生成批次（状态为 pending）
+    - 查询生成批次列表与详情
+    - 基于已有题目生成变式题
+    - 查询生成的题目历史
 """
 
 import uuid
@@ -33,6 +41,16 @@ async def create_generation_batch(
 ) -> GeneratedQuestionBatch:
     """
     创建题目生成批次
+
+    创建一条状态为 pending 的生成批次记录，实际题目内容待 AI Harness 异步填充。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        request (QuestionGenerateRequest): 生成请求数据
+
+    Returns:
+        GeneratedQuestionBatch: 新创建的生成批次记录
     """
     batch = GeneratedQuestionBatch(
         id=uuid.uuid4(),
@@ -63,11 +81,24 @@ async def save_generated_questions(
 ) -> List[GeneratedQuestion]:
     """
     保存生成的题目到知识库
-    questions: [{question_body, question_type, options, correct_answer, explanation, knowledge_tags, source_prompt}]
+
+    批量保存 AI 生成的题目，自动计算去重指纹（similarity_hash）。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        batch_id (uuid.UUID): 生成批次 UUID
+        user_id (uuid.UUID): 用户 UUID
+        questions (list): 题目数据列表，每项包含 question_body、question_type、options 等字段
+        subject_code (str): 学科编码
+        course_topic (str): 课程主题
+        difficulty_level (str): 难度等级
+
+    Returns:
+        List[GeneratedQuestion]: 保存后的生成题目记录列表
     """
     saved_questions = []
     for q in questions:
-        # 生成去重指纹
+        # 生成去重指纹：基于用户 ID + 课程主题 + 题目内容
         hash_input = f"{user_id}:{course_topic}:{q['question_body']}"
         similarity_hash = hashlib.sha256(hash_input.encode("utf-8")).hexdigest()
 
@@ -103,6 +134,17 @@ async def update_batch_status(
 ) -> GeneratedQuestionBatch:
     """
     更新批次状态
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        batch_id (uuid.UUID): 生成批次 UUID
+        status (str): 新状态（pending / running / completed / failed）
+
+    Returns:
+        GeneratedQuestionBatch: 更新后的批次记录
+
+    Raises:
+        ValueError: 批次不存在时抛出
     """
     stmt = select(GeneratedQuestionBatch).where(GeneratedQuestionBatch.id == batch_id)
     result = await db.execute(stmt)
@@ -118,9 +160,18 @@ async def update_batch_status(
 async def get_batch_by_id(
     db: AsyncSession,
     batch_id: uuid.UUID,
-) -> Optional[GeneratedQuestionBatch]:
-    """根据 ID 获取批次"""
-    stmt = select(GeneratedQuestionBatch).where(GeneratedQuestionBatch.id == batch_id)
+) -> Optional[GeneratedQuestion]:
+    """
+    根据 ID 获取生成批次
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        batch_id (uuid.UUID): 生成批次 UUID
+
+    Returns:
+        Optional[GeneratedQuestion]: 生成记录，不存在返回 None
+    """
+    stmt = select(GeneratedQuestion).where(GeneratedQuestion.id == batch_id)
     result = await db.execute(stmt)
     return result.scalar_one_or_none()
 
@@ -135,6 +186,17 @@ async def list_user_batches(
 ) -> dict:
     """
     分页查询用户的生成批次列表
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        subject_code (Optional[str]): 学科编码筛选
+        status (Optional[str]): 批次状态筛选
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 20
+
+    Returns:
+        dict: 分页生成批次列表
     """
     stmt = select(GeneratedQuestionBatch).where(
         GeneratedQuestionBatch.user_id == user_id
@@ -143,6 +205,7 @@ async def list_user_batches(
         GeneratedQuestionBatch.user_id == user_id
     )
 
+    # 条件筛选
     if subject_code:
         stmt = stmt.where(GeneratedQuestionBatch.subject_code == subject_code)
         count_stmt = count_stmt.where(GeneratedQuestionBatch.subject_code == subject_code)
@@ -171,7 +234,15 @@ async def get_batch_questions(
     db: AsyncSession,
     batch_id: uuid.UUID,
 ) -> List[GeneratedQuestion]:
-    """获取批次下的所有生成题目"""
+    """获取批次下的所有生成题目
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        batch_id (uuid.UUID): 生成批次 UUID
+
+    Returns:
+        List[GeneratedQuestion]: 该批次下的生成题目列表
+    """
     stmt = (
         select(GeneratedQuestion)
         .where(GeneratedQuestion.batch_id == batch_id)
@@ -189,7 +260,21 @@ async def generate_variant(
 ) -> GeneratedQuestion:
     """
     生成变式题（基于已有题目）
-    这里仅创建记录，实际 AI 生成逻辑在外部处理
+
+    创建变式题占位记录，复制原题的元数据（学科、主题、题型等），
+    实际题目内容（题干、答案、解析）由外部 AI Harness 异步填充。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        original_question_id (uuid.UUID): 原题 UUID
+        user_id (uuid.UUID): 用户 UUID
+        difficulty_level (Optional[str]): 目标难度，默认与原题相同
+
+    Returns:
+        GeneratedQuestion: 创建的变式题占位记录
+
+    Raises:
+        ValueError: 原题目不存在时抛出
     """
     stmt = select(GeneratedQuestion).where(GeneratedQuestion.id == original_question_id)
     result = await db.execute(stmt)
@@ -231,12 +316,26 @@ async def list_generated_questions(
 ) -> dict:
     """
     分页查询用户的生成题目历史
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        user_id (uuid.UUID): 用户 UUID
+        subject_code (Optional[str]): 学科编码筛选
+        course_topic (Optional[str]): 课程主题关键词筛选
+        difficulty_level (Optional[str]): 难度等级筛选
+        quality_status (Optional[str]): 质量状态筛选
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 20
+
+    Returns:
+        dict: 分页生成题目历史列表
     """
     stmt = select(GeneratedQuestion).where(GeneratedQuestion.user_id == user_id)
     count_stmt = select(func.count()).select_from(GeneratedQuestion).where(
         GeneratedQuestion.user_id == user_id
     )
 
+    # 条件筛选
     if subject_code:
         stmt = stmt.where(GeneratedQuestion.subject_code == subject_code)
         count_stmt = count_stmt.where(GeneratedQuestion.subject_code == subject_code)

@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-内容相关 Schema
-定义知识点、学科、年龄分级、题目等数据结构
+内容相关 Pydantic Schema 模块
+
+定义知识点（KnowledgeNode）、学科（Subject）、年龄分级（AgeGroup）
+和题目（Question）的请求/响应数据模型。
+
+该模块支撑教学内容管理和 AI 自适应学习的内容查询：
+- 年龄分级和学科的枚举数据响应
+- 知识点的详情、列表和筛选
+- 题目的详情（含答案）和简要展示（不含答案）
 """
 
 from typing import Any, List, Optional
@@ -13,7 +20,11 @@ from pydantic import BaseModel, Field
 # ============ 年龄分级 ============
 
 class AgeGroupResponse(BaseModel):
-    """年龄分级响应"""
+    """
+    年龄分级响应模型
+
+    返回年龄分级的完整信息，包含主题配置（颜色、字号、间距等 UI 参数）。
+    """
     code: str
     name: str
     min_age: int
@@ -23,10 +34,12 @@ class AgeGroupResponse(BaseModel):
     model_config = {"from_attributes": True}
 
 
-# ============ 学科 ============
-
 class SubjectResponse(BaseModel):
-    """学科响应"""
+    """
+    学科响应模型
+
+    返回学科的基础信息和排序权重，用于前端导航和筛选展示。
+    """
     code: str
     name: str
     icon: Optional[str] = None
@@ -35,10 +48,12 @@ class SubjectResponse(BaseModel):
     model_config = {"from_attributes": True}
 
 
-# ============ 知识点 ============
-
 class KnowledgeNodeResponse(BaseModel):
-    """知识点响应"""
+    """
+    知识点详情响应模型
+
+    返回知识点的完整信息，包含内容主体和前置依赖列表。
+    """
     id: UUID
     title: str
     description: Optional[str] = None
@@ -57,7 +72,11 @@ class KnowledgeNodeResponse(BaseModel):
 
 
 class KnowledgeNodeBrief(BaseModel):
-    """知识点简要信息（列表展示用）"""
+    """
+    知识点简要信息模型（列表展示用）
+
+    用于知识点列表接口，仅包含展示所需的摘要字段，不含内容主体。
+    """
     id: UUID
     title: str
     difficulty_level: str
@@ -70,7 +89,11 @@ class KnowledgeNodeBrief(BaseModel):
 
 
 class KnowledgeNodeFilter(BaseModel):
-    """知识点筛选条件"""
+    """
+    知识点筛选条件模型
+
+    用于知识点列表接口的多维度筛选，所有字段均为可选，支持组合查询。
+    """
     subject_code: Optional[str] = Field(None, description="学科编码")
     age_group_code: Optional[str] = Field(None, description="年龄分级编码")
     difficulty_level: Optional[str] = Field(None, description="难度等级")
@@ -78,16 +101,23 @@ class KnowledgeNodeFilter(BaseModel):
     keyword: Optional[str] = Field(None, description="搜索关键词")
 
 
-# ============ 题目 ============
-
 class OptionItem(BaseModel):
-    """选择题选项"""
+    """
+    选择题选项模型
+
+    定义选择题的单个选项结构，包含选项标识（key）和选项内容（value）。
+    """
     key: str = Field(..., description="选项标识 (A/B/C/D)")
     value: str = Field(..., description="选项内容")
 
 
 class QuestionResponse(BaseModel):
-    """题目响应"""
+    """
+    题目详情响应模型
+
+    返回题目的完整信息，包含选项、正确答案和解析。
+    用于题目管理后台和错题回顾等需要查看答案的场景。
+    """
     id: UUID
     knowledge_node_id: UUID
     difficulty_level: str
@@ -103,7 +133,12 @@ class QuestionResponse(BaseModel):
 
 
 class QuestionBrief(BaseModel):
-    """题目简要信息（不含答案，用于答题展示）"""
+    """
+    题目简要信息模型（不含答案，用于答题展示）
+
+    用于学习会话中的题目展示，刻意排除正确答案和解析，
+    防止前端泄露答案信息。
+    """
     id: UUID
     difficulty_level: str
     question_type: str
@@ -115,7 +150,11 @@ class QuestionBrief(BaseModel):
 
 
 class QuestionFilter(BaseModel):
-    """题目筛选条件"""
+    """
+    题目筛选条件模型
+
+    用于题目列表和查询接口，支持按知识点、难度和题型筛选。
+    """
     knowledge_node_id: Optional[UUID] = Field(None, description="知识点 ID")
     difficulty_level: Optional[str] = Field(None, description="难度等级")
     question_type: Optional[str] = Field(None, description="题型")

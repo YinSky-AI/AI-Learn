@@ -1,10 +1,17 @@
 """
-AI 出题 Harness 系统
+backend/app/ai/__init__.py
 
-实现 8 层闭环控制架构：
+AI 出题 Harness 系统 —— 核心包初始化模块
+
+本模块为 AI 出题系统的核心入口，实现 8 层闭环控制架构：
 - 内环（出题级闭环）：L1-L7
 - 外环（系统级监控）：ErrorLogger 中间件
 - 学习环（进化级）：L8 SummaryAgent
+
+模块职责：
+1. 导出 AI 核心组件（AIProvider、AIHarness、ErrorLogger、FeedbackAggregator）
+2. 定义系统级常量与约束
+3. 协调各 Agent 与工具的初始化顺序
 
 v0.1 约束：
 - 不实现联网搜索，不调用搜索 API

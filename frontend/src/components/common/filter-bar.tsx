@@ -1,3 +1,14 @@
+/**
+ * 课程筛选栏组件
+ *
+ * 功能说明：
+ * - 提供搜索框（可按回车触发搜索）
+ * - 学科、难度、年龄组下拉筛选
+ * - 排序方式选择（热门、最新、评分、进度）
+ * - 重置筛选按钮（仅在存在筛选条件时显示）
+ * - 支持隐藏搜索框（showSearch=false）
+ */
+
 "use client";
 
 import React from "react";
@@ -9,6 +20,7 @@ import type { Subject, DifficultyLevel, AgeGroup } from "@/types";
 import { SUBJECT_LIST, DIFFICULTY_LIST, AGE_GROUP_LIST } from "@/lib/content";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 
+/** 筛选栏属性 */
 interface FilterBarProps {
   subject?: Subject;
   difficulty?: DifficultyLevel;
@@ -25,6 +37,11 @@ interface FilterBarProps {
   showSearch?: boolean;
 }
 
+/**
+ * 课程筛选栏组件
+ * @param props - 筛选条件和回调函数
+ * @returns 筛选栏
+ */
 export function FilterBar({
   subject,
   difficulty,
@@ -40,6 +57,7 @@ export function FilterBar({
   className,
   showSearch = true,
 }: FilterBarProps) {
+  // 是否存在任何筛选条件
   const hasFilters = subject || difficulty || ageGroup || keyword;
 
   return (

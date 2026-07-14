@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-FastAPI 应用入口
-包含 CORS 配置、路由注册、中间件、异常处理、生命周期管理
+FastAPI 应用入口模块
+
+该模块是智慧学习平台后端服务的启动入口，负责：
+- 创建和配置 FastAPI 应用实例
+- 注册 CORS、请求日志、速率限制等中间件
+- 注册 API 路由和全局异常处理器
+- 管理应用生命周期（启动/关闭时的资源初始化和清理）
+
+包含的中间件：
+- CORS 中间件：处理跨域请求
+- 请求日志中间件：记录请求处理时间和状态码
+- 请求 ID 中间件：为每个请求分配唯一追踪 ID
+- 速率限制中间件：基于 Redis 滑动窗口的 API 限流
 """
 
 import time
@@ -28,8 +39,17 @@ from app.middlewares import add_exception_handlers, RequestLoggingMiddleware
 async def rate_limit_middleware(request: Request, call_next):
     """
     API 速率限制中间件
-    基于 Redis 滑动窗口算法，每分钟最多 N 次请求
-    跳过健康检查等不需要限流的路径
+
+    基于 Redis 有序集合实现滑动窗口算法，限制每个客户端每分钟的最大请求次数。
+    当请求超过阈值时返回 429 状态码，并添加 CORS 头避免浏览器跨域错误。
+    Redis 不可用时自动降级，不阻止请求。
+
+    Args:
+        request: FastAPI 请求对象
+        call_next: 调用下一个中间件或路由处理器的函数
+
+    Returns:
+        Response: FastAPI 响应对象（可能被限流拦截）
     """
     # 跳过健康检查、文档路径和管理后台
     skip_paths = {"/health", "/docs", "/redoc", "/openapi.json"}
@@ -84,7 +104,18 @@ async def rate_limit_middleware(request: Request, call_next):
 
 async def request_id_middleware(request: Request, call_next):
     """
-    为每个请求分配唯一 ID
+    请求 ID 中间件
+
+    为每个 HTTP 请求分配唯一追踪 ID，优先从请求头 X-Request-ID 获取，
+    否则自动生成 UUID。请求 ID 会注入到请求状态并在响应头中返回，
+    便于日志追踪和问题排查。
+
+    Args:
+        request: FastAPI 请求对象
+        call_next: 调用下一个中间件或路由处理器的函数
+
+    Returns:
+        Response: 携带 X-Request-ID 响应头的 FastAPI 响应对象
     """
     request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
     request.state.request_id = request_id
@@ -98,8 +129,17 @@ async def request_id_middleware(request: Request, call_next):
 
 async def global_exception_handler(request: Request, exc: Exception):
     """
-    全局异常处理
-    捕获未处理的异常，返回结构化错误响应
+    全局异常处理器
+
+    捕获所有未被特定异常处理器捕获的异常，记录错误日志并返回
+    结构化的 500 错误响应。响应中包含 request_id 便于追踪。
+
+    Args:
+        request: FastAPI 请求对象
+        exc: 捕获到的异常实例
+
+    Returns:
+        JSONResponse: 包含错误码 SYS_001 和 request_id 的 JSON 响应
     """
     request_id = getattr(request.state, "request_id", "unknown")
     logger.error(
@@ -120,7 +160,17 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 async def validation_exception_handler(request: Request, exc: Exception):
     """
-    参数校验异常处理
+    参数校验异常处理器
+
+    处理请求参数校验失败的情况（如 Pydantic 验证错误），
+    返回 422 状态码和详细的校验错误信息。
+
+    Args:
+        request: FastAPI 请求对象
+        exc: 参数校验异常实例
+
+    Returns:
+        JSONResponse: 包含错误码 VAL_001 和校验错误详情的 JSON 响应
     """
     request_id = getattr(request.state, "request_id", "unknown")
     logger.warning(f"[{request_id}] 参数校验失败: {str(exc)}")
@@ -141,8 +191,20 @@ async def validation_exception_handler(request: Request, exc: Exception):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
-    应用生命周期管理
-    启动时初始化 Redis，关闭时清理资源
+    应用生命周期管理器
+
+    使用异步上下文管理器管理应用的启动和关闭过程：
+    - 启动阶段：自动创建数据库表、初始化 Redis 连接
+    - 关闭阶段：安全关闭 Redis 连接
+
+    数据库创建失败和 Redis 连接失败时仅记录警告日志，不会阻止应用启动，
+    确保服务具备降级运行能力。
+
+    Args:
+        app: FastAPI 应用实例
+
+    Yields:
+        None: 应用运行期间控制权交给 FastAPI
     """
     # 启动
     logger.info("正在启动智慧学习平台 API...")
@@ -224,7 +286,12 @@ app.include_router(v1_router, prefix=settings.API_V1_PREFIX)
 async def health_check():
     """
     健康检查端点
-    用于负载均衡器和监控探活
+
+    返回服务基本运行状态信息，供负载均衡器健康探活和监控系统使用。
+    该端点已被速率限制中间件跳过，确保探活请求不会被限流。
+
+    Returns:
+        dict: 包含应用名称、版本和运行状态的标准化响应
     """
     return {
         "code": "SUCCESS",
@@ -241,8 +308,13 @@ async def health_check():
 @app.get("/", tags=["系统"])
 async def root():
     """
-    根路径
-    返回 API 基本信息
+    根路径端点
+
+    返回 API 的基本信息，包括应用名称、版本号、文档地址和 API 前缀，
+    便于前端或第三方服务快速了解 API 概况。
+
+    Returns:
+        dict: 包含 API 基本信息和文档链接的标准化响应
     """
     return {
         "code": "SUCCESS",

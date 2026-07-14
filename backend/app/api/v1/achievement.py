@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-成就 API
-处理成就列表查询、用户成就展示
+成就系统 API 模块
+
+提供成就相关的查询与检查接口，包括全部成就列表、我的成就、成就检查与发放。
+成就列表接口无需认证，个人成就与检查接口需登录。
+
+主要功能：
+    - 获取系统中所有成就定义
+    - 获取当前用户的成就解锁状态
+    - 触发成就检查，自动发放满足条件的成就
 """
 
 import uuid
@@ -22,9 +29,17 @@ async def list_all_achievements(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    获取所有成就列表
-    不需要登录即可查看
+    获取所有成就列表接口
+
+    公开接口，无需登录。返回系统中定义的所有成就基本信息。
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 成就定义列表（含编码、名称、描述、图标）
     """
+    # 查询所有成就定义
     achievements = await achievement_service.get_all_achievements(db)
     return success_response(
         data=[
@@ -47,8 +62,18 @@ async def get_my_achievements(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    获取我的成就列表（含解锁状态）
+    获取我的成就列表接口
+
+    返回当前用户的所有成就及其解锁状态。
+
+    Args:
+        user_id (uuid.UUID): 当前登录用户 ID
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 我的成就列表（含是否已解锁标记）
     """
+    # 查询用户成就解锁状态
     achievements = await achievement_service.get_user_achievements(db, user_id)
     return success_response(
         data=achievements,
@@ -62,9 +87,18 @@ async def check_achievements(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    检查并发放成就
-    系统自动检查用户是否满足成就条件
+    检查并发放成就接口
+
+    系统自动检查当前用户是否满足各项成就条件，满足则创建 UserAchievement 记录并返回新解锁成就。
+
+    Args:
+        user_id (uuid.UUID): 当前登录用户 ID
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 新解锁成就数量与列表（若有）
     """
+    # 执行成就检查与自动发放
     newly_awarded = await achievement_service.check_and_award_achievements(db, user_id)
     if newly_awarded:
         return success_response(

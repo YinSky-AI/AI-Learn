@@ -1,9 +1,13 @@
 """
-FeedbackAggregator — PID 计算 + 状态观测 + 控制信号生成
+backend/app/ai/feedback_aggregator.py
 
-内嵌于 AI Harness 中，是系统唯一的控制信号生产者。
+FeedbackAggregator —— PID 控制器 + 状态观测 + 控制信号生成模块
 
-职责：
+本模块内嵌于 AI Harness 中，是系统唯一的控制信号生产者。
+通过汇聚多层 Agent 的偏差信号，计算 PID 三分量，动态调整出题策略，
+实现闭环自适应控制。
+
+核心职责：
 1. 偏差信号汇聚：接收 L5 (QualityCheckAgent) 和 L6 (SafetyAuditAgent/QualityReviewAgent) 的偏差信号
 2. PID 三分量计算：
    - P（比例）：当前批次的质量通过率偏差 → 即时纠正力度
@@ -77,7 +81,13 @@ class FeedbackAggregator:
         }
 
     def reset(self) -> None:
-        """重置状态（新会话开始时调用）"""
+        """
+        重置状态（新会话开始时调用）
+
+        清除历史质量数据、通过率和状态观测器，准备开始新的控制循环。
+        每次 Harness Run 开始前必须调用，避免历史数据污染当前 PID 计算。
+        """
+        logger.debug("[FeedbackAggregator] 状态已重置")
         self._quality_history.clear()
         self._pass_rate_history.clear()
         self._safety_reject_count = 0
@@ -328,21 +338,43 @@ class FeedbackAggregator:
 
     @property
     def current_signal(self) -> Optional[ControlSignal]:
-        """获取当前控制信号"""
+        """
+        获取当前控制信号
+
+        Returns:
+            最近一次 compute_control_signal() 生成的 ControlSignal，若未计算则返回 None
+        """
         return self._current_signal
 
     @property
     def iteration(self) -> int:
-        """获取当前循环编号"""
+        """
+        获取当前循环编号
+
+        Returns:
+            当前已执行的循环迭代次数
+        """
         return self._iteration
 
     @property
     def state(self) -> dict[str, float]:
-        """获取状态观测器"""
+        """
+        获取状态观测器
+
+        Returns:
+            当前系统状态估计的副本，包含质量基线、能力估计、覆盖度和重复风险
+        """
         return self._state.copy()
 
     def get_signal_dict(self) -> dict[str, Any]:
-        """获取控制信号的字典表示（方便注入 Prompt）"""
+        """
+        获取控制信号的字典表示（方便注入 Prompt）
+
+        将 Pydantic 模型转换为纯字典，供 Prompt 模板直接使用。
+
+        Returns:
+            ControlSignal 的字典形式，若未生成则返回默认值字典
+        """
         if self._current_signal:
             return self._current_signal.model_dump()
         return ControlSignal().model_dump()

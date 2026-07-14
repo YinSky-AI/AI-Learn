@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 数据库连接管理模块
-提供 SQLAlchemy 异步引擎、会话工厂和基类
+
+提供 SQLAlchemy 异步数据库连接基础设施，包括：
+- 异步数据库引擎（支持 PostgreSQL + asyncpg）
+- 异步会话工厂和依赖注入函数
+- 模型基类（包含 UUID 主键、时间戳、软删除等通用字段）
+
+该模块是数据持久层的核心，所有 SQLAlchemy 模型均继承自此处定义的基类。
 """
 
 import uuid
@@ -36,8 +42,26 @@ AsyncSessionLocal = async_sessionmaker(
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     """
     获取数据库会话依赖
-    用法: async with get_db() as session: ...
-    或在 FastAPI 中: Depends(get_db)
+
+    异步生成器函数，用于在 FastAPI 路由中通过 Depends 注入数据库会话，
+    或在非路由代码中通过 async with 获取会话。
+    自动管理事务提交、回滚和连接关闭。
+
+    Args:
+        无（通过 AsyncSessionLocal 内部创建会话）
+
+    Yields:
+        AsyncSession: SQLAlchemy 异步数据库会话
+
+    Raises:
+        Exception: 数据库操作异常时会自动回滚并重新抛出
+
+    Usage:
+        # FastAPI 路由中
+        async def my_route(db: AsyncSession = Depends(get_db)): ...
+
+        # 普通异步代码中
+        async with get_db() as session: ...
     """
     async with AsyncSessionLocal() as session:
         try:
@@ -52,8 +76,16 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 class BaseModel:
     """
-    SQLAlchemy 模型基类
-    提供 UUID 主键、创建/更新时间戳
+    SQLAlchemy 模型基类（混入类）
+
+    为所有数据模型提供通用字段，包括 UUID 主键和自动时间戳。
+    该基类不包含 SQLAlchemy 的 DeclarativeBase，需与 models.Base 联合使用：
+    `class MyModel(BaseModel, Base): ...`
+
+    Attributes:
+        id: UUID 主键，数据库端使用 uuid_generate_v4() 生成
+        created_at: 记录创建时间，不可为空
+        updated_at: 记录最后更新时间，onupdate 自动更新
     """
 
     # UUID 主键，默认使用 uuid_generate_v4()
@@ -83,8 +115,14 @@ class BaseModel:
 
 class SoftDeleteModel(BaseModel):
     """
-    支持软删除的模型基类
-    包含 deleted_at 字段
+    支持软删除的模型基类（混入类）
+
+    继承自 BaseModel，额外提供 deleted_at 软删除字段。
+    删除记录时不从数据库物理删除，而是设置 deleted_at 时间戳。
+    查询时需显式过滤 deleted_at is None 以排除已删除记录。
+
+    Attributes:
+        deleted_at: 软删除时间戳，None 表示未删除，非 None 表示已删除
     """
 
     # 软删除时间，非 None 表示已删除

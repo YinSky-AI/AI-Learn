@@ -1,3 +1,14 @@
+/**
+ * Markdown 渲染组件
+ *
+ * 功能说明：
+ * - 渲染 Markdown 格式内容（用于 AI 回复、课程内容等）
+ * - 支持 GitHub Flavored Markdown（GFM）
+ * - 代码块语法高亮（highlight.js）
+ * - 自定义段落、标题、列表、代码、引用块、表格、链接等样式
+ * - 动态加载 highlight.js 主题 CSS
+ */
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -6,6 +17,7 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import { cn } from "@/lib/utils";
 
+/** Markdown 渲染器属性 */
 interface MarkdownRendererProps {
   content: string;
   className?: string;
@@ -13,13 +25,14 @@ interface MarkdownRendererProps {
 
 /**
  * Markdown 渲染组件
- * 用于渲染 AI 回复中的 Markdown 格式内容
- * 支持：标题、粗体、斜体、列表、代码块、表格、数学公式提示等
+ * @param content - Markdown 内容字符串
+ * @param className - 额外类名
+ * @returns 渲染后的 HTML 内容
  */
 export function MarkdownRenderer({ content, className }: MarkdownRendererProps) {
   const [cssLoaded, setCssLoaded] = useState(false);
 
-  // 动态加载 highlight.js 主题 CSS
+  // 动态加载 highlight.js 主题 CSS（避免 SSR 问题）
   useEffect(() => {
     if (document.querySelector('link[data-hljs-theme]')) {
       setCssLoaded(true);

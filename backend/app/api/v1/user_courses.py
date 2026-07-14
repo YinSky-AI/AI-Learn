@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-用户个人课程 API
-处理我的课程、报名、完成课时、AI 对话历史（可选认证）
+用户个人课程 API 模块
+
+提供与当前登录用户相关的课程操作接口，包括我的课程列表、课程报名、课时完成、AI 对话历史。
+部分接口支持可选认证，未登录用户会收到明确的提示信息。
+
+主要功能：
+    - 我的课程列表（分页查询）
+    - 课程报名（自动创建 UserCourse 记录）
+    - 课时完成（更新学习进度并累计积分）
+    - AI 对话历史查询与保存
 """
 
 from typing import Optional
@@ -33,7 +41,21 @@ async def get_my_courses(
     page_size: int = Query(20, ge=1, le=100, description="每页数量"),
     db: AsyncSession = Depends(get_db),
 ):
-    """我的课程列表"""
+    """
+    我的课程列表接口
+
+    分页查询当前登录用户的课程学习记录，包含报名状态与进度信息。
+
+    Args:
+        user_id (Optional[str]): 当前登录用户 ID（可选认证）
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 20
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 分页用户课程列表
+    """
+    # 查询用户的课程记录（含关联课程信息）
     result = await course_service.get_user_courses(
         db,
         user_id=user_id,
@@ -55,7 +77,20 @@ async def enroll_course(
     user_id: Optional[str] = Depends(get_current_user_id_optional),
     db: AsyncSession = Depends(get_db),
 ):
-    """报名课程"""
+    """
+    课程报名接口
+
+    为当前登录用户报名指定课程。若已报名则返回已有记录。
+
+    Args:
+        course_id (str): 课程 ID（UUID 或 slug）
+        user_id (Optional[str]): 当前登录用户 ID（可选认证）
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 报名后的用户课程记录
+    """
+    # 未登录用户不允许报名
     if user_id is None:
         return ApiResponse(
             code="AUTH_001",
@@ -63,6 +98,7 @@ async def enroll_course(
             data=None,
         )
 
+    # 获取或创建用户课程记录，并增加课程报名人次
     user_course = await course_service.get_or_create_user_course(
         db, user_id, course_id
     )
@@ -88,7 +124,21 @@ async def complete_lesson(
     user_id: Optional[str] = Depends(get_current_user_id_optional),
     db: AsyncSession = Depends(get_db),
 ):
-    """完成课时"""
+    """
+    完成课时接口
+
+    标记指定课时为已完成，累计学习用时，更新课程总体进度，首次完成时奖励积分。
+
+    Args:
+        lesson_id (str): 课时 ID
+        body (CompleteLessonRequest): 完成请求体，包含学习用时（秒）
+        user_id (Optional[str]): 当前登录用户 ID（可选认证）
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 完成后的用户课时记录
+    """
+    # 未登录用户不允许完成课时
     if user_id is None:
         return ApiResponse(
             code="AUTH_001",
@@ -96,6 +146,7 @@ async def complete_lesson(
             data=None,
         )
 
+    # 标记课时完成并触发进度更新与积分奖励
     user_lesson = await course_service.complete_lesson(
         db,
         user_id=user_id,
@@ -121,7 +172,23 @@ async def get_chat_history(
     user_id: Optional[str] = Depends(get_current_user_id_optional),
     db: AsyncSession = Depends(get_db),
 ):
-    """对话历史（按 course_id 筛选）"""
+    """
+    查询 AI 对话历史接口
+
+    分页获取当前用户与 AI 的聊天记录，支持按课程 ID 或课时 ID 筛选。
+
+    Args:
+        course_id (Optional[str]): 课程 ID 筛选
+        lesson_id (Optional[str]): 课时 ID 筛选
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 50
+        user_id (Optional[str]): 当前登录用户 ID（可选认证）
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 分页对话消息列表
+    """
+    # 按条件查询对话历史记录
     result = await course_service.get_chat_history(
         db,
         user_id=user_id,
@@ -145,7 +212,20 @@ async def save_chat_message(
     user_id: Optional[str] = Depends(get_current_user_id_optional),
     db: AsyncSession = Depends(get_db),
 ):
-    """保存对话消息"""
+    """
+    保存对话消息接口
+
+    保存用户或 AI 助手的一条对话消息到数据库，支持关联课程与课时上下文。
+
+    Args:
+        body (ChatMessageCreate): 消息创建请求体（角色、内容、课程/课时 ID、上下文）
+        user_id (Optional[str]): 当前登录用户 ID（可选认证）
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 保存后的消息记录
+    """
+    # 将消息持久化到 ChatMessage 表
     message = await course_service.save_chat_message(
         db,
         user_id=user_id,

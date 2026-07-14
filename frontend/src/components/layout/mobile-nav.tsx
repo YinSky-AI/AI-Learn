@@ -1,3 +1,13 @@
+/**
+ * 移动端底部导航组件
+ *
+ * 功能说明：
+ * - 固定在屏幕底部，提供四个主要页面的快速导航
+ * - 当前页面高亮显示（带底部指示器动画）
+ * - 适配安全区域（env(safe-area-inset-bottom)）
+ * - 使用 framer-motion 实现指示器滑动动画
+ */
+
 "use client";
 
 import React from "react";
@@ -7,7 +17,7 @@ import { Home, Compass, BookOpen, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
-/** 底部导航项 */
+/** 底部导航项配置 */
 const MOBILE_NAV_ITEMS = [
   { label: "首页", href: "/home", icon: Home },
   { label: "探索", href: "/explore", icon: Compass },
@@ -15,12 +25,17 @@ const MOBILE_NAV_ITEMS = [
   { label: "我的", href: "/profile", icon: User },
 ];
 
+/**
+ * 移动端底部导航组件
+ * @returns 固定在底部的导航栏
+ */
 export function MobileNav() {
   const pathname = usePathname();
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-30 flex h-16 items-center justify-around border-t border-gray-100 bg-white px-2 pb-[env(safe-area-inset-bottom)]">
       {MOBILE_NAV_ITEMS.map((item) => {
+        // 判断当前导航项是否激活
         const isActive =
           pathname === item.href || pathname.startsWith(item.href + "/");
         const Icon = item.icon;

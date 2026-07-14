@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-v1 版本路由注册
-将所有 v1 子路由注册到统一前缀下
+v1 版本 API 路由总入口
+
+本模块负责聚合并注册所有 v1 版本的子路由模块，统一挂载到 /api/v1 前缀下。
+包含的模块：认证、用户管理、课程、内容、学习、进度、AI出题、成就、AI助手、用户课程。
+
+ Attributes:
+     router (APIRouter): FastAPI 路由聚合器，供主应用 include_router 使用。
 """
 
 from fastapi import APIRouter

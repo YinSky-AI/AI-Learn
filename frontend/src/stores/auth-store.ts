@@ -1,12 +1,19 @@
-/* ============================================
-   认证状态管理 - Zustand Store
-   ============================================ */
+/**
+ * 认证状态管理 - Zustand Store
+ *
+ * 功能说明：
+ * - 管理用户登录状态、用户信息、学习统计
+ * - 提供登录、注册、登出、获取用户资料等功能
+ * - 登出时清空 Token 和本地存储的学习数据，并强制刷新页面
+ * - fetchProfile 失败时抛出异常，供 AuthInitializer 判断 Token 是否有效
+ */
 
 import { create } from "zustand";
 import type { User, UserProfile, AgeGroup } from "@/types";
 import type { LoginRequest, LoginResponse, UserMeResponse, UserStats } from "@/types/api";
 import { TokenManager, apiClient } from "@/lib/api-client";
 
+/** 认证状态接口 */
 interface AuthState {
   /** 用户信息 */
   user: User | null;
@@ -45,6 +52,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   error: null,
   stats: null,
 
+  /**
+   * 用户登录
+   * @param credentials - 登录凭据（用户名/密码）
+   */
   login: async (credentials: LoginRequest) => {
     set({ isLoading: true, error: null });
     try {
@@ -67,6 +78,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
+  /**
+   * 用户注册（注册成功后自动登录）
+   * @param data - 注册表单数据
+   */
   register: async (data: Record<string, unknown>) => {
     set({ isLoading: true, error: null });
     try {
@@ -92,6 +107,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
+  /**
+   * 用户登出
+   * 清空 Token、localStorage 数据，并重定向到首页
+   */
   logout: () => {
     TokenManager.clearTokens();
     // 清空用户相关的 localStorage 数据
@@ -113,9 +132,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
+  /**
+   * 获取当前用户资料
+   * 失败时抛出异常，供 AuthInitializer 判断 Token 是否有效
+   */
   fetchProfile: async () => {
     try {
       const data = await apiClient.get<UserMeResponse>("/v1/users/me");
+      // 将后端 UserMeResponse 映射为前端 User 类型
       const userData: User = {
         id: data.id,
         username: data.email,
@@ -146,6 +170,9 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
+  /**
+   * 获取用户学习统计
+   */
   fetchUserStats: async () => {
     try {
       const statsData = await apiClient.get<UserStats>("/v1/users/me/stats");
@@ -155,8 +182,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
   },
 
+  /** 清除错误信息 */
   clearError: () => set({ error: null }),
 
+  /**
+   * 更新本地用户信息
+   * @param partialUser - 部分用户字段
+   */
   updateUser: (partialUser: Partial<User>) => {
     const currentUser = get().user;
     if (currentUser) {

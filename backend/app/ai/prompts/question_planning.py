@@ -1,9 +1,21 @@
 """
+backend/app/ai/prompts/question_planning.py
+
 出题规划 Prompt 模板
+
+本模板用于 L2 QuestionPlannerAgent，将课程意图参数转化为具体的出题执行计划。
+模板接收 ControlSignal 反馈，支持动态调整难度分布和题目数量。
 
 版本: v0.1.0
 Agent: QuestionPlannerAgent (L2)
 用途: 规划题型、数量、难度分布
+
+规划规则：
+- 题目总数可适度调整（±20%），超出需声明偏差
+- 难度分布遵循金字塔原则：基础40%、中等40%、挑战20%
+- 根据 PID 控制信号动态调整各难度占比
+- 重复风险高时增加题型多样性
+- 覆盖度低时优先覆盖缺口知识点
 """
 
 PROMPT_VERSION = "v0.1.0"

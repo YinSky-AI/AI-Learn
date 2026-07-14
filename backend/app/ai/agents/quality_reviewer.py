@@ -1,16 +1,28 @@
 """
-Layer6 QualityReviewAgent — 深度质量评估 + 趋势分析
+backend/app/ai/agents/quality_reviewer.py
 
-职责：抽样深度质量评估 + 趋势分析 + 系统性反馈
+Layer6 QualityReviewAgent —— 深度质量评估与趋势分析模块
+
+本模块执行抽样深度质量评估和系统级趋势分析，与 QualityCheckAgent 互补而非替代。
+通过对边缘区间题目的全量审查和随机抽样，发现 QC 快检可能遗漏的系统性问题。
+
+核心职责：
+1. 抽样深度质量评估（六维评估体系）
+2. 质量趋势分析（improving / stable / declining）
+3. 生成系统性反馈和调整建议
+
 层级位置：L6（深审层，与 SafetyAuditAgent 并行）
 输入：批量质量检查数据
 输出：QualityTrendReport（trend, system_score, top_issues, agent_feedback, recommended_adjustments）
 接口契约：QualityTrendReport -> FeedbackAggregator (L7)
 
-关键约束：
-- 与 QualityCheckAgent 互补，不是替代关系
+抽样策略：
 - 每批次随机抽取 20% 的题目进行深度审查
 - QC 边缘区间（60-70分）的题目 100% 审查
+- 固定随机种子（42）确保可复现
+
+关键约束：
+- 与 QualityCheckAgent 互补，不是替代关系
 - 不得直接修改题目，只做评估和建议
 - 趋势报告包含推荐调整参数
 """

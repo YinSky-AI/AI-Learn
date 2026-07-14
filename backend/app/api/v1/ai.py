@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-AI 助手 + 审计进化 API
-包含 AI 解析、流式对话、错题分析、技能管理、进化记录、错误日志
+AI 助手与审计进化 API 模块
+
+提供 AI 智能辅导、流式对话、错题分析、技能管理、进化记录查询、错误日志查询等接口。
+部分接口支持可选认证，未登录用户也可使用基础 AI 聊天功能。
+
+主要功能：
+    - AI 题目解析（占位）
+    - SSE 流式 AI 对话（支持上下文与多轮对话）
+    - 错题分析（占位）
+    - 技能列表与详情查询（审计进化）
+    - 用户行为档案查询
+    - 进化记录与错误日志查询
+    - 用户会话记忆查询
 """
 
 import json
@@ -61,10 +72,18 @@ async def explain_question(
     user_id: uuid.UUID = Depends(get_current_user_id),
 ):
     """
-    AI 解析题目
-    返回题目的详细解析和知识点讲解
+    AI 解析题目接口（占位）
+
+    返回题目的 AI 详细解析和关联知识点讲解。当前为占位实现，待接入大语言模型。
+
+    Args:
+        question_id (uuid.UUID): 题目 UUID
+        user_id (uuid.UUID): 当前登录用户 ID
+
+    Returns:
+        ApiResponse: 解析结果（占位数据）
     """
-    # TODO: 实际调用 AI 模型
+    # TODO: 实际调用 AI 模型进行题目解析
     return success_response(
         data={
             "question_id": str(question_id),
@@ -81,9 +100,18 @@ async def stream_explanation(
     user_id: uuid.UUID = Depends(get_current_user_id),
 ):
     """
-    流式 AI 对话（SSE 端点占位）
-    实际实现需使用 StreamingResponse
+    流式 AI 对话接口（SSE 端点占位）
+
+    预留的 SSE 流式对话端点，实际实现需返回 StreamingResponse。
+
+    Args:
+        session_id (uuid.UUID): 会话 ID
+        user_id (uuid.UUID): 当前登录用户 ID
+
+    Returns:
+        ApiResponse: 占位响应
     """
+    # TODO: 实现 SSE 流式返回 AI 回复
     return success_response(
         data={
             "session_id": str(session_id),
@@ -98,10 +126,18 @@ async def analyze_errors(
     user_id: uuid.UUID = Depends(get_current_user_id),
 ):
     """
-    错题分析
-    AI 分析用户最近的错误答题模式，提供针对性建议
+    错题分析接口（占位）
+
+    AI 分析用户最近的错误答题模式，识别薄弱知识点并提供针对性学习建议。
+    当前为占位实现，待接入 AI 分析能力。
+
+    Args:
+        user_id (uuid.UUID): 当前登录用户 ID
+
+    Returns:
+        ApiResponse: 错题分析结果（占位数据）
     """
-    # TODO: 实际调用 AI 分析
+    # TODO: 实际调用 AI 模型分析用户错题模式
     return success_response(
         data={
             "error_patterns": [],
@@ -205,15 +241,23 @@ async def chat(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    通用 AI 聊天端点（SSE 流式输出）
+    通用 AI 聊天接口（SSE 流式输出）
 
     接收用户消息，调用 DeepSeek AI 模型以 SSE 流式方式返回回复。
     支持可选认证（未登录用户也可使用）。
     支持传入上下文信息以适配不同学科和年龄段。
     支持传入对话历史以实现多轮对话。
     调用成功后自动保存对话记录到 ChatMessage 表。
+
+    Args:
+        body (ChatRequest): 聊天请求体（消息、上下文、对话历史）
+        user_id (Optional[uuid.UUID]): 当前登录用户 ID（可选认证）
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        StreamingResponse: SSE 流式响应，包含 AI 回复片段与结束事件
     """
-    # 构建 system prompt
+    # 构建 system prompt（根据学科与年龄段适配语气）
     system_prompt = _build_system_prompt(body.context)
 
     # 组装 messages 列表：system + 历史消息 + 当前用户消息
@@ -246,10 +290,12 @@ async def chat(
         pass
 
     async def event_stream():
+        """内部 SSE 流生成器：逐块返回 AI 回复并在结束后保存记录。"""
         try:
             provider = get_ai_provider()
             full_reply = ""
 
+            # 逐块流式生成并 yield SSE 事件
             async for chunk in provider.generate_stream(messages=messages):
                 full_reply += chunk
                 # SSE 格式：data: {"content": "..."}\n\n
@@ -342,14 +388,30 @@ async def list_skills(
     page_size: int = Query(20, ge=1, le=100),
     db: AsyncSession = Depends(get_db),
 ):
-    """获取技能列表"""
+    """
+    技能列表接口（分页）
+
+    查询审计进化系统中的技能列表，支持按名称关键词搜索。
+
+    Args:
+        keyword (Optional[str]): 技能名称关键词
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 20
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 分页技能列表
+    """
+    # 构建查询条件：仅查询活跃技能
     stmt = select(Skill).where(Skill.is_active == True)
     count_stmt = select(func.count()).select_from(Skill).where(Skill.is_active == True)
 
+    # 关键词模糊匹配
     if keyword:
         stmt = stmt.where(Skill.name.ilike(f"%{keyword}%"))
         count_stmt = count_stmt.where(Skill.name.ilike(f"%{keyword}%"))
 
+    # 分页查询
     total = (await db.execute(count_stmt)).scalar()
     stmt = stmt.order_by(Skill.created_at.desc())
     offset = (page - 1) * page_size
@@ -382,7 +444,19 @@ async def get_skill_detail(
     skill_id: uuid.UUID,
     db: AsyncSession = Depends(get_db),
 ):
-    """获取技能详情"""
+    """
+    技能详情接口
+
+    根据技能 ID 查询详细信息，包括触发条件、版本、内容、使用统计等。
+
+    Args:
+        skill_id (uuid.UUID): 技能 UUID
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 技能详情
+    """
+    # 查询技能详情
     stmt = select(Skill).where(Skill.id == skill_id)
     result = await db.execute(stmt)
     skill = result.scalar_one_or_none()
@@ -415,7 +489,18 @@ async def get_skill_detail(
 async def get_user_behavior_profile(
     user: User = Depends(get_current_user),
 ):
-    """获取用户行为档案"""
+    """
+    获取用户行为档案接口
+
+    返回当前登录用户的行为档案数据，包括积分、连续学习天数、行为模型等。
+
+    Args:
+        user (User): 当前登录用户对象
+
+    Returns:
+        ApiResponse: 用户行为档案详情
+    """
+    # 直接从用户对象提取行为档案字段
     return success_response(
         data={
             "id": str(user.id),
@@ -440,7 +525,21 @@ async def list_evolution_records(
     page_size: int = Query(20, ge=1, le=100),
     db: AsyncSession = Depends(get_db),
 ):
-    """获取进化记录列表"""
+    """
+    进化记录列表接口（分页）
+
+    查询审计进化系统的进化记录，支持按进化类型筛选。
+
+    Args:
+        evolution_type (Optional[str]): 进化类型筛选
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 20
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 分页进化记录列表
+    """
+    # 构建查询条件
     stmt = select(EvolutionRecord)
     count_stmt = select(func.count()).select_from(EvolutionRecord)
 
@@ -448,6 +547,7 @@ async def list_evolution_records(
         stmt = stmt.where(EvolutionRecord.evolution_type == evolution_type)
         count_stmt = count_stmt.where(EvolutionRecord.evolution_type == evolution_type)
 
+    # 分页查询
     total = (await db.execute(count_stmt)).scalar()
     stmt = stmt.order_by(EvolutionRecord.created_at.desc())
     offset = (page - 1) * page_size
@@ -489,7 +589,23 @@ async def list_error_logs(
     page_size: int = Query(20, ge=1, le=100),
     db: AsyncSession = Depends(get_db),
 ):
-    """获取错误日志列表"""
+    """
+    错误日志列表接口（分页）
+
+    查询审计进化系统的错误日志，支持按错误类型、严重度、Agent 名称筛选。
+
+    Args:
+        error_type (Optional[str]): 错误类型筛选
+        severity (Optional[str]): 严重度筛选
+        agent_name (Optional[str]): Agent 名称筛选
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 20
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 分页错误日志列表
+    """
+    # 构建动态查询条件
     stmt = select(ErrorLog)
     count_stmt = select(func.count()).select_from(ErrorLog)
 
@@ -503,6 +619,7 @@ async def list_error_logs(
         stmt = stmt.where(ErrorLog.agent_name == agent_name)
         count_stmt = count_stmt.where(ErrorLog.agent_name == agent_name)
 
+    # 分页查询
     total = (await db.execute(count_stmt)).scalar()
     stmt = stmt.order_by(ErrorLog.created_at.desc())
     offset = (page - 1) * page_size
@@ -545,16 +662,33 @@ async def list_session_memories(
     page_size: int = Query(20, ge=1, le=100),
     db: AsyncSession = Depends(get_db),
 ):
-    """获取用户会话记忆列表"""
+    """
+    用户会话记忆列表接口（分页）
+
+    查询当前用户的会话记忆，支持按记忆类型筛选。
+
+    Args:
+        user_id (uuid.UUID): 当前登录用户 ID
+        memory_type (Optional[str]): 记忆类型筛选
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 20
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 分页会话记忆列表
+    """
+    # 构建查询条件：限定当前用户
     stmt = select(SessionMemory).where(SessionMemory.user_id == user_id)
     count_stmt = select(func.count()).select_from(SessionMemory).where(
         SessionMemory.user_id == user_id
     )
 
+    # 记忆类型筛选
     if memory_type:
         stmt = stmt.where(SessionMemory.memory_type == memory_type)
         count_stmt = count_stmt.where(SessionMemory.memory_type == memory_type)
 
+    # 分页查询
     total = (await db.execute(count_stmt)).scalar()
     stmt = stmt.order_by(SessionMemory.created_at.desc())
     offset = (page - 1) * page_size

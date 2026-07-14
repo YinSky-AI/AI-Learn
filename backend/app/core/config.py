@@ -1,7 +1,23 @@
 # -*- coding: utf-8 -*-
 """
 应用配置管理模块
-使用 pydantic-settings 从环境变量加载配置
+
+使用 pydantic-settings 从环境变量和 .env 文件加载应用配置，
+提供类型安全、默认值支持的全局配置单例。
+
+配置优先级（从高到低）：
+1. 环境变量
+2. .env 文件
+3. 字段默认值
+
+包含的配置类别：
+- 应用基础配置（名称、版本、调试模式）
+- 数据库配置（PostgreSQL 异步连接池）
+- Redis 配置（缓存和限流）
+- JWT 配置（认证令牌生成与验证）
+- CORS 配置（跨域资源共享）
+- 速率限制配置（API 限流参数）
+- AI 服务配置（DeepSeek API 调用参数）
 """
 
 from typing import List
@@ -9,7 +25,22 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """应用全局配置"""
+    """
+    应用全局配置类
+
+    继承自 pydantic_settings.BaseSettings，自动从环境变量和 .env 文件读取配置。
+    所有配置项均提供默认值，生产环境应通过环境变量覆盖敏感信息（如密钥、密码）。
+
+    Attributes:
+        APP_NAME: 应用名称，用于 API 文档和响应展示
+        APP_VERSION: 应用版本号，遵循语义化版本规范
+        DEBUG: 调试模式开关，开启后输出详细错误信息
+        API_V1_PREFIX: V1 API 路由前缀
+        DATABASE_URL: 异步 PostgreSQL 连接字符串
+        JWT_SECRET_KEY: JWT 签名密钥，生产环境必须修改
+        DEEPSEEK_API_KEY: DeepSeek AI 服务 API 密钥
+        RATE_LIMIT_PER_MINUTE: 每分钟最大请求数限制
+    """
 
     model_config = SettingsConfigDict(
         env_file=".env",

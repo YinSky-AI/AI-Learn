@@ -1,3 +1,15 @@
+/**
+ * 个人中心页面
+ *
+ * 功能说明：
+ * - 展示用户头像、昵称、等级、经验值等基本信息
+ * - 学习统计（连续学习天数、周目标、总经验值）
+ * - 技能面板、徽章成就、设置三个 Tab 切换
+ * - 支持编辑昵称和简介
+ * - 未登录用户显示引导去登录
+ * - 从后端获取成就数据并展示解锁/未解锁状态
+ */
+
 "use client";
 
 import React, { useEffect, useState, useCallback } from "react";
@@ -61,6 +73,10 @@ interface AchievementItem {
   unlocked?: boolean;
 }
 
+/**
+ * 个人中心页面组件
+ * @returns 个人资料页面
+ */
 export default function ProfilePage() {
   const user = useAuthStore((s) => s.user);
   const stats = useAuthStore((s) => s.stats);
@@ -87,7 +103,9 @@ export default function ProfilePage() {
     }
   }, [isAuthenticated, fetchUserStats]);
 
-  // 获取成就数据
+  /**
+   * 获取用户成就数据
+   */
   const fetchAchievements = useCallback(async () => {
     setAchievementsLoading(true);
     try {
@@ -101,7 +119,7 @@ export default function ProfilePage() {
     }
   }, []);
 
-  // 从真实数据计算等级和经验值
+  // 从真实数据计算等级和经验值（每 200 分升一级）
   const totalScore = stats?.total_score ?? user?.points ?? 0;
   const LEVEL_XP = 200; // 每 200 分升一级
   const level = Math.floor(totalScore / LEVEL_XP) + 1;
@@ -112,12 +130,12 @@ export default function ProfilePage() {
   // 连续学习天数
   const streakDays = stats?.streak_days ?? user?.streakDays ?? 0;
 
-  // 本周学习时间
+  // 本周学习时间（默认目标 5 小时）
   const weekStudyHours = stats?.week_study_hours ?? 0;
   const weeklyTarget = 5; // 默认每周目标 5 小时
   const weeklyProgress = weekStudyHours > 0 ? Math.min(Math.round((weekStudyHours / weeklyTarget) * 100), 100) : 0;
 
-  // 昵称和简介
+  // 昵称和简介（带默认值）
   const nickname = user?.nickname || "同学";
   const bio = user?.bio || "热爱学习，喜欢探索新知识";
 
@@ -131,7 +149,7 @@ export default function ProfilePage() {
     { name: "艺术创意", icon: Palette },
   ];
 
-  // 徽章颜色列表
+  // 徽章颜色列表（循环使用）
   const badgeColors = [
     "bg-amber-100 text-amber-600",
     "bg-orange-100 text-orange-600",
@@ -147,14 +165,18 @@ export default function ProfilePage() {
     "bg-violet-100 text-violet-600",
   ];
 
-  // 打开编辑资料弹窗
+  /**
+   * 打开编辑资料弹窗，初始化表单值
+   */
   const handleOpenEditDialog = () => {
     setEditNickname(nickname);
     setEditBio(bio);
     setEditDialogOpen(true);
   };
 
-  // 保存编辑资料
+  /**
+   * 保存编辑后的个人资料
+   */
   const handleSaveProfile = async () => {
     if (!editNickname.trim()) return;
     setEditSaving(true);
@@ -173,7 +195,7 @@ export default function ProfilePage() {
     }
   };
 
-  // 未登录引导
+  // 未登录引导：显示登录提示
   if (!isAuthenticated) {
     return (
       <MainLayout>
@@ -194,6 +216,7 @@ export default function ProfilePage() {
     );
   }
 
+  // 容器与子元素动画配置
   const container = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.08 } },

@@ -1,17 +1,28 @@
 """
-Layer6 SafetyAuditAgent — 四维安全审查
+backend/app/ai/agents/safety_auditor.py
 
-职责：四维安全审查（适龄性/准确性/公平性/隐私），一票否决权
+Layer6 SafetyAuditAgent —— 四维安全审查模块
+
+本模块对教育题目执行严格的内容安全审查，具有独立的一票否决权。
+安全审查独立于生成流水线，确保所有进入知识库的题目均通过安全校验。
+
+审查维度（每维度 0-10 分）：
+1. 内容适龄性（age_appropriate）：是否适合目标年龄段
+2. 信息准确性（accuracy）：知识点和计算是否正确
+3. 公平性与包容性（fairness）：是否存在偏见或歧视
+4. 隐私安全（privacy）：是否包含敏感信息
+
 层级位置：L6（深审层）
 输入：QualityCheckAgent 通过的题目
 输出：SafetyAuditResult（verdict, scores, issues, blocking_issue）
 接口契约：SafetyAuditResult -> FeedbackAggregator (L7) + ErrorLogger
 
 关键约束：
-- 任一维度低于 6 分，整道题目一票否决
+- 任一维度低于 SAFETY_THRESHOLD（6分），整道题目一票否决
 - 否决的题目不进入生成题目知识库
 - 不得修改被审查的题目，只做 PASS/REJECT 判定
 - 安全审查在 QualityCheckAgent 之后执行
+- JSON 解析失败时默认否决（安全优先原则）
 """
 
 from __future__ import annotations

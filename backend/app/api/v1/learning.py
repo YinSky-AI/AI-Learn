@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-学习 API
-处理学习会话创建、答题提交、会话完成等
+学习会话 API 模块
+
+提供学习会话的生命周期管理接口，包括创建会话、提交答案、完成会话、查询统计等。
+所有接口均需登录认证，学习数据与当前用户绑定。
+
+主要功能：
+    - 创建学习会话（绑定知识点与难度）
+    - 提交答案（自动判题并更新会话统计）
+    - 完成会话（结算统计数据）
+    - 查询会话统计与历史列表
 """
 
 import uuid
@@ -32,9 +40,19 @@ async def create_session(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    创建学习会话
-    开始学习某个知识点
+    创建学习会话接口
+
+    为当前用户开启一个新的学习会话，绑定知识点与难度等级。
+
+    Args:
+        request (LearningSessionCreate): 会话创建请求体（知识点 ID、难度等级）
+        user_id (uuid.UUID): 当前登录用户 ID
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse[LearningSessionResponse]: 新创建的学习会话信息
     """
+    # 调用学习服务创建会话记录
     session = await learning_service.create_session(
         db,
         user_id=user_id,
@@ -55,9 +73,23 @@ async def submit_answer(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    提交答案
-    在学习会话中回答一道题
+    提交答案接口
+
+    在指定学习会话中回答一道题，系统自动判题并更新会话统计（总题数、正确数）。
+
+    Args:
+        session_id (uuid.UUID): 学习会话 ID
+        request (AnswerSubmit): 答题请求体（题目 ID、用户答案、用时）
+        user_id (uuid.UUID): 当前登录用户 ID
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse[AnswerResult]: 答题结果（是否正确、标准答案等）
+
+    Raises:
+        HTTPException: 会话不存在、已结束或题目不存在时抛出相应错误
     """
+    # 调用学习服务完成判题与统计更新
     answer = await learning_service.submit_answer(
         db,
         session_id=session_id,
@@ -78,9 +110,22 @@ async def complete_session(
     db: AsyncSession = Depends(get_db),
 ):
     """
-    完成学习会话
-    结束当前学习会话，返回统计数据
+    完成学习会话接口
+
+    结束指定学习会话，标记状态为 completed，并返回会话统计数据。
+
+    Args:
+        session_id (uuid.UUID): 学习会话 ID
+        user_id (uuid.UUID): 当前登录用户 ID
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse[SessionStats]: 会话统计（正确数、总题数、正确率、总用时）
+
+    Raises:
+        HTTPException: 会话不存在或已结束时抛出相应错误
     """
+    # 标记会话完成并结算统计数据
     await learning_service.complete_session(db, session_id)
     stats = await learning_service.get_session_stats(db, session_id)
     return success_response(
@@ -95,7 +140,20 @@ async def get_session_stats(
     user_id: uuid.UUID = Depends(get_current_user_id),
     db: AsyncSession = Depends(get_db),
 ):
-    """获取学习会话统计信息"""
+    """
+    获取学习会话统计信息接口
+
+    查询指定学习会话的实时统计数据，包括答题数、正确数、正确率、总用时等。
+
+    Args:
+        session_id (uuid.UUID): 学习会话 ID
+        user_id (uuid.UUID): 当前登录用户 ID
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse[SessionStats]: 会话统计详情
+    """
+    # 查询会话统计（若未完成则计算当前已用时间）
     stats = await learning_service.get_session_stats(db, session_id)
     return success_response(
         data=SessionStats(**stats),
@@ -110,7 +168,21 @@ async def list_my_sessions(
     user_id: uuid.UUID = Depends(get_current_user_id),
     db: AsyncSession = Depends(get_db),
 ):
-    """获取我的学习会话列表"""
+    """
+    我的学习会话列表接口（分页）
+
+    分页查询当前用户的所有学习会话历史，按开始时间倒序排列。
+
+    Args:
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 20
+        user_id (uuid.UUID): 当前登录用户 ID
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 分页学习会话列表
+    """
+    # 查询用户会话历史
     result = await learning_service.list_user_sessions(
         db, user_id=user_id, page=page, page_size=page_size
     )

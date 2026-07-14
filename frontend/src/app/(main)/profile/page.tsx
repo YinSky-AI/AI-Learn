@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { MainLayout } from "@/components/layout/main-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,8 +10,18 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Input } from "@/components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { ProgressRing } from "@/components/common/progress-ring";
 import { useAuthStore } from "@/stores/auth-store";
+import { apiClient } from "@/lib/api-client";
 import {
   Settings,
   Edit3,
@@ -34,13 +44,134 @@ import {
   Shield,
   Bell,
   Moon,
+  Loader2,
+  Rocket,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+/** 成就数据接口（来自 /api/v1/achievements/me） */
+interface AchievementItem {
+  id: string;
+  code?: string;
+  name: string;
+  description?: string;
+  icon_url?: string;
+  achieved_at?: string | null;
+  unlocked?: boolean;
+}
+
 export default function ProfilePage() {
   const user = useAuthStore((s) => s.user);
+  const stats = useAuthStore((s) => s.stats);
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const fetchUserStats = useAuthStore((s) => s.fetchUserStats);
+  const updateUser = useAuthStore((s) => s.updateUser);
+  const fetchProfile = useAuthStore((s) => s.fetchProfile);
+
+  // 成就数据状态
+  const [achievements, setAchievements] = useState<AchievementItem[]>([]);
+  const [achievementsLoading, setAchievementsLoading] = useState(false);
+
+  // 编辑资料 Dialog 状态
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [editNickname, setEditNickname] = useState("");
+  const [editBio, setEditBio] = useState("");
+  const [editSaving, setEditSaving] = useState(false);
+
+  // 页面挂载时获取最新统计数据和成就
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchUserStats();
+      fetchAchievements();
+    }
+  }, [isAuthenticated, fetchUserStats]);
+
+  // 获取成就数据
+  const fetchAchievements = useCallback(async () => {
+    setAchievementsLoading(true);
+    try {
+      const data = await apiClient.get<AchievementItem[]>("/v1/achievements/me");
+      setAchievements(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.warn("获取成就数据失败:", error);
+      setAchievements([]);
+    } finally {
+      setAchievementsLoading(false);
+    }
+  }, []);
+
+  // 从真实数据计算等级和经验值
+  const totalScore = stats?.total_score ?? user?.points ?? 0;
+  const LEVEL_XP = 200; // 每 200 分升一级
+  const level = Math.floor(totalScore / LEVEL_XP) + 1;
+  const xpInCurrentLevel = totalScore % LEVEL_XP;
+  const maxXpInLevel = LEVEL_XP;
+  const xpProgress = Math.round((xpInCurrentLevel / maxXpInLevel) * 100);
+
+  // 连续学习天数
+  const streakDays = stats?.streak_days ?? user?.streakDays ?? 0;
+
+  // 本周学习时间
+  const weekStudyHours = stats?.week_study_hours ?? 0;
+  const weeklyTarget = 5; // 默认每周目标 5 小时
+  const weeklyProgress = weekStudyHours > 0 ? Math.min(Math.round((weekStudyHours / weeklyTarget) * 100), 100) : 0;
+
+  // 昵称和简介
+  const nickname = user?.nickname || "同学";
+  const bio = user?.bio || "热爱学习，喜欢探索新知识";
+
+  // 技能面板：标注即将上线
+  const skillSubjects = [
+    { name: "数学思维", icon: Calculator },
+    { name: "编程基础", icon: Code2 },
+    { name: "英语阅读", icon: Languages },
+    { name: "科学探索", icon: FlaskConical },
+    { name: "语文写作", icon: BookOpen },
+    { name: "艺术创意", icon: Palette },
+  ];
+
+  // 徽章颜色列表
+  const badgeColors = [
+    "bg-amber-100 text-amber-600",
+    "bg-orange-100 text-orange-600",
+    "bg-blue-100 text-blue-600",
+    "bg-indigo-100 text-indigo-600",
+    "bg-green-100 text-green-600",
+    "bg-purple-100 text-purple-600",
+    "bg-pink-100 text-pink-600",
+    "bg-cyan-100 text-cyan-600",
+    "bg-red-100 text-red-600",
+    "bg-teal-100 text-teal-600",
+    "bg-lime-100 text-lime-600",
+    "bg-violet-100 text-violet-600",
+  ];
+
+  // 打开编辑资料弹窗
+  const handleOpenEditDialog = () => {
+    setEditNickname(nickname);
+    setEditBio(bio);
+    setEditDialogOpen(true);
+  };
+
+  // 保存编辑资料
+  const handleSaveProfile = async () => {
+    if (!editNickname.trim()) return;
+    setEditSaving(true);
+    try {
+      await apiClient.put("/v1/users/me", { nickname: editNickname.trim() });
+      // 更新本地 store
+      updateUser({ nickname: editNickname.trim(), bio: editBio.trim() });
+      setEditDialogOpen(false);
+    } catch (error) {
+      console.error("更新资料失败:", error);
+      // 即使 API 失败也更新本地 store 作为 fallback
+      updateUser({ nickname: editNickname.trim(), bio: editBio.trim() });
+      setEditDialogOpen(false);
+    } finally {
+      setEditSaving(false);
+    }
+  };
 
   // 未登录引导
   if (!isAuthenticated) {
@@ -62,41 +193,6 @@ export default function ProfilePage() {
       </MainLayout>
     );
   }
-
-  // Mock 数据
-  const mockProfile = {
-    nickname: user?.nickname || "同学",
-    bio: user?.bio || "热爱学习，喜欢探索新知识",
-    level: 8,
-    xp: 1280,
-    maxXp: 2000,
-    streak: {
-      current: 7,
-      longest: 15,
-    },
-    weeklyGoal: { target: 300, current: 180 },
-    skills: [
-      { name: "数学思维", subject: "math", level: 5, progress: 72, icon: Calculator },
-      { name: "编程基础", subject: "programming", level: 3, progress: 45, icon: Code2 },
-      { name: "英语阅读", subject: "english", level: 4, progress: 58, icon: Languages },
-      { name: "科学探索", subject: "science", level: 3, progress: 35, icon: FlaskConical },
-      { name: "语文写作", subject: "chinese", level: 6, progress: 80, icon: BookOpen },
-      { name: "艺术创意", subject: "art", level: 2, progress: 25, icon: Palette },
-    ],
-    badges: [
-      { name: "学习新星", color: "bg-amber-100 text-amber-600", unlocked: true },
-      { name: "连续7天", color: "bg-orange-100 text-orange-600", unlocked: true },
-      { name: "数学达人", color: "bg-blue-100 text-blue-600", unlocked: true },
-      { name: "编程入门", color: "bg-indigo-100 text-indigo-600", unlocked: true },
-      { name: "知识渊博", color: "bg-green-100 text-green-600", unlocked: false },
-      { name: "学习大师", color: "bg-purple-100 text-purple-600", unlocked: false },
-    ],
-  };
-
-  const xpProgress = Math.round((mockProfile.xp / mockProfile.maxXp) * 100);
-  const weeklyProgress = Math.round(
-    (mockProfile.weeklyGoal.current / mockProfile.weeklyGoal.target) * 100,
-  );
 
   const container = {
     hidden: { opacity: 0 },
@@ -121,21 +217,18 @@ export default function ProfilePage() {
                   <Avatar className="h-20 w-20">
                     <AvatarImage src={user?.avatar || "/avatars/default.svg"} />
                     <AvatarFallback className="bg-brand-blue text-2xl text-white">
-                      {mockProfile.nickname.charAt(0)}
+                      {nickname.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="absolute -bottom-1 -right-1 rounded-full bg-brand-blue p-1">
-                    <Edit3 className="h-3 w-3 text-white" />
-                  </div>
                 </div>
 
                 {/* 基本信息 */}
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <h1 className="text-xl font-bold text-gray-900">{mockProfile.nickname}</h1>
-                    <Badge className="bg-brand-blue text-white">Lv.{mockProfile.level}</Badge>
+                    <h1 className="text-xl font-bold text-gray-900">{nickname}</h1>
+                    <Badge className="bg-brand-blue text-white">Lv.{level}</Badge>
                   </div>
-                  <p className="mt-1 text-sm text-brand-gray">{mockProfile.bio}</p>
+                  <p className="mt-1 text-sm text-brand-gray">{bio}</p>
 
                   {/* 经验值进度 */}
                   <div className="mt-3 flex items-center gap-3">
@@ -143,12 +236,12 @@ export default function ProfilePage() {
                       <div className="mb-1 flex justify-between text-xs">
                         <span className="text-brand-gray">经验值</span>
                         <span className="font-medium text-gray-700">
-                          {mockProfile.xp} / {mockProfile.maxXp}
+                          {xpInCurrentLevel} / {maxXpInLevel}
                         </span>
                       </div>
                       <Progress value={xpProgress} className="h-2" />
                     </div>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={handleOpenEditDialog}>
                       <Edit3 className="mr-1 h-3 w-3" />
                       编辑资料
                     </Button>
@@ -168,10 +261,8 @@ export default function ProfilePage() {
                 <Flame className="h-6 w-6 text-brand-orange" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">{mockProfile.streak.current}天</p>
-                <p className="text-xs text-brand-gray">
-                  连续学习（最长{mockProfile.streak.longest}天）
-                </p>
+                <p className="text-2xl font-bold text-gray-900">{streakDays}天</p>
+                <p className="text-xs text-brand-gray">连续学习</p>
               </div>
             </CardContent>
           </Card>
@@ -180,14 +271,16 @@ export default function ProfilePage() {
           <Card className="shadow-card">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
-                <p className="text-sm text-brand-gray">本周目标</p>
+                <p className="text-sm text-brand-gray">本周学习</p>
                 <span className="text-sm font-medium text-brand-blue">
-                  {mockProfile.weeklyGoal.current}/{mockProfile.weeklyGoal.target} 分钟
+                  {weekStudyHours}/{weeklyTarget} 小时
                 </span>
               </div>
               <Progress value={weeklyProgress} className="mt-3 h-2" />
               <p className="mt-2 text-xs text-brand-gray">
-                还差 {mockProfile.weeklyGoal.target - mockProfile.weeklyGoal.current} 分钟
+                {weekStudyHours >= weeklyTarget
+                  ? "已完成本周目标"
+                  : `还差 ${(weeklyTarget - weekStudyHours).toFixed(1)} 小时`}
               </p>
             </CardContent>
           </Card>
@@ -199,7 +292,9 @@ export default function ProfilePage() {
                 <Zap className="h-6 w-6 text-purple-600" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">1,280</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {totalScore.toLocaleString()}
+                </p>
                 <p className="text-xs text-brand-gray">累计经验值</p>
               </div>
             </CardContent>
@@ -235,30 +330,35 @@ export default function ProfilePage() {
                   </TabsTrigger>
                 </TabsList>
 
-                {/* 技能面板 */}
+                {/* 技能面板 - 即将上线 */}
                 <TabsContent value="skills" className="p-6">
+                  <div className="mb-4 rounded-xl border border-dashed border-brand-blue/30 bg-brand-blue/5 p-4 text-center">
+                    <Rocket className="mx-auto h-8 w-8 text-brand-blue" />
+                    <p className="mt-2 text-sm font-medium text-brand-blue">技能系统即将上线</p>
+                    <p className="mt-1 text-xs text-brand-gray">
+                      完成更多课程后，你的学科技能将在这里展示
+                    </p>
+                  </div>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {mockProfile.skills.map((skill) => {
+                    {skillSubjects.map((skill) => {
                       const Icon = skill.icon;
                       return (
                         <div
                           key={skill.name}
-                          className="flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50/50 p-4"
+                          className="flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50/50 p-4 opacity-60"
                         >
-                          <ProgressRing progress={skill.progress} size={56} strokeWidth={4}>
-                            <span className="text-xs font-bold text-gray-700">
-                              {skill.progress}
-                            </span>
+                          <ProgressRing progress={0} size={56} strokeWidth={4}>
+                            <span className="text-xs text-brand-gray">--</span>
                           </ProgressRing>
                           <div className="flex-1">
                             <div className="flex items-center gap-2">
-                              <Icon className="h-4 w-4 text-brand-blue" />
-                              <span className="text-sm font-medium text-gray-900">
+                              <Icon className="h-4 w-4 text-brand-gray" />
+                              <span className="text-sm font-medium text-gray-500">
                                 {skill.name}
                               </span>
                             </div>
                             <p className="mt-0.5 text-xs text-brand-gray">
-                              等级 {skill.level}
+                              等级 --
                             </p>
                           </div>
                         </div>
@@ -267,42 +367,64 @@ export default function ProfilePage() {
                   </div>
                 </TabsContent>
 
-                {/* 徽章面板 */}
+                {/* 徽章面板 - 从后端获取 */}
                 <TabsContent value="badges" className="p-6">
-                  <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-                    {mockProfile.badges.map((badge) => (
-                      <div
-                        key={badge.name}
-                        className={cn(
-                          "flex flex-col items-center gap-2 rounded-xl border p-4 transition-all",
-                          badge.unlocked
-                            ? "border-gray-100 bg-white shadow-sm"
-                            : "border-dashed border-gray-200 bg-gray-50 opacity-60",
-                        )}
-                      >
-                        <div
-                          className={cn(
-                            "flex h-12 w-12 items-center justify-center rounded-full",
-                            badge.unlocked ? badge.color : "bg-gray-200 text-gray-400",
-                          )}
-                        >
-                          {badge.unlocked ? (
-                            <Trophy className="h-6 w-6" />
-                          ) : (
-                            <Lock className="h-5 w-5" />
-                          )}
-                        </div>
-                        <span
-                          className={cn(
-                            "text-xs font-medium",
-                            badge.unlocked ? "text-gray-700" : "text-brand-gray",
-                          )}
-                        >
-                          {badge.name}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                  {achievementsLoading ? (
+                    <div className="flex items-center justify-center py-8">
+                      <Loader2 className="h-6 w-6 animate-spin text-brand-gray" />
+                      <span className="ml-2 text-sm text-brand-gray">加载成就中...</span>
+                    </div>
+                  ) : achievements.length > 0 ? (
+                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+                      {achievements.map((ach, index) => {
+                        const isUnlocked = ach.achieved_at != null || ach.unlocked === true;
+                        const colorClass = badgeColors[index % badgeColors.length];
+                        return (
+                          <div
+                            key={ach.id || ach.code || ach.name}
+                            className={cn(
+                              "flex flex-col items-center gap-2 rounded-xl border p-4 transition-all",
+                              isUnlocked
+                                ? "border-gray-100 bg-white shadow-sm"
+                                : "border-dashed border-gray-200 bg-gray-50 opacity-60",
+                            )}
+                          >
+                            <div
+                              className={cn(
+                                "flex h-12 w-12 items-center justify-center rounded-full",
+                                isUnlocked ? colorClass : "bg-gray-200 text-gray-400",
+                              )}
+                            >
+                              {isUnlocked ? (
+                                <Trophy className="h-6 w-6" />
+                              ) : (
+                                <Lock className="h-5 w-5" />
+                              )}
+                            </div>
+                            <span
+                              className={cn(
+                                "text-xs font-medium",
+                                isUnlocked ? "text-gray-700" : "text-brand-gray",
+                              )}
+                            >
+                              {ach.name}
+                            </span>
+                            {ach.description && (
+                              <span className="text-center text-[10px] text-brand-gray">
+                                {ach.description}
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center py-8 text-brand-gray">
+                      <Trophy className="h-12 w-12 text-gray-200" />
+                      <p className="mt-3 text-sm">暂无成就数据</p>
+                      <p className="mt-1 text-xs">完成学习任务来解锁成就吧</p>
+                    </div>
+                  )}
                 </TabsContent>
 
                 {/* 设置面板 */}
@@ -354,6 +476,54 @@ export default function ProfilePage() {
           </Card>
         </motion.div>
       </motion.div>
+
+      {/* 编辑资料 Dialog */}
+      <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>编辑资料</DialogTitle>
+            <DialogDescription>修改你的个人信息</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-2">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">昵称</label>
+              <Input
+                value={editNickname}
+                onChange={(e) => setEditNickname(e.target.value)}
+                placeholder="请输入昵称"
+                maxLength={50}
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">简介</label>
+              <textarea
+                value={editBio}
+                onChange={(e) => setEditBio(e.target.value)}
+                placeholder="介绍一下你自己吧"
+                maxLength={200}
+                rows={3}
+                className="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-brand-gray focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => setEditDialogOpen(false)}
+              disabled={editSaving}
+            >
+              取消
+            </Button>
+            <Button
+              onClick={handleSaveProfile}
+              disabled={editSaving || !editNickname.trim()}
+            >
+              {editSaving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              保存
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </MainLayout>
   );
 }

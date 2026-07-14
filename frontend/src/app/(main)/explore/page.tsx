@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import { MainLayout } from "@/components/layout/main-layout";
 import { CourseCard } from "@/components/common/course-card";
 import { FilterBar } from "@/components/common/filter-bar";
@@ -12,7 +13,10 @@ import type { Subject, DifficultyLevel, AgeGroup } from "@/types";
 import { Compass, SearchX } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function ExplorePage() {
+import { Suspense } from "react";
+
+function ExplorePageContent() {
+  const searchParams = useSearchParams();
   const {
     courses,
     isLoading,
@@ -24,14 +28,42 @@ export default function ExplorePage() {
     resetFilter,
   } = useLearningStore();
 
+  // 搜索框防抖
+  const [searchInput, setSearchInput] = useState(filter.keyword || "");
+  const debounceTimer = useRef<NodeJS.Timeout>();
+
+  // 初始化时同步搜索框值
   useEffect(() => {
-    fetchCourses();
-  }, [fetchCourses]);
+    setSearchInput(filter.keyword || "");
+  }, [filter.keyword]);
+
+  const handleKeywordChange = useCallback((value: string) => {
+    setSearchInput(value);
+    if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    debounceTimer.current = setTimeout(() => {
+      setFilter({ keyword: value });
+    }, 500);
+  }, [setFilter]);
+
+  // 组件卸载时清除定时器
+  useEffect(() => {
+    return () => {
+      if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const keyword = searchParams.get("keyword");
+    if (keyword) {
+      setFilter({ keyword });
+    } else {
+      fetchCourses();
+    }
+  }, [searchParams, fetchCourses, setFilter]);
 
   const handleSubjectChange = (value?: Subject) => setFilter({ subject: value });
   const handleDifficultyChange = (value?: DifficultyLevel) => setFilter({ difficulty: value });
   const handleAgeGroupChange = (value?: AgeGroup) => setFilter({ ageGroup: value });
-  const handleKeywordChange = (value: string) => setFilter({ keyword: value });
   const handleSortChange = (value: string) =>
     setFilter({ sortBy: value as "popular" | "newest" | "rating" | "progress" });
 
@@ -53,7 +85,7 @@ export default function ExplorePage() {
           subject={filter.subject}
           difficulty={filter.difficulty}
           ageGroup={filter.ageGroup}
-          keyword={filter.keyword}
+          keyword={searchInput}
           sortBy={filter.sortBy}
           onSubjectChange={handleSubjectChange}
           onDifficultyChange={handleDifficultyChange}
@@ -96,5 +128,13 @@ export default function ExplorePage() {
         )}
       </div>
     </MainLayout>
+  );
+}
+
+export default function ExplorePage() {
+  return (
+    <Suspense fallback={<MainLayout><LoadingSkeleton /></MainLayout>}>
+      <ExplorePageContent />
+    </Suspense>
   );
 }

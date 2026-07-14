@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/theme/ThemeProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AuthInitializer } from "@/components/auth-initializer";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,11 +25,14 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased bg-background text-gray-900`}>
-        <ThemeProvider>
-          <TooltipProvider delayDuration={300}>
-            {children}
-          </TooltipProvider>
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider>
+            <TooltipProvider delayDuration={300}>
+              <AuthInitializer />
+              {children}
+            </TooltipProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

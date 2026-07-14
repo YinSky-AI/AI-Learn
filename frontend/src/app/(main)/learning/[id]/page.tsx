@@ -100,7 +100,7 @@ export default function LearningPage() {
 
   return (
     <MainLayout>
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-6 lg:grid-cols-3 mb-16 md:mb-0">
         {/* 左侧：课程内容 */}
         <div className="lg:col-span-2 space-y-6">
           {/* 课程信息 */}
@@ -161,17 +161,13 @@ export default function LearningPage() {
               </CardHeader>
               <CardContent className="p-6 pt-0">
                 {/* 内容区域 */}
-                <div className="rounded-xl bg-gray-50 p-8">
-                  <div className="flex flex-col items-center justify-center text-center">
-                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-blue/10">
-                      <Play className="h-8 w-8 text-brand-blue" />
-                    </div>
-                    <p className="text-sm text-brand-gray">{currentLesson.description}</p>
-                    <p className="mt-1 text-xs text-brand-gray">
-                      预计用时 {currentLesson.duration} 分钟
-                    </p>
+                <div className="rounded-xl bg-gray-50 p-6">
+                  <div className="max-w-none">
+                    <MarkdownRenderer content={currentLesson.content} />
+                  </div>
+                  <div className="mt-6 flex flex-col items-center">
                     {loginPrompt && (
-                      <div className="mt-3 flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700">
+                      <div className="mb-3 flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700">
                         <Lock className="h-4 w-4 shrink-0" />
                         <span>请先登录后再开始学习</span>
                         <Link href="/login" className="ml-1 font-medium text-brand-blue hover:underline">
@@ -179,7 +175,7 @@ export default function LearningPage() {
                         </Link>
                       </div>
                     )}
-                    <Button className="mt-4" onClick={() => {
+                    <Button className="mt-2" onClick={() => {
                       if (!isAuthenticated) {
                         setLoginPrompt(true);
                         return;

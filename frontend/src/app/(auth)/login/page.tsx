@@ -9,6 +9,17 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useAuthStore } from "@/stores/auth-store";
 
+/** 将 error 转换为用户友好的提示文字 */
+function getErrorMessage(error: unknown): string {
+  if (typeof error === "string") return error;
+  if (error && typeof error === "object") {
+    if ("message" in error && typeof (error as Record<string, unknown>).message === "string") {
+      return (error as { message: string }).message;
+    }
+  }
+  return "登录失败，请检查用户名和密码";
+}
+
 export default function LoginPage() {
   const router = useRouter();
   const login = useAuthStore((s) => s.login);
@@ -19,11 +30,15 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({ username: false, password: false });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const hasEmptyUsername = !username.trim();
+    const hasEmptyPassword = !password.trim();
+    setFieldErrors({ username: hasEmptyUsername, password: hasEmptyPassword });
     // 空字段校验
-    if (!username.trim() || !password.trim()) {
+    if (hasEmptyUsername || hasEmptyPassword) {
       useAuthStore.setState({ error: "请输入用户名和密码" });
       return;
     }
@@ -63,7 +78,7 @@ export default function LoginPage() {
               {/* 错误提示 */}
               {error && (
                 <div className="rounded-lg bg-red-50 px-3 py-2 text-sm text-brand-red">
-                  {error}
+                  {getErrorMessage(error)}
                 </div>
               )}
 
@@ -80,8 +95,9 @@ export default function LoginPage() {
                 <Input
                   placeholder="请输入用户名"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e) => { setUsername(e.target.value); if (fieldErrors.username) setFieldErrors(prev => ({ ...prev, username: false })); }}
                   disabled={isLoading}
+                  className={fieldErrors.username ? "border-red-500 focus-visible:ring-red-500" : ""}
                 />
               </div>
 
@@ -93,9 +109,9 @@ export default function LoginPage() {
                     type={showPassword ? "text" : "password"}
                     placeholder="请输入密码"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => { setPassword(e.target.value); if (fieldErrors.password) setFieldErrors(prev => ({ ...prev, password: false })); }}
                     disabled={isLoading}
-                    className="pr-10"
+                    className={fieldErrors.password ? "border-red-500 focus-visible:ring-red-500 pr-10" : "pr-10"}
                   />
                   <button
                     type="button"

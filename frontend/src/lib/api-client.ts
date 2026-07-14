@@ -5,11 +5,11 @@
 import type { ApiResponse, ApiError } from "@/types/api";
 
 // API 基础地址
-// 浏览器端：使用 localhost:8000/api（Docker 端口映射到宿主机）
-// 服务端（SSR）：在 Docker 中使用 backend 容器名
+// 浏览器端：使用相对路径 /api，走 Nginx 代理到后端（避免 CSP 和跨域问题）
+// 服务端（SSR）：直接连接后端服务
 const API_BASE_URL =
   typeof window !== "undefined"
-    ? (process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000/api")
+    ? (process.env.NEXT_PUBLIC_API_BASE || "/api")
     : (process.env.BACKEND_URL || "http://localhost:8000/api");
 
 /** 导出 API_BASE_URL，供 store 直接使用（如 SSE 流式请求） */
@@ -24,6 +24,7 @@ interface RequestOptions extends Omit<RequestInit, "body"> {
   body?: unknown;
   params?: Record<string, string | number | boolean | undefined>;
   skipAuth?: boolean;
+  timeout?: number;
 }
 
 /** 后端业务响应码 */
@@ -104,22 +105,25 @@ async function refreshAccessToken(): Promise<string> {
   return tokenData.access_token;
 }
 
-/** 构建 URL（附加查询参数） */
+/** 构建 URL（附加查询参数，支持相对路径） */
 function buildUrl(endpoint: string, params?: Record<string, string | number | boolean | undefined>): string {
-  const url = new URL(`${API_BASE_URL}${endpoint}`);
+  let urlStr = `${API_BASE_URL}${endpoint}`;
   if (params) {
+    const searchParams = new URLSearchParams();
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined) {
-        url.searchParams.append(key, String(value));
+        searchParams.append(key, String(value));
       }
     });
+    const qs = searchParams.toString();
+    if (qs) urlStr += `?${qs}`;
   }
-  return url.toString();
+  return urlStr;
 }
 
 /** 核心 API 请求函数 */
 async function request<T>(endpoint: string, options: RequestOptions = {}): Promise<T> {
-  const { body, params, skipAuth = false, headers: customHeaders, ...rest } = options;
+  const { body, params, skipAuth = false, timeout = 15000, headers: customHeaders, ...rest } = options;
 
   // 构建请求头
   const headers: Record<string, string> = {
@@ -138,95 +142,135 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
   // 构建请求 URL
   const url = buildUrl(endpoint, params);
 
-  // 发起请求
-  let response = await fetch(url, {
+  // 构建通用 fetch 配置
+  const fetchOptions: RequestInit = {
     ...rest,
     headers,
     body: body ? JSON.stringify(body) : undefined,
-  });
+  };
 
-  // 处理 401 - 尝试刷新 Token（跳过认证端点，避免登录失败时误跳转）
-  const isAuthEndpoint = endpoint.startsWith("/v1/auth/");
-  if (response.status === 401 && !skipAuth && !isAuthEndpoint) {
-    if (isRefreshing) {
-      // 等待刷新完成
-      const newToken = await new Promise<string>((resolve) => {
-        subscribeTokenRefresh((token) => resolve(token));
+  // 超时 + 重试机制
+  const maxRetries = 2;
+  let lastError: Error | null = null;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+      let response = await fetch(url, {
+        ...fetchOptions,
+        signal: controller.signal,
       });
-      headers["Authorization"] = `Bearer ${newToken}`;
-      response = await fetch(url, {
-        ...rest,
-        headers,
-        body: body ? JSON.stringify(body) : undefined,
-      });
-    } else {
-      isRefreshing = true;
-      try {
-        const newToken = await refreshAccessToken();
-        isRefreshing = false;
-        onTokenRefreshed(newToken);
-        headers["Authorization"] = `Bearer ${newToken}`;
-        response = await fetch(url, {
-          ...rest,
-          headers,
-          body: body ? JSON.stringify(body) : undefined,
-        });
-      } catch (error) {
-        isRefreshing = false;
-        refreshSubscribers = [];
-        // 重定向到登录页
-        if (typeof window !== "undefined") {
-          window.location.href = "/login";
+
+      clearTimeout(timeoutId);
+
+      // 处理 401 - 尝试刷新 Token（跳过认证端点，避免登录失败时误跳转）
+      const isAuthEndpoint = endpoint.startsWith("/v1/auth/");
+      if (response.status === 401 && !skipAuth && !isAuthEndpoint) {
+        if (isRefreshing) {
+          // 等待刷新完成
+          const newToken = await new Promise<string>((resolve) => {
+            subscribeTokenRefresh((token) => resolve(token));
+          });
+          headers["Authorization"] = `Bearer ${newToken}`;
+          response = await fetch(url, {
+            ...fetchOptions,
+            headers,
+          });
+        } else {
+          isRefreshing = true;
+          try {
+            const newToken = await refreshAccessToken();
+            isRefreshing = false;
+            onTokenRefreshed(newToken);
+            headers["Authorization"] = `Bearer ${newToken}`;
+            response = await fetch(url, {
+              ...fetchOptions,
+              headers,
+            });
+          } catch (error) {
+            isRefreshing = false;
+            refreshSubscribers = [];
+            // 重定向到登录页
+            if (typeof window !== "undefined") {
+              window.location.href = "/login";
+            }
+            throw error;
+          }
         }
+      }
+
+      // 处理 HTTP 错误状态
+      if (!response.ok) {
+        // 429 限流：等待后重试
+        if (response.status === 429 && attempt < maxRetries) {
+          const delay = 1000 * (attempt + 1);
+          console.warn(`Rate limited (429), retrying in ${delay}ms...`);
+          await new Promise((resolve) => setTimeout(resolve, delay));
+          continue;
+        }
+
+        // 其他错误解析为 ApiError
+        let errorData: ApiError;
+        try {
+          const raw = await response.json();
+          // FastAPI 错误格式: { detail: { code, message } } 或 { detail: "..." }
+          if (raw.detail && typeof raw.detail === "object") {
+            errorData = {
+              code: raw.detail.code || response.status,
+              message: raw.detail.message || "操作失败",
+            };
+          } else if (raw.detail && typeof raw.detail === "string") {
+            errorData = {
+              code: response.status,
+              message: raw.detail,
+            };
+          } else {
+            errorData = {
+              code: raw.code || response.status,
+              message: raw.message || `请求失败 (${response.status})`,
+            };
+          }
+        } catch {
+          errorData = {
+            code: response.status,
+            message: `请求失败 (${response.status})`,
+          };
+        }
+        throw errorData;
+      }
+
+      // 解析响应
+      const data = (await response.json()) as ApiResponse<T>;
+
+      // 检查业务错误码（后端返回 200 但 code 非 SUCCESS 的情况）
+      if (!SUCCESS_CODES.includes(data.code)) {
+        const error: ApiError = {
+          code: typeof data.code === "number" ? data.code : 400,
+          message: data.message || "操作失败",
+        };
         throw error;
       }
-    }
-  }
 
-  // 处理非 2xx 响应
-  if (!response.ok) {
-    let errorData: ApiError;
-    try {
-      const raw = await response.json();
-      // FastAPI 错误格式: { detail: { code, message } } 或 { detail: "..." }
-      if (raw.detail && typeof raw.detail === "object") {
-        errorData = {
-          code: raw.detail.code || response.status,
-          message: raw.detail.message || "操作失败",
-        };
-      } else if (raw.detail && typeof raw.detail === "string") {
-        errorData = {
-          code: response.status,
-          message: raw.detail,
-        };
-      } else {
-        errorData = {
-          code: raw.code || response.status,
-          message: raw.message || `请求失败 (${response.status})`,
-        };
+      return data.data;
+    } catch (error) {
+      lastError = error as Error;
+      // 网络错误且未达最大重试次数时重试
+      if (attempt < maxRetries && (
+        error instanceof TypeError ||
+        (error instanceof Error && error.name === "AbortError")
+      )) {
+        const delay = 1000 * (attempt + 1);
+        console.warn(`Request failed, retrying in ${delay}ms...`, error);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        continue;
       }
-    } catch {
-      errorData = {
-        code: response.status,
-        message: `请求失败 (${response.status})`,
-      };
+      break;
     }
-    throw errorData;
   }
 
-  // 解析响应
-  const data = (await response.json()) as ApiResponse<T>;
-
-  // 检查业务错误码（后端返回 200 但 code 非 SUCCESS 的情况）
-  if (!SUCCESS_CODES.includes(data.code)) {
-    const error: ApiError = {
-      code: typeof data.code === "number" ? data.code : 400,
-      message: data.message || "操作失败",
-    };
-    throw error;
-  }
-
-  return data.data;
+  throw lastError || new Error("请求失败");
 }
 
 /** GET 请求 */

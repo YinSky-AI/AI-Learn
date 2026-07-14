@@ -27,7 +27,7 @@ interface AuthState {
   register: (data: Record<string, unknown>) => Promise<void>;
   /** 登出 */
   logout: () => void;
-  /** 获取当前用户资料 */
+  /** 获取当前用户资料（失败时抛出异常） */
   fetchProfile: () => Promise<void>;
   /** 获取用户学习统计 */
   fetchUserStats: () => Promise<void>;
@@ -73,7 +73,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       await apiClient.post("/v1/auth/register", data);
       // 注册成功后自动登录（使用 username 作为 email）
       await get().login({
-        email: (data.email || data.username) as string,
+        username: (data.email || data.username) as string,
         password: data.password as string,
       });
     } catch (error) {
@@ -106,9 +106,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       error: null,
       stats: null,
     });
-    // 刷新页面以清除所有用户相关的内存状态
+    // 清空学习 store 的内存状态（防止退出后仍显示上次的学习进度）
     if (typeof window !== "undefined") {
-      window.location.href = "/home";
+      // 使用 hard reload 确保所有内存状态被清除
+      window.location.href = "/home?t=" + Date.now();
     }
   },
 
@@ -138,8 +139,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
         isAuthenticated: true,
       });
     } catch (error) {
-      // 获取资料失败不强制登出，可能是网络问题
+      // 获取资料失败时抛出异常，让调用方决定如何处理
+      // AuthInitializer 会据此判断是否清除无效 token
       console.warn("获取用户资料失败:", error);
+      throw error;
     }
   },
 

@@ -10,6 +10,7 @@ import {
   User,
   GraduationCap,
   ChevronLeft,
+  ChevronRight,
   Settings,
   LogOut,
 } from "lucide-react";
@@ -104,8 +105,20 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
         </nav>
       </ScrollArea>
 
-      {/* 底部折叠按钮 */}
-      {!collapsed && (
+      {/* 底部折叠/展开按钮 */}
+      {collapsed ? (
+        <div className="flex justify-center px-2 pb-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8 text-gray-400 hover:text-gray-600"
+            onClick={onToggle}
+            title="展开侧栏"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+      ) : (
         <div className="px-3 pb-2">
           <Button
             variant="ghost"

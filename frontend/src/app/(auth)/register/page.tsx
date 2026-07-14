@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GraduationCap, Eye, EyeOff, Loader2 } from "lucide-react";
@@ -24,11 +24,32 @@ import {
 import { useAuthStore } from "@/stores/auth-store";
 import { AGE_GROUP_LIST } from "@/lib/content";
 
+function getPasswordStrength(password: string): { level: number; label: string; color: string } {
+  if (!password) return { level: 0, label: "", color: "" };
+  let score = 0;
+  if (password.length >= 6) score++;
+  if (password.length >= 10) score++;
+  if (/[A-Z]/.test(password)) score++;
+  if (/[a-z]/.test(password)) score++;
+  if (/[0-9]/.test(password)) score++;
+  if (/[^A-Za-z0-9]/.test(password)) score++;
+
+  if (score <= 2) return { level: 1, label: "弱", color: "bg-red-500" };
+  if (score <= 4) return { level: 2, label: "中", color: "bg-yellow-500" };
+  return { level: 3, label: "强", color: "bg-green-500" };
+}
+
 export default function RegisterPage() {
   const router = useRouter();
   const register = useAuthStore((s) => s.register);
   const isLoading = useAuthStore((s) => s.isLoading);
   const error = useAuthStore((s) => s.error);
+  const clearError = useAuthStore((s) => s.clearError);
+
+  // 组件加载时清除可能残留的错误（如从登录页带过来的错误）
+  useEffect(() => {
+    clearError();
+  }, [clearError]);
 
   const [formData, setFormData] = useState({
     username: "",
@@ -40,6 +61,8 @@ export default function RegisterPage() {
     gender: "male" as "male" | "female" | "other",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [passwordValue, setPasswordValue] = useState("");
+  const strength = getPasswordStrength(passwordValue);
 
   const updateForm = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -151,7 +174,10 @@ export default function RegisterPage() {
                     type={showPassword ? "text" : "password"}
                     placeholder="至少6位密码"
                     value={formData.password}
-                    onChange={(e) => updateForm("password", e.target.value)}
+                    onChange={(e) => {
+                      updateForm("password", e.target.value);
+                      setPasswordValue(e.target.value);
+                    }}
                     required
                     minLength={6}
                     disabled={isLoading}
@@ -165,6 +191,23 @@ export default function RegisterPage() {
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
+                {passwordValue && (
+                  <div className="mt-2 space-y-1">
+                    <div className="flex gap-1">
+                      {[1, 2, 3].map((i) => (
+                        <div
+                          key={i}
+                          className={`h-1.5 flex-1 rounded-full ${
+                            strength.level >= i ? strength.color : "bg-gray-200"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      密码强度：{strength.label}
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* 确认密码 */}

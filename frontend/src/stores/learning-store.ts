@@ -130,12 +130,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       try {
         const data = await apiClient.get<{ items: any[]; total: number; page: number; totalPages: number }>("/v1/courses", {
           page: currentFilter.page || 1,
-          pageSize: currentFilter.pageSize || 20,
+          page_size: currentFilter.pageSize || 20,
           subject: currentFilter.subject,
           difficulty: currentFilter.difficulty,
-          ageGroup: currentFilter.ageGroup,
+          age_group: currentFilter.ageGroup,
           keyword: currentFilter.keyword,
-          sortBy: currentFilter.sortBy,
+          sort_by: currentFilter.sortBy,
         });
         // 如果后端返回空数据，也 fallback 到 mock
         if (!data.items || data.items.length === 0) {
@@ -143,45 +143,48 @@ export const useLearningStore = create<LearningState>((set, get) => ({
         }
         let courses = data.items.map(mapApiCourse);
 
-        // 尝试获取用户课程进度（已登录用户）
-        try {
-          const userData = await apiClient.get<{ items: any[] }>("/v1/user/courses", {
-            page: 1,
-            pageSize: 100,
-          });
-          const userCourses = userData.items || [];
-          courses = courses.map((course) => {
-            const userCourse = userCourses.find(
-              (uc) => uc.course_id === course.id || uc.course?.id === course.id
-            );
-            if (userCourse) {
-              return {
-                ...course,
-                completedLessons: userCourse.completed_lessons ?? course.completedLessons,
-                progress: userCourse.progress ?? course.progress,
-              };
-            }
-            return course;
-          });
-        } catch {
-          // 未登录或获取失败，后续用 localStorage 补充
-        }
-
-        // 合并本地存储的学习进度（未登录用户或补充）
-        const localProgress = getAllLocalCourseProgress();
-        courses = courses.map((course) => {
-          const local = localProgress[course.id];
-          if (local && course.totalLessons > 0) {
-            const completedCount = local.completedLessonIds.length;
-            const progress = Math.round((completedCount / course.totalLessons) * 100);
-            return {
-              ...course,
-              completedLessons: completedCount,
-              progress: Math.min(progress, 100),
-            };
+        // 仅已登录用户合并学习进度（确保数据与账号绑定）
+        const { isAuthenticated } = useAuthStore.getState();
+        if (isAuthenticated) {
+          // 尝试获取用户课程进度（从后端数据库）
+          try {
+            const userData = await apiClient.get<{ items: any[] }>("/v1/user/courses", {
+              page: 1,
+              page_size: 100,
+            });
+            const userCourses = userData.items || [];
+            courses = courses.map((course) => {
+              const userCourse = userCourses.find(
+                (uc) => uc.course_id === course.id || uc.course?.id === course.id
+              );
+              if (userCourse) {
+                return {
+                  ...course,
+                  completedLessons: userCourse.completed_lessons ?? course.completedLessons,
+                  progress: userCourse.progress ?? course.progress,
+                };
+              }
+              return course;
+            });
+          } catch {
+            // 后端获取失败，用 localStorage 补充（已登录用户的本地缓存）
+            const localProgress = getAllLocalCourseProgress();
+            courses = courses.map((course) => {
+              const local = localProgress[course.id];
+              if (local && course.totalLessons > 0) {
+                const completedCount = local.completedLessonIds.length;
+                const progress = Math.round((completedCount / course.totalLessons) * 100);
+                return {
+                  ...course,
+                  completedLessons: completedCount,
+                  progress: Math.min(progress, 100),
+                };
+              }
+              return course;
+            });
           }
-          return course;
-        });
+        }
+        // 未登录用户：不合并任何进度数据，课程显示 0% 进度
 
         set({
           courses,
@@ -195,21 +198,24 @@ export const useLearningStore = create<LearningState>((set, get) => ({
         const { getMockCourses } = await import("@/lib/content");
         let mockCourses = getMockCourses(currentFilter.pageSize || 12);
 
-        // 合并本地存储的学习进度
-        const localProgress = getAllLocalCourseProgress();
-        mockCourses = mockCourses.map((course) => {
-          const local = localProgress[course.id];
-          if (local && course.totalLessons > 0) {
-            const completedCount = local.completedLessonIds.length;
-            const progress = Math.round((completedCount / course.totalLessons) * 100);
-            return {
-              ...course,
-              completedLessons: completedCount,
-              progress: Math.min(progress, 100),
-            };
-          }
-          return course;
-        });
+        // 合并本地存储的学习进度（仅已登录用户）
+        const { isAuthenticated: isAuth } = useAuthStore.getState();
+        if (isAuth) {
+          const localProgress = getAllLocalCourseProgress();
+          mockCourses = mockCourses.map((course) => {
+            const local = localProgress[course.id];
+            if (local && course.totalLessons > 0) {
+              const completedCount = local.completedLessonIds.length;
+              const progress = Math.round((completedCount / course.totalLessons) * 100);
+              return {
+                ...course,
+                completedLessons: completedCount,
+                progress: Math.min(progress, 100),
+              };
+            }
+            return course;
+          });
+        }
 
         set({
           courses: mockCourses,
@@ -231,19 +237,50 @@ export const useLearningStore = create<LearningState>((set, get) => ({
         const data = await apiClient.get<any>("/v1/courses/" + courseId);
         const course = mapApiCourse(data);
         let lessons: Lesson[] = (data.lessons ?? []).map(mapApiLesson);
+        // 仅已登录用户合并本地存储的课时完成状态
+        const { isAuthenticated } = useAuthStore.getState();
+        if (isAuthenticated) {
+          const localProgress = getAllLocalCourseProgress();
+          const local = localProgress[course.id];
+          if (local) {
+            // 收集需要同步到后端的课时（已登录且本地完成但后端未完成）
+            const lessonsToSync: Lesson[] = [];
+            lessons = lessons.map((lesson) => {
+              const localCompleted = local.completedLessonIds.includes(lesson.id);
+              if (isAuthenticated && localCompleted && !lesson.completed) {
+                lessonsToSync.push(lesson);
+              }
+              return {
+                ...lesson,
+                // 取并集：后端或本地任一完成，都算完成
+                completed: lesson.completed || localCompleted,
+              };
+            });
+            // 同步课程的已完成课时数
+            const completedCount = lessons.filter((l) => l.completed).length;
+            course.completedLessons = completedCount;
+            course.progress = lessons.length > 0 ? Math.round((completedCount / lessons.length) * 100) : 0;
 
-        // 合并本地存储的课时完成状态
-        const localProgress = getAllLocalCourseProgress();
-        const local = localProgress[course.id];
-        if (local) {
-          lessons = lessons.map((lesson) => ({
-            ...lesson,
-            completed: local.completedLessonIds.includes(lesson.id),
-          }));
-          // 同步课程的已完成课时数
-          const completedCount = lessons.filter((l) => l.completed).length;
-          course.completedLessons = completedCount;
-          course.progress = lessons.length > 0 ? Math.round((completedCount / lessons.length) * 100) : 0;
+            // 后台串行同步未同步的课时（避免并发触发速率限制）
+            if (lessonsToSync.length > 0) {
+              (async () => {
+                for (const lesson of lessonsToSync) {
+                  try {
+                    await apiClient.post(`/v1/user/lessons/${lesson.id}/complete`, {
+                      time_spent_seconds: lesson.duration * 60,
+                    });
+                    // 每个课时同步间隔 1 秒，避免触发速率限制
+                    await new Promise((resolve) => setTimeout(resolve, 1000));
+                  } catch {
+                    // 同步失败则停止后续同步（可能已被限流）
+                    break;
+                  }
+                }
+                // 同步完成后刷新统计
+                useAuthStore.getState().fetchUserStats();
+              })();
+            }
+          }
         }
 
         // 加载本地聊天记录

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { MainLayout } from "@/components/layout/main-layout";
 import { StatCard } from "@/components/common/stat-card";
 import { CourseCard } from "@/components/common/course-card";
@@ -9,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProgressRing } from "@/components/common/progress-ring";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
 import { useAuthStore } from "@/stores/auth-store";
 import { useLearningStore } from "@/stores/learning-store";
 import { getMockCourses, getWelcomeMessage } from "@/lib/content";
@@ -21,10 +23,13 @@ import {
   BookOpen,
   Target,
   TrendingUp,
+  Search,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
+  const router = useRouter();
+  const [searchValue, setSearchValue] = useState("");
   const user = useAuthStore((s) => s.user);
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const stats = useAuthStore((s) => s.stats);
@@ -79,6 +84,21 @@ export default function HomePage() {
               <p className="mt-1 text-sm text-blue-100">
                 每天坚持学习，成为更好的自己
               </p>
+              <div className="mt-4 flex items-center gap-2 rounded-lg bg-white/20 backdrop-blur-sm px-3 py-2 lg:max-w-xs">
+                <Search className="h-4 w-4 shrink-0 text-white/70" />
+                <input
+                  type="text"
+                  placeholder="搜索课程、知识点..."
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && searchValue.trim()) {
+                      router.push(`/explore?keyword=${encodeURIComponent(searchValue.trim())}`);
+                    }
+                  }}
+                  className="w-full border-none bg-transparent text-sm text-white placeholder-white/60 outline-none"
+                />
+              </div>
               <div className="mt-4 flex gap-4">
                 <div className="rounded-lg bg-white/20 px-4 py-2 backdrop-blur-sm">
                   <p className="text-2xl font-bold">{isAuthenticated ? stats?.streak_days ?? 0 : "--"}</p>
@@ -120,7 +140,7 @@ export default function HomePage() {
           />
           <StatCard
             label="获得经验"
-            value={isAuthenticated ? `${stats?.total_score ?? 0}` : "0"}
+            value={isAuthenticated ? `${(stats?.total_score ?? 0).toLocaleString()} XP` : "0 XP"}
             icon={<Zap className="h-6 w-6" />}
             trend={isAuthenticated ? { value: 8, isUp: true } : undefined}
             color="purple"

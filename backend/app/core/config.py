@@ -47,14 +47,16 @@ class Settings(BaseSettings):
         "http://localhost:5173",
         "http://127.0.0.1:3000",
         "http://127.0.0.1:5173",
+        "http://localhost/admin",
+        "http://localhost:80",
     ]
     CORS_ALLOW_CREDENTIALS: bool = True
     CORS_ALLOW_METHODS: List[str] = ["*"]
     CORS_ALLOW_HEADERS: List[str] = ["*"]
 
     # ============ 速率限制配置 ============
-    RATE_LIMIT_PER_MINUTE: int = 60
-    RATE_LIMIT_BURST: int = 10
+    RATE_LIMIT_PER_MINUTE: int = 200
+    RATE_LIMIT_BURST: int = 30
 
     # ============ AI 服务配置（DeepSeek） ============
     DEEPSEEK_API_KEY: str = ""

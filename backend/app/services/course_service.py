@@ -14,11 +14,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.course import Course, Lesson, UserCourse, UserLesson, ChatMessage
 
 
-def _try_uuid(value: str) -> Optional[uuid.UUID]:
-    """尝试将字符串解析为 UUID，失败返回 None"""
+def _try_uuid(value) -> Optional[uuid.UUID]:
+    """尝试将字符串（或 asyncpg UUID 对象）解析为 UUID，失败返回 None"""
     try:
+        if hasattr(value, 'hex'):
+            # asyncpg UUID 对象或其他带 hex 属性的对象
+            return uuid.UUID(str(value))
         return uuid.UUID(value)
-    except (ValueError, TypeError):
+    except (ValueError, TypeError, AttributeError):
         return None
 
 
@@ -361,6 +364,7 @@ async def complete_lesson(
     course_id = lesson.course_id
 
     # 获取或创建用户课时记录
+    is_newly_completed = False
     user_lesson = await get_user_lesson(db, user_id, str(lesson_uid))
     if user_lesson is None:
         user_lesson = UserLesson(
@@ -371,9 +375,11 @@ async def complete_lesson(
             time_spent_seconds=time_spent_seconds,
         )
         db.add(user_lesson)
+        is_newly_completed = True
     else:
         if not user_lesson.completed:
             user_lesson.completed = True
+            is_newly_completed = True
         user_lesson.time_spent_seconds = user_lesson.time_spent_seconds + time_spent_seconds
 
     await db.flush()
@@ -381,6 +387,15 @@ async def complete_lesson(
     # 更新课程进度
     await get_or_create_user_course(db, user_id, course_id)
     await update_course_progress(db, user_id, course_id)
+
+    # 新完成课时：给用户增加经验值
+    if is_newly_completed:
+        from app.models.user import User
+        user_stmt = select(User).where(User.id == user_id)
+        user_result = await db.execute(user_stmt)
+        user = user_result.scalar_one_or_none()
+        if user:
+            user.total_score = (user.total_score or 0) + 10
 
     return user_lesson
 

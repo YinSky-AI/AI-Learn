@@ -19,6 +19,8 @@ from app.core.redis import redis_client
 from app.core.database import engine
 from app.models import Base
 from app.api.v1.router import router as v1_router
+from app.admin.routes import router as admin_router
+from app.middlewares import add_exception_handlers, RequestLoggingMiddleware
 
 
 # ============ 速率限制中间件（基于 Redis 滑动窗口）============
@@ -29,9 +31,9 @@ async def rate_limit_middleware(request: Request, call_next):
     基于 Redis 滑动窗口算法，每分钟最多 N 次请求
     跳过健康检查等不需要限流的路径
     """
-    # 跳过健康检查和文档路径
+    # 跳过健康检查、文档路径和管理后台
     skip_paths = {"/health", "/docs", "/redoc", "/openapi.json"}
-    if request.url.path in skip_paths:
+    if request.url.path in skip_paths or request.url.path.startswith("/admin"):
         return await call_next(request)
 
     # 获取客户端标识（优先使用用户ID，否则使用 IP）
@@ -51,7 +53,7 @@ async def rate_limit_middleware(request: Request, call_next):
         count = await redis_client.client.zcard(key)
 
         if count > settings.RATE_LIMIT_PER_MINUTE:
-            return JSONResponse(
+            response = JSONResponse(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
                 content={
                     "code": "RATE_001",
@@ -60,6 +62,14 @@ async def rate_limit_middleware(request: Request, call_next):
                     "meta": None,
                 },
             )
+            # 添加 CORS 头，避免浏览器报跨域错误
+            origin = request.headers.get("origin")
+            if origin and origin in settings.CORS_ORIGINS:
+                response.headers["Access-Control-Allow-Origin"] = origin
+                response.headers["Access-Control-Allow-Credentials"] = "true"
+            elif "*" in settings.CORS_ALLOW_METHODS:
+                response.headers["Access-Control-Allow-Origin"] = "*"
+            return response
 
         # 设置 key 过期时间
         await redis_client.client.expire(key, 120)
@@ -187,6 +197,11 @@ app.add_middleware(
     allow_headers=settings.CORS_ALLOW_HEADERS,
 )
 
+# 注册请求日志中间件
+app.add_middleware(RequestLoggingMiddleware)
+# 注册全局异常处理器
+add_exception_handlers(app)
+
 # 自定义中间件
 app.middleware("http")(rate_limit_middleware)
 app.middleware("http")(request_id_middleware)
@@ -196,6 +211,9 @@ app.middleware("http")(request_id_middleware)
 app.add_exception_handler(Exception, global_exception_handler)
 
 # ============ 注册路由 ============
+
+# 管理后台路由（放在中间件之前注册，确保可用）
+app.include_router(admin_router)
 
 app.include_router(v1_router, prefix=settings.API_V1_PREFIX)
 

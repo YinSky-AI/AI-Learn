@@ -16,6 +16,7 @@ from sqlalchemy import (
     JSON,
     Index,
     UniqueConstraint,
+    DateTime,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -155,6 +156,11 @@ class UserCourse(BaseModel, Base):
         String(20),
         default="enrolled",
         comment="状态: enrolled/completed",
+    )
+    last_accessed_at = mapped_column(
+        DateTime,
+        nullable=True,
+        comment="最近学习时间",
     )
 
     # 关系

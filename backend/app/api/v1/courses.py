@@ -2,14 +2,18 @@
 """
 课程公开 API
 处理课程列表、详情、课时查询（无需认证）
+课程详情支持可选认证，已登录用户返回课时完成状态
 """
 
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Query
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.deps import get_current_user_id_optional
+from app.models.course import UserLesson
 from app.schemas.common import ApiResponse, paged_response, success_response
 from app.schemas.course import CourseBrief, CourseDetail, LessonBrief
 from app.services import course_service
@@ -50,13 +54,31 @@ async def list_courses(
 async def get_course(
     course_id: str,
     db: AsyncSession = Depends(get_db),
+    user_id: Optional[str] = Depends(get_current_user_id_optional),
 ):
-    """课程详情（支持 UUID 或 slug）"""
+    """课程详情（支持 UUID 或 slug，已登录用户返回课时完成状态）"""
     course = await course_service.get_course_detail(db, course_id)
     if course is None:
         return ApiResponse(code="BIZ_001", message="课程不存在", data=None)
+
+    data = CourseDetail.model_validate(course)
+
+    # 已登录用户：查询课时完成状态并合并
+    if user_id and data.lessons:
+        lesson_ids = [str(l.id) for l in data.lessons]
+        stmt = select(UserLesson).where(
+            UserLesson.user_id == user_id,
+            UserLesson.lesson_id.in_(lesson_ids),
+            UserLesson.completed == True,
+        )
+        result = await db.execute(stmt)
+        completed_lesson_ids = {str(ul.lesson_id) for ul in result.scalars().all()}
+
+        for lesson in data.lessons:
+            lesson.completed = str(lesson.id) in completed_lesson_ids
+
     return success_response(
-        data=CourseDetail.model_validate(course),
+        data=data,
         message="获取课程详情成功",
     )
 
@@ -65,10 +87,26 @@ async def get_course(
 async def list_lessons(
     course_id: str,
     db: AsyncSession = Depends(get_db),
+    user_id: Optional[str] = Depends(get_current_user_id_optional),
 ):
-    """课时列表（支持 UUID 或 slug）"""
+    """课时列表（支持 UUID 或 slug，已登录用户返回完成状态）"""
     lessons = await course_service.get_lessons_by_course(db, course_id)
+    data = [LessonBrief.model_validate(lesson) for lesson in lessons]
+
+    if user_id and data:
+        lesson_ids = [str(l.id) for l in data]
+        stmt = select(UserLesson).where(
+            UserLesson.user_id == user_id,
+            UserLesson.lesson_id.in_(lesson_ids),
+            UserLesson.completed == True,
+        )
+        result = await db.execute(stmt)
+        completed_lesson_ids = {str(ul.lesson_id) for ul in result.scalars().all()}
+
+        for lesson in data:
+            lesson.completed = str(lesson.id) in completed_lesson_ids
+
     return success_response(
-        data=[LessonBrief.model_validate(lesson) for lesson in lessons],
+        data=data,
         message="获取课时列表成功",
     )

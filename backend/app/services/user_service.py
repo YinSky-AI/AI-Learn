@@ -183,36 +183,21 @@ async def get_user_stats(
     result = await db.execute(stmt)
     completed_lessons = result.scalar_one_or_none() or 0
 
-    # 进行中课程数（有 user_lesson 记录但未全部完成的课程）
-    stmt = (
-        select(func.count(func.distinct(UserLesson.course_id)))
-        .where(UserLesson.user_id == str(user_id))
+    # ===== 课程完成统计（从 UserCourse 表，更可靠） =====
+    from app.models.course import UserCourse
+    stmt = select(func.count(UserCourse.id)).where(
+        UserCourse.user_id == str(user_id),
+        UserCourse.status == "completed",
     )
     result = await db.execute(stmt)
-    all_courses_count = result.scalar_one_or_none() or 0
-
-    # 已完成课程数（课程下所有课时都已完成）
-    from sqlalchemy import text
-    stmt = text("""
-        SELECT COUNT(DISTINCT ul.course_id)
-        FROM user_lessons ul
-        WHERE ul.user_id = :user_id
-          AND ul.completed = true
-          AND NOT EXISTS (
-              SELECT 1 FROM lessons l
-              WHERE l.course_id = ul.course_id
-                AND NOT EXISTS (
-                    SELECT 1 FROM user_lessons ul2
-                    WHERE ul2.user_id = :user_id
-                      AND ul2.lesson_id = l.id
-                      AND ul2.completed = true
-                )
-          )
-    """)
-    result = await db.execute(stmt, {"user_id": str(user_id)})
     completed_courses = result.scalar_one_or_none() or 0
 
-    in_progress_courses = all_courses_count - completed_courses
+    stmt = select(func.count(UserCourse.id)).where(
+        UserCourse.user_id == str(user_id),
+        UserCourse.status == "enrolled",
+    )
+    result = await db.execute(stmt)
+    in_progress_courses = result.scalar_one_or_none() or 0
 
     total_courses = in_progress_courses + completed_courses
     overall_progress = int((completed_courses / total_courses) * 100) if total_courses > 0 else 0

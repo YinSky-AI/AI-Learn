@@ -115,6 +115,7 @@ class LessonBrief(BaseModel):
     duration: int
     order: int
     is_active: bool
+    completed: Optional[bool] = Field(default=False, description="当前用户是否已完成（仅当请求带认证时有效）")
 
     model_config = {"from_attributes": True}
 

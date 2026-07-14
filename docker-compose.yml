@@ -23,12 +23,14 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql:ro
+      - ./ruoyi-admin-backend/sql/ruoyi-pg.sql:/docker-entrypoint-initdb.d/02-ruoyi-init.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d learning_platform"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 30s
+    # 注意：若 init-db.sql 不存在，首次启动时 Docker 会报文件不存在警告，请确保文件已创建
     networks:
       - ai-learn-net
 
@@ -74,6 +76,12 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
     networks:
       - ai-learn-net
 
@@ -92,6 +100,71 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - ai-learn-net
+
+  # ---------------------------------------------------------------------------
+  # Nginx 统一网关
+  # ---------------------------------------------------------------------------
+  nginx-gateway:
+    image: nginx:alpine
+    container_name: ai-learn-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - frontend
+      - backend
+      - ruoyi-admin-frontend
+      - ruoyi-admin-backend
+    networks:
+      - ai-learn-net
+
+  # ---------------------------------------------------------------------------
+  # 若依管理后台后端
+  # ---------------------------------------------------------------------------
+  ruoyi-admin-backend:
+    build:
+      context: ./ruoyi-admin-backend
+      dockerfile: Dockerfile
+    container_name: ai-learn-ruoyi-api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/learning_platform
+      REDIS_URL: redis://redis:6379/1
+      JWT_SECRET_KEY: your-super-secret-key-change-in-production
+      JWT_ALGORITHM: HS256
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8088/health')\""]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    networks:
+      - ai-learn-net
+
+  # ---------------------------------------------------------------------------
+  # 若依管理后台前端
+  # ---------------------------------------------------------------------------
+  ruoyi-admin-frontend:
+    build:
+      context: ./ruoyi-admin-frontend
+      dockerfile: Dockerfile
+    container_name: ai-learn-ruoyi-fe
+    restart: unless-stopped
     networks:
       - ai-learn-net
 

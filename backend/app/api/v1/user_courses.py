@@ -66,6 +66,8 @@ async def enroll_course(
     user_course = await course_service.get_or_create_user_course(
         db, user_id, course_id
     )
+    # 预加载关系属性，避免 MissingGreenlet 错误
+    await db.refresh(user_course, ["course"])
     return success_response(
         data=UserCourseResponse.model_validate(user_course),
         message="报名成功",
@@ -100,6 +102,8 @@ async def complete_lesson(
         lesson_id=lesson_id,
         time_spent_seconds=body.time_spent_seconds,
     )
+    # 预加载关系属性，避免 MissingGreenlet 错误
+    await db.refresh(user_lesson, ["lesson"])
     return success_response(
         data=UserLessonResponse.model_validate(user_lesson),
         message="课时完成",

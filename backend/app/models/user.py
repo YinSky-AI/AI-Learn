@@ -6,7 +6,7 @@
 
 from datetime import date, datetime
 
-from sqlalchemy import Column, Date, Float, Integer, String, Index, text
+from sqlalchemy import Boolean, Column, Date, Float, Integer, String, Index, text
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 
 from app.core.database import SoftDeleteModel
@@ -38,6 +38,12 @@ class User(SoftDeleteModel, Base):
 
     # 登录信息
     last_login_date = Column(Date, nullable=True, comment="上次登录日期")
+
+    # 若依管理后台关联
+    ruoyi_user_id = Column(Integer, nullable=True, unique=True,
+                           comment="若依 sys_user 表的 user_id，用于关联管理后台")
+    is_admin = Column(Boolean, default=False, server_default=text("false"),
+                     comment="是否为管理员（同步自若依角色）")
 
     # 索引
     __table_args__ = (

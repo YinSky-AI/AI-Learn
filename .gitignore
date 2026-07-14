@@ -38,3 +38,14 @@ Thumbs.db
 # Cache
 .cache/
 *.tsbuildinfo
+
+# 若依管理后台（已废弃）
+ruoyi-admin-backend/
+ruoyi-admin-frontend/
+_ruoyi-temp/
+
+# 开发中间产物
+agents/
+test/
+design_imgs/
+admin-test-screenshots/

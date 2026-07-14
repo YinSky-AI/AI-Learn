@@ -23,7 +23,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql:ro
-      - ./ruoyi-admin-backend/sql/ruoyi-pg.sql:/docker-entrypoint-initdb.d/02-ruoyi-init.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d learning_platform"]
       interval: 10s
@@ -123,50 +122,10 @@ services:
     depends_on:
       - frontend
       - backend
-      - ruoyi-admin-frontend
-      - ruoyi-admin-backend
     networks:
       - ai-learn-net
 
-  # ---------------------------------------------------------------------------
-  # 若依管理后台后端
-  # ---------------------------------------------------------------------------
-  ruoyi-admin-backend:
-    build:
-      context: ./ruoyi-admin-backend
-      dockerfile: Dockerfile
-    container_name: ai-learn-ruoyi-api
-    restart: unless-stopped
-    environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/learning_platform
-      REDIS_URL: redis://redis:6379/1
-      JWT_SECRET_KEY: your-super-secret-key-change-in-production
-      JWT_ALGORITHM: HS256
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    healthcheck:
-      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8088/health')\""]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 15s
-    networks:
-      - ai-learn-net
 
-  # ---------------------------------------------------------------------------
-  # 若依管理后台前端
-  # ---------------------------------------------------------------------------
-  ruoyi-admin-frontend:
-    build:
-      context: ./ruoyi-admin-frontend
-      dockerfile: Dockerfile
-    container_name: ai-learn-ruoyi-fe
-    restart: unless-stopped
-    networks:
-      - ai-learn-net
 
 # =============================================================================
 # 持久化卷

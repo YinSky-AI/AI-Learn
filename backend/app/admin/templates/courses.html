@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+{% block title %}课程管理{% endblock %}
+
+{% block content %}
+<div class="space-y-5">
+    <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-bold text-gray-800">课程管理</h1>
+        <button onclick="showCourseModal()" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            新建课程
+        </button>
+    </div>
+
+    <!-- 搜索筛选 -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+        <div class="flex flex-wrap gap-3 items-end">
+            <div class="flex-1 min-w-[180px]">
+                <label class="block text-xs text-gray-500 mb-1">课程名称</label>
+                <input type="text" id="searchTitle" placeholder="搜索课程名..."
+                    class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+            </div>
+            <div class="min-w-[120px]">
+                <label class="block text-xs text-gray-500 mb-1">学科</label>
+                <select id="searchSubject" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                    <option value="">全部</option>
+                    <option value="math">数学</option>
+                    <option value="chinese">语文</option>
+                    <option value="english">英语</option>
+                    <option value="science">科学</option>
+                    <option value="history">历史</option>
+                    <option value="programming">编程</option>
+                    <option value="art">美术</option>
+                </select>
+            </div>
+            <div class="min-w-[120px]">
+                <label class="block text-xs text-gray-500 mb-1">难度</label>
+                <select id="searchDifficulty" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                    <option value="">全部</option>
+                    <option value="beginner">入门</option>
+                    <option value="intermediate">进阶</option>
+                    <option value="advanced">高级</option>
+                </select>
+            </div>
+            <div class="min-w-[120px]">
+                <label class="block text-xs text-gray-500 mb-1">状态</label>
+                <select id="searchStatus" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                    <option value="">全部</option>
+                    <option value="true">启用</option>
+                    <option value="false">停用</option>
+                </select>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="loadData(1)" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition">搜索</button>
+                <button onclick="resetSearch()" class="px-4 py-2 bg-gray-100 text-gray-600 text-sm rounded-lg hover:bg-gray-200 transition">重置</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 数据表格 -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead class="bg-gray-50 border-b border-gray-100">
+                    <tr>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">ID</th>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">课程名称</th>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">学科</th>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">难度</th>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">年龄段</th>
+                        <th class="text-right px-4 py-3 text-gray-500 font-medium">课时数</th>
+                        <th class="text-right px-4 py-3 text-gray-500 font-medium">时长</th>
+                        <th class="text-right px-4 py-3 text-gray-500 font-medium">报名人数</th>
+                        <th class="text-right px-4 py-3 text-gray-500 font-medium">评分</th>
+                        <th class="text-center px-4 py-3 text-gray-500 font-medium">状态</th>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">创建时间</th>
+                        <th class="text-center px-4 py-3 text-gray-500 font-medium">操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr><td colspan="12" class="px-4 py-10 text-center text-gray-400">加载中...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+            <span id="pageInfo" class="text-sm text-gray-500"></span>
+            <div id="pagination" class="flex gap-1"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 课程创建/编辑弹窗 -->
+<div id="courseModal" class="modal-overlay hidden">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+            <h3 id="courseModalTitle" class="text-lg font-semibold text-gray-800">新建课程</h3>
+            <button onclick="closeCourseModal()" class="text-gray-400 hover:text-gray-600 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="courseId">
+            <div>
+                <label class="block text-xs text-gray-500 mb-1">课程名称 <span class="text-red-500">*</span></label>
+                <input type="text" id="courseTitle" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="请输入课程名称">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-500 mb-1">课程描述<span class="text-gray-400">（选填）</span></label>
+                <textarea id="courseDescription" rows="3" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none" placeholder="请输入课程描述"></textarea>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">学科 <span class="text-red-500">*</span></label>
+                    <select id="courseSubject" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                        <option value="">请选择</option>
+                        <option value="math">数学</option>
+                        <option value="chinese">语文</option>
+                        <option value="english">英语</option>
+                        <option value="science">科学</option>
+                        <option value="history">历史</option>
+                        <option value="programming">编程</option>
+                        <option value="art">美术</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">难度<span class="text-gray-400">（选填）</span></label>
+                    <select id="courseDifficulty" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                        <option value="">请选择</option>
+                        <option value="beginner">入门</option>
+                        <option value="intermediate">进阶</option>
+                        <option value="advanced">高级</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">年龄段<span class="text-gray-400">（选填）</span></label>
+                    <select id="courseAgeGroup" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                        <option value="">请选择</option>
+                        <option value="6-8">6-8岁</option>
+                        <option value="9-12">9-12岁</option>
+                        <option value="10-12">10-12岁</option>
+                        <option value="13-15">13-15岁</option>
+                        <option value="16-18">16-18岁</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">总时长(分钟)<span class="text-gray-400">（选填）</span></label>
+                    <input type="number" id="courseDuration" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="0" min="0">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">排序号<span class="text-gray-400">（选填）</span></label>
+                    <input type="number" id="courseSortOrder" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="0" min="0">
+                </div>
+                <div class="flex items-end">
+                    <label class="flex items-center gap-2 cursor-pointer py-2">
+                        <input type="checkbox" id="courseIsActive" class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                        <span class="text-sm text-gray-700">启用课程</span>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs text-gray-500 mb-1">封面图片URL<span class="text-gray-400">（选填）</span></label>
+                <input type="text" id="courseImageUrl" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="https://...">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-500 mb-1">课程标识(slug)<span class="text-gray-400">（选填）</span></label>
+                <input type="text" id="courseSlug" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="例如: math-beginner-01">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-500 mb-1">标签(逗号分隔)<span class="text-gray-400">（选填）</span></label>
+                <input type="text" id="courseTags" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="标签1,标签2,标签3">
+            </div>
+        </div>
+        <div class="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-100">
+            <button onclick="closeCourseModal()" class="px-4 py-2 bg-gray-100 text-gray-600 text-sm rounded-lg hover:bg-gray-200 transition">取消</button>
+            <button onclick="saveCourse()" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition">保存</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const SUBJECT_MAP = {math:'数学',chinese:'语文',english:'英语',science:'科学',history:'历史',programming:'编程',art:'美术'};
+const DIFFICULTY_MAP = {beginner:'入门',intermediate:'进阶',advanced:'高级'};
+const AGE_GROUP_MAP = {'6-8':'6-8岁','9-12':'9-12岁','10-12':'10-12岁','13-15':'13-15岁','16-18':'16-18岁','AGE_6_8':'6-8岁','AGE_9_12':'9-12岁','AGE_10_12':'10-12岁','AGE_13_15':'13-15岁','AGE_16_18':'16-18岁'};
+function ageGroupMap(v) { return AGE_GROUP_MAP[v] || v || '-'; }
+
+let currentPage = 1;
+const pageSize = 15;
+
+function shortId(id) {
+    return id ? id.substring(0, 8) : '-';
+}
+
+function formatTime(t) {
+    if (!t) return '-';
+    return new Date(t).toLocaleString('zh-CN');
+}
+
+function getParams(page) {
+    const p = new URLSearchParams();
+    p.set('page', page);
+    p.set('page_size', pageSize);
+    const title = document.getElementById('searchTitle').value.trim();
+    const subject = document.getElementById('searchSubject').value;
+    const difficulty = document.getElementById('searchDifficulty').value;
+    const status = document.getElementById('searchStatus').value;
+    if (title) p.set('title', title);
+    if (subject) p.set('subject', subject);
+    if (difficulty) p.set('difficulty', difficulty);
+    if (status) p.set('is_active', status);
+    return p;
+}
+
+async function loadData(page) {
+    currentPage = page;
+    const params = getParams(page);
+    const resp = await fetch('/admin/courses/api/list?' + params.toString());
+    const data = await resp.json();
+    renderTable(data.items || []);
+    renderPagination(data.total || 0, page, data.page_size || pageSize);
+}
+
+function renderTable(items) {
+    const tbody = document.getElementById('tableBody');
+    if (!items.length) {
+        tbody.innerHTML = '<tr><td colspan="12" class="px-4 py-10 text-center text-gray-400">暂无数据</td></tr>';
+        return;
+    }
+    tbody.innerHTML = items.map(c => `
+        <tr class="border-t border-gray-50 hover:bg-gray-50">
+            <td class="px-4 py-3 text-gray-400 text-xs font-mono" title="${c.id}">${shortId(c.id)}</td>
+            <td class="px-4 py-3 text-gray-800 font-medium max-w-[200px] truncate" title="${c.title}">${c.title}</td>
+            <td class="px-4 py-3 text-gray-600">${SUBJECT_MAP[c.subject] || c.subject || '-'}</td>
+            <td class="px-4 py-3 text-gray-600">${DIFFICULTY_MAP[c.difficulty] || c.difficulty || '-'}</td>
+            <td class="px-4 py-3 text-gray-600">${ageGroupMap(c.age_group)}</td>
+            <td class="px-4 py-3 text-right text-gray-600">${c.total_lessons ?? '-'}</td>
+            <td class="px-4 py-3 text-right text-gray-600">${c.duration ? c.duration + ' 分钟' : '-'}</td>
+            <td class="px-4 py-3 text-right font-semibold text-gray-700">${c.enroll_count ?? 0}</td>
+            <td class="px-4 py-3 text-right">${c.rating ? '<span class="text-amber-500">' + c.rating + '</span>' : '<span class="text-gray-300">-</span>'}</td>
+            <td class="px-4 py-3 text-center">
+                <label class="toggle-switch inline-block">
+                    <input type="checkbox" ${c.is_active ? 'checked' : ''} onchange="toggleStatus('${c.id}', this.checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </td>
+            <td class="px-4 py-3 text-gray-400 text-xs whitespace-nowrap">${formatTime(c.created_at)}</td>
+            <td class="px-4 py-3 text-center">
+                <a href="/admin/lessons?course_id=${c.id}" class="text-blue-500 hover:text-blue-700 text-xs transition mr-2">课时</a>
+                <button onclick="showCourseModal('${c.id}')" class="text-amber-500 hover:text-amber-700 text-xs transition mr-2">编辑</button>
+                <button onclick="deleteCourse('${c.id}', '${c.title.replace(/'/g, "\\'")}')"
+                    class="text-red-400 hover:text-red-600 text-xs transition">删除</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function renderPagination(total, page, size) {
+    const totalPages = Math.max(1, Math.ceil(total / size));
+    document.getElementById('pageInfo').textContent = `共 ${total} 条，第 ${page}/${totalPages} 页`;
+    const container = document.getElementById('pagination');
+    let html = '';
+    html += `<button class="page-btn" ${page <= 1 ? 'disabled' : ''} onclick="loadData(${page - 1})">&laquo;</button>`;
+
+    let start = Math.max(1, page - 2);
+    let end = Math.min(totalPages, page + 2);
+    if (start > 1) { html += `<button class="page-btn" onclick="loadData(1)">1</button>`; if (start > 2) html += `<span class="px-1 text-gray-400">...</span>`; }
+    for (let i = start; i <= end; i++) {
+        html += `<button class="page-btn ${i === page ? 'active' : ''}" onclick="loadData(${i})">${i}</button>`;
+    }
+    if (end < totalPages) { if (end < totalPages - 1) html += `<span class="px-1 text-gray-400">...</span>`; html += `<button class="page-btn" onclick="loadData(${totalPages})">${totalPages}</button>`; }
+
+    html += `<button class="page-btn" ${page >= totalPages ? 'disabled' : ''} onclick="loadData(${page + 1})">&raquo;</button>`;
+    container.innerHTML = html;
+}
+
+async function toggleStatus(id, active) {
+    try {
+        const resp = await fetch(`/admin/courses/api/${id}/status`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({is_active: active})
+        });
+        const data = await resp.json();
+        if (!resp.ok) { alert(data.message || '操作失败'); loadData(currentPage); }
+    } catch (e) {
+        alert('请求失败'); loadData(currentPage);
+    }
+}
+
+function deleteCourse(id, title) {
+    if (!confirm(`确定要删除课程「${title}」吗？此操作不可恢复。`)) return;
+    fetch(`/admin/courses/api/${id}`, { method: 'DELETE' })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) { loadData(currentPage); }
+            else { alert(data.message || '删除失败'); }
+        })
+        .catch(() => alert('请求失败'));
+}
+
+function resetSearch() {
+    document.getElementById('searchTitle').value = '';
+    document.getElementById('searchSubject').value = '';
+    document.getElementById('searchDifficulty').value = '';
+    document.getElementById('searchStatus').value = '';
+    loadData(1);
+}
+
+// 回车搜索
+document.getElementById('searchTitle').addEventListener('keydown', e => { if (e.key === 'Enter') loadData(1); });
+
+// 初始加载
+loadData(1);
+
+// ========== 课程创建/编辑弹窗 ==========
+function showCourseModal(id) {
+    const modal = document.getElementById('courseModal');
+    const title = document.getElementById('courseModalTitle');
+    if (id) {
+        title.textContent = '编辑课程';
+        // 加载课程数据
+        fetch('/admin/courses/api/' + id)
+            .then(r => r.json())
+            .then(c => {
+                document.getElementById('courseId').value = c.id || '';
+                document.getElementById('courseTitle').value = c.title || '';
+                document.getElementById('courseDescription').value = c.description || '';
+                document.getElementById('courseSubject').value = c.subject || '';
+                document.getElementById('courseDifficulty').value = c.difficulty || '';
+                document.getElementById('courseAgeGroup').value = c.age_group || '';
+                document.getElementById('courseDuration').value = c.duration || '';
+                document.getElementById('courseSortOrder').value = c.sort_order ?? 0;
+                document.getElementById('courseIsActive').checked = c.is_active !== false;
+                document.getElementById('courseImageUrl').value = c.image_url || '';
+                document.getElementById('courseSlug').value = c.slug || '';
+                document.getElementById('courseTags').value = Array.isArray(c.tags) ? c.tags.join(',') : (c.tags || '');
+            })
+            .catch(() => alert('加载课程数据失败'));
+    } else {
+        title.textContent = '新建课程';
+        document.getElementById('courseId').value = '';
+        document.getElementById('courseTitle').value = '';
+        document.getElementById('courseDescription').value = '';
+        document.getElementById('courseSubject').value = '';
+        document.getElementById('courseDifficulty').value = '';
+        document.getElementById('courseAgeGroup').value = '';
+        document.getElementById('courseDuration').value = '';
+        document.getElementById('courseSortOrder').value = 0;
+        document.getElementById('courseIsActive').checked = true;
+        document.getElementById('courseImageUrl').value = '';
+        document.getElementById('courseSlug').value = '';
+        document.getElementById('courseTags').value = '';
+    }
+    modal.classList.remove('hidden');
+}
+
+function closeCourseModal() {
+    document.getElementById('courseModal').classList.add('hidden');
+}
+
+async function saveCourse() {
+    const id = document.getElementById('courseId').value;
+    const title = document.getElementById('courseTitle').value.trim();
+    if (!title) { alert('请输入课程名称'); return; }
+    if (!document.getElementById('courseSubject').value) { alert('请选择学科'); return; }
+
+    const tagsRaw = document.getElementById('courseTags').value;
+    const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(t => t) : [];
+
+    const payload = {
+        title: title,
+        description: document.getElementById('courseDescription').value.trim(),
+        subject: document.getElementById('courseSubject').value,
+        difficulty: document.getElementById('courseDifficulty').value,
+        age_group: document.getElementById('courseAgeGroup').value,
+        duration: parseInt(document.getElementById('courseDuration').value) || 0,
+        sort_order: parseInt(document.getElementById('courseSortOrder').value) || 0,
+        is_active: document.getElementById('courseIsActive').checked,
+        image_url: document.getElementById('courseImageUrl').value.trim(),
+        slug: document.getElementById('courseSlug').value.trim(),
+        tags: tags
+    };
+
+    try {
+        let url, method;
+        if (id) {
+            url = '/admin/courses/api/' + id;
+            method = 'PUT';
+        } else {
+            url = '/admin/courses/api/create';
+            method = 'POST';
+        }
+        const resp = await fetch(url, {
+            method: method,
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+            closeCourseModal();
+            loadData(currentPage);
+        } else {
+            alert(data.message || '保存失败');
+        }
+    } catch (e) {
+        alert('请求失败');
+    }
+}
+</script>
+{% endblock %}

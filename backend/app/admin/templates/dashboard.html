@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}仪表盘{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <h1 class="text-2xl font-bold text-gray-800">仪表盘</h1>
+
+    <!-- 统计卡片 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="stat-card bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">总用户数</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-1">{{ stats.total_users }}</p>
+                </div>
+                <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">总课程数</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-1">{{ stats.total_courses }}</p>
+                </div>
+                <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">总学习时长</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-1">{{ stats.total_time }}</p>
+                </div>
+                <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-gray-500">总完成课时</p>
+                    <p class="text-3xl font-bold text-gray-800 mt-1">{{ stats.completed_lessons }}</p>
+                </div>
+                <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- 课程报名排行 -->
+        <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100">
+            <div class="px-5 py-4 border-b border-gray-100">
+                <h2 class="font-semibold text-gray-800">课程报名排行</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="text-left px-5 py-3 text-gray-500 font-medium">排名</th>
+                            <th class="text-left px-5 py-3 text-gray-500 font-medium">课程名称</th>
+                            <th class="text-left px-5 py-3 text-gray-500 font-medium">学科</th>
+                            <th class="text-right px-5 py-3 text-gray-500 font-medium">报名人数</th>
+                            <th class="text-right px-5 py-3 text-gray-500 font-medium">评分</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in top_courses %}
+                        <tr class="border-t border-gray-50 hover:bg-gray-50">
+                            <td class="px-5 py-3">
+                                {% if loop.index <= 3 %}
+                                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold
+                                    {% if loop.index == 1 %}bg-yellow-100 text-yellow-700
+                                    {% elif loop.index == 2 %}bg-gray-200 text-gray-600
+                                    {% else %}bg-amber-100 text-amber-700{% endif %}">
+                                    {{ loop.index }}
+                                </span>
+                                {% else %}
+                                <span class="text-gray-400">{{ loop.index }}</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-5 py-3 text-gray-800 font-medium max-w-[240px] truncate">{{ c.title }}</td>
+                            <td class="px-5 py-3 text-gray-500">{{ c.subject }}</td>
+                            <td class="px-5 py-3 text-right font-semibold text-gray-700">{{ c.enroll_count }}</td>
+                            <td class="px-5 py-3 text-right">
+                                {% if c.rating %}
+                                <span class="text-amber-500">{{ c.rating }}</span>
+                                {% else %}
+                                <span class="text-gray-300">-</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% if not top_courses %}
+                        <tr><td colspan="5" class="px-5 py-10 text-center text-gray-400">暂无数据</td></tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 学科分布 -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+            <div class="px-5 py-4 border-b border-gray-100">
+                <h2 class="font-semibold text-gray-800">学科分布</h2>
+            </div>
+            <div class="p-5 space-y-3">
+                {% for item in subject_dist %}
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span class="text-gray-600">{{ item.subject }}</span>
+                        <span class="font-semibold text-gray-700">{{ item.count }} 门</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2.5">
+                        <div class="h-2.5 rounded-full
+                            {% if item.subject == '数学' %}bg-blue-500
+                            {% elif item.subject == '语文' %}bg-red-400
+                            {% elif item.subject == '英语' %}bg-green-500
+                            {% elif item.subject == '科学' %}bg-purple-500
+                            {% elif item.subject == '历史' %}bg-amber-500
+                            {% elif item.subject == '编程' %}bg-indigo-500
+                            {% elif item.subject == '美术' %}bg-pink-400
+                            {% else %}bg-gray-400{% endif %}"
+                            style="width: {{ item.percent }}%"></div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% if not subject_dist %}
+                <p class="text-center text-gray-400 py-8">暂无数据</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

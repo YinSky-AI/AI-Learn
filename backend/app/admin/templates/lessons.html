@@ -1,0 +1,340 @@
+{% extends "base.html" %}
+{% block title %}课时管理{% endblock %}
+
+{% block content %}
+<div class="space-y-5">
+    <!-- 页面标题 -->
+    <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <a href="/admin/courses" class="text-gray-400 hover:text-gray-600 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </a>
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">课程课时管理</h1>
+                <p class="text-sm text-gray-500 mt-0.5">当前课程：<span id="courseName" class="text-blue-600 font-medium">加载中...</span></p>
+            </div>
+        </div>
+        <button onclick="showLessonModal()" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            新建课时
+        </button>
+    </div>
+
+    <!-- 数据表格 -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead class="bg-gray-50 border-b border-gray-100">
+                    <tr>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">排序号</th>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">标题</th>
+                        <th class="text-left px-4 py-3 text-gray-500 font-medium">类型</th>
+                        <th class="text-right px-4 py-3 text-gray-500 font-medium">时长</th>
+                        <th class="text-center px-4 py-3 text-gray-500 font-medium">状态</th>
+                        <th class="text-center px-4 py-3 text-gray-500 font-medium">操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr><td colspan="6" class="px-4 py-10 text-center text-gray-400">加载中...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- 分页 -->
+        <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+            <span id="pageInfo" class="text-sm text-gray-500"></span>
+            <div id="pagination" class="flex gap-1"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 课时创建/编辑弹窗 -->
+<div id="lessonModal" class="modal-overlay hidden">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+            <h3 id="lessonModalTitle" class="text-lg font-semibold text-gray-800">新建课时</h3>
+            <button onclick="closeLessonModal()" class="text-gray-400 hover:text-gray-600 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="p-6 space-y-4">
+            <input type="hidden" id="lessonId">
+            <div>
+                <label class="block text-xs text-gray-500 mb-1">课时标题 <span class="text-red-500">*</span></label>
+                <input type="text" id="lessonTitle" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="请输入课时标题">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-500 mb-1">课时描述<span class="text-gray-400">（选填）</span></label>
+                <textarea id="lessonDescription" rows="3" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none" placeholder="请输入课时描述"></textarea>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">类型 <span class="text-red-500">*</span></label>
+                    <select id="lessonType" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
+                        <option value="">请选择</option>
+                        <option value="text">文本</option>
+                        <option value="video">视频</option>
+                        <option value="interactive">互动</option>
+                        <option value="quiz">测验</option>
+                        <option value="game">游戏</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">时长(分钟)<span class="text-gray-400">（选填）</span></label>
+                    <input type="number" id="lessonDuration" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="0" min="0">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">排序号<span class="text-gray-400">（选填）</span></label>
+                    <input type="number" id="lessonOrder" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" placeholder="0" min="0">
+                </div>
+            </div>
+            <div class="flex items-center">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" id="lessonIsActive" class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                    <span class="text-sm text-gray-700">启用课时</span>
+                </label>
+            </div>
+            <div>
+                <label class="block text-xs text-gray-500 mb-1">课时内容（支持 Markdown）<span class="text-gray-400">（选填）</span></label>
+                <textarea id="lessonContent" rows="12" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-y font-mono" style="height: 300px;" placeholder="请输入课时内容，支持 Markdown 语法..."></textarea>
+            </div>
+        </div>
+        <div class="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-100">
+            <button onclick="closeLessonModal()" class="px-4 py-2 bg-gray-100 text-gray-600 text-sm rounded-lg hover:bg-gray-200 transition">取消</button>
+            <button onclick="saveLesson()" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition">保存</button>
+        </div>
+    </div>
+</div>
+
+<script>
+const TYPE_MAP = {text:'文本', video:'视频', interactive:'互动', quiz:'测验', game:'游戏'};
+
+let courseId = new URLSearchParams(window.location.search).get('course_id') || '';
+let currentPage = 1;
+const pageSize = 15;
+
+function shortId(id) {
+    return id ? id.substring(0, 8) : '-';
+}
+
+function getParams(page) {
+    const p = new URLSearchParams();
+    p.set('page', page);
+    p.set('page_size', pageSize);
+    if (courseId) p.set('course_id', courseId);
+    return p;
+}
+
+async function loadCourseInfo() {
+    if (!courseId) return;
+    try {
+        const resp = await fetch('/admin/courses/api/' + courseId);
+        const data = await resp.json();
+        document.getElementById('courseName').textContent = (data.data && data.data.title) || '未知课程';
+    } catch (e) {
+        document.getElementById('courseName').textContent = '加载失败';
+    }
+}
+
+async function loadData(page) {
+    currentPage = page;
+    const params = getParams(page);
+    const resp = await fetch('/admin/lessons/api/list?' + params.toString());
+    const data = await resp.json();
+    renderTable(data.items || []);
+    renderPagination(data.total || 0, page, data.page_size || pageSize);
+}
+
+function renderTable(items) {
+    const tbody = document.getElementById('tableBody');
+    if (!items.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="px-4 py-10 text-center text-gray-400">暂无数据</td></tr>';
+        return;
+    }
+    tbody.innerHTML = items.map(l => `
+        <tr class="border-t border-gray-50 hover:bg-gray-50">
+            <td class="px-4 py-3 text-gray-600 font-medium">${l.sort_order ?? l.order ?? '-'}</td>
+            <td class="px-4 py-3 text-gray-800 font-medium max-w-[300px] truncate" title="${l.title}">${l.title}</td>
+            <td class="px-4 py-3">
+                <span class="inline-block px-2 py-0.5 text-xs rounded-full ${getTypeBadgeClass(l.type)}">${TYPE_MAP[l.type] || l.type || '-'}</span>
+            </td>
+            <td class="px-4 py-3 text-right text-gray-600">${l.duration ? l.duration + ' 分钟' : '-'}</td>
+            <td class="px-4 py-3 text-center">
+                <label class="toggle-switch inline-block">
+                    <input type="checkbox" ${l.is_active ? 'checked' : ''} onchange="toggleStatus('${l.id}', this.checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </td>
+            <td class="px-4 py-3 text-center whitespace-nowrap">
+                <button onclick="showLessonModal('${l.id}')" class="text-amber-500 hover:text-amber-700 text-xs transition mr-2">编辑</button>
+                <button onclick="deleteLesson('${l.id}', '${l.title.replace(/'/g, "\\'")}')" class="text-red-400 hover:text-red-600 text-xs transition mr-2">删除</button>
+                <button onclick="reorderLesson('${l.id}', 'up')" class="text-gray-400 hover:text-blue-600 text-xs transition mr-1" title="上移">&#9650;</button>
+                <button onclick="reorderLesson('${l.id}', 'down')" class="text-gray-400 hover:text-blue-600 text-xs transition" title="下移">&#9660;</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+function getTypeBadgeClass(type) {
+    const map = {
+        text: 'bg-gray-100 text-gray-700',
+        video: 'bg-blue-100 text-blue-700',
+        interactive: 'bg-green-100 text-green-700',
+        quiz: 'bg-purple-100 text-purple-700',
+        game: 'bg-orange-100 text-orange-700'
+    };
+    return map[type] || 'bg-gray-100 text-gray-600';
+}
+
+function renderPagination(total, page, size) {
+    const totalPages = Math.max(1, Math.ceil(total / size));
+    document.getElementById('pageInfo').textContent = `共 ${total} 条，第 ${page}/${totalPages} 页`;
+    const container = document.getElementById('pagination');
+    let html = '';
+    html += `<button class="page-btn" ${page <= 1 ? 'disabled' : ''} onclick="loadData(${page - 1})">&laquo;</button>`;
+
+    let start = Math.max(1, page - 2);
+    let end = Math.min(totalPages, page + 2);
+    if (start > 1) { html += `<button class="page-btn" onclick="loadData(1)">1</button>`; if (start > 2) html += `<span class="px-1 text-gray-400">...</span>`; }
+    for (let i = start; i <= end; i++) {
+        html += `<button class="page-btn ${i === page ? 'active' : ''}" onclick="loadData(${i})">${i}</button>`;
+    }
+    if (end < totalPages) { if (end < totalPages - 1) html += `<span class="px-1 text-gray-400">...</span>`; html += `<button class="page-btn" onclick="loadData(${totalPages})">${totalPages}</button>`; }
+
+    html += `<button class="page-btn" ${page >= totalPages ? 'disabled' : ''} onclick="loadData(${page + 1})">&raquo;</button>`;
+    container.innerHTML = html;
+}
+
+async function toggleStatus(id, active) {
+    try {
+        const resp = await fetch(`/admin/lessons/api/${id}/status`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({is_active: active})
+        });
+        const data = await resp.json();
+        if (!resp.ok) { alert(data.message || '操作失败'); loadData(currentPage); }
+    } catch (e) {
+        alert('请求失败'); loadData(currentPage);
+    }
+}
+
+function deleteLesson(id, title) {
+    if (!confirm(`确定要删除课时「${title}」吗？此操作不可恢复。`)) return;
+    fetch(`/admin/lessons/api/${id}`, { method: 'DELETE' })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) { loadData(currentPage); }
+            else { alert(data.message || '删除失败'); }
+        })
+        .catch(() => alert('请求失败'));
+}
+
+async function reorderLesson(id, direction) {
+    try {
+        const resp = await fetch('/admin/lessons/api/reorder', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({id: id, direction: direction})
+        });
+        const data = await resp.json();
+        if (resp.ok) { loadData(currentPage); }
+        else { alert(data.message || '操作失败'); }
+    } catch (e) {
+        alert('请求失败');
+    }
+}
+
+// ========== 课时创建/编辑弹窗 ==========
+function showLessonModal(id) {
+    const modal = document.getElementById('lessonModal');
+    const title = document.getElementById('lessonModalTitle');
+    if (id) {
+        title.textContent = '编辑课时';
+        // 加载课时数据
+        fetch('/admin/lessons/api/' + id)
+            .then(r => r.json())
+            .then(l => {
+                document.getElementById('lessonId').value = l.id || '';
+                document.getElementById('lessonTitle').value = l.title || '';
+                document.getElementById('lessonDescription').value = l.description || '';
+                document.getElementById('lessonType').value = l.type || '';
+                document.getElementById('lessonDuration').value = l.duration || '';
+                document.getElementById('lessonOrder').value = l.sort_order ?? l.order ?? 0;
+                document.getElementById('lessonIsActive').checked = l.is_active !== false;
+                document.getElementById('lessonContent').value = l.content || '';
+            })
+            .catch(() => alert('加载课时数据失败'));
+    } else {
+        title.textContent = '新建课时';
+        document.getElementById('lessonId').value = '';
+        document.getElementById('lessonTitle').value = '';
+        document.getElementById('lessonDescription').value = '';
+        document.getElementById('lessonType').value = '';
+        document.getElementById('lessonDuration').value = '';
+        document.getElementById('lessonOrder').value = 0;
+        document.getElementById('lessonIsActive').checked = true;
+        document.getElementById('lessonContent').value = '';
+    }
+    modal.classList.remove('hidden');
+}
+
+function closeLessonModal() {
+    document.getElementById('lessonModal').classList.add('hidden');
+}
+
+async function saveLesson() {
+    const id = document.getElementById('lessonId').value;
+    const title = document.getElementById('lessonTitle').value.trim();
+    if (!title) { alert('请输入课时标题'); return; }
+    if (!document.getElementById('lessonType').value) { alert('请选择课时类型'); return; }
+
+    const payload = {
+        title: title,
+        description: document.getElementById('lessonDescription').value.trim(),
+        type: document.getElementById('lessonType').value,
+        duration: parseInt(document.getElementById('lessonDuration').value) || 0,
+        sort_order: parseInt(document.getElementById('lessonOrder').value) || 0,
+        is_active: document.getElementById('lessonIsActive').checked,
+        content: document.getElementById('lessonContent').value
+    };
+
+    if (!id) {
+        payload.course_id = courseId;
+    }
+
+    try {
+        let url, method;
+        if (id) {
+            url = '/admin/lessons/api/' + id;
+            method = 'PUT';
+        } else {
+            url = '/admin/lessons/api/create';
+            method = 'POST';
+        }
+        const resp = await fetch(url, {
+            method: method,
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(payload)
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+            closeLessonModal();
+            loadData(currentPage);
+        } else {
+            alert(data.message || '保存失败');
+        }
+    } catch (e) {
+        alert('请求失败');
+    }
+}
+
+// 初始加载
+if (courseId) {
+    loadCourseInfo();
+    loadData(1);
+} else {
+    document.getElementById('courseName').textContent = '未选择课程';
+    loadData(1);
+}
+</script>
+{% endblock %}

@@ -1,0 +1,9 @@
+[error] Failed to load resource: the server responded with a status of 400 (Bad Request)
+[error] Access to fetch at 'http://localhost:8000/api/v1/user/courses?page=1&pageSize=100' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+[error] Failed to load resource: net::ERR_FAILED
+[error] Access to fetch at 'http://localhost:8000/api/v1/user/courses?page=1&pageSize=100' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+[error] Failed to load resource: net::ERR_FAILED
+[error] Access to fetch at 'http://localhost:8000/api/v1/user/courses?page=1&pageSize=100' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+[error] Failed to load resource: net::ERR_FAILED
+[error] Access to fetch at 'http://localhost:8000/api/v1/user/courses?page=1&pageSize=100' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+[error] Failed to load resource: net::ERR_FAILED

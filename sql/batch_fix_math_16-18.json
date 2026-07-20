@@ -1,0 +1,74 @@
+{
+  "batch_id": "math_16-18_fix",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "id": 1,
+      "content": "sin(π/6)的值是多少？",
+      "options": [
+        {
+          "label": "A",
+          "text": "1/2"
+        },
+        {
+          "label": "B",
+          "text": "√3/2"
+        },
+        {
+          "label": "C",
+          "text": "√2/2"
+        },
+        {
+          "label": "D",
+          "text": "1"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "π/6等于30度，sin30°等于1/2。这是三角函数中的特殊角，需要牢记。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "数学",
+      "age_group": "16-18",
+      "grade": "高一",
+      "tags": [
+        "三角函数",
+        "特殊角",
+        "正弦函数"
+      ]
+    },
+    {
+      "id": 2,
+      "content": "抛物线y²等于4x的焦点坐标是？",
+      "options": [
+        {
+          "label": "A",
+          "text": "(1,0)"
+        },
+        {
+          "label": "B",
+          "text": "(-1,0)"
+        },
+        {
+          "label": "C",
+          "text": "(0,1)"
+        },
+        {
+          "label": "D",
+          "text": "(0,-1)"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "抛物线标准方程y²=2px中，焦点坐标为(p/2,0)。y²=4x中，2p=4，p=2，所以p/2=1，焦点坐标为(1,0)。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "数学",
+      "age_group": "16-18",
+      "grade": "高二",
+      "tags": [
+        "解析几何",
+        "抛物线",
+        "焦点坐标"
+      ]
+    }
+  ]
+}

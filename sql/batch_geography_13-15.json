@@ -1,0 +1,908 @@
+{
+  "subject": "geography",
+  "age_group": "13-15",
+  "grade": "初三",
+  "total": 70,
+  "difficulty_distribution": {
+    "beginner": 23,
+    "intermediate": 24,
+    "advanced": 23
+  },
+  "questions": [
+    {
+      "id": 1,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "地球的平均半径约为？",
+      "options": [
+        "A. 6371千米",
+        "B. 6378千米",
+        "C. 6357千米",
+        "D. 6400千米"
+      ],
+      "answer": "A",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 2,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "本初子午线是指？",
+      "options": [
+        "A. 180°经线",
+        "B. 0°经线",
+        "C. 赤道",
+        "D. 回归线"
+      ],
+      "answer": "B",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 3,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "地球自转一周的时间是？",
+      "options": [
+        "A. 365天",
+        "B. 30天",
+        "C. 24小时",
+        "D. 12小时"
+      ],
+      "answer": "C",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 4,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "热带与北温带的分界线是？",
+      "options": [
+        "A. 赤道",
+        "B. 北回归线",
+        "C. 北极圈",
+        "D. 南回归线"
+      ],
+      "answer": "B",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 5,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "中国陆地面积约多少万平方千米？",
+      "options": [
+        "A. 860万",
+        "B. 920万",
+        "C. 960万",
+        "D. 1060万"
+      ],
+      "answer": "C",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 6,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "中国地势的总体特征是？",
+      "options": [
+        "A. 东高西低",
+        "B. 西高东低",
+        "C. 南高北低",
+        "D. 北高南低"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 7,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "中国最大的岛屿是？",
+      "options": [
+        "A. 海南岛",
+        "B. 台湾岛",
+        "C. 崇明岛",
+        "D. 舟山岛"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 8,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "世界上面积最大的大洲是？",
+      "options": [
+        "A. 非洲",
+        "B. 北美洲",
+        "C. 亚洲",
+        "D. 欧洲"
+      ],
+      "answer": "C",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 9,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "世界上面积最大的大洋是？",
+      "options": [
+        "A. 大西洋",
+        "B. 印度洋",
+        "C. 太平洋",
+        "D. 北冰洋"
+      ],
+      "answer": "C",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 10,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "世界上面积最大的国家是？",
+      "options": [
+        "A. 中国",
+        "B. 美国",
+        "C. 加拿大",
+        "D. 俄罗斯"
+      ],
+      "answer": "D",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 11,
+      "difficulty": "beginner",
+      "type": "多选",
+      "question": "下列属于地球公转产生的地理现象有？",
+      "options": [
+        "A. 昼夜交替",
+        "B. 四季变化",
+        "C. 昼夜长短变化",
+        "D. 五带划分"
+      ],
+      "answer": [
+        "B",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 12,
+      "difficulty": "beginner",
+      "type": "多选",
+      "question": "中国三级阶梯的分界山脉包括？",
+      "options": [
+        "A. 大兴安岭",
+        "B. 太行山",
+        "C. 巫山",
+        "D. 雪峰山"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 13,
+      "difficulty": "beginner",
+      "type": "多选",
+      "question": "下列属于中国四大盆地的有？",
+      "options": [
+        "A. 塔里木盆地",
+        "B. 准噶尔盆地",
+        "C. 柴达木盆地",
+        "D. 四川盆地"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 14,
+      "difficulty": "beginner",
+      "type": "多选",
+      "question": "世界四大洋包括？",
+      "options": [
+        "A. 太平洋",
+        "B. 大西洋",
+        "C. 印度洋",
+        "D. 北冰洋"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 15,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "地球仪上，连接南北两极的线叫____。",
+      "answer": "经线/子午线",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 16,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "地图上辨别方向的三种方法包括一般定向法、指向标定向法和____定向法。",
+      "answer": "经纬网",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 17,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "中国共有____个省级行政区域。",
+      "answer": "34",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 18,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "中国最长的河流是____。",
+      "answer": "长江",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 19,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "世界上面积最小的大洲是____。",
+      "answer": "大洋洲",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 20,
+      "difficulty": "beginner",
+      "type": "判断",
+      "question": "东经度数向东增大，西经度数向西增大。",
+      "answer": "正确",
+      "knowledge_point": "地球与地图",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 21,
+      "difficulty": "beginner",
+      "type": "判断",
+      "question": "黄河是中国第二长河，被称为\"母亲河\"。",
+      "answer": "正确",
+      "knowledge_point": "中国地理",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 22,
+      "difficulty": "beginner",
+      "type": "判断",
+      "question": "南极洲是世界上跨经度最广的大洲。",
+      "answer": "正确",
+      "knowledge_point": "世界地理",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 23,
+      "difficulty": "beginner",
+      "type": "简答",
+      "question": "简述地球公转产生的地理现象。（至少答出两点）",
+      "answer": "四季更替；昼夜长短变化；正午太阳高度变化；五带划分。",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 24,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "在等高线地形图上，等高线向高处凸出的部位表示？",
+      "options": [
+        "A. 山脊",
+        "B. 山谷",
+        "C. 鞍部",
+        "D. 陡崖"
+      ],
+      "answer": "B",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 25,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "亚洲东部和南部季风气候显著的主要原因是？",
+      "options": [
+        "A. 地形复杂多样",
+        "B. 海陆热力性质差异大",
+        "C. 纬度跨度大",
+        "D. 洋流影响"
+      ],
+      "answer": "B",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 26,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "地中海气候的特征是？",
+      "options": [
+        "A. 全年高温多雨",
+        "B. 夏季炎热干燥，冬季温和多雨",
+        "C. 全年温和湿润",
+        "D. 夏季高温多雨，冬季寒冷干燥"
+      ],
+      "answer": "B",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 27,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "中国冬季南北温差大的主要原因是？",
+      "options": [
+        "A. 地形影响",
+        "B. 纬度差异大",
+        "C. 海陆位置",
+        "D. 季风影响"
+      ],
+      "answer": "B",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 28,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "中国降水空间分布的总体规律是？",
+      "options": [
+        "A. 从东南沿海向西北内陆递减",
+        "B. 从南向北递增",
+        "C. 从东向西递增",
+        "D. 分布均匀"
+      ],
+      "answer": "A",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 29,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "中国地势第二级阶梯上的主要地形是？",
+      "options": [
+        "A. 平原和丘陵",
+        "B. 高原和盆地",
+        "C. 山地和高原",
+        "D. 平原和盆地"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 30,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "长江三峡位于长江的哪一段？",
+      "options": [
+        "A. 上游",
+        "B. 中游",
+        "C. 下游",
+        "D. 入海口"
+      ],
+      "answer": "A",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 31,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "世界上最大的沙漠是？",
+      "options": [
+        "A. 塔克拉玛干沙漠",
+        "B. 撒哈拉沙漠",
+        "C. 阿拉伯沙漠",
+        "D. 戈壁沙漠"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 32,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "世界上流量最大的河流是？",
+      "options": [
+        "A. 尼罗河",
+        "B. 亚马孙河",
+        "C. 长江",
+        "D. 密西西比河"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 33,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "日本多火山地震的原因是？",
+      "options": [
+        "A. 位于板块内部",
+        "B. 位于板块交界处",
+        "C. 地势起伏大",
+        "D. 海岸线曲折"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 34,
+      "difficulty": "intermediate",
+      "type": "多选",
+      "question": "影响气候的主要因素包括？",
+      "options": [
+        "A. 纬度位置",
+        "B. 海陆位置",
+        "C. 地形",
+        "D. 洋流"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 35,
+      "difficulty": "intermediate",
+      "type": "多选",
+      "question": "中国季风气候的特点是？",
+      "options": [
+        "A. 雨热同期",
+        "B. 夏季高温多雨",
+        "C. 冬季寒冷干燥（北方）",
+        "D. 全年温和湿润"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 36,
+      "difficulty": "intermediate",
+      "type": "多选",
+      "question": "下列属于中国地势第一级阶梯的地形区有？",
+      "options": [
+        "A. 青藏高原",
+        "B. 柴达木盆地",
+        "C. 内蒙古高原",
+        "D. 黄土高原"
+      ],
+      "answer": [
+        "A",
+        "B"
+      ],
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 37,
+      "difficulty": "intermediate",
+      "type": "多选",
+      "question": "下列国家属于发达国家的有？",
+      "options": [
+        "A. 美国",
+        "B. 日本",
+        "C. 德国",
+        "D. 巴西"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 38,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "在等高线地形图上，等高线重合的地方表示____。",
+      "answer": "陡崖/悬崖",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 39,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "热带雨林气候的特征是全年高温____。",
+      "answer": "多雨",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 40,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "中国夏季盛行来自海洋的____季风，带来丰富降水。",
+      "answer": "东南/夏",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 41,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "中国第一大淡水湖是____。",
+      "answer": "鄱阳湖",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 42,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "非洲与亚洲的分界线是____运河。",
+      "answer": "苏伊士",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 43,
+      "difficulty": "intermediate",
+      "type": "判断",
+      "question": "温带海洋性气候主要分布在南北纬40°-60°的大陆西岸。",
+      "answer": "正确",
+      "knowledge_point": "气候",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 44,
+      "difficulty": "intermediate",
+      "type": "判断",
+      "question": "塔里木盆地是中国面积最大的盆地。",
+      "answer": "正确",
+      "knowledge_point": "中国地理",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 45,
+      "difficulty": "intermediate",
+      "type": "判断",
+      "question": "南极洲是世界上海拔最高的大洲。",
+      "answer": "正确",
+      "knowledge_point": "世界地理",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 46,
+      "difficulty": "intermediate",
+      "type": "简答",
+      "question": "简述中国地势特征对河流流向和水能资源的影响。",
+      "answer": "地势西高东低使大河多自西向东流；阶梯交界处落差大，水能资源丰富。",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 47,
+      "difficulty": "intermediate",
+      "type": "简答",
+      "question": "比较热带季风气候与亚热带季风气候的异同点。",
+      "answer": "同：雨热同期，夏季高温多雨，受季风影响。异：热带季风全年高温，亚热带季风冬季温和少雨。",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 48,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "当北京（东八区）为6月1日10时时，伦敦（零时区）的时间是？",
+      "options": [
+        "A. 6月1日18时",
+        "B. 6月1日2时",
+        "C. 5月31日2时",
+        "D. 6月1日3时"
+      ],
+      "answer": "B",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 49,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "下列气候类型中，在亚洲没有分布的是？",
+      "options": [
+        "A. 热带季风气候",
+        "B. 温带海洋性气候",
+        "C. 温带季风气候",
+        "D. 地中海气候"
+      ],
+      "answer": "B",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 50,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "中国秦岭—淮河一线大致与哪条等降水量线重合？",
+      "options": [
+        "A. 200毫米",
+        "B. 400毫米",
+        "C. 800毫米",
+        "D. 1600毫米"
+      ],
+      "answer": "C",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 51,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "中国水资源空间分布的特点是？",
+      "options": [
+        "A. 南丰北缺",
+        "B. 北丰南缺",
+        "C. 东缺西丰",
+        "D. 分布均匀"
+      ],
+      "answer": "A",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 52,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "黄河下游形成\"地上河\"的主要原因是？",
+      "options": [
+        "A. 流域降水丰富",
+        "B. 中游水土流失严重，下游泥沙淤积",
+        "C. 下游地势低洼",
+        "D. 人工筑堤"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 53,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "欧洲西部温带海洋性气候分布面积广，主要原因是？",
+      "options": [
+        "A. 纬度低",
+        "B. 海岸线曲折，受西风和暖流影响",
+        "C. 地势高",
+        "D. 靠近地中海"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 54,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "中东地区水资源匮乏的主要原因是？",
+      "options": [
+        "A. 人口众多",
+        "B. 热带沙漠气候，降水稀少",
+        "C. 水污染严重",
+        "D. 农业用水少"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 55,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "巴西热带雨林遭到破坏对全球环境的主要影响是？",
+      "options": [
+        "A. 引发地震",
+        "B. 加剧全球变暖",
+        "C. 导致臭氧层空洞",
+        "D. 引发海啸"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 56,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "对比长江与黄河的水文特征，下列说法正确的是？",
+      "options": [
+        "A. 长江含沙量大于黄河",
+        "B. 黄河流量大于长江",
+        "C. 长江无结冰期，黄河有结冰期",
+        "D. 两河都发源于青藏高原唐古拉山"
+      ],
+      "answer": "C",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 57,
+      "difficulty": "advanced",
+      "type": "多选",
+      "question": "影响气温分布的因素包括？",
+      "options": [
+        "A. 纬度",
+        "B. 海陆位置",
+        "C. 地形地势",
+        "D. 人类活动"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 58,
+      "difficulty": "advanced",
+      "type": "多选",
+      "question": "中国北方春旱严重的原因包括？",
+      "options": [
+        "A. 春季降水少",
+        "B. 气温回升快，蒸发旺盛",
+        "C. 农业用水量大",
+        "D. 植被覆盖率高"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 59,
+      "difficulty": "advanced",
+      "type": "多选",
+      "question": "长江流域洪涝灾害频发的原因有？",
+      "options": [
+        "A. 流域面积广，支流众多",
+        "B. 降水集中且多暴雨",
+        "C. 中游河道弯曲，排水不畅",
+        "D. 植被破坏，水土流失"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 60,
+      "difficulty": "advanced",
+      "type": "多选",
+      "question": "以下关于南极地区的叙述正确的有？",
+      "options": [
+        "A. 素有\"冰雪高原\"之称",
+        "B. 是地球上最冷的地区",
+        "C. 淡水资源丰富",
+        "D. 代表动物是北极熊"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 61,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "比例尺、方向和____是地图的三要素。",
+      "answer": "图例/图例和注记",
+      "knowledge_point": "地球与地图"
+    },
+    {
+      "id": 62,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "中国气候复杂多样，____气候显著，雨热同期。",
+      "answer": "季风",
+      "knowledge_point": "气候"
+    },
+    {
+      "id": 63,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "治理黄河的关键在于治理中游的____问题。",
+      "answer": "水土流失",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 64,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "南水北调工程是把____流域的水资源调到华北和西北地区。",
+      "answer": "长江",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 65,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "世界上最长的山脉是____山脉。",
+      "answer": "安第斯",
+      "knowledge_point": "世界地理"
+    },
+    {
+      "id": 66,
+      "difficulty": "advanced",
+      "type": "判断",
+      "question": "全球气候变暖会导致两极冰川融化，海平面上升。",
+      "answer": "正确",
+      "knowledge_point": "气候",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 67,
+      "difficulty": "advanced",
+      "type": "判断",
+      "question": "中国东北地区农作物熟制一般为一年一熟，主要原因是热量不足。",
+      "answer": "正确",
+      "knowledge_point": "中国地理",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 68,
+      "difficulty": "advanced",
+      "type": "判断",
+      "question": "澳大利亚被称为\"骑在羊背上的国家\"和\"坐在矿车上的国家\"。",
+      "answer": "正确",
+      "knowledge_point": "世界地理",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 69,
+      "difficulty": "advanced",
+      "type": "简答",
+      "question": "分析中国水资源时空分布不均的原因及解决措施。",
+      "answer": "空间：南丰北缺，东多西少，因降水和河流分布不均；措施：跨流域调水。时间：夏秋多冬春少，年际变化大，因季风气候降水季节变化大；措施：修建水库。",
+      "knowledge_point": "中国地理"
+    },
+    {
+      "id": 70,
+      "difficulty": "advanced",
+      "type": "简答",
+      "question": "比较温带季风气候与温带海洋性气候的差异（分布、成因、特征）。",
+      "answer": "温带季风：亚洲东部，海陆热力差异，夏季高温多雨冬季寒冷干燥。温带海洋性：中纬度大陆西岸，终年受西风影响，全年温和湿润。",
+      "knowledge_point": "气候"
+    }
+  ]
+}

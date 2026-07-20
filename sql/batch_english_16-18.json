@@ -1,0 +1,1208 @@
+[
+  {
+    "id": "en_001",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "If I _____ you, I would accept the offer.",
+    "options": [
+      "am",
+      "was",
+      "were",
+      "be"
+    ],
+    "answer": "C",
+    "explanation": "In unreal conditional sentences referring to the present, 'were' is used for all persons after 'if'."
+  },
+  {
+    "id": "en_002",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "I wish I _____ more time to finish this project.",
+    "options": [
+      "have",
+      "had",
+      "have had",
+      "had had"
+    ],
+    "answer": "B",
+    "explanation": "'Wish' + past simple expresses a desire for a present situation to be different."
+  },
+  {
+    "id": "en_003",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "The book _____ on the desk is mine.",
+    "options": [
+      "lay",
+      "laid",
+      "lying",
+      "lain"
+    ],
+    "answer": "C",
+    "explanation": "'Lying' is the present participle used as an attributive modifier, equivalent to a relative clause."
+  },
+  {
+    "id": "en_004",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "Not until he left his home _____ to know how important the family was.",
+    "options": [
+      "did he begin",
+      "had he begun",
+      "he began",
+      "he had begun"
+    ],
+    "answer": "A",
+    "explanation": "When 'not until' is placed at the beginning of a sentence, partial inversion is required."
+  },
+  {
+    "id": "en_005",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "According to the passage, what is the main reason for climate change? (Passage: Human activities, especially burning fossil fuels, release greenhouse gases that trap heat, leading to rising temperatures.)",
+    "options": [
+      "Natural solar cycles",
+      "Human activities releasing greenhouse gases",
+      "Ocean currents changing",
+      "Volcanic eruptions"
+    ],
+    "answer": "B",
+    "explanation": "The passage explicitly states that human activities, especially burning fossil fuels, release greenhouse gases causing climate change."
+  },
+  {
+    "id": "en_006",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "What can we infer from the passage about renewable energy? (Passage: Many countries invest heavily in solar and wind power. These sources are becoming cheaper and more efficient. By 2030, renewables may provide 50% of global electricity.)",
+    "options": [
+      "Renewable energy is too expensive",
+      "Renewables will decline after 2030",
+      "Solar and wind power are gaining popularity",
+      "Fossil fuels are better than renewables"
+    ],
+    "answer": "C",
+    "explanation": "The passage indicates heavy investment and improving efficiency, implying growing popularity."
+  },
+  {
+    "id": "en_007",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Choose the best sentence to fill the blank: Making friends is important. _____ However, it requires effort. (Options: A. Friends are easy to find. B. Good friendships bring joy. C. People do not need friends. D. Friendship is new.)",
+    "options": [
+      "A. Friends are easy to find.",
+      "B. Good friendships bring joy.",
+      "C. People do not need friends.",
+      "D. Friendship is new."
+    ],
+    "answer": "B",
+    "explanation": "Option B provides a positive statement about friendship that transitions logically to the following sentence about effort."
+  },
+  {
+    "id": "en_008",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Select the sentence that fits: Reading books opens new worlds. _____ It also improves vocabulary. (Options: A. Books are too difficult. B. Reading enhances knowledge. C. No one likes reading. D. TV is better.)",
+    "options": [
+      "A. Books are too difficult.",
+      "B. Reading enhances knowledge.",
+      "C. No one likes reading.",
+      "D. TV is better."
+    ],
+    "answer": "B",
+    "explanation": "Option B continues the positive theme and connects with 'also improves' in the next sentence."
+  },
+  {
+    "id": "en_009",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "Which opening is most appropriate for a formal letter of application?",
+    "options": [
+      "Hey there!",
+      "Dear Sir or Madam,",
+      "What's up?",
+      "Hi buddy,"
+    ],
+    "answer": "B",
+    "explanation": "'Dear Sir or Madam' is the standard formal opening for a letter of application."
+  },
+  {
+    "id": "en_010",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "In a narrative continuation, what element should be included to develop the plot?",
+    "options": [
+      "Only descriptions of weather",
+      "Character actions and emotional responses",
+      "A list of historical facts",
+      "Repeated sentence structures"
+    ],
+    "answer": "B",
+    "explanation": "Character actions and emotional responses drive the narrative forward in story continuation."
+  },
+  {
+    "id": "en_011",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "multiple_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "Which of the following sentences use the subjunctive mood correctly?",
+    "options": [
+      "If I were rich, I would travel the world.",
+      "I wish I knew the answer.",
+      "If he studies hard, he will pass.",
+      "She acts as if she were the boss."
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D correctly use the subjunctive mood. C is a real conditional, not subjunctive."
+  },
+  {
+    "id": "en_012",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "multiple_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "Which sentences contain inverted structures?",
+    "options": [
+      "Never have I seen such beauty.",
+      "Only then did he understand.",
+      "She finished her homework quickly.",
+      "Had I known, I would have acted differently."
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D demonstrate inversion. C is in normal word order."
+  },
+  {
+    "id": "en_013",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "multiple_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "According to the passage about healthy eating, which statements are supported? (Passage: A balanced diet includes vegetables, fruits, grains, and proteins. Processed foods high in sugar should be limited. Drinking water is essential.)",
+    "options": [
+      "Vegetables and fruits are important",
+      "Processed foods should be eaten frequently",
+      "Water is essential for metabolism",
+      "Only meat should be consumed"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "The passage supports A and C. B contradicts the passage, and D is not mentioned."
+  },
+  {
+    "id": "en_014",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "multiple_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "Which features are important for a well-structured argumentative essay?",
+    "options": [
+      "A clear thesis statement",
+      "Supporting evidence and examples",
+      "Random personal opinions without evidence",
+      "A logical conclusion"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D are essential features. C weakens an argumentative essay."
+  },
+  {
+    "id": "en_015",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "If she _____ (be) more careful, she wouldn't have made so many mistakes.",
+    "answer": "had been",
+    "explanation": "For unreal conditions in the past, use 'had + past participle' in the if-clause."
+  },
+  {
+    "id": "en_016",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "The man _____ (stand) by the window is our new teacher.",
+    "answer": "standing",
+    "explanation": "The present participle 'standing' functions as an attributive modifier describing the man."
+  },
+  {
+    "id": "en_017",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "Based on the passage, the author's attitude toward technology in education is _____. (Passage: Technology has transformed classrooms. Most educators believe digital tools enhance learning when used appropriately.)",
+    "answer": "positive",
+    "explanation": "The author emphasizes benefits and mentions that most educators believe in enhancement, indicating a positive attitude."
+  },
+  {
+    "id": "en_018",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Fill in the blank with the best connector: Learning a new language takes time. _____, it brings great rewards in communication and career opportunities.",
+    "answer": "However",
+    "explanation": "'However' shows the contrast between the difficulty and the rewards."
+  },
+  {
+    "id": "en_019",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "In a formal email request, a common polite closing phrase is 'I look forward to _____ (hear) from you.'",
+    "answer": "hearing",
+    "explanation": "After 'look forward to', the gerund form 'hearing' is required."
+  },
+  {
+    "id": "en_020",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "true_false",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "In the sentence 'I wish I were taller,' the verb 'were' indicates the subjunctive mood.",
+    "answer": true,
+    "explanation": "'Were' is used instead of 'was' to express an unreal situation in the subjunctive mood."
+  },
+  {
+    "id": "en_021",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "true_false",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "Inversion never occurs in declarative sentences; it only happens in questions.",
+    "answer": false,
+    "explanation": "Inversion can also occur in declarative sentences for emphasis, such as after negative adverbs."
+  },
+  {
+    "id": "en_022",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "true_false",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "When answering reading comprehension questions, it is acceptable to add personal opinions not supported by the passage.",
+    "answer": false,
+    "explanation": "Answers should be based on evidence from the passage, not unsupported personal opinions."
+  },
+  {
+    "id": "en_023",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "short_answer",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "Explain the difference between 'If I was' and 'If I were' in conditional sentences.",
+    "answer": "'If I were' is used in the subjunctive mood for unreal or hypothetical situations. 'If I was' is sometimes used in informal speech for real conditions about the past, but 'were' is grammatically preferred for hypotheticals.",
+    "explanation": "The subjunctive mood requires 'were' for all persons in formal English when expressing unreal conditions."
+  },
+  {
+    "id": "en_024",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "Had they arrived ten minutes earlier, they _____ the train.",
+    "options": [
+      "would catch",
+      "would have caught",
+      "will catch",
+      "caught"
+    ],
+    "answer": "B",
+    "explanation": "Inverted conditional 'Had they arrived' implies an unreal past condition, requiring 'would have + past participle'."
+  },
+  {
+    "id": "en_025",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "I wish you _____ making that noise. It's disturbing everyone.",
+    "options": [
+      "stop",
+      "stopped",
+      "would stop",
+      "had stopped"
+    ],
+    "answer": "C",
+    "explanation": "'Wish' + 'would' expresses a desire for someone else to change their behavior."
+  },
+  {
+    "id": "en_026",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "_____ (absorb) in his book, he didn't notice me enter the room.",
+    "options": [
+      "Absorbing",
+      "Absorbed",
+      "Having absorbed",
+      "To absorb"
+    ],
+    "answer": "B",
+    "explanation": "'Absorbed' is a past participle functioning as an adverbial of reason, equivalent to 'Because he was absorbed'."
+  },
+  {
+    "id": "en_027",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "It was not until midnight _____ he finished his essay.",
+    "options": [
+      "when",
+      "that",
+      "which",
+      "before"
+    ],
+    "answer": "B",
+    "explanation": "This is an emphatic 'It was...that' structure. 'Not until' is emphasized, and 'that' introduces the rest."
+  },
+  {
+    "id": "en_028",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "What does the author imply about AI in healthcare? (Passage: AI can analyze medical images faster than doctors in some cases. Concerns remain about data privacy and human oversight. The technology is promising but requires careful implementation.)",
+    "options": [
+      "AI will replace all doctors immediately",
+      "AI has no value in healthcare",
+      "AI offers benefits but needs careful management",
+      "Doctors oppose AI completely"
+    ],
+    "answer": "C",
+    "explanation": "The author acknowledges benefits ('promising') while emphasizing concerns requiring 'careful implementation'."
+  },
+  {
+    "id": "en_029",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "Which word best describes the tone of the passage about urbanization? (Passage: Cities expand rapidly, consuming farmland. While urban life offers economic opportunities, the environmental cost is undeniable. Sustainable planning is essential.)",
+    "options": [
+      "Indifferent",
+      "Urgent and concerned",
+      "Humorous",
+      "Celebratory"
+    ],
+    "answer": "B",
+    "explanation": "Words like 'undeniable,' 'no longer optional,' and 'essential' convey urgency and concern."
+  },
+  {
+    "id": "en_030",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Choose the best sentence: Developing good habits takes consistency. _____ Small daily actions lead to improvements. (Options: A. Change happens overnight. B. It requires patience. C. Habits are unimportant. D. Avoid routines.)",
+    "options": [
+      "A. Change happens overnight.",
+      "B. It requires patience.",
+      "C. Habits are unimportant.",
+      "D. Avoid routines."
+    ],
+    "answer": "B",
+    "explanation": "Option B connects the idea of consistency with the subsequent sentence about gradual improvement."
+  },
+  {
+    "id": "en_031",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Select the best fit: Exercise benefits body and mind. _____. Studies show it reduces anxiety. (Options: A. No mental benefits. B. Many dislike exercise. C. It strengthens muscles and heart. D. Exercise is new.)",
+    "options": [
+      "A. No mental benefits.",
+      "B. Many dislike exercise.",
+      "C. It strengthens muscles and heart.",
+      "D. Exercise is new."
+    ],
+    "answer": "C",
+    "explanation": "Option C mentions physical benefits, creating a parallel with the following sentence about mental benefits."
+  },
+  {
+    "id": "en_032",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "Which sentence best demonstrates 'show, don't tell' in narrative writing?",
+    "options": [
+      "She was very angry.",
+      "Her face turned red, and she slammed the door shut.",
+      "He felt sad about the news.",
+      "The weather was bad that day."
+    ],
+    "answer": "B",
+    "explanation": "Option B shows anger through specific actions and physical reactions rather than stating it directly."
+  },
+  {
+    "id": "en_033",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "In a formal report, where should the main findings typically be presented?",
+    "options": [
+      "In the introduction",
+      "In the methodology section",
+      "In the results/findings section",
+      "In the acknowledgments"
+    ],
+    "answer": "C",
+    "explanation": "The results or findings section is where main discoveries and data are presented in a formal report."
+  },
+  {
+    "id": "en_034",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "multiple_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "Which sentences correctly use mixed conditionals?",
+    "options": [
+      "If I had studied harder, I'd be at a better university now.",
+      "If she were more confident, she'd have applied for the job.",
+      "If it rains tomorrow, we will cancel the picnic.",
+      "If they had left earlier, they wouldn't be stuck in traffic."
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D mix past conditions with present results. C is a real conditional in the future."
+  },
+  {
+    "id": "en_035",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "multiple_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "Which sentences contain ellipsis?",
+    "options": [
+      "He can speak French, and she can (speak French) too.",
+      "When (he was) asked about it, he remained silent.",
+      "The book is more interesting than that one (is interesting).",
+      "They went to the park yesterday."
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "A, B, and C contain elliptical structures where words are omitted but understood. D is complete."
+  },
+  {
+    "id": "en_036",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "multiple_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "What can be inferred about space exploration? (Passage: Agencies plan Mars missions within two decades. Private companies invest billions. Critics argue money could be spent on Earth's problems. Supporters cite technological benefits.)",
+    "options": [
+      "Space exploration is uncontroversial",
+      "Both government and private sector are involved",
+      "All critics believe it is worthless",
+      "The debate involves resource allocation priorities"
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "The passage mentions both government agencies and private companies (B), and presents a debate about spending priorities (D)."
+  },
+  {
+    "id": "en_037",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "multiple_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "Which techniques enhance coherence in essay writing?",
+    "options": [
+      "Using transitional words and phrases",
+      "Repeating key terms appropriately",
+      "Introducing unrelated ideas abruptly",
+      "Maintaining consistent point of view"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D improve coherence. C disrupts the logical flow of an essay."
+  },
+  {
+    "id": "en_038",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "It is high time that we _____ (take) action to protect the environment.",
+    "answer": "took",
+    "explanation": "After 'It is high time that,' the past simple is used to express urgency about a present need."
+  },
+  {
+    "id": "en_039",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "_____ (give) more time, I could have done the job much better.",
+    "answer": "Given",
+    "explanation": "'Given' is a past participle used as a conditional adverbial, equivalent to 'If I had been given'."
+  },
+  {
+    "id": "en_040",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "The protagonist's main motivation is _____. (Passage: Despite risks, Maria continued her research not for fame, but because she felt responsible for lives that could be saved.)",
+    "answer": "guilt",
+    "explanation": "While 'responsibility' and 'obligation' suggest duty, the deeper emotion driving her is guilt for those who supported her."
+  },
+  {
+    "id": "en_041",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Fill in the blank: Effective communication involves both speaking and listening. _____, misunderstanding often occurs. (Use a conditional connector)",
+    "answer": "If either is neglected",
+    "explanation": "This conditional connector logically links the importance of both skills to the consequence of misunderstanding."
+  },
+  {
+    "id": "en_042",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "In academic writing, when paraphrasing a source, you must still _____ (do what?) to avoid plagiarism.",
+    "answer": "cite the original source",
+    "explanation": "Paraphrasing without citation constitutes plagiarism; the original author must always be credited."
+  },
+  {
+    "id": "en_043",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "true_false",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "The sentence 'If I were you, I would have accepted the job' correctly mixes a present if-clause with a past main clause.",
+    "answer": true,
+    "explanation": "This is a correct mixed conditional where the if-clause refers to a present state and the main clause to a past result."
+  },
+  {
+    "id": "en_044",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "true_false",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "A reduced adjective clause using a present participle can always replace any relative clause without changing meaning.",
+    "answer": false,
+    "explanation": "Not all relative clauses can be reduced; only those with active voice and no essential semantic shifts can use participles."
+  },
+  {
+    "id": "en_045",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "true_false",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "Inference questions in reading comprehension require readers to draw conclusions based on textual evidence rather than direct statements.",
+    "answer": true,
+    "explanation": "Inference questions test the ability to read between the lines using evidence from the text."
+  },
+  {
+    "id": "en_046",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "short_answer",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "Analyze the sentence structure: 'What surprises me is that he refused the offer.' Identify the main clause and the subordinate clause.",
+    "answer": "Main clause: 'What surprises me is...' (where 'What surprises me' is a subject clause). Subordinate clause: 'that he refused the offer' (a predicative clause acting as the complement of 'is').",
+    "explanation": "This sentence contains a subject clause ('What surprises me') and a predicative clause ('that he refused the offer')."
+  },
+  {
+    "id": "en_047",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "short_answer",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "Describe two ways to create suspense in a narrative continuation.",
+    "answer": "Introducing an unexpected obstacle or conflict, and using pacing techniques like short sentences or cliffhangers at paragraph endings.",
+    "explanation": "Suspense is built through uncertainty about outcomes and controlled pacing that delays resolution."
+  },
+  {
+    "id": "en_048",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "But for your timely warning, we _____ into serious trouble.",
+    "options": [
+      "would get",
+      "would have got",
+      "had got",
+      "got"
+    ],
+    "answer": "B",
+    "explanation": "'But for' introduces an implied negative condition; for a past unreal situation, use 'would have + past participle'."
+  },
+  {
+    "id": "en_049",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "The manager ordered that the work _____ finished before Friday.",
+    "options": [
+      "is",
+      "be",
+      "was",
+      "would be"
+    ],
+    "answer": "B",
+    "explanation": "After verbs like 'order,' 'demand,' and 'suggest,' the subjunctive uses the base form 'be' without 'should'."
+  },
+  {
+    "id": "en_050",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "So fast _____ that it is difficult to imagine the pace at which it is moving.",
+    "options": [
+      "does technology advance",
+      "technology advances",
+      "advanced technology",
+      "has technology advanced"
+    ],
+    "answer": "A",
+    "explanation": "When 'so + adjective/adverb' begins a sentence, partial inversion with the auxiliary verb is required."
+  },
+  {
+    "id": "en_051",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "The professor recommended the book, the author _____ was a Nobel Prize winner.",
+    "options": [
+      "of which",
+      "of whom",
+      "whose",
+      "of that"
+    ],
+    "answer": "B",
+    "explanation": "'The author of whom' is a formal relative structure equivalent to 'whose author,' referring to a person."
+  },
+  {
+    "id": "en_052",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "What is the author's critique of globalization? (Passage: Globalization promised prosperity, yet inequality widened. Developing countries lost self-sufficiency. Cultural homogenization threatens identities. Corporations evade regulations.)",
+    "options": [
+      "Entirely beneficial",
+      "Failed equitable outcomes",
+      "Reject all trade",
+      "Diversity increased"
+    ],
+    "answer": "B",
+    "explanation": "The author highlights inequality, loss of self-sufficiency, and corporate power as systemic flaws showing inequitable outcomes."
+  },
+  {
+    "id": "en_053",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "Which literary device is most prominent? (Passage: The city breathed at night. Neon lights pulsed like veins. Buildings stood as silent giants, watching the streets below.)",
+    "options": [
+      "Literal description",
+      "Personification and metaphor",
+      "Chronological narration",
+      "Statistical analysis"
+    ],
+    "answer": "B",
+    "explanation": "The city 'breathed,' lights 'pulsed like veins,' and buildings 'stood as silent giants'—all personification and metaphor."
+  },
+  {
+    "id": "en_054",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Choose the best transition: The Industrial Revolution transformed economies. _____. This shifted social hierarchies.",
+    "options": [
+      "Machines became important.",
+      "Factory production redefined worker-capital relations.",
+      "People preferred farming.",
+      "Nothing changed."
+    ],
+    "answer": "B",
+    "explanation": "Option B provides a nuanced analytical transition that connects economic transformation to subsequent social changes."
+  },
+  {
+    "id": "en_055",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Select the sentence developing the argument: Free speech is essential to democracy. _____. Without discourse, citizens cannot decide.",
+    "options": [
+      "Some dislike talking.",
+      "It challenges dominant narratives.",
+      "Silence is golden.",
+      "Governments always tell truth."
+    ],
+    "answer": "B",
+    "explanation": "Option B advances the argument by explaining the mechanism through which free speech supports democracy."
+  },
+  {
+    "id": "en_056",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "Which revision best improves the sentence 'The meeting was long and boring, and nothing was decided, and people left unhappy' for formal academic style?",
+    "options": [
+      "The meeting was long and boring; nothing was decided.",
+      "The prolonged meeting failed to reach conclusions.",
+      "The meeting took forever and totally sucked.",
+      "People were at the meeting for a long time and it was bad."
+    ],
+    "answer": "B",
+    "explanation": "Option B condenses the information into a concise, formal structure appropriate for academic writing."
+  },
+  {
+    "id": "en_057",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "In a narrative requiring emotional depth, which technique is most effective for revealing a character's internal conflict?",
+    "options": [
+      "Direct statement of feelings",
+      "Stream of consciousness with symbolic imagery",
+      "A list of daily activities",
+      "Dialogue with no subtext"
+    ],
+    "answer": "B",
+    "explanation": "Stream of consciousness combined with symbolism allows readers to experience the character's internal conflict viscerally."
+  },
+  {
+    "id": "en_058",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "multiple_choice",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "Which expressions imply a hypothetical or contrary-to-fact condition without using 'if'?",
+    "options": [
+      "But for your help",
+      "Without your assistance",
+      "If only I had known",
+      "Since you are here"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "A, B, and C imply negative or unreal conditions. D is a factual causal statement."
+  },
+  {
+    "id": "en_059",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "multiple_choice",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "Which sentences demonstrate fronting for emphasis?",
+    "options": [
+      "A gifted musician he was, but humble he remained.",
+      "Into the room strode the professor.",
+      "She bought a book yesterday.",
+      "What he said I cannot believe."
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D front elements for emphasis. C is in standard SVO order."
+  },
+  {
+    "id": "en_060",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "multiple_choice",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "Which themes are explored? (Passage: Technology reshapes human needs. Smartphones redefined cognition. Critics say users retain agency, yet opting out is costly. The debate questions free will.)",
+    "options": [
+      "Tech shapes behavior",
+      "Users have full control",
+      "Ubiquitous tech creates pressure",
+      "Technology is neutral"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "The passage explicitly discusses technology reshaping needs and cognition (A), and the cost of opting out implying social pressure (C)."
+  },
+  {
+    "id": "en_061",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "multiple_choice",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "Which elements characterize advanced argumentative writing?",
+    "options": [
+      "Acknowledgment and refutation of counterarguments",
+      "Emotional manipulation without evidence",
+      "Nuanced qualification of claims",
+      "Exclusive reliance on anecdotal evidence"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "Advanced argumentation addresses counterarguments (A) and qualifies claims carefully (C). B and D are weak rhetorical strategies."
+  },
+  {
+    "id": "en_062",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "Were it not for the fact that he is ill, he _____ (go) to the meeting yesterday.",
+    "answer": "would have gone",
+    "explanation": "Despite the present-tense 'were it not for,' the time marker 'yesterday' requires a past unreal result form."
+  },
+  {
+    "id": "en_063",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "_____ (judge) from his accent, he must come from the southern part of England.",
+    "answer": "Judging",
+    "explanation": "'Judging from' is a fixed participial phrase used as a sentence adverbial, independent of the subject."
+  },
+  {
+    "id": "en_064",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "The passage's rhetorical purpose is primarily to _____. (Passage: We stand at a crossroads. This decade's decisions determine our planet's future. The science is clear; half-measures are insufficient. Leaders must act decisively.)",
+    "answer": "persuade",
+    "explanation": "The urgent tone, direct address, and call to action indicate the primary purpose is persuasion."
+  },
+  {
+    "id": "en_065",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "七选五",
+    "knowledge_point_en": "seven_select_five",
+    "stem": "Fill in the blank with an appropriate concessive connector: _____ the evidence supporting climate change is overwhelming, some still question its validity.",
+    "answer": "While/Although/Though",
+    "explanation": "A concessive connector introduces the contrast between the evidence and the skepticism."
+  },
+  {
+    "id": "en_066",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "读后续写/应用文写作",
+    "knowledge_point_en": "writing",
+    "stem": "In literary analysis, when examining an unreliable narrator, one should pay attention to _____ (what?) between the narrator's account and the events implied by the text.",
+    "answer": "discrepancies/contradictions",
+    "explanation": "Unreliable narrators are identified through gaps or contradictions between their version and textual evidence."
+  },
+  {
+    "id": "en_067",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "true_false",
+    "knowledge_point": "虚拟语气",
+    "knowledge_point_en": "subjunctive_mood",
+    "stem": "In formal English, 'If he be found guilty' is an archaic but grammatically valid subjunctive form in legal or formal contexts.",
+    "answer": true,
+    "explanation": "The mandative subjunctive using the base form ('be') remains valid in formal and legal English."
+  },
+  {
+    "id": "en_068",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "true_false",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "In the sentence 'What he said and what he did are different,' the subject is a compound nominal clause requiring a plural verb.",
+    "answer": true,
+    "explanation": "When two 'what' clauses joined by 'and' refer to different things, they take a plural verb."
+  },
+  {
+    "id": "en_069",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "true_false",
+    "knowledge_point": "阅读理解",
+    "knowledge_point_en": "reading_comprehension",
+    "stem": "A passage's tone can be determined solely by its dictionary definitions of words without considering context or connotation.",
+    "answer": false,
+    "explanation": "Tone depends on contextual word choice, connotation, rhetorical devices, and overall structure—not just denotation."
+  },
+  {
+    "id": "en_070",
+    "subject": "english",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "short_answer",
+    "knowledge_point": "长难句分析",
+    "knowledge_point_en": "complex_sentence_analysis",
+    "stem": "Analyze the rhetorical and grammatical complexity of: 'Had we but world enough, and time, this coyness, lady, were no crime.' Identify the inversion and its effect.",
+    "answer": "The sentence uses inverted conditional structure 'Had we' instead of 'If we had.' This archaism creates a poetic, formal tone and emphasizes the hypothetical nature of the condition, drawing the reader into a contemplative frame of mind.",
+    "explanation": "Inversion in conditionals creates formality and emphasis, a technique frequently used in literary English."
+  }
+]

@@ -1,0 +1,4237 @@
+{
+  "batch_id": "batch_english_9-12_supplement",
+  "source": "ai_generated",
+  "total_generated": 140,
+  "passed_count": 140,
+  "failed_count": 0,
+  "questions": [
+    {
+      "id": "3beeee6c-dfd5-466b-b2e6-95a266ee6468",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 1
+    },
+    {
+      "id": "4e15e16a-b450-4036-8756-7c313f0bf62c",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 2
+    },
+    {
+      "id": "005a9068-573e-4a5e-901c-9c2f03814a88",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 3
+    },
+    {
+      "id": "28afa902-29ab-4531-9a82-8ddb10dc9b03",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 4
+    },
+    {
+      "id": "9643453d-0c6f-4e0b-ad2e-2fd4f85dac1c",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 5
+    },
+    {
+      "id": "338f3327-3df5-4d76-9925-984ecf30df3a",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 6
+    },
+    {
+      "id": "b16955a7-c11c-4262-9dba-90a8c1270870",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 7
+    },
+    {
+      "id": "808fd531-aaf9-44ce-9559-36b2539b0490",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 8
+    },
+    {
+      "id": "aadac8b0-c7e9-473a-ad76-bf6248e7376d",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 9
+    },
+    {
+      "id": "0e58a889-b61b-41d4-82f0-f9c1bf169e1f",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 10
+    },
+    {
+      "id": "a39429ad-5167-40eb-aef9-a01445c27ff6",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 11
+    },
+    {
+      "id": "b23c1f65-e4f8-45ed-a013-11f6b733eb45",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are adjectives?",
+      "options": [
+        {
+          "key": "A",
+          "text": "beautiful"
+        },
+        {
+          "key": "B",
+          "text": "happy"
+        },
+        {
+          "key": "C",
+          "text": "quickly"
+        },
+        {
+          "key": "D",
+          "text": "sad"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Adjectives describe nouns. 'Quickly' is an adverb.",
+      "knowledge_tags": [
+        "adjectives",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 12
+    },
+    {
+      "id": "43c26b80-f260-4912-9e72-71633e0abbd1",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 13
+    },
+    {
+      "id": "769e9cd8-5b0b-4cd5-bc8d-492c18d2b9c5",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are adjectives?",
+      "options": [
+        {
+          "key": "A",
+          "text": "beautiful"
+        },
+        {
+          "key": "B",
+          "text": "happy"
+        },
+        {
+          "key": "C",
+          "text": "quickly"
+        },
+        {
+          "key": "D",
+          "text": "sad"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Adjectives describe nouns. 'Quickly' is an adverb.",
+      "knowledge_tags": [
+        "adjectives",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 14
+    },
+    {
+      "id": "2174f13d-3b89-4327-b658-9d3f5d0bd3a0",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "______ you ever _______ (be) to Beijing?",
+      "options": [],
+      "correct_answer": "Have; been",
+      "explanation": "'Have been' is present perfect for experiences.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 15
+    },
+    {
+      "id": "54e60c57-217c-41d5-a931-e63b59f1d9de",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 16
+    },
+    {
+      "id": "96852bce-294a-4afd-bc68-62285454bcac",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "The book is _______ the table.",
+      "options": [],
+      "correct_answer": "on",
+      "explanation": "Prepositions show where the book is.",
+      "knowledge_tags": [
+        "prepositions",
+        "place"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 17
+    },
+    {
+      "id": "51c33e08-dcb4-49a5-a01d-71787a2070d6",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 18
+    },
+    {
+      "id": "b29b2de9-48d0-45c4-b371-8c9fea379a35",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "______ you ever _______ (be) to Beijing?",
+      "options": [],
+      "correct_answer": "Have; been",
+      "explanation": "'Have been' is present perfect for experiences.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 19
+    },
+    {
+      "id": "04b8ba42-aca7-4f69-bcf2-73dafd3fc361",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Adverbs can describe verbs, adjectives, and other adverbs.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Adverbs modify verbs, adjectives, and other adverbs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 20
+    },
+    {
+      "id": "53401abe-a965-4cc1-bede-8230b588294a",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "'Had gone' is an example of past perfect tense.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "'Had gone' uses had + past participle for past perfect.",
+      "knowledge_tags": [
+        "past_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 21
+    },
+    {
+      "id": "6640fee8-0634-48fe-ba79-bf36ec5297a9",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 22
+    },
+    {
+      "id": "fd0abf71-027c-4b2d-b84b-c5adacba9974",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Describe your favorite hobby in 2-3 sentences.",
+      "options": [],
+      "correct_answer": "(Any coherent description)",
+      "explanation": "Write clear sentences with correct grammar.",
+      "knowledge_tags": [
+        "writing",
+        "description"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 23
+    },
+    {
+      "id": "491c14f8-c75c-4565-a205-273577af0d97",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Describe your favorite hobby in 2-3 sentences.",
+      "options": [],
+      "correct_answer": "(Any coherent description)",
+      "explanation": "Write clear sentences with correct grammar.",
+      "knowledge_tags": [
+        "writing",
+        "description"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 24
+    },
+    {
+      "id": "9c10ccae-7760-4835-be83-a8973b545491",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 25
+    },
+    {
+      "id": "2e686e5d-f9e3-4eb0-8b61-bdaa9dbbc8c7",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 26
+    },
+    {
+      "id": "b4cb7985-0772-4255-92b0-b498595f0970",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 27
+    },
+    {
+      "id": "0005dcab-dd3d-42a5-8dc3-ea6c7f2bbfd6",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 28
+    },
+    {
+      "id": "b75c2ba8-036e-4105-80f0-45947615abed",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 29
+    },
+    {
+      "id": "46c7e5a6-d627-4324-9c8e-a25bb4c21eab",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 30
+    },
+    {
+      "id": "60bae9f9-85b8-4209-8030-28d52f9a747c",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 31
+    },
+    {
+      "id": "f7c8ab76-ec42-4e83-ac76-49d63a5f8538",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 32
+    },
+    {
+      "id": "fe2c2d69-cad2-4f18-8759-0e42e8549ab8",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 33
+    },
+    {
+      "id": "61e7e429-3199-464b-9585-4cd07c315703",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 34
+    },
+    {
+      "id": "a3e7a32a-ff91-43b9-bd40-9d2b1850fc3e",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are prepositions of place?",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "under"
+        }
+      ],
+      "correct_answer": "A,D",
+      "explanation": "'In' and 'under' show place/position.",
+      "knowledge_tags": [
+        "prepositions",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 35
+    },
+    {
+      "id": "b5b73417-1b9e-458f-852b-8816b507c443",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 36
+    },
+    {
+      "id": "59c0c333-4f9d-4fff-be55-ec30fe31b17f",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are prepositions of place?",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "under"
+        }
+      ],
+      "correct_answer": "A,D",
+      "explanation": "'In' and 'under' show place/position.",
+      "knowledge_tags": [
+        "prepositions",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 37
+    },
+    {
+      "id": "78bf94c4-9389-4d62-b820-c4bfd1fca91a",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 38
+    },
+    {
+      "id": "b0838803-befc-4785-8770-f29b44898ee5",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 39
+    },
+    {
+      "id": "8c4a7449-d19f-4456-89a5-b75270da22be",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "She _______ (not/like) coffee.",
+      "options": [],
+      "correct_answer": "does not like",
+      "explanation": "Use 'does not' for third person negative in present simple.",
+      "knowledge_tags": [
+        "simple_present",
+        "negatives"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 40
+    },
+    {
+      "id": "080f2f42-5bce-424f-beb4-7ddda8ad7d49",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "______ you ever _______ (be) to Beijing?",
+      "options": [],
+      "correct_answer": "Have; been",
+      "explanation": "'Have been' is present perfect for experiences.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 41
+    },
+    {
+      "id": "5d5f9b9b-51c1-495b-a453-29465f28219d",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 42
+    },
+    {
+      "id": "7099a507-9a00-4f82-b434-0e3277a3987e",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 43
+    },
+    {
+      "id": "1a22c55e-84fe-4af9-8680-d7b38536c401",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "'Had gone' is an example of past perfect tense.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "'Had gone' uses had + past participle for past perfect.",
+      "knowledge_tags": [
+        "past_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 44
+    },
+    {
+      "id": "3df47190-a2d4-43b4-a26b-f9e9077b5439",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Adverbs can describe verbs, adjectives, and other adverbs.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Adverbs modify verbs, adjectives, and other adverbs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 45
+    },
+    {
+      "id": "ba810c2d-0e24-45fa-8f90-d15947a554b6",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 46
+    },
+    {
+      "id": "a3a290d2-ed5f-484c-a503-0d0a0fd3becd",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Describe your favorite hobby in 2-3 sentences.",
+      "options": [],
+      "correct_answer": "(Any coherent description)",
+      "explanation": "Write clear sentences with correct grammar.",
+      "knowledge_tags": [
+        "writing",
+        "description"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 47
+    },
+    {
+      "id": "ebd43c6d-2e07-4f6d-a2a3-bfa769c6909c",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 48
+    },
+    {
+      "id": "2858bc31-c2ba-4b79-b24f-cc4326aa5064",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 49
+    },
+    {
+      "id": "448e62ec-add8-46d0-b9e7-83ab05c086be",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 50
+    },
+    {
+      "id": "626eba27-8691-4b63-8410-a94d3a1d3eaf",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 51
+    },
+    {
+      "id": "fc9a7ebf-ddc9-4b31-a4a2-17391fd55d4c",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 52
+    },
+    {
+      "id": "4d837836-e592-497a-9879-6ae0edf24e88",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 53
+    },
+    {
+      "id": "9fe90190-2ebb-48af-8bfd-e8e3d2c8ab36",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 54
+    },
+    {
+      "id": "cda9db4a-827d-4c21-b117-0fb23f41ee23",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 55
+    },
+    {
+      "id": "a72fada5-a729-4848-a34d-f137ae58ae81",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 56
+    },
+    {
+      "id": "e47a6e19-ade1-48f6-9636-eec30bc4bd70",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 57
+    },
+    {
+      "id": "0138ffd3-cd5b-49f8-8360-d3981b662ac5",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are adjectives?",
+      "options": [
+        {
+          "key": "A",
+          "text": "beautiful"
+        },
+        {
+          "key": "B",
+          "text": "happy"
+        },
+        {
+          "key": "C",
+          "text": "quickly"
+        },
+        {
+          "key": "D",
+          "text": "sad"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Adjectives describe nouns. 'Quickly' is an adverb.",
+      "knowledge_tags": [
+        "adjectives",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 58
+    },
+    {
+      "id": "8630e977-8a4c-4450-8662-4c8f33f3e358",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are adjectives?",
+      "options": [
+        {
+          "key": "A",
+          "text": "beautiful"
+        },
+        {
+          "key": "B",
+          "text": "happy"
+        },
+        {
+          "key": "C",
+          "text": "quickly"
+        },
+        {
+          "key": "D",
+          "text": "sad"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Adjectives describe nouns. 'Quickly' is an adverb.",
+      "knowledge_tags": [
+        "adjectives",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 59
+    },
+    {
+      "id": "d67d5845-a441-4b9a-81ee-02b702d99750",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 60
+    },
+    {
+      "id": "c05c9811-24b5-4d74-96ab-5608f1920855",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 61
+    },
+    {
+      "id": "c28d7dae-b89a-49bf-981a-033b996f9530",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "She _______ (not/like) coffee.",
+      "options": [],
+      "correct_answer": "does not like",
+      "explanation": "Use 'does not' for third person negative in present simple.",
+      "knowledge_tags": [
+        "simple_present",
+        "negatives"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 62
+    },
+    {
+      "id": "41cac1be-a246-4b2c-9e49-c836fca776db",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "She _______ (not/like) coffee.",
+      "options": [],
+      "correct_answer": "does not like",
+      "explanation": "Use 'does not' for third person negative in present simple.",
+      "knowledge_tags": [
+        "simple_present",
+        "negatives"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 63
+    },
+    {
+      "id": "d875f7d6-35ef-44de-a429-d7287ff0a47d",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "The book is _______ the table.",
+      "options": [],
+      "correct_answer": "on",
+      "explanation": "Prepositions show where the book is.",
+      "knowledge_tags": [
+        "prepositions",
+        "place"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 64
+    },
+    {
+      "id": "402f8dfd-9376-4e0b-8032-77c1327942ef",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "______ you ever _______ (be) to Beijing?",
+      "options": [],
+      "correct_answer": "Have; been",
+      "explanation": "'Have been' is present perfect for experiences.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 65
+    },
+    {
+      "id": "a5481376-ff4e-49f3-aaba-fca4d82bbea9",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 66
+    },
+    {
+      "id": "470b1ee1-3c7e-481c-90a1-e09ae0ce43bb",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Adverbs can describe verbs, adjectives, and other adverbs.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Adverbs modify verbs, adjectives, and other adverbs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 67
+    },
+    {
+      "id": "ccdf17d2-df2f-4c13-b5d4-87b6d1add8ae",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 68
+    },
+    {
+      "id": "0c847311-23e8-44fa-8b91-1df111a94503",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 69
+    },
+    {
+      "id": "161da4ff-30f2-4e3b-85a8-f105831d0429",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "What did you do last weekend? Write 2 sentences.",
+      "options": [],
+      "correct_answer": "(Any past tense sentences)",
+      "explanation": "Use past tense verbs to describe weekend activities.",
+      "knowledge_tags": [
+        "writing",
+        "simple_past"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 70
+    },
+    {
+      "id": "7256d46e-5ed5-47c1-b622-981361e4d857",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "Describe your favorite hobby in 2-3 sentences.",
+      "options": [],
+      "correct_answer": "(Any coherent description)",
+      "explanation": "Write clear sentences with correct grammar.",
+      "knowledge_tags": [
+        "writing",
+        "description"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 71
+    },
+    {
+      "id": "fcffe3a3-9cf3-4341-85df-cca0e37ce09c",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 72
+    },
+    {
+      "id": "386f4263-529f-4b77-bb94-ae5cf6ae87e4",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 73
+    },
+    {
+      "id": "dc9c9273-e96a-445f-8237-d7d8f7942603",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 74
+    },
+    {
+      "id": "cc425c92-05c0-407c-8601-8a28e855aaa6",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 75
+    },
+    {
+      "id": "c470c8a5-7e29-4d15-9dfe-3a2c0796fe57",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 76
+    },
+    {
+      "id": "8da280c8-2b26-43b9-ad2b-ef3e455b3249",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 77
+    },
+    {
+      "id": "3d17d9f0-67c6-4da8-973c-34f2e2980642",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 78
+    },
+    {
+      "id": "ba57b9f6-398b-4c05-967a-758f935fb193",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 79
+    },
+    {
+      "id": "9966b3af-6a8a-4105-bb71-4078c74fde8c",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 80
+    },
+    {
+      "id": "4997a400-2aae-4952-9795-8e6cad4fac3d",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 81
+    },
+    {
+      "id": "f0d1de4d-06d7-4cbe-93a9-07bf7665b00d",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 82
+    },
+    {
+      "id": "f6d7265a-3931-47f1-a41a-0cf99b14cc5b",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are prepositions of place?",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "under"
+        }
+      ],
+      "correct_answer": "A,D",
+      "explanation": "'In' and 'under' show place/position.",
+      "knowledge_tags": [
+        "prepositions",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 83
+    },
+    {
+      "id": "d5230af4-2c62-488c-8578-451116834f20",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are prepositions of place?",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "under"
+        }
+      ],
+      "correct_answer": "A,D",
+      "explanation": "'In' and 'under' show place/position.",
+      "knowledge_tags": [
+        "prepositions",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 84
+    },
+    {
+      "id": "39d24677-8049-4e3f-a098-231a7de69e2f",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are prepositions of place?",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "under"
+        }
+      ],
+      "correct_answer": "A,D",
+      "explanation": "'In' and 'under' show place/position.",
+      "knowledge_tags": [
+        "prepositions",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 85
+    },
+    {
+      "id": "203e9d45-7559-4f55-97ef-50b0030079eb",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 86
+    },
+    {
+      "id": "821098d4-3269-4674-82f3-528236e5c05e",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 87
+    },
+    {
+      "id": "373d6daa-8b4b-4af7-8d6c-ee3c37501ead",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "______ you ever _______ (be) to Beijing?",
+      "options": [],
+      "correct_answer": "Have; been",
+      "explanation": "'Have been' is present perfect for experiences.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 88
+    },
+    {
+      "id": "e39a0ef0-1619-4412-99f4-9558d3d58aa2",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 89
+    },
+    {
+      "id": "c45d3568-b2d3-45b1-9324-03b44ea87ed9",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 90
+    },
+    {
+      "id": "fb340955-e08d-46d7-b584-f2e7a5cf47e9",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 91
+    },
+    {
+      "id": "dee7ec78-8385-4427-90b3-f50598813290",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "'Had gone' is an example of past perfect tense.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "'Had gone' uses had + past participle for past perfect.",
+      "knowledge_tags": [
+        "past_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 92
+    },
+    {
+      "id": "fc0ae917-1dfb-4601-99a7-88ecc26bf3c3",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 93
+    },
+    {
+      "id": "56c8cddf-d002-4f9e-b1dc-82a997c9c748",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "What did you do last weekend? Write 2 sentences.",
+      "options": [],
+      "correct_answer": "(Any past tense sentences)",
+      "explanation": "Use past tense verbs to describe weekend activities.",
+      "knowledge_tags": [
+        "writing",
+        "simple_past"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 94
+    },
+    {
+      "id": "d4090745-f08e-4c05-b21a-6b52fdfc6de7",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 95
+    },
+    {
+      "id": "e254bc17-54d9-4bc6-bc9a-256d494d772c",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 96
+    },
+    {
+      "id": "35b81644-8caf-45ab-8630-6e6c6ccf9841",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 97
+    },
+    {
+      "id": "5de7739c-2f5c-4da0-b143-f8a6e3f35201",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 98
+    },
+    {
+      "id": "680f18e2-573d-4b28-81d1-bd0d82a991d3",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 99
+    },
+    {
+      "id": "2821033c-03d3-45dd-9da5-ebfa4039d649",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 100
+    },
+    {
+      "id": "c2af10bc-8563-4023-a865-72e5cf1b341b",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 101
+    },
+    {
+      "id": "f3677db8-275c-4e08-9a45-edc9f0ed17e2",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 102
+    },
+    {
+      "id": "7728c3f4-7c10-4fe6-8972-9090dca86fdc",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 103
+    },
+    {
+      "id": "777379d5-c2f3-4af2-93aa-950b34e8c801",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 104
+    },
+    {
+      "id": "fd428722-ba29-4fb1-8f80-4560157b5932",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are prepositions of place?",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "under"
+        }
+      ],
+      "correct_answer": "A,D",
+      "explanation": "'In' and 'under' show place/position.",
+      "knowledge_tags": [
+        "prepositions",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 105
+    },
+    {
+      "id": "cd2220e9-9b80-4d71-99ab-9a19e68fb611",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are adjectives?",
+      "options": [
+        {
+          "key": "A",
+          "text": "beautiful"
+        },
+        {
+          "key": "B",
+          "text": "happy"
+        },
+        {
+          "key": "C",
+          "text": "quickly"
+        },
+        {
+          "key": "D",
+          "text": "sad"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Adjectives describe nouns. 'Quickly' is an adverb.",
+      "knowledge_tags": [
+        "adjectives",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 106
+    },
+    {
+      "id": "991bdb04-1196-4832-9ba1-373d9b767bf9",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are adjectives?",
+      "options": [
+        {
+          "key": "A",
+          "text": "beautiful"
+        },
+        {
+          "key": "B",
+          "text": "happy"
+        },
+        {
+          "key": "C",
+          "text": "quickly"
+        },
+        {
+          "key": "D",
+          "text": "sad"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Adjectives describe nouns. 'Quickly' is an adverb.",
+      "knowledge_tags": [
+        "adjectives",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 107
+    },
+    {
+      "id": "a811559b-1e9a-45b7-be2d-f4c554edb900",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are adjectives?",
+      "options": [
+        {
+          "key": "A",
+          "text": "beautiful"
+        },
+        {
+          "key": "B",
+          "text": "happy"
+        },
+        {
+          "key": "C",
+          "text": "quickly"
+        },
+        {
+          "key": "D",
+          "text": "sad"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Adjectives describe nouns. 'Quickly' is an adverb.",
+      "knowledge_tags": [
+        "adjectives",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 108
+    },
+    {
+      "id": "22cf7d55-195c-45c1-8906-628b29b2492e",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "She _______ (not/like) coffee.",
+      "options": [],
+      "correct_answer": "does not like",
+      "explanation": "Use 'does not' for third person negative in present simple.",
+      "knowledge_tags": [
+        "simple_present",
+        "negatives"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 109
+    },
+    {
+      "id": "acb64ffa-bf01-4d6c-9b6e-765c5bdb3e68",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "The book is _______ the table.",
+      "options": [],
+      "correct_answer": "on",
+      "explanation": "Prepositions show where the book is.",
+      "knowledge_tags": [
+        "prepositions",
+        "place"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 110
+    },
+    {
+      "id": "eb9b50ed-d449-4231-b499-223b17fa2a62",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "The book is _______ the table.",
+      "options": [],
+      "correct_answer": "on",
+      "explanation": "Prepositions show where the book is.",
+      "knowledge_tags": [
+        "prepositions",
+        "place"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 111
+    },
+    {
+      "id": "a2936621-58df-481e-964b-e4b14b5842ac",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "The book is _______ the table.",
+      "options": [],
+      "correct_answer": "on",
+      "explanation": "Prepositions show where the book is.",
+      "knowledge_tags": [
+        "prepositions",
+        "place"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 112
+    },
+    {
+      "id": "fc1a5dc1-342e-4d4a-a04d-970d99178dd6",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "She _______ (not/like) coffee.",
+      "options": [],
+      "correct_answer": "does not like",
+      "explanation": "Use 'does not' for third person negative in present simple.",
+      "knowledge_tags": [
+        "simple_present",
+        "negatives"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 113
+    },
+    {
+      "id": "c16b0093-1f0d-4763-9669-00fcb0b99ef3",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "'Had gone' is an example of past perfect tense.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "'Had gone' uses had + past participle for past perfect.",
+      "knowledge_tags": [
+        "past_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 114
+    },
+    {
+      "id": "43eb8d51-1f7b-4255-844a-30984f030848",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 115
+    },
+    {
+      "id": "415ce1ad-6529-4cc5-a2cc-379c52e04e36",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "'Had gone' is an example of past perfect tense.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "'Had gone' uses had + past participle for past perfect.",
+      "knowledge_tags": [
+        "past_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 116
+    },
+    {
+      "id": "0ba5c200-1150-4500-96ba-ec193d729289",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "short_answer",
+      "question_body": "What did you do last weekend? Write 2 sentences.",
+      "options": [],
+      "correct_answer": "(Any past tense sentences)",
+      "explanation": "Use past tense verbs to describe weekend activities.",
+      "knowledge_tags": [
+        "writing",
+        "simple_past"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 117
+    },
+    {
+      "id": "fb142adc-74fb-4a0e-b15d-994c5dc348cd",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "short_answer",
+      "question_body": "Describe your favorite hobby in 2-3 sentences.",
+      "options": [],
+      "correct_answer": "(Any coherent description)",
+      "explanation": "Write clear sentences with correct grammar.",
+      "knowledge_tags": [
+        "writing",
+        "description"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 118
+    },
+    {
+      "id": "314c9417-7ca3-4c69-8d9f-52fdeb6b6e6b",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 119
+    },
+    {
+      "id": "01f4dcd0-d099-4afc-9b60-df8839a545cc",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 120
+    },
+    {
+      "id": "2cb8230e-0483-4293-9cea-603ddc451050",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 121
+    },
+    {
+      "id": "5c52b3eb-af55-4ad7-9e4a-0d28de1bb967",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 122
+    },
+    {
+      "id": "8011e980-3a33-40f2-9405-1cecb14f1798",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "He runs very _______ in the race.",
+      "options": [
+        {
+          "key": "A",
+          "text": "quick"
+        },
+        {
+          "key": "B",
+          "text": "quickly"
+        },
+        {
+          "key": "C",
+          "text": "quicker"
+        },
+        {
+          "key": "D",
+          "text": "quickest"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Quickly' is an adverb describing how he runs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 123
+    },
+    {
+      "id": "5e9dda6c-524b-4c6d-b219-ab59da0bc8e2",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 124
+    },
+    {
+      "id": "def73e16-e850-4141-82e2-77d858d9209b",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "They _______ finished their homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        },
+        {
+          "key": "D",
+          "text": "having"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Have' is correct for present perfect plural.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 125
+    },
+    {
+      "id": "7906a825-a5ee-4fc1-aef4-4a7b3f7a2d2d",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 126
+    },
+    {
+      "id": "972ec338-bfe3-4ce3-b531-ea49b7c52fe8",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "My birthday is _______ July 15th.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "by"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific dates.",
+      "knowledge_tags": [
+        "prepositions",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 127
+    },
+    {
+      "id": "dc727b73-b45b-4fc1-84d2-0eb0ddbfcc82",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "She usually _______ to school on weekdays.",
+      "options": [
+        {
+          "key": "A",
+          "text": "walks"
+        },
+        {
+          "key": "B",
+          "text": "walk"
+        },
+        {
+          "key": "C",
+          "text": "walking"
+        },
+        {
+          "key": "D",
+          "text": "walked"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "'Walks' is correct for simple present third person.",
+      "knowledge_tags": [
+        "simple_present",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 128
+    },
+    {
+      "id": "09b89bc2-1e56-481c-945d-3949953184f5",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are prepositions of place?",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        },
+        {
+          "key": "D",
+          "text": "under"
+        }
+      ],
+      "correct_answer": "A,D",
+      "explanation": "'In' and 'under' show place/position.",
+      "knowledge_tags": [
+        "prepositions",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 129
+    },
+    {
+      "id": "07e3fb0b-4584-4d3c-9dee-2ec2bda4b378",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 130
+    },
+    {
+      "id": "099e6953-f696-41dc-85d9-4be3672c6cd5",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 131
+    },
+    {
+      "id": "8553a8f5-ba25-4b2b-93b9-57e8c003ae6f",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which words are verbs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "run"
+        },
+        {
+          "key": "B",
+          "text": "jumped"
+        },
+        {
+          "key": "C",
+          "text": "swimming"
+        },
+        {
+          "key": "D",
+          "text": "eat"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All these words are action verbs.",
+      "knowledge_tags": [
+        "verbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 132
+    },
+    {
+      "id": "04ededa0-3d3d-43ff-ae31-bb5f52a69948",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "______ you ever _______ (be) to Beijing?",
+      "options": [],
+      "correct_answer": "Have; been",
+      "explanation": "'Have been' is present perfect for experiences.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 133
+    },
+    {
+      "id": "883d1904-29f5-4106-a36c-206a545677cd",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 134
+    },
+    {
+      "id": "bca9edf1-68ab-4151-9d13-2c8c457ee86f",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "______ you ever _______ (be) to Beijing?",
+      "options": [],
+      "correct_answer": "Have; been",
+      "explanation": "'Have been' is present perfect for experiences.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 135
+    },
+    {
+      "id": "dbe2c28f-28d2-4f2d-99e9-9a1cb338b8c7",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "______ you ever _______ (be) to Beijing?",
+      "options": [],
+      "correct_answer": "Have; been",
+      "explanation": "'Have been' is present perfect for experiences.",
+      "knowledge_tags": [
+        "present_perfect",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 136
+    },
+    {
+      "id": "b2c17230-89dd-4b6e-9468-dc0da6fdb0bd",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "I _______ (go) to the park yesterday.",
+      "options": [],
+      "correct_answer": "went",
+      "explanation": "'Went' is the past tense of 'go'.",
+      "knowledge_tags": [
+        "simple_past",
+        "tenses"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 137
+    },
+    {
+      "id": "75449d14-3037-4b1c-a5f8-99c62b422cc6",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Adverbs can describe verbs, adjectives, and other adverbs.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Adverbs modify verbs, adjectives, and other adverbs.",
+      "knowledge_tags": [
+        "adverbs",
+        "parts_of_speech"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 138
+    },
+    {
+      "id": "e6893ea5-4280-4283-8b25-891ba398b0e2",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 139
+    },
+    {
+      "id": "751eb20e-8620-4a3c-b406-aa746a0e9417",
+      "batch_id": "english_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Prepositions only show time relationships.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Prepositions show time, place, direction, and more.",
+      "knowledge_tags": [
+        "prepositions",
+        "grammar"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 140
+    }
+  ]
+}

@@ -1,0 +1,1718 @@
+{
+  "batch_id": "science_9-12_complete",
+  "source": "ai_generated",
+  "total_generated": 70,
+  "passed_count": 70,
+  "failed_count": 0,
+  "questions": [
+    {
+      "id": "c0df1104-8b34-4a3f-8b46-764339636aec",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "What pulls objects toward the Earth?",
+      "options": [
+        "A. Magnetism",
+        "B. Gravity",
+        "C. Electricity",
+        "D. Wind"
+      ],
+      "correct_answer": "B",
+      "explanation": "Gravity is the force that pulls objects toward the center of Earth.",
+      "tags": [
+        "gravity",
+        "force",
+        "motion"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 1
+    },
+    {
+      "id": "f0fb5ba8-bf81-448d-af52-cb20ca74467e",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "What helps a car stop when you press the brake pedal?",
+      "options": [
+        "A. Gravity",
+        "B. Friction",
+        "C. Magnetism",
+        "D. Air pressure"
+      ],
+      "correct_answer": "B",
+      "explanation": "Friction between the brake pads and wheels slows down and stops the car.",
+      "tags": [
+        "friction",
+        "force",
+        "motion"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 2
+    },
+    {
+      "id": "51d6d042-52b8-49c2-b9d2-cea244c5a2ae",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "Ice is the ___ state of water.",
+      "options": [
+        "A. liquid",
+        "B. gas",
+        "C. solid",
+        "D. plasma"
+      ],
+      "correct_answer": "C",
+      "explanation": "Ice is water in its solid state, with a fixed shape.",
+      "tags": [
+        "states_of_matter",
+        "solid",
+        "water"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 3
+    },
+    {
+      "id": "cfa209d3-9613-4fba-ab44-60d273fef07c",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "Steam is water in ___ form.",
+      "options": [
+        "A. solid",
+        "B. liquid",
+        "C. gas",
+        "D. plasma"
+      ],
+      "correct_answer": "C",
+      "explanation": "Steam is water vapor, which is the gaseous form of water.",
+      "tags": [
+        "states_of_matter",
+        "gas",
+        "water"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 4
+    },
+    {
+      "id": "9d515506-10d2-4d0c-a709-438a7539dd11",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "In a food chain, plants are called ___ because they make their own food.",
+      "options": [
+        "A. consumers",
+        "B. producers",
+        "C. decomposers",
+        "D. predators"
+      ],
+      "correct_answer": "B",
+      "explanation": "Producers like plants make their own food through photosynthesis.",
+      "tags": [
+        "ecosystem",
+        "producers",
+        "food_chain"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 5
+    },
+    {
+      "id": "ccc3ddc1-ed29-4371-830f-20b83a5bb86a",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "Lions are ___ in a food chain because they eat other animals.",
+      "options": [
+        "A. producers",
+        "B. decomposers",
+        "C. consumers",
+        "D. plants"
+      ],
+      "correct_answer": "C",
+      "explanation": "Consumers are animals that eat other organisms for energy.",
+      "tags": [
+        "ecosystem",
+        "consumers",
+        "food_chain"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 6
+    },
+    {
+      "id": "c80d2059-55b7-437f-91c0-190b8cbab9e1",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "Which organ breaks down food into nutrients your body can use?",
+      "options": [
+        "A. Heart",
+        "B. Brain",
+        "C. Stomach",
+        "D. Lungs"
+      ],
+      "correct_answer": "C",
+      "explanation": "The stomach uses acid and muscle movements to break down food.",
+      "tags": [
+        "human_body",
+        "digestive_system",
+        "organs"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 7
+    },
+    {
+      "id": "f561f71f-89a7-4737-807f-7fb9bb1cf103",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "We breathe in ___ and breathe out carbon dioxide.",
+      "options": [
+        "A. nitrogen",
+        "B. oxygen",
+        "C. hydrogen",
+        "D. helium"
+      ],
+      "correct_answer": "B",
+      "explanation": "Our lungs take in oxygen from the air and release carbon dioxide.",
+      "tags": [
+        "human_body",
+        "respiratory_system",
+        "breathing"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 8
+    },
+    {
+      "id": "8c40bc04-fc5f-49a1-89f9-7347805b501b",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "What provides electrical power in a simple circuit?",
+      "options": [
+        "A. Light bulb",
+        "B. Switch",
+        "C. Battery",
+        "D. Wire"
+      ],
+      "correct_answer": "C",
+      "explanation": "A battery stores chemical energy and converts it to electrical energy.",
+      "tags": [
+        "simple_circuit",
+        "electricity",
+        "battery"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 9
+    },
+    {
+      "id": "09b8554b-9a4a-42dc-89e4-d2bc28db3114",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "What happens to a light bulb when you close a switch in a circuit?",
+      "options": [
+        "A. It turns off",
+        "B. It turns on",
+        "C. It explodes",
+        "D. Nothing happens"
+      ],
+      "correct_answer": "B",
+      "explanation": "Closing the switch completes the circuit, allowing electricity to flow and light the bulb.",
+      "tags": [
+        "simple_circuit",
+        "electricity",
+        "switch"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 10
+    },
+    {
+      "id": "ca300708-3b1e-4378-81b6-6e0e3d753259",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "content": "Which of the following are types of force? (Select all that apply)",
+      "options": [
+        "A. Gravity",
+        "B. Friction",
+        "C. Color",
+        "D. Magnetism"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Gravity, friction, and magnetism are all forces. Color is a property of light.",
+      "tags": [
+        "force",
+        "gravity",
+        "friction"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 11
+    },
+    {
+      "id": "82d92944-43cb-44a7-a119-8363e70101b1",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "content": "Which are the three main states of matter? (Select all that apply)",
+      "options": [
+        "A. Solid",
+        "B. Liquid",
+        "C. Gas",
+        "D. Light"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Solid, liquid, and gas are the three main states of matter.",
+      "tags": [
+        "states_of_matter",
+        "solid",
+        "liquid",
+        "gas"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 12
+    },
+    {
+      "id": "9a21a5d8-8fdc-4ccf-922f-e3890af0b074",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "content": "Which animals are consumers? (Select all that apply)",
+      "options": [
+        "A. Rabbit",
+        "B. Grass",
+        "C. Tiger",
+        "D. Tree"
+      ],
+      "correct_answer": "A,C",
+      "explanation": "Rabbits and tigers are consumers. Grass and trees are producers.",
+      "tags": [
+        "ecosystem",
+        "consumers",
+        "food_chain"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 13
+    },
+    {
+      "id": "7bcd9171-53fb-453b-bc93-5ca064bdf16a",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "content": "Which organs are part of the digestive system? (Select all that apply)",
+      "options": [
+        "A. Stomach",
+        "B. Intestines",
+        "C. Heart",
+        "D. Esophagus"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Stomach, intestines, and esophagus are digestive organs. The heart is part of the circulatory system.",
+      "tags": [
+        "human_body",
+        "digestive_system",
+        "organs"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 14
+    },
+    {
+      "id": "aff1221b-98a5-4ff9-9800-e4c26a0bb98c",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "Objects fall down when dropped because of ___.",
+      "options": [],
+      "correct_answer": "gravity",
+      "explanation": "Gravity pulls all objects toward the center of Earth.",
+      "tags": [
+        "gravity",
+        "force",
+        "motion"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 15
+    },
+    {
+      "id": "7e413956-acf0-4842-8c25-6df626761e6e",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "Rough surfaces create more ___ than smooth surfaces.",
+      "options": [],
+      "correct_answer": "friction",
+      "explanation": "Rough surfaces have more bumps that rub against each other, creating more friction.",
+      "tags": [
+        "friction",
+        "force",
+        "surface"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 16
+    },
+    {
+      "id": "033d2970-99f0-4260-bc48-4817f04fca63",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "Water becomes ice when it ___.",
+      "options": [],
+      "correct_answer": "freezes",
+      "explanation": "Freezing is the process where liquid water turns into solid ice at 0 degrees Celsius.",
+      "tags": [
+        "states_of_matter",
+        "freezing",
+        "water"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 17
+    },
+    {
+      "id": "dcaf2f17-c5e4-4904-b86d-72286e3dae27",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "Mushrooms are ___ because they break down dead plants and animals.",
+      "options": [],
+      "correct_answer": "decomposers",
+      "explanation": "Decomposers break down dead organic matter and return nutrients to the soil.",
+      "tags": [
+        "ecosystem",
+        "decomposers",
+        "food_chain"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 18
+    },
+    {
+      "id": "c27312d7-5167-4180-b683-efc4482a6ed8",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "A complete circuit needs a power source, wires, and a ___.",
+      "options": [],
+      "correct_answer": "load",
+      "explanation": "A load (like a light bulb or motor) uses the electrical energy in a circuit. (Also accept: light bulb/device/appliance)",
+      "tags": [
+        "simple_circuit",
+        "electricity",
+        "components"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 19
+    },
+    {
+      "id": "c25592be-02e2-4207-82a9-d5f819cb66b0",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "content": "Gravity only works on Earth and does not exist on the Moon.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "B",
+      "explanation": "Gravity exists everywhere in the universe, but it is weaker on the Moon than on Earth.",
+      "tags": [
+        "gravity",
+        "force",
+        "space"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 20
+    },
+    {
+      "id": "752546a2-181d-46ec-a8e3-7567d49c787d",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "content": "Water can exist as ice, liquid water, and steam.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "Water can be solid (ice), liquid (water), and gas (steam/water vapor).",
+      "tags": [
+        "states_of_matter",
+        "water",
+        "phase_change"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 21
+    },
+    {
+      "id": "13b38249-2d63-4f1d-8ee7-b3d1e6acc4f6",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "content": "The heart is part of the digestive system.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "B",
+      "explanation": "The heart is part of the circulatory system, not the digestive system.",
+      "tags": [
+        "human_body",
+        "digestive_system",
+        "circulatory_system"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 22
+    },
+    {
+      "id": "e45e3bc3-f891-449e-ac77-05e70801a84f",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "content": "Name three things you can do to reduce friction between two surfaces.",
+      "options": [],
+      "correct_answer": "Sample answers: Use oil or lubricant, make the surfaces smoother, use wheels or rollers.",
+      "explanation": "Friction can be reduced by smoothing surfaces, adding lubricants, or using rolling instead of sliding.",
+      "tags": [
+        "friction",
+        "force",
+        "practical_application"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 23
+    },
+    {
+      "id": "abf8a6da-d602-448f-9f45-2e3c2b2a0c00",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "What unit do we use to measure weight (the force of gravity on an object)?",
+      "options": [
+        "A. Kilogram",
+        "B. Liter",
+        "C. Newton",
+        "D. Meter"
+      ],
+      "correct_answer": "C",
+      "explanation": "Weight is a force measured in Newtons (N). Kilograms measure mass.",
+      "tags": [
+        "gravity",
+        "weight",
+        "units"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 24
+    },
+    {
+      "id": "e4f35a2f-f42c-4912-9ad0-12195afd7d17",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "Why do car tires have tread patterns?",
+      "options": [
+        "A. To look nice",
+        "B. To increase friction with the road",
+        "C. To reduce weight",
+        "D. To save fuel"
+      ],
+      "correct_answer": "B",
+      "explanation": "Tread patterns increase friction between the tire and road, improving grip and safety.",
+      "tags": [
+        "friction",
+        "force",
+        "practical_application"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 25
+    },
+    {
+      "id": "b85474ac-5786-425a-b6c6-fcea2052edd8",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "What is the process called when a liquid becomes a gas?",
+      "options": [
+        "A. Freezing",
+        "B. Melting",
+        "C. Evaporation",
+        "D. Condensation"
+      ],
+      "correct_answer": "C",
+      "explanation": "Evaporation is when liquid water turns into water vapor (gas).",
+      "tags": [
+        "states_of_matter",
+        "evaporation",
+        "phase_change"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 26
+    },
+    {
+      "id": "9317bbe6-f593-4e12-bb26-557c5630bf7d",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "What is the process called when a gas becomes a liquid?",
+      "options": [
+        "A. Melting",
+        "B. Condensation",
+        "C. Freezing",
+        "D. Sublimation"
+      ],
+      "correct_answer": "B",
+      "explanation": "Condensation is when water vapor cools down and turns back into liquid water.",
+      "tags": [
+        "states_of_matter",
+        "condensation",
+        "phase_change"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 27
+    },
+    {
+      "id": "6ae02a87-4b14-4565-bf57-2bd2a207ac0a",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "What do producers need to make their own food?",
+      "options": [
+        "A. Meat",
+        "B. Sunlight, water, and carbon dioxide",
+        "C. Oxygen only",
+        "D. Other plants"
+      ],
+      "correct_answer": "B",
+      "explanation": "Producers use sunlight, water, and carbon dioxide to make food through photosynthesis.",
+      "tags": [
+        "ecosystem",
+        "producers",
+        "photosynthesis"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 28
+    },
+    {
+      "id": "568cbb4f-007c-4592-b9f9-bbf18c9acaaa",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "What would happen if there were no decomposers in an ecosystem?",
+      "options": [
+        "A. Plants would grow faster",
+        "B. Dead things would pile up",
+        "C. Animals would have more food",
+        "D. The air would be cleaner"
+      ],
+      "correct_answer": "B",
+      "explanation": "Decomposers break down dead organisms. Without them, dead matter would accumulate.",
+      "tags": [
+        "ecosystem",
+        "decomposers",
+        "nutrient_cycle"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 29
+    },
+    {
+      "id": "3dc0276e-f245-4fca-a8ca-bf85846f755a",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "Where does most digestion and nutrient absorption happen?",
+      "options": [
+        "A. Stomach",
+        "B. Large intestine",
+        "C. Small intestine",
+        "D. Esophagus"
+      ],
+      "correct_answer": "C",
+      "explanation": "The small intestine is where most nutrients from food are absorbed into the blood.",
+      "tags": [
+        "human_body",
+        "digestive_system",
+        "absorption"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 30
+    },
+    {
+      "id": "8ef2b1ae-2d18-48b1-90a0-9e19f7e27824",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "Which organ do we use to breathe air into our body?",
+      "options": [
+        "A. Heart",
+        "B. Brain",
+        "C. Lungs",
+        "D. Liver"
+      ],
+      "correct_answer": "C",
+      "explanation": "The lungs take in oxygen from the air and release carbon dioxide.",
+      "tags": [
+        "human_body",
+        "respiratory_system",
+        "lungs"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 31
+    },
+    {
+      "id": "6101345b-3dd9-4cdb-91fc-ccea6687c5a2",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "What happens to a circuit when a switch is opened?",
+      "options": [
+        "A. The circuit is complete",
+        "B. The circuit breaks",
+        "C. More electricity flows",
+        "D. The battery charges"
+      ],
+      "correct_answer": "B",
+      "explanation": "Opening the switch creates a gap in the circuit, stopping the flow of electricity.",
+      "tags": [
+        "simple_circuit",
+        "electricity",
+        "switch"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 32
+    },
+    {
+      "id": "51480109-06eb-4286-885e-e1a5e67ba4b6",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "Which surface would have the least friction?",
+      "options": [
+        "A. Sandpaper",
+        "B. Ice",
+        "C. Carpet",
+        "D. Concrete"
+      ],
+      "correct_answer": "B",
+      "explanation": "Ice is very smooth and slippery, so it produces very little friction.",
+      "tags": [
+        "friction",
+        "force",
+        "surface"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 33
+    },
+    {
+      "id": "80e65a62-7177-4265-bd1a-c13bafe39505",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "content": "Which factors affect the amount of friction between two surfaces? (Select all that apply)",
+      "options": [
+        "A. Surface texture",
+        "B. Color of objects",
+        "C. Weight pressing down",
+        "D. Temperature of the room"
+      ],
+      "correct_answer": "A,C",
+      "explanation": "Rougher textures and greater weight (normal force) both increase friction.",
+      "tags": [
+        "friction",
+        "force",
+        "factors"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 34
+    },
+    {
+      "id": "5c34c95f-799d-4103-accf-96724200aff6",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "content": "Which are examples of physical changes (not chemical changes)? (Select all that apply)",
+      "options": [
+        "A. Melting ice",
+        "B. Burning wood",
+        "C. Boiling water",
+        "D. Rusting iron"
+      ],
+      "correct_answer": "A,C",
+      "explanation": "Melting and boiling are physical changes. Burning and rusting are chemical changes.",
+      "tags": [
+        "states_of_matter",
+        "physical_change",
+        "chemical_change"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 35
+    },
+    {
+      "id": "86687b8f-8960-45ae-a44d-5dcb953f6ddc",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "content": "Which organisms are producers? (Select all that apply)",
+      "options": [
+        "A. Grass",
+        "B. Trees",
+        "C. Flowers",
+        "D. Wolves"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Grass, trees, and flowers are plants that make their own food. Wolves are consumers.",
+      "tags": [
+        "ecosystem",
+        "producers",
+        "plants"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 36
+    },
+    {
+      "id": "e6a6e09b-016e-442e-b983-15eeb7dac8e6",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "content": "Which materials are good conductors of electricity? (Select all that apply)",
+      "options": [
+        "A. Copper",
+        "B. Plastic",
+        "C. Aluminum",
+        "D. Rubber"
+      ],
+      "correct_answer": "A,C",
+      "explanation": "Copper and aluminum are metals that conduct electricity well. Plastic and rubber are insulators.",
+      "tags": [
+        "simple_circuit",
+        "conductors",
+        "electricity"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 37
+    },
+    {
+      "id": "ebc12a48-38c2-4a5a-92b6-746b384b9939",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "The force that pulls objects toward the center of Earth is called ___.",
+      "options": [],
+      "correct_answer": "gravity",
+      "explanation": "Gravity is the attractive force between objects with mass, pulling them toward Earth's center.",
+      "tags": [
+        "gravity",
+        "force",
+        "earth"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 38
+    },
+    {
+      "id": "4e96f8f3-8789-46c9-a5e5-53c7ae4510d9",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "Sand spread on ice makes the surface less slippery because it increases ___.",
+      "options": [],
+      "correct_answer": "friction",
+      "explanation": "Sand creates a rougher surface, increasing friction and making it easier to walk on ice.",
+      "tags": [
+        "friction",
+        "force",
+        "practical_application"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 39
+    },
+    {
+      "id": "5be2a511-a97a-4e01-8b81-09b8b7260492",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "When water boils at 100 degrees Celsius, it turns into water ___.",
+      "options": [],
+      "correct_answer": "vapor",
+      "explanation": "Boiling causes liquid water to change into water vapor, which is a gas.",
+      "tags": [
+        "states_of_matter",
+        "boiling",
+        "evaporation"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 40
+    },
+    {
+      "id": "38e2d122-dfc2-47c4-8abe-63704c1aa797",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "The trachea (windpipe) carries air to the ___.",
+      "options": [],
+      "correct_answer": "lungs",
+      "explanation": "The trachea connects the mouth/nose to the lungs, allowing air to pass through.",
+      "tags": [
+        "human_body",
+        "respiratory_system",
+        "trachea"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 41
+    },
+    {
+      "id": "1f45e0b8-6524-4de3-928f-0c0ba0800fe0",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "In a series circuit, if one light bulb breaks, the other bulbs ___.",
+      "options": [],
+      "correct_answer": "turn off",
+      "explanation": "In a series circuit, there is only one path for electricity. If one component breaks, the whole circuit stops.",
+      "tags": [
+        "simple_circuit",
+        "series_circuit",
+        "electricity"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 42
+    },
+    {
+      "id": "a1c0b20c-4cd9-4411-9cde-c851d78e4887",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "content": "Freezing is the process when a liquid turns into a solid.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "Freezing is when a liquid loses heat and becomes a solid, like water turning to ice.",
+      "tags": [
+        "states_of_matter",
+        "freezing",
+        "phase_change"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 43
+    },
+    {
+      "id": "b52e0e04-1e53-40fd-88e9-b5ca67573868",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "content": "The large intestine absorbs water from the remaining food waste.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "The large intestine absorbs water and forms solid waste (feces).",
+      "tags": [
+        "human_body",
+        "digestive_system",
+        "large_intestine"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 44
+    },
+    {
+      "id": "37512649-ac11-4c6a-b8bf-d8714a20d395",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "content": "Plastic is a good conductor of electricity.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "B",
+      "explanation": "Plastic is an insulator, not a conductor. It does not allow electricity to pass through easily.",
+      "tags": [
+        "simple_circuit",
+        "insulators",
+        "electricity"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 45
+    },
+    {
+      "id": "794932d1-4258-423e-a134-f3ec49afdfc5",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "content": "Explain why we need friction when we walk. What would happen if there were no friction between our shoes and the ground?",
+      "options": [],
+      "correct_answer": "Sample: Friction between our shoes and the ground prevents us from slipping. Without friction, our feet would slide backward and we could not move forward.",
+      "explanation": "Friction provides the grip needed to push against the ground and move forward.",
+      "tags": [
+        "friction",
+        "force",
+        "practical_application"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 46
+    },
+    {
+      "id": "a6775835-313e-400a-ab7f-38f0f704062f",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "content": "Describe this food chain: grass -> rabbit -> fox. What would happen to the fox population if all the rabbits disappeared?",
+      "options": [],
+      "correct_answer": "Sample: The foxes would lose their main food source. Their population would decrease because they would starve or have to find other food.",
+      "explanation": "Removing an intermediate species disrupts the food chain and affects predators that depend on it.",
+      "tags": [
+        "ecosystem",
+        "food_chain",
+        "population"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 47
+    },
+    {
+      "id": "6a9ceb40-1173-41fd-ac15-89174463e5f0",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "What would happen to your weight if you traveled to the Moon?",
+      "options": [
+        "A. It would increase",
+        "B. It would decrease",
+        "C. It would stay the same",
+        "D. It would become zero"
+      ],
+      "correct_answer": "B",
+      "explanation": "The Moon has less gravity than Earth, so you would weigh less, though your mass stays the same.",
+      "tags": [
+        "gravity",
+        "weight",
+        "moon"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 48
+    },
+    {
+      "id": "1838608a-c851-4bda-99f1-c378451ad4e9",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "Which type of friction is usually the strongest?",
+      "options": [
+        "A. Rolling friction",
+        "B. Sliding friction",
+        "C. Static friction",
+        "D. Fluid friction"
+      ],
+      "correct_answer": "C",
+      "explanation": "Static friction (when objects are not moving) is typically stronger than kinetic (sliding/rolling) friction.",
+      "tags": [
+        "friction",
+        "force",
+        "types_of_friction"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 49
+    },
+    {
+      "id": "46e5a9e0-fb5d-4850-8957-2267036bdd16",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "What is the process called when a solid turns directly into a gas without becoming a liquid first?",
+      "options": [
+        "A. Evaporation",
+        "B. Condensation",
+        "C. Sublimation",
+        "D. Melting"
+      ],
+      "correct_answer": "C",
+      "explanation": "Sublimation is when a solid changes directly to a gas, like dry ice turning into carbon dioxide gas.",
+      "tags": [
+        "states_of_matter",
+        "sublimation",
+        "phase_change"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 50
+    },
+    {
+      "id": "e442b899-ee76-43c6-b930-e0ee1a0188d9",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "In a food web, what are animals called that eat both plants and animals?",
+      "options": [
+        "A. Herbivores",
+        "B. Carnivores",
+        "C. Omnivores",
+        "D. Decomposers"
+      ],
+      "correct_answer": "C",
+      "explanation": "Omnivores eat both plant and animal matter. Humans and bears are examples.",
+      "tags": [
+        "ecosystem",
+        "omnivores",
+        "food_web"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 51
+    },
+    {
+      "id": "54dfeac7-82ea-447d-aa1d-6ae668c17550",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "What substance in the stomach helps break down food into smaller pieces?",
+      "options": [
+        "A. Blood",
+        "B. Acid (hydrochloric acid)",
+        "C. Water",
+        "D. Oxygen"
+      ],
+      "correct_answer": "B",
+      "explanation": "The stomach produces hydrochloric acid which helps digest food and kill bacteria.",
+      "tags": [
+        "human_body",
+        "digestive_system",
+        "stomach"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 52
+    },
+    {
+      "id": "43b509a4-8618-4567-92a4-2cba7846eee7",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "What are the tiny air sacs in the lungs where gas exchange happens called?",
+      "options": [
+        "A. Bronchi",
+        "B. Trachea",
+        "C. Alveoli",
+        "D. Capillaries"
+      ],
+      "correct_answer": "C",
+      "explanation": "Alveoli are tiny sacs in the lungs where oxygen enters the blood and carbon dioxide leaves.",
+      "tags": [
+        "human_body",
+        "respiratory_system",
+        "gas_exchange"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 53
+    },
+    {
+      "id": "045f5f7b-9511-4708-b06e-50b7adc051d2",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "What is the function of a resistor in an electric circuit?",
+      "options": [
+        "A. To increase voltage",
+        "B. To reduce or control current flow",
+        "C. To store electricity",
+        "D. To turn the circuit on and off"
+      ],
+      "correct_answer": "B",
+      "explanation": "A resistor limits the flow of electric current, protecting components and controlling circuit behavior.",
+      "tags": [
+        "simple_circuit",
+        "resistor",
+        "electricity"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 54
+    },
+    {
+      "id": "b413f70e-5a92-48b4-b3b1-d9cdcfd2e988",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "What is the force that opposes the motion of objects moving through air called?",
+      "options": [
+        "A. Gravity",
+        "B. Friction",
+        "C. Air resistance",
+        "D. Magnetism"
+      ],
+      "correct_answer": "C",
+      "explanation": "Air resistance (drag) is the force that slows down objects moving through the air.",
+      "tags": [
+        "force",
+        "air_resistance",
+        "motion"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 55
+    },
+    {
+      "id": "0bf9a17a-03b9-46e8-bf2b-1e3cbaac8968",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "What is the main role of apex predators (top predators) in an ecosystem?",
+      "options": [
+        "A. To produce oxygen",
+        "B. To control the population of other animals",
+        "C. To decompose dead matter",
+        "D. To pollinate flowers"
+      ],
+      "correct_answer": "B",
+      "explanation": "Top predators keep prey populations in check, maintaining balance in the ecosystem.",
+      "tags": [
+        "ecosystem",
+        "apex_predators",
+        "population_control"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 56
+    },
+    {
+      "id": "6edf865b-d074-471a-a0c7-dce003728764",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "Which gas is transported by red blood cells to all parts of the body?",
+      "options": [
+        "A. Carbon dioxide",
+        "B. Nitrogen",
+        "C. Oxygen",
+        "D. Hydrogen"
+      ],
+      "correct_answer": "C",
+      "explanation": "Red blood cells contain hemoglobin that binds to oxygen and carries it to body tissues.",
+      "tags": [
+        "human_body",
+        "respiratory_system",
+        "blood"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 57
+    },
+    {
+      "id": "c51058f7-82af-42b6-98af-968e6a5d1d54",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "content": "Which are examples of balanced forces? (Select all that apply)",
+      "options": [
+        "A. A book resting on a table",
+        "B. A car accelerating",
+        "C. A person standing still on the floor",
+        "D. A ball falling down"
+      ],
+      "correct_answer": "A,C",
+      "explanation": "Balanced forces occur when there is no motion. A book on a table and a standing person have balanced forces.",
+      "tags": [
+        "force",
+        "balanced_forces",
+        "motion"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 58
+    },
+    {
+      "id": "353927ea-7c85-4578-af59-648a9adab1ae",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "content": "Which phase changes absorb heat energy from the surroundings? (Select all that apply)",
+      "options": [
+        "A. Melting",
+        "B. Freezing",
+        "C. Evaporation",
+        "D. Condensation"
+      ],
+      "correct_answer": "A,C",
+      "explanation": "Melting and evaporation are endothermic processes that absorb heat. Freezing and condensation release heat.",
+      "tags": [
+        "states_of_matter",
+        "phase_change",
+        "heat_energy"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 59
+    },
+    {
+      "id": "3329b5dd-8b55-4e1b-ac58-6ddd25d04d6c",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "content": "Which are parts of the human respiratory system? (Select all that apply)",
+      "options": [
+        "A. Nose",
+        "B. Trachea",
+        "C. Lungs",
+        "D. Diaphragm"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All four are parts of the respiratory system. The diaphragm is a muscle that helps with breathing.",
+      "tags": [
+        "human_body",
+        "respiratory_system",
+        "organs"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 60
+    },
+    {
+      "id": "124dfd0d-3dbf-4c02-b76c-9a321be662b9",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "content": "Which components can be found in a simple electric circuit? (Select all that apply)",
+      "options": [
+        "A. Battery",
+        "B. Switch",
+        "C. Light bulb",
+        "D. Wire"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "A simple circuit can include all of these: battery (power), switch (control), bulb (load), and wire (connection).",
+      "tags": [
+        "simple_circuit",
+        "components",
+        "electricity"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 61
+    },
+    {
+      "id": "1a1dc99f-bb07-4ea8-b676-316420312e52",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "Mass is measured in kilograms, but weight is measured in ___.",
+      "options": [],
+      "correct_answer": "Newtons",
+      "explanation": "Weight is a force, so it is measured in Newtons (N). Mass is measured in kilograms (kg).",
+      "tags": [
+        "gravity",
+        "mass",
+        "weight",
+        "units"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 62
+    },
+    {
+      "id": "bbef395f-1174-4050-b273-cb98a2c475ec",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "Lubricants like oil are used to ___ friction between moving machine parts.",
+      "options": [],
+      "correct_answer": "reduce",
+      "explanation": "Oil creates a slippery layer between surfaces, reducing friction and wear.",
+      "tags": [
+        "friction",
+        "lubrication",
+        "practical_application"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 63
+    },
+    {
+      "id": "7ced2568-0077-434e-baaa-efa9bd0b4f4f",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "The temperature at which a solid turns into a liquid is called its ___ point.",
+      "options": [],
+      "correct_answer": "melting",
+      "explanation": "The melting point is the temperature at which a solid becomes a liquid (e.g., ice melts at 0°C).",
+      "tags": [
+        "states_of_matter",
+        "melting_point",
+        "phase_change"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 64
+    },
+    {
+      "id": "813da371-9d88-4030-b320-c00a589d78b4",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "Energy in an ecosystem flows from the sun to ___ and then to consumers.",
+      "options": [],
+      "correct_answer": "producers",
+      "explanation": "Producers (plants) capture solar energy through photosynthesis and pass it to consumers.",
+      "tags": [
+        "ecosystem",
+        "energy_flow",
+        "producers"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 65
+    },
+    {
+      "id": "3d7761d6-a7b1-4a3a-bc60-14e566ccdf1e",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "If too much current flows through a wire, it may cause a short ___ or fire.",
+      "options": [],
+      "correct_answer": "circuit",
+      "explanation": "A short circuit happens when current flows along an unintended path, bypassing the load.",
+      "tags": [
+        "simple_circuit",
+        "short_circuit",
+        "electricity"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 66
+    },
+    {
+      "id": "939dfb39-9443-4c60-956d-a6a61fd6638d",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "content": "Friction always slows things down, so it is always bad and should be eliminated.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "B",
+      "explanation": "Friction is not always bad. We need friction to walk, write, and stop cars. It should be reduced only when necessary.",
+      "tags": [
+        "friction",
+        "force",
+        "practical_application"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 67
+    },
+    {
+      "id": "005c634e-d240-458d-bbe2-6fe366bfb235",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "content": "The diaphragm is a muscle that helps us breathe by contracting and relaxing.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "The diaphragm contracts to pull air into the lungs and relaxes to push air out.",
+      "tags": [
+        "human_body",
+        "respiratory_system",
+        "diaphragm"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 68
+    },
+    {
+      "id": "f0e3f2cb-5032-474a-928e-3e4dd85c29ae",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "content": "All energy in an ecosystem originally comes from the sun.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "Almost all energy on Earth comes from the sun, captured by producers through photosynthesis.",
+      "tags": [
+        "ecosystem",
+        "energy_flow",
+        "sun"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 69
+    },
+    {
+      "id": "e5592b73-5e39-436e-9a2d-dd28c3c9ad1e",
+      "batch_id": "science_9-12_complete",
+      "source": "ai_generated",
+      "subject": "science",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "content": "Design a simple circuit with two light bulbs connected so that if one bulb breaks, the other still works. Describe or draw how you would connect them.",
+      "options": [],
+      "correct_answer": "Sample: Connect the two bulbs in parallel. Each bulb has its own path from the battery. If one path breaks, the other path still allows electricity to flow.",
+      "explanation": "In a parallel circuit, components are connected on separate branches, so one can fail without affecting the others.",
+      "tags": [
+        "simple_circuit",
+        "parallel_circuit",
+        "electricity"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 70
+    }
+  ]
+}

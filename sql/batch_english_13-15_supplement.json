@@ -1,0 +1,1894 @@
+{
+  "batch_id": "english_13-15_supplement",
+  "subject": "english",
+  "age_group": "13-15",
+  "grade": "初三",
+  "total_count": 140,
+  "questions": [
+    {
+      "id": "en_071",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "The man ______ is standing at the gate is my teacher.",
+      "options": [
+        "A. who",
+        "B. whom",
+        "C. whose",
+        "D. which"
+      ],
+      "answer": "A",
+      "explanation": "先行词为人且在从句中作主语，用who。"
+    },
+    {
+      "id": "en_072",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "I will never forget the day ______ I first met you.",
+      "options": [
+        "A. which",
+        "B. when",
+        "C. that",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "先行词为时间，用when。"
+    },
+    {
+      "id": "en_073",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "This is the best film ______ I have ever seen.",
+      "options": [
+        "A. which",
+        "B. that",
+        "C. who",
+        "D. whom"
+      ],
+      "answer": "B",
+      "explanation": "先行词被最高级修饰，用that。"
+    },
+    {
+      "id": "en_074",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "He has two sons, both of ______ are doctors.",
+      "options": [
+        "A. that",
+        "B. who",
+        "C. whom",
+        "D. which"
+      ],
+      "answer": "C",
+      "explanation": "介词后指人，用whom。"
+    },
+    {
+      "id": "en_075",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "Which of the following can be used to introduce an attributive clause?",
+      "options": [
+        "A. who",
+        "B. which",
+        "C. when",
+        "D. where"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四个词均可引导定语从句。"
+    },
+    {
+      "id": "en_076",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "The book ______ cover is red is mine.",
+      "options": null,
+      "answer": "whose",
+      "explanation": "whose表示所属关系。"
+    },
+    {
+      "id": "en_077",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "The relative pronoun 'that' can refer to both people and things.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "that可指人或物。"
+    },
+    {
+      "id": "en_078",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "Combine the sentences: The girl is my sister. She is wearing a red dress.",
+      "options": null,
+      "answer": "The girl who/that is wearing a red dress is my sister.",
+      "explanation": "用who/that引导定语从句。"
+    },
+    {
+      "id": "en_079",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Could you tell me ______ you will go to Beijing?",
+      "options": [
+        "A. what",
+        "B. when",
+        "C. how long",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "问时间用when。"
+    },
+    {
+      "id": "en_080",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "I don't know ______ he will come tomorrow.",
+      "options": [
+        "A. if",
+        "B. what",
+        "C. which",
+        "D. how many"
+      ],
+      "answer": "A",
+      "explanation": "表示'是否'用if。"
+    },
+    {
+      "id": "en_081",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "He asked me ______ I could help him.",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. which"
+      ],
+      "answer": "C",
+      "explanation": "if引导宾语从句表'是否'。"
+    },
+    {
+      "id": "en_082",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "I wonder ______ he said at the meeting.",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. whether"
+      ],
+      "answer": "B",
+      "explanation": "what作said的宾语。"
+    },
+    {
+      "id": "en_083",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Which words can introduce an object clause?",
+      "options": [
+        "A. that",
+        "B. if",
+        "C. whether",
+        "D. what"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四个词均可引导宾语从句。"
+    },
+    {
+      "id": "en_084",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "I believe ______ he is honest.",
+      "options": null,
+      "answer": "that",
+      "explanation": "that引导陈述句作宾语从句。"
+    },
+    {
+      "id": "en_085",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Object clauses must use statement word order.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "宾语从句用陈述语序。"
+    },
+    {
+      "id": "en_086",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "Change to object clause: 'Is he coming?' She asked.",
+      "options": null,
+      "answer": "She asked if/whether he was coming.",
+      "explanation": "一般疑问句变宾语从句用if/whether。"
+    },
+    {
+      "id": "en_087",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "______ it rains heavily, we will stay at home.",
+      "options": [
+        "A. If",
+        "B. Because",
+        "C. Although",
+        "D. Until"
+      ],
+      "answer": "A",
+      "explanation": "if引导条件状语从句。"
+    },
+    {
+      "id": "en_088",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "______ he is young, he knows a lot.",
+      "options": [
+        "A. If",
+        "B. Because",
+        "C. Although",
+        "D. When"
+      ],
+      "answer": "C",
+      "explanation": "although引导让步状语从句。"
+    },
+    {
+      "id": "en_089",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "I was reading ______ he was watching TV.",
+      "options": [
+        "A. when",
+        "B. while",
+        "C. as soon as",
+        "D. until"
+      ],
+      "answer": "B",
+      "explanation": "while表示对比，连接两个延续性动作。"
+    },
+    {
+      "id": "en_090",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "Hardly had I arrived home ______ it began to rain.",
+      "options": [
+        "A. when",
+        "B. than",
+        "C. before",
+        "D. after"
+      ],
+      "answer": "A",
+      "explanation": "hardly...when...为固定搭配。"
+    },
+    {
+      "id": "en_091",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "Which can introduce an adverbial clause of time?",
+      "options": [
+        "A. when",
+        "B. while",
+        "C. as soon as",
+        "D. until"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四词均可引导时间状语从句。"
+    },
+    {
+      "id": "en_092",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "I won't leave ______ you come back.",
+      "options": null,
+      "answer": "until",
+      "explanation": "not...until...直到……才……"
+    },
+    {
+      "id": "en_093",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "'If' can introduce a conditional clause.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "if引导条件状语从句。"
+    },
+    {
+      "id": "en_094",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "Combine: He didn't go to bed. He finished his homework.",
+      "options": null,
+      "answer": "He didn't go to bed until he had finished his homework.",
+      "explanation": "not...until...结构。"
+    },
+    {
+      "id": "en_095",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "He enjoys ______ books in his free time.",
+      "options": [
+        "A. read",
+        "B. reading",
+        "C. to read",
+        "D. reads"
+      ],
+      "answer": "B",
+      "explanation": "enjoy后接动名词。"
+    },
+    {
+      "id": "en_096",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "I decided ______ a letter to him.",
+      "options": [
+        "A. write",
+        "B. writing",
+        "C. to write",
+        "D. wrote"
+      ],
+      "answer": "C",
+      "explanation": "decide后接不定式。"
+    },
+    {
+      "id": "en_097",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "______ in the sun is bad for your eyes.",
+      "options": [
+        "A. Read",
+        "B. Reading",
+        "C. To read",
+        "D. Reads"
+      ],
+      "answer": "B",
+      "explanation": "动名词作主语。"
+    },
+    {
+      "id": "en_098",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "The book ______ on the desk is mine.",
+      "options": [
+        "A. lying",
+        "B. lain",
+        "C. lay",
+        "D. lied"
+      ],
+      "answer": "A",
+      "explanation": "现在分词lying作后置定语。"
+    },
+    {
+      "id": "en_099",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "Which verbs are followed by gerunds?",
+      "options": [
+        "A. enjoy",
+        "B. finish",
+        "C. practice",
+        "D. want"
+      ],
+      "answer": "A,B,C",
+      "explanation": "want后接不定式。"
+    },
+    {
+      "id": "en_100",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "He made me ______ (laugh).",
+      "options": null,
+      "answer": "laugh",
+      "explanation": "make sb. do sth. 使役动词接省略to的不定式。"
+    },
+    {
+      "id": "en_101",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "'To do' can be used as the subject of a sentence.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "不定式可作主语。"
+    },
+    {
+      "id": "en_102",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "Rewrite using a gerund: It is important that we protect the environment.",
+      "options": null,
+      "answer": "Protecting the environment is important.",
+      "explanation": "动名词作主语。"
+    },
+    {
+      "id": "en_103",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: Tom is a middle school student. He ______ to school every day.",
+      "options": [
+        "A. walks",
+        "B. walking",
+        "C. walk",
+        "D. walked"
+      ],
+      "answer": "A",
+      "explanation": "一般现在时，主语为第三人称单数。"
+    },
+    {
+      "id": "en_104",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: She ______ English for three years.",
+      "options": [
+        "A. learns",
+        "B. has learned",
+        "C. learned",
+        "D. is learning"
+      ],
+      "answer": "B",
+      "explanation": "for+时间段用现在完成时。"
+    },
+    {
+      "id": "en_105",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: If I ______ you, I would accept the offer.",
+      "options": [
+        "A. am",
+        "B. was",
+        "C. were",
+        "D. be"
+      ],
+      "answer": "C",
+      "explanation": "虚拟语气，if从句用were。"
+    },
+    {
+      "id": "en_106",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: The children ______ playing football when it began to rain.",
+      "options": [
+        "A. are",
+        "B. were",
+        "C. was",
+        "D. is"
+      ],
+      "answer": "B",
+      "explanation": "when引导的时间状语从句，主句用过去进行时。"
+    },
+    {
+      "id": "en_107",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: By the time we got there, the film ______.",
+      "options": [
+        "A. began",
+        "B. had begun",
+        "C. begins",
+        "D. has begun"
+      ],
+      "answer": "B",
+      "explanation": "by the time+过去时，主句用过去完成时。"
+    },
+    {
+      "id": "en_108",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: Li Ming usually gets up at 6:30. What time does he get up?",
+      "options": [
+        "A. 6:00",
+        "B. 6:30",
+        "C. 7:00",
+        "D. 7:30"
+      ],
+      "answer": "B",
+      "explanation": "文中明确提到6:30。"
+    },
+    {
+      "id": "en_109",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: The passage mainly tells us about ______.",
+      "options": [
+        "A. history",
+        "B. science",
+        "C. education",
+        "D. environment"
+      ],
+      "answer": "C",
+      "explanation": "主旨大意题，选education。"
+    },
+    {
+      "id": "en_110",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: What does the underlined word 'abandon' mean?",
+      "options": [
+        "A. keep",
+        "B. leave",
+        "C. find",
+        "D. protect"
+      ],
+      "answer": "B",
+      "explanation": "abandon意为'放弃、抛弃'，与leave意思最接近。"
+    },
+    {
+      "id": "en_111",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: According to the passage, which statements are true?",
+      "options": [
+        "A. Reading improves vocabulary.",
+        "B. Exercise is good for health.",
+        "C. Sleep affects memory.",
+        "D. All of the above."
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "根据文章内容判断。"
+    },
+    {
+      "id": "en_112",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: What is the writer's purpose in writing this passage?",
+      "options": null,
+      "answer": "To encourage students to read more books.",
+      "explanation": "考查作者写作意图。"
+    },
+    {
+      "id": "en_113",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "The man ______ is standing at the gate is my teacher.",
+      "options": [
+        "A. who",
+        "B. whom",
+        "C. whose",
+        "D. which"
+      ],
+      "answer": "A",
+      "explanation": "先行词为人且在从句中作主语，用who。"
+    },
+    {
+      "id": "en_114",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "I will never forget the day ______ I first met you.",
+      "options": [
+        "A. which",
+        "B. when",
+        "C. that",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "先行词为时间，用when。"
+    },
+    {
+      "id": "en_115",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "This is the best film ______ I have ever seen.",
+      "options": [
+        "A. which",
+        "B. that",
+        "C. who",
+        "D. whom"
+      ],
+      "answer": "B",
+      "explanation": "先行词被最高级修饰，用that。"
+    },
+    {
+      "id": "en_116",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "He has two sons, both of ______ are doctors.",
+      "options": [
+        "A. that",
+        "B. who",
+        "C. whom",
+        "D. which"
+      ],
+      "answer": "C",
+      "explanation": "介词后指人，用whom。"
+    },
+    {
+      "id": "en_117",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "Which of the following can be used to introduce an attributive clause?",
+      "options": [
+        "A. who",
+        "B. which",
+        "C. when",
+        "D. where"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四个词均可引导定语从句。"
+    },
+    {
+      "id": "en_118",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "The book ______ cover is red is mine.",
+      "options": null,
+      "answer": "whose",
+      "explanation": "whose表示所属关系。"
+    },
+    {
+      "id": "en_119",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "The relative pronoun 'that' can refer to both people and things.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "that可指人或物。"
+    },
+    {
+      "id": "en_120",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "Combine the sentences: The girl is my sister. She is wearing a red dress.",
+      "options": null,
+      "answer": "The girl who/that is wearing a red dress is my sister.",
+      "explanation": "用who/that引导定语从句。"
+    },
+    {
+      "id": "en_121",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "Could you tell me ______ you will go to Beijing?",
+      "options": [
+        "A. what",
+        "B. when",
+        "C. how long",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "问时间用when。"
+    },
+    {
+      "id": "en_122",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "I don't know ______ he will come tomorrow.",
+      "options": [
+        "A. if",
+        "B. what",
+        "C. which",
+        "D. how many"
+      ],
+      "answer": "A",
+      "explanation": "表示'是否'用if。"
+    },
+    {
+      "id": "en_123",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "He asked me ______ I could help him.",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. which"
+      ],
+      "answer": "C",
+      "explanation": "if引导宾语从句表'是否'。"
+    },
+    {
+      "id": "en_124",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "I wonder ______ he said at the meeting.",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. whether"
+      ],
+      "answer": "B",
+      "explanation": "what作said的宾语。"
+    },
+    {
+      "id": "en_125",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Which words can introduce an object clause?",
+      "options": [
+        "A. that",
+        "B. if",
+        "C. whether",
+        "D. what"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四个词均可引导宾语从句。"
+    },
+    {
+      "id": "en_126",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "I believe ______ he is honest.",
+      "options": null,
+      "answer": "that",
+      "explanation": "that引导陈述句作宾语从句。"
+    },
+    {
+      "id": "en_127",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "Object clauses must use statement word order.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "宾语从句用陈述语序。"
+    },
+    {
+      "id": "en_128",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "Change to object clause: 'Is he coming?' She asked.",
+      "options": null,
+      "answer": "She asked if/whether he was coming.",
+      "explanation": "一般疑问句变宾语从句用if/whether。"
+    },
+    {
+      "id": "en_129",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "______ it rains heavily, we will stay at home.",
+      "options": [
+        "A. If",
+        "B. Because",
+        "C. Although",
+        "D. Until"
+      ],
+      "answer": "A",
+      "explanation": "if引导条件状语从句。"
+    },
+    {
+      "id": "en_130",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "______ he is young, he knows a lot.",
+      "options": [
+        "A. If",
+        "B. Because",
+        "C. Although",
+        "D. When"
+      ],
+      "answer": "C",
+      "explanation": "although引导让步状语从句。"
+    },
+    {
+      "id": "en_131",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "I was reading ______ he was watching TV.",
+      "options": [
+        "A. when",
+        "B. while",
+        "C. as soon as",
+        "D. until"
+      ],
+      "answer": "B",
+      "explanation": "while表示对比，连接两个延续性动作。"
+    },
+    {
+      "id": "en_132",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "Hardly had I arrived home ______ it began to rain.",
+      "options": [
+        "A. when",
+        "B. than",
+        "C. before",
+        "D. after"
+      ],
+      "answer": "A",
+      "explanation": "hardly...when...为固定搭配。"
+    },
+    {
+      "id": "en_133",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "Which can introduce an adverbial clause of time?",
+      "options": [
+        "A. when",
+        "B. while",
+        "C. as soon as",
+        "D. until"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四词均可引导时间状语从句。"
+    },
+    {
+      "id": "en_134",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "I won't leave ______ you come back.",
+      "options": null,
+      "answer": "until",
+      "explanation": "not...until...直到……才……"
+    },
+    {
+      "id": "en_135",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "'If' can introduce a conditional clause.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "if引导条件状语从句。"
+    },
+    {
+      "id": "en_136",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "Combine: He didn't go to bed. He finished his homework.",
+      "options": null,
+      "answer": "He didn't go to bed until he had finished his homework.",
+      "explanation": "not...until...结构。"
+    },
+    {
+      "id": "en_137",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "He enjoys ______ books in his free time.",
+      "options": [
+        "A. read",
+        "B. reading",
+        "C. to read",
+        "D. reads"
+      ],
+      "answer": "B",
+      "explanation": "enjoy后接动名词。"
+    },
+    {
+      "id": "en_138",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "I decided ______ a letter to him.",
+      "options": [
+        "A. write",
+        "B. writing",
+        "C. to write",
+        "D. wrote"
+      ],
+      "answer": "C",
+      "explanation": "decide后接不定式。"
+    },
+    {
+      "id": "en_139",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "______ in the sun is bad for your eyes.",
+      "options": [
+        "A. Read",
+        "B. Reading",
+        "C. To read",
+        "D. Reads"
+      ],
+      "answer": "B",
+      "explanation": "动名词作主语。"
+    },
+    {
+      "id": "en_140",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "The book ______ on the desk is mine.",
+      "options": [
+        "A. lying",
+        "B. lain",
+        "C. lay",
+        "D. lied"
+      ],
+      "answer": "A",
+      "explanation": "现在分词lying作后置定语。"
+    },
+    {
+      "id": "en_141",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "Which verbs are followed by gerunds?",
+      "options": [
+        "A. enjoy",
+        "B. finish",
+        "C. practice",
+        "D. want"
+      ],
+      "answer": "A,B,C",
+      "explanation": "want后接不定式。"
+    },
+    {
+      "id": "en_142",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "He made me ______ (laugh).",
+      "options": null,
+      "answer": "laugh",
+      "explanation": "make sb. do sth. 使役动词接省略to的不定式。"
+    },
+    {
+      "id": "en_143",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "'To do' can be used as the subject of a sentence.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "不定式可作主语。"
+    },
+    {
+      "id": "en_144",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "Rewrite using a gerund: It is important that we protect the environment.",
+      "options": null,
+      "answer": "Protecting the environment is important.",
+      "explanation": "动名词作主语。"
+    },
+    {
+      "id": "en_145",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: Tom is a middle school student. He ______ to school every day.",
+      "options": [
+        "A. walks",
+        "B. walking",
+        "C. walk",
+        "D. walked"
+      ],
+      "answer": "A",
+      "explanation": "一般现在时，主语为第三人称单数。"
+    },
+    {
+      "id": "en_146",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: She ______ English for three years.",
+      "options": [
+        "A. learns",
+        "B. has learned",
+        "C. learned",
+        "D. is learning"
+      ],
+      "answer": "B",
+      "explanation": "for+时间段用现在完成时。"
+    },
+    {
+      "id": "en_147",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: If I ______ you, I would accept the offer.",
+      "options": [
+        "A. am",
+        "B. was",
+        "C. were",
+        "D. be"
+      ],
+      "answer": "C",
+      "explanation": "虚拟语气，if从句用were。"
+    },
+    {
+      "id": "en_148",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: The children ______ playing football when it began to rain.",
+      "options": [
+        "A. are",
+        "B. were",
+        "C. was",
+        "D. is"
+      ],
+      "answer": "B",
+      "explanation": "when引导的时间状语从句，主句用过去进行时。"
+    },
+    {
+      "id": "en_149",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: By the time we got there, the film ______.",
+      "options": [
+        "A. began",
+        "B. had begun",
+        "C. begins",
+        "D. has begun"
+      ],
+      "answer": "B",
+      "explanation": "by the time+过去时，主句用过去完成时。"
+    },
+    {
+      "id": "en_150",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: Li Ming usually gets up at 6:30. What time does he get up?",
+      "options": [
+        "A. 6:00",
+        "B. 6:30",
+        "C. 7:00",
+        "D. 7:30"
+      ],
+      "answer": "B",
+      "explanation": "文中明确提到6:30。"
+    },
+    {
+      "id": "en_151",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: The passage mainly tells us about ______.",
+      "options": [
+        "A. history",
+        "B. science",
+        "C. education",
+        "D. environment"
+      ],
+      "answer": "C",
+      "explanation": "主旨大意题，选education。"
+    },
+    {
+      "id": "en_152",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: What does the underlined word 'abandon' mean?",
+      "options": [
+        "A. keep",
+        "B. leave",
+        "C. find",
+        "D. protect"
+      ],
+      "answer": "B",
+      "explanation": "abandon意为'放弃、抛弃'，与leave意思最接近。"
+    },
+    {
+      "id": "en_153",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: According to the passage, which statements are true?",
+      "options": [
+        "A. Reading improves vocabulary.",
+        "B. Exercise is good for health.",
+        "C. Sleep affects memory.",
+        "D. All of the above."
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "根据文章内容判断。"
+    },
+    {
+      "id": "en_154",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: What is the writer's purpose in writing this passage?",
+      "options": null,
+      "answer": "To encourage students to read more books.",
+      "explanation": "考查作者写作意图。"
+    },
+    {
+      "id": "en_155",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "The man ______ is standing at the gate is my teacher.",
+      "options": [
+        "A. who",
+        "B. whom",
+        "C. whose",
+        "D. which"
+      ],
+      "answer": "A",
+      "explanation": "先行词为人且在从句中作主语，用who。"
+    },
+    {
+      "id": "en_156",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "I will never forget the day ______ I first met you.",
+      "options": [
+        "A. which",
+        "B. when",
+        "C. that",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "先行词为时间，用when。"
+    },
+    {
+      "id": "en_157",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "This is the best film ______ I have ever seen.",
+      "options": [
+        "A. which",
+        "B. that",
+        "C. who",
+        "D. whom"
+      ],
+      "answer": "B",
+      "explanation": "先行词被最高级修饰，用that。"
+    },
+    {
+      "id": "en_158",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "He has two sons, both of ______ are doctors.",
+      "options": [
+        "A. that",
+        "B. who",
+        "C. whom",
+        "D. which"
+      ],
+      "answer": "C",
+      "explanation": "介词后指人，用whom。"
+    },
+    {
+      "id": "en_159",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "Which of the following can be used to introduce an attributive clause?",
+      "options": [
+        "A. who",
+        "B. which",
+        "C. when",
+        "D. where"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四个词均可引导定语从句。"
+    },
+    {
+      "id": "en_160",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "The book ______ cover is red is mine.",
+      "options": null,
+      "answer": "whose",
+      "explanation": "whose表示所属关系。"
+    },
+    {
+      "id": "en_161",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "The relative pronoun 'that' can refer to both people and things.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "that可指人或物。"
+    },
+    {
+      "id": "en_162",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "Combine the sentences: The girl is my sister. She is wearing a red dress.",
+      "options": null,
+      "answer": "The girl who/that is wearing a red dress is my sister.",
+      "explanation": "用who/that引导定语从句。"
+    },
+    {
+      "id": "en_163",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "Could you tell me ______ you will go to Beijing?",
+      "options": [
+        "A. what",
+        "B. when",
+        "C. how long",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "问时间用when。"
+    },
+    {
+      "id": "en_164",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "I don't know ______ he will come tomorrow.",
+      "options": [
+        "A. if",
+        "B. what",
+        "C. which",
+        "D. how many"
+      ],
+      "answer": "A",
+      "explanation": "表示'是否'用if。"
+    },
+    {
+      "id": "en_165",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "He asked me ______ I could help him.",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. which"
+      ],
+      "answer": "C",
+      "explanation": "if引导宾语从句表'是否'。"
+    },
+    {
+      "id": "en_166",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "I wonder ______ he said at the meeting.",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. whether"
+      ],
+      "answer": "B",
+      "explanation": "what作said的宾语。"
+    },
+    {
+      "id": "en_167",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "Which words can introduce an object clause?",
+      "options": [
+        "A. that",
+        "B. if",
+        "C. whether",
+        "D. what"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四个词均可引导宾语从句。"
+    },
+    {
+      "id": "en_168",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "I believe ______ he is honest.",
+      "options": null,
+      "answer": "that",
+      "explanation": "that引导陈述句作宾语从句。"
+    },
+    {
+      "id": "en_169",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Object clauses must use statement word order.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "宾语从句用陈述语序。"
+    },
+    {
+      "id": "en_170",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Change to object clause: 'Is he coming?' She asked.",
+      "options": null,
+      "answer": "She asked if/whether he was coming.",
+      "explanation": "一般疑问句变宾语从句用if/whether。"
+    },
+    {
+      "id": "en_171",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "______ it rains heavily, we will stay at home.",
+      "options": [
+        "A. If",
+        "B. Because",
+        "C. Although",
+        "D. Until"
+      ],
+      "answer": "A",
+      "explanation": "if引导条件状语从句。"
+    },
+    {
+      "id": "en_172",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "______ he is young, he knows a lot.",
+      "options": [
+        "A. If",
+        "B. Because",
+        "C. Although",
+        "D. When"
+      ],
+      "answer": "C",
+      "explanation": "although引导让步状语从句。"
+    },
+    {
+      "id": "en_173",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "I was reading ______ he was watching TV.",
+      "options": [
+        "A. when",
+        "B. while",
+        "C. as soon as",
+        "D. until"
+      ],
+      "answer": "B",
+      "explanation": "while表示对比，连接两个延续性动作。"
+    },
+    {
+      "id": "en_174",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "Hardly had I arrived home ______ it began to rain.",
+      "options": [
+        "A. when",
+        "B. than",
+        "C. before",
+        "D. after"
+      ],
+      "answer": "A",
+      "explanation": "hardly...when...为固定搭配。"
+    },
+    {
+      "id": "en_175",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "Which can introduce an adverbial clause of time?",
+      "options": [
+        "A. when",
+        "B. while",
+        "C. as soon as",
+        "D. until"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四词均可引导时间状语从句。"
+    },
+    {
+      "id": "en_176",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "I won't leave ______ you come back.",
+      "options": null,
+      "answer": "until",
+      "explanation": "not...until...直到……才……"
+    },
+    {
+      "id": "en_177",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "'If' can introduce a conditional clause.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "if引导条件状语从句。"
+    },
+    {
+      "id": "en_178",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "Combine: He didn't go to bed. He finished his homework.",
+      "options": null,
+      "answer": "He didn't go to bed until he had finished his homework.",
+      "explanation": "not...until...结构。"
+    },
+    {
+      "id": "en_179",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "He enjoys ______ books in his free time.",
+      "options": [
+        "A. read",
+        "B. reading",
+        "C. to read",
+        "D. reads"
+      ],
+      "answer": "B",
+      "explanation": "enjoy后接动名词。"
+    },
+    {
+      "id": "en_180",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "I decided ______ a letter to him.",
+      "options": [
+        "A. write",
+        "B. writing",
+        "C. to write",
+        "D. wrote"
+      ],
+      "answer": "C",
+      "explanation": "decide后接不定式。"
+    },
+    {
+      "id": "en_181",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "______ in the sun is bad for your eyes.",
+      "options": [
+        "A. Read",
+        "B. Reading",
+        "C. To read",
+        "D. Reads"
+      ],
+      "answer": "B",
+      "explanation": "动名词作主语。"
+    },
+    {
+      "id": "en_182",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "The book ______ on the desk is mine.",
+      "options": [
+        "A. lying",
+        "B. lain",
+        "C. lay",
+        "D. lied"
+      ],
+      "answer": "A",
+      "explanation": "现在分词lying作后置定语。"
+    },
+    {
+      "id": "en_183",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "Which verbs are followed by gerunds?",
+      "options": [
+        "A. enjoy",
+        "B. finish",
+        "C. practice",
+        "D. want"
+      ],
+      "answer": "A,B,C",
+      "explanation": "want后接不定式。"
+    },
+    {
+      "id": "en_184",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "He made me ______ (laugh).",
+      "options": null,
+      "answer": "laugh",
+      "explanation": "make sb. do sth. 使役动词接省略to的不定式。"
+    },
+    {
+      "id": "en_185",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "'To do' can be used as the subject of a sentence.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "不定式可作主语。"
+    },
+    {
+      "id": "en_186",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "Rewrite using a gerund: It is important that we protect the environment.",
+      "options": null,
+      "answer": "Protecting the environment is important.",
+      "explanation": "动名词作主语。"
+    },
+    {
+      "id": "en_187",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: Tom is a middle school student. He ______ to school every day.",
+      "options": [
+        "A. walks",
+        "B. walking",
+        "C. walk",
+        "D. walked"
+      ],
+      "answer": "A",
+      "explanation": "一般现在时，主语为第三人称单数。"
+    },
+    {
+      "id": "en_188",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: She ______ English for three years.",
+      "options": [
+        "A. learns",
+        "B. has learned",
+        "C. learned",
+        "D. is learning"
+      ],
+      "answer": "B",
+      "explanation": "for+时间段用现在完成时。"
+    },
+    {
+      "id": "en_189",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: If I ______ you, I would accept the offer.",
+      "options": [
+        "A. am",
+        "B. was",
+        "C. were",
+        "D. be"
+      ],
+      "answer": "C",
+      "explanation": "虚拟语气，if从句用were。"
+    },
+    {
+      "id": "en_190",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: The children ______ playing football when it began to rain.",
+      "options": [
+        "A. are",
+        "B. were",
+        "C. was",
+        "D. is"
+      ],
+      "answer": "B",
+      "explanation": "when引导的时间状语从句，主句用过去进行时。"
+    },
+    {
+      "id": "en_191",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "完形填空",
+      "question": "完形填空: By the time we got there, the film ______.",
+      "options": [
+        "A. began",
+        "B. had begun",
+        "C. begins",
+        "D. has begun"
+      ],
+      "answer": "B",
+      "explanation": "by the time+过去时，主句用过去完成时。"
+    },
+    {
+      "id": "en_192",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: Li Ming usually gets up at 6:30. What time does he get up?",
+      "options": [
+        "A. 6:00",
+        "B. 6:30",
+        "C. 7:00",
+        "D. 7:30"
+      ],
+      "answer": "B",
+      "explanation": "文中明确提到6:30。"
+    },
+    {
+      "id": "en_193",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: The passage mainly tells us about ______.",
+      "options": [
+        "A. history",
+        "B. science",
+        "C. education",
+        "D. environment"
+      ],
+      "answer": "C",
+      "explanation": "主旨大意题，选education。"
+    },
+    {
+      "id": "en_194",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: What does the underlined word 'abandon' mean?",
+      "options": [
+        "A. keep",
+        "B. leave",
+        "C. find",
+        "D. protect"
+      ],
+      "answer": "B",
+      "explanation": "abandon意为'放弃、抛弃'，与leave意思最接近。"
+    },
+    {
+      "id": "en_195",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: According to the passage, which statements are true?",
+      "options": [
+        "A. Reading improves vocabulary.",
+        "B. Exercise is good for health.",
+        "C. Sleep affects memory.",
+        "D. All of the above."
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "根据文章内容判断。"
+    },
+    {
+      "id": "en_196",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "阅读理解",
+      "question": "阅读理解: What is the writer's purpose in writing this passage?",
+      "options": null,
+      "answer": "To encourage students to read more books.",
+      "explanation": "考查作者写作意图。"
+    },
+    {
+      "id": "en_197",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "The man ______ is standing at the gate is my teacher.",
+      "options": [
+        "A. who",
+        "B. whom",
+        "C. whose",
+        "D. which"
+      ],
+      "answer": "A",
+      "explanation": "先行词为人且在从句中作主语，用who。"
+    },
+    {
+      "id": "en_198",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "I will never forget the day ______ I first met you.",
+      "options": [
+        "A. which",
+        "B. when",
+        "C. that",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "先行词为时间，用when。"
+    },
+    {
+      "id": "en_199",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "This is the best film ______ I have ever seen.",
+      "options": [
+        "A. which",
+        "B. that",
+        "C. who",
+        "D. whom"
+      ],
+      "answer": "B",
+      "explanation": "先行词被最高级修饰，用that。"
+    },
+    {
+      "id": "en_200",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "He has two sons, both of ______ are doctors.",
+      "options": [
+        "A. that",
+        "B. who",
+        "C. whom",
+        "D. which"
+      ],
+      "answer": "C",
+      "explanation": "介词后指人，用whom。"
+    },
+    {
+      "id": "en_201",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "Which of the following can be used to introduce an attributive clause?",
+      "options": [
+        "A. who",
+        "B. which",
+        "C. when",
+        "D. where"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四个词均可引导定语从句。"
+    },
+    {
+      "id": "en_202",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "The book ______ cover is red is mine.",
+      "options": null,
+      "answer": "whose",
+      "explanation": "whose表示所属关系。"
+    },
+    {
+      "id": "en_203",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "The relative pronoun 'that' can refer to both people and things.",
+      "options": null,
+      "answer": "正确",
+      "explanation": "that可指人或物。"
+    },
+    {
+      "id": "en_204",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "Combine the sentences: The girl is my sister. She is wearing a red dress.",
+      "options": null,
+      "answer": "The girl who/that is wearing a red dress is my sister.",
+      "explanation": "用who/that引导定语从句。"
+    },
+    {
+      "id": "en_205",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "Could you tell me ______ you will go to Beijing?",
+      "options": [
+        "A. what",
+        "B. when",
+        "C. how long",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "问时间用when。"
+    },
+    {
+      "id": "en_206",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "I don't know ______ he will come tomorrow.",
+      "options": [
+        "A. if",
+        "B. what",
+        "C. which",
+        "D. how many"
+      ],
+      "answer": "A",
+      "explanation": "表示'是否'用if。"
+    },
+    {
+      "id": "en_207",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "He asked me ______ I could help him.",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. which"
+      ],
+      "answer": "C",
+      "explanation": "if引导宾语从句表'是否'。"
+    },
+    {
+      "id": "en_208",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "I wonder ______ he said at the meeting.",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. whether"
+      ],
+      "answer": "B",
+      "explanation": "what作said的宾语。"
+    },
+    {
+      "id": "en_209",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Which words can introduce an object clause?",
+      "options": [
+        "A. that",
+        "B. if",
+        "C. whether",
+        "D. what"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "四个词均可引导宾语从句。"
+    },
+    {
+      "id": "en_210",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "I believe ______ he is honest.",
+      "options": null,
+      "answer": "that",
+      "explanation": "that引导陈述句作宾语从句。"
+    }
+  ]
+}

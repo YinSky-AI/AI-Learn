@@ -1,0 +1,1468 @@
+{
+  "batch_id": "batch_geography_16-18",
+  "source": "ai_generated",
+  "subject": "geography",
+  "age_group": "16-18",
+  "grade": "高三",
+  "total_questions": 70,
+  "generated_at": "2026-07-15T18:11:58.254731",
+  "questions": [
+    {
+      "content": "以下关于地质构造的说法，正确的是：",
+      "options": [
+        "A. 背斜岩层向下弯曲，常形成谷地",
+        "B. 向斜岩层向上拱起，常形成山岭",
+        "C. 断层两侧岩层会发生相对位移",
+        "D. 地垒常形成谷地，如渭河平原"
+      ],
+      "correct_answer": "C",
+      "explanation": "背斜岩层向上拱起，向斜岩层向下弯曲，排除A、B。地垒常形成块状山，如华山，地堑常形成谷地，如渭河平原，排除D。断层指岩层断裂并沿断裂面发生相对位移，C正确。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "北半球中纬度地区，大陆西岸的盛行风是：",
+      "options": [
+        "A. 东北信风",
+        "B. 东南信风",
+        "C. 盛行西风",
+        "D. 极地东风"
+      ],
+      "correct_answer": "C",
+      "explanation": "北半球中纬度（30°N-60°N）大陆西岸受盛行西风影响，信风位于低纬度，极地东风位于高纬度。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "水循环中，目前人类活动影响最大的环节是：",
+      "options": [
+        "A. 蒸发",
+        "B. 水汽输送",
+        "C. 降水",
+        "D. 地表径流"
+      ],
+      "correct_answer": "D",
+      "explanation": "人类通过修建水库、跨流域调水、引水灌溉等活动，对地表径流施加显著影响，而对蒸发、水汽输送和降水影响较小。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水循环"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "从赤道到两极，自然带呈现出有规律的更替，这种地域分异规律的基础是：",
+      "options": [
+        "A. 水分",
+        "B. 热量",
+        "C. 土壤",
+        "D. 地形"
+      ],
+      "correct_answer": "B",
+      "explanation": "从赤道到两极，太阳辐射随纬度升高而减少，热量条件变化导致自然带更替，形成纬度地带性分异规律。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "自然带"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "衡量一个国家或地区城市化水平高低的主要标志是：",
+      "options": [
+        "A. 城市人口数量",
+        "B. 城市用地规模",
+        "C. 城市人口占总人口的比例",
+        "D. 城市数量"
+      ],
+      "correct_answer": "C",
+      "explanation": "城市人口占总人口的比例是衡量城市化水平的常用指标，城市人口数量、用地规模和城市数量受人口基数影响，不能直接反映城市化水平。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市化"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "影响农业生产的最基本、最自然的社会经济因素是：",
+      "options": [
+        "A. 气候",
+        "B. 土壤",
+        "C. 市场",
+        "D. 政策"
+      ],
+      "correct_answer": "C",
+      "explanation": "气候和土壤属于自然因素，市场是社会经济因素中最基本、最活跃的因素，它决定农业生产的类型和规模。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "农业区位"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下列工业部门中，属于原料导向型工业的是：",
+      "options": [
+        "A. 啤酒厂",
+        "B. 水产品加工厂",
+        "C. 电子装配厂",
+        "D. 服装厂"
+      ],
+      "correct_answer": "B",
+      "explanation": "原料导向型工业通常接近原料产地，水产品加工厂原料易腐烂，需就近加工；啤酒厂是市场导向型，电子装配厂和服装厂是劳动力导向型。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "工业区位"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下列运输方式中，运量最大、运费最低的是：",
+      "options": [
+        "A. 铁路运输",
+        "B. 公路运输",
+        "C. 水路运输",
+        "D. 航空运输"
+      ],
+      "correct_answer": "C",
+      "explanation": "水路运输运量大、成本低，适合大宗货物长途运输；铁路运量较大，但成本高于水运；公路灵活但运量小；航空运量小、成本高。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "交通运输"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下列行为中，有利于实现可持续发展的是：",
+      "options": [
+        "A. 过度开采地下水，解决水资源短缺",
+        "B. 大量使用化肥农药，提高粮食产量",
+        "C. 推广清洁能源，减少污染物排放",
+        "D. 围湖造田，增加耕地面积"
+      ],
+      "correct_answer": "C",
+      "explanation": "过度开采地下水会导致地面沉降等环境问题，大量使用化肥农药会污染土壤和水体，围湖造田会破坏湿地生态，均不利于可持续发展。推广清洁能源可减少污染，实现经济与环境协调发展。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "可持续发展"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在黄土高原水土流失治理中，生物措施主要是指：",
+      "options": [
+        "A. 修建梯田",
+        "B. 植树种草",
+        "C. 打坝淤地",
+        "D. 保塬护坡"
+      ],
+      "correct_answer": "B",
+      "explanation": "生物措施主要指植树种草，增加植被覆盖率，涵养水源、保持水土。修建梯田、打坝淤地、保塬护坡等属于工程措施。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水土流失治理"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "以下关于地质构造的叙述，正确的有（ ）",
+      "options": [
+        "A. 背斜岩层向上拱起，中心岩层新两翼岩层老",
+        "B. 向斜岩层向下弯曲，中心岩层老两翼岩层新",
+        "C. 断层是岩层发生断裂并沿断裂面产生显著位移的地质构造",
+        "D. 背斜顶部受张力，常被侵蚀成谷地"
+      ],
+      "correct_answer": "C,D",
+      "explanation": "背斜岩层向上拱起，中心岩层老两翼岩层新，A项错误；向斜岩层向下弯曲，中心岩层新两翼岩层老，B项错误。断层是岩层发生断裂并沿断裂面产生显著位移的地质构造，C项正确；背斜顶部受张力，岩石破碎，易被侵蚀成谷地，D项正确。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "背斜与向斜",
+        "断层"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下列有关大气环流的说法，正确的有（ ）",
+      "options": [
+        "A. 赤道低气压带是热力因素形成的",
+        "B. 副热带高气压带是动力因素形成的",
+        "C. 信风带的风向是北半球东北信风、南半球东南信风",
+        "D. 中纬西风带的风向是北半球西南风、南半球西北风"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "赤道地区受热多，空气膨胀上升，形成赤道低气压带，是热力因素，A项正确。副热带高气压带是由于气流在高空堆积下沉形成的，是动力因素，B项正确。北半球信风为东北信风，南半球为东南信风，C项正确。中纬西风带北半球为西南风，南半球为西北风，D项错误。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流",
+        "气压带风带",
+        "三圈环流"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "水循环的主要环节包括（ ）",
+      "options": [
+        "A. 蒸发",
+        "B. 水汽输送",
+        "C. 降水",
+        "D. 地表径流",
+        "E. 下渗"
+      ],
+      "correct_answer": "A,B,C,D,E",
+      "explanation": "水循环的主要环节包括蒸发（蒸腾）、水汽输送、降水、地表径流、下渗、地下径流等，因此所有选项均正确。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水循环",
+        "水循环环节"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下列关于自然带的叙述，正确的有（ ）",
+      "options": [
+        "A. 自然带是陆地上由于气候、土壤、植被等差异而形成的带状区域",
+        "B. 热带雨林带主要分布在赤道附近，气候湿热",
+        "C. 亚热带常绿硬叶林带对应地中海气候",
+        "D. 温带荒漠带主要分布在中纬度大陆内部，降水稀少"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "自然带是气候、土壤、植被等综合作用形成的带状区域，A项正确。热带雨林带分布在赤道附近，终年高温多雨，B项正确。亚热带常绿硬叶林带对应地中海气候，夏季炎热干燥，冬季温和多雨，C项正确。温带荒漠带分布在中纬度大陆内部，降水稀少，D项正确。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "自然带",
+        "气候与自然带",
+        "植被分布"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "形成黄土高原千沟万壑地表形态的主要外力作用是________作用，而黄土高原的成因则是________作用。",
+      "options": [],
+      "correct_answer": "流水侵蚀|风力堆积",
+      "explanation": "黄土高原的千沟万壑主要是由于流水侵蚀（特别是暴雨冲刷）形成的；而黄土高原本身的黄土层则是风力堆积作用形成的，来自西北荒漠地区的粉尘被风吹到此处沉积。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "外力作用"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "全球气压带和风带中，由于热力原因形成的气压带是赤道低气压带和________。",
+      "options": [
+        "A. 副热带高气压带",
+        "B. 副极地低气压带",
+        "C. 极地高气压带",
+        "D. 低纬信风带"
+      ],
+      "correct_answer": "C",
+      "explanation": "赤道低气压带和极地高气压带是由于地面冷热不均引起的空气垂直运动形成的，属于热力成因；副热带高气压带和副极地低气压带是由于大气运动引起的，属于动力成因。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流",
+        "气压带风带"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下列水循环环节中，属于陆地内循环的是（多选）",
+      "options": [
+        "A. 蒸发",
+        "B. 降水",
+        "C. 水汽输送",
+        "D. 径流",
+        "E. 下渗"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "陆地内循环是指发生在陆地与陆地之间的水循环，主要包括蒸发、降水和径流等环节。水汽输送是海陆间循环的环节，下渗则属于下垫面过程，不直接构成循环环节。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水循环",
+        "陆地内循环"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "亚欧大陆东岸从赤道到极地的自然带依次是：热带雨林带、亚热带常绿阔叶林带、温带落叶阔叶林带、亚寒带针叶林带、寒带苔原带，这种分布规律属于纬度地带性。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "纬度地带性是指自然带沿纬线方向延伸，南北更替，主要是由于热量随纬度变化引起的。亚欧大陆东岸的自然带更替符合这一规律。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "自然带",
+        "纬度地带性"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "简述影响人口迁移的主要因素（至少三点）。",
+      "options": [],
+      "correct_answer": "经济因素（地区经济发展不平衡）、政策因素（国家政策如户籍制度）、社会文化因素（家庭、婚姻、教育等）、生态环境因素（自然灾害、环境恶化等）",
+      "explanation": "人口迁移是多种因素综合作用的结果。经济因素是最主要的因素，人们通常从经济落后地区向经济发达地区迁移；政策因素如户籍制度、移民政策等也起重要作用；社会文化因素如家庭团聚、求学等；生态环境因素如自然灾害、环境恶化等也会导致人口迁移。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "人口迁移",
+        "人文地理"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "地质构造中，背斜是岩层向上拱起，中心岩层较老，两翼岩层较新；向斜是岩层向下弯曲，中心岩层较新，两翼岩层较老。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "背斜岩层向上拱起，中心岩层老，两翼岩层新；向斜岩层向下弯曲，中心岩层新，两翼岩层老。这是判断背斜和向斜的基本依据。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下列哪些因素会影响人口迁移？",
+      "options": [
+        "经济发展水平",
+        "气候条件",
+        "国家政策",
+        "文化教育",
+        "矿产资源"
+      ],
+      "correct_answer": "A,B,C,D,E",
+      "explanation": "影响人口迁移的因素包括经济因素（如经济发展水平）、自然因素（如气候条件）、政策因素（如国家政策）、社会文化因素（如文化教育）以及资源因素（如矿产资源）等，因此所有选项都正确。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "人口迁移"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "世界渔场主要分布在寒暖流交汇处，因为这里海水上泛，饵料丰富。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "寒暖流交汇处，海水受到扰动，下层的营养盐类上泛，有利于浮游生物繁殖，为鱼类提供丰富饵料，从而形成大型渔场，如北海道渔场、纽芬兰渔场等。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "洋流",
+        "渔场"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "简述水循环的主要环节，并说明水循环对地理环境的意义。",
+      "options": [],
+      "correct_answer": "主要环节：蒸发（蒸腾）、水汽输送、降水、地表径流、下渗、地下径流。意义：促进水体更新，维持全球水量平衡；调节全球热量平衡；塑造地表形态；促进物质迁移和能量转换。",
+      "explanation": "水循环包括蒸发（蒸腾）、水汽输送、降水、地表径流、下渗、地下径流等环节。其意义在于：通过降水、径流等实现水体更新和水量平衡；通过蒸发和降水调节热量；流水侵蚀、搬运、堆积塑造地表形态；同时水循环将水圈、大气圈、岩石圈、生物圈联系起来，促进物质和能量交换。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水循环",
+        "自然地理",
+        "地理环境整体性"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为某区域地质剖面示意图。读图，完成下题。图中甲、乙、丙、丁四处中，最可能形成地下溶洞的是（ ）",
+      "options": [
+        "A. 甲处",
+        "B. 乙处",
+        "C. 丙处",
+        "D. 丁处"
+      ],
+      "correct_answer": "C",
+      "explanation": "溶洞属于喀斯特地貌，主要形成于可溶性岩石（如石灰岩）中。图中丙处为石灰岩，且位于地下水位以下，易受流水溶蚀形成溶洞。甲处为花岗岩，乙处为砂岩，丁处为页岩，均不易溶蚀。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "喀斯特地貌",
+        "外力作用"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读北半球某季节气压带和风带分布示意图，完成下题。图中①气压带和②风带分别是（ ）",
+      "options": [
+        "A. 副极地低气压带；东北信风带",
+        "B. 副热带高气压带；盛行西风带",
+        "C. 赤道低气压带；东南信风带",
+        "D. 极地高气压带；极地东风带"
+      ],
+      "correct_answer": "B",
+      "explanation": "根据图示，①位于30°N附近，为副热带高气压带；②位于30°N～60°N之间，为盛行西风带（北半球为西南风）。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流",
+        "气压带风带"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读某河流流量变化曲线图（图中虚线为降水补给，实线为冰川融水补给），判断该河流可能位于（ ）",
+      "options": [
+        "A. 我国东北地区",
+        "B. 我国西北地区",
+        "C. 我国东南沿海",
+        "D. 我国青藏高原"
+      ],
+      "correct_answer": "B",
+      "explanation": "该河流有两次汛期：春汛（季节性积雪融水）和夏汛（冰川融水），且冬季断流，说明河流主要补给为冰雪融水，且气候干旱，冬季气温低，河流结冰断流。我国西北地区河流多属于此类。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水循环",
+        "河流补给"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为非洲自然带分布图，图中甲、乙、丙、丁四地自然带的变化体现的地域分异规律是（ ）",
+      "options": [
+        "A. 纬度地带性",
+        "B. 经度地带性",
+        "C. 垂直地带性",
+        "D. 非地带性"
+      ],
+      "correct_answer": "A",
+      "explanation": "甲（热带雨林带）、乙（热带草原带）、丙（热带荒漠带）、丁（亚热带常绿硬叶林带）大致沿纬线方向延伸，南北更替，体现了从赤道到两极的纬度地带性分异规律。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "自然带",
+        "地域分异规律"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图示意某地区人口迁移情况，图中箭头表示人口迁移方向。导致该地区人口迁移的主要因素是（ ）",
+      "options": [
+        "A. 经济因素",
+        "B. 政治因素",
+        "C. 社会文化因素",
+        "D. 生态环境因素"
+      ],
+      "correct_answer": "A",
+      "explanation": "图中显示人口从农村迁往城市，从内陆迁往沿海，从经济欠发达地区迁往经济发达地区，这主要是城乡和地区间经济发展水平的差异导致的，因此主要因素是经济因素。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "人口迁移",
+        "人口"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读某城市空间结构示意图，完成下题。该城市拟建设高级住宅区，最适宜布局在（ ）",
+      "options": [
+        "A. ①处",
+        "B. ②处",
+        "C. ③处",
+        "D. ④处"
+      ],
+      "correct_answer": "C",
+      "explanation": "高级住宅区一般选址于环境优美、交通便利、远离工业区的地方。图中③处位于河流上游，靠近风景区，且远离工业区，环境质量好，适合建设高级住宅区。①处靠近火车站，②处靠近工业区，④处位于城市中心，均不适宜。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市内部空间结构",
+        "城市功能区"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为我国某地区农业土地利用示意图，该地区农业地域类型是（ ）",
+      "options": [
+        "A. 商品谷物农业",
+        "B. 季风水田农业",
+        "C. 大牧场放牧业",
+        "D. 乳畜业"
+      ],
+      "correct_answer": "B",
+      "explanation": "图中显示主要农作物为水稻，且土地利用方式为水田，一年两熟或三熟，主要分布在亚洲季风区，因此为季风水田农业。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "农业地域类型",
+        "农业"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读某工业区布局图，完成下题。该工业区布局的主导区位因素是（ ）",
+      "options": [
+        "A. 原料",
+        "B. 市场",
+        "C. 动力",
+        "D. 劳动力"
+      ],
+      "correct_answer": "C",
+      "explanation": "图中工业区靠近火电站和水电站，且工业类型多为高耗能工业（如炼铝、钢铁等），因此动力（能源）是主导区位因素。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "工业区位因素",
+        "工业"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为某区域交通线路分布图，图中甲、乙、丙、丁四处中，最可能最先发展为城市的是（ ）",
+      "options": [
+        "A. 甲处",
+        "B. 乙处",
+        "C. 丙处",
+        "D. 丁处"
+      ],
+      "correct_answer": "B",
+      "explanation": "乙处位于河流交汇处，且有多条交通线路交汇，交通便利，水源充足，有利于城市形成和发展。其他各处区位条件相对较差。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "交通运输布局",
+        "城市区位"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读我国某地区生态环境问题成因与危害示意图，完成下题。该生态环境问题最可能是（ ）",
+      "options": [
+        "A. 土地荒漠化",
+        "B. 水土流失",
+        "C. 酸雨",
+        "D. 生物多样性减少"
+      ],
+      "correct_answer": "B",
+      "explanation": "图中显示成因包括植被破坏、陡坡开垦、降水集中等，危害包括土壤肥力下降、河流含沙量增加、下游洪涝加剧等，这些是水土流失的典型特征。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "环境问题",
+        "水土流失",
+        "区域可持续发展"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读某地地质剖面图，图中①～④为沉积岩，⑤为岩浆岩。关于该地地质作用过程的叙述，正确的有（ ）。",
+      "options": [
+        "A. 先发生沉积作用形成①②③④岩层，然后发生岩浆活动形成⑤",
+        "B. ⑤的形成时间早于②岩层",
+        "C. 该地经历了地壳的水平挤压运动",
+        "D. 该地经历了地壳的抬升和侵蚀作用",
+        "E. 图中岩层①可能含有化石"
+      ],
+      "correct_answer": "A,C,D,E",
+      "explanation": "图中岩层具有层理结构，为沉积岩，且①在最上层，说明先沉积形成①～④，后岩浆侵入形成⑤（侵入岩）。⑤侵入到②中，故⑤晚于②。岩层弯曲说明受水平挤压形成褶皱。地壳抬升后遭受侵蚀，形成现在的地表形态。沉积岩中可能含有化石。因此A、C、D、E正确，B错误。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "地壳运动",
+        "岩石圈物质循环"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为世界某区域海平面气压分布图（单位：hPa）。关于图中所示季节及各地天气的描述，正确的有（ ）。",
+      "options": [
+        "A. 此时北半球为夏季",
+        "B. 甲地盛行西北风，寒冷干燥",
+        "C. 乙地受高压控制，天气晴朗",
+        "D. 丙地可能受台风影响，狂风暴雨",
+        "E. 丁地处于冷锋过境后，气温降低"
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "图中亚欧大陆形成印度低压，海洋上为高压，说明北半球为夏季。甲地位于东亚，夏季盛行东南风，温暖湿润，故B错。乙地受高压控制，气流下沉，天气晴朗。丙地位于西北太平洋，夏季多台风。丁地位于冷锋锋前，未受冷锋影响，E错。因此A、C、D正确。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流",
+        "天气系统",
+        "海陆分布对气压带的影响"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读某流域水循环示意图，图中①②③④表示水循环环节。关于该流域水循环的叙述，正确的有（ ）。",
+      "options": [
+        "A. 该水循环类型为海陆间循环",
+        "B. ②为水汽输送，主要动力是盛行风",
+        "C. ③为地表径流，受植被覆盖率影响",
+        "D. ④为地下径流，其水量受降水补给",
+        "E. 人类活动对①环节的影响最大"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "图中海洋水蒸发后通过水汽输送（②）至陆地上空，降水（①）后形成地表径流（③）和地下径流（④），最终汇入海洋，属于海陆间循环。水汽输送主要依靠盛行风。地表径流受植被、地形等影响。地下径流受降水补给。人类活动对地表径流（③）影响最大，如修建水库、植树造林等，对蒸发（①）影响较小，故E错。因此A、B、C、D正确。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水循环",
+        "陆地水体相互关系",
+        "人类活动对水循环的影响"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下表为某国1960—2020年人口数据统计表。关于该国人口增长特点及影响的叙述，正确的有（ ）。",
+      "options": [
+        "A. 1960—1980年人口出生率较高，属于传统型增长模式",
+        "B. 1980—2000年人口自然增长率下降，主要原因是经济发展和生育观念转变",
+        "C. 2000—2020年人口老龄化加剧，社会养老负担加重",
+        "D. 该国目前人口增长模式为“低低低”模式",
+        "E. 人口增长缓慢有利于该国经济持续高速发展"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "1960—1980年出生率较高，死亡率下降，自然增长率高，为传统型。1980—2000年自然增长率下降，是由于经济水平提高、生育观念变化。2000—2020年自然增长率低，老龄化问题突出。目前出生率、死亡率、自然增长率均低，为现代型。人口增长缓慢会导致劳动力不足，不利于经济持续发展，故E错误。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "人口增长模式",
+        "人口问题",
+        "人口政策"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在自然地理环境中，由于海陆热力性质差异，使得同纬度的大陆和海洋在冬季和夏季的气温存在明显差异，并由此形成不同的气压中心。例如，亚洲东部受季风影响显著，冬季亚洲大陆形成______（高/低）气压中心，而太平洋上则形成______（高/低）气压中心，从而在水平气压梯度力的作用下，盛行______（方向）季风。",
+      "options": [],
+      "correct_answer": "高|低|西北",
+      "explanation": "冬季，亚洲大陆气温低，空气收缩下沉，形成高气压中心；而太平洋气温相对较高，形成低气压中心。水平气压梯度力由高压指向低压，在地转偏向力影响下，北半球向右偏，因此亚洲东部盛行西北季风。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流",
+        "季风环流",
+        "海陆热力性质差异"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "城市地域结构模式中，______模式强调城市核心区为商业中心，依次向外为住宅区、工业区；而______模式则考虑了交通线的影响，认为城市各功能区沿交通线呈扇形分布。",
+      "options": [],
+      "correct_answer": "同心圆|扇形",
+      "explanation": "同心圆模式由伯吉斯提出，认为城市以中心商业区为核心，向外依次为过渡带、工人住宅带、高级住宅带和通勤带。扇形模式由霍伊特提出，认为城市功能区沿主要交通线呈扇形向外扩展。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市地域结构",
+        "城市功能分区",
+        "城市空间结构模式"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "农业区位选择中，______是指距离城市越近，地价越高，越适宜发展单位面积产值高的农业，如蔬菜、花卉等；而______是指距离城市越远，地价越低，适宜发展单位面积产值较低的农业，如粮食种植、畜牧业等。",
+      "options": [],
+      "correct_answer": "杜能圈|农业区位论",
+      "explanation": "杜能圈理论（农业区位论）指出，以城市为中心，由内向外依次为自由农业带、林业带、轮作农业带、谷草轮作带、三圃制农业带和畜牧业带。该理论体现了距离城市远近对农业类型的影响。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "农业区位",
+        "杜能圈",
+        "农业地域类型"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在可持续发展中，循环经济遵循“3R”原则，即______、______和______。",
+      "options": [],
+      "correct_answer": "减量化|再利用|再循环",
+      "explanation": "循环经济的“3R”原则包括：减量化（Reduce），减少资源消耗和废物产生；再利用（Reuse），延长产品和服务的使用寿命；再循环（Recycle），将废弃物再次资源化。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "可持续发展",
+        "循环经济",
+        "资源环境"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "水循环中，______环节是指水从海洋和陆地表面蒸发，进入大气；______环节是指大气中的水汽通过降水返回地面；而______环节则是指地表水沿河流汇入海洋。",
+      "options": [],
+      "correct_answer": "蒸发|降水|径流",
+      "explanation": "水循环的主要环节包括：蒸发（蒸发和蒸腾）、水汽输送、降水、地表径流、下渗、地下径流等。其中蒸发使水汽进入大气，降水使水汽返回地面，径流（地表径流）是河水回归海洋的通道。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水循环",
+        "水文地理",
+        "自然地理过程"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "地壳运动导致的岩层弯曲变形称为褶皱，而岩层断裂并发生位移则称为断层。在褶皱构造中，背斜常形成谷地，向斜常形成山岭，这种地形倒置现象主要是由外力侵蚀作用造成的。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "在褶皱构造中，背斜顶部因受张力，岩石破碎，易被外力侵蚀成谷地；向斜槽部因受挤压，岩石坚硬，不易被侵蚀，反而常形成山岭。因此，该说法正确。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "外力作用"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于城市内部功能区的特征，下列叙述正确的是（ ）",
+      "options": [
+        "A. 商业区通常位于城市中心，具有最高的地租和最强的通达性",
+        "B. 住宅区是城市最广泛的土地利用方式，且高级住宅区常与低级住宅区背向发展",
+        "C. 工业区一般靠近河流、铁路等交通线，且多位于城市的下风向",
+        "D. 城市各功能区之间没有明确的界线，往往交错分布"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "商业区位于市中心，地租最高，通达性最好，A正确；住宅区占地面积最广，高级住宅区与低级住宅区在位置上往往背向发展，B正确；工业区需要便利的交通，且为减少对城区的污染，常位于城市的下风向，C正确；各功能区之间没有明确界线，往往交错分布，D正确。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市功能区",
+        "城市内部空间结构"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "阅读下列材料，判断下列说法是否正确：\n材料：某区域年降水量在200-400mm之间，植被以草原为主，土壤为钙质土，适宜发展畜牧业。当地过度开垦导致土壤沙化，出现荒漠化现象。\n判断：该区域的自然带应为温带荒漠带。",
+      "options": [],
+      "correct_answer": "错误",
+      "explanation": "年降水量200-400mm，植被为草原，土壤为钙质土，属于温带草原带（半干旱区）的特征，而非温带荒漠带（干旱区，降水量<200mm）。因此，该说法错误。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "自然带",
+        "荒漠化"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "阅读下列材料，回答问题。材料一：图1为某区域地质剖面示意图，图中岩层①②③④由老到新，断层F发生在岩层③形成之后、岩层④形成之前。材料二：图2为该区域不同地质时期沉积环境示意图，a为浅海，b为滨海，c为陆地。问题：根据材料，分析该区域地质构造演化过程，并说明其如何影响沉积环境的变化。",
+      "options": [],
+      "correct_answer": "该区域经历了地壳沉降（形成沉积岩层①、②、③）→地壳抬升并发生断层（F）→地壳再次沉降（形成沉积岩层④）的演化过程。断层F使岩层③及其下盘相对上升，导致沉积环境由浅海（a）变为滨海（b），后又变为陆地（c），而断层上盘则相对下降，继续接受沉积，形成岩层④。",
+      "explanation": "本题考查地质构造与沉积环境的关系。根据岩层新老关系，①、②、③为较老岩层，沉积后发生断层，断层使岩层错动，导致下盘抬升，沉积环境由浅海变为滨海、陆地，而后地壳再次沉降，上盘沉积形成岩层④。解析需结合地质演化顺序和沉积环境变化。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "沉积环境",
+        "地壳运动"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "比较我国长江三角洲地区和珠江三角洲地区在人口迁移和城镇化方面的主要差异，并分析其形成原因。",
+      "options": [],
+      "correct_answer": "差异：长三角城镇化水平更高，城市群规模更大，人口迁移以省际迁入为主，尤其是高素质人才；珠三角城镇化起步较早，但近年来增速放缓，人口迁移以省内和跨省流动为主，外来人口多从事制造业。原因：长三角经济基础好，高校和科研机构多，产业升级吸引人才；珠三角改革开放初期发展外向型经济，吸引大量劳动力，但近年来产业转型，对劳动力吸引力减弱。",
+      "explanation": "本题考查区域人口与城镇化差异。长三角和珠三角都是我国经济发达地区，但发展模式不同。长三角具有区位、科教优势，城镇化水平高，人口迁移以人才为主；珠三角早期依赖外资和劳动力，城镇化快速推进，但近年面临产业升级和人口结构调整。解析需对比两地特点并分析原因。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "人口迁移",
+        "城镇化",
+        "区域差异"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为某区域地质剖面示意图，图中岩层均为沉积岩，且未发生倒转。读图，下列说法正确的是（  ）",
+      "options": [
+        "A. 甲处为背斜，形成山地",
+        "B. 乙处为向斜，形成谷地",
+        "C. 丙处为断层，常形成陡崖",
+        "D. 丁处为岩浆侵入，形成变质岩"
+      ],
+      "correct_answer": "C",
+      "explanation": "根据岩层新老关系，甲处中间老两翼新，为背斜，但背斜顶部易被侵蚀形成谷地，而非山地，故A错。乙处中间新两翼老，为向斜，向斜槽部岩性坚硬不易被侵蚀，常形成山岭，故B错。丙处岩层断裂并错位，为断层，断层线两侧岩石破碎，易被侵蚀形成陡崖，故C正确。丁处为岩浆侵入，但图中未显示变质岩，故D错。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "背斜向斜",
+        "断层"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读世界某区域年降水量分布图（单位：mm），图中甲、乙、丙、丁四地中，年降水量最大的是（  ）",
+      "options": [
+        "A. 甲地",
+        "B. 乙地",
+        "C. 丙地",
+        "D. 丁地"
+      ],
+      "correct_answer": "B",
+      "explanation": "甲地位于大陆内部，受海洋水汽影响小，降水少；乙地位于迎风坡，来自海洋的暖湿气流受地形抬升，形成丰富降水；丙地位于背风坡，降水少；丁地位于大陆西岸，受寒流影响，降水较少。因此乙地降水量最大。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流",
+        "降水影响因素",
+        "地形雨"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为某城市土地利用示意图，该城市布局合理。图中①、②、③、④分别代表四种功能区：商业区、住宅区、工业区、文化区。下列判断正确的是（  ）",
+      "options": [
+        "A. ①是商业区，位于市中心，地价最高",
+        "B. ②是住宅区，占地面积最大",
+        "C. ③是工业区，位于河流下游，对城市污染小",
+        "D. ④是文化区，位于河流上游，环境优美"
+      ],
+      "correct_answer": "A",
+      "explanation": "①位于市中心，交通便利，应为商业区，地价最高，故A正确。②位于商业区外围，占地面积最大，应为住宅区，但图中②位于河流下游，且靠近工业区，环境较差，不是住宅区的理想位置，故B错误。③位于河流上游，靠近文化区，环境优美，应为住宅区或文化区，而非工业区，故C错误。④靠近工业区，位于河流下游，环境较差，不适合建设文化区，故D错误。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市功能区",
+        "城市布局",
+        "地价"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读水循环示意图，关于水循环各环节的说法，正确的是（  ）",
+      "options": [
+        "A. ①是蒸发，②是降水，③是地表径流，④是地下径流",
+        "B. 人类活动对⑤（下渗）的影响最大",
+        "C. 植被破坏会导致⑥（蒸腾）减少，④（地下径流）增加",
+        "D. 南水北调工程主要影响了③（地表径流）"
+      ],
+      "correct_answer": "D",
+      "explanation": "读图可知，①为蒸发，②为水汽输送，③为降水，④为地表径流，⑤为下渗，⑥为地下径流。A项中②应为水汽输送，③应为降水，故A错。人类活动对地表径流（④）影响最大，如修建水库、跨流域调水等，对下渗影响较小，故B错。植被破坏导致蒸腾减少，但下渗减少，地下径流减少，故C错。南水北调工程改变了地表径流的空间分布，主要影响地表径流（③），故D正确。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水循环",
+        "人类活动对水循环的影响",
+        "南水北调"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为世界某自然带分布图（阴影部分），该自然带最可能是（  ）",
+      "options": [
+        "A. 热带雨林带",
+        "B. 热带草原带",
+        "C. 亚热带常绿硬叶林带",
+        "D. 温带落叶阔叶林带"
+      ],
+      "correct_answer": "C",
+      "explanation": "图中阴影部分主要分布在地中海沿岸、非洲南端、澳大利亚西南部、美国加利福尼亚沿岸、南美洲智利中部等地区，这些地区均为地中海气候，对应的自然带是亚热带常绿硬叶林带。热带雨林带主要分布在赤道附近，热带草原带主要分布在热带雨林两侧，温带落叶阔叶林带主要分布在温带海洋性气候区和温带季风气候区，故C正确。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "自然带",
+        "地中海气候",
+        "世界气候分布"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下表为某国人口年龄结构数据（单位：%）。该国面临的主要人口问题是（  ）",
+      "options": [
+        "A. 人口增长过快，就业压力大",
+        "B. 人口老龄化严重，劳动力短缺",
+        "C. 人口性别比失衡，社会不稳定",
+        "D. 人口素质低，教育压力大"
+      ],
+      "correct_answer": "B",
+      "explanation": "根据表格数据，0-14岁人口占比15%，15-64岁占比60%，65岁及以上占比25%。65岁以上人口占比超过7%即进入老龄化社会，该国高达25%，说明老龄化严重。15-64岁劳动力人口占比60%，但老龄化导致劳动力短缺，养老负担重。因此主要人口问题是人口老龄化严重，劳动力短缺。A项人口增长过快错误，因为0-14岁占比低。C项性别比表格未提供。D项人口素质无从判断。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "人口年龄结构",
+        "人口老龄化",
+        "人口问题"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某地农业土地利用类型变化如下：1980年以水稻种植为主，1990年改为花卉蔬菜种植，2000年发展为观光农业。导致这种变化的主要区位因素是（  ）",
+      "options": [
+        "A. 气候变暖，热量条件改善",
+        "B. 市场需求变化和交通条件改善",
+        "C. 土地价格上升，单位面积产值要求提高",
+        "D. 农业技术进步，农作物品种改良"
+      ],
+      "correct_answer": "B",
+      "explanation": "从水稻种植到花卉蔬菜种植，再到观光农业，反映了农业类型随市场需求变化而调整。花卉蔬菜和观光农业需要便捷的交通以快速到达市场，因此交通条件的改善也促进了这种变化。气候变暖不是主要原因，土地价格上升和农业技术进步是影响因素，但根本原因是市场需求变化和交通条件改善，故B正确。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "农业区位因素",
+        "农业类型变化",
+        "市场需求"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "读某区域等高线地形图，图中河流的流向大致是（  ）",
+      "options": [
+        "A. 自西向东",
+        "B. 自东向西",
+        "C. 自北向南",
+        "D. 自南向北"
+      ],
+      "correct_answer": "C",
+      "explanation": "河流流向与等高线弯曲方向相反。图中等高线向数值高的方向弯曲（凸向高值），说明该处为山谷，河流发育。根据指向标，等高线弯曲方向指向北，因此河流自北向南流，故C正确。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "等高线",
+        "河流流向",
+        "地形判读"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某国家矿产资源丰富，但长期以来以出口初级矿产品为主，经济结构单一。为促进经济可持续发展，该国应采取的主要措施是（  ）",
+      "options": [
+        "A. 扩大资源开采规模，增加出口量",
+        "B. 发展深加工，延长产业链，提高附加值",
+        "C. 停止资源开采，保护生态环境",
+        "D. 大量进口资源，满足国内需求"
+      ],
+      "correct_answer": "B",
+      "explanation": "出口初级矿产品利润低，且易受国际市场波动影响。发展深加工，延长产业链，可以提高附加值，增加收入，促进产业多元化，实现经济可持续发展。扩大资源开采规模会加速资源枯竭，停止开采不现实，大量进口不符合本国资源丰富的国情，故B正确。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "区域可持续发展",
+        "资源开发",
+        "产业链"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "全球变暖导致极地冰川融化，海平面上升，对沿海低地国家构成威胁。为应对全球变暖，下列措施合理的是（  ）",
+      "options": [
+        "A. 大量使用化石能源，加速经济发展",
+        "B. 增加森林覆盖率，吸收二氧化碳",
+        "C. 填海造陆，扩大陆地面积",
+        "D. 减少水资源消耗，节约用水"
+      ],
+      "correct_answer": "B",
+      "explanation": "全球变暖的主要原因是温室气体（特别是二氧化碳）排放增加。增加森林覆盖率可以吸收二氧化碳，减缓温室效应。大量使用化石能源会增加二氧化碳排放，加剧全球变暖；填海造陆不能减少温室气体；节约用水与全球变暖无直接关系。因此B正确。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "全球变暖",
+        "森林作用",
+        "可持续发展"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某地地质剖面示意图显示，岩层①为石灰岩，②为砂岩，③为页岩，④为花岗岩，⑤为断层。已知该地曾经历地壳抬升、下降，并伴有岩浆活动。下列叙述正确的有（ ）",
+      "options": [
+        "A. 岩层①②③形成的先后顺序是③②①",
+        "B. 断层⑤的形成晚于岩层④",
+        "C. 若岩层①含有三叶虫化石，则岩层②可能含有裸子植物化石",
+        "D. 该地至少经历两次地壳抬升"
+      ],
+      "correct_answer": "A,D",
+      "explanation": "根据沉积岩层序律，越往下越老，所以③最早，②次之，①最晚，A正确。花岗岩④侵入到断层⑤中，说明断层形成早于岩浆侵入，B错误。三叶虫化石存在于古生代地层，裸子植物化石存在于中生代地层，石灰岩①在砂岩②之上，砂岩②可能属于古生代晚期或中生代早期，但不确定，C错误。沉积岩层形成于水下，现出露地表，说明有抬升；图中存在侵蚀面（不整合面），表明抬升后遭受侵蚀，后又下降接受沉积，所以至少两次抬升，D正确。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "地壳运动",
+        "化石与地质年代"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为北半球某地近地面等压线分布图（单位：hPa），图中a、b、c、d为四个城市。此时，下列叙述正确的有（ ）",
+      "options": [
+        "A. a城盛行东北风",
+        "B. b城气压高于c城",
+        "C. d城可能出现降水",
+        "D. 若图中锋面移动速度为40千米/小时，则未来24小时内c城将经历大风、降温天气"
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "根据等压线，a城位于高压脊东侧，水平气压梯度力指向南，北半球右偏，形成东北风，A正确。b城气压在1010-1015之间，c城气压在1005-1010之间，b城气压高于c城，B正确。d城位于低压槽附近，且冷锋锋后，易出现降水，C正确。图中冷锋距离c城约960千米（根据比例尺估算），移动速度40千米/小时，24小时移动960千米，恰好到达c城，所以c城将经历冷锋过境，出现大风、降温天气，D正确。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流",
+        "天气系统",
+        "锋面与降水"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某城市地处沿海平原，近年来大力发展临港工业。下图为该城市1990-2020年人口和用地规模变化图。据图推断，该城市在城市化过程中出现的问题及对策合理的有（ ）",
+      "options": [
+        "A. 城市热岛效应加剧，应增加绿地面积",
+        "B. 交通拥堵严重，应优先发展公共交通",
+        "C. 地下水漏斗区扩大，应禁止开采地下水",
+        "D. 城市内涝频发，应完善排水系统并建设海绵城市"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "城市规模扩大，人口密集，建筑物增加，热岛效应加剧，增加绿地可缓解，A正确。人口和用地规模扩大，交通需求增加，易拥堵，优先发展公共交通是有效措施，B正确。地下水漏斗区扩大是由于过度开采，但完全禁止不现实，应合理开采并回灌，C错误。城市地面硬化面积增加，下渗减少，内涝频发，完善排水系统和建设海绵城市可增强排水和蓄水能力，D正确。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市化问题",
+        "城市环境",
+        "可持续发展"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某区域自然带分布规律符合从赤道到两极的地域分异，并受地形影响。下图为该区域某山地垂直自然带谱示意图（北坡）。下列分析正确的有（ ）",
+      "options": [
+        "A. 该山地可能位于南半球",
+        "B. 甲坡为迎风坡，降水较多",
+        "C. 自然带②最可能是常绿阔叶林带",
+        "D. 与同纬度其他山地相比，该山地雪线较低"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "北坡基带为荒漠草原，向上为草原、森林，说明北坡降水较少，可能是背风坡，该山地可能位于南半球，因为南半球中纬度山地北坡为阳坡，蒸发强，且可能受信风或副高控制，降水少，A正确。甲坡在相同海拔出现森林，说明降水多，为迎风坡，B正确。自然带②位于山地针叶林之上，应为高山草甸带，常绿阔叶林带应在基带或低海拔，C错误。该山地雪线（终年积雪）海拔较低，可能是由于纬度较高或降水较多，与同纬度其他山地相比，若降水多则雪线低，D正确。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "自然带",
+        "垂直地带性",
+        "雪线"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为某区域地质剖面示意图。图中①②③④表示不同地质年代的地层，⑤为断层。读图完成下列要求。\n（1）按岩层新老关系，图中最老的地层是______（填数字）。\n（2）岩层①和②中，可能含有生物化石的是______。\n（3）断层⑤形成于地层______（填数字）形成之后。",
+      "options": [],
+      "correct_answer": "①|①|③",
+      "explanation": "（1）根据沉积岩层序律，下部岩层老于上部岩层，图中①位于最下方，故最老。（2）沉积岩中常含有化石，①为沉积岩，②为岩浆岩，故①可能含化石。（3）断层切断了地层③，但未切断上覆地层④，故形成于③之后、④之前。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "地质构造",
+        "岩层新老关系",
+        "化石"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为某区域某时海平面等压线分布图（单位：hPa）。读图完成下列要求。\n（1）此时甲地的风向为______风。\n（2）乙、丙两地中，风力较大的是______。\n（3）丁地的天气状况是______（填“晴朗”或“阴雨”）。",
+      "options": [],
+      "correct_answer": "西北|乙|阴雨",
+      "explanation": "（1）甲地北侧为高压，南侧为低压，水平气压梯度力指向南，北半球右偏，形成西北风。（2）乙地等压线密集，水平气压梯度力大，风力较大。（3）丁地位于低压槽附近，气流辐合上升，易形成阴雨天气。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "大气环流",
+        "等压线",
+        "天气系统"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "下图为某城市土地利用示意图。该城市计划在①、②、③、④四地中选择一处建设高级住宅区、一处建设仓储物流中心。\n（1）高级住宅区应选址在______地，理由是______。\n（2）仓储物流中心应选址在______地，理由是______。",
+      "options": [],
+      "correct_answer": "④|位于城市上风向，靠近湖泊，环境优美|②|靠近高速公路和火车站，交通便利",
+      "explanation": "（1）④地地势较高，位于城市上风向，临近湖泊，空气清新，环境优美，适合建设高级住宅区。（2）②地靠近高速公路和火车站，交通便利，便于货物集散，且位于城市边缘，地价较低，适合建设仓储物流中心。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市功能分区",
+        "区位选择"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "阅读材料，完成下列要求。\n材料一：我国某区域年降水量等值线分布图（单位：mm）。\n材料二：该区域部分地区农业布局示意图。\n（1）图中甲、乙两地年降水量差异较大，甲地降水量______（大于/小于）乙地，主要影响因素是______。\n（2）根据农业布局示意图，该地农业地域类型最可能是______，其生产特点是______。",
+      "options": [],
+      "correct_answer": "小于|地形|季风水田农业|小农经营，精耕细作，单位面积产量高",
+      "explanation": "（1）甲地位于山地背风坡，降水少；乙地位于迎风坡，降水多，主要影响因素是地形。（2）图中布局了水稻种植、鱼塘、桑基等，应为季风水田农业，特点是小农经营、精耕细作、单产高。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "降水分布",
+        "农业地域类型",
+        "地形对降水的影响"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "阅读图文材料，完成下列要求。\n材料：某区域示意图，图中河流中下游地区是重要的商品粮基地，近年来该地区城市化发展迅速。\n（1）图中A、B两城市相比，城市等级较高的是______，其服务范围______（大于/小于）B城市。\n（2）该区域河流中下游地区发展商品粮生产的有利自然条件是______、______。\n（3）该区域城市化发展迅速，可能带来的环境问题有______、______。",
+      "options": [],
+      "correct_answer": "A|大于|地形平坦|水源充足|水污染|大气污染",
+      "explanation": "（1）A城市为省会，等级高，服务范围大；B为地级市，等级较低。（2）河流中下游平原，地形平坦；水源充足，灌溉便利。（3）城市化带来工业和生活污水排放，导致水污染；能源消耗增加，大气污染加重。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市等级",
+        "农业区位",
+        "城市化环境问题"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在非洲热带草原气候区，由于全球变暖导致蒸发加剧，降水量减少，自然带可能向荒漠带演替。这一过程中，土壤有机质含量会先增加后减少。",
+      "options": [],
+      "correct_answer": "错误",
+      "explanation": "在自然带向荒漠带演替的过程中，植被覆盖度下降，土壤有机质来源减少，同时分解作用增强，因此土壤有机质含量持续减少，不会先增加后减少。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "自然带",
+        "全球变暖",
+        "土壤有机质"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某城市位于河流交汇处，早期因水运便利形成城市，后因铁路修建而衰落。近年来该城市利用废弃铁路改造为城市绿道，带动了旅游业发展，这体现了城市空间结构的调整和产业转型。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "该城市早期因水运兴起，铁路导致水运衰落，城市衰落。后来利用废弃铁路改造为绿道，属于城市空间结构的调整，同时旅游业发展是产业转型的体现，因此说法正确。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "城市空间结构",
+        "交通与城市发展",
+        "产业转型"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在东南丘陵地区，坡度较大的红壤坡地不宜开垦为梯田，因为梯田会破坏原有植被，导致水土流失加剧。",
+      "options": [],
+      "correct_answer": "错误",
+      "explanation": "在坡度较大的坡地，修建梯田可以减缓坡度，增加地表粗糙度，拦蓄径流，减少水土流失。但修建梯田本身需要破坏植被，若施工不当或后续维护不善，可能导致水土流失。然而，合理修建的梯田通常能有效保持水土，因此“导致水土流失加剧”的说法过于绝对，是错误的。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "水土流失",
+        "梯田",
+        "区域可持续发展"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某地地处板块交界带，历史上多火山活动。近期该地沿海平原发现大型稀土矿床，当地政府计划建设稀土开采与冶炼基地，并配套港口和公路。请从区域可持续发展的角度，分析该计划可能面临的主要挑战，并提出合理的应对措施。",
+      "options": [],
+      "correct_answer": "主要挑战：1. 地质不稳定，火山、地震风险高，影响工程安全与生产。2. 稀土开采冶炼造成生态破坏和环境污染（如水土流失、放射性污染）。3. 基础设施（港口、公路）建设可能破坏海岸带生态。4. 资源开发与当地产业（如旅游、渔业）冲突。应对措施：1. 加强地质勘探与工程抗震设计，建立灾害预警系统。2. 采用绿色开采技术，实施复垦与生态修复，严格废水废气处理。3. 合理规划基础设施，避开生态敏感区，进行环境影响评价。4. 协调资源开发与旅游、渔业等产业，带动地方就业和社区受益。",
+      "explanation": "本题综合考查自然地理（板块构造、地质灾害）、人文地理（工业区位、交通建设）和区域可持续发展（资源开发与环境保护的协调）。学生需从地质风险、生态破坏、资源冲突等方面分析挑战，并提出工程技术、环境管理和产业协调等应对措施。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "geography",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "板块构造与地质灾害",
+        "工业区位与区域发展",
+        "可持续发展与环境保护"
+      ],
+      "batch_id": "batch_geography_16-18",
+      "source": "ai_generated"
+    }
+  ]
+}

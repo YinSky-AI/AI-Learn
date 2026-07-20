@@ -1,0 +1,3636 @@
+{
+  "batch_id": "math_13-15_supplement",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "id": 71,
+      "content": "半径为5的圆的周长为________。",
+      "correct_answer": "10π",
+      "explanation": "C=2πR=10π。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 72,
+      "content": "半径为3的圆中，直径为3。",
+      "correct_answer": "错误",
+      "explanation": "直径=2R=6。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 73,
+      "content": "方程x²+7x+12=0的根的情况是（　　）",
+      "correct_answer": "A",
+      "explanation": "Δ=1>0，有两个不相等的实数根。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "只有一个实数根"
+        },
+        {
+          "label": "B",
+          "text": "没有实数根"
+        },
+        {
+          "label": "C",
+          "text": "有两个不相等的实数根"
+        },
+        {
+          "label": "D",
+          "text": "有两个相等的实数根"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "content": "数据[77, 70, 66, 84, 62]的平均数是（　　）",
+      "correct_answer": "C",
+      "explanation": "平均数=(77+70+66+84+62)/5=359/5=71。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "众数与中位数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "72"
+        },
+        {
+          "label": "B",
+          "text": "70"
+        },
+        {
+          "label": "C",
+          "text": "71"
+        },
+        {
+          "label": "D",
+          "text": "73"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "content": "解方程x²+5x+6=0。",
+      "correct_answer": "x₁=2, x₂=3",
+      "explanation": "因式分解得(x+2)(x+3)=0，故x₁=2, x₂=3。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 76,
+      "content": "方程x²+5x+6=0可以用求根公式求解。",
+      "correct_answer": "正确",
+      "explanation": "任何一元二次方程都可用求根公式求解。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 77,
+      "content": "关于方程x²+5x+6=0，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "由韦达定理及方程形式可知正确选项。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "常数项为6"
+        },
+        {
+          "label": "B",
+          "text": "两根之和为5"
+        },
+        {
+          "label": "C",
+          "text": "二次项系数为1"
+        },
+        {
+          "label": "D",
+          "text": "两根之积为6"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "content": "求数据[70, 73, 78, 75, 88]的平均数。",
+      "correct_answer": "76.8",
+      "explanation": "平均数=384/5=76.8。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ]
+    },
+    {
+      "id": 79,
+      "content": "反比例函数y=-12/x的图象经过点（　　）",
+      "correct_answer": "A",
+      "explanation": "将x=2代入得y=-6，故经过(2,-6)。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "(2,-6)"
+        },
+        {
+          "label": "B",
+          "text": "(-2,6)"
+        },
+        {
+          "label": "C",
+          "text": "(4,-3)"
+        },
+        {
+          "label": "D",
+          "text": "(3,-4)"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "content": "下列关于圆的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为圆的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "同弧所对的圆周角相等"
+        },
+        {
+          "label": "B",
+          "text": "直径是圆中最长的弦"
+        },
+        {
+          "label": "C",
+          "text": "圆的切线垂直于过切点的半径"
+        },
+        {
+          "label": "D",
+          "text": "圆内接四边形对角互补"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "content": "下列关于圆的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为圆的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "直径是圆中最长的弦"
+        },
+        {
+          "label": "B",
+          "text": "圆内接四边形对角互补"
+        },
+        {
+          "label": "C",
+          "text": "圆的切线垂直于过切点的半径"
+        },
+        {
+          "label": "D",
+          "text": "同弧所对的圆周角相等"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "content": "直角三角形两直角边为9和12，则斜边长为________。",
+      "correct_answer": "15",
+      "explanation": "√(9²+12²)=15。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ]
+    },
+    {
+      "id": 83,
+      "content": "半径为8的圆的周长为________。",
+      "correct_answer": "16π",
+      "explanation": "C=2πR=16π。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ]
+    },
+    {
+      "id": 84,
+      "content": "下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为统计基本概念。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "平均数反映数据的集中趋势"
+        },
+        {
+          "label": "B",
+          "text": "概率反映事件发生的可能性大小"
+        },
+        {
+          "label": "C",
+          "text": "众数是出现次数最多的数据"
+        },
+        {
+          "label": "D",
+          "text": "方差反映数据的波动程度"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "content": "抛掷一枚硬币，正面朝上的概率是1/2。",
+      "correct_answer": "正确",
+      "explanation": "硬币两面等可能，正面朝上概率为1/2。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ]
+    },
+    {
+      "id": 86,
+      "content": "关于方程x²+5x+6=0，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "由韦达定理及方程形式可知正确选项。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "二次项系数为1"
+        },
+        {
+          "label": "B",
+          "text": "两根之积为6"
+        },
+        {
+          "label": "C",
+          "text": "常数项为6"
+        },
+        {
+          "label": "D",
+          "text": "两根之和为5"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "content": "从9个球（含6个红球）中随机摸一个，摸到红球的概率为________。",
+      "correct_answer": "2/3",
+      "explanation": "P=6/9。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ]
+    },
+    {
+      "id": 88,
+      "content": "已知一次函数y=3x-1，当x=2时，y=________。",
+      "correct_answer": "5",
+      "explanation": "y=3×2-1=5。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ]
+    },
+    {
+      "id": 89,
+      "content": "袋中有10个球，其中7个红球，随机摸一个，摸到红球的概率是（　　）",
+      "correct_answer": "C",
+      "explanation": "P=红球数/总数=7/10=7/10。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "3/10"
+        },
+        {
+          "label": "B",
+          "text": "8/10"
+        },
+        {
+          "label": "C",
+          "text": "7/10"
+        },
+        {
+          "label": "D",
+          "text": "7/11"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "content": "半径为2的圆的面积为（　　）",
+      "correct_answer": "B",
+      "explanation": "S=πR²=4π。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "弧长计算"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "8π"
+        },
+        {
+          "label": "B",
+          "text": "4π"
+        },
+        {
+          "label": "C",
+          "text": "2π"
+        },
+        {
+          "label": "D",
+          "text": "4π"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "content": "cos45°的值是（　　）",
+      "correct_answer": "B",
+      "explanation": "特殊角三角函数值：cos45°=√2/2。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "三角函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "√3/2"
+        },
+        {
+          "label": "B",
+          "text": "√2/2"
+        },
+        {
+          "label": "C",
+          "text": "1/2"
+        },
+        {
+          "label": "D",
+          "text": "√3/3"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "content": "已知圆的半径为5，求圆心角为90°的扇形面积。",
+      "correct_answer": "25π/4",
+      "explanation": "S=nπR²/360=90π×25/360=25π/4。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 93,
+      "content": "下列关于三角形的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为三角形的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "直角三角形斜边最长"
+        },
+        {
+          "label": "B",
+          "text": "三角形两边之和大于第三边"
+        },
+        {
+          "label": "C",
+          "text": "三角形内角和为180°"
+        },
+        {
+          "label": "D",
+          "text": "等腰三角形两底角相等"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "content": "若方程x²+4x-5=0的两根为x₁,x₂，则x₁²+x₂²=（　　）",
+      "correct_answer": "A",
+      "explanation": "x₁²+x₂²=(x₁+x₂)²-2x₁x₂=16-2*-5=26。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "判别式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "26"
+        },
+        {
+          "label": "B",
+          "text": "25"
+        },
+        {
+          "label": "C",
+          "text": "27"
+        },
+        {
+          "label": "D",
+          "text": "28"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "content": "方程x²+7x+12=0的两根之积为________。",
+      "correct_answer": "12",
+      "explanation": "x₁x₂=12。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ]
+    },
+    {
+      "id": 96,
+      "content": "数据[89, 82, 79, 74, 74]的平均数是（　　）",
+      "correct_answer": "D",
+      "explanation": "平均数=(89+82+79+74+74)/5=398/5=79。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "方差"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "80"
+        },
+        {
+          "label": "B",
+          "text": "81"
+        },
+        {
+          "label": "C",
+          "text": "78"
+        },
+        {
+          "label": "D",
+          "text": "79"
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "content": "抛物线y=-2(x+1)²-3的顶点坐标是（　　）",
+      "correct_answer": "A",
+      "explanation": "顶点式y=a(x-h)²+k的顶点为(h,k)，即(-1,-3)。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "二次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "(-1,-3)"
+        },
+        {
+          "label": "B",
+          "text": "(1,3)"
+        },
+        {
+          "label": "C",
+          "text": "(-1,3)"
+        },
+        {
+          "label": "D",
+          "text": "(1,-3)"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "content": "若方程x²+4x-5=0的两根为x₁,x₂，则x₁²+x₂²=（　　）",
+      "correct_answer": "D",
+      "explanation": "x₁²+x₂²=(x₁+x₂)²-2x₁x₂=16-2*-5=26。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "判别式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "27"
+        },
+        {
+          "label": "B",
+          "text": "28"
+        },
+        {
+          "label": "C",
+          "text": "25"
+        },
+        {
+          "label": "D",
+          "text": "26"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "content": "直角三角形两直角边为7和24，则斜边长为________。",
+      "correct_answer": "25",
+      "explanation": "√(7²+24²)=25。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ]
+    },
+    {
+      "id": 100,
+      "content": "半径为10的圆中，圆心角为60°的扇形弧长为（　　）",
+      "correct_answer": "B",
+      "explanation": "弧长l=nπR/180=60π×10/180=10π/3。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "10π/2"
+        },
+        {
+          "label": "B",
+          "text": "10π/3"
+        },
+        {
+          "label": "C",
+          "text": "20π/3"
+        },
+        {
+          "label": "D",
+          "text": "10π/6"
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "content": "下列各组数中，能构成直角三角形的是（　　）",
+      "correct_answer": "B",
+      "explanation": "8²+15²=17²，满足勾股定理。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "8,17,17"
+        },
+        {
+          "label": "B",
+          "text": "8,15,17"
+        },
+        {
+          "label": "C",
+          "text": "9,15,17"
+        },
+        {
+          "label": "D",
+          "text": "8,15,18"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "content": "下列关于圆的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为圆的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "直径是圆中最长的弦"
+        },
+        {
+          "label": "B",
+          "text": "圆的切线垂直于过切点的半径"
+        },
+        {
+          "label": "C",
+          "text": "圆内接四边形对角互补"
+        },
+        {
+          "label": "D",
+          "text": "同弧所对的圆周角相等"
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "content": "求一次函数y=-4x+3与坐标轴的交点坐标。",
+      "correct_answer": "x轴交点(0.8,0)，y轴交点(0,3)",
+      "explanation": "令y=0得x=0.8；令x=0得y=3。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ]
+    },
+    {
+      "id": 104,
+      "content": "半径为7的圆的周长为________。",
+      "correct_answer": "14π",
+      "explanation": "C=2πR=14π。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ]
+    },
+    {
+      "id": 105,
+      "content": "直角三角形两直角边分别为7和24，则斜边为（　　）",
+      "correct_answer": "C",
+      "explanation": "由勾股定理，斜边=√(7²+24²)=√625=25。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "24"
+        },
+        {
+          "label": "B",
+          "text": "27"
+        },
+        {
+          "label": "C",
+          "text": "25"
+        },
+        {
+          "label": "D",
+          "text": "26"
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "content": "关于方程x²+5x+6=0，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "由韦达定理及方程形式可知正确选项。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "两根之积为6"
+        },
+        {
+          "label": "B",
+          "text": "二次项系数为1"
+        },
+        {
+          "label": "C",
+          "text": "常数项为6"
+        },
+        {
+          "label": "D",
+          "text": "两根之和为5"
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "content": "反比例函数y=3/x，当x=2时，y=________。",
+      "correct_answer": "1.5",
+      "explanation": "y=3/2=1.5。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ]
+    },
+    {
+      "id": 108,
+      "content": "从9个球（含4个红球）中随机摸一个，摸到红球的概率为________。",
+      "correct_answer": "4/9",
+      "explanation": "P=4/9。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ]
+    },
+    {
+      "id": 109,
+      "content": "下列函数中，y随x增大而减小的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "各选项在对应区间内均单调递减。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "y=x² (x<0)"
+        },
+        {
+          "label": "B",
+          "text": "y=-3x+2"
+        },
+        {
+          "label": "C",
+          "text": "y=1/x (x>0)"
+        },
+        {
+          "label": "D",
+          "text": "y=-2x"
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "content": "下列各组数中，能构成直角三角形的是（　　）",
+      "correct_answer": "D",
+      "explanation": "3²+4²=5²，满足勾股定理。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "3,6,5"
+        },
+        {
+          "label": "B",
+          "text": "3,4,6"
+        },
+        {
+          "label": "C",
+          "text": "4,4,5"
+        },
+        {
+          "label": "D",
+          "text": "3,4,5"
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "content": "下列关于三角形的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为三角形的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "三角形两边之和大于第三边"
+        },
+        {
+          "label": "B",
+          "text": "三角形内角和为180°"
+        },
+        {
+          "label": "C",
+          "text": "直角三角形斜边最长"
+        },
+        {
+          "label": "D",
+          "text": "等腰三角形两底角相等"
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "content": "边长为8,15,17的三角形是直角三角形。",
+      "correct_answer": "正确",
+      "explanation": "8²+15²=17²，满足勾股定理逆定理。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ]
+    },
+    {
+      "id": 113,
+      "content": "抛物线y=-2(x+1)²-4的顶点坐标是（　　）",
+      "correct_answer": "A",
+      "explanation": "顶点式y=a(x-h)²+k的顶点为(h,k)，即(-1,-4)。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "二次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "(-1,-4)"
+        },
+        {
+          "label": "B",
+          "text": "(1,-4)"
+        },
+        {
+          "label": "C",
+          "text": "(-1,4)"
+        },
+        {
+          "label": "D",
+          "text": "(1,4)"
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "content": "下列关于三角形的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为三角形的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "等腰三角形两底角相等"
+        },
+        {
+          "label": "B",
+          "text": "三角形两边之和大于第三边"
+        },
+        {
+          "label": "C",
+          "text": "三角形内角和为180°"
+        },
+        {
+          "label": "D",
+          "text": "直角三角形斜边最长"
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "content": "方程x²+5x+6=0的两根之和为________。",
+      "correct_answer": "5",
+      "explanation": "x₁+x₂=5。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 116,
+      "content": "抛掷一枚硬币，正面朝上的概率是1/2。",
+      "correct_answer": "正确",
+      "explanation": "硬币两面等可能，正面朝上概率为1/2。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ]
+    },
+    {
+      "id": 117,
+      "content": "袋中有6个球，其中1个红球，随机摸一个，摸到红球的概率是（　　）",
+      "correct_answer": "D",
+      "explanation": "P=红球数/总数=1/6=1/6。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "5/6"
+        },
+        {
+          "label": "B",
+          "text": "1/7"
+        },
+        {
+          "label": "C",
+          "text": "2/6"
+        },
+        {
+          "label": "D",
+          "text": "1/6"
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "content": "求一次函数y=3x+3与坐标轴的交点坐标。",
+      "correct_answer": "x轴交点(-1.0,0)，y轴交点(0,3)",
+      "explanation": "令y=0得x=-1.0；令x=0得y=3。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ]
+    },
+    {
+      "id": 119,
+      "content": "半径为10的圆的面积为（　　）",
+      "correct_answer": "B",
+      "explanation": "S=πR²=100π。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "切线性质"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "20π"
+        },
+        {
+          "label": "B",
+          "text": "100π"
+        },
+        {
+          "label": "C",
+          "text": "200π"
+        },
+        {
+          "label": "D",
+          "text": "10π"
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "content": "下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为统计基本概念。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "平均数反映数据的集中趋势"
+        },
+        {
+          "label": "B",
+          "text": "方差反映数据的波动程度"
+        },
+        {
+          "label": "C",
+          "text": "概率反映事件发生的可能性大小"
+        },
+        {
+          "label": "D",
+          "text": "众数是出现次数最多的数据"
+        }
+      ]
+    },
+    {
+      "id": 121,
+      "content": "下列关于圆的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为圆的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "圆内接四边形对角互补"
+        },
+        {
+          "label": "B",
+          "text": "圆的切线垂直于过切点的半径"
+        },
+        {
+          "label": "C",
+          "text": "直径是圆中最长的弦"
+        },
+        {
+          "label": "D",
+          "text": "同弧所对的圆周角相等"
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "content": "数据[100, 76, 70, 88, 95]的平均数是（　　）",
+      "correct_answer": "B",
+      "explanation": "平均数=(100+76+70+88+95)/5=429/5=85。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "众数与中位数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "86"
+        },
+        {
+          "label": "B",
+          "text": "85"
+        },
+        {
+          "label": "C",
+          "text": "84"
+        },
+        {
+          "label": "D",
+          "text": "87"
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "content": "下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为统计基本概念。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "众数是出现次数最多的数据"
+        },
+        {
+          "label": "B",
+          "text": "平均数反映数据的集中趋势"
+        },
+        {
+          "label": "C",
+          "text": "方差反映数据的波动程度"
+        },
+        {
+          "label": "D",
+          "text": "概率反映事件发生的可能性大小"
+        }
+      ]
+    },
+    {
+      "id": 124,
+      "content": "一次函数y=-2x+0的图象一定经过原点。",
+      "correct_answer": "正确",
+      "explanation": "当b≠0时，图象不经过原点。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ]
+    },
+    {
+      "id": 125,
+      "content": "下列函数中，y随x增大而减小的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "各选项在对应区间内均单调递减。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "y=-3x+2"
+        },
+        {
+          "label": "B",
+          "text": "y=x² (x<0)"
+        },
+        {
+          "label": "C",
+          "text": "y=1/x (x>0)"
+        },
+        {
+          "label": "D",
+          "text": "y=-2x"
+        }
+      ]
+    },
+    {
+      "id": 126,
+      "content": "半径为6的圆中，圆心角为60°的扇形弧长为（　　）",
+      "correct_answer": "A",
+      "explanation": "弧长l=nπR/180=60π×6/180=6π/3。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "6π/3"
+        },
+        {
+          "label": "B",
+          "text": "12π/3"
+        },
+        {
+          "label": "C",
+          "text": "6π/6"
+        },
+        {
+          "label": "D",
+          "text": "6π/2"
+        }
+      ]
+    },
+    {
+      "id": 127,
+      "content": "直角三角形两直角边为5和12，则斜边长为________。",
+      "correct_answer": "13",
+      "explanation": "√(5²+12²)=13。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ]
+    },
+    {
+      "id": 128,
+      "content": "一次函数y=4x+1的图象不经过哪个象限？（　　）",
+      "correct_answer": "B",
+      "explanation": "k=4, b=1，图象经过一,二,三象限，不经过四象限。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "三"
+        },
+        {
+          "label": "B",
+          "text": "四"
+        },
+        {
+          "label": "C",
+          "text": "一"
+        },
+        {
+          "label": "D",
+          "text": "二"
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "content": "方程x²+5x+6=0的根是（　　）",
+      "correct_answer": "B",
+      "explanation": "因式分解得(x+2)(x+3)=0，故x₁=2, x₂=3。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "x₁=4, x₂=2"
+        },
+        {
+          "label": "B",
+          "text": "x₁=2, x₂=3"
+        },
+        {
+          "label": "C",
+          "text": "x₁=3, x₂=3"
+        },
+        {
+          "label": "D",
+          "text": "x₁=-2, x₂=-3"
+        }
+      ]
+    },
+    {
+      "id": 130,
+      "content": "一次函数y=-3x+3的图象不经过哪个象限？（　　）",
+      "correct_answer": "B",
+      "explanation": "k=-3, b=3，图象经过一,二,四象限，不经过三象限。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "二"
+        },
+        {
+          "label": "B",
+          "text": "三"
+        },
+        {
+          "label": "C",
+          "text": "一"
+        },
+        {
+          "label": "D",
+          "text": "四"
+        }
+      ]
+    },
+    {
+      "id": 131,
+      "content": "反比例函数y=6/x，当x=2时，y=________。",
+      "correct_answer": "3",
+      "explanation": "y=6/2=3。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ]
+    },
+    {
+      "id": 132,
+      "content": "下列函数中，y随x增大而减小的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "各选项在对应区间内均单调递减。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "y=-3x+2"
+        },
+        {
+          "label": "B",
+          "text": "y=1/x (x>0)"
+        },
+        {
+          "label": "C",
+          "text": "y=-2x"
+        },
+        {
+          "label": "D",
+          "text": "y=x² (x<0)"
+        }
+      ]
+    },
+    {
+      "id": 133,
+      "content": "数据[71, 86, 61, 71, 81]的平均数是（　　）",
+      "correct_answer": "B",
+      "explanation": "平均数=(71+86+61+71+81)/5=370/5=74。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "75"
+        },
+        {
+          "label": "B",
+          "text": "74"
+        },
+        {
+          "label": "C",
+          "text": "73"
+        },
+        {
+          "label": "D",
+          "text": "76"
+        }
+      ]
+    },
+    {
+      "id": 134,
+      "content": "下列各组数中，能构成直角三角形的是（　　）",
+      "correct_answer": "D",
+      "explanation": "9²+12²=15²，满足勾股定理。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "全等三角形"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "10,12,15"
+        },
+        {
+          "label": "B",
+          "text": "9,12,16"
+        },
+        {
+          "label": "C",
+          "text": "9,14,15"
+        },
+        {
+          "label": "D",
+          "text": "9,12,15"
+        }
+      ]
+    },
+    {
+      "id": 135,
+      "content": "方程x²+7x+12=0的两根之积为________。",
+      "correct_answer": "12",
+      "explanation": "x₁x₂=12。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ]
+    },
+    {
+      "id": 136,
+      "content": "半径为4的圆中，圆心角为60°的扇形弧长为（　　）",
+      "correct_answer": "B",
+      "explanation": "弧长l=nπR/180=60π×4/180=4π/3。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "4π/6"
+        },
+        {
+          "label": "B",
+          "text": "4π/3"
+        },
+        {
+          "label": "C",
+          "text": "8π/3"
+        },
+        {
+          "label": "D",
+          "text": "4π/2"
+        }
+      ]
+    },
+    {
+      "id": 137,
+      "content": "关于方程x²+7x+12=0，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "由韦达定理及方程形式可知正确选项。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "常数项为12"
+        },
+        {
+          "label": "B",
+          "text": "二次项系数为1"
+        },
+        {
+          "label": "C",
+          "text": "两根之积为12"
+        },
+        {
+          "label": "D",
+          "text": "两根之和为7"
+        }
+      ]
+    },
+    {
+      "id": 138,
+      "content": "求数据[91, 73, 81, 94, 87]的平均数。",
+      "correct_answer": "85.2",
+      "explanation": "平均数=426/5=85.2。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ]
+    },
+    {
+      "id": 139,
+      "content": "方程x²+5x+6=0的两根之和为________。",
+      "correct_answer": "5",
+      "explanation": "x₁+x₂=5。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 140,
+      "content": "从6个球（含2个红球）中随机摸一个，摸到红球的概率为________。",
+      "correct_answer": "1/3",
+      "explanation": "P=2/6。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ]
+    },
+    {
+      "id": 141,
+      "content": "直角三角形两直角边分别为5和12，则斜边为（　　）",
+      "correct_answer": "B",
+      "explanation": "由勾股定理，斜边=√(5²+12²)=√169=13。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "12"
+        },
+        {
+          "label": "B",
+          "text": "13"
+        },
+        {
+          "label": "C",
+          "text": "14"
+        },
+        {
+          "label": "D",
+          "text": "15"
+        }
+      ]
+    },
+    {
+      "id": 142,
+      "content": "若方程x²+4x-5=0的两根为x₁,x₂，则x₁²+x₂²=（　　）",
+      "correct_answer": "A",
+      "explanation": "x₁²+x₂²=(x₁+x₂)²-2x₁x₂=16-2*-5=26。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "判别式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "26"
+        },
+        {
+          "label": "B",
+          "text": "27"
+        },
+        {
+          "label": "C",
+          "text": "28"
+        },
+        {
+          "label": "D",
+          "text": "25"
+        }
+      ]
+    },
+    {
+      "id": 143,
+      "content": "半径为5的圆的周长为________。",
+      "correct_answer": "10π",
+      "explanation": "C=2πR=10π。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 144,
+      "content": "反比例函数y=5/x，当x=2时，y=________。",
+      "correct_answer": "2.5",
+      "explanation": "y=5/2=2.5。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ]
+    },
+    {
+      "id": 145,
+      "content": "方程x²-1x-6=0的根是（　　）",
+      "correct_answer": "D",
+      "explanation": "因式分解得(x+2)(x-3)=0，故x₁=2, x₂=-3。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "韦达定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "x₁=-2, x₂=3"
+        },
+        {
+          "label": "B",
+          "text": "x₁=4, x₂=-4"
+        },
+        {
+          "label": "C",
+          "text": "x₁=3, x₂=-3"
+        },
+        {
+          "label": "D",
+          "text": "x₁=2, x₂=-3"
+        }
+      ]
+    },
+    {
+      "id": 146,
+      "content": "从9个球（含7个红球）中随机摸一个，摸到红球的概率为________。",
+      "correct_answer": "7/9",
+      "explanation": "P=7/9。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ]
+    },
+    {
+      "id": 147,
+      "content": "半径为3的圆中，直径为3。",
+      "correct_answer": "错误",
+      "explanation": "直径=2R=6。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 148,
+      "content": "下列关于圆的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为圆的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "同弧所对的圆周角相等"
+        },
+        {
+          "label": "B",
+          "text": "圆内接四边形对角互补"
+        },
+        {
+          "label": "C",
+          "text": "圆的切线垂直于过切点的半径"
+        },
+        {
+          "label": "D",
+          "text": "直径是圆中最长的弦"
+        }
+      ]
+    },
+    {
+      "id": 149,
+      "content": "关于一次函数y=kx+b的图象，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为一次函数的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "k>0时，y随x增大而增大"
+        },
+        {
+          "label": "B",
+          "text": "b>0时，图象与y轴正半轴相交"
+        },
+        {
+          "label": "C",
+          "text": "b=0时，图象过原点"
+        },
+        {
+          "label": "D",
+          "text": "k<0时，图象从左向右下降"
+        }
+      ]
+    },
+    {
+      "id": 150,
+      "content": "直角三角形两直角边为8和15，则斜边长为________。",
+      "correct_answer": "17",
+      "explanation": "√(8²+15²)=17。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ]
+    },
+    {
+      "id": 151,
+      "content": "数据[76, 62, 87, 60, 93]的平均数是（　　）",
+      "correct_answer": "A",
+      "explanation": "平均数=(76+62+87+60+93)/5=378/5=75。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "众数与中位数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "75"
+        },
+        {
+          "label": "B",
+          "text": "74"
+        },
+        {
+          "label": "C",
+          "text": "77"
+        },
+        {
+          "label": "D",
+          "text": "76"
+        }
+      ]
+    },
+    {
+      "id": 152,
+      "content": "关于方程x²+7x+12=0，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "由韦达定理及方程形式可知正确选项。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "两根之积为12"
+        },
+        {
+          "label": "B",
+          "text": "常数项为12"
+        },
+        {
+          "label": "C",
+          "text": "二次项系数为1"
+        },
+        {
+          "label": "D",
+          "text": "两根之和为7"
+        }
+      ]
+    },
+    {
+      "id": 153,
+      "content": "直角三角形两直角边为7和24，则斜边长为________。",
+      "correct_answer": "25",
+      "explanation": "√(7²+24²)=25。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ]
+    },
+    {
+      "id": 154,
+      "content": "下列关于三角形的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为三角形的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "直角三角形斜边最长"
+        },
+        {
+          "label": "B",
+          "text": "等腰三角形两底角相等"
+        },
+        {
+          "label": "C",
+          "text": "三角形两边之和大于第三边"
+        },
+        {
+          "label": "D",
+          "text": "三角形内角和为180°"
+        }
+      ]
+    },
+    {
+      "id": 155,
+      "content": "已知一次函数y=-3x-3，当x=3时，y=________。",
+      "correct_answer": "-12",
+      "explanation": "y=-3×3-3=-12。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ]
+    },
+    {
+      "id": 156,
+      "content": "sin30°的值是（　　）",
+      "correct_answer": "D",
+      "explanation": "特殊角三角函数值：sin30°=1/2。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "三角函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "√3/2"
+        },
+        {
+          "label": "B",
+          "text": "√3/3"
+        },
+        {
+          "label": "C",
+          "text": "√2/2"
+        },
+        {
+          "label": "D",
+          "text": "1/2"
+        }
+      ]
+    },
+    {
+      "id": 157,
+      "content": "解方程x²+5x+6=0。",
+      "correct_answer": "x₁=2, x₂=3",
+      "explanation": "因式分解得(x+2)(x+3)=0，故x₁=2, x₂=3。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 158,
+      "content": "sin30°的值是（　　）",
+      "correct_answer": "A",
+      "explanation": "特殊角三角函数值：sin30°=1/2。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "三角函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "1/2"
+        },
+        {
+          "label": "B",
+          "text": "√3/3"
+        },
+        {
+          "label": "C",
+          "text": "√2/2"
+        },
+        {
+          "label": "D",
+          "text": "√3/2"
+        }
+      ]
+    },
+    {
+      "id": 159,
+      "content": "袋中有9个球，其中5个红球，随机摸一个，摸到红球的概率是（　　）",
+      "correct_answer": "B",
+      "explanation": "P=红球数/总数=5/9=5/9。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "6/9"
+        },
+        {
+          "label": "B",
+          "text": "5/9"
+        },
+        {
+          "label": "C",
+          "text": "5/10"
+        },
+        {
+          "label": "D",
+          "text": "4/9"
+        }
+      ]
+    },
+    {
+      "id": 160,
+      "content": "抛物线y=2(x+2)²+3的顶点坐标是（　　）",
+      "correct_answer": "C",
+      "explanation": "顶点式y=a(x-h)²+k的顶点为(h,k)，即(-2,3)。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "函数图像"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "(-2,-3)"
+        },
+        {
+          "label": "B",
+          "text": "(2,-3)"
+        },
+        {
+          "label": "C",
+          "text": "(-2,3)"
+        },
+        {
+          "label": "D",
+          "text": "(2,3)"
+        }
+      ]
+    },
+    {
+      "id": 161,
+      "content": "关于方程x²+7x+12=0，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "由韦达定理及方程形式可知正确选项。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "两根之积为12"
+        },
+        {
+          "label": "B",
+          "text": "常数项为12"
+        },
+        {
+          "label": "C",
+          "text": "二次项系数为1"
+        },
+        {
+          "label": "D",
+          "text": "两根之和为7"
+        }
+      ]
+    },
+    {
+      "id": 162,
+      "content": "方程x²-1x-6=0的根是（　　）",
+      "correct_answer": "A",
+      "explanation": "因式分解得(x+2)(x-3)=0，故x₁=2, x₂=-3。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "韦达定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "x₁=2, x₂=-3"
+        },
+        {
+          "label": "B",
+          "text": "x₁=-2, x₂=3"
+        },
+        {
+          "label": "C",
+          "text": "x₁=3, x₂=-3"
+        },
+        {
+          "label": "D",
+          "text": "x₁=4, x₂=-4"
+        }
+      ]
+    },
+    {
+      "id": 163,
+      "content": "方程x²+5x+6=0可以用求根公式求解。",
+      "correct_answer": "正确",
+      "explanation": "任何一元二次方程都可用求根公式求解。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 164,
+      "content": "方程x²+5x+6=0的两根之和为________。",
+      "correct_answer": "5",
+      "explanation": "x₁+x₂=5。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 165,
+      "content": "一次函数y=-2x+1的图象不经过哪个象限？（　　）",
+      "correct_answer": "C",
+      "explanation": "k=-2, b=1，图象经过一,二,四象限，不经过三象限。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "二"
+        },
+        {
+          "label": "B",
+          "text": "四"
+        },
+        {
+          "label": "C",
+          "text": "三"
+        },
+        {
+          "label": "D",
+          "text": "一"
+        }
+      ]
+    },
+    {
+      "id": 166,
+      "content": "反比例函数y=-8/x的图象经过点（　　）",
+      "correct_answer": "D",
+      "explanation": "将x=1代入得y=-8，故经过(1,-8)。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "(2,-4)"
+        },
+        {
+          "label": "B",
+          "text": "(-1,8)"
+        },
+        {
+          "label": "C",
+          "text": "(2,-4)"
+        },
+        {
+          "label": "D",
+          "text": "(1,-8)"
+        }
+      ]
+    },
+    {
+      "id": 167,
+      "content": "数据[67, 64, 69, 94, 62]的平均数是（　　）",
+      "correct_answer": "B",
+      "explanation": "平均数=(67+64+69+94+62)/5=356/5=71。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "方差"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "72"
+        },
+        {
+          "label": "B",
+          "text": "71"
+        },
+        {
+          "label": "C",
+          "text": "73"
+        },
+        {
+          "label": "D",
+          "text": "70"
+        }
+      ]
+    },
+    {
+      "id": 168,
+      "content": "抛物线y=-1(x+1)²-3的顶点坐标是（　　）",
+      "correct_answer": "C",
+      "explanation": "顶点式y=a(x-h)²+k的顶点为(h,k)，即(-1,-3)。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "二次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "(-1,3)"
+        },
+        {
+          "label": "B",
+          "text": "(1,3)"
+        },
+        {
+          "label": "C",
+          "text": "(-1,-3)"
+        },
+        {
+          "label": "D",
+          "text": "(1,-3)"
+        }
+      ]
+    },
+    {
+      "id": 169,
+      "content": "半径为5的圆的面积为（　　）",
+      "correct_answer": "B",
+      "explanation": "S=πR²=25π。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "切线性质"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "50π"
+        },
+        {
+          "label": "B",
+          "text": "25π"
+        },
+        {
+          "label": "C",
+          "text": "10π"
+        },
+        {
+          "label": "D",
+          "text": "5π"
+        }
+      ]
+    },
+    {
+      "id": 170,
+      "content": "方程x²+7x+12=0的根的情况是（　　）",
+      "correct_answer": "A",
+      "explanation": "Δ=1>0，有两个不相等的实数根。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "有两个相等的实数根"
+        },
+        {
+          "label": "B",
+          "text": "只有一个实数根"
+        },
+        {
+          "label": "C",
+          "text": "有两个不相等的实数根"
+        },
+        {
+          "label": "D",
+          "text": "没有实数根"
+        }
+      ]
+    },
+    {
+      "id": 171,
+      "content": "关于一次函数y=kx+b的图象，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为一次函数的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "k<0时，图象从左向右下降"
+        },
+        {
+          "label": "B",
+          "text": "b>0时，图象与y轴正半轴相交"
+        },
+        {
+          "label": "C",
+          "text": "k>0时，y随x增大而增大"
+        },
+        {
+          "label": "D",
+          "text": "b=0时，图象过原点"
+        }
+      ]
+    },
+    {
+      "id": 172,
+      "content": "下列关于三角形的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为三角形的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "直角三角形斜边最长"
+        },
+        {
+          "label": "B",
+          "text": "等腰三角形两底角相等"
+        },
+        {
+          "label": "C",
+          "text": "三角形内角和为180°"
+        },
+        {
+          "label": "D",
+          "text": "三角形两边之和大于第三边"
+        }
+      ]
+    },
+    {
+      "id": 173,
+      "content": "直角三角形两直角边为3和4，则斜边长为________。",
+      "correct_answer": "5",
+      "explanation": "√(3²+4²)=5。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ]
+    },
+    {
+      "id": 174,
+      "content": "数据[82, 80, 87, 98, 92]的平均数是（　　）",
+      "correct_answer": "D",
+      "explanation": "平均数=(82+80+87+98+92)/5=439/5=87。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "86"
+        },
+        {
+          "label": "B",
+          "text": "89"
+        },
+        {
+          "label": "C",
+          "text": "88"
+        },
+        {
+          "label": "D",
+          "text": "87"
+        }
+      ]
+    },
+    {
+      "id": 175,
+      "content": "数据[65, 100, 87, 77, 62]的平均数是（　　）",
+      "correct_answer": "D",
+      "explanation": "平均数=(65+100+87+77+62)/5=391/5=78。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "77"
+        },
+        {
+          "label": "B",
+          "text": "80"
+        },
+        {
+          "label": "C",
+          "text": "79"
+        },
+        {
+          "label": "D",
+          "text": "78"
+        }
+      ]
+    },
+    {
+      "id": 176,
+      "content": "下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为统计基本概念。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "概率反映事件发生的可能性大小"
+        },
+        {
+          "label": "B",
+          "text": "方差反映数据的波动程度"
+        },
+        {
+          "label": "C",
+          "text": "平均数反映数据的集中趋势"
+        },
+        {
+          "label": "D",
+          "text": "众数是出现次数最多的数据"
+        }
+      ]
+    },
+    {
+      "id": 177,
+      "content": "方程x²+5x+6=0的根是（　　）",
+      "correct_answer": "B",
+      "explanation": "因式分解得(x+2)(x+3)=0，故x₁=2, x₂=3。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "x₁=-2, x₂=-3"
+        },
+        {
+          "label": "B",
+          "text": "x₁=2, x₂=3"
+        },
+        {
+          "label": "C",
+          "text": "x₁=3, x₂=3"
+        },
+        {
+          "label": "D",
+          "text": "x₁=4, x₂=2"
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "content": "半径为9的圆中，圆心角为60°的扇形弧长为（　　）",
+      "correct_answer": "A",
+      "explanation": "弧长l=nπR/180=60π×9/180=9π/3。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "9π/3"
+        },
+        {
+          "label": "B",
+          "text": "18π/3"
+        },
+        {
+          "label": "C",
+          "text": "9π/2"
+        },
+        {
+          "label": "D",
+          "text": "9π/6"
+        }
+      ]
+    },
+    {
+      "id": 179,
+      "content": "方程x²+7x+12=0的根的情况是（　　）",
+      "correct_answer": "A",
+      "explanation": "Δ=1>0，有两个不相等的实数根。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "没有实数根"
+        },
+        {
+          "label": "B",
+          "text": "只有一个实数根"
+        },
+        {
+          "label": "C",
+          "text": "有两个相等的实数根"
+        },
+        {
+          "label": "D",
+          "text": "有两个不相等的实数根"
+        }
+      ]
+    },
+    {
+      "id": 180,
+      "content": "半径为2的圆中，圆心角为60°的扇形弧长为（　　）",
+      "correct_answer": "D",
+      "explanation": "弧长l=nπR/180=60π×2/180=2π/3。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "4π/3"
+        },
+        {
+          "label": "B",
+          "text": "2π/6"
+        },
+        {
+          "label": "C",
+          "text": "2π/2"
+        },
+        {
+          "label": "D",
+          "text": "2π/3"
+        }
+      ]
+    },
+    {
+      "id": 181,
+      "content": "半径为5的圆中，直径为5。",
+      "correct_answer": "错误",
+      "explanation": "直径=2R=10。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 182,
+      "content": "半径为7的圆的周长为________。",
+      "correct_answer": "14π",
+      "explanation": "C=2πR=14π。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆周角"
+      ]
+    },
+    {
+      "id": 183,
+      "content": "下列关于三角形的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为三角形的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "三角形内角和为180°"
+        },
+        {
+          "label": "B",
+          "text": "等腰三角形两底角相等"
+        },
+        {
+          "label": "C",
+          "text": "三角形两边之和大于第三边"
+        },
+        {
+          "label": "D",
+          "text": "直角三角形斜边最长"
+        }
+      ]
+    },
+    {
+      "id": 184,
+      "content": "已知直角三角形两直角边分别为7和24，求斜边上的高。",
+      "correct_answer": "6.7",
+      "explanation": "斜边=25，面积=84，故高h=168/25=6.7。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ]
+    },
+    {
+      "id": 185,
+      "content": "方程x²+5x+6=0可以用求根公式求解。",
+      "correct_answer": "正确",
+      "explanation": "任何一元二次方程都可用求根公式求解。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 186,
+      "content": "半径为2的圆的面积为（　　）",
+      "correct_answer": "B",
+      "explanation": "S=πR²=4π。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "切线性质"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "8π"
+        },
+        {
+          "label": "B",
+          "text": "4π"
+        },
+        {
+          "label": "C",
+          "text": "2π"
+        },
+        {
+          "label": "D",
+          "text": "4π"
+        }
+      ]
+    },
+    {
+      "id": 187,
+      "content": "下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为统计基本概念。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "众数是出现次数最多的数据"
+        },
+        {
+          "label": "B",
+          "text": "概率反映事件发生的可能性大小"
+        },
+        {
+          "label": "C",
+          "text": "平均数反映数据的集中趋势"
+        },
+        {
+          "label": "D",
+          "text": "方差反映数据的波动程度"
+        }
+      ]
+    },
+    {
+      "id": 188,
+      "content": "直角三角形两直角边分别为5和12，则斜边为（　　）",
+      "correct_answer": "D",
+      "explanation": "由勾股定理，斜边=√(5²+12²)=√169=13。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "12"
+        },
+        {
+          "label": "B",
+          "text": "15"
+        },
+        {
+          "label": "C",
+          "text": "14"
+        },
+        {
+          "label": "D",
+          "text": "13"
+        }
+      ]
+    },
+    {
+      "id": 189,
+      "content": "下列各组数中，能构成直角三角形的是（　　）",
+      "correct_answer": "C",
+      "explanation": "3²+4²=5²，满足勾股定理。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "全等三角形"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "3,4,6"
+        },
+        {
+          "label": "B",
+          "text": "3,6,5"
+        },
+        {
+          "label": "C",
+          "text": "3,4,5"
+        },
+        {
+          "label": "D",
+          "text": "4,4,5"
+        }
+      ]
+    },
+    {
+      "id": 190,
+      "content": "抛物线y=1(x+1)²+4的顶点坐标是（　　）",
+      "correct_answer": "C",
+      "explanation": "顶点式y=a(x-h)²+k的顶点为(h,k)，即(-1,4)。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "函数图像"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "(1,-4)"
+        },
+        {
+          "label": "B",
+          "text": "(1,4)"
+        },
+        {
+          "label": "C",
+          "text": "(-1,4)"
+        },
+        {
+          "label": "D",
+          "text": "(-1,-4)"
+        }
+      ]
+    },
+    {
+      "id": 191,
+      "content": "从8个球（含3个红球）中随机摸一个，摸到红球的概率为________。",
+      "correct_answer": "3/8",
+      "explanation": "P=3/8。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ]
+    },
+    {
+      "id": 192,
+      "content": "下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为统计基本概念。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "平均数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "众数是出现次数最多的数据"
+        },
+        {
+          "label": "B",
+          "text": "方差反映数据的波动程度"
+        },
+        {
+          "label": "C",
+          "text": "平均数反映数据的集中趋势"
+        },
+        {
+          "label": "D",
+          "text": "概率反映事件发生的可能性大小"
+        }
+      ]
+    },
+    {
+      "id": 193,
+      "content": "边长为5,12,13的三角形是直角三角形。",
+      "correct_answer": "正确",
+      "explanation": "5²+12²=13²，满足勾股定理逆定理。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ]
+    },
+    {
+      "id": 194,
+      "content": "半径为4的圆的周长为________。",
+      "correct_answer": "8π",
+      "explanation": "C=2πR=8π。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 195,
+      "content": "一次函数y=2x+2的图象一定经过原点。",
+      "correct_answer": "错误",
+      "explanation": "当b≠0时，图象不经过原点。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ]
+    },
+    {
+      "id": 196,
+      "content": "方程x²+7x+12=0的两根之积为________。",
+      "correct_answer": "12",
+      "explanation": "x₁x₂=12。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "求根公式"
+      ]
+    },
+    {
+      "id": 197,
+      "content": "一次函数y=4x-1的图象一定经过原点。",
+      "correct_answer": "错误",
+      "explanation": "当b≠0时，图象不经过原点。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ]
+    },
+    {
+      "id": 198,
+      "content": "抛掷一枚硬币，正面朝上的概率是1/2。",
+      "correct_answer": "正确",
+      "explanation": "硬币两面等可能，正面朝上概率为1/2。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ]
+    },
+    {
+      "id": 199,
+      "content": "方程x²+5x+6=0的根是（　　）",
+      "correct_answer": "B",
+      "explanation": "因式分解得(x+2)(x+3)=0，故x₁=2, x₂=3。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "x₁=-2, x₂=-3"
+        },
+        {
+          "label": "B",
+          "text": "x₁=2, x₂=3"
+        },
+        {
+          "label": "C",
+          "text": "x₁=4, x₂=2"
+        },
+        {
+          "label": "D",
+          "text": "x₁=3, x₂=3"
+        }
+      ]
+    },
+    {
+      "id": 200,
+      "content": "从9个球（含5个红球）中随机摸一个，摸到红球的概率为________。",
+      "correct_answer": "5/9",
+      "explanation": "P=5/9。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "概率计算"
+      ]
+    },
+    {
+      "id": 201,
+      "content": "下列各组数中，能构成直角三角形的是（　　）",
+      "correct_answer": "D",
+      "explanation": "9²+40²=41²，满足勾股定理。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "相似三角形"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "9,40,42"
+        },
+        {
+          "label": "B",
+          "text": "10,40,41"
+        },
+        {
+          "label": "C",
+          "text": "9,42,41"
+        },
+        {
+          "label": "D",
+          "text": "9,40,41"
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "content": "已知一次函数y=-4x-1，当x=5时，y=________。",
+      "correct_answer": "-21",
+      "explanation": "y=-4×5-1=-21。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ]
+    },
+    {
+      "id": 203,
+      "content": "半径为6的圆的面积为（　　）",
+      "correct_answer": "B",
+      "explanation": "S=πR²=36π。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "弧长计算"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "6π"
+        },
+        {
+          "label": "B",
+          "text": "36π"
+        },
+        {
+          "label": "C",
+          "text": "12π"
+        },
+        {
+          "label": "D",
+          "text": "72π"
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "content": "下列关于圆的说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为圆的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "同弧所对的圆周角相等"
+        },
+        {
+          "label": "B",
+          "text": "圆内接四边形对角互补"
+        },
+        {
+          "label": "C",
+          "text": "直径是圆中最长的弦"
+        },
+        {
+          "label": "D",
+          "text": "圆的切线垂直于过切点的半径"
+        }
+      ]
+    },
+    {
+      "id": 205,
+      "content": "反比例函数y=-6/x的图象经过点（　　）",
+      "correct_answer": "D",
+      "explanation": "将x=1代入得y=-6，故经过(1,-6)。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "反比例函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "(2,-3)"
+        },
+        {
+          "label": "B",
+          "text": "(-1,6)"
+        },
+        {
+          "label": "C",
+          "text": "(2,-3)"
+        },
+        {
+          "label": "D",
+          "text": "(1,-6)"
+        }
+      ]
+    },
+    {
+      "id": 206,
+      "content": "关于一次函数y=kx+b的图象，下列说法正确的是（　　）",
+      "correct_answer": "A,B,C,D",
+      "explanation": "以上均为一次函数的基本性质。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "函数",
+        "一次函数"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "k<0时，图象从左向右下降"
+        },
+        {
+          "label": "B",
+          "text": "b>0时，图象与y轴正半轴相交"
+        },
+        {
+          "label": "C",
+          "text": "b=0时，图象过原点"
+        },
+        {
+          "label": "D",
+          "text": "k>0时，y随x增大而增大"
+        }
+      ]
+    },
+    {
+      "id": 207,
+      "content": "已知直角三角形两直角边分别为6和8，求斜边上的高。",
+      "correct_answer": "4.8",
+      "explanation": "斜边=10，面积=24，故高h=48/10=4.8。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ]
+    },
+    {
+      "id": 208,
+      "content": "已知圆的半径为5，求圆心角为90°的扇形面积。",
+      "correct_answer": "25π/4",
+      "explanation": "S=nπR²/360=90π×25/360=25π/4。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 209,
+      "content": "边长为6,8,10的三角形是直角三角形。",
+      "correct_answer": "正确",
+      "explanation": "6²+8²=10²，满足勾股定理逆定理。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "勾股定理"
+      ]
+    },
+    {
+      "id": 210,
+      "content": "半径为7的圆中，圆心角为60°的扇形弧长为（　　）",
+      "correct_answer": "C",
+      "explanation": "弧长l=nπR/180=60π×7/180=7π/3。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "垂径定理"
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "14π/3"
+        },
+        {
+          "label": "B",
+          "text": "7π/2"
+        },
+        {
+          "label": "C",
+          "text": "7π/3"
+        },
+        {
+          "label": "D",
+          "text": "7π/6"
+        }
+      ]
+    }
+  ]
+}

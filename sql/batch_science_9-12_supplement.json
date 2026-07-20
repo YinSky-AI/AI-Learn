@@ -1,0 +1,4237 @@
+{
+  "batch_id": "batch_science_9-12_supplement",
+  "source": "ai_generated",
+  "total_generated": 140,
+  "passed_count": 140,
+  "failed_count": 0,
+  "questions": [
+    {
+      "id": "64b3719a-6f37-4735-8263-e2fd81a0f001",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 1
+    },
+    {
+      "id": "2e0da481-11c4-4640-9719-7ba9418c3abb",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 2
+    },
+    {
+      "id": "fa82f00d-2a56-4c26-85a4-e749b4292f05",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 3
+    },
+    {
+      "id": "4db7cb30-66a6-4be7-844d-2b20850be70b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 4
+    },
+    {
+      "id": "200aa959-af44-4a2a-9287-44ea3d411c4d",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 5
+    },
+    {
+      "id": "ee226c3d-42ba-45bd-ae26-9b111ced37c5",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 6
+    },
+    {
+      "id": "05606dd0-28a0-45eb-a2a9-3233b85bd11c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 7
+    },
+    {
+      "id": "50807249-8315-4c7c-8573-ba6353fa1c24",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 8
+    },
+    {
+      "id": "9aedd716-db04-47e0-8ebf-62882ebc4179",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 9
+    },
+    {
+      "id": "c1de97a9-2654-4be8-ba6c-7ad28836c718",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 10
+    },
+    {
+      "id": "bb07388b-8f14-41f0-b782-ca10cad29e58",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "D",
+          "text": "plasma"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Solid, liquid, and gas are the three common states.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 11
+    },
+    {
+      "id": "68e4cdc4-1f01-406f-92ed-35c9b8171493",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which actions involve forces?",
+      "options": [
+        {
+          "key": "A",
+          "text": "running"
+        },
+        {
+          "key": "B",
+          "text": "pushing"
+        },
+        {
+          "key": "C",
+          "text": "sleeping"
+        },
+        {
+          "key": "D",
+          "text": "pulling"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Running, pushing, and pulling all involve forces.",
+      "knowledge_tags": [
+        "forces",
+        "motion"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 12
+    },
+    {
+      "id": "8ed15e01-16aa-4d99-b19f-2373a45973dd",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 13
+    },
+    {
+      "id": "6668430a-db13-4f36-9c4d-5fd4647d214b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 14
+    },
+    {
+      "id": "e03d9603-7510-4844-a273-94837e11d0e3",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "In a circuit, electricity needs a complete _______ to flow.",
+      "options": [],
+      "correct_answer": "path",
+      "explanation": "Electricity flows when there is a closed loop or complete path.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 15
+    },
+    {
+      "id": "ee653e9a-3ccd-4671-bb4f-b19edb08890c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 16
+    },
+    {
+      "id": "ccbef93b-73ca-401a-8e29-a8e2eee21936",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "In a circuit, electricity needs a complete _______ to flow.",
+      "options": [],
+      "correct_answer": "path",
+      "explanation": "Electricity flows when there is a closed loop or complete path.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 17
+    },
+    {
+      "id": "34f0178b-80e5-4804-a68c-aaf06eafa320",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 18
+    },
+    {
+      "id": "4c19fb11-a0ce-45ac-abdc-c067ea3ab756",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 19
+    },
+    {
+      "id": "65fdda18-d0e7-4c67-876e-5d3fa58ac4a4",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 20
+    },
+    {
+      "id": "f8d4b00a-4c75-45b9-b6fc-c97a7a1a7289",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "The brain controls most body functions.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "The brain is the control center of the nervous system.",
+      "knowledge_tags": [
+        "human_body",
+        "nervous_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 21
+    },
+    {
+      "id": "773261ec-7855-488c-8987-e08686d3bd88",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Gas has a definite shape and volume.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Gas has no definite shape or volume.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 22
+    },
+    {
+      "id": "5e0cca75-5295-49dd-b93e-b2c252d13f6b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Describe one way to reduce friction when moving heavy objects.",
+      "options": [],
+      "correct_answer": "(Use wheels, lubricant, or smooth surface)",
+      "explanation": "Wheels, oil, or smooth surfaces reduce friction.",
+      "knowledge_tags": [
+        "forces",
+        "friction"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 23
+    },
+    {
+      "id": "42e60dd9-5155-471d-8bb2-464c0bf4e4bd",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Describe one way to reduce friction when moving heavy objects.",
+      "options": [],
+      "correct_answer": "(Use wheels, lubricant, or smooth surface)",
+      "explanation": "Wheels, oil, or smooth surfaces reduce friction.",
+      "knowledge_tags": [
+        "forces",
+        "friction"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 24
+    },
+    {
+      "id": "17f5a9d7-0947-45b3-8ec5-9daef86b4653",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 25
+    },
+    {
+      "id": "45555cd5-2e5b-4263-a65d-9cac8e95c435",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 26
+    },
+    {
+      "id": "180ec554-d860-433e-9c09-8b0632fe118f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 27
+    },
+    {
+      "id": "d7655f41-37c2-42e4-a5d3-0c058a103301",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 28
+    },
+    {
+      "id": "0c815b32-bf0d-4191-8fa5-3f24eb07add1",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 29
+    },
+    {
+      "id": "46577af9-d1e1-45d1-b38e-aabdac4f6fa7",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 30
+    },
+    {
+      "id": "15aa359f-6600-490c-9954-10878ac9075b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 31
+    },
+    {
+      "id": "5a4ea3ab-5f91-4533-8101-1ad9e341a167",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 32
+    },
+    {
+      "id": "b9412d64-a343-430f-8ab7-fe561e321864",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 33
+    },
+    {
+      "id": "d08de35a-df7b-4b03-a66e-6e9cc646ebb4",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "In a food chain, plants are usually _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "producers"
+        },
+        {
+          "key": "B",
+          "text": "consumers"
+        },
+        {
+          "key": "C",
+          "text": "decomposers"
+        },
+        {
+          "key": "D",
+          "text": "predators"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Plants are producers because they make their own food.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 34
+    },
+    {
+      "id": "569d2f63-d833-4288-878e-03ae5200e9b4",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 35
+    },
+    {
+      "id": "d9e8cdaf-bb85-454c-afb0-ba2aab070f73",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "D",
+          "text": "plasma"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Solid, liquid, and gas are the three common states.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 36
+    },
+    {
+      "id": "cf5b01a8-e2a4-4219-8b9d-efde641c5b18",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "D",
+          "text": "plasma"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Solid, liquid, and gas are the three common states.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 37
+    },
+    {
+      "id": "564c6ce4-72bb-4d25-8490-ab56fcde990f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are part of a food chain?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sun"
+        },
+        {
+          "key": "B",
+          "text": "grass"
+        },
+        {
+          "key": "C",
+          "text": "rabbit"
+        },
+        {
+          "key": "D",
+          "text": "fox"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All can be part of a food chain: sun provides energy, grass is producer, rabbit and fox are consumers.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 38
+    },
+    {
+      "id": "57347c44-b7f1-43c7-8512-cb2b204c9b0a",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "An ecosystem includes living things and their _______.",
+      "options": [],
+      "correct_answer": "environment",
+      "explanation": "Ecosystems contain biotic and abiotic factors.",
+      "knowledge_tags": [
+        "ecosystem",
+        "environment"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 39
+    },
+    {
+      "id": "46e9736d-939a-4a21-93f3-fc1fbc366a2a",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "In a circuit, electricity needs a complete _______ to flow.",
+      "options": [],
+      "correct_answer": "path",
+      "explanation": "Electricity flows when there is a closed loop or complete path.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 40
+    },
+    {
+      "id": "b25195a5-9f1a-402f-9460-d0119364f159",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "An ecosystem includes living things and their _______.",
+      "options": [],
+      "correct_answer": "environment",
+      "explanation": "Ecosystems contain biotic and abiotic factors.",
+      "knowledge_tags": [
+        "ecosystem",
+        "environment"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 41
+    },
+    {
+      "id": "39d9784d-4e2c-4602-8006-98bd0e801dd4",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 42
+    },
+    {
+      "id": "9b007da7-a7e2-4390-a400-200beea501cf",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "In a circuit, electricity needs a complete _______ to flow.",
+      "options": [],
+      "correct_answer": "path",
+      "explanation": "Electricity flows when there is a closed loop or complete path.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 43
+    },
+    {
+      "id": "da17dd72-1bb2-4c66-bf98-1696c6211428",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Plastic is a good conductor of electricity.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Plastic is an insulator, not a conductor.",
+      "knowledge_tags": [
+        "electricity",
+        "materials"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 44
+    },
+    {
+      "id": "eda5bc5b-58d5-4acb-a111-49eb8e99a1a3",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 45
+    },
+    {
+      "id": "4588c468-ad4e-438b-86bf-5185bf4b7a02",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 46
+    },
+    {
+      "id": "2eddc718-5247-4a4c-94fa-bf9ed031a251",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Describe one way to reduce friction when moving heavy objects.",
+      "options": [],
+      "correct_answer": "(Use wheels, lubricant, or smooth surface)",
+      "explanation": "Wheels, oil, or smooth surfaces reduce friction.",
+      "knowledge_tags": [
+        "forces",
+        "friction"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 47
+    },
+    {
+      "id": "16575513-45d7-4a2a-9134-84f68648be3c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 48
+    },
+    {
+      "id": "cdf6ef8a-b30c-4afb-9b53-ff0bd836b306",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "In a food chain, plants are usually _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "producers"
+        },
+        {
+          "key": "B",
+          "text": "consumers"
+        },
+        {
+          "key": "C",
+          "text": "decomposers"
+        },
+        {
+          "key": "D",
+          "text": "predators"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Plants are producers because they make their own food.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 49
+    },
+    {
+      "id": "75eca116-9185-40bb-b417-83201e81651d",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 50
+    },
+    {
+      "id": "7131fa59-3ac1-47e0-94f0-393fdc5bea29",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 51
+    },
+    {
+      "id": "d93dce9b-a22c-4ab4-b007-3ef6a0311aa6",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 52
+    },
+    {
+      "id": "57e8f3dd-4edc-4e01-bae7-fa85df8ed42b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 53
+    },
+    {
+      "id": "a73a5210-a7b8-4e2c-94b0-9c42a719d41b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "In a food chain, plants are usually _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "producers"
+        },
+        {
+          "key": "B",
+          "text": "consumers"
+        },
+        {
+          "key": "C",
+          "text": "decomposers"
+        },
+        {
+          "key": "D",
+          "text": "predators"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Plants are producers because they make their own food.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 54
+    },
+    {
+      "id": "cec7d891-2943-4f96-a821-9cb38e070cc9",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 55
+    },
+    {
+      "id": "d5974dc6-39c3-430f-bd29-b9ccd5082360",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 56
+    },
+    {
+      "id": "3132f774-cb81-4073-a99b-b083d6b0718a",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "In a food chain, plants are usually _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "producers"
+        },
+        {
+          "key": "B",
+          "text": "consumers"
+        },
+        {
+          "key": "C",
+          "text": "decomposers"
+        },
+        {
+          "key": "D",
+          "text": "predators"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Plants are producers because they make their own food.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 57
+    },
+    {
+      "id": "b8244387-38e9-4134-94d5-a8a10c5dcdd6",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which actions involve forces?",
+      "options": [
+        {
+          "key": "A",
+          "text": "running"
+        },
+        {
+          "key": "B",
+          "text": "pushing"
+        },
+        {
+          "key": "C",
+          "text": "sleeping"
+        },
+        {
+          "key": "D",
+          "text": "pulling"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Running, pushing, and pulling all involve forces.",
+      "knowledge_tags": [
+        "forces",
+        "motion"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 58
+    },
+    {
+      "id": "daa24a50-3c9f-4585-96fa-acf3d6646831",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 59
+    },
+    {
+      "id": "05894d2e-31f1-4b28-97d4-9fd482294910",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which actions involve forces?",
+      "options": [
+        {
+          "key": "A",
+          "text": "running"
+        },
+        {
+          "key": "B",
+          "text": "pushing"
+        },
+        {
+          "key": "C",
+          "text": "sleeping"
+        },
+        {
+          "key": "D",
+          "text": "pulling"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Running, pushing, and pulling all involve forces.",
+      "knowledge_tags": [
+        "forces",
+        "motion"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 60
+    },
+    {
+      "id": "e6942b6c-04b5-4bf8-8b47-ea099c96bcbd",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 61
+    },
+    {
+      "id": "b215f6be-79e6-490b-93b8-8c4f6e95452c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "An ecosystem includes living things and their _______.",
+      "options": [],
+      "correct_answer": "environment",
+      "explanation": "Ecosystems contain biotic and abiotic factors.",
+      "knowledge_tags": [
+        "ecosystem",
+        "environment"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 62
+    },
+    {
+      "id": "de03bc62-33e3-4479-b5e6-2a737dfaf9f2",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Friction can slow down moving _______.",
+      "options": [],
+      "correct_answer": "objects",
+      "explanation": "Friction is a force that opposes motion.",
+      "knowledge_tags": [
+        "forces",
+        "friction"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 63
+    },
+    {
+      "id": "de4c51b5-a110-449a-bdc2-d47c4f3f326c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "An ecosystem includes living things and their _______.",
+      "options": [],
+      "correct_answer": "environment",
+      "explanation": "Ecosystems contain biotic and abiotic factors.",
+      "knowledge_tags": [
+        "ecosystem",
+        "environment"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 64
+    },
+    {
+      "id": "1b3a66c1-928b-4c64-a9e5-4c6bfd75f6c0",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Water freezes at _______ degrees Celsius.",
+      "options": [],
+      "correct_answer": "0",
+      "explanation": "Water turns to ice at 0 degrees Celsius.",
+      "knowledge_tags": [
+        "matter",
+        "phase_change"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 65
+    },
+    {
+      "id": "69639102-996d-4ba8-a6af-0930e3e9336c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "In a circuit, electricity needs a complete _______ to flow.",
+      "options": [],
+      "correct_answer": "path",
+      "explanation": "Electricity flows when there is a closed loop or complete path.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 66
+    },
+    {
+      "id": "d3e80cdb-1c0f-405b-993a-ab3cc3b200a0",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 67
+    },
+    {
+      "id": "926f8059-d8d8-4997-84bc-beb4be1ff17e",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Plastic is a good conductor of electricity.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Plastic is an insulator, not a conductor.",
+      "knowledge_tags": [
+        "electricity",
+        "materials"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 68
+    },
+    {
+      "id": "fe7d86ba-bf32-429c-8ec5-a7caa30eba10",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 69
+    },
+    {
+      "id": "c08bfa86-891a-4a23-a1a1-deabc308d7e4",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "Describe one way to reduce friction when moving heavy objects.",
+      "options": [],
+      "correct_answer": "(Use wheels, lubricant, or smooth surface)",
+      "explanation": "Wheels, oil, or smooth surfaces reduce friction.",
+      "knowledge_tags": [
+        "forces",
+        "friction"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 70
+    },
+    {
+      "id": "aef2fa18-4c32-4c45-8a82-353271ea2d0f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "Why is the sun important to living things on Earth?",
+      "options": [],
+      "correct_answer": "(Provides light/heat/energy for plants)",
+      "explanation": "The sun provides light and heat needed for life.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 71
+    },
+    {
+      "id": "9ee8edef-81a6-4f41-bcd9-bd45162d0d98",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 72
+    },
+    {
+      "id": "95914773-5972-44ee-ada3-c9b4555d18f8",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 73
+    },
+    {
+      "id": "c6fa709b-babf-4822-aea4-3759c3f8597f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 74
+    },
+    {
+      "id": "5895f4ba-8296-45df-bd46-cdc61494dc0e",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 75
+    },
+    {
+      "id": "723b6ce5-1d6b-415a-b571-f9fea05551b6",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 76
+    },
+    {
+      "id": "946cbac8-c1f4-4468-a23c-76a4891eb670",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 77
+    },
+    {
+      "id": "776a1f79-cc52-4c93-9752-a3f41d3e6c15",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 78
+    },
+    {
+      "id": "aa0e5075-a4cf-43bd-a19f-b7a25d2632c2",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 79
+    },
+    {
+      "id": "9ea6be0a-66ce-49e7-9d22-843f4f92b360",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 80
+    },
+    {
+      "id": "e5f7283d-d86c-44db-9c82-bcbaae7988af",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 81
+    },
+    {
+      "id": "0805dfc5-2c19-4a79-a828-ba6573f7bc7f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 82
+    },
+    {
+      "id": "ca2f1244-b7d2-492e-a9b1-0bafb633b5b0",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 83
+    },
+    {
+      "id": "26720e4e-84d5-40b5-9eab-d9e1ab9af037",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are part of a food chain?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sun"
+        },
+        {
+          "key": "B",
+          "text": "grass"
+        },
+        {
+          "key": "C",
+          "text": "rabbit"
+        },
+        {
+          "key": "D",
+          "text": "fox"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All can be part of a food chain: sun provides energy, grass is producer, rabbit and fox are consumers.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 84
+    },
+    {
+      "id": "44d45c4c-4661-4b6d-b97b-3a6e29970f6b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are part of a food chain?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sun"
+        },
+        {
+          "key": "B",
+          "text": "grass"
+        },
+        {
+          "key": "C",
+          "text": "rabbit"
+        },
+        {
+          "key": "D",
+          "text": "fox"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All can be part of a food chain: sun provides energy, grass is producer, rabbit and fox are consumers.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 85
+    },
+    {
+      "id": "9398f11b-333d-4cc3-9b34-7f9a4b53cf29",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 86
+    },
+    {
+      "id": "d5fb6c36-bb73-4fa2-ae40-ca39edb3987c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Friction can slow down moving _______.",
+      "options": [],
+      "correct_answer": "objects",
+      "explanation": "Friction is a force that opposes motion.",
+      "knowledge_tags": [
+        "forces",
+        "friction"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 87
+    },
+    {
+      "id": "2bac8eec-ecaf-47fa-8182-cc1dbe7e5986",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "An ecosystem includes living things and their _______.",
+      "options": [],
+      "correct_answer": "environment",
+      "explanation": "Ecosystems contain biotic and abiotic factors.",
+      "knowledge_tags": [
+        "ecosystem",
+        "environment"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 88
+    },
+    {
+      "id": "f21591cd-1531-4a69-9696-23b1e341385d",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 89
+    },
+    {
+      "id": "491b90c6-cf8a-494d-8a64-48a74a1bac44",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Water freezes at _______ degrees Celsius.",
+      "options": [],
+      "correct_answer": "0",
+      "explanation": "Water turns to ice at 0 degrees Celsius.",
+      "knowledge_tags": [
+        "matter",
+        "phase_change"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 90
+    },
+    {
+      "id": "54afd8ac-e7a9-4d45-8af0-16df143c890f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 91
+    },
+    {
+      "id": "281fb6c3-d642-4cc3-9096-830b1cd0a11d",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Gas has a definite shape and volume.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Gas has no definite shape or volume.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 92
+    },
+    {
+      "id": "54fd6509-c5a6-4713-b0bb-996eead51bbe",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "The brain controls most body functions.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "The brain is the control center of the nervous system.",
+      "knowledge_tags": [
+        "human_body",
+        "nervous_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 93
+    },
+    {
+      "id": "a759ee49-2de6-41e4-b2c9-7fc7b3d1066f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "Explain the difference between solid and liquid in one or two sentences.",
+      "options": [],
+      "correct_answer": "(Solid has fixed shape; liquid takes shape of container)",
+      "explanation": "Solids have definite shape; liquids flow and take container shape.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 94
+    },
+    {
+      "id": "4c8056cf-dc97-4390-b715-32b25ce74755",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 95
+    },
+    {
+      "id": "c6c6d8f1-2861-4191-8790-270cb38b4520",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 96
+    },
+    {
+      "id": "e1d34d64-972c-4860-95d3-b5216a67167f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 97
+    },
+    {
+      "id": "e8093fc4-007a-4ec6-ba2d-e0ebfd574435",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 98
+    },
+    {
+      "id": "7f7ae907-2252-47d0-b213-339e45e6fad6",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 99
+    },
+    {
+      "id": "0d57045f-704e-4e63-a1b4-ba848de7872d",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 100
+    },
+    {
+      "id": "72414ce0-96b8-463d-b779-df4f21be8817",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 101
+    },
+    {
+      "id": "73754111-35b2-49ad-b825-b64ab26d234c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "In a food chain, plants are usually _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "producers"
+        },
+        {
+          "key": "B",
+          "text": "consumers"
+        },
+        {
+          "key": "C",
+          "text": "decomposers"
+        },
+        {
+          "key": "D",
+          "text": "predators"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Plants are producers because they make their own food.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 102
+    },
+    {
+      "id": "c04e9a25-fcdf-4adb-bcba-46761085d0d0",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "In a food chain, plants are usually _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "producers"
+        },
+        {
+          "key": "B",
+          "text": "consumers"
+        },
+        {
+          "key": "C",
+          "text": "decomposers"
+        },
+        {
+          "key": "D",
+          "text": "predators"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Plants are producers because they make their own food.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 103
+    },
+    {
+      "id": "697834be-9019-4264-8569-551b838b735b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 104
+    },
+    {
+      "id": "03374a0a-de67-4819-9297-ad4931988d18",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which actions involve forces?",
+      "options": [
+        {
+          "key": "A",
+          "text": "running"
+        },
+        {
+          "key": "B",
+          "text": "pushing"
+        },
+        {
+          "key": "C",
+          "text": "sleeping"
+        },
+        {
+          "key": "D",
+          "text": "pulling"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Running, pushing, and pulling all involve forces.",
+      "knowledge_tags": [
+        "forces",
+        "motion"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 105
+    },
+    {
+      "id": "1beb7aad-f786-4ee9-832d-cdc3ca1e6860",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are part of a food chain?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sun"
+        },
+        {
+          "key": "B",
+          "text": "grass"
+        },
+        {
+          "key": "C",
+          "text": "rabbit"
+        },
+        {
+          "key": "D",
+          "text": "fox"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All can be part of a food chain: sun provides energy, grass is producer, rabbit and fox are consumers.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 106
+    },
+    {
+      "id": "d146122f-c156-47ed-9d07-e7b270319750",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "D",
+          "text": "plasma"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Solid, liquid, and gas are the three common states.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 107
+    },
+    {
+      "id": "0075776d-aab1-4b82-aa76-45dc67f3362d",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 108
+    },
+    {
+      "id": "0b642de0-5853-45e0-be98-ea212113798f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 109
+    },
+    {
+      "id": "6be40890-3af0-40dc-9e29-dfba70bfac25",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Water freezes at _______ degrees Celsius.",
+      "options": [],
+      "correct_answer": "0",
+      "explanation": "Water turns to ice at 0 degrees Celsius.",
+      "knowledge_tags": [
+        "matter",
+        "phase_change"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 110
+    },
+    {
+      "id": "06c3b262-6334-43f5-9588-ff726944af79",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "In a circuit, electricity needs a complete _______ to flow.",
+      "options": [],
+      "correct_answer": "path",
+      "explanation": "Electricity flows when there is a closed loop or complete path.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 111
+    },
+    {
+      "id": "52acaa2d-c8b6-4ca8-8ade-ff07d8ba6ffb",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "An ecosystem includes living things and their _______.",
+      "options": [],
+      "correct_answer": "environment",
+      "explanation": "Ecosystems contain biotic and abiotic factors.",
+      "knowledge_tags": [
+        "ecosystem",
+        "environment"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 112
+    },
+    {
+      "id": "caeefec8-a330-492a-a156-8f4555391401",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 113
+    },
+    {
+      "id": "9d7100cf-f5fb-4c15-b083-40883e4a729c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 114
+    },
+    {
+      "id": "ae248e68-ab36-4586-865a-e2da667c7d9e",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 115
+    },
+    {
+      "id": "4aa8f2f7-3547-4861-9bf2-cb4ba1829911",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "The brain controls most body functions.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "The brain is the control center of the nervous system.",
+      "knowledge_tags": [
+        "human_body",
+        "nervous_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 116
+    },
+    {
+      "id": "4c107211-d5d4-4416-8e2b-d2035524d05b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "short_answer",
+      "question_body": "Explain the difference between solid and liquid in one or two sentences.",
+      "options": [],
+      "correct_answer": "(Solid has fixed shape; liquid takes shape of container)",
+      "explanation": "Solids have definite shape; liquids flow and take container shape.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 117
+    },
+    {
+      "id": "2fd4cb59-10d9-47ed-b2ae-6db1c26db1f9",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "short_answer",
+      "question_body": "Explain the difference between solid and liquid in one or two sentences.",
+      "options": [],
+      "correct_answer": "(Solid has fixed shape; liquid takes shape of container)",
+      "explanation": "Solids have definite shape; liquids flow and take container shape.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 118
+    },
+    {
+      "id": "3c211120-ca44-4360-b545-a2bf2bf9ab2e",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 119
+    },
+    {
+      "id": "7cc5b188-cdd0-4df0-b850-a7404d74a079",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 120
+    },
+    {
+      "id": "6f073fcb-d79e-464a-a2e1-079bb10336cf",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 121
+    },
+    {
+      "id": "a7ea6d14-1632-428d-9971-baf52524e696",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "In a food chain, plants are usually _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "producers"
+        },
+        {
+          "key": "B",
+          "text": "consumers"
+        },
+        {
+          "key": "C",
+          "text": "decomposers"
+        },
+        {
+          "key": "D",
+          "text": "predators"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Plants are producers because they make their own food.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 122
+    },
+    {
+      "id": "9f949044-e249-439b-9635-5f67252d0a0f",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 123
+    },
+    {
+      "id": "8dd8738f-d3b6-459c-b978-601b9183d9b5",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "In a food chain, plants are usually _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "producers"
+        },
+        {
+          "key": "B",
+          "text": "consumers"
+        },
+        {
+          "key": "C",
+          "text": "decomposers"
+        },
+        {
+          "key": "D",
+          "text": "predators"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Plants are producers because they make their own food.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 124
+    },
+    {
+      "id": "079066cf-cba8-44a4-8595-93f6570f197c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What force pulls objects toward the Earth?",
+      "options": [
+        {
+          "key": "A",
+          "text": "gravity"
+        },
+        {
+          "key": "B",
+          "text": "magnetism"
+        },
+        {
+          "key": "C",
+          "text": "friction"
+        },
+        {
+          "key": "D",
+          "text": "electricity"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Gravity is the force that pulls objects toward Earth.",
+      "knowledge_tags": [
+        "forces",
+        "gravity"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 125
+    },
+    {
+      "id": "e0be8fdd-7cea-4016-8dcf-e0a5897803c6",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What are the three states of matter?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid and gas"
+        },
+        {
+          "key": "B",
+          "text": "solid, liquid, and gas"
+        },
+        {
+          "key": "C",
+          "text": "liquid and gas"
+        },
+        {
+          "key": "D",
+          "text": "solid only"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Matter exists as solid, liquid, and gas.",
+      "knowledge_tags": [
+        "matter",
+        "states_of_matter"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 126
+    },
+    {
+      "id": "0768d4ad-ce39-41e6-92fb-ae678fe0a84c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What do we call a material that allows electricity to flow through it?",
+      "options": [
+        {
+          "key": "A",
+          "text": "conductor"
+        },
+        {
+          "key": "B",
+          "text": "insulator"
+        },
+        {
+          "key": "C",
+          "text": "resistor"
+        },
+        {
+          "key": "D",
+          "text": "battery"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A conductor allows electric current to pass through.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 127
+    },
+    {
+      "id": "9023cad8-21aa-4889-8693-6122f6f0a55b",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which organ pumps blood throughout the body?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "brain"
+        },
+        {
+          "key": "C",
+          "text": "stomach"
+        },
+        {
+          "key": "D",
+          "text": "lungs"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The heart pumps blood to all parts of the body.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 128
+    },
+    {
+      "id": "1326f834-d844-48aa-bb13-68adcc4234ed",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which organs are part of the circulatory or respiratory system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "brain"
+        },
+        {
+          "key": "D",
+          "text": "liver"
+        }
+      ],
+      "correct_answer": "A,B",
+      "explanation": "Heart is circulatory; lungs are respiratory.",
+      "knowledge_tags": [
+        "human_body",
+        "body_systems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 129
+    },
+    {
+      "id": "98ff4c74-0d3f-4090-a0cf-374cb5339730",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are part of a food chain?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sun"
+        },
+        {
+          "key": "B",
+          "text": "grass"
+        },
+        {
+          "key": "C",
+          "text": "rabbit"
+        },
+        {
+          "key": "D",
+          "text": "fox"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All can be part of a food chain: sun provides energy, grass is producer, rabbit and fox are consumers.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 130
+    },
+    {
+      "id": "f7e6561b-8e55-4a7c-9b0a-ec2ca8383172",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are part of a food chain?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sun"
+        },
+        {
+          "key": "B",
+          "text": "grass"
+        },
+        {
+          "key": "C",
+          "text": "rabbit"
+        },
+        {
+          "key": "D",
+          "text": "fox"
+        }
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All can be part of a food chain: sun provides energy, grass is producer, rabbit and fox are consumers.",
+      "knowledge_tags": [
+        "ecosystem",
+        "food_chain"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 131
+    },
+    {
+      "id": "dd3eb90c-9133-4d0c-b6d5-d45b31a14e0d",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which materials are good conductors of electricity?",
+      "options": [
+        {
+          "key": "A",
+          "text": "copper"
+        },
+        {
+          "key": "B",
+          "text": "rubber"
+        },
+        {
+          "key": "C",
+          "text": "gold"
+        },
+        {
+          "key": "D",
+          "text": "plastic"
+        }
+      ],
+      "correct_answer": "A,C",
+      "explanation": "Copper and gold are metals that conduct electricity well.",
+      "knowledge_tags": [
+        "electricity",
+        "conductors"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 132
+    },
+    {
+      "id": "b3f8959f-d262-489a-a96d-b39086d9eadd",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "In a circuit, electricity needs a complete _______ to flow.",
+      "options": [],
+      "correct_answer": "path",
+      "explanation": "Electricity flows when there is a closed loop or complete path.",
+      "knowledge_tags": [
+        "electricity",
+        "circuits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 133
+    },
+    {
+      "id": "b3bbe843-de04-4a52-a215-737e6017fb83",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 134
+    },
+    {
+      "id": "a2c7479f-6bb4-48c2-9dc1-28871aff139e",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Water freezes at _______ degrees Celsius.",
+      "options": [],
+      "correct_answer": "0",
+      "explanation": "Water turns to ice at 0 degrees Celsius.",
+      "knowledge_tags": [
+        "matter",
+        "phase_change"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 135
+    },
+    {
+      "id": "28fa4713-c534-4331-8c65-dd5fb5578e2a",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Water freezes at _______ degrees Celsius.",
+      "options": [],
+      "correct_answer": "0",
+      "explanation": "Water turns to ice at 0 degrees Celsius.",
+      "knowledge_tags": [
+        "matter",
+        "phase_change"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 136
+    },
+    {
+      "id": "fad54868-546c-406a-b2bc-12af0ab55da9",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "The _______ system carries blood to all body parts.",
+      "options": [],
+      "correct_answer": "circulatory",
+      "explanation": "The circulatory system includes the heart and blood vessels.",
+      "knowledge_tags": [
+        "human_body",
+        "circulatory_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 137
+    },
+    {
+      "id": "e642eaa4-fefd-4f49-9c79-c9ea9e31b72c",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "An object in motion stays in motion unless a force acts on it.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "This is Newton's first law of motion.",
+      "knowledge_tags": [
+        "forces",
+        "motion"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 138
+    },
+    {
+      "id": "77543540-7081-4bcc-b605-b83cf7f8a7d2",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "All living things need energy to survive.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "Energy is required for life processes.",
+      "knowledge_tags": [
+        "ecosystem",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 139
+    },
+    {
+      "id": "af391f29-5bec-4adf-926f-a938928b75cc",
+      "batch_id": "science_9-12_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "9-12",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "The brain controls most body functions.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "The brain is the control center of the nervous system.",
+      "knowledge_tags": [
+        "human_body",
+        "nervous_system"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 140
+    }
+  ]
+}

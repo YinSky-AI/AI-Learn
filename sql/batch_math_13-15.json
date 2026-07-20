@@ -1,0 +1,1927 @@
+{
+  "batch_id": "math_13-15_complete",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "id": 1,
+      "content": "方程x²-5x+6=0的根是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "x₁=1, x₂=6"
+        },
+        {
+          "label": "B",
+          "text": "x₁=2, x₂=3"
+        },
+        {
+          "label": "C",
+          "text": "x₁=-2, x₂=-3"
+        },
+        {
+          "label": "D",
+          "text": "x₁=-1, x₂=-6"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "因式分解得(x-2)(x-3)=0，所以x₁=2, x₂=3。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 2,
+      "content": "函数y=2x+1的图象经过哪个象限？（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "一、二、三"
+        },
+        {
+          "label": "B",
+          "text": "一、二、四"
+        },
+        {
+          "label": "C",
+          "text": "一、三、四"
+        },
+        {
+          "label": "D",
+          "text": "二、三、四"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "k=2>0，b=1>0，图象经过第一、二、三象限。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "函数图象"
+      ]
+    },
+    {
+      "id": 3,
+      "content": "反比例函数y=6/x的图象经过点（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "(2,4)"
+        },
+        {
+          "label": "B",
+          "text": "(3,2)"
+        },
+        {
+          "label": "C",
+          "text": "(-2,3)"
+        },
+        {
+          "label": "D",
+          "text": "(1,-6)"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "将各点代入y=6/x，只有(3,2)满足2=6/3。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "反比例函数",
+        "函数图象"
+      ]
+    },
+    {
+      "id": 4,
+      "content": "在△ABC和△DEF中，AB=DE，∠B=∠E，要使两三角形全等，还需添加（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "∠A=∠D"
+        },
+        {
+          "label": "B",
+          "text": "BC=EF"
+        },
+        {
+          "label": "C",
+          "text": "AC=DF"
+        },
+        {
+          "label": "D",
+          "text": "∠C=∠F"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "已知两边及其夹角对应相等(SAS)，需添加BC=EF。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形全等",
+        "全等判定"
+      ]
+    },
+    {
+      "id": 5,
+      "content": "圆的半径为5cm，圆心到弦AB的距离为3cm，则弦AB的长为（　　）cm",
+      "options": [
+        {
+          "label": "A",
+          "text": "4"
+        },
+        {
+          "label": "B",
+          "text": "6"
+        },
+        {
+          "label": "C",
+          "text": "8"
+        },
+        {
+          "label": "D",
+          "text": "10"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "由垂径定理，半弦长=√(5²-3²)=4，所以AB=8cm。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 6,
+      "content": "掷一枚质地均匀的硬币，正面朝上的概率是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "1/3"
+        },
+        {
+          "label": "B",
+          "text": "1/2"
+        },
+        {
+          "label": "C",
+          "text": "1/4"
+        },
+        {
+          "label": "D",
+          "text": "2/3"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "硬币只有正反两面，正面朝上的概率为1/2。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "古典概型"
+      ]
+    },
+    {
+      "id": 7,
+      "content": "一元二次方程x²-4x+4=0的根的情况是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "有两个不等实根"
+        },
+        {
+          "label": "B",
+          "text": "有两个相等实根"
+        },
+        {
+          "label": "C",
+          "text": "无实根"
+        },
+        {
+          "label": "D",
+          "text": "只有一个实根"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Δ=(-4)²-4×1×4=0，所以有两个相等实根。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "判别式"
+      ]
+    },
+    {
+      "id": 8,
+      "content": "已知一次函数y=kx+b的图象经过一、三、四象限，则k、b的符号是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "k>0,b>0"
+        },
+        {
+          "label": "B",
+          "text": "k>0,b<0"
+        },
+        {
+          "label": "C",
+          "text": "k<0,b>0"
+        },
+        {
+          "label": "D",
+          "text": "k<0,b<0"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "经过一、三象限说明k>0，经过四象限说明b<0。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "函数图象"
+      ]
+    },
+    {
+      "id": 9,
+      "content": "在△ABC中，DE∥BC，AD:DB=1:2，则△ADE与△ABC的面积比为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "1:2"
+        },
+        {
+          "label": "B",
+          "text": "1:3"
+        },
+        {
+          "label": "C",
+          "text": "1:4"
+        },
+        {
+          "label": "D",
+          "text": "1:9"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "AD:AB=1:3，相似比为1:3，面积比为1:9。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形相似",
+        "面积比"
+      ]
+    },
+    {
+      "id": 10,
+      "content": "圆心角为60°的扇形，其面积占整个圆面积的（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "1/4"
+        },
+        {
+          "label": "B",
+          "text": "1/6"
+        },
+        {
+          "label": "C",
+          "text": "1/8"
+        },
+        {
+          "label": "D",
+          "text": "1/3"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "扇形面积比等于圆心角之比，60°/360°=1/6。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "扇形面积"
+      ]
+    },
+    {
+      "id": 11,
+      "content": "下列方程中是一元二次方程的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "x²-3x+2=0"
+        },
+        {
+          "label": "B",
+          "text": "x²-1/x=0"
+        },
+        {
+          "label": "C",
+          "text": "(x-1)(x+2)=1"
+        },
+        {
+          "label": "D",
+          "text": "2x²+5x=0"
+        }
+      ],
+      "correct_answer": "ACD",
+      "explanation": "B含分式不是整式方程；C展开后为x²+x-3=0，是一元二次方程。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "概念辨析"
+      ]
+    },
+    {
+      "id": 12,
+      "content": "关于反比例函数y=-4/x，下列说法正确的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "图象在二、四象限"
+        },
+        {
+          "label": "B",
+          "text": "y随x增大而增大"
+        },
+        {
+          "label": "C",
+          "text": "图象关于原点对称"
+        },
+        {
+          "label": "D",
+          "text": "过点(2,-2)"
+        }
+      ],
+      "correct_answer": "ACD",
+      "explanation": "k=-4<0，图象在二、四象限；在各象限内y随x增大而增大；过(2,-2)满足-2=-4/2。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "反比例函数",
+        "性质"
+      ]
+    },
+    {
+      "id": 13,
+      "content": "能判定两个三角形全等的方法有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "SSS"
+        },
+        {
+          "label": "B",
+          "text": "SAS"
+        },
+        {
+          "label": "C",
+          "text": "SSA"
+        },
+        {
+          "label": "D",
+          "text": "ASA"
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "SSA不能判定全等，SSS、SAS、ASA、AAS、HL均可判定。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形全等",
+        "判定方法"
+      ]
+    },
+    {
+      "id": 14,
+      "content": "下列事件中是随机事件的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "掷骰子得到6点"
+        },
+        {
+          "label": "B",
+          "text": "太阳从东方升起"
+        },
+        {
+          "label": "C",
+          "text": "明天会下雨"
+        },
+        {
+          "label": "D",
+          "text": "三角形内角和为180°"
+        }
+      ],
+      "correct_answer": "AC",
+      "explanation": "A、C结果不确定；B、D是必然事件。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "事件分类"
+      ]
+    },
+    {
+      "id": 15,
+      "content": "方程x²-9=0的根为______。",
+      "options": [],
+      "correct_answer": "x₁=3, x₂=-3",
+      "explanation": "x²=9，所以x=±3。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "直接开平方法"
+      ]
+    },
+    {
+      "id": 16,
+      "content": "一次函数y=-3x+2与y轴的交点坐标为______。",
+      "options": [],
+      "correct_answer": "(0,2)",
+      "explanation": "令x=0，得y=2，交点为(0,2)。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "函数图象"
+      ]
+    },
+    {
+      "id": 17,
+      "content": "反比例函数y=k/x的图象经过点(2,5)，则k=______。",
+      "options": [],
+      "correct_answer": "10",
+      "explanation": "将(2,5)代入得5=k/2，所以k=10。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "反比例函数",
+        "待定系数法"
+      ]
+    },
+    {
+      "id": 18,
+      "content": "在Rt△ABC中，∠C=90°，AC=3，BC=4，则斜边AB上的高为______。",
+      "options": [],
+      "correct_answer": "12/5 或 2.4",
+      "explanation": "AB=5，由面积法得高h=(3×4)/5=12/5。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "面积法"
+      ]
+    },
+    {
+      "id": 19,
+      "content": "从1、2、3、4中任取一个数，取到偶数的概率是______。",
+      "options": [],
+      "correct_answer": "1/2",
+      "explanation": "偶数有2、4共2个，概率为2/4=1/2。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "古典概型"
+      ]
+    },
+    {
+      "id": 20,
+      "content": "一元二次方程ax²+bx+c=0(a≠0)当b²-4ac>0时，有两个不相等的实数根。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "判别式Δ=b²-4ac>0时，方程有两个不等实根。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "判别式"
+      ]
+    },
+    {
+      "id": 21,
+      "content": "反比例函数y=1/x的图象关于x轴对称。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "反比例函数图象关于原点对称，不关于x轴对称。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "反比例函数",
+        "对称性"
+      ]
+    },
+    {
+      "id": 22,
+      "content": "同弧所对的圆周角等于圆心角的一半。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "圆周角定理：同弧所对圆周角等于圆心角的一半。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "圆周角定理"
+      ]
+    },
+    {
+      "id": 23,
+      "content": "用配方法解方程x²-6x+5=0。",
+      "options": [],
+      "correct_answer": "x₁=1, x₂=5。配方得(x-3)²=4，x-3=±2，x=3±2。",
+      "explanation": "配方步骤：x²-6x+9-9+5=0，(x-3)²=4，x-3=±2，x₁=1, x₂=5。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "配方法"
+      ]
+    },
+    {
+      "id": 24,
+      "content": "方程2x²-3x-2=0的根为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "x₁=1, x₂=-2"
+        },
+        {
+          "label": "B",
+          "text": "x₁=2, x₂=-1/2"
+        },
+        {
+          "label": "C",
+          "text": "x₁=-2, x₂=1/2"
+        },
+        {
+          "label": "D",
+          "text": "x₁=-1, x₂=2"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "因式分解得(2x+1)(x-2)=0，所以x₁=2, x₂=-1/2。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "因式分解法"
+      ]
+    },
+    {
+      "id": 25,
+      "content": "一次函数y=kx+b与反比例函数y=k/x(k≠0)在同一坐标系中的图象大致是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "k>0时都在一、三象限"
+        },
+        {
+          "label": "B",
+          "text": "k<0时都在二、四象限"
+        },
+        {
+          "label": "C",
+          "text": "k>0时一次函数过一、三"
+        },
+        {
+          "label": "D",
+          "text": "以上都对"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "k>0时两函数都在一、三象限；k<0时都在二、四象限。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "反比例函数",
+        "图象"
+      ]
+    },
+    {
+      "id": 26,
+      "content": "如图，AB是⊙O的直径，C、D在圆上，∠CDB=30°，则∠ABC=（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "30°"
+        },
+        {
+          "label": "B",
+          "text": "45°"
+        },
+        {
+          "label": "C",
+          "text": "60°"
+        },
+        {
+          "label": "D",
+          "text": "90°"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "同弧所对圆周角相等，∠CAB=∠CDB=30°，AB为直径，∠ACB=90°，所以∠ABC=60°。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "圆周角"
+      ]
+    },
+    {
+      "id": 27,
+      "content": "在△ABC中，D、E分别是AB、AC中点，若DE=3，则BC=（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "3"
+        },
+        {
+          "label": "B",
+          "text": "4"
+        },
+        {
+          "label": "C",
+          "text": "6"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "中位线定理：DE=BC/2，所以BC=6。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "中位线定理"
+      ]
+    },
+    {
+      "id": 28,
+      "content": "用树状图求掷两枚硬币都是正面朝上的概率为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "1/2"
+        },
+        {
+          "label": "B",
+          "text": "1/3"
+        },
+        {
+          "label": "C",
+          "text": "1/4"
+        },
+        {
+          "label": "D",
+          "text": "2/3"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "树状图共有4种等可能结果，(正,正)只有1种，概率为1/4。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "树状图"
+      ]
+    },
+    {
+      "id": 29,
+      "content": "若关于x的方程x²-2x+m=0有两个不等实根，则m的取值范围是（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "m<1"
+        },
+        {
+          "label": "B",
+          "text": "m>1"
+        },
+        {
+          "label": "C",
+          "text": "m≤1"
+        },
+        {
+          "label": "D",
+          "text": "m≥1"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Δ=4-4m>0，解得m<1。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "判别式"
+      ]
+    },
+    {
+      "id": 30,
+      "content": "直线y=2x-1与y=-x+5的交点坐标为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "(2,3)"
+        },
+        {
+          "label": "B",
+          "text": "(3,2)"
+        },
+        {
+          "label": "C",
+          "text": "(1,1)"
+        },
+        {
+          "label": "D",
+          "text": "(-1,-3)"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "联立方程：2x-1=-x+5，3x=6，x=2，y=3。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "交点坐标"
+      ]
+    },
+    {
+      "id": 31,
+      "content": "如图，PA、PB是⊙O的切线，A、B为切点，∠P=60°，PA=3，则⊙O的半径为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "√3"
+        },
+        {
+          "label": "B",
+          "text": "2√3"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "6"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "切线长相等，连接OP、OA，∠APO=30°，OA=PA·tan30°=√3。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "切线"
+      ]
+    },
+    {
+      "id": 32,
+      "content": "△ABC∽△DEF，相似比为2:3，若△ABC的周长为12，则△DEF的周长为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "8"
+        },
+        {
+          "label": "B",
+          "text": "18"
+        },
+        {
+          "label": "C",
+          "text": "24"
+        },
+        {
+          "label": "D",
+          "text": "27"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "相似三角形周长比等于相似比，12/DE周长=2/3，DE周长=18。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形相似",
+        "周长比"
+      ]
+    },
+    {
+      "id": 33,
+      "content": "袋中有红球3个、白球2个，随机摸出一个球是红球的概率为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "2/5"
+        },
+        {
+          "label": "B",
+          "text": "3/5"
+        },
+        {
+          "label": "C",
+          "text": "1/3"
+        },
+        {
+          "label": "D",
+          "text": "1/2"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "总球数5个，红球3个，概率为3/5。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "古典概型"
+      ]
+    },
+    {
+      "id": 34,
+      "content": "关于方程x²-4x+3=0，下列说法正确的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "两根之和为4"
+        },
+        {
+          "label": "B",
+          "text": "两根之积为3"
+        },
+        {
+          "label": "C",
+          "text": "可因式分解为(x-1)(x-3)"
+        },
+        {
+          "label": "D",
+          "text": "两根互为相反数"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "由韦达定理，x₁+x₂=4，x₁x₂=3；因式分解为(x-1)(x-3)=0。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "韦达定理"
+      ]
+    },
+    {
+      "id": 35,
+      "content": "下列函数中，y随x增大而减小的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "y=-2x+1"
+        },
+        {
+          "label": "B",
+          "text": "y=3x"
+        },
+        {
+          "label": "C",
+          "text": "y=-1/x(x>0)"
+        },
+        {
+          "label": "D",
+          "text": "y=2/x(x<0)"
+        }
+      ],
+      "correct_answer": "AD",
+      "explanation": "A:k=-2<0；D:x<0时y=2/x随x增大而减小；C:x>0时y=-1/x随x增大而增大。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "反比例函数",
+        "单调性"
+      ]
+    },
+    {
+      "id": 36,
+      "content": "如图，⊙O中弦AB=CD，则下列结论正确的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "弧AB=弧CD"
+        },
+        {
+          "label": "B",
+          "text": "圆心到两弦距离相等"
+        },
+        {
+          "label": "C",
+          "text": "∠AOB=∠COD"
+        },
+        {
+          "label": "D",
+          "text": "AB∥CD"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "等弦对等弧、等圆心角，且弦心距相等；AB与CD不一定平行。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "等弦性质"
+      ]
+    },
+    {
+      "id": 37,
+      "content": "用列表法求掷两枚骰子，点数之和为7的概率，下列说法正确的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "共有36种等可能结果"
+        },
+        {
+          "label": "B",
+          "text": "和为7的结果有6种"
+        },
+        {
+          "label": "C",
+          "text": "概率为1/6"
+        },
+        {
+          "label": "D",
+          "text": "概率为1/7"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "列表法共36种结果，和为7有(1,6)(2,5)(3,4)(4,3)(5,2)(6,1)共6种，概率6/36=1/6。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "列表法"
+      ]
+    },
+    {
+      "id": 38,
+      "content": "若x=1是方程x²+mx-3=0的一个根，则m=______。",
+      "options": [],
+      "correct_answer": "2",
+      "explanation": "将x=1代入得1+m-3=0，m=2。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "方程的根"
+      ]
+    },
+    {
+      "id": 39,
+      "content": "反比例函数y=(m-1)/x的图象在一、三象限，则m的取值范围是______。",
+      "options": [],
+      "correct_answer": "m>1",
+      "explanation": "图象在一、三象限需m-1>0，即m>1。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "反比例函数",
+        "参数范围"
+      ]
+    },
+    {
+      "id": 40,
+      "content": "在△ABC中，AB=AC，∠A=40°，则∠B=______°。",
+      "options": [],
+      "correct_answer": "70",
+      "explanation": "等腰三角形两底角相等，∠B=(180°-40°)/2=70°。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "等腰三角形"
+      ]
+    },
+    {
+      "id": 41,
+      "content": "⊙O的半径为10cm，弦AB=16cm，则圆心到AB的距离为______cm。",
+      "options": [],
+      "correct_answer": "6",
+      "explanation": "由垂径定理，距离d=√(10²-8²)=6cm。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 42,
+      "content": "从1、2、3、4、5中随机取两个数，其和为偶数的概率是______。",
+      "options": [],
+      "correct_answer": "2/5",
+      "explanation": "列表法共20种结果，和为偶数有8种，概率8/20=2/5。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "列表法"
+      ]
+    },
+    {
+      "id": 43,
+      "content": "若一元二次方程的两根互为倒数，则常数项与二次项系数相等。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "由韦达定理x₁x₂=c/a=1，所以c=a。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "韦达定理"
+      ]
+    },
+    {
+      "id": 44,
+      "content": "相似三角形的面积比等于相似比。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "相似三角形面积比等于相似比的平方。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形相似",
+        "面积比"
+      ]
+    },
+    {
+      "id": 45,
+      "content": "直径所对的圆周角是直角。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "圆周角定理推论：直径所对的圆周角等于90°。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "圆周角"
+      ]
+    },
+    {
+      "id": 46,
+      "content": "已知关于x的方程x²-(k+1)x+k=0，求证：方程总有两个实数根。",
+      "options": [],
+      "correct_answer": "Δ=(k+1)²-4k=k²+2k+1-4k=k²-2k+1=(k-1)²≥0，所以方程总有两个实数根。",
+      "explanation": "计算判别式Δ=(k-1)²，完全平方式非负，故Δ≥0恒成立。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "判别式"
+      ]
+    },
+    {
+      "id": 47,
+      "content": "如图，在△ABC中，D是AB上一点，且∠ACD=∠B，AC=4，AD=2，求AB的长。",
+      "options": [],
+      "correct_answer": "AB=8。由∠ACD=∠B，∠A=∠A，得△ACD∽△ABC，所以AC/AB=AD/AC，4/AB=2/4，AB=8。",
+      "explanation": "两角对应相等证明相似，利用相似比列比例式求解。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形相似",
+        "相似比"
+      ]
+    },
+    {
+      "id": 48,
+      "content": "已知方程x²+mx+n=0的两根为-2和3，则m-n=（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "-5"
+        },
+        {
+          "label": "B",
+          "text": "5"
+        },
+        {
+          "label": "C",
+          "text": "-7"
+        },
+        {
+          "label": "D",
+          "text": "7"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "由韦达定理：-2+3=-m，m=-1；-2×3=n，n=-6；m-n=-1-(-6)=5。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "韦达定理"
+      ]
+    },
+    {
+      "id": 49,
+      "content": "一次函数y=kx+b经过A(1,3)和B(-1,-1)，则不等式kx+b>0的解集为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "x>-1/2"
+        },
+        {
+          "label": "B",
+          "text": "x>-1"
+        },
+        {
+          "label": "C",
+          "text": "x>1"
+        },
+        {
+          "label": "D",
+          "text": "x<1"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "代入得k+b=3，-k+b=-1，解得k=2,b=1；2x+1>0，x>-1/2。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "不等式"
+      ]
+    },
+    {
+      "id": 50,
+      "content": "如图，PA切⊙O于A，PO交⊙O于B、C，PA=4，PB=2，则⊙O的半径为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "3"
+        },
+        {
+          "label": "C",
+          "text": "4"
+        },
+        {
+          "label": "D",
+          "text": "5"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "设半径为r，由切割线定理PA²=PB·PC，16=2(2+2r)，解得r=3。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "切割线定理"
+      ]
+    },
+    {
+      "id": 51,
+      "content": "在△ABC中，∠C=90°，CD⊥AB于D，AD=4，BD=9，则CD=（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "4"
+        },
+        {
+          "label": "B",
+          "text": "6"
+        },
+        {
+          "label": "C",
+          "text": "9"
+        },
+        {
+          "label": "D",
+          "text": "13"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "射影定理：CD²=AD·BD=36，所以CD=6。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "射影定理"
+      ]
+    },
+    {
+      "id": 52,
+      "content": "袋中有红球2个、白球3个、黑球5个，随机摸出两球颜色不同的概率为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "13/45"
+        },
+        {
+          "label": "B",
+          "text": "31/45"
+        },
+        {
+          "label": "C",
+          "text": "14/45"
+        },
+        {
+          "label": "D",
+          "text": "32/45"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "总数C(10,2)=45，颜色相同有C(2,2)+C(3,2)+C(5,2)=1+3+10=14，不同概率=1-14/45=31/45。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "组合"
+      ]
+    },
+    {
+      "id": 53,
+      "content": "方程x²-2|x|-3=0的实数根个数为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "1个"
+        },
+        {
+          "label": "B",
+          "text": "2个"
+        },
+        {
+          "label": "C",
+          "text": "3个"
+        },
+        {
+          "label": "D",
+          "text": "4个"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "设t=|x|≥0，t²-2t-3=0，t=3或t=-1(舍)，|x|=3，x=±3，共2个实根。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "绝对值方程"
+      ]
+    },
+    {
+      "id": 54,
+      "content": "反比例函数y=k/x(k<0)的图象上有两点A(x₁,y₁)、B(x₂,y₂)，若x₁<x₂<0，则（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "y₁<y₂"
+        },
+        {
+          "label": "B",
+          "text": "y₁>y₂"
+        },
+        {
+          "label": "C",
+          "text": "y₁=y₂"
+        },
+        {
+          "label": "D",
+          "text": "无法确定"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "k<0时，在第二象限内y随x增大而增大，x₁<x₂<0，所以y₁<y₂。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "反比例函数",
+        "单调性"
+      ]
+    },
+    {
+      "id": 55,
+      "content": "如图，AB是⊙O直径，弦CD⊥AB于E，CD=8，OE=3，则AC=（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "4√5"
+        },
+        {
+          "label": "B",
+          "text": "2√10"
+        },
+        {
+          "label": "C",
+          "text": "5"
+        },
+        {
+          "label": "D",
+          "text": "6"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "半径r=5，CE=4，AE=8，AC=√(CE²+AE²)=√(16+64)=√80=4√5。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "垂径定理"
+      ]
+    },
+    {
+      "id": 56,
+      "content": "在△ABC中，AB=6，AC=8，BC=10，D为BC中点，则AD=（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "4"
+        },
+        {
+          "label": "B",
+          "text": "5"
+        },
+        {
+          "label": "C",
+          "text": "6"
+        },
+        {
+          "label": "D",
+          "text": "3√2"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "AB²+AC²=36+64=100=BC²，∠A=90°，直角三角形斜边中线等于斜边一半，AD=5。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形",
+        "直角三角形性质"
+      ]
+    },
+    {
+      "id": 57,
+      "content": "用树状图分析甲、乙、丙三人抽签决定顺序，甲抽在第一位的概率为（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "1/6"
+        },
+        {
+          "label": "B",
+          "text": "1/3"
+        },
+        {
+          "label": "C",
+          "text": "1/2"
+        },
+        {
+          "label": "D",
+          "text": "2/3"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "树状图共6种等可能排列，甲在第一位有2种，概率为2/6=1/3。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "树状图"
+      ]
+    },
+    {
+      "id": 58,
+      "content": "关于方程ax²+bx+c=0(a≠0)，下列结论正确的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "若a+b+c=0，则必有一根为1"
+        },
+        {
+          "label": "B",
+          "text": "若a-b+c=0，则必有一根为-1"
+        },
+        {
+          "label": "C",
+          "text": "若两根相等，则b²=4ac"
+        },
+        {
+          "label": "D",
+          "text": "若c=0，则方程必有一根为0"
+        }
+      ],
+      "correct_answer": "ABCD",
+      "explanation": "A:代入x=1得a+b+c=0；B:代入x=-1得a-b+c=0；C:Δ=0即b²=4ac；D:代入x=0得c=0。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "根的性质"
+      ]
+    },
+    {
+      "id": 59,
+      "content": "如图，⊙O的内接四边形ABCD中，∠A=80°，则下列结论正确的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "∠C=100°"
+        },
+        {
+          "label": "B",
+          "text": "∠B+∠D=180°"
+        },
+        {
+          "label": "C",
+          "text": "∠A+∠C=180°"
+        },
+        {
+          "label": "D",
+          "text": "∠B=∠D"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "圆内接四边形对角互补，∠A+∠C=180°，∠B+∠D=180°；∠B与∠D不一定相等。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "圆内接四边形"
+      ]
+    },
+    {
+      "id": 60,
+      "content": "已知△ABC∽△DEF，且对应边之比为1:2，则下列结论正确的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "对应高之比为1:2"
+        },
+        {
+          "label": "B",
+          "text": "对应角平分线之比为1:2"
+        },
+        {
+          "label": "C",
+          "text": "面积之比为1:4"
+        },
+        {
+          "label": "D",
+          "text": "周长之比为1:4"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "相似三角形对应高、角平分线、中线比等于相似比，周长比等于相似比，面积比等于相似比的平方。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形相似",
+        "性质"
+      ]
+    },
+    {
+      "id": 61,
+      "content": "关于函数y=2x+2与y=4/x的交点，下列说法正确的有（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "两函数有两个交点"
+        },
+        {
+          "label": "B",
+          "text": "交点横坐标满足x²+x-2=0"
+        },
+        {
+          "label": "C",
+          "text": "交点坐标为(1,4)和(-2,-2)"
+        },
+        {
+          "label": "D",
+          "text": "两函数在一、三象限有交点"
+        }
+      ],
+      "correct_answer": "ABCD",
+      "explanation": "联立2x+2=4/x，2x²+2x=4，x²+x-2=0，(x+2)(x-1)=0，x=1或x=-2，对应y=4或y=-2，交点为(1,4)和(-2,-2)。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "反比例函数",
+        "交点"
+      ]
+    },
+    {
+      "id": 62,
+      "content": "若方程x²-(2m+1)x+m²=0有两个不等实根，则m的取值范围是______。",
+      "options": [],
+      "correct_answer": "m>-1/4",
+      "explanation": "Δ=(2m+1)²-4m²=4m²+4m+1-4m²=4m+1>0，m>-1/4。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "判别式"
+      ]
+    },
+    {
+      "id": 63,
+      "content": "一次函数y=kx+b与反比例函数y=6/x交于A(2,3)、B(-2,-3)，则k=______。",
+      "options": [],
+      "correct_answer": "3/2",
+      "explanation": "代入A、B得2k+b=3，-2k+b=-3，解得k=3/2，b=0。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一次函数",
+        "反比例函数",
+        "交点"
+      ]
+    },
+    {
+      "id": 64,
+      "content": "如图，PA、PB分别切⊙O于A、B，∠APB=80°，点C在优弧AB上，则∠ACB=______°。",
+      "options": [],
+      "correct_answer": "50",
+      "explanation": "连接OA、OB，∠OAP=∠OBP=90°，∠AOB=100°，∠ACB=∠AOB/2=50°。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "切线",
+        "圆周角"
+      ]
+    },
+    {
+      "id": 65,
+      "content": "在△ABC中，D、E分别在AB、AC上，DE∥BC，AD:DB=2:3，若S△ADE=8，则S△ABC=______。",
+      "options": [],
+      "correct_answer": "50",
+      "explanation": "AD:AB=2:5，面积比=4:25，S△ABC=8×25/4=50。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "三角形相似",
+        "面积比"
+      ]
+    },
+    {
+      "id": 66,
+      "content": "从1、2、3、4、5、6中随机取两个数，其积为奇数的概率是______。",
+      "options": [],
+      "correct_answer": "1/5",
+      "explanation": "积为奇数需两数均为奇数，C(3,2)/C(6,2)=3/15=1/5。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "概率统计",
+        "组合"
+      ]
+    },
+    {
+      "id": 67,
+      "content": "若一元二次方程的两根之和等于两根之积，则方程可化为x²-px+p=0的形式。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "设两根为α、β，α+β=αβ=p，由韦达定理方程为x²-px+p=0。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "一元二次方程",
+        "韦达定理"
+      ]
+    },
+    {
+      "id": 68,
+      "content": "若两圆的圆心距等于两圆半径之和，则两圆有3条公切线。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "圆心距等于半径之和时两圆外切，有3条公切线（2条外公切线+1条内公切线）。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆",
+        "圆与圆位置关系"
+      ]
+    },
+    {
+      "id": 69,
+      "content": "在反比例函数y=k/x中，若x₁<x₂，则y₁>y₂一定成立。（　　）",
+      "options": [
+        {
+          "label": "A",
+          "text": "正确"
+        },
+        {
+          "label": "B",
+          "text": "错误"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "反比例函数在各分支内单调，但跨分支时不成立，如x₁=-1<x₂=1，y₁=-k<y₂=k(k>0)。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "反比例函数",
+        "单调性"
+      ]
+    },
+    {
+      "id": 70,
+      "content": "如图，在△ABC中，∠C=90°，AC=6，BC=8，以C为圆心、CA为半径的圆交AB于D，求AD的长。",
+      "options": [],
+      "correct_answer": "AD=36/5。AB=10，设CD⊥AB于E，由面积法CE=24/5，AE=√(36-576/25)=18/5，AD=2AE=36/5。",
+      "explanation": "利用等腰三角形三线合一，CD=CA=6，通过面积求弦心距，再用勾股定理求半弦长。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "圆的基本性质",
+        "勾股定理",
+        "面积法"
+      ]
+    }
+  ]
+}

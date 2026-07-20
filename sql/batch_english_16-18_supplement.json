@@ -1,0 +1,3696 @@
+{
+  "batch_id": "english_16-18_supplement",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "content": "If I _____ you, I would accept the offer.",
+      "options": [
+        {
+          "label": "A",
+          "text": "am"
+        },
+        {
+          "label": "B",
+          "text": "was"
+        },
+        {
+          "label": "C",
+          "text": "were"
+        },
+        {
+          "label": "D",
+          "text": "be"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "与现在事实相反的虚拟语气，if从句用过去式were。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_001"
+    },
+    {
+      "content": "I wish I _____ harder when I was young.",
+      "options": [
+        {
+          "label": "A",
+          "text": "study"
+        },
+        {
+          "label": "B",
+          "text": "studied"
+        },
+        {
+          "label": "C",
+          "text": "had studied"
+        },
+        {
+          "label": "D",
+          "text": "have studied"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "wish后接与过去事实相反的虚拟语气，用had done。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_002"
+    },
+    {
+      "content": "It is high time that we _____ measures to protect the environment.",
+      "options": [
+        {
+          "label": "A",
+          "text": "take"
+        },
+        {
+          "label": "B",
+          "text": "took"
+        },
+        {
+          "label": "C",
+          "text": "will take"
+        },
+        {
+          "label": "D",
+          "text": "have taken"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "It is high time that从句用过去式表示虚拟。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_003"
+    },
+    {
+      "content": "_____ the heavy rain, we would have arrived on time.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Because of"
+        },
+        {
+          "label": "B",
+          "text": "Thanks to"
+        },
+        {
+          "label": "C",
+          "text": "But for"
+        },
+        {
+          "label": "D",
+          "text": "Due to"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "But for意为由要不是，表示含蓄虚拟条件。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_004"
+    },
+    {
+      "content": "The teacher suggested that every student _____ a book report.",
+      "options": [
+        {
+          "label": "A",
+          "text": "write"
+        },
+        {
+          "label": "B",
+          "text": "writes"
+        },
+        {
+          "label": "C",
+          "text": "wrote"
+        },
+        {
+          "label": "D",
+          "text": "has written"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "suggest后的宾语从句用虚拟语气should+do，should可省略。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_005"
+    },
+    {
+      "content": "Which sentence contains a relative clause?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I have finished my homework."
+        },
+        {
+          "label": "B",
+          "text": "The man who is standing there is my teacher."
+        },
+        {
+          "label": "C",
+          "text": "She went to Beijing yesterday."
+        },
+        {
+          "label": "D",
+          "text": "If it rains, we will stay at home."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "B项包含由who引导的定语从句。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_006"
+    },
+    {
+      "content": "Reading comprehension: Tom was late for school because his bike broke down. What does broke down mean?",
+      "options": [
+        {
+          "label": "A",
+          "text": "collapsed"
+        },
+        {
+          "label": "B",
+          "text": "stopped working"
+        },
+        {
+          "label": "C",
+          "text": "fell apart"
+        },
+        {
+          "label": "D",
+          "text": "ran away"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "broke down在此处意为（机器等）出故障。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_007"
+    },
+    {
+      "content": "In a Seven-Choice-Five task, what should you do first?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Read the options carefully."
+        },
+        {
+          "label": "B",
+          "text": "Read the passage to get the main idea."
+        },
+        {
+          "label": "C",
+          "text": "Choose the longest option."
+        },
+        {
+          "label": "D",
+          "text": "Translate every sentence."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "七选五应先通读全文把握主旨。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_008"
+    },
+    {
+      "content": "In a Read and Continue Writing task, what should you pay attention to?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only focus on grammar."
+        },
+        {
+          "label": "B",
+          "text": "Keep the story consistent with the original style and plot."
+        },
+        {
+          "label": "C",
+          "text": "Write a completely new story."
+        },
+        {
+          "label": "D",
+          "text": "Use as many difficult words as possible."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写要保持与原文的风格、情节和人物一致。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_009"
+    },
+    {
+      "content": "If he _____ yesterday, he would have met his old friend.",
+      "options": [
+        {
+          "label": "A",
+          "text": "comes"
+        },
+        {
+          "label": "B",
+          "text": "came"
+        },
+        {
+          "label": "C",
+          "text": "had come"
+        },
+        {
+          "label": "D",
+          "text": "has come"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "与过去事实相反的虚拟语气，if从句用had done。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_010"
+    },
+    {
+      "content": "The sentence Had I known the truth, I would have told you is an example of _____.",
+      "options": [
+        {
+          "label": "A",
+          "text": "inversion in conditional sentences"
+        },
+        {
+          "label": "B",
+          "text": "passive voice"
+        },
+        {
+          "label": "C",
+          "text": "indirect speech"
+        },
+        {
+          "label": "D",
+          "text": "emphatic sentence"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Had I known = If I had known，是虚拟条件句的倒装形式。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_011"
+    },
+    {
+      "content": "Choose the sentence with correct subjunctive mood.",
+      "options": [
+        {
+          "label": "A",
+          "text": "I demand that he leaves immediately."
+        },
+        {
+          "label": "B",
+          "text": "I demand that he leave immediately."
+        },
+        {
+          "label": "C",
+          "text": "I demand that he left immediately."
+        },
+        {
+          "label": "D",
+          "text": "I demand that he has left immediately."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "demand后的宾语从句用虚拟语气（should）+动词原形。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_012"
+    },
+    {
+      "content": "_____ the sun, the plants would not grow.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Because of"
+        },
+        {
+          "label": "B",
+          "text": "Thanks to"
+        },
+        {
+          "label": "C",
+          "text": "Without"
+        },
+        {
+          "label": "D",
+          "text": "With"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Without表示含蓄虚拟条件，相当于If there were no sun。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_013"
+    },
+    {
+      "content": "The doctor ordered that the patient _____ in bed for a week.",
+      "options": [
+        {
+          "label": "A",
+          "text": "stay"
+        },
+        {
+          "label": "B",
+          "text": "stays"
+        },
+        {
+          "label": "C",
+          "text": "stayed"
+        },
+        {
+          "label": "D",
+          "text": "has stayed"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "order后的宾语从句用虚拟语气（should）+动词原形。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_014"
+    },
+    {
+      "content": "According to the passage, which of the following is TRUE?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The author dislikes city life completely."
+        },
+        {
+          "label": "B",
+          "text": "The author thinks rural life is perfect."
+        },
+        {
+          "label": "C",
+          "text": "The author appreciates both city and rural life."
+        },
+        {
+          "label": "D",
+          "text": "The author prefers to live in the mountains."
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "需要根据文章整体态度推断。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_015"
+    },
+    {
+      "content": "What is the main idea of Paragraph 3?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The history of the Internet."
+        },
+        {
+          "label": "B",
+          "text": "The advantages of online learning."
+        },
+        {
+          "label": "C",
+          "text": "How to use the Internet safely."
+        },
+        {
+          "label": "D",
+          "text": "The disadvantages of social media."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "主旨大意题需要根据段落内容概括。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_016"
+    },
+    {
+      "content": "The word ambiguous in Paragraph 2 probably means _____.",
+      "options": [
+        {
+          "label": "A",
+          "text": "clear"
+        },
+        {
+          "label": "B",
+          "text": "uncertain"
+        },
+        {
+          "label": "C",
+          "text": "important"
+        },
+        {
+          "label": "D",
+          "text": "interesting"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "ambiguous意为模棱两可的，不明确的。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_017"
+    },
+    {
+      "content": "Which sentence can best connect Paragraph 1 and Paragraph 2?",
+      "options": [
+        {
+          "label": "A",
+          "text": "However, things are not always simple."
+        },
+        {
+          "label": "B",
+          "text": "In conclusion, we should protect the environment."
+        },
+        {
+          "label": "C",
+          "text": "First, let me introduce the main character."
+        },
+        {
+          "label": "D",
+          "text": "The story happened in a small village."
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A项起到承上启下的过渡作用。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_018"
+    },
+    {
+      "content": "When continuing the story, which element should NOT be introduced?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A conflict that develops the plot"
+        },
+        {
+          "label": "B",
+          "text": "A new character who plays a key role"
+        },
+        {
+          "label": "C",
+          "text": "A resolution that matches the theme"
+        },
+        {
+          "label": "D",
+          "text": "An emotional change of the main character"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写不应突然引入原文未提及的新角色。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_019"
+    },
+    {
+      "content": "_____ time, I would have checked my paper more carefully.",
+      "options": [
+        {
+          "label": "A",
+          "text": "If I had had"
+        },
+        {
+          "label": "B",
+          "text": "If I have"
+        },
+        {
+          "label": "C",
+          "text": "If I had"
+        },
+        {
+          "label": "D",
+          "text": "If I would have"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "与过去事实相反，if从句用had done；have time是固定搭配。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_020"
+    },
+    {
+      "content": "Which of the following sentences use the subjunctive mood correctly?",
+      "options": [
+        {
+          "label": "A",
+          "text": "If I were rich, I would travel around the world."
+        },
+        {
+          "label": "B",
+          "text": "I suggest that he study harder."
+        },
+        {
+          "label": "C",
+          "text": "If he studied hard, he will pass the exam."
+        },
+        {
+          "label": "D",
+          "text": "It is important that she be on time."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项混合了虚拟语气和真实条件句。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_021"
+    },
+    {
+      "content": "In reading comprehension, which strategies are helpful?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Skimming to get the main idea."
+        },
+        {
+          "label": "B",
+          "text": "Scanning for specific information."
+        },
+        {
+          "label": "C",
+          "text": "Guessing word meaning from context."
+        },
+        {
+          "label": "D",
+          "text": "Translating every sentence into Chinese."
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "D项逐句翻译效率低。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_022"
+    },
+    {
+      "content": "Which of the following are characteristics of a good continuation in Read and Continue Writing?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Consistent with the original plot."
+        },
+        {
+          "label": "B",
+          "text": "Using rich and appropriate vocabulary."
+        },
+        {
+          "label": "C",
+          "text": "Creating new characters not mentioned before."
+        },
+        {
+          "label": "D",
+          "text": "Showing character development."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项不应突然引入原文未提及的新角色。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_023"
+    },
+    {
+      "content": "Which sentences contain attributive clauses?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The book that I bought yesterday is interesting."
+        },
+        {
+          "label": "B",
+          "text": "He is the man who helped me."
+        },
+        {
+          "label": "C",
+          "text": "I know where he lives."
+        },
+        {
+          "label": "D",
+          "text": "This is the house where I was born."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项where he lives是宾语从句。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_024"
+    },
+    {
+      "content": "For a Seven-Choice-Five task, which of the following are useful skills?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Looking for transition words."
+        },
+        {
+          "label": "B",
+          "text": "Identifying pronoun references."
+        },
+        {
+          "label": "C",
+          "text": "Ignoring the first and last sentences of paragraphs."
+        },
+        {
+          "label": "D",
+          "text": "Paying attention to logical connections."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项错误，首尾句往往是主题句。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_025"
+    },
+    {
+      "content": "Which words can indicate contrast in reading passages?",
+      "options": [
+        {
+          "label": "A",
+          "text": "however"
+        },
+        {
+          "label": "B",
+          "text": "therefore"
+        },
+        {
+          "label": "C",
+          "text": "on the contrary"
+        },
+        {
+          "label": "D",
+          "text": "in contrast"
+        }
+      ],
+      "correct_answer": "ACD",
+      "explanation": "therefore表示因果。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_026"
+    },
+    {
+      "content": "Which of the following are correct about inverted conditional sentences?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Had I known = If I had known"
+        },
+        {
+          "label": "B",
+          "text": "Were I you = If I were you"
+        },
+        {
+          "label": "C",
+          "text": "Should it rain = If it should rain"
+        },
+        {
+          "label": "D",
+          "text": "Did he come = If he did come"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "D项不是标准倒装形式。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_027"
+    },
+    {
+      "content": "Which elements should be considered in analyzing long and difficult sentences?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sentence structure"
+        },
+        {
+          "label": "B",
+          "text": "Logical relationship between clauses"
+        },
+        {
+          "label": "C",
+          "text": "Key vocabulary"
+        },
+        {
+          "label": "D",
+          "text": "The length of the sentence only"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "分析长难句不能只看长度。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_028"
+    },
+    {
+      "content": "Complete the sentence with the correct form: If I _____ (know) his address, I would tell you.",
+      "options": [],
+      "correct_answer": "knew",
+      "explanation": "与现在事实相反的虚拟语气，if从句用过去式。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_029"
+    },
+    {
+      "content": "Complete the sentence: It is suggested that the meeting _____ (put) off until next week.",
+      "options": [],
+      "correct_answer": "be put",
+      "explanation": "suggest后的宾语从句用虚拟语气should be put。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_030"
+    },
+    {
+      "content": "Complete the sentence: _____ for your help, we would not have finished the work on time.",
+      "options": [],
+      "correct_answer": "But",
+      "explanation": "But for your help = If it had not been for your help。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_031"
+    },
+    {
+      "content": "Analyze the sentence structure: The news that our team had won the game excited everyone. The underlined part is a(n) _____ clause.",
+      "options": [],
+      "correct_answer": "appositive",
+      "explanation": "that our team had won the game是news的同位语从句。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_032"
+    },
+    {
+      "content": "Reading comprehension: The author's attitude towards online learning can be best described as _____.",
+      "options": [],
+      "correct_answer": "objective",
+      "explanation": "需要根据文章具体内容推断作者态度。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_033"
+    },
+    {
+      "content": "In Seven-Choice-Five, the sentence _____ can best fit the blank if the following paragraph discusses disadvantages.",
+      "options": [],
+      "correct_answer": "However, everything has two sides.",
+      "explanation": "承上启下，引出下文的转折内容。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_034"
+    },
+    {
+      "content": "For Read and Continue Writing, the story should end with a tone that is _____ to the original passage.",
+      "options": [],
+      "correct_answer": "consistent",
+      "explanation": "读后续写需要与原文的语气和风格保持一致。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_035"
+    },
+    {
+      "content": "Complete: I wish I _____ (be) a bird flying freely in the sky.",
+      "options": [],
+      "correct_answer": "were",
+      "explanation": "wish后接与现在事实相反的虚拟语气，用过去式were。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_036"
+    },
+    {
+      "content": "Complete: He talks as if he _____ (know) everything in the world.",
+      "options": [],
+      "correct_answer": "knew",
+      "explanation": "as if引导的从句用虚拟语气，表示与现在事实相反。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_037"
+    },
+    {
+      "content": "Reading: The passage is mainly about _____.",
+      "options": [],
+      "correct_answer": "the benefits and challenges of...",
+      "explanation": "主旨大意题需要概括全文核心内容。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_038"
+    },
+    {
+      "content": "In English, the subjunctive mood is only used in if-clauses.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "虚拟语气不仅用于if从句，还用于wish、as if、suggest等后的从句。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_039"
+    },
+    {
+      "content": "In Seven-Choice-Five, you can choose the same option more than once.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "七选五每个选项只能用一次。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_040"
+    },
+    {
+      "content": "When doing Read and Continue Writing, you can create a completely different ending from what the original story suggests.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写需要根据原文的情节发展和暗示进行合理续写。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_041"
+    },
+    {
+      "content": "A noun clause can function as the subject, object, predicative, or appositive in a sentence.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "名词性从句包括主语从句、宾语从句、表语从句和同位语从句。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_042"
+    },
+    {
+      "content": "In reading comprehension, you should always read the questions before reading the passage.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "不同题型策略不同，不能一概而论。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_043"
+    },
+    {
+      "content": "But for can be replaced by Without in virtual conditional sentences.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "But for your help = Without your help，都表示含蓄虚拟条件。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_044"
+    },
+    {
+      "content": "Analyze the sentence: What we need is more time. What type of clause is What we need?",
+      "options": [],
+      "correct_answer": "Subject clause. What we need functions as the subject of the sentence.",
+      "explanation": "分析句子成分，指出what引导的名词性从句作主语。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_045"
+    },
+    {
+      "content": "What strategies can you use when you encounter an unknown word in reading comprehension?",
+      "options": [],
+      "correct_answer": "1) Guess from context clues; 2) Analyze word formation; 3) Identify the part of speech; 4) Ignore unimportant words.",
+      "explanation": "列举阅读中处理生词的策略。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_046"
+    },
+    {
+      "content": "How do you identify the correct sequence in a Seven-Choice-Five task?",
+      "options": [],
+      "correct_answer": "1) Read the whole passage; 2) Look for transition words; 3) Check pronoun references; 4) Ensure the chosen option fits both contexts.",
+      "explanation": "列举七选五的解题步骤。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_047"
+    },
+    {
+      "content": "If I _____ you, I would accept the offer.",
+      "options": [
+        {
+          "label": "A",
+          "text": "am"
+        },
+        {
+          "label": "B",
+          "text": "was"
+        },
+        {
+          "label": "C",
+          "text": "were"
+        },
+        {
+          "label": "D",
+          "text": "be"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "与现在事实相反的虚拟语气，if从句用过去式were。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_048"
+    },
+    {
+      "content": "I wish I _____ harder when I was young.",
+      "options": [
+        {
+          "label": "A",
+          "text": "study"
+        },
+        {
+          "label": "B",
+          "text": "studied"
+        },
+        {
+          "label": "C",
+          "text": "had studied"
+        },
+        {
+          "label": "D",
+          "text": "have studied"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "wish后接与过去事实相反的虚拟语气，用had done。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_049"
+    },
+    {
+      "content": "It is high time that we _____ measures to protect the environment.",
+      "options": [
+        {
+          "label": "A",
+          "text": "take"
+        },
+        {
+          "label": "B",
+          "text": "took"
+        },
+        {
+          "label": "C",
+          "text": "will take"
+        },
+        {
+          "label": "D",
+          "text": "have taken"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "It is high time that从句用过去式表示虚拟。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_050"
+    },
+    {
+      "content": "_____ the heavy rain, we would have arrived on time.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Because of"
+        },
+        {
+          "label": "B",
+          "text": "Thanks to"
+        },
+        {
+          "label": "C",
+          "text": "But for"
+        },
+        {
+          "label": "D",
+          "text": "Due to"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "But for意为由要不是，表示含蓄虚拟条件。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_051"
+    },
+    {
+      "content": "The teacher suggested that every student _____ a book report.",
+      "options": [
+        {
+          "label": "A",
+          "text": "write"
+        },
+        {
+          "label": "B",
+          "text": "writes"
+        },
+        {
+          "label": "C",
+          "text": "wrote"
+        },
+        {
+          "label": "D",
+          "text": "has written"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "suggest后的宾语从句用虚拟语气should+do，should可省略。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_052"
+    },
+    {
+      "content": "Which sentence contains a relative clause?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I have finished my homework."
+        },
+        {
+          "label": "B",
+          "text": "The man who is standing there is my teacher."
+        },
+        {
+          "label": "C",
+          "text": "She went to Beijing yesterday."
+        },
+        {
+          "label": "D",
+          "text": "If it rains, we will stay at home."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "B项包含由who引导的定语从句。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_053"
+    },
+    {
+      "content": "Reading comprehension: Tom was late for school because his bike broke down. What does broke down mean?",
+      "options": [
+        {
+          "label": "A",
+          "text": "collapsed"
+        },
+        {
+          "label": "B",
+          "text": "stopped working"
+        },
+        {
+          "label": "C",
+          "text": "fell apart"
+        },
+        {
+          "label": "D",
+          "text": "ran away"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "broke down在此处意为（机器等）出故障。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_054"
+    },
+    {
+      "content": "In a Seven-Choice-Five task, what should you do first?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Read the options carefully."
+        },
+        {
+          "label": "B",
+          "text": "Read the passage to get the main idea."
+        },
+        {
+          "label": "C",
+          "text": "Choose the longest option."
+        },
+        {
+          "label": "D",
+          "text": "Translate every sentence."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "七选五应先通读全文把握主旨。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_055"
+    },
+    {
+      "content": "In a Read and Continue Writing task, what should you pay attention to?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only focus on grammar."
+        },
+        {
+          "label": "B",
+          "text": "Keep the story consistent with the original style and plot."
+        },
+        {
+          "label": "C",
+          "text": "Write a completely new story."
+        },
+        {
+          "label": "D",
+          "text": "Use as many difficult words as possible."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写要保持与原文的风格、情节和人物一致。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_056"
+    },
+    {
+      "content": "If he _____ yesterday, he would have met his old friend.",
+      "options": [
+        {
+          "label": "A",
+          "text": "comes"
+        },
+        {
+          "label": "B",
+          "text": "came"
+        },
+        {
+          "label": "C",
+          "text": "had come"
+        },
+        {
+          "label": "D",
+          "text": "has come"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "与过去事实相反的虚拟语气，if从句用had done。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_057"
+    },
+    {
+      "content": "The sentence Had I known the truth, I would have told you is an example of _____.",
+      "options": [
+        {
+          "label": "A",
+          "text": "inversion in conditional sentences"
+        },
+        {
+          "label": "B",
+          "text": "passive voice"
+        },
+        {
+          "label": "C",
+          "text": "indirect speech"
+        },
+        {
+          "label": "D",
+          "text": "emphatic sentence"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Had I known = If I had known，是虚拟条件句的倒装形式。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_058"
+    },
+    {
+      "content": "Choose the sentence with correct subjunctive mood.",
+      "options": [
+        {
+          "label": "A",
+          "text": "I demand that he leaves immediately."
+        },
+        {
+          "label": "B",
+          "text": "I demand that he leave immediately."
+        },
+        {
+          "label": "C",
+          "text": "I demand that he left immediately."
+        },
+        {
+          "label": "D",
+          "text": "I demand that he has left immediately."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "demand后的宾语从句用虚拟语气（should）+动词原形。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_059"
+    },
+    {
+      "content": "_____ the sun, the plants would not grow.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Because of"
+        },
+        {
+          "label": "B",
+          "text": "Thanks to"
+        },
+        {
+          "label": "C",
+          "text": "Without"
+        },
+        {
+          "label": "D",
+          "text": "With"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Without表示含蓄虚拟条件，相当于If there were no sun。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_060"
+    },
+    {
+      "content": "The doctor ordered that the patient _____ in bed for a week.",
+      "options": [
+        {
+          "label": "A",
+          "text": "stay"
+        },
+        {
+          "label": "B",
+          "text": "stays"
+        },
+        {
+          "label": "C",
+          "text": "stayed"
+        },
+        {
+          "label": "D",
+          "text": "has stayed"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "order后的宾语从句用虚拟语气（should）+动词原形。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_061"
+    },
+    {
+      "content": "According to the passage, which of the following is TRUE?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The author dislikes city life completely."
+        },
+        {
+          "label": "B",
+          "text": "The author thinks rural life is perfect."
+        },
+        {
+          "label": "C",
+          "text": "The author appreciates both city and rural life."
+        },
+        {
+          "label": "D",
+          "text": "The author prefers to live in the mountains."
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "需要根据文章整体态度推断。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_062"
+    },
+    {
+      "content": "What is the main idea of Paragraph 3?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The history of the Internet."
+        },
+        {
+          "label": "B",
+          "text": "The advantages of online learning."
+        },
+        {
+          "label": "C",
+          "text": "How to use the Internet safely."
+        },
+        {
+          "label": "D",
+          "text": "The disadvantages of social media."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "主旨大意题需要根据段落内容概括。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_063"
+    },
+    {
+      "content": "The word ambiguous in Paragraph 2 probably means _____.",
+      "options": [
+        {
+          "label": "A",
+          "text": "clear"
+        },
+        {
+          "label": "B",
+          "text": "uncertain"
+        },
+        {
+          "label": "C",
+          "text": "important"
+        },
+        {
+          "label": "D",
+          "text": "interesting"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "ambiguous意为模棱两可的，不明确的。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_064"
+    },
+    {
+      "content": "Which sentence can best connect Paragraph 1 and Paragraph 2?",
+      "options": [
+        {
+          "label": "A",
+          "text": "However, things are not always simple."
+        },
+        {
+          "label": "B",
+          "text": "In conclusion, we should protect the environment."
+        },
+        {
+          "label": "C",
+          "text": "First, let me introduce the main character."
+        },
+        {
+          "label": "D",
+          "text": "The story happened in a small village."
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A项起到承上启下的过渡作用。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_065"
+    },
+    {
+      "content": "When continuing the story, which element should NOT be introduced?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A conflict that develops the plot"
+        },
+        {
+          "label": "B",
+          "text": "A new character who plays a key role"
+        },
+        {
+          "label": "C",
+          "text": "A resolution that matches the theme"
+        },
+        {
+          "label": "D",
+          "text": "An emotional change of the main character"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写不应突然引入原文未提及的新角色。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_066"
+    },
+    {
+      "content": "_____ time, I would have checked my paper more carefully.",
+      "options": [
+        {
+          "label": "A",
+          "text": "If I had had"
+        },
+        {
+          "label": "B",
+          "text": "If I have"
+        },
+        {
+          "label": "C",
+          "text": "If I had"
+        },
+        {
+          "label": "D",
+          "text": "If I would have"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "与过去事实相反，if从句用had done；have time是固定搭配。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_067"
+    },
+    {
+      "content": "Which of the following sentences use the subjunctive mood correctly?",
+      "options": [
+        {
+          "label": "A",
+          "text": "If I were rich, I would travel around the world."
+        },
+        {
+          "label": "B",
+          "text": "I suggest that he study harder."
+        },
+        {
+          "label": "C",
+          "text": "If he studied hard, he will pass the exam."
+        },
+        {
+          "label": "D",
+          "text": "It is important that she be on time."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项混合了虚拟语气和真实条件句。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_068"
+    },
+    {
+      "content": "In reading comprehension, which strategies are helpful?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Skimming to get the main idea."
+        },
+        {
+          "label": "B",
+          "text": "Scanning for specific information."
+        },
+        {
+          "label": "C",
+          "text": "Guessing word meaning from context."
+        },
+        {
+          "label": "D",
+          "text": "Translating every sentence into Chinese."
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "D项逐句翻译效率低。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_069"
+    },
+    {
+      "content": "Which of the following are characteristics of a good continuation in Read and Continue Writing?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Consistent with the original plot."
+        },
+        {
+          "label": "B",
+          "text": "Using rich and appropriate vocabulary."
+        },
+        {
+          "label": "C",
+          "text": "Creating new characters not mentioned before."
+        },
+        {
+          "label": "D",
+          "text": "Showing character development."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项不应突然引入原文未提及的新角色。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_070"
+    },
+    {
+      "content": "Which sentences contain attributive clauses?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The book that I bought yesterday is interesting."
+        },
+        {
+          "label": "B",
+          "text": "He is the man who helped me."
+        },
+        {
+          "label": "C",
+          "text": "I know where he lives."
+        },
+        {
+          "label": "D",
+          "text": "This is the house where I was born."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项where he lives是宾语从句。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_071"
+    },
+    {
+      "content": "For a Seven-Choice-Five task, which of the following are useful skills?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Looking for transition words."
+        },
+        {
+          "label": "B",
+          "text": "Identifying pronoun references."
+        },
+        {
+          "label": "C",
+          "text": "Ignoring the first and last sentences of paragraphs."
+        },
+        {
+          "label": "D",
+          "text": "Paying attention to logical connections."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项错误，首尾句往往是主题句。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_072"
+    },
+    {
+      "content": "Which words can indicate contrast in reading passages?",
+      "options": [
+        {
+          "label": "A",
+          "text": "however"
+        },
+        {
+          "label": "B",
+          "text": "therefore"
+        },
+        {
+          "label": "C",
+          "text": "on the contrary"
+        },
+        {
+          "label": "D",
+          "text": "in contrast"
+        }
+      ],
+      "correct_answer": "ACD",
+      "explanation": "therefore表示因果。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_073"
+    },
+    {
+      "content": "Which of the following are correct about inverted conditional sentences?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Had I known = If I had known"
+        },
+        {
+          "label": "B",
+          "text": "Were I you = If I were you"
+        },
+        {
+          "label": "C",
+          "text": "Should it rain = If it should rain"
+        },
+        {
+          "label": "D",
+          "text": "Did he come = If he did come"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "D项不是标准倒装形式。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_074"
+    },
+    {
+      "content": "Which elements should be considered in analyzing long and difficult sentences?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sentence structure"
+        },
+        {
+          "label": "B",
+          "text": "Logical relationship between clauses"
+        },
+        {
+          "label": "C",
+          "text": "Key vocabulary"
+        },
+        {
+          "label": "D",
+          "text": "The length of the sentence only"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "分析长难句不能只看长度。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_075"
+    },
+    {
+      "content": "Complete the sentence with the correct form: If I _____ (know) his address, I would tell you.",
+      "options": [],
+      "correct_answer": "knew",
+      "explanation": "与现在事实相反的虚拟语气，if从句用过去式。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_076"
+    },
+    {
+      "content": "Complete the sentence: It is suggested that the meeting _____ (put) off until next week.",
+      "options": [],
+      "correct_answer": "be put",
+      "explanation": "suggest后的宾语从句用虚拟语气should be put。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_077"
+    },
+    {
+      "content": "Complete the sentence: _____ for your help, we would not have finished the work on time.",
+      "options": [],
+      "correct_answer": "But",
+      "explanation": "But for your help = If it had not been for your help。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_078"
+    },
+    {
+      "content": "Analyze the sentence structure: The news that our team had won the game excited everyone. The underlined part is a(n) _____ clause.",
+      "options": [],
+      "correct_answer": "appositive",
+      "explanation": "that our team had won the game是news的同位语从句。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_079"
+    },
+    {
+      "content": "Reading comprehension: The author's attitude towards online learning can be best described as _____.",
+      "options": [],
+      "correct_answer": "objective",
+      "explanation": "需要根据文章具体内容推断作者态度。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_080"
+    },
+    {
+      "content": "In Seven-Choice-Five, the sentence _____ can best fit the blank if the following paragraph discusses disadvantages.",
+      "options": [],
+      "correct_answer": "However, everything has two sides.",
+      "explanation": "承上启下，引出下文的转折内容。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_081"
+    },
+    {
+      "content": "For Read and Continue Writing, the story should end with a tone that is _____ to the original passage.",
+      "options": [],
+      "correct_answer": "consistent",
+      "explanation": "读后续写需要与原文的语气和风格保持一致。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_082"
+    },
+    {
+      "content": "Complete: I wish I _____ (be) a bird flying freely in the sky.",
+      "options": [],
+      "correct_answer": "were",
+      "explanation": "wish后接与现在事实相反的虚拟语气，用过去式were。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_083"
+    },
+    {
+      "content": "Complete: He talks as if he _____ (know) everything in the world.",
+      "options": [],
+      "correct_answer": "knew",
+      "explanation": "as if引导的从句用虚拟语气，表示与现在事实相反。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_084"
+    },
+    {
+      "content": "Reading: The passage is mainly about _____.",
+      "options": [],
+      "correct_answer": "the benefits and challenges of...",
+      "explanation": "主旨大意题需要概括全文核心内容。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_085"
+    },
+    {
+      "content": "In English, the subjunctive mood is only used in if-clauses.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "虚拟语气不仅用于if从句，还用于wish、as if、suggest等后的从句。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_086"
+    },
+    {
+      "content": "In Seven-Choice-Five, you can choose the same option more than once.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "七选五每个选项只能用一次。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_087"
+    },
+    {
+      "content": "When doing Read and Continue Writing, you can create a completely different ending from what the original story suggests.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写需要根据原文的情节发展和暗示进行合理续写。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_088"
+    },
+    {
+      "content": "A noun clause can function as the subject, object, predicative, or appositive in a sentence.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "名词性从句包括主语从句、宾语从句、表语从句和同位语从句。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_089"
+    },
+    {
+      "content": "In reading comprehension, you should always read the questions before reading the passage.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "不同题型策略不同，不能一概而论。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_090"
+    },
+    {
+      "content": "But for can be replaced by Without in virtual conditional sentences.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "But for your help = Without your help，都表示含蓄虚拟条件。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_091"
+    },
+    {
+      "content": "Analyze the sentence: What we need is more time. What type of clause is What we need?",
+      "options": [],
+      "correct_answer": "Subject clause. What we need functions as the subject of the sentence.",
+      "explanation": "分析句子成分，指出what引导的名词性从句作主语。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_092"
+    },
+    {
+      "content": "What strategies can you use when you encounter an unknown word in reading comprehension?",
+      "options": [],
+      "correct_answer": "1) Guess from context clues; 2) Analyze word formation; 3) Identify the part of speech; 4) Ignore unimportant words.",
+      "explanation": "列举阅读中处理生词的策略。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_093"
+    },
+    {
+      "content": "How do you identify the correct sequence in a Seven-Choice-Five task?",
+      "options": [],
+      "correct_answer": "1) Read the whole passage; 2) Look for transition words; 3) Check pronoun references; 4) Ensure the chosen option fits both contexts.",
+      "explanation": "列举七选五的解题步骤。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_094"
+    },
+    {
+      "content": "If I _____ you, I would accept the offer.",
+      "options": [
+        {
+          "label": "A",
+          "text": "am"
+        },
+        {
+          "label": "B",
+          "text": "was"
+        },
+        {
+          "label": "C",
+          "text": "were"
+        },
+        {
+          "label": "D",
+          "text": "be"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "与现在事实相反的虚拟语气，if从句用过去式were。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_095"
+    },
+    {
+      "content": "I wish I _____ harder when I was young.",
+      "options": [
+        {
+          "label": "A",
+          "text": "study"
+        },
+        {
+          "label": "B",
+          "text": "studied"
+        },
+        {
+          "label": "C",
+          "text": "had studied"
+        },
+        {
+          "label": "D",
+          "text": "have studied"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "wish后接与过去事实相反的虚拟语气，用had done。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_096"
+    },
+    {
+      "content": "It is high time that we _____ measures to protect the environment.",
+      "options": [
+        {
+          "label": "A",
+          "text": "take"
+        },
+        {
+          "label": "B",
+          "text": "took"
+        },
+        {
+          "label": "C",
+          "text": "will take"
+        },
+        {
+          "label": "D",
+          "text": "have taken"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "It is high time that从句用过去式表示虚拟。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_097"
+    },
+    {
+      "content": "_____ the heavy rain, we would have arrived on time.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Because of"
+        },
+        {
+          "label": "B",
+          "text": "Thanks to"
+        },
+        {
+          "label": "C",
+          "text": "But for"
+        },
+        {
+          "label": "D",
+          "text": "Due to"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "But for意为由要不是，表示含蓄虚拟条件。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_098"
+    },
+    {
+      "content": "The teacher suggested that every student _____ a book report.",
+      "options": [
+        {
+          "label": "A",
+          "text": "write"
+        },
+        {
+          "label": "B",
+          "text": "writes"
+        },
+        {
+          "label": "C",
+          "text": "wrote"
+        },
+        {
+          "label": "D",
+          "text": "has written"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "suggest后的宾语从句用虚拟语气should+do，should可省略。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_099"
+    },
+    {
+      "content": "Which sentence contains a relative clause?",
+      "options": [
+        {
+          "label": "A",
+          "text": "I have finished my homework."
+        },
+        {
+          "label": "B",
+          "text": "The man who is standing there is my teacher."
+        },
+        {
+          "label": "C",
+          "text": "She went to Beijing yesterday."
+        },
+        {
+          "label": "D",
+          "text": "If it rains, we will stay at home."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "B项包含由who引导的定语从句。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_100"
+    },
+    {
+      "content": "Reading comprehension: Tom was late for school because his bike broke down. What does broke down mean?",
+      "options": [
+        {
+          "label": "A",
+          "text": "collapsed"
+        },
+        {
+          "label": "B",
+          "text": "stopped working"
+        },
+        {
+          "label": "C",
+          "text": "fell apart"
+        },
+        {
+          "label": "D",
+          "text": "ran away"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "broke down在此处意为（机器等）出故障。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_101"
+    },
+    {
+      "content": "In a Seven-Choice-Five task, what should you do first?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Read the options carefully."
+        },
+        {
+          "label": "B",
+          "text": "Read the passage to get the main idea."
+        },
+        {
+          "label": "C",
+          "text": "Choose the longest option."
+        },
+        {
+          "label": "D",
+          "text": "Translate every sentence."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "七选五应先通读全文把握主旨。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_102"
+    },
+    {
+      "content": "In a Read and Continue Writing task, what should you pay attention to?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Only focus on grammar."
+        },
+        {
+          "label": "B",
+          "text": "Keep the story consistent with the original style and plot."
+        },
+        {
+          "label": "C",
+          "text": "Write a completely new story."
+        },
+        {
+          "label": "D",
+          "text": "Use as many difficult words as possible."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写要保持与原文的风格、情节和人物一致。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_103"
+    },
+    {
+      "content": "If he _____ yesterday, he would have met his old friend.",
+      "options": [
+        {
+          "label": "A",
+          "text": "comes"
+        },
+        {
+          "label": "B",
+          "text": "came"
+        },
+        {
+          "label": "C",
+          "text": "had come"
+        },
+        {
+          "label": "D",
+          "text": "has come"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "与过去事实相反的虚拟语气，if从句用had done。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_104"
+    },
+    {
+      "content": "The sentence Had I known the truth, I would have told you is an example of _____.",
+      "options": [
+        {
+          "label": "A",
+          "text": "inversion in conditional sentences"
+        },
+        {
+          "label": "B",
+          "text": "passive voice"
+        },
+        {
+          "label": "C",
+          "text": "indirect speech"
+        },
+        {
+          "label": "D",
+          "text": "emphatic sentence"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Had I known = If I had known，是虚拟条件句的倒装形式。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_105"
+    },
+    {
+      "content": "Choose the sentence with correct subjunctive mood.",
+      "options": [
+        {
+          "label": "A",
+          "text": "I demand that he leaves immediately."
+        },
+        {
+          "label": "B",
+          "text": "I demand that he leave immediately."
+        },
+        {
+          "label": "C",
+          "text": "I demand that he left immediately."
+        },
+        {
+          "label": "D",
+          "text": "I demand that he has left immediately."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "demand后的宾语从句用虚拟语气（should）+动词原形。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_106"
+    },
+    {
+      "content": "_____ the sun, the plants would not grow.",
+      "options": [
+        {
+          "label": "A",
+          "text": "Because of"
+        },
+        {
+          "label": "B",
+          "text": "Thanks to"
+        },
+        {
+          "label": "C",
+          "text": "Without"
+        },
+        {
+          "label": "D",
+          "text": "With"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Without表示含蓄虚拟条件，相当于If there were no sun。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_107"
+    },
+    {
+      "content": "The doctor ordered that the patient _____ in bed for a week.",
+      "options": [
+        {
+          "label": "A",
+          "text": "stay"
+        },
+        {
+          "label": "B",
+          "text": "stays"
+        },
+        {
+          "label": "C",
+          "text": "stayed"
+        },
+        {
+          "label": "D",
+          "text": "has stayed"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "order后的宾语从句用虚拟语气（should）+动词原形。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_108"
+    },
+    {
+      "content": "According to the passage, which of the following is TRUE?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The author dislikes city life completely."
+        },
+        {
+          "label": "B",
+          "text": "The author thinks rural life is perfect."
+        },
+        {
+          "label": "C",
+          "text": "The author appreciates both city and rural life."
+        },
+        {
+          "label": "D",
+          "text": "The author prefers to live in the mountains."
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "需要根据文章整体态度推断。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_109"
+    },
+    {
+      "content": "What is the main idea of Paragraph 3?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The history of the Internet."
+        },
+        {
+          "label": "B",
+          "text": "The advantages of online learning."
+        },
+        {
+          "label": "C",
+          "text": "How to use the Internet safely."
+        },
+        {
+          "label": "D",
+          "text": "The disadvantages of social media."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "主旨大意题需要根据段落内容概括。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_110"
+    },
+    {
+      "content": "The word ambiguous in Paragraph 2 probably means _____.",
+      "options": [
+        {
+          "label": "A",
+          "text": "clear"
+        },
+        {
+          "label": "B",
+          "text": "uncertain"
+        },
+        {
+          "label": "C",
+          "text": "important"
+        },
+        {
+          "label": "D",
+          "text": "interesting"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "ambiguous意为模棱两可的，不明确的。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_111"
+    },
+    {
+      "content": "Which sentence can best connect Paragraph 1 and Paragraph 2?",
+      "options": [
+        {
+          "label": "A",
+          "text": "However, things are not always simple."
+        },
+        {
+          "label": "B",
+          "text": "In conclusion, we should protect the environment."
+        },
+        {
+          "label": "C",
+          "text": "First, let me introduce the main character."
+        },
+        {
+          "label": "D",
+          "text": "The story happened in a small village."
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A项起到承上启下的过渡作用。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_112"
+    },
+    {
+      "content": "When continuing the story, which element should NOT be introduced?",
+      "options": [
+        {
+          "label": "A",
+          "text": "A conflict that develops the plot"
+        },
+        {
+          "label": "B",
+          "text": "A new character who plays a key role"
+        },
+        {
+          "label": "C",
+          "text": "A resolution that matches the theme"
+        },
+        {
+          "label": "D",
+          "text": "An emotional change of the main character"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写不应突然引入原文未提及的新角色。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_113"
+    },
+    {
+      "content": "_____ time, I would have checked my paper more carefully.",
+      "options": [
+        {
+          "label": "A",
+          "text": "If I had had"
+        },
+        {
+          "label": "B",
+          "text": "If I have"
+        },
+        {
+          "label": "C",
+          "text": "If I had"
+        },
+        {
+          "label": "D",
+          "text": "If I would have"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "与过去事实相反，if从句用had done；have time是固定搭配。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_114"
+    },
+    {
+      "content": "Which of the following sentences use the subjunctive mood correctly?",
+      "options": [
+        {
+          "label": "A",
+          "text": "If I were rich, I would travel around the world."
+        },
+        {
+          "label": "B",
+          "text": "I suggest that he study harder."
+        },
+        {
+          "label": "C",
+          "text": "If he studied hard, he will pass the exam."
+        },
+        {
+          "label": "D",
+          "text": "It is important that she be on time."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项混合了虚拟语气和真实条件句。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_115"
+    },
+    {
+      "content": "In reading comprehension, which strategies are helpful?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Skimming to get the main idea."
+        },
+        {
+          "label": "B",
+          "text": "Scanning for specific information."
+        },
+        {
+          "label": "C",
+          "text": "Guessing word meaning from context."
+        },
+        {
+          "label": "D",
+          "text": "Translating every sentence into Chinese."
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "D项逐句翻译效率低。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_116"
+    },
+    {
+      "content": "Which of the following are characteristics of a good continuation in Read and Continue Writing?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Consistent with the original plot."
+        },
+        {
+          "label": "B",
+          "text": "Using rich and appropriate vocabulary."
+        },
+        {
+          "label": "C",
+          "text": "Creating new characters not mentioned before."
+        },
+        {
+          "label": "D",
+          "text": "Showing character development."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项不应突然引入原文未提及的新角色。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_117"
+    },
+    {
+      "content": "Which sentences contain attributive clauses?",
+      "options": [
+        {
+          "label": "A",
+          "text": "The book that I bought yesterday is interesting."
+        },
+        {
+          "label": "B",
+          "text": "He is the man who helped me."
+        },
+        {
+          "label": "C",
+          "text": "I know where he lives."
+        },
+        {
+          "label": "D",
+          "text": "This is the house where I was born."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项where he lives是宾语从句。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_118"
+    },
+    {
+      "content": "For a Seven-Choice-Five task, which of the following are useful skills?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Looking for transition words."
+        },
+        {
+          "label": "B",
+          "text": "Identifying pronoun references."
+        },
+        {
+          "label": "C",
+          "text": "Ignoring the first and last sentences of paragraphs."
+        },
+        {
+          "label": "D",
+          "text": "Paying attention to logical connections."
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "C项错误，首尾句往往是主题句。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_119"
+    },
+    {
+      "content": "Which words can indicate contrast in reading passages?",
+      "options": [
+        {
+          "label": "A",
+          "text": "however"
+        },
+        {
+          "label": "B",
+          "text": "therefore"
+        },
+        {
+          "label": "C",
+          "text": "on the contrary"
+        },
+        {
+          "label": "D",
+          "text": "in contrast"
+        }
+      ],
+      "correct_answer": "ACD",
+      "explanation": "therefore表示因果。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_120"
+    },
+    {
+      "content": "Which of the following are correct about inverted conditional sentences?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Had I known = If I had known"
+        },
+        {
+          "label": "B",
+          "text": "Were I you = If I were you"
+        },
+        {
+          "label": "C",
+          "text": "Should it rain = If it should rain"
+        },
+        {
+          "label": "D",
+          "text": "Did he come = If he did come"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "D项不是标准倒装形式。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_121"
+    },
+    {
+      "content": "Which elements should be considered in analyzing long and difficult sentences?",
+      "options": [
+        {
+          "label": "A",
+          "text": "Sentence structure"
+        },
+        {
+          "label": "B",
+          "text": "Logical relationship between clauses"
+        },
+        {
+          "label": "C",
+          "text": "Key vocabulary"
+        },
+        {
+          "label": "D",
+          "text": "The length of the sentence only"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "分析长难句不能只看长度。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_122"
+    },
+    {
+      "content": "Complete the sentence with the correct form: If I _____ (know) his address, I would tell you.",
+      "options": [],
+      "correct_answer": "knew",
+      "explanation": "与现在事实相反的虚拟语气，if从句用过去式。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_123"
+    },
+    {
+      "content": "Complete the sentence: It is suggested that the meeting _____ (put) off until next week.",
+      "options": [],
+      "correct_answer": "be put",
+      "explanation": "suggest后的宾语从句用虚拟语气should be put。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_124"
+    },
+    {
+      "content": "Complete the sentence: _____ for your help, we would not have finished the work on time.",
+      "options": [],
+      "correct_answer": "But",
+      "explanation": "But for your help = If it had not been for your help。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_125"
+    },
+    {
+      "content": "Analyze the sentence structure: The news that our team had won the game excited everyone. The underlined part is a(n) _____ clause.",
+      "options": [],
+      "correct_answer": "appositive",
+      "explanation": "that our team had won the game是news的同位语从句。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_126"
+    },
+    {
+      "content": "Reading comprehension: The author's attitude towards online learning can be best described as _____.",
+      "options": [],
+      "correct_answer": "objective",
+      "explanation": "需要根据文章具体内容推断作者态度。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_127"
+    },
+    {
+      "content": "In Seven-Choice-Five, the sentence _____ can best fit the blank if the following paragraph discusses disadvantages.",
+      "options": [],
+      "correct_answer": "However, everything has two sides.",
+      "explanation": "承上启下，引出下文的转折内容。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_128"
+    },
+    {
+      "content": "For Read and Continue Writing, the story should end with a tone that is _____ to the original passage.",
+      "options": [],
+      "correct_answer": "consistent",
+      "explanation": "读后续写需要与原文的语气和风格保持一致。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_129"
+    },
+    {
+      "content": "Complete: I wish I _____ (be) a bird flying freely in the sky.",
+      "options": [],
+      "correct_answer": "were",
+      "explanation": "wish后接与现在事实相反的虚拟语气，用过去式were。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_130"
+    },
+    {
+      "content": "Complete: He talks as if he _____ (know) everything in the world.",
+      "options": [],
+      "correct_answer": "knew",
+      "explanation": "as if引导的从句用虚拟语气，表示与现在事实相反。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_131"
+    },
+    {
+      "content": "Reading: The passage is mainly about _____.",
+      "options": [],
+      "correct_answer": "the benefits and challenges of...",
+      "explanation": "主旨大意题需要概括全文核心内容。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_132"
+    },
+    {
+      "content": "In English, the subjunctive mood is only used in if-clauses.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "虚拟语气不仅用于if从句，还用于wish、as if、suggest等后的从句。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_133"
+    },
+    {
+      "content": "In Seven-Choice-Five, you can choose the same option more than once.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "七选五每个选项只能用一次。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "七选五"
+      ],
+      "id": "english_16-18_134"
+    },
+    {
+      "content": "When doing Read and Continue Writing, you can create a completely different ending from what the original story suggests.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "读后续写需要根据原文的情节发展和暗示进行合理续写。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "读后续写"
+      ],
+      "id": "english_16-18_135"
+    },
+    {
+      "content": "A noun clause can function as the subject, object, predicative, or appositive in a sentence.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "名词性从句包括主语从句、宾语从句、表语从句和同位语从句。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_136"
+    },
+    {
+      "content": "In reading comprehension, you should always read the questions before reading the passage.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "不同题型策略不同，不能一概而论。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_137"
+    },
+    {
+      "content": "But for can be replaced by Without in virtual conditional sentences.",
+      "options": [
+        {
+          "label": "A",
+          "text": "True"
+        },
+        {
+          "label": "B",
+          "text": "False"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "But for your help = Without your help，都表示含蓄虚拟条件。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "虚拟语气"
+      ],
+      "id": "english_16-18_138"
+    },
+    {
+      "content": "Analyze the sentence: What we need is more time. What type of clause is What we need?",
+      "options": [],
+      "correct_answer": "Subject clause. What we need functions as the subject of the sentence.",
+      "explanation": "分析句子成分，指出what引导的名词性从句作主语。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长难句分析"
+      ],
+      "id": "english_16-18_139"
+    },
+    {
+      "content": "What strategies can you use when you encounter an unknown word in reading comprehension?",
+      "options": [],
+      "correct_answer": "1) Guess from context clues; 2) Analyze word formation; 3) Identify the part of speech; 4) Ignore unimportant words.",
+      "explanation": "列举阅读中处理生词的策略。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "english",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "阅读理解"
+      ],
+      "id": "english_16-18_140"
+    }
+  ]
+}

@@ -1,0 +1,2619 @@
+{
+  "batch_id": "batch_history_13-15_supplement_20260715184639",
+  "source": "ai_generation",
+  "questions": [
+    {
+      "content": "中国历史上第一个统一的多民族中央集权国家是哪个朝代？",
+      "options": [
+        "夏朝",
+        "商朝",
+        "周朝",
+        "秦朝"
+      ],
+      "correct_answer": "D",
+      "explanation": "秦朝（公元前221年-前207年）是中国历史上第一个统一的中央集权国家，由秦始皇建立。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "秦朝统一",
+        "中央集权制度"
+      ]
+    },
+    {
+      "content": "中国古代四大发明包括造纸术、印刷术、火药和指南针。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "中国古代四大发明指造纸术、印刷术、火药和指南针，对世界文明发展有重大贡献。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "四大发明"
+      ]
+    },
+    {
+      "content": "以下哪些属于春秋五霸？（多选）",
+      "options": [
+        "齐桓公",
+        "晋文公",
+        "楚庄王",
+        "秦始皇"
+      ],
+      "correct_answer": "ABC",
+      "explanation": "春秋五霸通常指齐桓公、晋文公、楚庄王、吴王阖闾和越王勾践（或宋襄公、秦穆公），秦始皇是战国时期的人物。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "春秋五霸"
+      ]
+    },
+    {
+      "content": "唐朝的都城是________。",
+      "options": [],
+      "correct_answer": "长安",
+      "explanation": "唐朝（618年-907年）定都长安（今西安）。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "唐朝",
+        "都城"
+      ]
+    },
+    {
+      "content": "以下哪项是汉武帝时期派张骞出使西域的目的？",
+      "options": [
+        "开辟丝绸之路",
+        "攻打匈奴",
+        "寻找长生不老药",
+        "传播佛教"
+      ],
+      "correct_answer": "A",
+      "explanation": "张骞出使西域的主要目的是联合西域各国共同抗击匈奴，但客观上促进了丝绸之路的开辟。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "汉武帝",
+        "张骞"
+      ]
+    },
+    {
+      "content": "以下哪些属于中国古代的选官制度？（多选）",
+      "options": [
+        "世卿世禄制",
+        "察举制",
+        "九品中正制",
+        "科举制"
+      ],
+      "correct_answer": "ABCD",
+      "explanation": "这些制度分别在不同时期实行：世卿世禄制（西周）、察举制（汉）、九品中正制（魏晋南北朝）、科举制（隋唐至明清）。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "选官制度"
+      ]
+    },
+    {
+      "content": "隋朝创立了________制度，完善了中央集权。",
+      "options": [],
+      "correct_answer": "科举",
+      "explanation": "隋炀帝时正式设立进士科，标志着科举制的创立。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "隋朝",
+        "科举制"
+      ]
+    },
+    {
+      "content": "唐朝时期，哪位皇帝开创了“贞观之治”？",
+      "options": [
+        "唐高祖",
+        "唐太宗",
+        "唐高宗",
+        "唐玄宗"
+      ],
+      "correct_answer": "B",
+      "explanation": "唐太宗李世民在位期间（627-649年）政治清明，经济复苏，文化繁荣，史称“贞观之治”。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "贞观之治",
+        "唐太宗"
+      ]
+    },
+    {
+      "content": "北宋的都城是________。",
+      "options": [],
+      "correct_answer": "开封",
+      "explanation": "北宋定都东京开封府（今河南开封）。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "北宋",
+        "都城"
+      ]
+    },
+    {
+      "content": "清朝实行“闭关锁国”政策，只开放哪个城市作为对外通商口岸？",
+      "options": [
+        "广州",
+        "上海",
+        "宁波",
+        "泉州"
+      ],
+      "correct_answer": "A",
+      "explanation": "清朝在1757年规定仅广州一地为对外通商口岸，由十三行垄断贸易。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "闭关锁国",
+        "清朝"
+      ]
+    },
+    {
+      "content": "中国近代史的开端是哪个事件？",
+      "options": [
+        "鸦片战争",
+        "甲午战争",
+        "辛亥革命",
+        "五四运动"
+      ],
+      "correct_answer": "A",
+      "explanation": "1840年爆发的鸦片战争是中国近代史的开端，标志着中国开始沦为半殖民地半封建社会。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "鸦片战争",
+        "中国近代史开端"
+      ]
+    },
+    {
+      "content": "《南京条约》中，中国被迫割让了哪个岛屿？",
+      "options": [
+        "台湾岛",
+        "香港岛",
+        "海南岛",
+        "舟山群岛"
+      ],
+      "correct_answer": "B",
+      "explanation": "1842年《南京条约》规定割让香港岛给英国，这是中国近代史上第一个不平等条约。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "南京条约",
+        "香港岛"
+      ]
+    },
+    {
+      "content": "太平天国运动的领导人是谁？",
+      "options": [
+        "洪秀全",
+        "曾国藩",
+        "李鸿章",
+        "左宗棠"
+      ],
+      "correct_answer": "A",
+      "explanation": "洪秀全于1851年发动金田起义，建立太平天国，是近代中国规模最大的农民起义。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "太平天国",
+        "洪秀全"
+      ]
+    },
+    {
+      "content": "第二次鸦片战争期间，英法联军火烧了哪座皇家园林？",
+      "options": [
+        "颐和园",
+        "圆明园",
+        "避暑山庄",
+        "拙政园"
+      ],
+      "correct_answer": "B",
+      "explanation": "1860年，英法联军攻入北京，抢劫并火烧圆明园，这是中国近代史上的耻辱。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "第二次鸦片战争",
+        "圆明园"
+      ]
+    },
+    {
+      "content": "洋务运动的口号是“自强”和“______”。",
+      "options": [],
+      "correct_answer": "求富",
+      "explanation": "洋务运动前期以“自强”为口号创办军事工业，后期以“求富”为口号创办民用工业。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "洋务运动",
+        "自强求富"
+      ]
+    },
+    {
+      "content": "甲午战争中，北洋水师全军覆没的战役是？",
+      "options": [
+        "黄海海战",
+        "威海卫战役",
+        "丰岛海战",
+        "旅顺战役"
+      ],
+      "correct_answer": "B",
+      "explanation": "1895年，日军进攻威海卫，北洋水师提督丁汝昌自杀，北洋舰队全军覆没。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "甲午战争",
+        "北洋水师"
+      ]
+    },
+    {
+      "content": "《马关条约》的签订标志着列强对中国的侵略进入了一个新阶段，即（  ）。",
+      "options": [],
+      "correct_answer": "资本输出",
+      "explanation": "《马关条约》允许日本在华开设工厂，此后列强纷纷效仿，由商品输出转为资本输出。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "马关条约",
+        "资本输出"
+      ]
+    },
+    {
+      "content": "戊戌变法又被称为“百日维新”，其主要代表人物不包括（ ）。",
+      "options": [
+        "康有为",
+        "梁启超",
+        "光绪帝",
+        "慈禧太后"
+      ],
+      "correct_answer": "D",
+      "explanation": "戊戌变法的代表人物是康有为、梁启超，光绪帝支持变法，而慈禧太后是反对变法的顽固派代表。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "戊戌变法",
+        "百日维新"
+      ]
+    },
+    {
+      "content": "五四运动爆发的直接原因是什么？",
+      "options": [],
+      "correct_answer": "巴黎和会上中国外交的失败",
+      "explanation": "1919年巴黎和会将德国在山东的特权转让给日本，引发五四爱国运动。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "五四运动",
+        "巴黎和会"
+      ]
+    },
+    {
+      "content": "古埃及文明发源于哪条河流？",
+      "options": [
+        "尼罗河",
+        "幼发拉底河",
+        "底格里斯河",
+        "印度河"
+      ],
+      "correct_answer": "A",
+      "explanation": "古埃及文明发源于非洲东北部的尼罗河流域，尼罗河定期泛滥带来肥沃土壤，促进了农业发展和文明兴起。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古埃及文明",
+        "尼罗河"
+      ]
+    },
+    {
+      "content": "《汉谟拉比法典》是哪个古代文明的成果？",
+      "options": [
+        "古埃及",
+        "古巴比伦",
+        "古印度",
+        "古希腊"
+      ],
+      "correct_answer": "B",
+      "explanation": "《汉谟拉比法典》是古巴比伦王国第六代国王汉谟拉比颁布的法典，是世界上第一部较为完整的成文法典。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古巴比伦",
+        "汉谟拉比法典"
+      ]
+    },
+    {
+      "content": "古希腊城邦中最著名的两个是雅典和斯巴达。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "雅典和斯巴达是古希腊最具代表性的城邦，雅典以民主政治闻名，斯巴达以军事强国著称。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊城邦",
+        "雅典"
+      ]
+    },
+    {
+      "content": "古罗马共和国的最高行政长官是__________。",
+      "options": [],
+      "correct_answer": "执政官",
+      "explanation": "古罗马共和国设有两名执政官，由公民大会选举产生，任期一年，掌握最高行政权力。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古罗马共和国",
+        "执政官"
+      ]
+    },
+    {
+      "content": "请简述古印度种姓制度中四个等级的名称及主要职业。",
+      "options": [],
+      "correct_answer": "婆罗门（祭祀）、刹帝利（武士、官吏）、吠舍（农民、商人、手工业者）、首陀罗（奴隶、杂役）。",
+      "explanation": "种姓制度将社会分为四个等级：婆罗门掌管宗教祭祀，刹帝利掌握军政大权，吠舍从事生产经商，首陀罗地位最低，从事低贱职业。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古印度",
+        "种姓制度"
+      ]
+    },
+    {
+      "content": "下列哪些属于古代两河流域的文明成就？（多选）",
+      "options": [
+        "楔形文字",
+        "《汉谟拉比法典》",
+        "金字塔",
+        "60进制"
+      ],
+      "correct_answer": "ABD",
+      "explanation": "楔形文字是两河流域苏美尔人创造的，汉谟拉比法典是古巴比伦的，60进制用于时间计算；金字塔是古埃及的。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "两河流域",
+        "楔形文字"
+      ]
+    },
+    {
+      "content": "古罗马帝国分裂为东罗马帝国和西罗马帝国的标志性事件是什么？",
+      "options": [
+        "公元395年狄奥多西一世去世",
+        "公元476年西罗马帝国灭亡",
+        "公元313年米兰敕令",
+        "公元27年屋大维建立元首制"
+      ],
+      "correct_answer": "A",
+      "explanation": "公元395年，罗马皇帝狄奥多西一世去世，将帝国分给两个儿子，从此罗马帝国分裂为东西两部分。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古罗马帝国分裂",
+        "狄奥多西一世"
+      ]
+    },
+    {
+      "content": "古代希腊城邦实行的民主政治是全体公民直接参与的。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "古希腊的民主政治仅限于成年男性公民，妇女、奴隶和外邦人没有政治权利，并非全体公民直接参与。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊民主政治",
+        "公民权利"
+      ]
+    },
+    {
+      "content": "下列属于古代印度文明成就的有（多选）",
+      "options": [
+        "种姓制度",
+        "佛教",
+        "阿拉伯数字",
+        "楔形文字"
+      ],
+      "correct_answer": "ABC",
+      "explanation": "种姓制度源于古印度，佛教产生于古印度，阿拉伯数字实际由古印度人发明，后经阿拉伯人传播；楔形文字是两河流域的。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古印度",
+        "种姓制度"
+      ]
+    },
+    {
+      "content": "古代希腊城邦斯巴达的特点是什么？",
+      "options": [
+        "崇尚民主",
+        "重视文化",
+        "军事强国",
+        "商业发达"
+      ],
+      "correct_answer": "C",
+      "explanation": "斯巴达是古希腊著名的军事城邦，全民皆兵，崇尚武力，军事训练严格。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "斯巴达",
+        "军事强国"
+      ]
+    },
+    {
+      "content": "古埃及人发明了象形文字。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "古埃及人创造了象形文字，是一种用图画表示意思的文字，是世界上最古老的文字之一。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古埃及",
+        "象形文字"
+      ]
+    },
+    {
+      "content": "下列哪些是古希腊文明的成就？（多选）",
+      "options": [
+        "《荷马史诗》",
+        "帕特农神庙",
+        "奥林匹克运动会",
+        "万民法"
+      ],
+      "correct_answer": "ABC",
+      "explanation": "《荷马史诗》是古希腊文学瑰宝，帕特农神庙是雅典卫城建筑代表，奥林匹克运动会起源于古希腊；万民法是古罗马的法律。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊",
+        "荷马史诗"
+      ]
+    },
+    {
+      "content": "秦朝统一全国后，推行郡县制，其中郡的最高行政长官是？",
+      "options": [
+        "郡守",
+        "县令",
+        "丞相",
+        "御史大夫"
+      ],
+      "correct_answer": "A",
+      "explanation": "秦朝在地方实行郡县制，郡的最高长官是郡守，掌管行政；县的长官是县令。丞相和御史大夫是中央官职。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "秦朝",
+        "郡县制"
+      ]
+    },
+    {
+      "content": "汉武帝为加强中央集权，在政治上采纳了谁的建议推行“推恩令”？",
+      "options": [
+        "董仲舒",
+        "主父偃",
+        "卫青",
+        "霍去病"
+      ],
+      "correct_answer": "B",
+      "explanation": "汉武帝采纳主父偃的建议，颁布“推恩令”，规定诸侯王的子弟均可分得土地，从而削弱了诸侯国势力。董仲舒提出“罢黜百家，独尊儒术”；卫青、霍去病是军事将领。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "汉武帝",
+        "推恩令"
+      ]
+    },
+    {
+      "content": "隋朝大运河以（ ）为中心，北达涿郡，南至余杭。",
+      "options": [],
+      "correct_answer": "洛阳",
+      "explanation": "隋炀帝开凿大运河，以洛阳为中心，北至涿郡（今北京），南到余杭（今杭州），全长两千多公里。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "隋朝",
+        "大运河"
+      ]
+    },
+    {
+      "content": "唐朝三省六部制中，负责审核政令的机构是？",
+      "options": [
+        "中书省",
+        "门下省",
+        "尚书省",
+        "吏部"
+      ],
+      "correct_answer": "B",
+      "explanation": "三省六部制中，中书省负责起草政令，门下省负责审核政令，尚书省负责执行政令。吏部是尚书省下属六部之一。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "唐朝",
+        "三省六部制"
+      ]
+    },
+    {
+      "content": "下列哪些属于唐朝对外交往的史实？（多选）",
+      "options": [
+        "鉴真东渡",
+        "玄奘西行",
+        "郑和下西洋",
+        "遣唐使来华"
+      ],
+      "correct_answer": "ABD",
+      "explanation": "鉴真东渡日本、玄奘西行天竺、日本遣唐使来华均属于唐朝对外交往。郑和下西洋发生在明朝。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "唐朝",
+        "对外交往"
+      ]
+    },
+    {
+      "content": "宋朝为加强中央集权，在地方设置了什么官职以分割知州的权力？",
+      "options": [
+        "通判",
+        "转运使",
+        "节度使",
+        "刺史"
+      ],
+      "correct_answer": "A",
+      "explanation": "宋朝在各州设通判，以分知州权力，并监察知州。转运使负责财政，节度使是唐代地方官职，刺史是汉代监察官。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "宋朝",
+        "中央集权"
+      ]
+    },
+    {
+      "content": "元朝实行的地方行政制度是？",
+      "options": [
+        "郡县制",
+        "行省制",
+        "三司制",
+        "藩镇制"
+      ],
+      "correct_answer": "B",
+      "explanation": "元朝在地方实行行省制度，行省之下设路、府、州、县。郡县制是秦朝推行的，三司制是明朝的，藩镇制是唐朝的。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "元朝",
+        "行省制"
+      ]
+    },
+    {
+      "content": "明朝废除丞相制度后，中央政务由哪两个机构处理？",
+      "options": [
+        "六部与内阁",
+        "三司与六部",
+        "军机处与内阁",
+        "中书省与门下省"
+      ],
+      "correct_answer": "A",
+      "explanation": "明朝废除丞相后，由六部直接对皇帝负责，后来设立内阁作为皇帝的顾问机构。三司是地方机构，军机处是清朝设立的，中书省和门下省是唐朝机构。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "明朝",
+        "丞相制度"
+      ]
+    },
+    {
+      "content": "清朝雍正帝时期设立的，标志着君主专制达到顶峰的机构是？",
+      "options": [],
+      "correct_answer": "军机处",
+      "explanation": "清朝雍正帝时设立军机处，军机大臣跪受笔录，军国大事由皇帝裁决，君主专制达到顶峰。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "清朝",
+        "军机处"
+      ]
+    },
+    {
+      "content": "以下哪些是秦朝巩固统一的措施？（多选）",
+      "options": [
+        "统一文字",
+        "统一度量衡",
+        "实行科举制",
+        "修建长城"
+      ],
+      "correct_answer": "ABD",
+      "explanation": "秦朝统一文字为小篆，统一度量衡，修建长城抵御匈奴。科举制始于隋朝。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "秦朝",
+        "巩固统一"
+      ]
+    },
+    {
+      "content": "简要说明汉武帝时期“罢黜百家，独尊儒术”的影响。",
+      "options": [],
+      "correct_answer": "确立了儒家思想的正统地位，使儒家成为封建社会的主流意识形态；促进了教育的发展，但限制了其他思想流派。",
+      "explanation": "汉武帝采纳董仲舒建议，独尊儒术，此后儒家思想成为官方哲学，影响深远。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "汉武帝",
+        "独尊儒术"
+      ]
+    },
+    {
+      "content": "明朝永乐年间，明成祖朱棣派遣谁率领船队下西洋？",
+      "options": [],
+      "correct_answer": "郑和",
+      "explanation": "1405年起，明成祖派郑和七次下西洋，最远到达非洲东海岸和红海沿岸，促进了中外交流。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "明朝",
+        "郑和下西洋"
+      ]
+    },
+    {
+      "content": "中国近代史上第一个不平等条约是《______》",
+      "options": [],
+      "correct_answer": "南京条约",
+      "explanation": "1842年，清政府与英国签订《南京条约》，这是中国近代史上第一个不平等条约，标志着中国开始沦为半殖民地半封建社会。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "不平等条约",
+        "鸦片战争"
+      ]
+    },
+    {
+      "content": "太平天国运动失败的根本原因是？",
+      "options": [
+        "中外反动势力联合绞杀",
+        "农民阶级的局限性",
+        "领导集团内部斗争",
+        "战略失误"
+      ],
+      "correct_answer": "B",
+      "explanation": "太平天国运动失败的根本原因是农民阶级的局限性，他们无法提出科学的革命纲领，无法克服自身弱点。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "太平天国运动"
+      ]
+    },
+    {
+      "content": "洋务运动的口号是“自强”和“求富”。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "洋务运动前期以“自强”为口号，创办军事工业；后期以“求富”为口号，创办民用工业。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "洋务运动"
+      ]
+    },
+    {
+      "content": "甲午中日战争中，北洋舰队全军覆没的战役是？",
+      "options": [
+        "黄海海战",
+        "威海卫战役",
+        "丰岛海战",
+        "辽东战役"
+      ],
+      "correct_answer": "B",
+      "explanation": "1895年初，日军进攻威海卫，北洋舰队腹背受敌，全军覆没。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "甲午中日战争"
+      ]
+    },
+    {
+      "content": "戊戌变法的代表人物不包括？",
+      "options": [
+        "康有为",
+        "梁启超",
+        "李鸿章",
+        "谭嗣同"
+      ],
+      "correct_answer": "C",
+      "explanation": "李鸿章是洋务派代表，不属于维新派。戊戌变法的代表人物有康有为、梁启超、谭嗣同等。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "戊戌变法"
+      ]
+    },
+    {
+      "content": "中国同盟会的政治纲领是“驱除鞑虏，恢复中华，创立民国，平均地权”。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "1905年，中国同盟会在东京成立，其政治纲领为上述十六字，后阐发为三民主义。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "同盟会",
+        "三民主义"
+      ]
+    },
+    {
+      "content": "辛亥革命爆发于哪一年？",
+      "options": [
+        "1911年",
+        "1912年",
+        "1910年",
+        "1913年"
+      ],
+      "correct_answer": "A",
+      "explanation": "1911年10月10日，武昌起义爆发，辛亥革命开始。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "辛亥革命"
+      ]
+    },
+    {
+      "content": "新文化运动的主要阵地是《______》和北京大学。",
+      "options": [],
+      "correct_answer": "新青年",
+      "explanation": "1915年，陈独秀创办《青年杂志》，后改名《新青年》，成为新文化运动的主要阵地。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "新文化运动"
+      ]
+    },
+    {
+      "content": "中国共产党成立于哪一年？",
+      "options": [
+        "1920年",
+        "1921年",
+        "1922年",
+        "1923年"
+      ],
+      "correct_answer": "B",
+      "explanation": "1921年7月，中共一大在上海召开，标志着中国共产党正式成立。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "中国共产党成立"
+      ]
+    },
+    {
+      "content": "长征途中，中国共产党召开了一次具有转折意义的会议，是______。",
+      "options": [],
+      "correct_answer": "遵义会议",
+      "explanation": "1935年，遵义会议确立了毛泽东的正确领导，挽救了党、红军和中国革命，是党的历史上生死攸关的转折点。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "长征",
+        "遵义会议"
+      ]
+    },
+    {
+      "content": "抗日战争全面爆发的标志性事件是？",
+      "options": [
+        "九一八事变",
+        "七七事变",
+        "一二八事变",
+        "华北事变"
+      ],
+      "correct_answer": "B",
+      "explanation": "1937年7月7日，卢沟桥事变（七七事变）爆发，标志着全国性抗日战争的开始。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "抗日战争"
+      ]
+    },
+    {
+      "content": "解放战争时期，三大战役不包括？",
+      "options": [
+        "辽沈战役",
+        "淮海战役",
+        "平津战役",
+        "渡江战役"
+      ],
+      "correct_answer": "D",
+      "explanation": "三大战役是辽沈、淮海、平津战役，渡江战役是三大战役后进行的。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "解放战争"
+      ]
+    },
+    {
+      "content": "《汉谟拉比法典》是哪个古代文明的产物？",
+      "options": [
+        "古埃及",
+        "古巴比伦",
+        "古印度",
+        "古中国"
+      ],
+      "correct_answer": "B",
+      "explanation": "《汉谟拉比法典》是古巴比伦王国国王汉谟拉比颁布的法律汇编，是迄今已知世界上第一部较为完整的成文法典。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古巴比伦",
+        "汉谟拉比法典"
+      ]
+    },
+    {
+      "content": "古希腊的城邦中，以民主政治著称的是雅典。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "雅典在伯里克利执政时期，民主政治达到顶峰，公民大会是最高权力机构。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊",
+        "雅典民主政治"
+      ]
+    },
+    {
+      "content": "罗马帝国分裂为东罗马帝国和西罗马帝国是在哪一年？",
+      "options": [
+        "395年",
+        "476年",
+        "1453年",
+        "410年"
+      ],
+      "correct_answer": "A",
+      "explanation": "公元395年，罗马皇帝狄奥多西一世将帝国分给两个儿子，从此罗马帝国永久分裂为东罗马帝国和西罗马帝国。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "罗马帝国分裂",
+        "395年"
+      ]
+    },
+    {
+      "content": "古代印度的种姓制度中，最高等级是婆罗门，掌管祭祀。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "种姓制度中，婆罗门是祭司贵族，掌握神权，是最高等级。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古代印度",
+        "种姓制度"
+      ]
+    },
+    {
+      "content": "请列举古希腊的两位著名哲学家。",
+      "options": [],
+      "correct_answer": "苏格拉底、柏拉图（或亚里士多德）",
+      "explanation": "古希腊哲学繁荣，苏格拉底、柏拉图和亚里士多德是三位最著名的哲学家。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊哲学",
+        "苏格拉底"
+      ]
+    },
+    {
+      "content": "下列哪些属于古代埃及的成就？（多选）",
+      "options": [
+        "金字塔",
+        "象形文字",
+        "种姓制度",
+        "太阳历"
+      ],
+      "correct_answer": "ABD",
+      "explanation": "金字塔是古埃及法老的陵墓，象形文字是古埃及文字，太阳历是古埃及人制定的历法。种姓制度是古印度的制度。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古埃及文明",
+        "金字塔"
+      ]
+    },
+    {
+      "content": "罗马共和国时期，平民与贵族斗争的结果之一是设立了什么官职来保护平民利益？",
+      "options": [
+        "执政官",
+        "保民官",
+        "元老",
+        "独裁官"
+      ],
+      "correct_answer": "B",
+      "explanation": "保民官是罗马共和国中维护平民利益的官职，有权否决不利于平民的决议。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "罗马共和国",
+        "保民官"
+      ]
+    },
+    {
+      "content": "古代两河流域的文明包括苏美尔文明、阿卡德文明等。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "两河流域（美索不达米亚）先后出现了苏美尔、阿卡德、巴比伦等文明。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "两河流域文明",
+        "苏美尔"
+      ]
+    },
+    {
+      "content": "古代希腊城邦中，哪个城邦以军事训练和强大的陆军著称？",
+      "options": [
+        "雅典",
+        "斯巴达",
+        "科林斯",
+        "底比斯"
+      ],
+      "correct_answer": "B",
+      "explanation": "斯巴达崇尚武力，实行严格的军事训练，拥有强大的陆军。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊城邦",
+        "斯巴达"
+      ]
+    },
+    {
+      "content": "请简述罗马帝国衰亡的原因。",
+      "options": [],
+      "correct_answer": "罗马帝国衰亡的原因包括：政治腐败、经济衰退、军事混乱、蛮族入侵等。",
+      "explanation": "罗马帝国衰亡是多种因素共同作用的结果，如内部政治腐败、经济危机、军队雇佣化，以及外部日耳曼人等蛮族的入侵。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "罗马帝国衰亡",
+        "蛮族入侵"
+      ]
+    },
+    {
+      "content": "下列哪些是古希腊的著名建筑？",
+      "options": [
+        "帕特农神庙",
+        "万神殿",
+        "圆形竞技场",
+        "圣索菲亚大教堂"
+      ],
+      "correct_answer": "A",
+      "explanation": "帕特农神庙是古希腊雅典卫城的主体建筑，是古希腊建筑的杰出代表。万神殿、圆形竞技场是古罗马建筑，圣索菲亚大教堂是拜占庭建筑。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊建筑",
+        "帕特农神庙"
+      ]
+    },
+    {
+      "content": "古代埃及法老被认为是神的化身。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "古埃及的法老被视为神在人间的代表，拥有至高无上的权力。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古埃及法老",
+        "神权"
+      ]
+    },
+    {
+      "content": "罗马帝国时期，基督教成为国教是在哪位皇帝统治下？",
+      "options": [
+        "屋大维",
+        "尼禄",
+        "君士坦丁",
+        "狄奥多西"
+      ],
+      "correct_answer": "D",
+      "explanation": "公元4世纪末，罗马皇帝狄奥多西一世宣布基督教为国教。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "罗马帝国",
+        "基督教国教化"
+      ]
+    },
+    {
+      "content": "秦始皇统一六国后，推行了哪一项重要的文字统一政策？",
+      "options": [
+        "推行隶书",
+        "统一为小篆",
+        "改用楷书",
+        "废除甲骨文"
+      ],
+      "correct_answer": "B",
+      "explanation": "秦始皇统一六国后，采纳李斯的建议，以小篆作为标准字体，废除六国文字，促进了文化的统一。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "秦朝统一",
+        "文字统一"
+      ]
+    },
+    {
+      "content": "汉武帝时期，为加强中央集权，采纳了谁的建议颁布了“推恩令”？",
+      "options": [
+        "董仲舒",
+        "主父偃",
+        "卫青",
+        "张骞"
+      ],
+      "correct_answer": "B",
+      "explanation": "汉武帝采纳主父偃的建议，颁布推恩令，规定诸侯王的封国由嫡长子继承外，其他子弟也可分得土地，从而削弱了诸侯国势力。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "汉武帝",
+        "推恩令"
+      ]
+    },
+    {
+      "content": "北魏孝文帝改革中，将都城从平城迁往了哪里？",
+      "options": [
+        "长安",
+        "洛阳",
+        "建康",
+        "邺城"
+      ],
+      "correct_answer": "B",
+      "explanation": "北魏孝文帝为学习汉族先进文化，加强对中原的统治，于494年将都城从平城迁至洛阳。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "北魏孝文帝改革",
+        "迁都洛阳"
+      ]
+    },
+    {
+      "content": "科举制正式创立于哪个朝代？",
+      "options": [
+        "汉朝",
+        "隋朝",
+        "唐朝",
+        "宋朝"
+      ],
+      "correct_answer": "B",
+      "explanation": "隋炀帝时期，科举制正式创立，通过分科考试选拔官员，打破了门阀世族的垄断。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "科举制",
+        "隋朝"
+      ]
+    },
+    {
+      "content": "以下哪些是秦始皇巩固统一的措施？（多选）",
+      "options": [
+        "统一文字",
+        "统一度量衡",
+        "推行郡县制",
+        "焚书坑儒"
+      ],
+      "correct_answer": "ABC",
+      "explanation": "秦始皇统一六国后，统一文字、度量衡和货币，推行郡县制，这些措施巩固了统一。焚书坑儒是思想控制，但不属于巩固统一的措施。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "秦朝",
+        "巩固统一"
+      ]
+    },
+    {
+      "content": "下列哪些属于汉武帝巩固大一统的措施？（多选）",
+      "options": [
+        "颁布推恩令",
+        "罢黜百家，独尊儒术",
+        "派张骞出使西域",
+        "实行科举制"
+      ],
+      "correct_answer": "ABC",
+      "explanation": "汉武帝通过推恩令削弱诸侯国，独尊儒术统一思想，派张骞出使西域加强对外交流。科举制是隋朝创立的。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "汉武帝",
+        "大一统"
+      ]
+    },
+    {
+      "content": "隋朝大运河以洛阳为中心，北达涿郡，南至余杭。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "隋炀帝开凿大运河，以洛阳为中心，北达涿郡（今北京），南至余杭（今杭州），全长两千多公里。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "隋朝",
+        "大运河"
+      ]
+    },
+    {
+      "content": "唐朝三省六部制中，三省指中书省、门下省和尚书省，其中中书省负责执行政令。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "唐朝三省六部制中，中书省负责草拟政令，门下省负责审核政令，尚书省负责执行政令。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "唐朝",
+        "三省六部制"
+      ]
+    },
+    {
+      "content": "清朝前期，为加强对西藏的管辖，设置了什么机构？",
+      "options": [],
+      "correct_answer": "驻藏大臣",
+      "explanation": "清朝雍正时期，设置驻藏大臣，代表中央与达赖、班禅共同管理西藏事务，加强了对西藏的管辖。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "清朝",
+        "西藏"
+      ]
+    },
+    {
+      "content": "鸦片战争后，中国被迫与英国签订了《南京条约》，该条约中规定开放的五处通商口岸中不包括下列哪个城市？",
+      "options": [
+        "广州",
+        "厦门",
+        "福州",
+        "宁波"
+      ],
+      "correct_answer": "D",
+      "explanation": "《南京条约》规定开放广州、厦门、福州、宁波、上海五处为通商口岸，不包括宁波。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "鸦片战争",
+        "南京条约"
+      ]
+    },
+    {
+      "content": "太平天国运动失败的根本原因是农民阶级的局限性。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "太平天国运动由于农民阶级的局限性，无法提出科学的革命纲领，无法克服领导集团的腐败，最终导致失败。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "太平天国运动"
+      ]
+    },
+    {
+      "content": "洋务运动时期，洋务派创办的军事工业中，由李鸿章创办的是（ ）。",
+      "options": [
+        "安庆内军械所",
+        "江南制造总局",
+        "福州船政局",
+        "天津机器局"
+      ],
+      "correct_answer": "B",
+      "explanation": "江南制造总局是李鸿章在上海创办的规模最大的军事工业。安庆内军械所是曾国藩创办，福州船政局是左宗棠创办，天津机器局是崇厚创办。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "洋务运动",
+        "军事工业"
+      ]
+    },
+    {
+      "content": "戊戌变法的性质是（ ）。",
+      "options": [
+        "农民阶级的反封建斗争",
+        "地主阶级的自救运动",
+        "资产阶级的改良运动",
+        "资产阶级的革命运动"
+      ],
+      "correct_answer": "C",
+      "explanation": "戊戌变法是资产阶级维新派发起的自上而下的改良运动，试图通过改革实现君主立宪，发展资本主义。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "戊戌变法"
+      ]
+    },
+    {
+      "content": "《辛丑条约》的签订标志着中国完全沦为半殖民地半封建社会。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "《辛丑条约》是八国联军侵华后签订的不平等条约，巨额赔款和主权丧失使中国完全沦为半殖民地半封建社会。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "辛丑条约"
+      ]
+    },
+    {
+      "content": "辛亥革命的历史意义包括（ ）。",
+      "options": [
+        "推翻了清朝统治，结束了封建帝制",
+        "建立了中华民国，颁布了《临时约法》",
+        "使民主共和观念深入人心",
+        "改变了中国半殖民地半封建的社会性质"
+      ],
+      "correct_answer": "ABC",
+      "explanation": "辛亥革命推翻了清朝统治，结束了两千多年的封建帝制，建立了中华民国，颁布了《临时约法》，使民主共和观念深入人心。但并未改变中国半殖民地半封建的社会性质。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "辛亥革命"
+      ]
+    },
+    {
+      "content": "新文化运动中，提出“文学革命”口号的是（ ）。",
+      "options": [
+        "陈独秀",
+        "鲁迅",
+        "胡适",
+        "李大钊"
+      ],
+      "correct_answer": "C",
+      "explanation": "胡适在《新青年》上发表《文学改良刍议》，主张以白话文代替文言文，提出“文学革命”的口号。陈独秀则提出“文学革命论”。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "新文化运动"
+      ]
+    },
+    {
+      "content": "五四运动是一次彻底的反帝反封建的爱国运动，标志着中国新民主主义革命的开端。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "五四运动以彻底反帝反封建的姿态，工人阶级开始登上政治舞台，是新民主主义革命的开端。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "五四运动"
+      ]
+    },
+    {
+      "content": "中国共产党的成立时间、地点和主要代表人物分别是（ ）。",
+      "options": [
+        "1921年7月，上海，毛泽东、董必武等",
+        "1921年7月，北京，陈独秀、李大钊等",
+        "1921年7月，上海，陈独秀、李大钊等",
+        "1921年7月，嘉兴南湖，毛泽东、董必武等"
+      ],
+      "correct_answer": "A",
+      "explanation": "中共一大1921年7月在上海召开，后转移到嘉兴南湖，代表有毛泽东、董必武等13人，陈独秀和李大钊因故未参加。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "中国共产党的成立"
+      ]
+    },
+    {
+      "content": "国民革命运动失败的主要原因是（ ）。",
+      "options": [
+        "帝国主义和封建势力的联合力量过于强大",
+        "国民党右派叛变革命",
+        "中国共产党缺乏经验，犯了右倾机会主义错误",
+        "革命统一战线内部出现分化"
+      ],
+      "correct_answer": "ABCD",
+      "explanation": "国民革命失败有多方面原因：中外反动势力强大；国民党右派叛变；中共幼年，犯右倾错误；统一战线内部矛盾。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "国民革命运动"
+      ]
+    },
+    {
+      "content": "红军长征途中，遵义会议确立了（ ）的领导地位。",
+      "options": [
+        "毛泽东",
+        "周恩来",
+        "朱德",
+        "张闻天"
+      ],
+      "correct_answer": "A",
+      "explanation": "遵义会议纠正了博古等人的军事错误，事实上确立了毛泽东在红军和党中央的领导地位。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "遵义会议",
+        "红军长征"
+      ]
+    },
+    {
+      "content": "在古埃及，哪位法老以其大规模的建筑计划，包括修建吉萨大金字塔而闻名？",
+      "options": [
+        "胡夫",
+        "图坦卡蒙",
+        "拉美西斯二世",
+        "克利奥帕特拉七世"
+      ],
+      "correct_answer": "A",
+      "explanation": "胡夫法老（又称基奥普斯）是古埃及第四王朝的法老，他下令建造了吉萨大金字塔，这是古代世界七大奇迹之一。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古埃及文明",
+        "金字塔"
+      ]
+    },
+    {
+      "content": "雅典民主政治中，最高权力机构是公民大会，所有成年男性公民均可参加。请问：在伯里克利时代，公民大会通常多久召开一次？",
+      "options": [
+        "每年一次",
+        "每月一次",
+        "每十天一次",
+        "每天一次"
+      ],
+      "correct_answer": "C",
+      "explanation": "伯里克利时代，雅典公民大会每十天召开一次，讨论并决定国家大事，体现了直接民主的特点。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊民主",
+        "伯里克利"
+      ]
+    },
+    {
+      "content": "罗马共和国时期，两位执政官由百人团会议选举产生，任期一年。请问：以下哪项是执政官的主要职责？",
+      "options": [
+        "主持元老院会议",
+        "担任最高法官",
+        "指挥军队",
+        "管理财政"
+      ],
+      "correct_answer": "C",
+      "explanation": "罗马执政官的主要职责是统帅军队，同时拥有行政和司法权，但军事指挥是其核心职能。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "罗马共和国",
+        "政治制度"
+      ]
+    },
+    {
+      "content": "古代印度种姓制度中，婆罗门的主要职责是祭祀和教育，那么刹帝利的主要职责是什么？",
+      "options": [
+        "农耕和经商",
+        "从事手工业",
+        "担任祭司",
+        "统治和军事"
+      ],
+      "correct_answer": "D",
+      "explanation": "刹帝利是种姓制度的第二等级，负责军事和统治，包括国王、武士和贵族。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古印度种姓制度"
+      ]
+    },
+    {
+      "content": "佛教起源于古印度，其创始人释迦牟尼原为迦毗罗卫国的王子。请问：释迦牟尼出家前叫什么名字？",
+      "options": [],
+      "correct_answer": "乔达摩·悉达多",
+      "explanation": "释迦牟尼原名乔达摩·悉达多，是古印度迦毗罗卫国净饭王的太子，后出家修行，创立佛教。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "佛教起源"
+      ]
+    },
+    {
+      "content": "古代两河流域的楔形文字是苏美尔人发明的，后来被阿卡德人、巴比伦人沿用。请问：楔形文字通常书写在什么材料上？",
+      "options": [],
+      "correct_answer": "泥板",
+      "explanation": "楔形文字用削尖的芦苇杆或木棒在软泥板上刻写，然后晒干或烘干，泥板成为主要的书写材料。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "两河流域文明",
+        "楔形文字"
+      ]
+    },
+    {
+      "content": "罗马帝国在西罗马帝国灭亡后，东罗马帝国继续存在了近千年，史称拜占庭帝国。请问：拜占庭帝国的首都是君士坦丁堡，它最初是由哪位罗马皇帝建立的？",
+      "options": [],
+      "correct_answer": "君士坦丁大帝",
+      "explanation": "君士坦丁大帝于公元330年将罗马帝国首都迁至希腊古城拜占庭，并改名为君士坦丁堡，成为东罗马帝国的中心。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "拜占庭帝国"
+      ]
+    },
+    {
+      "content": "公元前6世纪，波斯帝国崛起，居鲁士大帝建立了阿契美尼德王朝。请问：波斯帝国在鼎盛时期，其疆域不包括以下哪个地区？",
+      "options": [
+        "埃及",
+        "印度河流域",
+        "希腊半岛",
+        "中亚"
+      ],
+      "correct_answer": "C",
+      "explanation": "波斯帝国鼎盛时疆域包括埃及、印度河流域、中亚和小亚细亚等地，但希腊半岛并未被征服，尽管波斯曾试图入侵希腊。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "波斯帝国"
+      ]
+    },
+    {
+      "content": "古代希腊城邦中，斯巴达以其强大的陆军闻名，而雅典则以海军和民主政治著称。请问：伯罗奔尼撒战争的主要交战双方是哪两个城邦？",
+      "options": [
+        "雅典和斯巴达",
+        "雅典和科林斯",
+        "斯巴达和底比斯",
+        "雅典和马其顿"
+      ],
+      "correct_answer": "A",
+      "explanation": "伯罗奔尼撒战争（公元前431-404年）是雅典为首的提洛同盟与斯巴达为首的伯罗奔尼撒同盟之间的战争，最终斯巴达获胜。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊城邦",
+        "伯罗奔尼撒战争"
+      ]
+    },
+    {
+      "content": "阿拉伯帝国在8世纪中期达到鼎盛，地跨亚非欧三洲。请问：阿拉伯帝国的政治中心最初在麦地那，后来迁至哪里？",
+      "options": [
+        "麦加",
+        "大马士革",
+        "巴格达",
+        "开罗"
+      ],
+      "correct_answer": "C",
+      "explanation": "阿拔斯王朝建立后，于762年将首都迁至巴格达，使这里成为阿拉伯帝国的政治、经济和文化中心。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "阿拉伯帝国"
+      ]
+    },
+    {
+      "content": "中世纪西欧的封建制度中，封君与封臣之间通过“臣服礼”和“授职礼”确立关系。请问：封臣对封君的主要义务包括提供军事服务和什么？",
+      "options": [
+        "缴纳地租",
+        "提供司法审判",
+        "进贡财物",
+        "耕种土地"
+      ],
+      "correct_answer": "C",
+      "explanation": "封臣需为封君提供军事服务，并在特定情况下（如封君被俘需赎金）提供经济援助，即进贡财物。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "西欧封建制度"
+      ]
+    },
+    {
+      "content": "亚历山大东征促进了东西方文化的交流，他建立了许多以自己名字命名的城市。请问：最著名的亚历山大城位于今天的哪个国家？",
+      "options": [
+        "希腊",
+        "埃及",
+        "土耳其",
+        "叙利亚"
+      ],
+      "correct_answer": "B",
+      "explanation": "最著名的亚历山大城是埃及的亚历山大港，由亚历山大大帝于公元前331年建立，成为地中海东部重要的文化中心。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "亚历山大帝国"
+      ]
+    },
+    {
+      "content": "秦统一六国是在哪一年？",
+      "options": [
+        "公元前230年",
+        "公元前221年",
+        "公元前210年",
+        "公元前206年"
+      ],
+      "correct_answer": "B",
+      "explanation": "公元前221年，秦王嬴政灭掉东方六国，建立了中国历史上第一个统一的中央集权国家——秦朝。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "秦朝"
+      ]
+    },
+    {
+      "content": "以下哪位人物是唐朝的开国皇帝？",
+      "options": [
+        "李世民",
+        "李渊",
+        "武则天",
+        "李治"
+      ],
+      "correct_answer": "B",
+      "explanation": "李渊是唐朝的开国皇帝，他在隋末农民起义中起兵，最终建立唐朝。李世民是唐太宗，是李渊的儿子。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "唐朝"
+      ]
+    },
+    {
+      "content": "下列哪些属于汉武帝巩固大一统的措施？",
+      "options": [
+        "颁布推恩令",
+        "罢黜百家，独尊儒术",
+        "北击匈奴",
+        "开通大运河"
+      ],
+      "correct_answer": "ABC",
+      "explanation": "汉武帝颁布推恩令削弱诸侯国势力，罢黜百家独尊儒术统一思想，北击匈奴开拓疆域。开通大运河是隋朝的事。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "汉朝"
+      ]
+    },
+    {
+      "content": "东汉末年至西晋初年，北方少数民族内迁，其中内迁的匈奴、鲜卑、羯、氐、羌被称为________。",
+      "options": [],
+      "correct_answer": "五胡",
+      "explanation": "这一时期，匈奴、鲜卑、羯、氐、羌五个少数民族大规模内迁，史称“五胡内迁”。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "魏晋南北朝"
+      ]
+    },
+    {
+      "content": "简述隋朝大运河的作用。",
+      "options": [],
+      "correct_answer": "加强了南北交通，促进了南北经济文化交流，有利于巩固国家统一。",
+      "explanation": "大运河连接了南北水系，成为南北交通的大动脉，促进了沿岸城市的发展，对后世影响深远。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "隋朝"
+      ]
+    },
+    {
+      "content": "列举明朝加强中央集权的两项措施。",
+      "options": [],
+      "correct_answer": "废除丞相制度；设立锦衣卫等特务机构。",
+      "explanation": "明朝朱元璋废除丞相，权分六部；设立锦衣卫，监视臣民，加强皇权。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "明朝"
+      ]
+    },
+    {
+      "content": "中国近代史上第一个不平等条约是什么？",
+      "options": [
+        "《南京条约》",
+        "《北京条约》",
+        "《马关条约》",
+        "《辛丑条约》"
+      ],
+      "correct_answer": "A",
+      "explanation": "1842年，清政府与英国签订《南京条约》，这是中国近代史上第一个不平等条约。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "不平等条约"
+      ]
+    },
+    {
+      "content": "太平天国运动的领导人是（ ）。",
+      "options": [
+        "曾国藩",
+        "洪秀全",
+        "李鸿章",
+        "左宗棠"
+      ],
+      "correct_answer": "B",
+      "explanation": "洪秀全领导了太平天国运动，1851年发动金田起义。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "太平天国"
+      ]
+    },
+    {
+      "content": "中国近代史上，______（人物）领导了虎门销烟。",
+      "options": [],
+      "correct_answer": "林则徐",
+      "explanation": "林则徐在1839年6月领导了虎门销烟，显示了中国人民反抗外来侵略的决心。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "虎门销烟"
+      ]
+    },
+    {
+      "content": "简述鸦片战争对中国社会的影响。",
+      "options": [],
+      "correct_answer": "鸦片战争后，中国被迫开放通商口岸，割让香港岛，赔款2100万银元，开始沦为半殖民地半封建社会。",
+      "explanation": "鸦片战争是中国近代史的开端，社会性质发生根本变化。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "鸦片战争"
+      ]
+    },
+    {
+      "content": "列举洋务运动的主要代表人物及其创办的近代企业（至少两个）。",
+      "options": [],
+      "correct_answer": "李鸿章创办江南制造总局，张之洞创办汉阳铁厂。",
+      "explanation": "洋务运动以“自强”“求富”为口号，兴办了一批近代军事和民用工业。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "洋务运动"
+      ]
+    },
+    {
+      "content": "古埃及法老为自己修建的巨大陵墓，被称为古代世界七大奇迹之一的是？",
+      "options": [
+        "A. 宙斯神像",
+        "B. 空中花园",
+        "C. 金字塔",
+        "D. 太阳神巨像"
+      ],
+      "correct_answer": "C",
+      "explanation": "金字塔是古埃及法老的陵墓，其中胡夫金字塔是古代世界七大奇迹之一。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古埃及"
+      ]
+    },
+    {
+      "content": "古代印度社会等级制度中，最高等级是？",
+      "options": [
+        "A. 吠舍",
+        "B. 刹帝利",
+        "C. 婆罗门",
+        "D. 首陀罗"
+      ],
+      "correct_answer": "C",
+      "explanation": "古印度种姓制度中，婆罗门是祭司贵族，掌握神权，地位最高。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古印度"
+      ]
+    },
+    {
+      "content": "古希腊城邦中，以民主政治闻名的是哪个城邦？",
+      "options": [],
+      "correct_answer": "雅典",
+      "explanation": "雅典实行民主政治，公民大会是最高权力机构。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊"
+      ]
+    },
+    {
+      "content": "简述罗马共和国时期的政治机构及其作用。",
+      "options": [],
+      "correct_answer": "罗马共和国时期的主要政治机构有执政官、元老院和公民大会。执政官是最高行政长官，元老院掌握实权，公民大会是立法机构。",
+      "explanation": "执政官由选举产生，负责行政；元老院由贵族组成，决策重大事务；公民大会选举官员和表决法律。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古罗马"
+      ]
+    },
+    {
+      "content": "列举两项古代两河流域的文明成就。",
+      "options": [],
+      "correct_answer": "楔形文字、汉谟拉比法典（或空中花园、太阴历等）。",
+      "explanation": "两河流域文明创造了楔形文字，汉谟拉比法典是世界上第一部较为完备的成文法典。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "两河流域"
+      ]
+    },
+    {
+      "content": "唐朝时期，被称为“天可汗”的皇帝是哪一位？",
+      "options": [
+        "A. 唐高祖",
+        "B. 唐太宗",
+        "C. 唐高宗",
+        "D. 唐玄宗"
+      ],
+      "correct_answer": "B",
+      "explanation": "唐太宗李世民因其开明的民族政策和强大的国力，被西北各族尊称为“天可汗”。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "唐朝"
+      ]
+    },
+    {
+      "content": "简述秦始皇为巩固统一采取的主要措施。",
+      "options": [],
+      "correct_answer": "统一文字、货币、度量衡；推行郡县制；修筑长城；统一车轨等。",
+      "explanation": "秦始皇通过一系列中央集权措施，如统一文字、货币、度量衡，推行郡县制，修筑长城等，巩固了国家统一。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "秦朝"
+      ]
+    },
+    {
+      "content": "宋朝时期，商业繁荣，出现了世界上最早的纸币，请问这种纸币的名称是什么？",
+      "options": [],
+      "correct_answer": "交子",
+      "explanation": "交子最初由四川商人发行，后由官府统一发行，是世界上最早的纸币，反映了宋朝商业的繁荣。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "宋朝"
+      ]
+    },
+    {
+      "content": "明朝郑和下西洋的主要目的是什么？",
+      "options": [],
+      "correct_answer": "宣扬国威，加强与海外各国的联系，进行贸易往来。",
+      "explanation": "郑和七次下西洋，目的是展示明朝的强大，建立朝贡体系，促进文化交流和贸易。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "明朝"
+      ]
+    },
+    {
+      "content": "中国近代史上，第一个不平等条约是哪个？",
+      "options": [
+        "《南京条约》",
+        "《北京条约》",
+        "《马关条约》",
+        "《辛丑条约》"
+      ],
+      "correct_answer": "A",
+      "explanation": "1842年签订的《南京条约》是清政府与英国签订的第一个不平等条约，标志着中国开始沦为半殖民地半封建社会。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "鸦片战争"
+      ]
+    },
+    {
+      "content": "简述洋务运动的主要内容和历史意义。",
+      "options": [],
+      "correct_answer": "洋务运动的主要内容是引进西方先进技术，创办近代军事工业和民用工业，建立新式海军，兴办新式学堂。其历史意义是客观上促进了中国民族资本主义的产生和发展，是中国近代化的开端，但未能使中国富强。",
+      "explanation": "洋务运动是19世纪60-90年代清政府进行的自救运动，以“自强”“求富”为口号，虽然失败，但推动了中国近代化进程。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "洋务运动"
+      ]
+    },
+    {
+      "content": "请列举戊戌变法的主要代表人物及其主张。",
+      "options": [],
+      "correct_answer": "主要代表人物有康有为、梁启超、谭嗣同等。他们主张学习西方政治制度，实行君主立宪，提倡变法维新，鼓励私人兴办工矿企业，废除八股取士等。",
+      "explanation": "戊戌变法是1898年资产阶级维新派发起的改良运动，旨在通过自上而下的改革实现君主立宪，最终被慈禧太后镇压。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "戊戌变法"
+      ]
+    },
+    {
+      "content": "古代雅典民主政治达到顶峰是在哪位执政官执政时期？",
+      "options": [
+        "A. 梭伦",
+        "B. 克里斯提尼",
+        "C. 伯里克利",
+        "D. 亚历山大"
+      ],
+      "correct_answer": "C",
+      "explanation": "伯里克利执政时期（公元前5世纪）是雅典民主政治的黄金时代，公民大会、五百人会议和陪审法庭等机构权力空前扩大。梭伦改革奠定基础，克里斯提尼确立民主制度，亚历山大是马其顿国王。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊文明"
+      ]
+    },
+    {
+      "content": "简述罗马共和国时期元老院的主要职能。",
+      "options": [],
+      "correct_answer": "元老院是罗马共和国最高权力机构，负责外交、财政、军事等重大决策，并监督执政官行动。",
+      "explanation": "元老院由贵族组成，拥有立法建议权、行政监督权和外交决策权，是共和国政治核心。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古罗马文明"
+      ]
+    },
+    {
+      "content": "佛教创立于哪个古代国家？请列举其创始人。",
+      "options": [],
+      "correct_answer": "古代印度；释迦牟尼（乔达摩·悉达多）",
+      "explanation": "佛教起源于公元前6世纪的古印度，创始人释迦牟尼原为古印度迦毗罗卫国太子，后出家修行创立佛教。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古代印度文明"
+      ]
+    },
+    {
+      "content": "汉武帝时期，为巩固统一、加强中央集权，在经济上采取的重要措施是？",
+      "options": [
+        "推行均田制",
+        "实行盐铁官营",
+        "颁布推恩令",
+        "实行两税法"
+      ],
+      "correct_answer": "B",
+      "explanation": "汉武帝在经济上实行盐铁官营，由国家垄断盐铁经营，增加财政收入，抑制富商大贾势力。均田制是北魏至唐前期实行的土地制度；推恩令是政治措施；两税法始于唐德宗时期。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "秦汉时期"
+      ]
+    },
+    {
+      "content": "北魏孝文帝改革中，迁都洛阳的主要目的是？",
+      "options": [
+        "镇压农民起义",
+        "便于学习汉族先进文化",
+        "消灭东晋政权",
+        "抵御北方柔然"
+      ],
+      "correct_answer": "B",
+      "explanation": "孝文帝迁都洛阳是为了便于全面推行汉化改革，学习汉族先进文化，加强北魏对中原地区的统治。其他选项并非迁都的主要原因。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "魏晋南北朝"
+      ]
+    },
+    {
+      "content": "唐朝时期，科举制度中常设的考试科目有哪些？（至少写出两个）",
+      "options": [],
+      "correct_answer": "进士科、明经科",
+      "explanation": "唐朝科举考试科目众多，常设的有进士科和明经科，其中进士科尤其受重视。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "隋唐时期"
+      ]
+    },
+    {
+      "content": "简述宋朝加强中央集权的措施及其影响。",
+      "options": [],
+      "correct_answer": "措施：收精兵（禁军由中央直接管辖，更戍法）、削实权（削弱地方节度使、州郡长官由文臣担任，设通判监督）、制钱谷（地方财赋除必要开支外运往京师）。影响：有效加强了中央集权，但也导致官僚机构臃肿、军队战斗力下降、财政负担加重，形成积贫积弱局面。",
+      "explanation": "宋朝通过收精兵、削实权、制钱谷等措施强化中央集权，但过度集权也带来负面影响。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "宋元时期"
+      ]
+    },
+    {
+      "content": "明朝内阁制度与清朝军机处在职能上有什么主要区别？",
+      "options": [],
+      "correct_answer": "明朝内阁是皇帝的内侍机构，拥有票拟权，但决策权在皇帝；清朝军机处是皇帝处理军国大事的秘书机构，军机大臣跪受笔录，军国大事由皇帝裁决。内阁权力相对较大，军机处完全听命于皇帝，君主专制达到顶峰。",
+      "explanation": "内阁和军机处都是辅助皇帝处理政务的机构，但内阁有票拟权，军机处则完全不具备决策权，体现了君主专制的强化。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国古代史",
+        "明清时期"
+      ]
+    },
+    {
+      "content": "20世纪30年代，日本帝国主义为侵占中国华北而制造了一系列事端，其中标志着中日民族矛盾上升为中国社会主要矛盾的事件是？",
+      "options": [
+        "九一八事变",
+        "华北事变",
+        "七七事变",
+        "一二八事变"
+      ],
+      "correct_answer": "C",
+      "explanation": "1937年七七事变（卢沟桥事变）是日本全面侵华战争的开始，也是中国全民族抗战的起点，标志着中日民族矛盾成为中国社会的主要矛盾。九一八事变（1931年）是局部侵华，华北事变（1935年）是进一步蚕食，但均未达到全面战争阶段。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "抗日战争"
+      ]
+    },
+    {
+      "content": "太平天国运动中，洪秀全创立了“拜上帝会”，其理论来源主要是？",
+      "options": [
+        "儒家思想与佛教教义",
+        "西方基督教教义与中国传统大同思想",
+        "道教与法家思想",
+        "伊斯兰教与墨家思想"
+      ],
+      "correct_answer": "B",
+      "explanation": "洪秀全利用基督教教义中的平等观念，结合中国儒家的大同思想，创立了拜上帝会，作为发动起义的理论基础。其他选项均不准确。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "太平天国运动"
+      ]
+    },
+    {
+      "content": "1842年，清政府被迫签订了中国近代史上第一个不平等条约，该条约的名称是____。",
+      "options": [],
+      "correct_answer": "南京条约",
+      "explanation": "1842年8月，清政府与英国签订《南京条约》，这是中国近代史上第一个不平等条约，标志着中国开始沦为半殖民地半封建社会。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "鸦片战争"
+      ]
+    },
+    {
+      "content": "简述辛亥革命的历史意义。",
+      "options": [],
+      "correct_answer": "辛亥革命推翻了清王朝统治，结束了两千多年的封建帝制，建立了中华民国，使民主共和观念深入人心。它推动了民族资本主义的发展，促进了社会习俗的变革。但未能改变中国半殖民地半封建的社会性质，革命果实被袁世凯窃取。",
+      "explanation": "辛亥革命是中国近代史上一次伟大的资产阶级民主革命，具有深远历史意义。答案需涵盖政治、经济、思想等方面，并指出其局限性。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "辛亥革命"
+      ]
+    },
+    {
+      "content": "请列举新文化运动的主要代表人物及其核心主张。",
+      "options": [],
+      "correct_answer": "陈独秀：提倡民主与科学，反对封建专制和迷信；李大钊：宣传马克思主义，推动新文化运动向社会主义方向发展；鲁迅：通过文学作品批判封建礼教，代表作《狂人日记》；胡适：提倡白话文，推动文学革命。",
+      "explanation": "新文化运动是1915年兴起的思想解放运动，主要代表人物有陈独秀、李大钊、鲁迅、胡适等。核心主张包括民主与科学、文学革命、批判封建礼教等。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "中国近代史",
+        "新文化运动"
+      ]
+    },
+    {
+      "content": "罗马帝国分裂后，西罗马帝国灭亡的直接原因是什么？",
+      "options": [
+        "A. 匈奴人的入侵",
+        "B. 内部奴隶起义",
+        "C. 日耳曼人的入侵",
+        "D. 经济崩溃"
+      ],
+      "correct_answer": "C",
+      "explanation": "西罗马帝国灭亡的直接原因是日耳曼人的入侵，特别是西哥特人和汪达尔人等部落的进攻，导致476年罗慕路斯·奥古斯都被废黜。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "罗马帝国"
+      ]
+    },
+    {
+      "content": "简述古希腊城邦斯巴达和雅典在政治体制上的主要区别。",
+      "options": [],
+      "correct_answer": "斯巴达是寡头政治，由两位国王和长老会议统治，强调军事和集体主义；雅典是民主政治，公民大会拥有最高权力，强调个人自由和民主参与。",
+      "explanation": "斯巴达实行贵族寡头制，公民缺乏政治权利；雅典则逐步发展为直接民主制，成年男性公民可参与政治决策。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古希腊文明"
+      ]
+    },
+    {
+      "content": "分析亚历山大东征对东西方文化交流的影响。",
+      "options": [],
+      "correct_answer": "亚历山大东征促进了希腊文化与东方文化的融合，形成了希腊化文明，如建筑、艺术、哲学和科学在东方传播，同时东方文化也影响了西方。",
+      "explanation": "亚历山大帝国建立后，希腊移民带来希腊文化，与波斯、埃及等文化交融，产生了新的文化形态，如亚历山大城的学术中心。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "亚历山大帝国"
+      ]
+    },
+    {
+      "content": "解释古代印度种姓制度的基本内容及其对社会的长期影响。",
+      "options": [],
+      "correct_answer": "种姓制度分为婆罗门（祭司）、刹帝利（武士）、吠舍（农民商人）、首陀罗（奴仆）和贱民。它固化了社会等级，导致不平等，阻碍社会流动，并影响了印度文化的宗教和社会结构。",
+      "explanation": "种姓制度以宗教和法律形式固定等级，禁止通婚和职业变更，长期造成社会分裂和歧视。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "世界古代史",
+        "古印度文明"
+      ]
+    }
+  ]
+}

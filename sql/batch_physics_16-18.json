@@ -1,0 +1,1212 @@
+[
+  {
+    "id": "ph_001",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "According to Newton's First Law, an object will remain at rest or in uniform motion unless acted upon by a(n) _____.",
+    "options": [
+      "external force",
+      "internal force",
+      "gravitational force only",
+      "frictional force only"
+    ],
+    "answer": "A",
+    "explanation": "Newton's First Law states that an object maintains its state of motion unless acted upon by an external net force."
+  },
+  {
+    "id": "ph_002",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "A 5 kg object accelerates at 2 m/s². What is the net force acting on it?",
+    "options": [
+      "2.5 N",
+      "10 N",
+      "7 N",
+      "3 N"
+    ],
+    "answer": "B",
+    "explanation": "Using F = ma: F = 5 kg × 2 m/s² = 10 N."
+  },
+  {
+    "id": "ph_003",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "A 2 kg object moving at 3 m/s has a kinetic energy of _____.",
+    "options": [
+      "6 J",
+      "9 J",
+      "18 J",
+      "3 J"
+    ],
+    "answer": "B",
+    "explanation": "Kinetic energy Ek = ½mv² = ½ × 2 × 3² = 9 J."
+  },
+  {
+    "id": "ph_004",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "In a system where only conservative forces act, which quantity remains constant?",
+    "options": [
+      "Kinetic energy only",
+      "Potential energy only",
+      "Total mechanical energy",
+      "Thermal energy"
+    ],
+    "answer": "C",
+    "explanation": "When only conservative forces act, the total mechanical energy (kinetic + potential) is conserved."
+  },
+  {
+    "id": "ph_005",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "动量守恒",
+    "knowledge_point_en": "momentum_conservation",
+    "stem": "In an isolated system with no external forces, the total momentum of the system is _____.",
+    "options": [
+      "increasing",
+      "decreasing",
+      "conserved",
+      "zero"
+    ],
+    "answer": "C",
+    "explanation": "The law of conservation of momentum states that total momentum remains constant in an isolated system."
+  },
+  {
+    "id": "ph_006",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "Faraday's Law of Induction states that induced electromotive force is proportional to the rate of change of _____.",
+    "options": [
+      "electric current",
+      "magnetic flux",
+      "resistance",
+      "voltage"
+    ],
+    "answer": "B",
+    "explanation": "Faraday's Law: ε = -dΦ/dt, where Φ is the magnetic flux."
+  },
+  {
+    "id": "ph_007",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "In a double-slit experiment, increasing the wavelength of light while keeping other conditions constant will cause the interference fringes to become _____.",
+    "options": [
+      "narrower",
+      "wider",
+      "unchanged",
+      "disappear"
+    ],
+    "answer": "B",
+    "explanation": "Fringe spacing Δx = λL/d. Increasing λ increases fringe spacing, making fringes wider."
+  },
+  {
+    "id": "ph_008",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "For an ideal gas at constant temperature, if the volume is halved, the pressure will _____.",
+    "options": [
+      "halve",
+      "double",
+      "remain unchanged",
+      "quadruple"
+    ],
+    "answer": "B",
+    "explanation": "Boyle's Law: pV = constant at constant T. Halving V doubles p."
+  },
+  {
+    "id": "ph_009",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "Lenz's Law states that the direction of induced current is such that it opposes the change in _____ that produced it.",
+    "options": [
+      "electric field",
+      "magnetic flux",
+      "temperature",
+      "charge"
+    ],
+    "answer": "B",
+    "explanation": "Lenz's Law describes the opposition to the change in magnetic flux that induces the current."
+  },
+  {
+    "id": "ph_010",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "single_choice",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "Which phenomenon demonstrates that light is a transverse wave?",
+    "options": [
+      "Reflection",
+      "Refraction",
+      "Polarization",
+      "Diffraction"
+    ],
+    "answer": "C",
+    "explanation": "Polarization is a property unique to transverse waves, demonstrating the transverse nature of light."
+  },
+  {
+    "id": "ph_011",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "multiple_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "Which statements about Newton's Third Law are correct?",
+    "options": [
+      "Action and reaction forces act on different objects",
+      "Action and reaction forces are equal in magnitude",
+      "Action and reaction forces cancel on the same object",
+      "Action and reaction forces are opposite in direction"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Newton's Third Law states forces are equal, opposite, and act on different bodies. They do not cancel on the same object."
+  },
+  {
+    "id": "ph_012",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "multiple_choice",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "Which forms of energy are considered mechanical energy?",
+    "options": [
+      "Kinetic energy",
+      "Gravitational potential energy",
+      "Internal thermal energy",
+      "Elastic potential energy"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Mechanical energy includes kinetic, gravitational potential, and elastic potential energy. Thermal energy is not mechanical."
+  },
+  {
+    "id": "ph_013",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "multiple_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "Which factors affect the magnitude of induced EMF in a coil?",
+    "options": [
+      "Rate of change of magnetic flux",
+      "Number of turns in the coil",
+      "Resistance of the coil",
+      "The rate at which the magnetic field changes"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Induced EMF depends on the rate of flux change and number of turns. Resistance affects current, not EMF."
+  },
+  {
+    "id": "ph_014",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "multiple_choice",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "For an ideal gas, which statements are true according to the ideal gas law pV = nRT?",
+    "options": [
+      "At constant pressure, volume ∝ temperature",
+      "At constant volume, pressure ∝ temperature",
+      "At constant temperature, pressure ∝ 1/volume",
+      "The gas constant R depends on the type of gas"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "A, B, and C are direct consequences of the ideal gas law. R is a universal constant."
+  },
+  {
+    "id": "ph_015",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "Newton's Second Law states that acceleration is directly proportional to net force and inversely proportional to _____.",
+    "answer": "mass",
+    "explanation": "F = ma, so acceleration a = F/m, showing inverse proportionality to mass."
+  },
+  {
+    "id": "ph_016",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "动量守恒",
+    "knowledge_point_en": "momentum_conservation",
+    "stem": "Momentum is defined as the product of an object's mass and its _____.",
+    "answer": "velocity",
+    "explanation": "Momentum p = mv, where m is mass and v is velocity."
+  },
+  {
+    "id": "ph_017",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "The SI unit of magnetic flux is the _____.",
+    "answer": "weber",
+    "explanation": "Magnetic flux is measured in webers (Wb), where 1 Wb = 1 T·m²."
+  },
+  {
+    "id": "ph_018",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "In Young's double-slit experiment, the condition for constructive interference at a point is that the path difference equals an integer multiple of the _____.",
+    "answer": "wavelength",
+    "explanation": "Constructive interference occurs when path difference Δr = mλ (m = 0, 1, 2, ...)."
+  },
+  {
+    "id": "ph_019",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "fill_blank",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "The average kinetic energy of ideal gas molecules is directly proportional to the absolute _____.",
+    "answer": "temperature",
+    "explanation": "For an ideal gas, average translational kinetic energy = (3/2)kT, proportional to absolute temperature."
+  },
+  {
+    "id": "ph_020",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "true_false",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "If an object is moving at constant velocity, the net force acting on it must be zero.",
+    "answer": true,
+    "explanation": "Constant velocity means zero acceleration; by Newton's Second Law, net force must be zero."
+  },
+  {
+    "id": "ph_021",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "true_false",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "When friction acts on a system, the total mechanical energy of the system always increases.",
+    "answer": false,
+    "explanation": "Friction converts mechanical energy into thermal energy, decreasing total mechanical energy."
+  },
+  {
+    "id": "ph_022",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "true_false",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "Diffraction occurs when light passes through an aperture or around an obstacle comparable in size to its wavelength.",
+    "answer": true,
+    "explanation": "Diffraction is most noticeable when the obstacle or aperture size is comparable to the wavelength of light."
+  },
+  {
+    "id": "ph_023",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "type": "short_answer",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "Explain why passengers in a moving car lurch forward when the car suddenly brakes.",
+    "answer": "Due to inertia (Newton's First Law), passengers tend to maintain their state of motion. When the car decelerates rapidly, the passengers' bodies continue moving forward until acted upon by the seatbelt or other forces.",
+    "explanation": "This demonstrates inertia: objects maintain their motion unless acted upon by an external force."
+  },
+  {
+    "id": "ph_024",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "A block of mass m slides down a frictionless incline at angle θ. The acceleration of the block is _____.",
+    "options": [
+      "g",
+      "g sin θ",
+      "g cos θ",
+      "g tan θ"
+    ],
+    "answer": "B",
+    "explanation": "The component of gravity along the incline is mg sin θ, so a = F/m = g sin θ."
+  },
+  {
+    "id": "ph_025",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "A 0.5 kg ball is thrown vertically upward with an initial speed of 10 m/s. Using energy conservation, the maximum height reached is approximately _____ (g = 10 m/s²).",
+    "options": [
+      "5 m",
+      "10 m",
+      "2.5 m",
+      "20 m"
+    ],
+    "answer": "A",
+    "explanation": "½mv² = mgh → h = v²/(2g) = 100/20 = 5 m."
+  },
+  {
+    "id": "ph_026",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "动量守恒",
+    "knowledge_point_en": "momentum_conservation",
+    "stem": "Two objects with masses 2 kg and 3 kg move toward each other at 4 m/s and 2 m/s respectively. After a perfectly inelastic collision, they stick together. Their common velocity is _____.",
+    "options": [
+      "1 m/s in the direction of the 2 kg object",
+      "0.4 m/s in the direction of the 2 kg object",
+      "2 m/s in the direction of the 3 kg object",
+      "3 m/s in the direction of the 3 kg object"
+    ],
+    "answer": "B",
+    "explanation": "Using momentum conservation: 2×4 - 3×2 = (2+3)v → v = 2/5 = 0.4 m/s, in the direction of the 2 kg object's initial motion."
+  },
+  {
+    "id": "ph_027",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "A conducting rod of length L moves with velocity v perpendicular to a uniform magnetic field B. The induced EMF across the rod is _____.",
+    "options": [
+      "BLv",
+      "BL/v",
+      "B/(Lv)",
+      "B + L + v"
+    ],
+    "answer": "A",
+    "explanation": "Motional EMF ε = BLv when v is perpendicular to both B and L."
+  },
+  {
+    "id": "ph_028",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "In a single-slit diffraction pattern, the angular width of the central maximum is _____.",
+    "options": [
+      "λ/a",
+      "2λ/a",
+      "a/λ",
+      "aλ"
+    ],
+    "answer": "B",
+    "explanation": "The first minima occur at sin θ = ±λ/a, so the angular width of the central maximum is 2λ/a."
+  },
+  {
+    "id": "ph_029",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "A fixed amount of ideal gas undergoes an isochoric process. If the pressure doubles, the temperature _____.",
+    "options": [
+      "halves",
+      "doubles",
+      "remains constant",
+      "quadruples"
+    ],
+    "answer": "B",
+    "explanation": "At constant volume, p ∝ T (Charles's Law). Doubling pressure doubles absolute temperature."
+  },
+  {
+    "id": "ph_030",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "On a rough horizontal surface, a force F pulls a block at angle θ above horizontal. The normal force is _____ compared to the block's weight.",
+    "options": [
+      "greater than",
+      "equal to",
+      "less than",
+      "independent of"
+    ],
+    "answer": "C",
+    "explanation": "The vertical component F sin θ lifts the block slightly, reducing the normal force: N = mg - F sin θ."
+  },
+  {
+    "id": "ph_031",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "A spring with constant k is compressed by distance x. The elastic potential energy stored is _____.",
+    "options": [
+      "kx",
+      "½kx²",
+      "kx²",
+      "½kx"
+    ],
+    "answer": "B",
+    "explanation": "Elastic potential energy Ep = ½kx²."
+  },
+  {
+    "id": "ph_032",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "A coil with 100 turns experiences a change in magnetic flux of 0.05 Wb in 0.1 s. The magnitude of induced EMF is _____.",
+    "options": [
+      "0.5 V",
+      "5 V",
+      "50 V",
+      "500 V"
+    ],
+    "answer": "C",
+    "explanation": "ε = N|ΔΦ/Δt| = 100 × 0.05/0.1 = 50 V."
+  },
+  {
+    "id": "ph_033",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "single_choice",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "When unpolarized light passes through a polarizer, the intensity of transmitted light becomes _____ of the original intensity.",
+    "options": [
+      "half",
+      "one quarter",
+      "unchanged",
+      "zero"
+    ],
+    "answer": "A",
+    "explanation": "A polarizer transmits the component parallel to its axis; for unpolarized light, transmitted intensity is I₀/2."
+  },
+  {
+    "id": "ph_034",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "multiple_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "Which statements correctly describe the relationship between force and motion?",
+    "options": [
+      "Force causes acceleration, not velocity",
+      "An object can move without any net force acting on it",
+      "Greater force always means greater speed",
+      "Acceleration direction matches net force direction"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Force causes acceleration (A). Inertia allows motion without force (B). Acceleration aligns with net force (D). Greater force does not guarantee greater speed (C)."
+  },
+  {
+    "id": "ph_035",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "multiple_choice",
+    "knowledge_point": "动量守恒",
+    "knowledge_point_en": "momentum_conservation",
+    "stem": "In which scenarios is momentum conserved for the described system?",
+    "options": [
+      "A bullet fired from a rifle (bullet + rifle system)",
+      "A ball bouncing elastically off a wall",
+      "Two colliding objects on a frictionless surface",
+      "A rocket expelling exhaust gases in space"
+    ],
+    "answer": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "Momentum is conserved in isolated systems (A, C, D). In B, the wall is connected to Earth, so external forces act."
+  },
+  {
+    "id": "ph_036",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "multiple_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "Which factors increase the self-inductance of a solenoid?",
+    "options": [
+      "Increasing the number of turns per unit length",
+      "Inserting an iron core",
+      "Decreasing the cross-sectional area",
+      "Increasing the length of the solenoid"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation": "L = μn²V. Increasing turns per unit length (A) and inserting iron (B, increasing μ) raise inductance. Decreasing area or increasing length reduces L."
+  },
+  {
+    "id": "ph_037",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "multiple_choice",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "During an isothermal expansion of an ideal gas, which quantities remain constant?",
+    "options": [
+      "Internal energy",
+      "Temperature",
+      "Pressure",
+      "The product pV"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "For an ideal gas, internal energy depends only on temperature, so both are constant in an isothermal process. Boyle's Law gives pV = constant."
+  },
+  {
+    "id": "ph_038",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "A car rounds a banked curve at angle θ with radius r at speed v. For no friction needed, v² = _____ (in terms of r, g, and θ).",
+    "answer": "gr tan θ",
+    "explanation": "Balancing forces: N sin θ = mv²/r and N cos θ = mg. Dividing gives tan θ = v²/(gr), so v² = gr tan θ."
+  },
+  {
+    "id": "ph_039",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "The work-energy theorem states that the net work done on an object equals its change in _____.",
+    "answer": "kinetic energy",
+    "explanation": "W_net = ΔEk = ½mv₂² - ½mv₁²."
+  },
+  {
+    "id": "ph_040",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "动量守恒",
+    "knowledge_point_en": "momentum_conservation",
+    "stem": "In a two-body collision, the total momentum before collision equals the total momentum after collision, provided no external _____ act on the system.",
+    "answer": "forces",
+    "explanation": "Momentum conservation holds when the net external force on the system is zero."
+  },
+  {
+    "id": "ph_041",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "The direction of induced current determined by Lenz's Law is consistent with the principle of conservation of _____.",
+    "answer": "energy",
+    "explanation": "Lenz's Law ensures that induced current opposes the change, preventing perpetual motion and conserving energy."
+  },
+  {
+    "id": "ph_042",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "fill_blank",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "In thin-film interference, constructive interference occurs when the optical path difference equals an integer multiple of the _____.",
+    "answer": "wavelength (in the film)",
+    "explanation": "Constructive interference in thin films requires the optical path difference to equal mλ_film, considering phase changes."
+  },
+  {
+    "id": "ph_043",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "true_false",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "If non-conservative forces do positive work on a system, the total mechanical energy of the system increases.",
+    "answer": true,
+    "explanation": "Positive work by non-conservative forces (like an applied force) adds energy to the system, increasing mechanical energy."
+  },
+  {
+    "id": "ph_044",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "true_false",
+    "knowledge_point": "动量守恒",
+    "knowledge_point_en": "momentum_conservation",
+    "stem": "In an elastic collision between two objects, both momentum and kinetic energy are conserved.",
+    "answer": true,
+    "explanation": "Elastic collisions conserve both total momentum and total kinetic energy."
+  },
+  {
+    "id": "ph_045",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "true_false",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "The internal energy of an ideal gas depends only on its temperature and the number of moles.",
+    "answer": true,
+    "explanation": "For an ideal gas, U = (f/2)nRT, depending only on temperature and amount of substance."
+  },
+  {
+    "id": "ph_046",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "short_answer",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "Explain why a changing magnetic flux through a coil induces an electromotive force according to Faraday's Law.",
+    "answer": "A changing magnetic flux produces a vortex electric field (non-electrostatic field) that does work on charges in the coil, driving induced current. The magnitude of EMF equals the rate of change of magnetic flux through the coil.",
+    "explanation": "Faraday's Law quantifies how changing magnetic fields create electric fields that drive current."
+  },
+  {
+    "id": "ph_047",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "type": "short_answer",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "Describe the difference between interference and diffraction patterns in terms of their origins and appearance.",
+    "answer": "Interference arises from superposition of waves from coherent sources (like double slits), producing equally spaced fringes. Diffraction results from waves bending around obstacles or through apertures, with an intensity-modulated pattern featuring a broad central maximum.",
+    "explanation": "Interference involves multiple coherent sources; diffraction involves wave bending at edges."
+  },
+  {
+    "id": "ph_048",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "A block of mass m on a horizontal surface is connected to a spring (constant k). The coefficient of kinetic friction is μ. The block is displaced by A from equilibrium and released. The total distance traveled before coming to rest is _____.",
+    "options": [
+      "A",
+      "A/(2μmg/k)",
+      "kA²/(2μmg)",
+      "μmgA/k"
+    ],
+    "answer": "C",
+    "explanation": "Initial elastic energy ½kA² is dissipated by friction: μmg × d = ½kA² → d = kA²/(2μmg)."
+  },
+  {
+    "id": "ph_049",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "A particle moves under a conservative force where potential energy U(r) = -a/r + b/r². The equilibrium position occurs at r = _____.",
+    "options": [
+      "a/b",
+      "2b/a",
+      "b/a",
+      "a/(2b)"
+    ],
+    "answer": "B",
+    "explanation": "Equilibrium requires F = -dU/dr = 0. Solving -a/r² + 2b/r³ = 0 gives r = 2b/a."
+  },
+  {
+    "id": "ph_050",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "动量守恒",
+    "knowledge_point_en": "momentum_conservation",
+    "stem": "A rocket of initial mass M₀ ejects exhaust at speed u relative to the rocket. Its mass decreases at rate α. The thrust force is _____.",
+    "options": [
+      "αu",
+      "M₀u",
+      "αM₀",
+      "u/α"
+    ],
+    "answer": "A",
+    "explanation": "Thrust F = u|dm/dt| = αu, from the rocket equation."
+  },
+  {
+    "id": "ph_051",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "A square loop of side L and resistance R moves with velocity v into a region of uniform magnetic field B (perpendicular to the loop). The magnitude of the magnetic force opposing the motion is _____.",
+    "options": [
+      "B²L²v/R",
+      "BLv/R",
+      "B²Lv/R",
+      "BL²v/R"
+    ],
+    "answer": "A",
+    "explanation": "EMF = BLv, I = BLv/R, F = BIL = B²L²v/R."
+  },
+  {
+    "id": "ph_052",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "In a diffraction grating with spacing d, light of wavelength λ is incident normally. The maximum possible order of diffraction is approximately _____.",
+    "options": [
+      "d/λ",
+      "2d/λ",
+      "λ/d",
+      "dλ"
+    ],
+    "answer": "A",
+    "explanation": "From d sin θ = mλ, with sin θ ≤ 1, the maximum order m_max ≤ d/λ."
+  },
+  {
+    "id": "ph_053",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "An ideal gas undergoes a cyclic process on a p-V diagram. If the cycle is traversed clockwise, the net work done by the gas is _____.",
+    "options": [
+      "zero",
+      "positive",
+      "negative",
+      "equal to the heat rejected"
+    ],
+    "answer": "B",
+    "explanation": "A clockwise cycle on a p-V diagram encloses positive area, representing net work done by the gas."
+  },
+  {
+    "id": "ph_054",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "Two blocks of masses m₁ and m₂ are stacked on a frictionless surface. A force F is applied to m₁. The coefficient of static friction between the blocks is μ. The maximum F before slipping occurs is _____.",
+    "options": [
+      "μ(m₁+m₂)g",
+      "μm₂g",
+      "μm₁g(m₁+m₂)/m₂",
+      "μ(m₁+m₂)g(m₁/m₂)"
+    ],
+    "answer": "C",
+    "explanation": "Maximum acceleration before slip: a = μm₁g/m₂ for m₂. For the system: F = (m₁+m₂)a = μm₁g(m₁+m₂)/m₂."
+  },
+  {
+    "id": "ph_055",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "A conducting rod rotates with angular velocity ω about one end in a uniform magnetic field B perpendicular to the plane of rotation. The rod has length L. The EMF between the ends is _____.",
+    "options": [
+      "½BωL²",
+      "BωL²",
+      "BωL",
+      "½BωL"
+    ],
+    "answer": "A",
+    "explanation": "Integrating v = ωr: ε = ∫₀ᴸ Bωr dr = ½BωL²."
+  },
+  {
+    "id": "ph_056",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "In a Michelson interferometer, when the movable mirror is displaced by distance d, the number of fringes N that cross the field of view is related by _____.",
+    "options": [
+      "d = Nλ",
+      "d = Nλ/2",
+      "d = 2Nλ",
+      "d = Nλ/4"
+    ],
+    "answer": "B",
+    "explanation": "Each fringe shift corresponds to λ/2 mirror displacement because the light path changes by 2d."
+  },
+  {
+    "id": "ph_057",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "single_choice",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "For an adiabatic process of an ideal monatomic gas, the relation between pressure and volume is pV^γ = constant, where γ equals _____.",
+    "options": [
+      "4/3",
+      "5/3",
+      "7/5",
+      "3/2"
+    ],
+    "answer": "B",
+    "explanation": "For a monatomic ideal gas, γ = Cp/Cv = (5/2)R / (3/2)R = 5/3."
+  },
+  {
+    "id": "ph_058",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "multiple_choice",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "Which statements about inertial and non-inertial reference frames are correct?",
+    "options": [
+      "Newton's laws hold in inertial frames",
+      "Fictitious forces appear in non-inertial frames",
+      "The Earth is a perfect inertial frame",
+      "Centrifugal force is a fictitious force"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "A, B, and D are correct. Earth is approximately inertial but not perfect due to rotation (C is false)."
+  },
+  {
+    "id": "ph_059",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "multiple_choice",
+    "knowledge_point": "动能定理/机械能守恒",
+    "knowledge_point_en": "work_energy_mechanics",
+    "stem": "For a conservative force field, which statements are true?",
+    "options": [
+      "The work done depends only on endpoints, not path",
+      "Force is the negative gradient of potential energy",
+      "Mechanical energy is conserved",
+      "Work done around any closed path is zero"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "All four are defining properties of conservative forces."
+  },
+  {
+    "id": "ph_060",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "multiple_choice",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "Which phenomena are explained by Faraday's Law of Induction?",
+    "options": [
+      "Current induced in a coil by a moving magnet",
+      "Eddy currents in a conductor near changing fields",
+      "The operation of a transformer",
+      "Magnetic force on a moving charge"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "A, B, and C involve changing magnetic flux inducing EMF. D is the Lorentz force, not induction."
+  },
+  {
+    "id": "ph_061",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "multiple_choice",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "Which factors affect the resolving power of a diffraction-limited optical instrument?",
+    "options": [
+      "Wavelength of light",
+      "Aperture diameter",
+      "Focal length",
+      "The refractive index of the medium"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "Resolving power ∝ D/λ. Refractive index affects wavelength in medium (λ/n). Focal length affects image size but not angular resolution."
+  },
+  {
+    "id": "ph_062",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "For a satellite in circular orbit around Earth at radius r, the orbital speed v = _____ (in terms of G, M, and r).",
+    "answer": "sqrt(GM/r)",
+    "explanation": "Equating gravitational force to centripetal force: GMm/r² = mv²/r → v = √(GM/r)."
+  },
+  {
+    "id": "ph_063",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "动量守恒",
+    "knowledge_point_en": "momentum_conservation",
+    "stem": "In a two-dimensional elastic collision, _____ components of total momentum are conserved independently.",
+    "answer": "all / both x and y",
+    "explanation": "Momentum is a vector; each component is conserved separately when there are no external forces in that direction."
+  },
+  {
+    "id": "ph_064",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "The energy stored in an inductor carrying current I is U = _____.",
+    "answer": "½LI²",
+    "explanation": "Magnetic energy in an inductor: U = ½LI², analogous to elastic potential energy in a spring."
+  },
+  {
+    "id": "ph_065",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "波动光学",
+    "knowledge_point_en": "wave_optics",
+    "stem": "Brewster's angle θ_B satisfies tan θ_B = _____, where n₁ and n₂ are the refractive indices of the two media.",
+    "answer": "n₂/n₁",
+    "explanation": "At Brewster's angle, reflected light is completely polarized perpendicular to the plane of incidence, with tan θ_B = n₂/n₁."
+  },
+  {
+    "id": "ph_066",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "fill_blank",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "The root-mean-square speed of ideal gas molecules is proportional to the square root of absolute _____.",
+    "answer": "temperature",
+    "explanation": "v_rms = √(3kT/m), proportional to the square root of absolute temperature."
+  },
+  {
+    "id": "ph_067",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "true_false",
+    "knowledge_point": "牛顿运动定律",
+    "knowledge_point_en": "newton_laws",
+    "stem": "In an Atwood machine with masses m₁ and m₂ (m₁ > m₂) connected over a massless pulley, the tension in the string is the same on both sides of an ideal pulley.",
+    "answer": true,
+    "explanation": "For a massless, frictionless pulley, tension is uniform throughout the string."
+  },
+  {
+    "id": "ph_068",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "true_false",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "A transformer can operate efficiently with direct current (DC) input if the core material has high permeability.",
+    "answer": false,
+    "explanation": "Transformers require changing magnetic flux, which DC cannot provide. DC produces constant flux and zero induced EMF in the secondary."
+  },
+  {
+    "id": "ph_069",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "true_false",
+    "knowledge_point": "热学",
+    "knowledge_point_en": "thermodynamics",
+    "stem": "The Carnot efficiency of a heat engine depends only on the temperatures of the hot and cold reservoirs.",
+    "answer": true,
+    "explanation": "Carnot efficiency η = 1 - T_c/T_h, depending only on the absolute temperatures of the reservoirs."
+  },
+  {
+    "id": "ph_070",
+    "subject": "physics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "type": "short_answer",
+    "knowledge_point": "电磁感应",
+    "knowledge_point_en": "electromagnetic_induction",
+    "stem": "Explain the physical origin of eddy currents and describe one method to reduce their undesirable effects in transformer cores.",
+    "answer": "Eddy currents are loops of induced current flowing in conductors exposed to changing magnetic fields, caused by Faraday's Law. They dissipate energy as heat. To reduce them, transformer cores are laminated with thin insulated sheets oriented parallel to the magnetic field, increasing resistance to current flow perpendicular to the flux.",
+    "explanation": "Eddy currents arise from changing flux in conductors. Lamination breaks current paths and reduces losses."
+  }
+]

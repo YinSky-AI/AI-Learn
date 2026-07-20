@@ -1,0 +1,902 @@
+{
+  "subject": "history",
+  "age_group": "13-15",
+  "grade": "初三",
+  "total": 70,
+  "difficulty_distribution": {
+    "beginner": 23,
+    "intermediate": 24,
+    "advanced": 23
+  },
+  "questions": [
+    {
+      "id": 1,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "中国历史上第一个王朝是？",
+      "options": [
+        "A. 夏朝",
+        "B. 商朝",
+        "C. 周朝",
+        "D. 秦朝"
+      ],
+      "answer": "A",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 2,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "商朝时期刻在龟甲兽骨上的文字被称为什么？",
+      "options": [
+        "A. 金文",
+        "B. 甲骨文",
+        "C. 小篆",
+        "D. 隶书"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 3,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "西周实行的政治制度是？",
+      "options": [
+        "A. 郡县制",
+        "B. 分封制",
+        "C. 行省制",
+        "D. 科举制"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 4,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "秦始皇统一六国后，全国统一使用的文字是？",
+      "options": [
+        "A. 甲骨文",
+        "B. 金文",
+        "C. 小篆",
+        "D. 楷书"
+      ],
+      "answer": "C",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 5,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "汉武帝采纳董仲舒建议，推行了什么政策？",
+      "options": [
+        "A. 焚书坑儒",
+        "B. 罢黜百家，独尊儒术",
+        "C. 百家争鸣",
+        "D. 文字狱"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 6,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "隋朝开通的大运河以哪里为中心？",
+      "options": [
+        "A. 长安",
+        "B. 洛阳",
+        "C. 开封",
+        "D. 北京"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 7,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "唐朝由盛转衰的标志性事件是？",
+      "options": [
+        "A. 玄武门之变",
+        "B. 安史之乱",
+        "C. 黄巢起义",
+        "D. 藩镇割据"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 8,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "北宋时期发明活字印刷术的是？",
+      "options": [
+        "A. 蔡伦",
+        "B. 毕昇",
+        "C. 沈括",
+        "D. 李时珍"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 9,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "明朝的建立者是？",
+      "options": [
+        "A. 朱元璋",
+        "B. 朱棣",
+        "C. 朱允炆",
+        "D. 崇祯帝"
+      ],
+      "answer": "A",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 10,
+      "difficulty": "beginner",
+      "type": "单选",
+      "question": "清朝最后一个皇帝是？",
+      "options": [
+        "A. 康熙帝",
+        "B. 乾隆帝",
+        "C. 光绪帝",
+        "D. 宣统帝"
+      ],
+      "answer": "D",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 11,
+      "difficulty": "beginner",
+      "type": "多选",
+      "question": "下列属于春秋五霸的有？",
+      "options": [
+        "A. 齐桓公",
+        "B. 晋文公",
+        "C. 楚庄王",
+        "D. 秦始皇"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 12,
+      "difficulty": "beginner",
+      "type": "多选",
+      "question": "秦朝巩固统一的措施包括？",
+      "options": [
+        "A. 统一文字",
+        "B. 统一度量衡",
+        "C. 焚书坑儒",
+        "D. 开凿大运河"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 13,
+      "difficulty": "beginner",
+      "type": "多选",
+      "question": "唐朝的盛世局面包括？",
+      "options": [
+        "A. 文景之治",
+        "B. 贞观之治",
+        "C. 开元盛世",
+        "D. 康乾盛世"
+      ],
+      "answer": [
+        "B",
+        "C"
+      ],
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 14,
+      "difficulty": "beginner",
+      "type": "多选",
+      "question": "下列属于明朝科技著作的有？",
+      "options": [
+        "A. 《本草纲目》",
+        "B. 《天工开物》",
+        "C. 《农政全书》",
+        "D. 《齐民要术》"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 15,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "约公元前2070年，____建立了中国历史上第一个王朝夏朝。",
+      "answer": "禹",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 16,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "商朝的最后一位君主是____，他的暴政导致商朝灭亡。",
+      "answer": "商纣王/纣王",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 17,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "秦始皇 named himself ____，成为中国历史上第一位皇帝。",
+      "answer": "秦始皇",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 18,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "隋朝第二位皇帝____下令开凿大运河。",
+      "answer": "隋炀帝/杨广",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 19,
+      "difficulty": "beginner",
+      "type": "填空",
+      "question": "元朝的建立者是____。",
+      "answer": "忽必烈",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 20,
+      "difficulty": "beginner",
+      "type": "判断",
+      "question": "周武王通过牧野之战打败商纣王，建立周朝。",
+      "answer": "正确",
+      "knowledge_point": "中国古代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 21,
+      "difficulty": "beginner",
+      "type": "判断",
+      "question": "汉朝的张骞出使西域，开辟了丝绸之路。",
+      "answer": "正确",
+      "knowledge_point": "中国古代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 22,
+      "difficulty": "beginner",
+      "type": "判断",
+      "question": "指南针是唐朝时期发明的。",
+      "answer": "错误",
+      "knowledge_point": "中国古代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 23,
+      "difficulty": "beginner",
+      "type": "简答",
+      "question": "简述秦始皇巩固统一的主要措施。（至少答出两点）",
+      "answer": "统一文字、统一货币、统一度量衡、修筑长城、开凿灵渠等。",
+      "knowledge_point": "中国古代史"
+    },
+    {
+      "id": 24,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "1840年英国发动鸦片战争的根本原因是？",
+      "options": [
+        "A. 林则徐虎门销烟",
+        "B. 打开中国市场",
+        "C. 保护鸦片贸易",
+        "D. 传播基督教"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 25,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "中国近代史上第一个不平等条约是？",
+      "options": [
+        "A. 《南京条约》",
+        "B. 《北京条约》",
+        "C. 《马关条约》",
+        "D. 《辛丑条约》"
+      ],
+      "answer": "A",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 26,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "洋务运动的口号是？",
+      "options": [
+        "A. 民主与科学",
+        "B. 自强与求富",
+        "C. 扶清灭洋",
+        "D. 三民主义"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 27,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "甲午中日战争中，北洋舰队全军覆没的战役是？",
+      "options": [
+        "A. 平壤战役",
+        "B. 黄海海战",
+        "C. 威海卫战役",
+        "D. 辽东战役"
+      ],
+      "answer": "C",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 28,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "戊戌变法发生在哪一年？",
+      "options": [
+        "A. 1894年",
+        "B. 1895年",
+        "C. 1898年",
+        "D. 1900年"
+      ],
+      "answer": "C",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 29,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "辛亥革命爆发于哪一年？",
+      "options": [
+        "A. 1900年",
+        "B. 1911年",
+        "C. 1919年",
+        "D. 1921年"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 30,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "五四运动爆发的直接导火索是？",
+      "options": [
+        "A. 巴黎和会中国外交失败",
+        "B. 北洋军阀黑暗统治",
+        "C. 新文化运动影响",
+        "D. 俄国十月革命"
+      ],
+      "answer": "A",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 31,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "古埃及文明的象征是？",
+      "options": [
+        "A. 空中花园",
+        "B. 金字塔",
+        "C. 帕特农神庙",
+        "D. 斗兽场"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 32,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "古希腊城邦中，以民主政治著称的是？",
+      "options": [
+        "A. 斯巴达",
+        "B. 雅典",
+        "C. 科林斯",
+        "D. 底比斯"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 33,
+      "difficulty": "intermediate",
+      "type": "单选",
+      "question": "罗马帝国的建立者是？",
+      "options": [
+        "A. 凯撒",
+        "B. 屋大维",
+        "C. 庞培",
+        "D. 安东尼"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 34,
+      "difficulty": "intermediate",
+      "type": "多选",
+      "question": "《南京条约》中英国获得的权益包括？",
+      "options": [
+        "A. 割占香港岛",
+        "B. 赔款2100万银元",
+        "C. 协定关税",
+        "D. 开放通商口岸"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 35,
+      "difficulty": "intermediate",
+      "type": "多选",
+      "question": "洋务运动期间创办的军事工业有？",
+      "options": [
+        "A. 江南制造总局",
+        "B. 福州船政局",
+        "C. 轮船招商局",
+        "D. 汉阳铁厂"
+      ],
+      "answer": [
+        "A",
+        "B"
+      ],
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 36,
+      "difficulty": "intermediate",
+      "type": "多选",
+      "question": "古希腊文明的成就包括？",
+      "options": [
+        "A. 雅典民主政治",
+        "B. 奥林匹克运动会",
+        "C. 苏格拉底哲学",
+        "D. 楔形文字"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 37,
+      "difficulty": "intermediate",
+      "type": "多选",
+      "question": "古罗马对世界文明的贡献包括？",
+      "options": [
+        "A. 罗马法",
+        "B. 拉丁字母",
+        "C. 拱券建筑",
+        "D. 民主制度"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 38,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "1842年，中英签订《____》，中国开始沦为半殖民地半封建社会。",
+      "answer": "南京条约",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 39,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "第二次鸦片战争中，____联军火烧圆明园。",
+      "answer": "英法",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 40,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "辛亥革命的领导人孙中山提出的指导思想是____。",
+      "answer": "三民主义",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 41,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "古埃及人发明的文字被称为____。",
+      "answer": "象形文字",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 42,
+      "difficulty": "intermediate",
+      "type": "填空",
+      "question": "古希腊盲诗人荷马创作的史诗是《伊利亚特》和《____》。",
+      "answer": "奥德赛",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 43,
+      "difficulty": "intermediate",
+      "type": "判断",
+      "question": "《马关条约》的签订使中国完全沦为半殖民地半封建社会。",
+      "answer": "错误",
+      "knowledge_point": "中国近代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 44,
+      "difficulty": "intermediate",
+      "type": "判断",
+      "question": "辛亥革命推翻了清王朝，结束了中国两千多年的封建帝制。",
+      "answer": "正确",
+      "knowledge_point": "中国近代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 45,
+      "difficulty": "intermediate",
+      "type": "判断",
+      "question": "古罗马的《十二铜表法》是罗马第一部成文法。",
+      "answer": "正确",
+      "knowledge_point": "世界古代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 46,
+      "difficulty": "intermediate",
+      "type": "简答",
+      "question": "简述鸦片战争对中国社会的影响。",
+      "answer": "中国开始沦为半殖民地半封建社会；自然经济开始解体；被迫开放通商口岸；是中国近代史的开端。",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 47,
+      "difficulty": "intermediate",
+      "type": "简答",
+      "question": "简述雅典民主政治的主要特点。",
+      "answer": "人民主权；轮番而治；公民大会是最高权力机关；直接民主；限于成年男性公民。",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 48,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "《辛丑条约》签订后，清政府完全成为帝国主义统治中国的工具，主要体现在？",
+      "options": [
+        "A. 赔款数额巨大",
+        "B. 划定东交民巷为使馆界",
+        "C. 清政府保证严禁人民参加反帝活动",
+        "D. 拆毁大沽炮台"
+      ],
+      "answer": "C",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 49,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "新文化运动的主要阵地是？",
+      "options": [
+        "A. 《民报》",
+        "B. 《新青年》",
+        "C. 《申报》",
+        "D. 《时务报》"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 50,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "下列关于洋务运动的评价，最准确的是？",
+      "options": [
+        "A. 实现了富国强兵",
+        "B. 完全失败的封建自救运动",
+        "C. 中国近代化的开端",
+        "D. 彻底改变了社会制度"
+      ],
+      "answer": "C",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 51,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "古埃及法老为自己修建的陵墓，每个侧面都形似汉字\"金\"，因此中国人称之为？",
+      "options": [
+        "A. 神庙",
+        "B. 金字塔",
+        "C. 方尖碑",
+        "D. 陵墓"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 52,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "伯里克利时期，雅典民主政治达到顶峰，其表现不包括？",
+      "options": [
+        "A. 扩大公民权利",
+        "B. 公民大会为最高权力机构",
+        "C. 全体居民享有民主",
+        "D. 发放津贴鼓励参政"
+      ],
+      "answer": "C",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 53,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "罗马帝国分裂为东西两部分的时间是？",
+      "options": [
+        "A. 公元前27年",
+        "B. 公元395年",
+        "C. 公元476年",
+        "D. 公元1453年"
+      ],
+      "answer": "B",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 54,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "从社会转型角度看，《权利法案》的颁布表明英国？",
+      "options": [
+        "A. 确立君主立宪制",
+        "B. 建立共和制",
+        "C. 实现普选权",
+        "D. 废除君主制"
+      ],
+      "answer": "A",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 55,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "对比秦汉与罗马帝国的道路系统，两者的共同作用是？",
+      "options": [
+        "A. 促进经济文化交流",
+        "B. 仅供军队使用",
+        "C. 用于宗教祭祀",
+        "D. 划分行政区域"
+      ],
+      "answer": "A",
+      "knowledge_point": "中国古代史/世界古代史"
+    },
+    {
+      "id": 56,
+      "difficulty": "advanced",
+      "type": "单选",
+      "question": "甲午战争后，列强对华经济侵略的主要方式是？",
+      "options": [
+        "A. 商品输出",
+        "B. 资本输出",
+        "C. 鸦片走私",
+        "D. 掠夺原料"
+      ],
+      "answer": "B",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 57,
+      "difficulty": "advanced",
+      "type": "多选",
+      "question": "辛亥革命的历史意义包括？",
+      "options": [
+        "A. 推翻清王朝统治",
+        "B. 结束封建帝制",
+        "C. 建立中华民国",
+        "D. 改变半殖民地半封建性质"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 58,
+      "difficulty": "advanced",
+      "type": "多选",
+      "question": "五四运动的历史特点包括？",
+      "options": [
+        "A. 彻底反帝反封建",
+        "B. 工人阶级登上历史舞台",
+        "C. 具有广泛群众基础",
+        "D. 属于无产阶级社会主义革命"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 59,
+      "difficulty": "advanced",
+      "type": "多选",
+      "question": "古代大河文明的共同点有？",
+      "options": [
+        "A. 都发源于大河流域",
+        "B. 都实行民主政治",
+        "C. 都以农业经济为主",
+        "D. 都有自己独特的文字"
+      ],
+      "answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 60,
+      "difficulty": "advanced",
+      "type": "多选",
+      "question": "古罗马从共和制向帝制转变的原因包括？",
+      "options": [
+        "A. 领土扩张需要强有力统治",
+        "B. 共和制无法应对社会矛盾",
+        "C. 军事统帅权力膨胀",
+        "D. 奴隶制经济衰落"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 61,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "1901年签订的《____条约》使中国完全沦为半殖民地半封建社会。",
+      "answer": "辛丑",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 62,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "洋务派以\"____\"为口号，创办了一批近代民用工业。",
+      "answer": "求富",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 63,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "1919年五四运动中，学生提出的口号包括\"外争主权，____\"。",
+      "answer": "内除国贼",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 64,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "古埃及历法是____历，根据尼罗河泛滥周期制定。",
+      "answer": "太阳",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 65,
+      "difficulty": "advanced",
+      "type": "填空",
+      "question": "罗马法中影响最深远的是____法，成为近代西方国家法律的基础。",
+      "answer": "罗马/公民/万民",
+      "knowledge_point": "世界古代史"
+    },
+    {
+      "id": 66,
+      "difficulty": "advanced",
+      "type": "判断",
+      "question": "戊戌变法是一次资产阶级性质的改良运动，在社会上起到了思想启蒙的作用。",
+      "answer": "正确",
+      "knowledge_point": "中国近代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 67,
+      "difficulty": "advanced",
+      "type": "判断",
+      "question": "古希腊的民主政治是全体人民当家作主的政治制度。",
+      "answer": "错误",
+      "knowledge_point": "世界古代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 68,
+      "difficulty": "advanced",
+      "type": "判断",
+      "question": "罗马法的形成与发展对后世欧美各国的立法和司法产生了重要影响。",
+      "answer": "正确",
+      "knowledge_point": "世界古代史",
+      "options": [
+        "正确",
+        "错误"
+      ]
+    },
+    {
+      "id": 69,
+      "difficulty": "advanced",
+      "type": "简答",
+      "question": "比较戊戌变法与辛亥革命的主要不同点。（从领导阶级、方式、目标等方面分析）",
+      "answer": "领导阶级：戊戌变法是资产阶级维新派，辛亥革命是资产阶级革命派。方式：变法是和平改良，革命是武装斗争。目标：变法建立君主立宪制，革命建立民主共和制。",
+      "knowledge_point": "中国近代史"
+    },
+    {
+      "id": 70,
+      "difficulty": "advanced",
+      "type": "简答",
+      "question": "结合史实，说明古代东西方文明交流的主要途径及其影响。",
+      "answer": "途径：丝绸之路、亚历山大东征、阿拉伯人传播等。影响：促进了东西方经济文化交流；推动了科学技术传播；丰富了各文明的内涵。",
+      "knowledge_point": "中国古代史/世界古代史"
+    }
+  ]
+}

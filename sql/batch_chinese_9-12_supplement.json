@@ -1,0 +1,2295 @@
+{
+  "batch_id": "chinese_9-12_supplement",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "question_id": "ch_sup_001",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "说明文的主要特点是什么？",
+      "options": [
+        "以情感人",
+        "以理服人",
+        "以知授人",
+        "以事动人"
+      ],
+      "answer": "C",
+      "explanation": "说明文以传授知识为主要目的。"
+    },
+    {
+      "question_id": "ch_sup_002",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'飞流直下三千尺，疑是银河落九天'写的是哪里？",
+      "options": [
+        "泰山",
+        "庐山",
+        "黄山",
+        "华山"
+      ],
+      "answer": "B",
+      "explanation": "写的是庐山瀑布，出自李白。"
+    },
+    {
+      "question_id": "ch_sup_003",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中描写人物外貌的属于什么描写？",
+      "options": [
+        "动作描写",
+        "神态描写",
+        "外貌描写",
+        "语言描写"
+      ],
+      "answer": "C",
+      "explanation": "描写人物外貌属于外貌描写。"
+    },
+    {
+      "question_id": "ch_sup_004",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'独在异乡为异客，每逢佳节倍思亲'中的佳节指？",
+      "options": [
+        "春节",
+        "重阳节",
+        "中秋节",
+        "端午节"
+      ],
+      "answer": "B",
+      "explanation": "出自王维《九月九日忆山东兄弟》，佳节指重阳节。"
+    },
+    {
+      "question_id": "ch_sup_005",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'白日依山尽，黄河入海流'出自？",
+      "options": [
+        "《登鹳雀楼》",
+        "《望庐山瀑布》",
+        "《绝句》",
+        "《鹿柴》"
+      ],
+      "answer": "A",
+      "explanation": "出自王之涣的《登鹳雀楼》。"
+    },
+    {
+      "question_id": "ch_sup_006",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'地球像一个蓝色的水晶球'用了什么说明方法？",
+      "options": [
+        "打比方",
+        "列数字",
+        "举例子",
+        "下定义"
+      ],
+      "answer": "A",
+      "explanation": "把地球比作水晶球，是打比方。"
+    },
+    {
+      "question_id": "ch_sup_007",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "'我的心里像打翻了五味瓶'运用了什么修辞？",
+      "options": [
+        "比喻",
+        "拟人",
+        "排比",
+        "夸张"
+      ],
+      "answer": "A",
+      "explanation": "把复杂的心情比作打翻五味瓶，是比喻。"
+    },
+    {
+      "question_id": "ch_sup_008",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'例如熊猫、金丝猴等都是珍稀动物'用了什么说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "作比较",
+        "打比方"
+      ],
+      "answer": "B",
+      "explanation": "举出熊猫、金丝猴的例子，是举例子。"
+    },
+    {
+      "question_id": "ch_sup_009",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中描写人物外貌的属于什么描写？",
+      "options": [
+        "动作描写",
+        "神态描写",
+        "外貌描写",
+        "语言描写"
+      ],
+      "answer": "C",
+      "explanation": "描写人物外貌属于外貌描写。"
+    },
+    {
+      "question_id": "ch_sup_010",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'地球像一个蓝色的水晶球'用了什么说明方法？",
+      "options": [
+        "打比方",
+        "列数字",
+        "举例子",
+        "下定义"
+      ],
+      "answer": "A",
+      "explanation": "把地球比作水晶球，是打比方。"
+    },
+    {
+      "question_id": "ch_sup_011",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'独在异乡为异客，每逢佳节倍思亲'中的佳节指？",
+      "options": [
+        "春节",
+        "重阳节",
+        "中秋节",
+        "端午节"
+      ],
+      "answer": "B",
+      "explanation": "出自王维《九月九日忆山东兄弟》，佳节指重阳节。"
+    },
+    {
+      "question_id": "ch_sup_012",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'白日依山尽，黄河入海流'出自？",
+      "options": [
+        "《登鹳雀楼》",
+        "《望庐山瀑布》",
+        "《绝句》",
+        "《鹿柴》"
+      ],
+      "answer": "A",
+      "explanation": "出自王之涣的《登鹳雀楼》。"
+    },
+    {
+      "question_id": "ch_sup_013",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'掩耳盗铃'比喻什么？",
+      "options": [
+        "偷东西",
+        "自己欺骗自己",
+        "喜欢铃铛",
+        "耳朵不好"
+      ],
+      "answer": "B",
+      "explanation": "'掩耳盗铃'比喻自己欺骗自己。"
+    },
+    {
+      "question_id": "ch_sup_014",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "'我的心里像打翻了五味瓶'运用了什么修辞？",
+      "options": [
+        "比喻",
+        "拟人",
+        "排比",
+        "夸张"
+      ],
+      "answer": "A",
+      "explanation": "把复杂的心情比作打翻五味瓶，是比喻。"
+    },
+    {
+      "question_id": "ch_sup_015",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'井底之蛙'比喻什么？",
+      "options": [
+        "喜欢青蛙",
+        "见识短浅的人",
+        "住在井里",
+        "游泳很好"
+      ],
+      "answer": "B",
+      "explanation": "'井底之蛙'比喻见识狭窄的人。"
+    },
+    {
+      "question_id": "ch_sup_016",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'亡羊补牢'的意思是？",
+      "options": [
+        "羊丢了就不管了",
+        "出了问题后及时补救",
+        "羊圈很结实",
+        "狼来了"
+      ],
+      "answer": "B",
+      "explanation": "'亡羊补牢'比喻出了问题后及时补救。"
+    },
+    {
+      "question_id": "ch_sup_017",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'守株待兔'告诉我们什么道理？",
+      "options": [
+        "要爱护兔子",
+        "不主动努力，心存侥幸是不对的",
+        "种田很辛苦",
+        "兔子很可爱"
+      ],
+      "answer": "B",
+      "explanation": "'守株待兔'比喻不主动努力，存侥幸心理。"
+    },
+    {
+      "question_id": "ch_sup_018",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中描写人物外貌的属于什么描写？",
+      "options": [
+        "动作描写",
+        "神态描写",
+        "外貌描写",
+        "语言描写"
+      ],
+      "answer": "C",
+      "explanation": "描写人物外貌属于外貌描写。"
+    },
+    {
+      "question_id": "ch_sup_019",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'飞流直下三千尺，疑是银河落九天'写的是哪里？",
+      "options": [
+        "泰山",
+        "庐山",
+        "黄山",
+        "华山"
+      ],
+      "answer": "B",
+      "explanation": "写的是庐山瀑布，出自李白。"
+    },
+    {
+      "question_id": "ch_sup_020",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'守株待兔'告诉我们什么道理？",
+      "options": [
+        "要爱护兔子",
+        "不主动努力，心存侥幸是不对的",
+        "种田很辛苦",
+        "兔子很可爱"
+      ],
+      "answer": "B",
+      "explanation": "'守株待兔'比喻不主动努力，存侥幸心理。"
+    },
+    {
+      "question_id": "ch_sup_021",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的表达方式有哪些？",
+      "options": [
+        "记叙",
+        "描写",
+        "抒情",
+        "议论"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "记叙、描写、抒情、议论都是表达方式。"
+    },
+    {
+      "question_id": "ch_sup_022",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文-方法",
+      "question_text": "哪些是常用的说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "拟人",
+        "作比较"
+      ],
+      "answer": "A,B,D",
+      "explanation": "列数字、举例子、作比较是说明方法，拟人是修辞手法。"
+    },
+    {
+      "question_id": "ch_sup_023",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文-方法",
+      "question_text": "哪些是常用的说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "拟人",
+        "作比较"
+      ],
+      "answer": "A,B,D",
+      "explanation": "列数字、举例子、作比较是说明方法，拟人是修辞手法。"
+    },
+    {
+      "question_id": "ch_sup_024",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-理解",
+      "question_text": "以下哪些是描写春天的诗句？",
+      "options": [
+        "春眠不觉晓",
+        "处处闻啼鸟",
+        "床前明月光",
+        "疑是地上霜"
+      ],
+      "answer": "A,B",
+      "explanation": "'春眠不觉晓，处处闻啼鸟'描写春天。"
+    },
+    {
+      "question_id": "ch_sup_025",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "哪些是唐代诗人？",
+      "options": [
+        "李白",
+        "杜甫",
+        "苏轼",
+        "白居易"
+      ],
+      "answer": "A,B,D",
+      "explanation": "李白、杜甫、白居易是唐代诗人，苏轼是宋代。"
+    },
+    {
+      "question_id": "ch_sup_026",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-理解",
+      "question_text": "以下哪些是描写春天的诗句？",
+      "options": [
+        "春眠不觉晓",
+        "处处闻啼鸟",
+        "床前明月光",
+        "疑是地上霜"
+      ],
+      "answer": "A,B",
+      "explanation": "'春眠不觉晓，处处闻啼鸟'描写春天。"
+    },
+    {
+      "question_id": "ch_sup_027",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的表达方式有哪些？",
+      "options": [
+        "记叙",
+        "描写",
+        "抒情",
+        "议论"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "记叙、描写、抒情、议论都是表达方式。"
+    },
+    {
+      "question_id": "ch_sup_028",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的表达方式有哪些？",
+      "options": [
+        "记叙",
+        "描写",
+        "抒情",
+        "议论"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "记叙、描写、抒情、议论都是表达方式。"
+    },
+    {
+      "question_id": "ch_sup_029",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "'床前明月光，疑是地上霜'的作者是____",
+      "options": [],
+      "answer": "李白",
+      "explanation": "作者是李白。"
+    },
+    {
+      "question_id": "ch_sup_030",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文-要素",
+      "question_text": "记叙文的六要素是：时间、地点、人物、起因、____、结果",
+      "options": [],
+      "answer": "经过",
+      "explanation": "六要素包括起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_031",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "'床前明月光，疑是地上霜'的作者是____",
+      "options": [],
+      "answer": "李白",
+      "explanation": "作者是李白。"
+    },
+    {
+      "question_id": "ch_sup_032",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "成语-理解",
+      "question_text": "'画蛇添足'比喻做了多余的____，反而不恰当",
+      "options": [],
+      "answer": "事/事情",
+      "explanation": "画蛇添足比喻做多余的事。"
+    },
+    {
+      "question_id": "ch_sup_033",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'出自《____》",
+      "options": [],
+      "answer": "春晓",
+      "explanation": "出自孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_034",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文-要素",
+      "question_text": "记叙文的六要素是：时间、地点、人物、起因、____、结果",
+      "options": [],
+      "answer": "经过",
+      "explanation": "六要素包括起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_035",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "'床前明月光，疑是地上霜'的作者是____",
+      "options": [],
+      "answer": "李白",
+      "explanation": "作者是李白。"
+    },
+    {
+      "question_id": "ch_sup_036",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'出自《____》",
+      "options": [],
+      "answer": "春晓",
+      "explanation": "出自孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_037",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "'床前明月光，疑是地上霜'的作者是____",
+      "options": [],
+      "answer": "李白",
+      "explanation": "作者是李白。"
+    },
+    {
+      "question_id": "ch_sup_038",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'出自《____》",
+      "options": [],
+      "answer": "春晓",
+      "explanation": "出自孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_039",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的主要表达方式是记叙和描写",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "记叙文主要以记叙和描写为主。"
+    },
+    {
+      "question_id": "ch_sup_040",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'欲穷千里目，更上一层楼'出自《登鹳雀楼》",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "出自王之涣《登鹳雀楼》。"
+    },
+    {
+      "question_id": "ch_sup_041",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "'李白'是宋代诗人",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "explanation": "李白是唐代诗人。"
+    },
+    {
+      "question_id": "ch_sup_042",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "成语-理解",
+      "question_text": "'杯弓蛇影'比喻疑神疑鬼，自相惊扰",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "杯弓蛇影比喻因疑神疑鬼而自惊。"
+    },
+    {
+      "question_id": "ch_sup_043",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'欲穷千里目，更上一层楼'出自《登鹳雀楼》",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "出自王之涣《登鹳雀楼》。"
+    },
+    {
+      "question_id": "ch_sup_044",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'欲穷千里目，更上一层楼'出自《登鹳雀楼》",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "出自王之涣《登鹳雀楼》。"
+    },
+    {
+      "question_id": "ch_sup_045",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "写出两句描写秋天的诗句",
+      "options": [],
+      "answer": "（示例）停车坐爱枫林晚，霜叶红于二月花。",
+      "explanation": "描写秋天的诗句即可，答案不唯一。"
+    },
+    {
+      "question_id": "ch_sup_046",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "knowledge_area": "成语-寓意",
+      "question_text": "请简述'揠苗助长'的寓意",
+      "options": [],
+      "answer": "（示例）违背事物规律急于求成，反而坏事。",
+      "explanation": "寓意是违反自然规律，急于求成，反而把事情弄糟。"
+    },
+    {
+      "question_id": "ch_sup_047",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "knowledge_area": "成语-寓意",
+      "question_text": "请简述'揠苗助长'的寓意",
+      "options": [],
+      "answer": "（示例）违背事物规律急于求成，反而坏事。",
+      "explanation": "寓意是违反自然规律，急于求成，反而把事情弄糟。"
+    },
+    {
+      "question_id": "ch_sup_048",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'地球像一个蓝色的水晶球'用了什么说明方法？",
+      "options": [
+        "打比方",
+        "列数字",
+        "举例子",
+        "下定义"
+      ],
+      "answer": "A",
+      "explanation": "把地球比作水晶球，是打比方。"
+    },
+    {
+      "question_id": "ch_sup_049",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'井底之蛙'比喻什么？",
+      "options": [
+        "喜欢青蛙",
+        "见识短浅的人",
+        "住在井里",
+        "游泳很好"
+      ],
+      "answer": "B",
+      "explanation": "'井底之蛙'比喻见识狭窄的人。"
+    },
+    {
+      "question_id": "ch_sup_050",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文的六要素不包括以下哪一项？",
+      "options": [
+        "时间",
+        "地点",
+        "修辞手法",
+        "人物"
+      ],
+      "answer": "C",
+      "explanation": "记叙文六要素：时间、地点、人物、起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_051",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'掩耳盗铃'比喻什么？",
+      "options": [
+        "偷东西",
+        "自己欺骗自己",
+        "喜欢铃铛",
+        "耳朵不好"
+      ],
+      "answer": "B",
+      "explanation": "'掩耳盗铃'比喻自己欺骗自己。"
+    },
+    {
+      "question_id": "ch_sup_052",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'这座塔高65米'这句话用了什么说明方法？",
+      "options": [
+        "打比方",
+        "列数字",
+        "举例子",
+        "作比较"
+      ],
+      "answer": "B",
+      "explanation": "用具体数字说明，是列数字。"
+    },
+    {
+      "question_id": "ch_sup_053",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "说明文的主要特点是什么？",
+      "options": [
+        "以情感人",
+        "以理服人",
+        "以知授人",
+        "以事动人"
+      ],
+      "answer": "C",
+      "explanation": "说明文以传授知识为主要目的。"
+    },
+    {
+      "question_id": "ch_sup_054",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文的六要素不包括以下哪一项？",
+      "options": [
+        "时间",
+        "地点",
+        "修辞手法",
+        "人物"
+      ],
+      "answer": "C",
+      "explanation": "记叙文六要素：时间、地点、人物、起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_055",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文的六要素不包括以下哪一项？",
+      "options": [
+        "时间",
+        "地点",
+        "修辞手法",
+        "人物"
+      ],
+      "answer": "C",
+      "explanation": "记叙文六要素：时间、地点、人物、起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_056",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "按照事情发生先后顺序写的记叙顺序叫？",
+      "options": [
+        "倒叙",
+        "插叙",
+        "顺叙",
+        "补叙"
+      ],
+      "answer": "C",
+      "explanation": "顺叙是按事情发生先后顺序叙述。"
+    },
+    {
+      "question_id": "ch_sup_057",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'井底之蛙'比喻什么？",
+      "options": [
+        "喜欢青蛙",
+        "见识短浅的人",
+        "住在井里",
+        "游泳很好"
+      ],
+      "answer": "B",
+      "explanation": "'井底之蛙'比喻见识狭窄的人。"
+    },
+    {
+      "question_id": "ch_sup_058",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "按照事情发生先后顺序写的记叙顺序叫？",
+      "options": [
+        "倒叙",
+        "插叙",
+        "顺叙",
+        "补叙"
+      ],
+      "answer": "C",
+      "explanation": "顺叙是按事情发生先后顺序叙述。"
+    },
+    {
+      "question_id": "ch_sup_059",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'亡羊补牢'的意思是？",
+      "options": [
+        "羊丢了就不管了",
+        "出了问题后及时补救",
+        "羊圈很结实",
+        "狼来了"
+      ],
+      "answer": "B",
+      "explanation": "'亡羊补牢'比喻出了问题后及时补救。"
+    },
+    {
+      "question_id": "ch_sup_060",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "按照事情发生先后顺序写的记叙顺序叫？",
+      "options": [
+        "倒叙",
+        "插叙",
+        "顺叙",
+        "补叙"
+      ],
+      "answer": "C",
+      "explanation": "顺叙是按事情发生先后顺序叙述。"
+    },
+    {
+      "question_id": "ch_sup_061",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'例如熊猫、金丝猴等都是珍稀动物'用了什么说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "作比较",
+        "打比方"
+      ],
+      "answer": "B",
+      "explanation": "举出熊猫、金丝猴的例子，是举例子。"
+    },
+    {
+      "question_id": "ch_sup_062",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'的作者是？",
+      "options": [
+        "李白",
+        "杜甫",
+        "孟浩然",
+        "杜牧"
+      ],
+      "answer": "C",
+      "explanation": "这是孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_063",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'掩耳盗铃'比喻什么？",
+      "options": [
+        "偷东西",
+        "自己欺骗自己",
+        "喜欢铃铛",
+        "耳朵不好"
+      ],
+      "answer": "B",
+      "explanation": "'掩耳盗铃'比喻自己欺骗自己。"
+    },
+    {
+      "question_id": "ch_sup_064",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'亡羊补牢'的意思是？",
+      "options": [
+        "羊丢了就不管了",
+        "出了问题后及时补救",
+        "羊圈很结实",
+        "狼来了"
+      ],
+      "answer": "B",
+      "explanation": "'亡羊补牢'比喻出了问题后及时补救。"
+    },
+    {
+      "question_id": "ch_sup_065",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'床前明月光，疑是地上霜'出自哪首诗？",
+      "options": [
+        "《春晓》",
+        "《静夜思》",
+        "《山行》",
+        "《登鹳雀楼》"
+      ],
+      "answer": "B",
+      "explanation": "出自李白的《静夜思》。"
+    },
+    {
+      "question_id": "ch_sup_066",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'床前明月光，疑是地上霜'出自哪首诗？",
+      "options": [
+        "《春晓》",
+        "《静夜思》",
+        "《山行》",
+        "《登鹳雀楼》"
+      ],
+      "answer": "B",
+      "explanation": "出自李白的《静夜思》。"
+    },
+    {
+      "question_id": "ch_sup_067",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "把事情的结局先写出来，再写经过的叙述方式叫？",
+      "options": [
+        "顺叙",
+        "倒叙",
+        "插叙",
+        "平叙"
+      ],
+      "answer": "B",
+      "explanation": "先写结局再写经过是倒叙。"
+    },
+    {
+      "question_id": "ch_sup_068",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文-方法",
+      "question_text": "哪些是常用的说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "拟人",
+        "作比较"
+      ],
+      "answer": "A,B,D",
+      "explanation": "列数字、举例子、作比较是说明方法，拟人是修辞手法。"
+    },
+    {
+      "question_id": "ch_sup_069",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "哪些是唐代诗人？",
+      "options": [
+        "李白",
+        "杜甫",
+        "苏轼",
+        "白居易"
+      ],
+      "answer": "A,B,D",
+      "explanation": "李白、杜甫、白居易是唐代诗人，苏轼是宋代。"
+    },
+    {
+      "question_id": "ch_sup_070",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的表达方式有哪些？",
+      "options": [
+        "记叙",
+        "描写",
+        "抒情",
+        "议论"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "记叙、描写、抒情、议论都是表达方式。"
+    },
+    {
+      "question_id": "ch_sup_071",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "哪些是唐代诗人？",
+      "options": [
+        "李白",
+        "杜甫",
+        "苏轼",
+        "白居易"
+      ],
+      "answer": "A,B,D",
+      "explanation": "李白、杜甫、白居易是唐代诗人，苏轼是宋代。"
+    },
+    {
+      "question_id": "ch_sup_072",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的表达方式有哪些？",
+      "options": [
+        "记叙",
+        "描写",
+        "抒情",
+        "议论"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "记叙、描写、抒情、议论都是表达方式。"
+    },
+    {
+      "question_id": "ch_sup_073",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的表达方式有哪些？",
+      "options": [
+        "记叙",
+        "描写",
+        "抒情",
+        "议论"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "记叙、描写、抒情、议论都是表达方式。"
+    },
+    {
+      "question_id": "ch_sup_074",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文-方法",
+      "question_text": "哪些是常用的说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "拟人",
+        "作比较"
+      ],
+      "answer": "A,B,D",
+      "explanation": "列数字、举例子、作比较是说明方法，拟人是修辞手法。"
+    },
+    {
+      "question_id": "ch_sup_075",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文-方法",
+      "question_text": "哪些是常用的说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "拟人",
+        "作比较"
+      ],
+      "answer": "A,B,D",
+      "explanation": "列数字、举例子、作比较是说明方法，拟人是修辞手法。"
+    },
+    {
+      "question_id": "ch_sup_076",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "'床前明月光，疑是地上霜'的作者是____",
+      "options": [],
+      "answer": "李白",
+      "explanation": "作者是李白。"
+    },
+    {
+      "question_id": "ch_sup_077",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "成语-理解",
+      "question_text": "'画蛇添足'比喻做了多余的____，反而不恰当",
+      "options": [],
+      "answer": "事/事情",
+      "explanation": "画蛇添足比喻做多余的事。"
+    },
+    {
+      "question_id": "ch_sup_078",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "说明文-方法",
+      "question_text": "说明方法主要有：列数字、举例子、____、下定义等",
+      "options": [],
+      "answer": "作比较/打比方",
+      "explanation": "常见说明方法包括作比较、打比方等。"
+    },
+    {
+      "question_id": "ch_sup_079",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'出自《____》",
+      "options": [],
+      "answer": "春晓",
+      "explanation": "出自孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_080",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'出自《____》",
+      "options": [],
+      "answer": "春晓",
+      "explanation": "出自孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_081",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "说明文-方法",
+      "question_text": "说明方法主要有：列数字、举例子、____、下定义等",
+      "options": [],
+      "answer": "作比较/打比方",
+      "explanation": "常见说明方法包括作比较、打比方等。"
+    },
+    {
+      "question_id": "ch_sup_082",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "说明文-方法",
+      "question_text": "说明方法主要有：列数字、举例子、____、下定义等",
+      "options": [],
+      "answer": "作比较/打比方",
+      "explanation": "常见说明方法包括作比较、打比方等。"
+    },
+    {
+      "question_id": "ch_sup_083",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文-要素",
+      "question_text": "记叙文的六要素是：时间、地点、人物、起因、____、结果",
+      "options": [],
+      "answer": "经过",
+      "explanation": "六要素包括起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_084",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'出自《____》",
+      "options": [],
+      "answer": "春晓",
+      "explanation": "出自孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_085",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文-要素",
+      "question_text": "记叙文的六要素是：时间、地点、人物、起因、____、结果",
+      "options": [],
+      "answer": "经过",
+      "explanation": "六要素包括起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_086",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "成语-理解",
+      "question_text": "'杯弓蛇影'比喻疑神疑鬼，自相惊扰",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "杯弓蛇影比喻因疑神疑鬼而自惊。"
+    },
+    {
+      "question_id": "ch_sup_087",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的主要表达方式是记叙和描写",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "记叙文主要以记叙和描写为主。"
+    },
+    {
+      "question_id": "ch_sup_088",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "说明文-语言",
+      "question_text": "说明文可以用拟人的修辞手法",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "说明文也可以适当使用修辞手法使语言生动。"
+    },
+    {
+      "question_id": "ch_sup_089",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "'李白'是宋代诗人",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "explanation": "李白是唐代诗人。"
+    },
+    {
+      "question_id": "ch_sup_090",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "记叙文-顺序",
+      "question_text": "倒叙就是把事情的经过倒过来写",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "explanation": "倒叙是先写结局或高潮，不是完全倒过来写。"
+    },
+    {
+      "question_id": "ch_sup_091",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "说明文-语言",
+      "question_text": "说明文可以用拟人的修辞手法",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "说明文也可以适当使用修辞手法使语言生动。"
+    },
+    {
+      "question_id": "ch_sup_092",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "knowledge_area": "成语-寓意",
+      "question_text": "请简述'揠苗助长'的寓意",
+      "options": [],
+      "answer": "（示例）违背事物规律急于求成，反而坏事。",
+      "explanation": "寓意是违反自然规律，急于求成，反而把事情弄糟。"
+    },
+    {
+      "question_id": "ch_sup_093",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "写出两句描写秋天的诗句",
+      "options": [],
+      "answer": "（示例）停车坐爱枫林晚，霜叶红于二月花。",
+      "explanation": "描写秋天的诗句即可，答案不唯一。"
+    },
+    {
+      "question_id": "ch_sup_094",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "knowledge_area": "成语-寓意",
+      "question_text": "请简述'揠苗助长'的寓意",
+      "options": [],
+      "answer": "（示例）违背事物规律急于求成，反而坏事。",
+      "explanation": "寓意是违反自然规律，急于求成，反而把事情弄糟。"
+    },
+    {
+      "question_id": "ch_sup_095",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'独在异乡为异客，每逢佳节倍思亲'中的佳节指？",
+      "options": [
+        "春节",
+        "重阳节",
+        "中秋节",
+        "端午节"
+      ],
+      "answer": "B",
+      "explanation": "出自王维《九月九日忆山东兄弟》，佳节指重阳节。"
+    },
+    {
+      "question_id": "ch_sup_096",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'这座塔高65米'这句话用了什么说明方法？",
+      "options": [
+        "打比方",
+        "列数字",
+        "举例子",
+        "作比较"
+      ],
+      "answer": "B",
+      "explanation": "用具体数字说明，是列数字。"
+    },
+    {
+      "question_id": "ch_sup_097",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'床前明月光，疑是地上霜'出自哪首诗？",
+      "options": [
+        "《春晓》",
+        "《静夜思》",
+        "《山行》",
+        "《登鹳雀楼》"
+      ],
+      "answer": "B",
+      "explanation": "出自李白的《静夜思》。"
+    },
+    {
+      "question_id": "ch_sup_098",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'白日依山尽，黄河入海流'出自？",
+      "options": [
+        "《登鹳雀楼》",
+        "《望庐山瀑布》",
+        "《绝句》",
+        "《鹿柴》"
+      ],
+      "answer": "A",
+      "explanation": "出自王之涣的《登鹳雀楼》。"
+    },
+    {
+      "question_id": "ch_sup_099",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中描写人物外貌的属于什么描写？",
+      "options": [
+        "动作描写",
+        "神态描写",
+        "外貌描写",
+        "语言描写"
+      ],
+      "answer": "C",
+      "explanation": "描写人物外貌属于外貌描写。"
+    },
+    {
+      "question_id": "ch_sup_100",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'井底之蛙'比喻什么？",
+      "options": [
+        "喜欢青蛙",
+        "见识短浅的人",
+        "住在井里",
+        "游泳很好"
+      ],
+      "answer": "B",
+      "explanation": "'井底之蛙'比喻见识狭窄的人。"
+    },
+    {
+      "question_id": "ch_sup_101",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'飞流直下三千尺，疑是银河落九天'写的是哪里？",
+      "options": [
+        "泰山",
+        "庐山",
+        "黄山",
+        "华山"
+      ],
+      "answer": "B",
+      "explanation": "写的是庐山瀑布，出自李白。"
+    },
+    {
+      "question_id": "ch_sup_102",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "把事情的结局先写出来，再写经过的叙述方式叫？",
+      "options": [
+        "顺叙",
+        "倒叙",
+        "插叙",
+        "平叙"
+      ],
+      "answer": "B",
+      "explanation": "先写结局再写经过是倒叙。"
+    },
+    {
+      "question_id": "ch_sup_103",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'这座塔高65米'这句话用了什么说明方法？",
+      "options": [
+        "打比方",
+        "列数字",
+        "举例子",
+        "作比较"
+      ],
+      "answer": "B",
+      "explanation": "用具体数字说明，是列数字。"
+    },
+    {
+      "question_id": "ch_sup_104",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'独在异乡为异客，每逢佳节倍思亲'中的佳节指？",
+      "options": [
+        "春节",
+        "重阳节",
+        "中秋节",
+        "端午节"
+      ],
+      "answer": "B",
+      "explanation": "出自王维《九月九日忆山东兄弟》，佳节指重阳节。"
+    },
+    {
+      "question_id": "ch_sup_105",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中描写人物外貌的属于什么描写？",
+      "options": [
+        "动作描写",
+        "神态描写",
+        "外貌描写",
+        "语言描写"
+      ],
+      "answer": "C",
+      "explanation": "描写人物外貌属于外貌描写。"
+    },
+    {
+      "question_id": "ch_sup_106",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "把事情的结局先写出来，再写经过的叙述方式叫？",
+      "options": [
+        "顺叙",
+        "倒叙",
+        "插叙",
+        "平叙"
+      ],
+      "answer": "B",
+      "explanation": "先写结局再写经过是倒叙。"
+    },
+    {
+      "question_id": "ch_sup_107",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'床前明月光，疑是地上霜'出自哪首诗？",
+      "options": [
+        "《春晓》",
+        "《静夜思》",
+        "《山行》",
+        "《登鹳雀楼》"
+      ],
+      "answer": "B",
+      "explanation": "出自李白的《静夜思》。"
+    },
+    {
+      "question_id": "ch_sup_108",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'守株待兔'告诉我们什么道理？",
+      "options": [
+        "要爱护兔子",
+        "不主动努力，心存侥幸是不对的",
+        "种田很辛苦",
+        "兔子很可爱"
+      ],
+      "answer": "B",
+      "explanation": "'守株待兔'比喻不主动努力，存侥幸心理。"
+    },
+    {
+      "question_id": "ch_sup_109",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "说明文的语言特点一般是？",
+      "options": [
+        "生动形象",
+        "准确简明",
+        "含蓄委婉",
+        "激昂澎湃"
+      ],
+      "answer": "B",
+      "explanation": "说明文语言要求准确、简明、客观。"
+    },
+    {
+      "question_id": "ch_sup_110",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "说明文的语言特点一般是？",
+      "options": [
+        "生动形象",
+        "准确简明",
+        "含蓄委婉",
+        "激昂澎湃"
+      ],
+      "answer": "B",
+      "explanation": "说明文语言要求准确、简明、客观。"
+    },
+    {
+      "question_id": "ch_sup_111",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "'亡羊补牢'的意思是？",
+      "options": [
+        "羊丢了就不管了",
+        "出了问题后及时补救",
+        "羊圈很结实",
+        "狼来了"
+      ],
+      "answer": "B",
+      "explanation": "'亡羊补牢'比喻出了问题后及时补救。"
+    },
+    {
+      "question_id": "ch_sup_112",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中描写人物外貌的属于什么描写？",
+      "options": [
+        "动作描写",
+        "神态描写",
+        "外貌描写",
+        "语言描写"
+      ],
+      "answer": "C",
+      "explanation": "描写人物外貌属于外貌描写。"
+    },
+    {
+      "question_id": "ch_sup_113",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "'独在异乡为异客，每逢佳节倍思亲'中的佳节指？",
+      "options": [
+        "春节",
+        "重阳节",
+        "中秋节",
+        "端午节"
+      ],
+      "answer": "B",
+      "explanation": "出自王维《九月九日忆山东兄弟》，佳节指重阳节。"
+    },
+    {
+      "question_id": "ch_sup_114",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文-方法",
+      "question_text": "哪些是常用的说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "拟人",
+        "作比较"
+      ],
+      "answer": "A,B,D",
+      "explanation": "列数字、举例子、作比较是说明方法，拟人是修辞手法。"
+    },
+    {
+      "question_id": "ch_sup_115",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "哪些是唐代诗人？",
+      "options": [
+        "李白",
+        "杜甫",
+        "苏轼",
+        "白居易"
+      ],
+      "answer": "A,B,D",
+      "explanation": "李白、杜甫、白居易是唐代诗人，苏轼是宋代。"
+    },
+    {
+      "question_id": "ch_sup_116",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "哪些是唐代诗人？",
+      "options": [
+        "李白",
+        "杜甫",
+        "苏轼",
+        "白居易"
+      ],
+      "answer": "A,B,D",
+      "explanation": "李白、杜甫、白居易是唐代诗人，苏轼是宋代。"
+    },
+    {
+      "question_id": "ch_sup_117",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-理解",
+      "question_text": "以下哪些是描写春天的诗句？",
+      "options": [
+        "春眠不觉晓",
+        "处处闻啼鸟",
+        "床前明月光",
+        "疑是地上霜"
+      ],
+      "answer": "A,B",
+      "explanation": "'春眠不觉晓，处处闻啼鸟'描写春天。"
+    },
+    {
+      "question_id": "ch_sup_118",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "哪些是唐代诗人？",
+      "options": [
+        "李白",
+        "杜甫",
+        "苏轼",
+        "白居易"
+      ],
+      "answer": "A,B,D",
+      "explanation": "李白、杜甫、白居易是唐代诗人，苏轼是宋代。"
+    },
+    {
+      "question_id": "ch_sup_119",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的表达方式有哪些？",
+      "options": [
+        "记叙",
+        "描写",
+        "抒情",
+        "议论"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "记叙、描写、抒情、议论都是表达方式。"
+    },
+    {
+      "question_id": "ch_sup_120",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的表达方式有哪些？",
+      "options": [
+        "记叙",
+        "描写",
+        "抒情",
+        "议论"
+      ],
+      "answer": "A,B,C,D",
+      "explanation": "记叙、描写、抒情、议论都是表达方式。"
+    },
+    {
+      "question_id": "ch_sup_121",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词-理解",
+      "question_text": "以下哪些是描写春天的诗句？",
+      "options": [
+        "春眠不觉晓",
+        "处处闻啼鸟",
+        "床前明月光",
+        "疑是地上霜"
+      ],
+      "answer": "A,B",
+      "explanation": "'春眠不觉晓，处处闻啼鸟'描写春天。"
+    },
+    {
+      "question_id": "ch_sup_122",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文-要素",
+      "question_text": "记叙文的六要素是：时间、地点、人物、起因、____、结果",
+      "options": [],
+      "answer": "经过",
+      "explanation": "六要素包括起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_123",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'出自《____》",
+      "options": [],
+      "answer": "春晓",
+      "explanation": "出自孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_124",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-作者",
+      "question_text": "'床前明月光，疑是地上霜'的作者是____",
+      "options": [],
+      "answer": "李白",
+      "explanation": "作者是李白。"
+    },
+    {
+      "question_id": "ch_sup_125",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "成语-理解",
+      "question_text": "'画蛇添足'比喻做了多余的____，反而不恰当",
+      "options": [],
+      "answer": "事/事情",
+      "explanation": "画蛇添足比喻做多余的事。"
+    },
+    {
+      "question_id": "ch_sup_126",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文-要素",
+      "question_text": "记叙文的六要素是：时间、地点、人物、起因、____、结果",
+      "options": [],
+      "answer": "经过",
+      "explanation": "六要素包括起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_sup_127",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "成语-理解",
+      "question_text": "'画蛇添足'比喻做了多余的____，反而不恰当",
+      "options": [],
+      "answer": "事/事情",
+      "explanation": "画蛇添足比喻做多余的事。"
+    },
+    {
+      "question_id": "ch_sup_128",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "说明文-方法",
+      "question_text": "说明方法主要有：列数字、举例子、____、下定义等",
+      "options": [],
+      "answer": "作比较/打比方",
+      "explanation": "常见说明方法包括作比较、打比方等。"
+    },
+    {
+      "question_id": "ch_sup_129",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'春眠不觉晓，处处闻啼鸟'出自《____》",
+      "options": [],
+      "answer": "春晓",
+      "explanation": "出自孟浩然的《春晓》。"
+    },
+    {
+      "question_id": "ch_sup_130",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "成语-理解",
+      "question_text": "'画蛇添足'比喻做了多余的____，反而不恰当",
+      "options": [],
+      "answer": "事/事情",
+      "explanation": "画蛇添足比喻做多余的事。"
+    },
+    {
+      "question_id": "ch_sup_131",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "记叙文-顺序",
+      "question_text": "倒叙就是把事情的经过倒过来写",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "B",
+      "explanation": "倒叙是先写结局或高潮，不是完全倒过来写。"
+    },
+    {
+      "question_id": "ch_sup_132",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "成语-理解",
+      "question_text": "'杯弓蛇影'比喻疑神疑鬼，自相惊扰",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "杯弓蛇影比喻因疑神疑鬼而自惊。"
+    },
+    {
+      "question_id": "ch_sup_133",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "记叙文-表达",
+      "question_text": "记叙文的主要表达方式是记叙和描写",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "记叙文主要以记叙和描写为主。"
+    },
+    {
+      "question_id": "ch_sup_134",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'欲穷千里目，更上一层楼'出自《登鹳雀楼》",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "出自王之涣《登鹳雀楼》。"
+    },
+    {
+      "question_id": "ch_sup_135",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "成语-理解",
+      "question_text": "'杯弓蛇影'比喻疑神疑鬼，自相惊扰",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "杯弓蛇影比喻因疑神疑鬼而自惊。"
+    },
+    {
+      "question_id": "ch_sup_136",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "古诗词-默写",
+      "question_text": "'欲穷千里目，更上一层楼'出自《登鹳雀楼》",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "A",
+      "explanation": "出自王之涣《登鹳雀楼》。"
+    },
+    {
+      "question_id": "ch_sup_137",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_area": "成语-寓意",
+      "question_text": "请简述'揠苗助长'的寓意",
+      "options": [],
+      "answer": "（示例）违背事物规律急于求成，反而坏事。",
+      "explanation": "寓意是违反自然规律，急于求成，反而把事情弄糟。"
+    },
+    {
+      "question_id": "ch_sup_138",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_area": "成语-寓意",
+      "question_text": "请简述'揠苗助长'的寓意",
+      "options": [],
+      "answer": "（示例）违背事物规律急于求成，反而坏事。",
+      "explanation": "寓意是违反自然规律，急于求成，反而把事情弄糟。"
+    },
+    {
+      "question_id": "ch_sup_139",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_area": "说明文-方法",
+      "question_text": "说明'举例子'这种说明方法的作用",
+      "options": [],
+      "answer": "（示例）使说明更具体、更易理解。",
+      "explanation": "举例子能把抽象事物具体化，便于读者理解。"
+    },
+    {
+      "question_id": "ch_sup_140",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "四年级/五年级/六年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_area": "成语-寓意",
+      "question_text": "请简述'揠苗助长'的寓意",
+      "options": [],
+      "answer": "（示例）违背事物规律急于求成，反而坏事。",
+      "explanation": "寓意是违反自然规律，急于求成，反而把事情弄糟。"
+    }
+  ]
+}

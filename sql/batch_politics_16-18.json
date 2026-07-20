@@ -1,0 +1,1475 @@
+{
+  "batch_id": "batch_politics_16-18",
+  "source": "ai_generated",
+  "subject": "politics",
+  "age_group": "16-18",
+  "grade": "高三",
+  "total_questions": 70,
+  "generated_at": "2026-07-15T18:14:51.399717",
+  "questions": [
+    {
+      "content": "在经济学中，货币的基本职能包括价值尺度和流通手段。下列活动中，体现货币执行流通手段职能的是：",
+      "options": [
+        "A. 一台手机标价2000元",
+        "B. 小王用10元买了两瓶饮料",
+        "C. 国家发行1亿元国债",
+        "D. 小李领到5000元工资"
+      ],
+      "correct_answer": "B",
+      "explanation": "流通手段是指货币充当商品交换媒介的职能，即一手交钱、一手交货。A项是价值尺度；C项是财政政策；D项是支付手段。故B正确。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "货币职能"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "价值规律是商品经济的基本规律。其表现形式是：",
+      "options": [
+        "A. 价格围绕价值上下波动",
+        "B. 价值围绕价格上下波动",
+        "C. 价格与价值始终相等",
+        "D. 价格与价值无关"
+      ],
+      "correct_answer": "A",
+      "explanation": "价值规律要求商品交换以价值量为基础实行等价交换。受供求关系影响，价格围绕价值上下波动，这是价值规律的表现形式。B、C、D表述均错误。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "价值规律"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "宏观调控是政府的主要职责和作用之一。我国宏观调控的主要目标是：①促进经济增长 ②增加就业 ③稳定物价 ④保持国际收支平衡",
+      "options": [
+        "A. ①②③",
+        "B. ①②④",
+        "C. ①③④",
+        "D. ①②③④"
+      ],
+      "correct_answer": "D",
+      "explanation": "我国宏观调控的主要目标是促进经济增长、增加就业、稳定物价、保持国际收支平衡。四项都是主要目标，故选D。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "宏观调控"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "我国是人民民主专政的社会主义国家，其本质是：",
+      "options": [
+        "A. 人民当家作主",
+        "B. 公民享有广泛权利",
+        "C. 民主和专政的统一",
+        "D. 工农联盟"
+      ],
+      "correct_answer": "A",
+      "explanation": "人民民主专政的本质是人民当家作主。B项公民不等于人民；C项是特点；D项是阶级基础。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政治生活",
+        "国家性质"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "中国共产党领导的多党合作和政治协商制度是我国的一项基本政治制度。多党合作的首要前提和根本保证是：",
+      "options": [
+        "A. 遵守宪法和法律",
+        "B. 坚持中国共产党的领导",
+        "C. 长期共存、互相监督",
+        "D. 肝胆相照、荣辱与共"
+      ],
+      "correct_answer": "B",
+      "explanation": "多党合作的首要前提和根本保证是坚持中国共产党的领导。A是根本活动准则；C和D是基本方针。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政治生活",
+        "政党制度"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "当今国际竞争的实质是以经济和科技实力为基础的综合国力的较量。我国要增强综合国力，必须坚持：",
+      "options": [
+        "A. 以经济建设为中心",
+        "B. 以国防建设为中心",
+        "C. 以文化建设为中心",
+        "D. 以政治建设为中心"
+      ],
+      "correct_answer": "A",
+      "explanation": "我国坚持以经济建设为中心，大力发展生产力，这是增强综合国力的基础。其他选项不是中心工作。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政治生活",
+        "国际关系"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "文化传承与创新中，对待传统文化的正确态度是：",
+      "options": [
+        "A. 全面继承，保持传统",
+        "B. 取其精华，去其糟粕",
+        "C. 彻底摒弃，推陈出新",
+        "D. 全盘西化，学习西方"
+      ],
+      "correct_answer": "B",
+      "explanation": "对待传统文化要批判继承，即“取其精华，去其糟粕”，并在继承的基础上创新。A、C、D都是错误的对待方式。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化生活",
+        "文化传承"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "尊重文化多样性，首先要尊重自己民族的文化，培育好、发展好本民族文化。这是因为每个民族的文化都是：",
+      "options": [
+        "A. 世界文化中不可缺少的色彩",
+        "B. 本民族生存和发展的精神根基",
+        "C. 人类文明进步的唯一动力",
+        "D. 世界上最优秀的文化"
+      ],
+      "correct_answer": "B",
+      "explanation": "民族文化起着维系社会生活、维持社会稳定的重要作用，是本民族生存和发展的精神根基。A项是文化多样性的意义，但不是首要原因；C、D表述绝对化。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化生活",
+        "文化多样性"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "马克思主义哲学认为，物质的根本属性是：",
+      "options": [
+        "A. 客观实在性",
+        "B. 运动",
+        "C. 可知性",
+        "D. 无限性"
+      ],
+      "correct_answer": "B",
+      "explanation": "运动是物质的根本属性和存在方式。客观实在性是物质的唯一特性，A是特性而非属性；C、D不是根本属性。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "生活与哲学",
+        "唯物论"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "“实践是检验认识的真理性的唯一标准。”这是因为实践具有：",
+      "options": [
+        "A. 主观能动性",
+        "B. 社会历史性",
+        "C. 直接现实性",
+        "D. 客观物质性"
+      ],
+      "correct_answer": "C",
+      "explanation": "实践具有直接现实性，即能把主观认识变成客观现实，从而检验认识是否正确。A、B、D也是实践的特点，但不是成为唯一标准的原因。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "生活与哲学",
+        "认识论"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "货币的本质是（ ）",
+      "options": [
+        "A. 一般等价物",
+        "B. 商品",
+        "C. 金银",
+        "D. 价值尺度"
+      ],
+      "correct_answer": "A",
+      "explanation": "货币是从商品中分离出来固定地充当一般等价物的商品，其本质是一般等价物。选项B货币是商品，但本质不是商品；C金银是货币的典型形式，但本质不是金银；D是货币的职能。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "货币",
+        "经济生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "以下哪些属于我国宏观调控的目标？（ ）",
+      "options": [
+        "A. 促进经济增长",
+        "B. 增加就业",
+        "C. 稳定物价",
+        "D. 保持国际收支平衡"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "我国宏观调控的主要目标包括促进经济增长、增加就业、稳定物价和保持国际收支平衡。四个选项均正确。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "宏观调控",
+        "经济生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "我国的国家性质是人民民主专政，其本质是人民当家作主。（ ）",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "我国宪法规定，中华人民共和国是工人阶级领导的、以工农联盟为基础的人民民主专政的社会主义国家。人民民主专政的本质是人民当家作主。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "国家性质",
+        "政治生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "文化创新的根本途径是（ ）",
+      "options": [
+        "A. 继承传统，推陈出新",
+        "B. 面向世界，博采众长",
+        "C. 立足社会实践",
+        "D. 坚持正确方向"
+      ],
+      "correct_answer": "C",
+      "explanation": "社会实践是文化创新的源泉和动力，也是文化创新的根本途径。选项A和B是文化创新的基本途径，D是文化创新中应坚持的原则。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化创新",
+        "文化生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "商品是用于交换的________，其基本属性是使用价值和________。",
+      "options": [],
+      "correct_answer": "劳动产品|价值",
+      "explanation": "商品是用于交换的劳动产品，具有使用价值和价值两个基本属性。使用价值是商品能够满足人们某种需要的属性，价值是凝结在商品中的无差别的人类劳动。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "商品",
+        "价值"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "我国是工人阶级领导的、以工农联盟为基础的________的社会主义国家。",
+      "options": [],
+      "correct_answer": "人民民主专政",
+      "explanation": "我国宪法规定，中华人民共和国是工人阶级领导的、以工农联盟为基础的人民民主专政的社会主义国家。这是我国的国体，即国家性质。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政治生活",
+        "国家性质",
+        "人民民主专政"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "文化多样性是人类社会的________，也是人类文明进步的重要________。",
+      "options": [],
+      "correct_answer": "基本特征|动力",
+      "explanation": "文化多样性是人类社会的基本特征，也是人类文明进步的重要动力。尊重文化多样性是发展本民族文化的内在要求，也是实现世界文化繁荣的必然要求。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化生活",
+        "文化多样性",
+        "文明进步"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "物质是不依赖于人的意识，并能为人的意识所________的客观实在。",
+      "options": [],
+      "correct_answer": "反映",
+      "explanation": "物质是不依赖于人的意识，并能为人的意识所反映的客观实在。这是马克思主义哲学对物质范畴的经典定义，物质的唯一特性是客观实在性。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "生活与哲学",
+        "唯物论",
+        "物质"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2024年政府工作报告提出，要推动城乡区域协调发展，促进________和________良性循环。",
+      "options": [],
+      "correct_answer": "经济|社会",
+      "explanation": "2024年政府工作报告强调，要推动城乡区域协调发展，促进经济和社会良性循环，这是实现高质量发展的重要举措。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "时事政治",
+        "政府工作报告",
+        "协调发展"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "货币的本质是商品。",
+      "options": [],
+      "correct_answer": "错误",
+      "explanation": "货币的本质是一般等价物，不是商品。虽然货币是从商品中分离出来的，但货币的本质是固定充当一般等价物的商品，因此说货币的本质是商品是不准确的。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "货币本质"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "人民民主专政的本质是人民当家作主。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "人民民主专政是我国的国体，其本质是人民当家作主。我国宪法规定，中华人民共和国是工人阶级领导的、以工农联盟为基础的人民民主专政的社会主义国家，人民是国家的主人，因此这一说法正确。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政治生活",
+        "人民民主专政"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "文化多样性是人类社会的基本特征，也是人类文明进步的重要动力。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "文化多样性是不同民族、不同国家文化的独特性，是文化创新的基础，也是人类文明进步的重要动力。尊重文化多样性是发展本民族文化的内在要求，也是实现世界文化繁荣的必然要求。因此，该说法符合教材观点。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化生活",
+        "文化多样性"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "简述价值规律的基本内容及其在市场经济中的作用。",
+      "options": [],
+      "correct_answer": "价值规律的基本内容是：商品的价值量由生产该商品的社会必要劳动时间决定，商品交换以价值量为基础实行等价交换。在市场经济中，价值规律的作用主要体现在：调节生产资料和劳动力在各生产部门的分配；刺激商品生产者改进技术、改善经营管理，提高劳动生产率；促使商品生产者在竞争中优胜劣汰。",
+      "explanation": "价值规律是商品经济的基本规律。其基本内容包含两个方面：一是价值决定，即商品价值量由社会必要劳动时间决定；二是交换原则，即商品交换以价值量为基础实行等价交换。在市场经济中，价值规律通过价格围绕价值波动实现资源配置，促进技术进步和优胜劣汰。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "价值规律",
+        "市场经济"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2023年中央经济工作会议强调，要着力扩大国内需求，把恢复和扩大消费摆在优先位置。从《经济生活》角度看，这一决策主要体现了宏观调控的哪一目标？",
+      "options": [
+        "A. 促进经济增长",
+        "B. 增加就业",
+        "C. 稳定物价",
+        "D. 保持国际收支平衡"
+      ],
+      "correct_answer": "A",
+      "explanation": "扩大国内需求、恢复和扩大消费，直接目的是拉动经济增长，促进经济回升向好。因此，这主要体现了宏观调控的促进经济增长目标。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "宏观调控",
+        "经济生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某村通过村民会议讨论决定本村的土地承包方案、公益事业经费筹集等事务。这体现了基层民主中的哪种形式？",
+      "options": [
+        "A. 民主选举",
+        "B. 民主决策",
+        "C. 民主管理",
+        "D. 民主监督"
+      ],
+      "correct_answer": "C",
+      "explanation": "村民会议讨论决定本村公共事务和公益事业，属于村民自治中的民主管理范畴。民主管理是村民直接参与基层公共事务管理的重要形式。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "基层民主",
+        "政治生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "故宫博物院通过与科技公司合作，利用虚拟现实技术重现古代宫廷生活，让游客身临其境。这体现了文化传承与创新的什么道理？",
+      "options": [
+        "A. 文化继承是文化发展的必要前提",
+        "B. 科技进步是推动文化发展的重要因素",
+        "C. 文化创新主要来源于技术手段的运用",
+        "D. 文化传承必须摒弃传统形式"
+      ],
+      "correct_answer": "B",
+      "explanation": "故宫利用虚拟现实技术传承文化，说明科技进步能够促进文化的传播、继承与发展，是推动文化发展的重要因素。A项强调继承的重要性，但题干侧重技术的作用；C项错误，文化创新来源于社会实践；D项错误，文化传承需要继承优秀传统。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化传承",
+        "文化创新",
+        "文化生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "“绿水青山就是金山银山”这一理念强调经济发展与环境保护的辩证统一。从唯物辩证法角度看，这体现了什么原理？",
+      "options": [
+        "A. 矛盾的主要方面决定事物的性质",
+        "B. 矛盾双方既对立又统一",
+        "C. 主要矛盾对事物发展起决定作用",
+        "D. 事物发展的前途是光明的"
+      ],
+      "correct_answer": "B",
+      "explanation": "经济发展与环境保护看似对立，但“绿水青山就是金山银山”强调二者可以相互转化、相互促进，体现了矛盾双方既对立又统一的原理。A项强调矛盾的主要方面，但题干强调二者统一；C项主要矛盾与题干无关；D项方向性原理不直接体现。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "辩证法",
+        "矛盾",
+        "生活与哲学"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2023年，中国举办第三届“一带一路”国际合作高峰论坛，与各国共商发展大计。从国际关系角度看，这体现了中国坚持什么外交政策？",
+      "options": [
+        "A. 独立自主的和平外交政策",
+        "B. 不结盟政策",
+        "C. 以联合国为中心的多边主义",
+        "D. 与大国结盟"
+      ],
+      "correct_answer": "A",
+      "explanation": "“一带一路”倡议坚持共商共建共享原则，体现了中国独立自主的和平外交政策，即维护世界和平、促进共同发展。B项不结盟政策是具体内容，但题干更强调和平发展；C项多边主义是方式，但核心是独立自主的和平外交；D项错误，中国不与任何国家结盟。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "国际关系",
+        "外交政策",
+        "政治生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "当前，部分西方国家对我国实施技术封锁，但我国自主研发出芯片、操作系统等核心技术。从唯物论角度看，这启示我们：",
+      "options": [
+        "A. 意识具有能动作用，能直接改造客观世界",
+        "B. 要充分发挥主观能动性，认识和利用规律",
+        "C. 尊重客观规律是发挥主观能动性的前提",
+        "D. 意识是对客观存在的正确反映"
+      ],
+      "correct_answer": "B",
+      "explanation": "面对技术封锁，我国自主研发核心技术，体现了充分发挥主观能动性，认识和利用规律，从而突破外部限制。A项错误，意识不能直接改造世界；C项说法正确但题干强调发挥能动性；D项错误，意识不一定正确。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "唯物论",
+        "意识能动作用",
+        "生活与哲学"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "根据价值规律，商品的价值量由生产该商品的社会必要劳动时间决定。如果某行业普遍提高劳动生产率，那么该商品的价值量会如何变化？",
+      "options": [
+        "A. 提高",
+        "B. 降低",
+        "C. 不变",
+        "D. 可能提高也可能降低"
+      ],
+      "correct_answer": "B",
+      "explanation": "社会劳动生产率提高，意味着生产商品的社会必要劳动时间减少，因此商品的价值量降低。价值量与社会劳动生产率成反比。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "价值规律",
+        "经济生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在庆祝中国共产党成立100周年大会上，习近平总书记强调要“坚持真理、坚守理想，践行初心、担当使命，不怕牺牲、英勇斗争，对党忠诚、不负人民”。这体现了什么精神？",
+      "options": [
+        "A. 长征精神",
+        "B. 伟大建党精神",
+        "C. 抗疫精神",
+        "D. 脱贫攻坚精神"
+      ],
+      "correct_answer": "B",
+      "explanation": "习近平总书记提出的32字建党精神，是对中国共产党百年奋斗历程的高度概括，是伟大建党精神的集中体现。其他选项虽然也是党的精神谱系组成部分，但不符合题干表述。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "时事政治",
+        "建党精神",
+        "政治生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某地政府通过“互联网+政务服务”平台，实现多项行政审批事项在线办理，提高了行政效率。这体现了政府履行什么职能？",
+      "options": [
+        "A. 组织社会主义经济建设",
+        "B. 组织社会主义文化建设",
+        "C. 加强社会建设",
+        "D. 推进简政放权、优化服务"
+      ],
+      "correct_answer": "D",
+      "explanation": "政府利用互联网优化行政审批，提高效率，体现了简政放权、优化服务，建设服务型政府。A、C项虽然相关，但具体指向是经济调节和社会服务，而题干强调审批改革；B项无关。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政府职能",
+        "政治生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "从历史唯物主义角度看，我国社会主要矛盾的变化反映了什么？",
+      "options": [
+        "A. 社会存在决定社会意识",
+        "B. 社会意识具有相对独立性",
+        "C. 上层建筑一定要适应经济基础",
+        "D. 人民群众是历史的创造者"
+      ],
+      "correct_answer": "A",
+      "explanation": "社会主要矛盾属于社会意识范畴，其变化是由社会存在（即我国经济社会发展实际）决定的，体现了社会存在决定社会意识。B项强调独立性，但题干是变化的原因；C项上层建筑与经济基础的关系不直接对应；D项强调群众作用，与题干不符。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "历史唯物主义",
+        "社会存在与社会意识",
+        "生活与哲学"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2023年中央经济工作会议强调，要扩大内需，把恢复和扩大消费摆在优先位置。下列措施中，有利于扩大消费、促进内需的有（  ）。",
+      "options": [
+        "A. 发放消费券，降低居民消费成本",
+        "B. 提高存款利率，增加居民储蓄收益",
+        "C. 完善社会保障体系，增强居民消费信心",
+        "D. 增加高端消费品进口，满足多样化需求"
+      ],
+      "correct_answer": "A,C",
+      "explanation": "A项：发放消费券可直接降低消费成本，刺激消费需求。C项：完善社保能减少后顾之忧，提高消费意愿。B项：提高存款利率会吸引居民增加储蓄，减少当期消费。D项：增加高端消费品进口可能会分流国内消费，不利于扩大内需。因此，A和C正确。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "宏观调控",
+        "消费与生产",
+        "时事政治"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "中国式现代化是中国共产党领导的社会主义现代化，既有各国现代化的共同特征，更有基于自己国情的中国特色。以下关于中国式现代化的理解，正确的有（  ）。",
+      "options": [
+        "A. 中国式现代化是人口规模巨大的现代化，必须坚持独立自主、自力更生",
+        "B. 中国式现代化是全体人民共同富裕的现代化，要求消除收入差距",
+        "C. 中国式现代化是物质文明和精神文明相协调的现代化，要促进物的全面丰富和人的全面发展",
+        "D. 中国式现代化是人与自然和谐共生的现代化，坚持可持续发展",
+        "E. 中国式现代化是走和平发展道路的现代化，反对霸权主义和强权政治"
+      ],
+      "correct_answer": "A,C,D,E",
+      "explanation": "A项：人口规模巨大决定了现代化必须立足本国国情，依靠自身力量。C项：物质与精神协调是中国特色社会主义的内在要求。D项：人与自然和谐共生是生态文明建设的核心。E项：和平发展符合我国外交政策。B项错误：共同富裕不是消除收入差距，而是缩小差距，实现共享发展。因此，A、C、D、E正确。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国式现代化",
+        "国家",
+        "时事政治"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "近年来，我国大力推进中华优秀传统文化的创造性转化和创新性发展，如《国家宝藏》《典籍里的中国》等节目深受观众喜爱。这体现的文化生活道理有（  ）。",
+      "options": [
+        "A. 文化创新要继承传统，推陈出新",
+        "B. 现代传媒是文化传播的根本途径",
+        "C. 文化内容形式的创新能够增强文化影响力",
+        "D. 文化自信来源于对自身文化价值的充分肯定"
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "A项：节目对传统文化进行创新呈现，体现了继承传统、推陈出新。C项：通过创新节目形式和内容，吸引了观众，增强了文化影响力。D项：节目的成功增强了人们对中华文化的认同和自信。B项错误：现代传媒是文化传播的手段，而非根本途径；根本途径是社会实践。因此，A、C、D正确。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化传承与创新",
+        "文化自信",
+        "文化生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "恩格斯说：“一切社会变迁和政治变革的终极原因，不应当在人们的头脑中，在人们对永恒的真理和正义的日益增进的认识中去寻找，而应当在生产方式和交换方式的变更中去寻找。”这段话蕴含的哲学道理有（  ）。",
+      "options": [
+        "A. 社会存在决定社会意识",
+        "B. 阶级斗争是推动社会发展的直接动力",
+        "C. 社会发展的根本动力是社会基本矛盾",
+        "D. 生产关系一定要适应生产力的发展"
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "A项：恩格斯的观点强调社会变迁的终极原因在于生产方式和交换方式（即社会存在），而不是人们的意识，体现了社会存在决定社会意识。C项：生产方式和交换方式的变更属于社会基本矛盾（生产力与生产关系、经济基础与上层建筑）的运动，这是社会发展的根本动力。D项：生产方式的变更说明生产关系要适应生产力发展。B项：虽然阶级斗争在阶级社会是重要动力，但恩格斯这段话强调的终极原因是生产方式的变更，而非阶级斗争本身，且阶级斗争不是直接动力，而是社会基本矛盾在阶级社会中的表现。因此，A、C、D正确。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "历史唯物主义",
+        "社会存在与社会意识",
+        "社会基本矛盾"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在市场经济中，当商品供过于求时，价格下跌，生产者利润减少，从而减少生产；当供不应求时，价格上涨，生产者利润增加，从而扩大生产。这种调节作用体现了价值规律的哪一基本内容？请填写：________。",
+      "options": [],
+      "correct_answer": "商品的价值量由生产该商品的社会必要劳动时间决定，商品交换以价值量为基础实行等价交换",
+      "explanation": "价值规律的基本内容包括：商品的价值量由生产该商品的社会必要劳动时间决定，商品交换以价值量为基础实行等价交换。题干描述的是价值规律自发地调节生产资料和劳动力在社会各生产部门之间的分配，即价值规律的调节作用，但题目问的是基本内容，因此答案为价值规律的基本内容。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "价值规律",
+        "市场经济",
+        "经济生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "我国政府在经济运行中，通过财政政策和货币政策对国民经济进行宏观调控。当经济过热、物价上涨时，政府通常采取________的财政政策和________的货币政策，以抑制总需求，稳定物价。",
+      "options": [],
+      "correct_answer": "紧缩性|紧缩性",
+      "explanation": "当经济过热、通货膨胀时，政府应采用紧缩性财政政策（如减少财政支出、增加税收）和紧缩性货币政策（如提高利率、减少货币供应量），以抑制总需求，降低物价。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "宏观调控",
+        "财政政策",
+        "货币政策"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "我国是人民民主专政的社会主义国家，人民是国家的主人。公民参与政治生活应遵循的基本原则包括：坚持公民在法律面前一律平等的原则，坚持权利与义务统一的原则，以及坚持________的原则。",
+      "options": [],
+      "correct_answer": "个人利益与国家利益相结合",
+      "explanation": "公民参与政治生活应遵循三个基本原则：一是坚持公民在法律面前一律平等的原则；二是坚持权利与义务统一的原则；三是坚持个人利益与国家利益相结合的原则。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "公民政治参与",
+        "政治生活",
+        "基本原则"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "中华文化源远流长、博大精深。在文化传承中，既要继承传统、推陈出新，又要面向世界、博采众长。其中，体现文化创新根本途径的是________。",
+      "options": [],
+      "correct_answer": "社会实践",
+      "explanation": "文化创新的根本途径是社会实践。社会实践是文化创新的源泉和动力，也是检验文化创新的根本标准。继承传统、推陈出新和面向世界、博采众长是文化创新的基本途径。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化创新",
+        "社会实践",
+        "文化生活"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "辩证唯物主义认为，物质决定意识，意识对物质具有能动作用。正确的意识能促进事物发展，错误的意识则阻碍事物发展。因此，我们想问题、办事情要一切从________出发，实事求是。",
+      "options": [],
+      "correct_answer": "实际",
+      "explanation": "物质决定意识，要求我们一切从实际出发，实事求是。这是辩证唯物主义的基本要求，也是我们做好各项工作的基本前提。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "唯物论",
+        "物质与意识",
+        "一切从实际出发"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "近年来，我国积极推进数字经济发展，数字技术广泛应用于文化创意产业，催生了网络文学、数字音乐、在线教育等新业态。这表明，（1）文化创新是文化发展的实质；（2）科技进步是推动文化发展的重要因素；（3）数字文化产品不再具有意识形态属性。",
+      "options": [],
+      "correct_answer": "错误",
+      "explanation": "该说法错误。文化创新是文化发展的实质，科技进步确实能推动文化发展，但数字文化产品仍然具有意识形态属性，其内容反映一定的价值观念，不能认为其不再具有意识形态属性。因此题中（3）表述错误，整体判断为错误。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化生活",
+        "文化创新",
+        "科技进步"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在社会主义市场经济条件下，市场调节与宏观调控相辅相成。以下关于两者关系的说法，正确的有（ ）\nA. 市场调节是“无形的手”，宏观调控是“有形的手”\nB. 宏观调控应以市场为基础，遵循市场规律\nC. 宏观调控可以完全取代市场调节\nD. 两者都是资源配置的手段，缺一不可",
+      "options": [
+        "A. 市场调节是“无形的手”，宏观调控是“有形的手”",
+        "B. 宏观调控应以市场为基础，遵循市场规律",
+        "C. 宏观调控可以完全取代市场调节",
+        "D. 两者都是资源配置的手段，缺一不可"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "A项正确，市场调节通常被称为“无形的手”，宏观调控被称为“有形的手”。B项正确，宏观调控必须尊重市场规律，以市场为基础。C项错误，宏观调控不能完全取代市场调节，市场在资源配置中起决定性作用，宏观调控弥补市场失灵。D项正确，市场调节和宏观调控都是资源配置的手段，二者相互补充，缺一不可。故选ABD。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "市场调节",
+        "宏观调控"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "当前，经济全球化深入发展，各国相互依存加深。但近年来单边主义、保护主义抬头，对全球治理体系造成冲击。面对这一形势，我国应（ ）\nA. 坚持独立自主的和平外交政策，维护国家主权\nB. 积极参与全球治理，推动构建人类命运共同体\nC. 顺应全球化趋势，全面开放市场，放弃自我保护\nD. 坚持多边主义，反对单边主义和保护主义",
+      "options": [
+        "A. 坚持独立自主的和平外交政策，维护国家主权",
+        "B. 积极参与全球治理，推动构建人类命运共同体",
+        "C. 顺应全球化趋势，全面开放市场，放弃自我保护",
+        "D. 坚持多边主义，反对单边主义和保护主义"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "面对单边主义和保护主义，我国应坚持独立自主的和平外交政策，维护国家主权（A正确）；积极参与全球治理，推动构建人类命运共同体（B正确）；坚持多边主义，反对单边主义和保护主义（D正确）。C项“全面开放市场，放弃自我保护”表述错误，开放的同时应维护国家经济安全，不能放弃合理保护。故选ABD。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政治生活",
+        "国际关系",
+        "外交政策"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "结合当前国际形势，分析我国为什么要坚持独立自主的和平外交政策，并举例说明该政策在促进国际合作与维护国家利益方面的具体体现。",
+      "options": [],
+      "correct_answer": "1. 我国的国家性质和国家利益决定了独立自主的和平外交政策。2. 该政策有利于维护世界和平、促进共同发展，为我国现代化建设创造良好国际环境。3. 例如，我国积极参与联合国维和行动，推动“一带一路”建设，促进沿线国家共同发展，维护了国家主权、安全和发展利益。",
+      "explanation": "本题考查我国外交政策的知识。独立自主的和平外交政策是由我国人民民主专政的社会主义国家性质和国家利益决定的。该政策坚持和平共处五项原则，维护世界和平，促进共同发展。通过具体事例，如参与国际维和、推动“一带一路”等，体现了我国在维护自身利益的同时促进合作共赢。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "国际关系",
+        "国家利益",
+        "外交政策"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "有人认为，文化多样性会导致文化冲突，因此应追求文化一致性。请运用文化生活知识，评价这一观点，并说明如何在尊重文化多样性的基础上促进文化交流与创新。",
+      "options": [],
+      "correct_answer": "1. 该观点片面。文化多样性是人类文明进步的重要动力，不应因存在冲突就否定多样性。2. 文化冲突并非必然，通过平等对话、相互尊重可以化解分歧。3. 在尊重文化多样性的基础上，应坚持各民族文化一律平等，通过交流互鉴、取长补短，推动文化创新，例如举办国际文化节、推动文化贸易等。",
+      "explanation": "本题考查文化多样性与文化创新的关系。文化多样性是文化创新的重要基础，文化冲突可以通过交流沟通化解。题目要求评价观点并提出措施，需辩证分析，既要看到多样性可能带来的挑战，更要强调其积极意义，并给出促进交流创新的具体途径，符合社会主义核心价值观。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化多样性",
+        "文化创新",
+        "文化交流"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "近年来，我国数字经济发展迅速，但部分平台企业利用数据优势实施“二选一”等垄断行为，破坏市场公平竞争。为规范市场秩序，国家市场监管总局依法对相关企业进行处罚。这体现了国家宏观调控的什么手段？",
+      "options": [
+        "A. 经济手段",
+        "B. 法律手段",
+        "C. 行政手段",
+        "D. 道德手段"
+      ],
+      "correct_answer": "B",
+      "explanation": "国家市场监管总局依据《反垄断法》对平台企业进行处罚，属于运用法律手段规范市场秩序，维护公平竞争。法律手段是国家通过制定和运用经济法规来调节经济活动的手段。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "宏观调控",
+        "市场经济",
+        "法律手段"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2023年，中国在联合国安理会就巴以冲突多次投下赞成票或弃权票，坚持呼吁停火止战，推动人道主义援助。这体现了中国外交政策的什么基本立场？",
+      "options": [
+        "A. 独立自主",
+        "B. 和平共处五项原则",
+        "C. 维护世界和平、促进共同发展",
+        "D. 不干涉内政"
+      ],
+      "correct_answer": "A",
+      "explanation": "中国根据事情本身的是非曲直决定自己的立场和政策，不受他国干涉，体现了独立自主的基本立场。和平共处五项原则是基本准则，维护世界和平是宗旨，不干涉内政是原则之一，但本题核心是自主决定立场。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "外交政策",
+        "独立自主",
+        "联合国"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某地政府将传统剪纸艺术与现代AR技术结合，开发出“数字剪纸”体验项目，游客可通过手机扫描剪纸作品观看动态故事。这一举措对文化传承的意义在于？",
+      "options": [
+        "A. 彻底改变传统文化内涵",
+        "B. 推动文化在创新中发展",
+        "C. 否定传统艺术形式",
+        "D. 实现文化趋同"
+      ],
+      "correct_answer": "B",
+      "explanation": "利用现代技术激活传统文化，使其更贴近当代生活，体现了文化在继承的基础上创新，在创新中发展。A、C、D均错误，传统文化内涵未改变，传统形式得到发展，文化多样性得以保留。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化传承",
+        "文化创新",
+        "科技与文化"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "面对全球气候变化，中国提出“双碳”目标（碳达峰、碳中和），并逐步完善碳排放权交易市场。从哲学角度看，这体现了什么原理？",
+      "options": [
+        "A. 矛盾具有特殊性",
+        "B. 意识具有能动作用",
+        "C. 量变是质变的必要准备",
+        "D. 社会存在决定社会意识"
+      ],
+      "correct_answer": "B",
+      "explanation": "“双碳”目标是基于气候变化现实提出的正确意识，指导人们行动，体现了意识的能动作用。A、C、D虽相关，但B更直接：意识反映存在并反作用于存在。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "意识能动作用",
+        "生态文明",
+        "哲学原理"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "近年来，一些国家推行“脱钩断链”，试图阻挠中国科技发展。但中国坚持自主创新，在芯片、人工智能等领域取得突破。从历史唯物主义角度看，这说明了什么？",
+      "options": [
+        "A. 社会意识具有相对独立性",
+        "B. 创新是社会发展的根本动力",
+        "C. 人民群众是历史的创造者",
+        "D. 生产力决定生产关系"
+      ],
+      "correct_answer": "A",
+      "explanation": "外部封锁未能阻止中国科技进步，说明社会意识（自主创新精神）可以超前于社会存在，并推动社会存在发展，体现了社会意识的相对独立性。B错误，社会基本矛盾是根本动力；C、D与题干无关。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "历史唯物主义",
+        "社会意识",
+        "自主创新"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2023年，中国与沙特、伊朗等国举行三方联合委员会会议，推动中东地区和解。这体现了中国在地区事务中发挥什么作用？",
+      "options": [
+        "A. 主导作用",
+        "B. 建设性作用",
+        "C. 决定性作用",
+        "D. 替代性作用"
+      ],
+      "correct_answer": "B",
+      "explanation": "中国劝和促谈，推动对话，体现建设性作用。中国不谋求主导或决定，而是促进和平解决争端。D替代性不符合事实。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "国际关系",
+        "中国作用",
+        "中东外交"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某村推行“村民说事”制度，定期召开会议，村民就村务公开、环境整治等议题发表意见，村干部现场解答并落实。这一制度体现了什么政治生活原则？",
+      "options": [
+        "A. 民主集中制",
+        "B. 基层群众自治",
+        "C. 依法治国",
+        "D. 人民当家作主"
+      ],
+      "correct_answer": "D",
+      "explanation": "村民直接参与村务管理，行使民主权利，体现了人民当家作主。A是组织原则，B是自治形式，C是治国方略，但D是本质和核心。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "人民当家作主",
+        "基层民主",
+        "村民自治"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "《孙子兵法》云：“投之亡地然后存，陷之死地然后生。”这一思想与下列哪个哲学道理相通？",
+      "options": [
+        "A. 矛盾双方相互转化",
+        "B. 量变引起质变",
+        "C. 实践是认识的基础",
+        "D. 联系具有普遍性"
+      ],
+      "correct_answer": "A",
+      "explanation": "“亡地”和“存”、“死地”和“生”是矛盾双方，在一定条件下相互转化（置之死地而后生），体现了矛盾同一性。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "矛盾转化",
+        "辩证法",
+        "传统文化"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2024年政府工作报告提出“加快发展新质生产力”。从经济生活角度看，发展新质生产力的关键是什么？",
+      "options": [
+        "A. 增加资本投入",
+        "B. 提高劳动者素质",
+        "C. 扩大生产规模",
+        "D. 降低生产成本"
+      ],
+      "correct_answer": "B",
+      "explanation": "新质生产力以科技创新为核心，而科技创新的关键在于人才，即劳动者素质的提高。A、C、D是传统增长方式，不符合新质生产力特点。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "新质生产力",
+        "科技创新",
+        "劳动者素质"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某地政府通过大数据分析市民需求，精准投放公共文化服务资源，避免了过去“一刀切”导致资源浪费的问题。这体现了政府履行什么职能时坚持了怎样的原则？",
+      "options": [
+        "A. 组织社会主义经济建设，科学决策",
+        "B. 组织社会主义文化建设，精准施策",
+        "C. 加强社会建设，依法行政",
+        "D. 推进生态文明建设，民主管理"
+      ],
+      "correct_answer": "B",
+      "explanation": "公共文化服务属于文化建设职能，大数据精准投放体现了精准施策，提高服务效能。A是经济职能，C是社会建设，D是生态文明，均与题干不符。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政府职能",
+        "文化建设",
+        "精准施策"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在2023年中央经济工作会议中，强调要‘以进促稳、先立后破’，推动经济实现质的有效提升和量的合理增长。面对当前复杂的经济形势，政府采取了一系列宏观调控措施，如降准降息、减税降费、专项债发行等。以下关于这些措施的分析，正确的有（ ）",
+      "options": [
+        "A. 降准降息属于货币政策，旨在增加市场流动性，刺激投资和消费",
+        "B. 减税降费属于财政政策，能直接增加居民可支配收入，促进需求",
+        "C. 专项债发行属于财政政策，主要用于支持基础设施建设，拉动经济增长",
+        "D. 这些措施体现了宏观调控的主要目标：促进经济增长、增加就业、稳定物价、保持国际收支平衡"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "降准降息是货币政策工具，增加银行信贷能力，降低融资成本，促进投资消费；减税降费是财政政策，直接减少企业和个人负担，增加可支配收入，刺激需求；专项债是财政政策，投向基建等领域，带动投资和就业；宏观调控四大目标即促进经济增长、增加就业、稳定物价、保持国际收支平衡，这些措施均服务于这些目标。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "宏观调控",
+        "经济生活",
+        "时事政治"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2023年11月，中美两国元首在旧金山会晤，双方同意推动和加强中美各领域对话合作。习近平主席指出：‘中美关系是世界上最重要的双边关系之一。中美两国如何相处，决定人类的前途命运。’从政治生活角度看，以下理解正确的有（ ）",
+      "options": [
+        "A. 国家利益是国际关系的决定性因素，中美合作的基础在于共同利益",
+        "B. 中国坚持独立自主的和平外交政策，主张构建人类命运共同体",
+        "C. 中美两国作为联合国安理会常任理事国，应共同维护世界和平与发展",
+        "D. 中美关系的本质是竞争关系，合作只是暂时的策略"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "A选项正确，国家利益是国际关系的决定因素，共同利益是合作的基础；B选项正确，中国外交政策的核心是独立自主，构建人类命运共同体是中国外交的目标；C选项正确，中美都是安理会常任理事国，对世界和平负有重大责任；D选项错误，中美关系既有竞争也有合作，但合作是主流，且竞争不应是本质。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "国际关系",
+        "政治生活",
+        "时事政治"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "近年来，国潮文化兴起，故宫文创、汉服热、国风音乐等深受年轻人喜爱。这既体现了对中华优秀传统文化的创造性转化和创新性发展，也展现了文化自信。从文化生活角度看，以下分析正确的有（ ）",
+      "options": [
+        "A. 文化创新是文化发展的实质，国潮文化通过创新激活了传统文化生命力",
+        "B. 文化多样性是人类社会的基本特征，国潮文化推动了中外文化交流",
+        "C. 经济是基础，国潮文化的兴起反映了我国经济实力的增强",
+        "D. 文化自信来自对自身文化价值的充分肯定，国潮文化体现了文化自信"
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "A选项正确，文化创新是文化发展的实质，国潮文化是创新表现；B选项错误，国潮文化主要体现中华文化自信，但题目未提及中外交流，且并非直接推动文化交流；C选项正确，经济决定文化，国潮文化兴起得益于经济发展；D选项正确，文化自信是对自身文化价值的肯定，国潮文化正是自信的体现。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化传承与创新",
+        "文化生活",
+        "文化自信"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "恩格斯说：‘一切社会变迁和政治变革的终极原因，不应当到人们的头脑中，到人们对永恒的真理和正义的日益增进的认识中去寻找，而应当到生产方式和交换方式的变更中去寻找。’习近平总书记也强调：‘时代是思想之母，实践是理论之源。’这些论述共同体现的哲学原理有（ ）",
+      "options": [
+        "A. 社会存在决定社会意识",
+        "B. 实践是认识的来源和动力",
+        "C. 生产力决定生产关系，经济基础决定上层建筑",
+        "D. 真理是具体的、有条件的，要随着实践的发展而发展"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "恩格斯的观点强调生产方式和交换方式（即社会经济基础）决定社会变迁，体现了社会存在决定社会意识（A）以及生产力决定生产关系、经济基础决定上层建筑（C）；习近平的观点强调实践是理论之源，体现了实践是认识的来源和动力（B）。D选项虽然正确，但题干未直接涉及真理的具体性。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "历史唯物主义",
+        "认识论",
+        "生活与哲学"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2023年中央经济工作会议提出，要“以科技创新引领现代化产业体系建设”。从经济生活角度看，科技创新是引领发展的第一动力，其经济学依据在于：商品的价值量由生产该商品的社会必要劳动时间决定，而科技创新能够________，从而降低个别劳动时间，获得________优势。同时，创新能推动________，提升全要素生产率，促进经济高质量发展。",
+      "options": [],
+      "correct_answer": "提高劳动生产率|竞争|产业结构升级",
+      "explanation": "商品价值量由社会必要劳动时间决定，个别企业通过科技创新提高劳动生产率，降低个别劳动时间，从而在市场竞争中获得价格优势。同时，科技创新推动产业结构优化升级，提高全要素生产率，促进经济高质量发展。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "价值规律",
+        "宏观调控"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在《政治与法治》中，我国的国家治理体系具有显著优势。其中，坚持党的领导、人民当家作主、依法治国有机统一是根本。党的领导是人民当家作主和依法治国的根本保证，人民当家作主是社会主义民主政治的本质特征，依法治国是党领导人民治理国家的基本方式。三者统一于我国社会主义民主政治伟大实践。这种统一性体现了________（哲学原理），即事物是普遍联系和变化发展的，要求我们用________的观点看问题。",
+      "options": [],
+      "correct_answer": "唯物辩证法的联系观和发展观|联系和发展",
+      "explanation": "党的领导、人民当家作主、依法治国三者相互联系、相互促进，体现了联系的观点；同时，三者统一于社会主义民主政治实践，随着实践发展而不断完善，体现了发展的观点。因此，该统一性体现了唯物辩证法的联系观和发展观，要求我们用联系和发展的观点看问题。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政治生活",
+        "唯物辩证法",
+        "国家治理"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "中华优秀传统文化是中华民族的根和魂。在文化传承中，我们既要“取其精华，去其糟粕”，又要“推陈出新，革故鼎新”。从哲学角度看，这体现了辩证否定的实质是________，即事物自身否定自身，既肯定又否定，既克服又保留。对待传统文化，我们应坚持________的态度，在继承的基础上发展，在发展的过程中继承。",
+      "options": [],
+      "correct_answer": "扬弃|批判继承",
+      "explanation": "辩证否定的实质是“扬弃”，即既克服又保留。对待传统文化，要取其精华、去其糟粕，这是批判继承的态度，体现了辩证否定。在继承的基础上发展，在发展的过程中继承，才能实现文化创新。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化生活",
+        "辩证法",
+        "文化传承"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "2023年10月，第三届“一带一路”国际合作高峰论坛在北京举行。论坛主题为“高质量共建‘一带一路’，携手实现共同发展繁荣”。从国际关系角度看，“一带一路”倡议体现了我国坚持________的外交政策，秉持________的全球治理观，推动构建人类命运共同体。同时，该倡议也符合经济全球化的趋势，促进了资源在全球范围内的优化配置，体现了经济生活的________规律。",
+      "options": [],
+      "correct_answer": "独立自主的和平|共商共建共享|价值规律",
+      "explanation": "我国奉行独立自主的和平外交政策，秉持共商共建共享的全球治理观，推动构建人类命运共同体。“一带一路”建设遵循市场规律和国际规则，促进资源优化配置，体现了价值规律的作用。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "国际关系",
+        "经济生活",
+        "时事政治"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "从认识论角度看，真理是标志主观与客观相符合的哲学范畴。真理最基本的属性是________。但真理是具体的、有条件的，任何真理都有自己适用的条件和范围。同时，真理与谬误相伴而行，二者在一定条件下可以相互转化。这一认识论原理启示我们，在追求真理的过程中，要________，不断超越自身，也要注意真理的条件性，避免________。",
+      "options": [],
+      "correct_answer": "客观性|与时俱进|教条主义",
+      "explanation": "真理最基本的属性是客观性，但真理是具体的、有条件的，需要与时俱进。真理与谬误可以转化，因此要避免教条主义，不能僵化地对待真理。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "生活与哲学",
+        "认识论",
+        "真理"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在社会主义市场经济条件下，市场在资源配置中起决定性作用，因此政府应当完全退出经济领域，不再进行任何宏观调控。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "市场在资源配置中起决定性作用，但政府仍需履行经济职能，进行必要的宏观调控，以弥补市场失灵、维护公平竞争、促进共同富裕等。完全退出会导致市场无序、垄断等问题。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "经济生活",
+        "宏观调控",
+        "市场经济"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "某国总统由议会选举产生，但总统有权解散议会，这表明该国政体是议会制共和制。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "总统由议会选举产生且有权解散议会，这属于半总统制或议会制下的总统制特征。议会制共和制下总统是虚位元首，不掌握实权，不能解散议会。该国政体更可能为半总统制，如法国。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "政治生活",
+        "国家政体",
+        "国际关系"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "文化多样性是人类社会的基本特征，也是人类文明进步的重要动力，因此应当坚持各民族文化一律平等，反对文化霸权主义。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "文化多样性是客观存在，尊重差异、理解个性是文化交流的前提。坚持各民族文化一律平等，反对文化霸权，才能促进世界文化繁荣。这符合马克思主义文化观和社会主义核心价值观。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "文化生活",
+        "文化多样性",
+        "文化霸权"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "当前，全球经济面临通胀压力、供应链重组等挑战，而中国推动构建新发展格局，强调“双循环”战略。请运用《经济生活》中关于宏观调控与市场作用的知识，结合《政治生活》中我国国家治理体系的优势，分析中国如何通过制度创新和宏观调控有效应对当前国际经济风险，并说明这一过程中体现了哪些《生活与哲学》中的辩证法思想。",
+      "options": [],
+      "correct_answer": "参考答案要点：①发挥市场决定性作用与更好发挥政府作用相结合，通过财政、货币政策等宏观调控工具稳定经济；②利用我国集中力量办大事的制度优势，统筹国内国际两个市场，促进内需与外需协调；③体现矛盾特殊性原理（具体问题具体分析）、联系观点（内外联动）、发展观点（推动高质量发展）。",
+      "explanation": "本题综合考查经济、政治和哲学知识。经济上，双循环战略强调以国内大循环为主体，同时促进国际循环，需要政府通过宏观调控（如减税降费、产业政策）引导市场，发挥社会主义市场经济的优势。政治上，我国的国家治理体系能够集中资源应对风险，如疫情防控与复工复产中的高效协调。哲学上，双循环体现了矛盾特殊性（根据国情制定策略）、联系观点（内外循环相互促进）、发展观点（从高速增长转向高质量发展）。学生需将三部分知识有机整合，展示综合分析能力。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "politics",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "宏观调控",
+        "国家治理体系",
+        "辩证法"
+      ],
+      "batch_id": "batch_politics_16-18",
+      "source": "ai_generated"
+    }
+  ]
+}

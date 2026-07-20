@@ -1,0 +1,991 @@
+{
+  "batch_id": "english_13-15_001",
+  "subject": "english",
+  "age_group": "13-15",
+  "grade": "初三",
+  "total_count": 70,
+  "questions": [
+    {
+      "id": "en_001",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "The man ______ is standing at the gate is my English teacher.",
+      "options": [
+        "A. who",
+        "B. whom",
+        "C. whose",
+        "D. which"
+      ],
+      "answer": "A",
+      "explanation": "The antecedent 'the man' refers to a person and acts as the subject in the clause, so 'who' is correct."
+    },
+    {
+      "id": "en_002",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "I will never forget the day ______ I first met you.",
+      "options": [
+        "A. which",
+        "B. when",
+        "C. that",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "The antecedent 'the day' refers to time, so the adverb 'when' is used."
+    },
+    {
+      "id": "en_003",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "Could you tell me ______ you will go to Beijing?",
+      "options": [
+        "A. what",
+        "B. when",
+        "C. how long",
+        "D. where"
+      ],
+      "answer": "B",
+      "explanation": "The clause needs a time adverbial; 'when' fits the context of asking about time."
+    },
+    {
+      "id": "en_004",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "I don't know ______ he will come tomorrow.",
+      "options": [
+        "A. if",
+        "B. what",
+        "C. which",
+        "D. how many"
+      ],
+      "answer": "A",
+      "explanation": "The sentence expresses uncertainty about whether he will come, so 'if' is correct."
+    },
+    {
+      "id": "en_005",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "______ it rains heavily, we will stay at home.",
+      "options": [
+        "A. If",
+        "B. Because",
+        "C. Although",
+        "D. Until"
+      ],
+      "answer": "A",
+      "explanation": "This is a conditional adverbial clause; 'If' introduces the condition."
+    },
+    {
+      "id": "en_006",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "She was late ______ she got up too late this morning.",
+      "options": [
+        "A. because",
+        "B. so",
+        "C. but",
+        "D. or"
+      ],
+      "answer": "A",
+      "explanation": "The second clause explains the reason for the first clause, so 'because' is correct."
+    },
+    {
+      "id": "en_007",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "He decided ______ a new bicycle for his birthday.",
+      "options": [
+        "A. buying",
+        "B. to buy",
+        "C. bought",
+        "D. buy"
+      ],
+      "answer": "B",
+      "explanation": "The verb 'decide' is followed by an infinitive: 'decide to do something'."
+    },
+    {
+      "id": "en_008",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "______ is good for our health.",
+      "options": [
+        "A. Swim",
+        "B. Swam",
+        "C. Swimming",
+        "D. To swimming"
+      ],
+      "answer": "C",
+      "explanation": "A gerund is needed as the subject of the sentence; 'Swimming' acts as a noun."
+    },
+    {
+      "id": "en_009",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "完形填空",
+      "question": "Tom got up late this morning. He ran to school ______ stopping.",
+      "options": [
+        "A. with",
+        "B. without",
+        "C. by",
+        "D. for"
+      ],
+      "answer": "B",
+      "explanation": "The context implies Tom did not stop; 'without' is correct."
+    },
+    {
+      "id": "en_010",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "阅读理解",
+      "question": "(Passage: Lucy loves reading. She visits the library every Saturday...) Q: How often does Lucy visit the library?",
+      "options": [
+        "A. Every day",
+        "B. Every Saturday",
+        "C. Every Sunday",
+        "D. Once a month"
+      ],
+      "answer": "B",
+      "explanation": "The passage clearly states 'every Saturday'."
+    },
+    {
+      "id": "en_011",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "Which relative pronouns can be used to refer to people? (Select all that apply)",
+      "options": [
+        "A. who",
+        "B. which",
+        "C. whom",
+        "D. that"
+      ],
+      "answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "'Who', 'whom', and 'that' can refer to people; 'which' refers to things."
+    },
+    {
+      "id": "en_012",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "Which words can introduce an object clause? (Select all that apply)",
+      "options": [
+        "A. that",
+        "B. what",
+        "C. if",
+        "D. because"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "'That', 'what', and 'if' can introduce object clauses; 'because' introduces reason clauses."
+    },
+    {
+      "id": "en_013",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "Which conjunctions can introduce a conditional clause? (Select all that apply)",
+      "options": [
+        "A. if",
+        "B. unless",
+        "C. because",
+        "D. as long as"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "'If', 'unless', and 'as long as' introduce conditions; 'because' introduces reasons."
+    },
+    {
+      "id": "en_014",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "Which forms are correct after 'enjoy'? (Select all that apply)",
+      "options": [
+        "A. to swim",
+        "B. swimming",
+        "C. reading",
+        "D. to read"
+      ],
+      "answer": [
+        "B",
+        "C"
+      ],
+      "explanation": "'Enjoy' is followed by a gerund: 'enjoy doing something'."
+    },
+    {
+      "id": "en_015",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "This is the house ______ I lived ten years ago.",
+      "options": [],
+      "answer": "where",
+      "explanation": "The antecedent 'the house' refers to a place, so 'where' is used."
+    },
+    {
+      "id": "en_016",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "Do you know ______ he is waiting for?",
+      "options": [],
+      "answer": "who/whom",
+      "explanation": "The object clause asks about a person as the object of 'waiting for'."
+    },
+    {
+      "id": "en_017",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "状语从句",
+      "question": "______ you study hard, you will pass the exam.",
+      "options": [],
+      "answer": "If",
+      "explanation": "This is a conditional clause; 'If' introduces the condition."
+    },
+    {
+      "id": "en_018",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "My mother asked me ______ (finish) my homework first.",
+      "options": [],
+      "answer": "to finish",
+      "explanation": "'Ask somebody to do something' requires the infinitive."
+    },
+    {
+      "id": "en_019",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "完形填空",
+      "question": "The old man walked ______ (slow) down the street.",
+      "options": [],
+      "answer": "slowly",
+      "explanation": "An adverb is needed to modify the verb 'walked'."
+    },
+    {
+      "id": "en_020",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "定语从句",
+      "question": "In the sentence 'The book which I bought is interesting', 'which' refers to the book.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "A",
+      "explanation": "'Which' is a relative pronoun referring to the antecedent 'the book'."
+    },
+    {
+      "id": "en_021",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "宾语从句",
+      "question": "Object clauses must always use the conjunction 'that'.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "B",
+      "explanation": "Object clauses can also use 'if', 'whether', 'what', etc."
+    },
+    {
+      "id": "en_022",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "非谓语动词",
+      "question": "'Stop to do' means stopping one action in order to do another.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "A",
+      "explanation": "'Stop to do' means stopping in order to start another action; 'stop doing' means ceasing an action."
+    },
+    {
+      "id": "en_023",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "阅读理解",
+      "question": "(Passage: Tom is a helpful boy. He often helps his classmates with their lessons...) Q: What kind of boy is Tom? Give one example from the passage.",
+      "options": [],
+      "answer": "Tom is a helpful boy. He often helps his classmates with their lessons.",
+      "explanation": "The passage describes Tom as helpful and gives this example."
+    },
+    {
+      "id": "en_024",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "The school ______ we visited last week was built in 1950.",
+      "options": [
+        "A. that",
+        "B. where",
+        "C. when",
+        "D. who"
+      ],
+      "answer": "A",
+      "explanation": "The antecedent 'the school' is the object of 'visited' in the clause, so 'that' is used."
+    },
+    {
+      "id": "en_025",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "This is the best film ______ I have ever seen.",
+      "options": [
+        "A. which",
+        "B. that",
+        "C. who",
+        "D. whom"
+      ],
+      "answer": "B",
+      "explanation": "When the antecedent is modified by a superlative, 'that' is preferred over 'which'."
+    },
+    {
+      "id": "en_026",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "I wonder ______ they will arrive on time.",
+      "options": [
+        "A. that",
+        "B. if",
+        "C. what",
+        "D. which"
+      ],
+      "answer": "B",
+      "explanation": "The verb 'wonder' expresses uncertainty, so 'if' or 'whether' is appropriate."
+    },
+    {
+      "id": "en_027",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "He told me ______ he had finished his work.",
+      "options": [
+        "A. what",
+        "B. which",
+        "C. that",
+        "D. who"
+      ],
+      "answer": "C",
+      "explanation": "The clause is a statement; 'that' introduces the object clause."
+    },
+    {
+      "id": "en_028",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "______ he is young, he knows a lot about science.",
+      "options": [
+        "A. Because",
+        "B. Although",
+        "C. If",
+        "D. When"
+      ],
+      "answer": "B",
+      "explanation": "The contrast between being young and knowing a lot indicates a concession; 'Although' is correct."
+    },
+    {
+      "id": "en_029",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "We will start the meeting ______ everyone arrives.",
+      "options": [
+        "A. as soon as",
+        "B. unless",
+        "C. until",
+        "D. though"
+      ],
+      "answer": "A",
+      "explanation": "'As soon as' indicates that one event happens immediately after another."
+    },
+    {
+      "id": "en_030",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "The boy ______ (stand) there is my brother.",
+      "options": [
+        "A. stood",
+        "B. standing",
+        "C. to stand",
+        "D. stands"
+      ],
+      "answer": "B",
+      "explanation": "The present participle 'standing' acts as an attribute modifying 'the boy'."
+    },
+    {
+      "id": "en_031",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "I heard someone ______ my name in the corridor.",
+      "options": [
+        "A. calls",
+        "B. called",
+        "C. calling",
+        "D. to call"
+      ],
+      "answer": "C",
+      "explanation": "'Hear somebody doing something' means perceiving an action in progress."
+    },
+    {
+      "id": "en_032",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "完形填空",
+      "question": "The weather was terrible, ______ we decided to stay indoors.",
+      "options": [
+        "A. or",
+        "B. so",
+        "C. but",
+        "D. for"
+      ],
+      "answer": "B",
+      "explanation": "The bad weather caused the decision to stay indoors; 'so' shows result."
+    },
+    {
+      "id": "en_033",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "阅读理解",
+      "question": "(Passage: The Internet has changed our lives greatly. It helps us get information quickly...) Q: What is the main idea of the passage?",
+      "options": [
+        "A. The Internet is dangerous.",
+        "B. The Internet has changed our lives.",
+        "C. People should not use the Internet.",
+        "D. The Internet is expensive."
+      ],
+      "answer": "B",
+      "explanation": "The first sentence states the main idea: the Internet has changed our lives."
+    },
+    {
+      "id": "en_034",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "In which situations can 'that' be used instead of 'which'? (Select all that apply)",
+      "options": [
+        "A. After a superlative",
+        "B. After an indefinite pronoun",
+        "C. After a comma",
+        "D. After 'all'"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "'That' is used after superlatives, indefinite pronouns, and 'all'; not after a comma in non-restrictive clauses."
+    },
+    {
+      "id": "en_035",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Which of the following can be used as the object of 'know'? (Select all that apply)",
+      "options": [
+        "A. what he wants",
+        "B. that he is honest",
+        "C. if he comes",
+        "D. because he left"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "Noun clauses can act as objects; 'because he left' is an adverbial clause."
+    },
+    {
+      "id": "en_036",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "Which conjunctions show contrast? (Select all that apply)",
+      "options": [
+        "A. although",
+        "B. while",
+        "C. because",
+        "D. however"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "'Although', 'while', and 'however' show contrast; 'because' shows reason."
+    },
+    {
+      "id": "en_037",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "Which sentences use gerunds correctly? (Select all that apply)",
+      "options": [
+        "A. I enjoy swimming.",
+        "B. Swimming is fun.",
+        "C. He stopped smoking.",
+        "D. I want swimming."
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "'Want' is followed by an infinitive, not a gerund."
+    },
+    {
+      "id": "en_038",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "The reason ______ he was absent is still unknown.",
+      "options": [],
+      "answer": "why",
+      "explanation": "The antecedent 'the reason' requires the relative adverb 'why'."
+    },
+    {
+      "id": "en_039",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Can you tell me ______ the train leaves?",
+      "options": [],
+      "answer": "when",
+      "explanation": "The clause asks about time; 'when' is the correct conjunction."
+    },
+    {
+      "id": "en_040",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "Work hard ______ you will succeed.",
+      "options": [],
+      "answer": "and",
+      "explanation": "This is a coordinate structure: 'Work hard and you will succeed'."
+    },
+    {
+      "id": "en_041",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "The book is worth ______ (read).",
+      "options": [],
+      "answer": "reading",
+      "explanation": "'Be worth doing' is a fixed expression requiring a gerund."
+    },
+    {
+      "id": "en_042",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "完形填空",
+      "question": "She put on her coat and ______ (leave) the room quietly.",
+      "options": [],
+      "answer": "left",
+      "explanation": "The past tense is needed to match 'put on'."
+    },
+    {
+      "id": "en_043",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "定语从句",
+      "question": "In non-restrictive relative clauses, we can use 'that' instead of 'which'.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "B",
+      "explanation": "Non-restrictive clauses use 'which', not 'that'."
+    },
+    {
+      "id": "en_044",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "状语从句",
+      "question": "'Unless' means the same as 'if not'.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "A",
+      "explanation": "'Unless' is equivalent to 'if ... not'."
+    },
+    {
+      "id": "en_045",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "非谓语动词",
+      "question": "'Remember doing' means remembering something you did in the past.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "A",
+      "explanation": "'Remember doing' means recalling a past action; 'remember to do' means not forgetting to do something."
+    },
+    {
+      "id": "en_046",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "阅读理解",
+      "question": "(Passage about exam stress) Q: What are two ways to reduce exam stress mentioned in the passage?",
+      "options": [],
+      "answer": "Taking breaks and doing sports.",
+      "explanation": "The passage mentions these two suggestions from experts."
+    },
+    {
+      "id": "en_047",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "宾语从句",
+      "question": "Change the direct speech into an object clause: 'Is he coming tomorrow?' She asked me.",
+      "options": [],
+      "answer": "She asked me if/whether he was coming the next day.",
+      "explanation": "Indirect questions use 'if/whether' and backshift the tense."
+    },
+    {
+      "id": "en_048",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "He is the only one of the students who ______ passed the exam.",
+      "options": [
+        "A. have",
+        "B. has",
+        "C. had",
+        "D. having"
+      ],
+      "answer": "B",
+      "explanation": "The antecedent is 'the only one', a singular noun, so the verb agrees with the singular."
+    },
+    {
+      "id": "en_049",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "The meeting ______ we are looking forward to will be held next week.",
+      "options": [
+        "A. which",
+        "B. where",
+        "C. when",
+        "D. what"
+      ],
+      "answer": "A",
+      "explanation": "'The meeting' is the object of 'look forward to', so a relative pronoun is needed."
+    },
+    {
+      "id": "en_050",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "It is uncertain ______ he will be able to come.",
+      "options": [
+        "A. that",
+        "B. whether",
+        "C. what",
+        "D. which"
+      ],
+      "answer": "B",
+      "explanation": "'Uncertain' implies doubt, so 'whether' is the correct conjunction."
+    },
+    {
+      "id": "en_051",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "______ he said at the meeting surprised everybody.",
+      "options": [
+        "A. What",
+        "B. That",
+        "C. Which",
+        "D. When"
+      ],
+      "answer": "A",
+      "explanation": "The subject clause needs a pronoun that acts as the object of 'said'; 'What' is correct."
+    },
+    {
+      "id": "en_052",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "______ had I arrived home when it began to rain.",
+      "options": [
+        "A. Hardly",
+        "B. No sooner",
+        "C. Scarcely",
+        "D. All of the above"
+      ],
+      "answer": "D",
+      "explanation": "'Hardly...when', 'No sooner...than', and 'Scarcely...when' all express immediate succession."
+    },
+    {
+      "id": "en_053",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "______ you may do, you must do it well.",
+      "options": [
+        "A. Whatever",
+        "B. Whoever",
+        "C. Whenever",
+        "D. Wherever"
+      ],
+      "answer": "A",
+      "explanation": "'Whatever' acts as the object of 'do', meaning 'no matter what'."
+    },
+    {
+      "id": "en_054",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "______ (give) more time, I could have done better.",
+      "options": [
+        "A. Give",
+        "B. Given",
+        "C. Giving",
+        "D. To give"
+      ],
+      "answer": "B",
+      "explanation": "The past participle 'Given' introduces a conditional participle clause."
+    },
+    {
+      "id": "en_055",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "The problem ______ (discuss) at the meeting now is very important.",
+      "options": [
+        "A. discussed",
+        "B. being discussed",
+        "C. discussing",
+        "D. to be discussed"
+      ],
+      "answer": "B",
+      "explanation": "The phrase 'at the meeting now' indicates the action is in progress, so the present participle passive is used."
+    },
+    {
+      "id": "en_056",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "完形填空",
+      "question": "The old house, ______ (abandon) for years, finally collapsed in the storm.",
+      "options": [
+        "A. abandoned",
+        "B. abandoning",
+        "C. to abandon",
+        "D. having abandoned"
+      ],
+      "answer": "A",
+      "explanation": "The past participle 'abandoned' indicates a passive and completed action."
+    },
+    {
+      "id": "en_057",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "阅读理解",
+      "question": "(Passage about exercise benefits) Q: What is an additional benefit of exercise besides physical health?",
+      "options": [
+        "A. Weight loss only",
+        "B. Better sleep",
+        "C. Improved memory and concentration",
+        "D. Lower cost"
+      ],
+      "answer": "C",
+      "explanation": "The passage states exercise boosts memory and concentration."
+    },
+    {
+      "id": "en_058",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "Which sentences contain non-restrictive relative clauses? (Select all that apply)",
+      "options": [
+        "A. Tom, who is my friend, is kind.",
+        "B. The book which is red is mine.",
+        "C. The man, whom I met, is kind.",
+        "D. All books that I have are good."
+      ],
+      "answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "Non-restrictive clauses are set off by commas and provide extra information."
+    },
+    {
+      "id": "en_059",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "Which of the following are correct subject clauses? (Select all that apply)",
+      "options": [
+        "A. What he said is true.",
+        "B. That he will come is certain.",
+        "C. Whether he comes doesn't matter.",
+        "D. If he comes is not known."
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "Subject clauses cannot be introduced by 'if'; use 'whether' instead."
+    },
+    {
+      "id": "en_060",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "Which sentences use inversion correctly? (Select all that apply)",
+      "options": [
+        "A. Hardly had I left when it rained.",
+        "B. No sooner had he left than it rained.",
+        "C. Not only does he swim but also runs.",
+        "D. Although he is young, he works hard."
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "'Although' does not trigger inversion; the others are correct inverted structures."
+    },
+    {
+      "id": "en_061",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "Which structures use the perfect participle? (Select all that apply)",
+      "options": [
+        "A. Having finished work, he went home.",
+        "B. The work finished, he went home.",
+        "C. Having been told the news, she cried.",
+        "D. Being tired, he stopped working."
+      ],
+      "answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "The perfect participle indicates an action completed before the main verb."
+    },
+    {
+      "id": "en_062",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "I have two brothers, both of ______ are doctors.",
+      "options": [],
+      "answer": "whom",
+      "explanation": "'Both of whom' is the correct preposition + relative pronoun structure in non-restrictive clauses."
+    },
+    {
+      "id": "en_063",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "宾语从句",
+      "question": "The question is ______ we can finish the task on time.",
+      "options": [],
+      "answer": "whether",
+      "explanation": "The predicative clause expresses uncertainty; 'whether' is correct."
+    },
+    {
+      "id": "en_064",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "______ (work) hard, you will make progress.",
+      "options": [],
+      "answer": "Working",
+      "explanation": "The present participle introduces a conditional clause."
+    },
+    {
+      "id": "en_065",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "The book is said ______ (translate) into many languages.",
+      "options": [],
+      "answer": "to have been translated",
+      "explanation": "'Be said to' plus the perfect infinitive passive indicates a completed passive action."
+    },
+    {
+      "id": "en_066",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "完形填空",
+      "question": "______ (judge) from his accent, he must be from the south.",
+      "options": [],
+      "answer": "Judging",
+      "explanation": "'Judging from' is a fixed expression used as an independent comment."
+    },
+    {
+      "id": "en_067",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "定语从句",
+      "question": "In 'The man who I spoke to is my uncle', 'who' can be replaced by 'whom'.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "A",
+      "explanation": "When the relative pronoun is the object of a preposition, 'whom' is formally correct, though 'who' is often used informally."
+    },
+    {
+      "id": "en_068",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "状语从句",
+      "question": "'Were I you, I would accept the offer' is a correct inverted conditional sentence.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "A",
+      "explanation": "This is an inverted form of 'If I were you', omitting 'if' and inverting the subject and verb."
+    },
+    {
+      "id": "en_069",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "非谓语动词",
+      "question": "'Having been warned' indicates a passive action that happened before the main verb.",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "answer": "A",
+      "explanation": "The perfect passive participle shows a prior passive action."
+    },
+    {
+      "id": "en_070",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "阅读理解",
+      "question": "(Passage about plastic pollution) Q: What are two measures to tackle plastic pollution mentioned in the passage?",
+      "options": [],
+      "answer": "Developing new materials that break down naturally and introducing laws to limit single-use plastics.",
+      "explanation": "The passage mentions both scientific development and government legislation."
+    }
+  ]
+}

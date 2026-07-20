@@ -1,0 +1,1854 @@
+{
+  "batch_id": "physics_13-15_supplement",
+  "subject": "physics",
+  "age_group": "13-15",
+  "grade": "初三",
+  "total_count": 140,
+  "questions": [
+    {
+      "id": "ph_071",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "机械运动",
+      "question": "汽车2小时行驶120km，平均速度为（　　）",
+      "options": [
+        "A. 40 km/h",
+        "B. 60 km/h",
+        "C. 80 km/h",
+        "D. 120 km/h"
+      ],
+      "answer": "B",
+      "explanation": "v=s/t=120/2=60 km/h。"
+    },
+    {
+      "id": "ph_072",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "物体以5m/s匀速运动4s，路程为（　　）",
+      "options": [
+        "A. 10 m",
+        "B. 15 m",
+        "C. 20 m",
+        "D. 25 m"
+      ],
+      "answer": "C",
+      "explanation": "s=vt=5×4=20 m。"
+    },
+    {
+      "id": "ph_073",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "机械运动",
+      "question": "甲乙两车速度比为2:3，时间比为3:2，路程比为（　　）",
+      "options": [
+        "A. 1:1",
+        "B. 2:3",
+        "C. 3:2",
+        "D. 4:9"
+      ],
+      "answer": "A",
+      "explanation": "s=vt，路程比=(2×3):(3×2)=1:1。"
+    },
+    {
+      "id": "ph_074",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "一物体前半程速度v₁，后半程速度v₂，全程平均速度为（　　）",
+      "options": [
+        "A. (v₁+v₂)/2",
+        "B. 2v₁v₂/(v₁+v₂)",
+        "C. v₁v₂/(v₁+v₂)",
+        "D. √(v₁v₂)"
+      ],
+      "answer": "B",
+      "explanation": "平均速度=总路程/总时间=2s/(s/v₁+s/v₂)=2v₁v₂/(v₁+v₂)。"
+    },
+    {
+      "id": "ph_075",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "关于匀速直线运动，下列说法正确的是（　　）",
+      "options": [
+        "A. 速度不变",
+        "B. 路程与时间成正比",
+        "C. 加速度为零",
+        "D. 速度随时间增大"
+      ],
+      "answer": "A,B,C",
+      "explanation": "匀速直线运动速度恒定。"
+    },
+    {
+      "id": "ph_076",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "速度的计算公式是v=________。",
+      "options": null,
+      "answer": "s/t",
+      "explanation": "速度等于路程除以时间。"
+    },
+    {
+      "id": "ph_077",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "速度是描述物体运动快慢的物理量。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "速度表示运动快慢。"
+    },
+    {
+      "id": "ph_078",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "一辆汽车以60km/h行驶2小时，又以80km/h行驶3小时，求全程平均速度。",
+      "options": null,
+      "answer": "72 km/h",
+      "explanation": "总路程=60×2+80×3=360km，总时间=5h，平均速度=360/5=72km/h。"
+    },
+    {
+      "id": "ph_079",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "重100N的箱子放在0.5m²桌面上，压强为（　　）",
+      "options": [
+        "A. 50 Pa",
+        "B. 100 Pa",
+        "C. 150 Pa",
+        "D. 200 Pa"
+      ],
+      "answer": "D",
+      "explanation": "p=F/S=100/0.5=200 Pa。"
+    },
+    {
+      "id": "ph_080",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "下列能增大压强的是（　　）",
+      "options": [
+        "A. 增大接触面积",
+        "B. 减小压力",
+        "C. 减小接触面积",
+        "D. 保持面积不变"
+      ],
+      "answer": "C",
+      "explanation": "减小受力面积可增大压强。"
+    },
+    {
+      "id": "ph_081",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "力与压强",
+      "question": "液体压强与下列哪个因素无关（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 液体深度",
+        "C. 容器形状",
+        "D. 重力加速度"
+      ],
+      "answer": "C",
+      "explanation": "p=ρgh，与容器形状无关。"
+    },
+    {
+      "id": "ph_082",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "如图所示，容器内装有水，A、B两点压强pA、pB关系为（　　）",
+      "options": [
+        "A. pA>pB",
+        "B. pA=pB",
+        "C. pA<pB",
+        "D. 无法判断"
+      ],
+      "answer": "C",
+      "explanation": "B点深度更大，压强更大。"
+    },
+    {
+      "id": "ph_083",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "关于压强，下列说法正确的是（　　）",
+      "options": [
+        "A. 压力越大，压强越大",
+        "B. 受力面积越小，压强越大",
+        "C. 压强表示压力作用效果",
+        "D. 压强单位是帕斯卡"
+      ],
+      "answer": "B,C,D",
+      "explanation": "压强与压力和面积均有关。"
+    },
+    {
+      "id": "ph_084",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "压强的计算公式是p=________。",
+      "options": null,
+      "answer": "F/S",
+      "explanation": "压强等于压力除以受力面积。"
+    },
+    {
+      "id": "ph_085",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "增大受力面积可以减小压强。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "p=F/S，S增大则p减小。"
+    },
+    {
+      "id": "ph_086",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "力与压强",
+      "question": "一个边长为0.1m的正方体铁块放在水平地面上，求对地面的压强。（ρ铁=7.9×10³kg/m³，g=10N/kg）",
+      "options": null,
+      "answer": "7.9×10³ Pa",
+      "explanation": "p=ρgh=7.9×10³×10×0.1=7.9×10³ Pa。"
+    },
+    {
+      "id": "ph_087",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "阿基米德原理的内容是（　　）",
+      "options": [
+        "A. 浮力等于重力",
+        "B. 浮力等于排开液体的重力",
+        "C. 浮力等于液体压力",
+        "D. 浮力等于物体体积"
+      ],
+      "answer": "B",
+      "explanation": "F浮=G排=ρ液gV排。"
+    },
+    {
+      "id": "ph_088",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "一物体浸没在水中，排开水的体积为2×10⁻³m³，浮力为（　　）（g=10N/kg）",
+      "options": [
+        "A. 2 N",
+        "B. 10 N",
+        "C. 20 N",
+        "D. 200 N"
+      ],
+      "answer": "C",
+      "explanation": "F浮=ρ水gV排=10³×10×2×10⁻³=20 N。"
+    },
+    {
+      "id": "ph_089",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "同一物体分别浸没在水和煤油中，所受浮力（　　）",
+      "options": [
+        "A. 水中大",
+        "B. 煤油中大",
+        "C. 一样大",
+        "D. 无法判断"
+      ],
+      "answer": "A",
+      "explanation": "ρ水>ρ煤油，V排相同，水中浮力更大。"
+    },
+    {
+      "id": "ph_090",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "一物体漂浮在液面上，浮力与重力的关系是（　　）",
+      "options": [
+        "A. F浮>G",
+        "B. F浮=G",
+        "C. F浮<G",
+        "D. F浮=0"
+      ],
+      "answer": "B",
+      "explanation": "漂浮时二力平衡，F浮=G。"
+    },
+    {
+      "id": "ph_091",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "影响浮力大小的因素有（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 排开液体体积",
+        "C. 物体密度",
+        "D. 浸入深度"
+      ],
+      "answer": "A,B",
+      "explanation": "F浮=ρ液gV排，与液体密度和排开体积有关。"
+    },
+    {
+      "id": "ph_092",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "阿基米德原理公式：F浮=________。",
+      "options": null,
+      "answer": "ρ液gV排",
+      "explanation": "浮力等于排开液体的重力。"
+    },
+    {
+      "id": "ph_093",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "物体在液体中受到的浮力方向竖直向上。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "浮力方向总是竖直向上。"
+    },
+    {
+      "id": "ph_094",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "一个体积为1×10⁻³m³的物体浸没在水中，求所受浮力。（g=10N/kg）",
+      "options": null,
+      "answer": "10 N",
+      "explanation": "F浮=ρ水gV排=10³×10×1×10⁻³=10 N。"
+    },
+    {
+      "id": "ph_095",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "欧姆定律的表达式是（　　）",
+      "options": [
+        "A. I=U/R",
+        "B. U=IR",
+        "C. R=U/I",
+        "D. 以上都对"
+      ],
+      "answer": "D",
+      "explanation": "I=U/R及其变形均正确。"
+    },
+    {
+      "id": "ph_096",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "电阻为10Ω，电压为5V，电流为（　　）",
+      "options": [
+        "A. 0.5 A",
+        "B. 2 A",
+        "C. 50 A",
+        "D. 0.2 A"
+      ],
+      "answer": "A",
+      "explanation": "I=U/R=5/10=0.5 A。"
+    },
+    {
+      "id": "ph_097",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "一段导体两端电压增大到原来的2倍，则电流（　　）",
+      "options": [
+        "A. 不变",
+        "B. 变为原来2倍",
+        "C. 变为原来1/2",
+        "D. 变为原来4倍"
+      ],
+      "answer": "B",
+      "explanation": "R不变，I与U成正比。"
+    },
+    {
+      "id": "ph_098",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "如图所示电路，R₁=10Ω，R₂=20Ω，串联后接在6V电源上，总电流为（　　）",
+      "options": [
+        "A. 0.2 A",
+        "B. 0.3 A",
+        "C. 0.6 A",
+        "D. 0.9 A"
+      ],
+      "answer": "A",
+      "explanation": "R总=30Ω，I=U/R=6/30=0.2 A。"
+    },
+    {
+      "id": "ph_099",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "关于电阻，下列说法正确的是（　　）",
+      "options": [
+        "A. 电阻是导体本身的性质",
+        "B. 电阻与电压成正比",
+        "C. 电阻与电流成反比",
+        "D. 电阻与材料有关"
+      ],
+      "answer": "A,D",
+      "explanation": "电阻是导体本身属性，与电压电流无关。"
+    },
+    {
+      "id": "ph_100",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "欧姆定律：导体中的电流与导体两端的电压成________，与导体的电阻成________。",
+      "options": null,
+      "answer": "正比,反比",
+      "explanation": "I=U/R。"
+    },
+    {
+      "id": "ph_101",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "导体的电阻随电压增大而增大。",
+      "options": null,
+      "answer": "错误",
+      "explanation": "电阻是导体本身属性，与电压无关。"
+    },
+    {
+      "id": "ph_102",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "电阻R₁=20Ω与R₂=30Ω串联，接在10V电源上，求电路中的电流。",
+      "options": null,
+      "answer": "0.2 A",
+      "explanation": "R总=50Ω，I=U/R=10/50=0.2 A。"
+    },
+    {
+      "id": "ph_103",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "汽车2小时行驶120km，平均速度为（　　）",
+      "options": [
+        "A. 40 km/h",
+        "B. 60 km/h",
+        "C. 80 km/h",
+        "D. 120 km/h"
+      ],
+      "answer": "B",
+      "explanation": "v=s/t=120/2=60 km/h。"
+    },
+    {
+      "id": "ph_104",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "物体以5m/s匀速运动4s，路程为（　　）",
+      "options": [
+        "A. 10 m",
+        "B. 15 m",
+        "C. 20 m",
+        "D. 25 m"
+      ],
+      "answer": "C",
+      "explanation": "s=vt=5×4=20 m。"
+    },
+    {
+      "id": "ph_105",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "甲乙两车速度比为2:3，时间比为3:2，路程比为（　　）",
+      "options": [
+        "A. 1:1",
+        "B. 2:3",
+        "C. 3:2",
+        "D. 4:9"
+      ],
+      "answer": "A",
+      "explanation": "s=vt，路程比=(2×3):(3×2)=1:1。"
+    },
+    {
+      "id": "ph_106",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "一物体前半程速度v₁，后半程速度v₂，全程平均速度为（　　）",
+      "options": [
+        "A. (v₁+v₂)/2",
+        "B. 2v₁v₂/(v₁+v₂)",
+        "C. v₁v₂/(v₁+v₂)",
+        "D. √(v₁v₂)"
+      ],
+      "answer": "B",
+      "explanation": "平均速度=总路程/总时间=2s/(s/v₁+s/v₂)=2v₁v₂/(v₁+v₂)。"
+    },
+    {
+      "id": "ph_107",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "机械运动",
+      "question": "关于匀速直线运动，下列说法正确的是（　　）",
+      "options": [
+        "A. 速度不变",
+        "B. 路程与时间成正比",
+        "C. 加速度为零",
+        "D. 速度随时间增大"
+      ],
+      "answer": "A,B,C",
+      "explanation": "匀速直线运动速度恒定。"
+    },
+    {
+      "id": "ph_108",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "机械运动",
+      "question": "速度的计算公式是v=________。",
+      "options": null,
+      "answer": "s/t",
+      "explanation": "速度等于路程除以时间。"
+    },
+    {
+      "id": "ph_109",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "速度是描述物体运动快慢的物理量。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "速度表示运动快慢。"
+    },
+    {
+      "id": "ph_110",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "一辆汽车以60km/h行驶2小时，又以80km/h行驶3小时，求全程平均速度。",
+      "options": null,
+      "answer": "72 km/h",
+      "explanation": "总路程=60×2+80×3=360km，总时间=5h，平均速度=360/5=72km/h。"
+    },
+    {
+      "id": "ph_111",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "重100N的箱子放在0.5m²桌面上，压强为（　　）",
+      "options": [
+        "A. 50 Pa",
+        "B. 100 Pa",
+        "C. 150 Pa",
+        "D. 200 Pa"
+      ],
+      "answer": "D",
+      "explanation": "p=F/S=100/0.5=200 Pa。"
+    },
+    {
+      "id": "ph_112",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "下列能增大压强的是（　　）",
+      "options": [
+        "A. 增大接触面积",
+        "B. 减小压力",
+        "C. 减小接触面积",
+        "D. 保持面积不变"
+      ],
+      "answer": "C",
+      "explanation": "减小受力面积可增大压强。"
+    },
+    {
+      "id": "ph_113",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "液体压强与下列哪个因素无关（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 液体深度",
+        "C. 容器形状",
+        "D. 重力加速度"
+      ],
+      "answer": "C",
+      "explanation": "p=ρgh，与容器形状无关。"
+    },
+    {
+      "id": "ph_114",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "力与压强",
+      "question": "如图所示，容器内装有水，A、B两点压强pA、pB关系为（　　）",
+      "options": [
+        "A. pA>pB",
+        "B. pA=pB",
+        "C. pA<pB",
+        "D. 无法判断"
+      ],
+      "answer": "C",
+      "explanation": "B点深度更大，压强更大。"
+    },
+    {
+      "id": "ph_115",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "力与压强",
+      "question": "关于压强，下列说法正确的是（　　）",
+      "options": [
+        "A. 压力越大，压强越大",
+        "B. 受力面积越小，压强越大",
+        "C. 压强表示压力作用效果",
+        "D. 压强单位是帕斯卡"
+      ],
+      "answer": "B,C,D",
+      "explanation": "压强与压力和面积均有关。"
+    },
+    {
+      "id": "ph_116",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "压强的计算公式是p=________。",
+      "options": null,
+      "answer": "F/S",
+      "explanation": "压强等于压力除以受力面积。"
+    },
+    {
+      "id": "ph_117",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "增大受力面积可以减小压强。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "p=F/S，S增大则p减小。"
+    },
+    {
+      "id": "ph_118",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "一个边长为0.1m的正方体铁块放在水平地面上，求对地面的压强。（ρ铁=7.9×10³kg/m³，g=10N/kg）",
+      "options": null,
+      "answer": "7.9×10³ Pa",
+      "explanation": "p=ρgh=7.9×10³×10×0.1=7.9×10³ Pa。"
+    },
+    {
+      "id": "ph_119",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "阿基米德原理的内容是（　　）",
+      "options": [
+        "A. 浮力等于重力",
+        "B. 浮力等于排开液体的重力",
+        "C. 浮力等于液体压力",
+        "D. 浮力等于物体体积"
+      ],
+      "answer": "B",
+      "explanation": "F浮=G排=ρ液gV排。"
+    },
+    {
+      "id": "ph_120",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "一物体浸没在水中，排开水的体积为2×10⁻³m³，浮力为（　　）（g=10N/kg）",
+      "options": [
+        "A. 2 N",
+        "B. 10 N",
+        "C. 20 N",
+        "D. 200 N"
+      ],
+      "answer": "C",
+      "explanation": "F浮=ρ水gV排=10³×10×2×10⁻³=20 N。"
+    },
+    {
+      "id": "ph_121",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "浮力",
+      "question": "同一物体分别浸没在水和煤油中，所受浮力（　　）",
+      "options": [
+        "A. 水中大",
+        "B. 煤油中大",
+        "C. 一样大",
+        "D. 无法判断"
+      ],
+      "answer": "A",
+      "explanation": "ρ水>ρ煤油，V排相同，水中浮力更大。"
+    },
+    {
+      "id": "ph_122",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "一物体漂浮在液面上，浮力与重力的关系是（　　）",
+      "options": [
+        "A. F浮>G",
+        "B. F浮=G",
+        "C. F浮<G",
+        "D. F浮=0"
+      ],
+      "answer": "B",
+      "explanation": "漂浮时二力平衡，F浮=G。"
+    },
+    {
+      "id": "ph_123",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "影响浮力大小的因素有（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 排开液体体积",
+        "C. 物体密度",
+        "D. 浸入深度"
+      ],
+      "answer": "A,B",
+      "explanation": "F浮=ρ液gV排，与液体密度和排开体积有关。"
+    },
+    {
+      "id": "ph_124",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "阿基米德原理公式：F浮=________。",
+      "options": null,
+      "answer": "ρ液gV排",
+      "explanation": "浮力等于排开液体的重力。"
+    },
+    {
+      "id": "ph_125",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "浮力",
+      "question": "物体在液体中受到的浮力方向竖直向上。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "浮力方向总是竖直向上。"
+    },
+    {
+      "id": "ph_126",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "一个体积为1×10⁻³m³的物体浸没在水中，求所受浮力。（g=10N/kg）",
+      "options": null,
+      "answer": "10 N",
+      "explanation": "F浮=ρ水gV排=10³×10×1×10⁻³=10 N。"
+    },
+    {
+      "id": "ph_127",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "欧姆定律的表达式是（　　）",
+      "options": [
+        "A. I=U/R",
+        "B. U=IR",
+        "C. R=U/I",
+        "D. 以上都对"
+      ],
+      "answer": "D",
+      "explanation": "I=U/R及其变形均正确。"
+    },
+    {
+      "id": "ph_128",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "电阻为10Ω，电压为5V，电流为（　　）",
+      "options": [
+        "A. 0.5 A",
+        "B. 2 A",
+        "C. 50 A",
+        "D. 0.2 A"
+      ],
+      "answer": "A",
+      "explanation": "I=U/R=5/10=0.5 A。"
+    },
+    {
+      "id": "ph_129",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "欧姆定律",
+      "question": "一段导体两端电压增大到原来的2倍，则电流（　　）",
+      "options": [
+        "A. 不变",
+        "B. 变为原来2倍",
+        "C. 变为原来1/2",
+        "D. 变为原来4倍"
+      ],
+      "answer": "B",
+      "explanation": "R不变，I与U成正比。"
+    },
+    {
+      "id": "ph_130",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "如图所示电路，R₁=10Ω，R₂=20Ω，串联后接在6V电源上，总电流为（　　）",
+      "options": [
+        "A. 0.2 A",
+        "B. 0.3 A",
+        "C. 0.6 A",
+        "D. 0.9 A"
+      ],
+      "answer": "A",
+      "explanation": "R总=30Ω，I=U/R=6/30=0.2 A。"
+    },
+    {
+      "id": "ph_131",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "关于电阻，下列说法正确的是（　　）",
+      "options": [
+        "A. 电阻是导体本身的性质",
+        "B. 电阻与电压成正比",
+        "C. 电阻与电流成反比",
+        "D. 电阻与材料有关"
+      ],
+      "answer": "A,D",
+      "explanation": "电阻是导体本身属性，与电压电流无关。"
+    },
+    {
+      "id": "ph_132",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "欧姆定律：导体中的电流与导体两端的电压成________，与导体的电阻成________。",
+      "options": null,
+      "answer": "正比,反比",
+      "explanation": "I=U/R。"
+    },
+    {
+      "id": "ph_133",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "导体的电阻随电压增大而增大。",
+      "options": null,
+      "answer": "错误",
+      "explanation": "电阻是导体本身属性，与电压无关。"
+    },
+    {
+      "id": "ph_134",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "欧姆定律",
+      "question": "电阻R₁=20Ω与R₂=30Ω串联，接在10V电源上，求电路中的电流。",
+      "options": null,
+      "answer": "0.2 A",
+      "explanation": "R总=50Ω，I=U/R=10/50=0.2 A。"
+    },
+    {
+      "id": "ph_135",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "汽车2小时行驶120km，平均速度为（　　）",
+      "options": [
+        "A. 40 km/h",
+        "B. 60 km/h",
+        "C. 80 km/h",
+        "D. 120 km/h"
+      ],
+      "answer": "B",
+      "explanation": "v=s/t=120/2=60 km/h。"
+    },
+    {
+      "id": "ph_136",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "物体以5m/s匀速运动4s，路程为（　　）",
+      "options": [
+        "A. 10 m",
+        "B. 15 m",
+        "C. 20 m",
+        "D. 25 m"
+      ],
+      "answer": "C",
+      "explanation": "s=vt=5×4=20 m。"
+    },
+    {
+      "id": "ph_137",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "甲乙两车速度比为2:3，时间比为3:2，路程比为（　　）",
+      "options": [
+        "A. 1:1",
+        "B. 2:3",
+        "C. 3:2",
+        "D. 4:9"
+      ],
+      "answer": "A",
+      "explanation": "s=vt，路程比=(2×3):(3×2)=1:1。"
+    },
+    {
+      "id": "ph_138",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "一物体前半程速度v₁，后半程速度v₂，全程平均速度为（　　）",
+      "options": [
+        "A. (v₁+v₂)/2",
+        "B. 2v₁v₂/(v₁+v₂)",
+        "C. v₁v₂/(v₁+v₂)",
+        "D. √(v₁v₂)"
+      ],
+      "answer": "B",
+      "explanation": "平均速度=总路程/总时间=2s/(s/v₁+s/v₂)=2v₁v₂/(v₁+v₂)。"
+    },
+    {
+      "id": "ph_139",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "关于匀速直线运动，下列说法正确的是（　　）",
+      "options": [
+        "A. 速度不变",
+        "B. 路程与时间成正比",
+        "C. 加速度为零",
+        "D. 速度随时间增大"
+      ],
+      "answer": "A,B,C",
+      "explanation": "匀速直线运动速度恒定。"
+    },
+    {
+      "id": "ph_140",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "速度的计算公式是v=________。",
+      "options": null,
+      "answer": "s/t",
+      "explanation": "速度等于路程除以时间。"
+    },
+    {
+      "id": "ph_141",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "速度是描述物体运动快慢的物理量。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "速度表示运动快慢。"
+    },
+    {
+      "id": "ph_142",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "一辆汽车以60km/h行驶2小时，又以80km/h行驶3小时，求全程平均速度。",
+      "options": null,
+      "answer": "72 km/h",
+      "explanation": "总路程=60×2+80×3=360km，总时间=5h，平均速度=360/5=72km/h。"
+    },
+    {
+      "id": "ph_143",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "重100N的箱子放在0.5m²桌面上，压强为（　　）",
+      "options": [
+        "A. 50 Pa",
+        "B. 100 Pa",
+        "C. 150 Pa",
+        "D. 200 Pa"
+      ],
+      "answer": "D",
+      "explanation": "p=F/S=100/0.5=200 Pa。"
+    },
+    {
+      "id": "ph_144",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "力与压强",
+      "question": "下列能增大压强的是（　　）",
+      "options": [
+        "A. 增大接触面积",
+        "B. 减小压力",
+        "C. 减小接触面积",
+        "D. 保持面积不变"
+      ],
+      "answer": "C",
+      "explanation": "减小受力面积可增大压强。"
+    },
+    {
+      "id": "ph_145",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "力与压强",
+      "question": "液体压强与下列哪个因素无关（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 液体深度",
+        "C. 容器形状",
+        "D. 重力加速度"
+      ],
+      "answer": "C",
+      "explanation": "p=ρgh，与容器形状无关。"
+    },
+    {
+      "id": "ph_146",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "如图所示，容器内装有水，A、B两点压强pA、pB关系为（　　）",
+      "options": [
+        "A. pA>pB",
+        "B. pA=pB",
+        "C. pA<pB",
+        "D. 无法判断"
+      ],
+      "answer": "C",
+      "explanation": "B点深度更大，压强更大。"
+    },
+    {
+      "id": "ph_147",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "关于压强，下列说法正确的是（　　）",
+      "options": [
+        "A. 压力越大，压强越大",
+        "B. 受力面积越小，压强越大",
+        "C. 压强表示压力作用效果",
+        "D. 压强单位是帕斯卡"
+      ],
+      "answer": "B,C,D",
+      "explanation": "压强与压力和面积均有关。"
+    },
+    {
+      "id": "ph_148",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "压强的计算公式是p=________。",
+      "options": null,
+      "answer": "F/S",
+      "explanation": "压强等于压力除以受力面积。"
+    },
+    {
+      "id": "ph_149",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "增大受力面积可以减小压强。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "p=F/S，S增大则p减小。"
+    },
+    {
+      "id": "ph_150",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "一个边长为0.1m的正方体铁块放在水平地面上，求对地面的压强。（ρ铁=7.9×10³kg/m³，g=10N/kg）",
+      "options": null,
+      "answer": "7.9×10³ Pa",
+      "explanation": "p=ρgh=7.9×10³×10×0.1=7.9×10³ Pa。"
+    },
+    {
+      "id": "ph_151",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "阿基米德原理的内容是（　　）",
+      "options": [
+        "A. 浮力等于重力",
+        "B. 浮力等于排开液体的重力",
+        "C. 浮力等于液体压力",
+        "D. 浮力等于物体体积"
+      ],
+      "answer": "B",
+      "explanation": "F浮=G排=ρ液gV排。"
+    },
+    {
+      "id": "ph_152",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "一物体浸没在水中，排开水的体积为2×10⁻³m³，浮力为（　　）（g=10N/kg）",
+      "options": [
+        "A. 2 N",
+        "B. 10 N",
+        "C. 20 N",
+        "D. 200 N"
+      ],
+      "answer": "C",
+      "explanation": "F浮=ρ水gV排=10³×10×2×10⁻³=20 N。"
+    },
+    {
+      "id": "ph_153",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "浮力",
+      "question": "同一物体分别浸没在水和煤油中，所受浮力（　　）",
+      "options": [
+        "A. 水中大",
+        "B. 煤油中大",
+        "C. 一样大",
+        "D. 无法判断"
+      ],
+      "answer": "A",
+      "explanation": "ρ水>ρ煤油，V排相同，水中浮力更大。"
+    },
+    {
+      "id": "ph_154",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "一物体漂浮在液面上，浮力与重力的关系是（　　）",
+      "options": [
+        "A. F浮>G",
+        "B. F浮=G",
+        "C. F浮<G",
+        "D. F浮=0"
+      ],
+      "answer": "B",
+      "explanation": "漂浮时二力平衡，F浮=G。"
+    },
+    {
+      "id": "ph_155",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "影响浮力大小的因素有（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 排开液体体积",
+        "C. 物体密度",
+        "D. 浸入深度"
+      ],
+      "answer": "A,B",
+      "explanation": "F浮=ρ液gV排，与液体密度和排开体积有关。"
+    },
+    {
+      "id": "ph_156",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "阿基米德原理公式：F浮=________。",
+      "options": null,
+      "answer": "ρ液gV排",
+      "explanation": "浮力等于排开液体的重力。"
+    },
+    {
+      "id": "ph_157",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "物体在液体中受到的浮力方向竖直向上。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "浮力方向总是竖直向上。"
+    },
+    {
+      "id": "ph_158",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "浮力",
+      "question": "一个体积为1×10⁻³m³的物体浸没在水中，求所受浮力。（g=10N/kg）",
+      "options": null,
+      "answer": "10 N",
+      "explanation": "F浮=ρ水gV排=10³×10×1×10⁻³=10 N。"
+    },
+    {
+      "id": "ph_159",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "欧姆定律的表达式是（　　）",
+      "options": [
+        "A. I=U/R",
+        "B. U=IR",
+        "C. R=U/I",
+        "D. 以上都对"
+      ],
+      "answer": "D",
+      "explanation": "I=U/R及其变形均正确。"
+    },
+    {
+      "id": "ph_160",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "电阻为10Ω，电压为5V，电流为（　　）",
+      "options": [
+        "A. 0.5 A",
+        "B. 2 A",
+        "C. 50 A",
+        "D. 0.2 A"
+      ],
+      "answer": "A",
+      "explanation": "I=U/R=5/10=0.5 A。"
+    },
+    {
+      "id": "ph_161",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "欧姆定律",
+      "question": "一段导体两端电压增大到原来的2倍，则电流（　　）",
+      "options": [
+        "A. 不变",
+        "B. 变为原来2倍",
+        "C. 变为原来1/2",
+        "D. 变为原来4倍"
+      ],
+      "answer": "B",
+      "explanation": "R不变，I与U成正比。"
+    },
+    {
+      "id": "ph_162",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "如图所示电路，R₁=10Ω，R₂=20Ω，串联后接在6V电源上，总电流为（　　）",
+      "options": [
+        "A. 0.2 A",
+        "B. 0.3 A",
+        "C. 0.6 A",
+        "D. 0.9 A"
+      ],
+      "answer": "A",
+      "explanation": "R总=30Ω，I=U/R=6/30=0.2 A。"
+    },
+    {
+      "id": "ph_163",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "关于电阻，下列说法正确的是（　　）",
+      "options": [
+        "A. 电阻是导体本身的性质",
+        "B. 电阻与电压成正比",
+        "C. 电阻与电流成反比",
+        "D. 电阻与材料有关"
+      ],
+      "answer": "A,D",
+      "explanation": "电阻是导体本身属性，与电压电流无关。"
+    },
+    {
+      "id": "ph_164",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "knowledge_point": "欧姆定律",
+      "question": "欧姆定律：导体中的电流与导体两端的电压成________，与导体的电阻成________。",
+      "options": null,
+      "answer": "正比,反比",
+      "explanation": "I=U/R。"
+    },
+    {
+      "id": "ph_165",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "欧姆定律",
+      "question": "导体的电阻随电压增大而增大。",
+      "options": null,
+      "answer": "错误",
+      "explanation": "电阻是导体本身属性，与电压无关。"
+    },
+    {
+      "id": "ph_166",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "电阻R₁=20Ω与R₂=30Ω串联，接在10V电源上，求电路中的电流。",
+      "options": null,
+      "answer": "0.2 A",
+      "explanation": "R总=50Ω，I=U/R=10/50=0.2 A。"
+    },
+    {
+      "id": "ph_167",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "机械运动",
+      "question": "汽车2小时行驶120km，平均速度为（　　）",
+      "options": [
+        "A. 40 km/h",
+        "B. 60 km/h",
+        "C. 80 km/h",
+        "D. 120 km/h"
+      ],
+      "answer": "B",
+      "explanation": "v=s/t=120/2=60 km/h。"
+    },
+    {
+      "id": "ph_168",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "物体以5m/s匀速运动4s，路程为（　　）",
+      "options": [
+        "A. 10 m",
+        "B. 15 m",
+        "C. 20 m",
+        "D. 25 m"
+      ],
+      "answer": "C",
+      "explanation": "s=vt=5×4=20 m。"
+    },
+    {
+      "id": "ph_169",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "甲乙两车速度比为2:3，时间比为3:2，路程比为（　　）",
+      "options": [
+        "A. 1:1",
+        "B. 2:3",
+        "C. 3:2",
+        "D. 4:9"
+      ],
+      "answer": "A",
+      "explanation": "s=vt，路程比=(2×3):(3×2)=1:1。"
+    },
+    {
+      "id": "ph_170",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "一物体前半程速度v₁，后半程速度v₂，全程平均速度为（　　）",
+      "options": [
+        "A. (v₁+v₂)/2",
+        "B. 2v₁v₂/(v₁+v₂)",
+        "C. v₁v₂/(v₁+v₂)",
+        "D. √(v₁v₂)"
+      ],
+      "answer": "B",
+      "explanation": "平均速度=总路程/总时间=2s/(s/v₁+s/v₂)=2v₁v₂/(v₁+v₂)。"
+    },
+    {
+      "id": "ph_171",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "关于匀速直线运动，下列说法正确的是（　　）",
+      "options": [
+        "A. 速度不变",
+        "B. 路程与时间成正比",
+        "C. 加速度为零",
+        "D. 速度随时间增大"
+      ],
+      "answer": "A,B,C",
+      "explanation": "匀速直线运动速度恒定。"
+    },
+    {
+      "id": "ph_172",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "knowledge_point": "机械运动",
+      "question": "速度的计算公式是v=________。",
+      "options": null,
+      "answer": "s/t",
+      "explanation": "速度等于路程除以时间。"
+    },
+    {
+      "id": "ph_173",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "机械运动",
+      "question": "速度是描述物体运动快慢的物理量。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "速度表示运动快慢。"
+    },
+    {
+      "id": "ph_174",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "一辆汽车以60km/h行驶2小时，又以80km/h行驶3小时，求全程平均速度。",
+      "options": null,
+      "answer": "72 km/h",
+      "explanation": "总路程=60×2+80×3=360km，总时间=5h，平均速度=360/5=72km/h。"
+    },
+    {
+      "id": "ph_175",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "力与压强",
+      "question": "重100N的箱子放在0.5m²桌面上，压强为（　　）",
+      "options": [
+        "A. 50 Pa",
+        "B. 100 Pa",
+        "C. 150 Pa",
+        "D. 200 Pa"
+      ],
+      "answer": "D",
+      "explanation": "p=F/S=100/0.5=200 Pa。"
+    },
+    {
+      "id": "ph_176",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "下列能增大压强的是（　　）",
+      "options": [
+        "A. 增大接触面积",
+        "B. 减小压力",
+        "C. 减小接触面积",
+        "D. 保持面积不变"
+      ],
+      "answer": "C",
+      "explanation": "减小受力面积可增大压强。"
+    },
+    {
+      "id": "ph_177",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "液体压强与下列哪个因素无关（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 液体深度",
+        "C. 容器形状",
+        "D. 重力加速度"
+      ],
+      "answer": "C",
+      "explanation": "p=ρgh，与容器形状无关。"
+    },
+    {
+      "id": "ph_178",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "如图所示，容器内装有水，A、B两点压强pA、pB关系为（　　）",
+      "options": [
+        "A. pA>pB",
+        "B. pA=pB",
+        "C. pA<pB",
+        "D. 无法判断"
+      ],
+      "answer": "C",
+      "explanation": "B点深度更大，压强更大。"
+    },
+    {
+      "id": "ph_179",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "力与压强",
+      "question": "关于压强，下列说法正确的是（　　）",
+      "options": [
+        "A. 压力越大，压强越大",
+        "B. 受力面积越小，压强越大",
+        "C. 压强表示压力作用效果",
+        "D. 压强单位是帕斯卡"
+      ],
+      "answer": "B,C,D",
+      "explanation": "压强与压力和面积均有关。"
+    },
+    {
+      "id": "ph_180",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "压强的计算公式是p=________。",
+      "options": null,
+      "answer": "F/S",
+      "explanation": "压强等于压力除以受力面积。"
+    },
+    {
+      "id": "ph_181",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "增大受力面积可以减小压强。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "p=F/S，S增大则p减小。"
+    },
+    {
+      "id": "ph_182",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "一个边长为0.1m的正方体铁块放在水平地面上，求对地面的压强。（ρ铁=7.9×10³kg/m³，g=10N/kg）",
+      "options": null,
+      "answer": "7.9×10³ Pa",
+      "explanation": "p=ρgh=7.9×10³×10×0.1=7.9×10³ Pa。"
+    },
+    {
+      "id": "ph_183",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "阿基米德原理的内容是（　　）",
+      "options": [
+        "A. 浮力等于重力",
+        "B. 浮力等于排开液体的重力",
+        "C. 浮力等于液体压力",
+        "D. 浮力等于物体体积"
+      ],
+      "answer": "B",
+      "explanation": "F浮=G排=ρ液gV排。"
+    },
+    {
+      "id": "ph_184",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "浮力",
+      "question": "一物体浸没在水中，排开水的体积为2×10⁻³m³，浮力为（　　）（g=10N/kg）",
+      "options": [
+        "A. 2 N",
+        "B. 10 N",
+        "C. 20 N",
+        "D. 200 N"
+      ],
+      "answer": "C",
+      "explanation": "F浮=ρ水gV排=10³×10×2×10⁻³=20 N。"
+    },
+    {
+      "id": "ph_185",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "浮力",
+      "question": "同一物体分别浸没在水和煤油中，所受浮力（　　）",
+      "options": [
+        "A. 水中大",
+        "B. 煤油中大",
+        "C. 一样大",
+        "D. 无法判断"
+      ],
+      "answer": "A",
+      "explanation": "ρ水>ρ煤油，V排相同，水中浮力更大。"
+    },
+    {
+      "id": "ph_186",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "一物体漂浮在液面上，浮力与重力的关系是（　　）",
+      "options": [
+        "A. F浮>G",
+        "B. F浮=G",
+        "C. F浮<G",
+        "D. F浮=0"
+      ],
+      "answer": "B",
+      "explanation": "漂浮时二力平衡，F浮=G。"
+    },
+    {
+      "id": "ph_187",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "影响浮力大小的因素有（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 排开液体体积",
+        "C. 物体密度",
+        "D. 浸入深度"
+      ],
+      "answer": "A,B",
+      "explanation": "F浮=ρ液gV排，与液体密度和排开体积有关。"
+    },
+    {
+      "id": "ph_188",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "浮力",
+      "question": "阿基米德原理公式：F浮=________。",
+      "options": null,
+      "answer": "ρ液gV排",
+      "explanation": "浮力等于排开液体的重力。"
+    },
+    {
+      "id": "ph_189",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "浮力",
+      "question": "物体在液体中受到的浮力方向竖直向上。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "浮力方向总是竖直向上。"
+    },
+    {
+      "id": "ph_190",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "浮力",
+      "question": "一个体积为1×10⁻³m³的物体浸没在水中，求所受浮力。（g=10N/kg）",
+      "options": null,
+      "answer": "10 N",
+      "explanation": "F浮=ρ水gV排=10³×10×1×10⁻³=10 N。"
+    },
+    {
+      "id": "ph_191",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "欧姆定律的表达式是（　　）",
+      "options": [
+        "A. I=U/R",
+        "B. U=IR",
+        "C. R=U/I",
+        "D. 以上都对"
+      ],
+      "answer": "D",
+      "explanation": "I=U/R及其变形均正确。"
+    },
+    {
+      "id": "ph_192",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "电阻为10Ω，电压为5V，电流为（　　）",
+      "options": [
+        "A. 0.5 A",
+        "B. 2 A",
+        "C. 50 A",
+        "D. 0.2 A"
+      ],
+      "answer": "A",
+      "explanation": "I=U/R=5/10=0.5 A。"
+    },
+    {
+      "id": "ph_193",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "欧姆定律",
+      "question": "一段导体两端电压增大到原来的2倍，则电流（　　）",
+      "options": [
+        "A. 不变",
+        "B. 变为原来2倍",
+        "C. 变为原来1/2",
+        "D. 变为原来4倍"
+      ],
+      "answer": "B",
+      "explanation": "R不变，I与U成正比。"
+    },
+    {
+      "id": "ph_194",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "欧姆定律",
+      "question": "如图所示电路，R₁=10Ω，R₂=20Ω，串联后接在6V电源上，总电流为（　　）",
+      "options": [
+        "A. 0.2 A",
+        "B. 0.3 A",
+        "C. 0.6 A",
+        "D. 0.9 A"
+      ],
+      "answer": "A",
+      "explanation": "R总=30Ω，I=U/R=6/30=0.2 A。"
+    },
+    {
+      "id": "ph_195",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "关于电阻，下列说法正确的是（　　）",
+      "options": [
+        "A. 电阻是导体本身的性质",
+        "B. 电阻与电压成正比",
+        "C. 电阻与电流成反比",
+        "D. 电阻与材料有关"
+      ],
+      "answer": "A,D",
+      "explanation": "电阻是导体本身属性，与电压电流无关。"
+    },
+    {
+      "id": "ph_196",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "knowledge_point": "欧姆定律",
+      "question": "欧姆定律：导体中的电流与导体两端的电压成________，与导体的电阻成________。",
+      "options": null,
+      "answer": "正比,反比",
+      "explanation": "I=U/R。"
+    },
+    {
+      "id": "ph_197",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "导体的电阻随电压增大而增大。",
+      "options": null,
+      "answer": "错误",
+      "explanation": "电阻是导体本身属性，与电压无关。"
+    },
+    {
+      "id": "ph_198",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "欧姆定律",
+      "question": "电阻R₁=20Ω与R₂=30Ω串联，接在10V电源上，求电路中的电流。",
+      "options": null,
+      "answer": "0.2 A",
+      "explanation": "R总=50Ω，I=U/R=10/50=0.2 A。"
+    },
+    {
+      "id": "ph_199",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "汽车2小时行驶120km，平均速度为（　　）",
+      "options": [
+        "A. 40 km/h",
+        "B. 60 km/h",
+        "C. 80 km/h",
+        "D. 120 km/h"
+      ],
+      "answer": "B",
+      "explanation": "v=s/t=120/2=60 km/h。"
+    },
+    {
+      "id": "ph_200",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "物体以5m/s匀速运动4s，路程为（　　）",
+      "options": [
+        "A. 10 m",
+        "B. 15 m",
+        "C. 20 m",
+        "D. 25 m"
+      ],
+      "answer": "C",
+      "explanation": "s=vt=5×4=20 m。"
+    },
+    {
+      "id": "ph_201",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "甲乙两车速度比为2:3，时间比为3:2，路程比为（　　）",
+      "options": [
+        "A. 1:1",
+        "B. 2:3",
+        "C. 3:2",
+        "D. 4:9"
+      ],
+      "answer": "A",
+      "explanation": "s=vt，路程比=(2×3):(3×2)=1:1。"
+    },
+    {
+      "id": "ph_202",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "一物体前半程速度v₁，后半程速度v₂，全程平均速度为（　　）",
+      "options": [
+        "A. (v₁+v₂)/2",
+        "B. 2v₁v₂/(v₁+v₂)",
+        "C. v₁v₂/(v₁+v₂)",
+        "D. √(v₁v₂)"
+      ],
+      "answer": "B",
+      "explanation": "平均速度=总路程/总时间=2s/(s/v₁+s/v₂)=2v₁v₂/(v₁+v₂)。"
+    },
+    {
+      "id": "ph_203",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "关于匀速直线运动，下列说法正确的是（　　）",
+      "options": [
+        "A. 速度不变",
+        "B. 路程与时间成正比",
+        "C. 加速度为零",
+        "D. 速度随时间增大"
+      ],
+      "answer": "A,B,C",
+      "explanation": "匀速直线运动速度恒定。"
+    },
+    {
+      "id": "ph_204",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "机械运动",
+      "question": "速度的计算公式是v=________。",
+      "options": null,
+      "answer": "s/t",
+      "explanation": "速度等于路程除以时间。"
+    },
+    {
+      "id": "ph_205",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "knowledge_point": "机械运动",
+      "question": "速度是描述物体运动快慢的物理量。",
+      "options": null,
+      "answer": "正确",
+      "explanation": "速度表示运动快慢。"
+    },
+    {
+      "id": "ph_206",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "knowledge_point": "机械运动",
+      "question": "一辆汽车以60km/h行驶2小时，又以80km/h行驶3小时，求全程平均速度。",
+      "options": null,
+      "answer": "72 km/h",
+      "explanation": "总路程=60×2+80×3=360km，总时间=5h，平均速度=360/5=72km/h。"
+    },
+    {
+      "id": "ph_207",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "重100N的箱子放在0.5m²桌面上，压强为（　　）",
+      "options": [
+        "A. 50 Pa",
+        "B. 100 Pa",
+        "C. 150 Pa",
+        "D. 200 Pa"
+      ],
+      "answer": "D",
+      "explanation": "p=F/S=100/0.5=200 Pa。"
+    },
+    {
+      "id": "ph_208",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "knowledge_point": "力与压强",
+      "question": "下列能增大压强的是（　　）",
+      "options": [
+        "A. 增大接触面积",
+        "B. 减小压力",
+        "C. 减小接触面积",
+        "D. 保持面积不变"
+      ],
+      "answer": "C",
+      "explanation": "减小受力面积可增大压强。"
+    },
+    {
+      "id": "ph_209",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "液体压强与下列哪个因素无关（　　）",
+      "options": [
+        "A. 液体密度",
+        "B. 液体深度",
+        "C. 容器形状",
+        "D. 重力加速度"
+      ],
+      "answer": "C",
+      "explanation": "p=ρgh，与容器形状无关。"
+    },
+    {
+      "id": "ph_210",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "knowledge_point": "力与压强",
+      "question": "如图所示，容器内装有水，A、B两点压强pA、pB关系为（　　）",
+      "options": [
+        "A. pA>pB",
+        "B. pA=pB",
+        "C. pA<pB",
+        "D. 无法判断"
+      ],
+      "answer": "C",
+      "explanation": "B点深度更大，压强更大。"
+    }
+  ]
+}

@@ -1,0 +1,1011 @@
+{
+  "questions": [
+    {
+      "content": "下面哪种动物生活在水里？",
+      "options": [
+        "A. 小狗",
+        "B. 小鸟",
+        "C. 金鱼",
+        "D. 小鸡"
+      ],
+      "correct_answer": "C",
+      "explanation": "金鱼是水生动物，生活在水里。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "声音可以在真空中传播。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "声音需要介质传播，真空中没有空气，声音无法传播。",
+      "type": "判断题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "声音"
+      ]
+    },
+    {
+      "content": "向日葵的花盘会随着____转动。",
+      "options": [],
+      "correct_answer": "太阳",
+      "explanation": "向日葵具有向光性，花盘会随着太阳转动。",
+      "type": "填空题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "蚂蚁只会爬，不会说话。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "蚂蚁虽然不会说话，但会用触角和气味与同伴交流。",
+      "type": "判断题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "昆虫"
+      ]
+    },
+    {
+      "content": "下面哪些属于五官？",
+      "options": [
+        "A. 眼睛",
+        "B. 耳朵",
+        "C. 手",
+        "D. 鼻子"
+      ],
+      "correct_answer": "A、B、D",
+      "explanation": "五官指眼、耳、鼻、舌、口，手不属于五官。",
+      "type": "多选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "身体部位",
+        "五官"
+      ]
+    },
+    {
+      "content": "我们有两只手和两只脚，统称为____。",
+      "options": [],
+      "correct_answer": "四肢",
+      "explanation": "双手和双脚合称为四肢。",
+      "type": "填空题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "身体部位",
+        "四肢"
+      ]
+    },
+    {
+      "content": "秋天树叶为什么会变黄落下？",
+      "options": [
+        "A. 被风吹坏了",
+        "B. 气温降低，叶绿素减少",
+        "C. 树生病了",
+        "D. 被虫子咬了"
+      ],
+      "correct_answer": "B",
+      "explanation": "秋天气温降低，树叶中的叶绿素减少，其他颜色显现出来。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "四季特征"
+      ]
+    },
+    {
+      "content": "猫的胡须有什么作用？",
+      "options": [
+        "A. 好看",
+        "B. 测量洞口宽度",
+        "C. 打架",
+        "D. 抓老鼠"
+      ],
+      "correct_answer": "B",
+      "explanation": "猫的胡须和身体的宽度差不多，可以测量洞口能否通过。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "下面哪些动物生活在水里？",
+      "options": [
+        "A. 金鱼",
+        "B. 海豚",
+        "C. 青蛙",
+        "D. 螃蟹"
+      ],
+      "correct_answer": "A、B、C、D",
+      "explanation": "金鱼、海豚、青蛙和螃蟹都可以在水中生活。",
+      "type": "多选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "仙人掌生活在什么地方？",
+      "options": [
+        "A. 池塘",
+        "B. 森林",
+        "C. 沙漠",
+        "D. 草原"
+      ],
+      "correct_answer": "C",
+      "explanation": "仙人掌适应干旱环境，主要生活在沙漠中。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "蜜蜂采蜜时会做什么？",
+      "options": [
+        "A. 帮助花朵传粉",
+        "B. 吃掉花瓣",
+        "C. 酿造蜂蜜",
+        "D. 破坏植物"
+      ],
+      "correct_answer": "A、C",
+      "explanation": "蜜蜂采蜜时帮助花朵传粉，并把花蜜酿成蜂蜜。",
+      "type": "多选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "昆虫"
+      ]
+    },
+    {
+      "content": "春天播种，秋天收获，这是农民伯伯的常识。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "春种秋收是我国农业生产的基本规律。",
+      "type": "判断题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "四季特征"
+      ]
+    },
+    {
+      "content": "下面哪些东西可以被磁铁吸住？",
+      "options": [
+        "A. 铁钉",
+        "B. 回形针",
+        "C. 塑料勺",
+        "D. 硬币"
+      ],
+      "correct_answer": "A、B",
+      "explanation": "铁钉和回形针是铁制品，可以被磁铁吸住。普通塑料勺和硬币（非铁质）不能被吸住。",
+      "type": "多选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "磁性"
+      ]
+    },
+    {
+      "content": "发生火灾时可以乘坐电梯逃生。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "火灾时电梯可能断电或失控，应走楼梯逃生。",
+      "type": "判断题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "安全常识",
+        "消防安全"
+      ]
+    },
+    {
+      "content": "下雨前天空常常出现什么？",
+      "options": [
+        "A. 彩虹",
+        "B. 乌云",
+        "C. 星星",
+        "D. 太阳"
+      ],
+      "correct_answer": "B",
+      "explanation": "下雨前天空中水汽增多，会形成厚厚的乌云。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "天气现象"
+      ]
+    },
+    {
+      "content": "下雨前，天空中常常出现厚厚的____。",
+      "options": [],
+      "correct_answer": "乌云",
+      "explanation": "下雨前水汽聚集，天空会出现乌云。",
+      "type": "填空题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "天气现象"
+      ]
+    },
+    {
+      "content": "向日葵晚上也会跟着月亮转。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "向日葵主要跟随太阳转动，晚上花盘会转回东方，不会跟着月亮转。",
+      "type": "判断题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "春天经常吹什么风，让花儿开放？",
+      "options": [
+        "A. 寒风",
+        "B. 热风",
+        "C. 暖风",
+        "D. 暴风"
+      ],
+      "correct_answer": "C",
+      "explanation": "春天吹暖风，气温回升，花儿开放。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "四季特征"
+      ]
+    },
+    {
+      "content": "下面哪些动物有四条腿？",
+      "options": [
+        "A. 小猫",
+        "B. 小鸟",
+        "C. 小狗",
+        "D. 小兔"
+      ],
+      "correct_answer": "A、C、D",
+      "explanation": "小猫、小狗和小兔都有四条腿，小鸟有两条腿和翅膀。",
+      "type": "多选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "鱼儿用____呼吸。",
+      "options": [],
+      "correct_answer": "鳃",
+      "explanation": "鱼通过鳃从水中吸取氧气。",
+      "type": "填空题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "声音是由物体的____产生的。",
+      "options": [],
+      "correct_answer": "振动",
+      "explanation": "一切发声的物体都在振动，振动停止，声音也停止。",
+      "type": "填空题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "声音"
+      ]
+    },
+    {
+      "content": "蜘蛛有几条腿？",
+      "options": [
+        "A. 四条",
+        "B. 六条",
+        "C. 八条",
+        "D. 十条"
+      ],
+      "correct_answer": "C",
+      "explanation": "蜘蛛属于蛛形纲，有八条腿，不是昆虫。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "昆虫"
+      ]
+    },
+    {
+      "content": "下面哪些动物会飞？",
+      "options": [
+        "A. 小鸟",
+        "B. 蝴蝶",
+        "C. 小鸡",
+        "D. 蜜蜂"
+      ],
+      "correct_answer": "A、B、D",
+      "explanation": "小鸟、蝴蝶和蜜蜂都会飞，小鸡一般飞不高。",
+      "type": "多选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "小鸟有翅膀，它可以做什么？",
+      "options": [
+        "A. 游泳",
+        "B. 飞行",
+        "C. 挖洞",
+        "D. 爬树"
+      ],
+      "correct_answer": "B",
+      "explanation": "小鸟有翅膀，可以在天空中飞行。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "说说我们的五官各有什么作用。",
+      "options": [],
+      "correct_answer": "眼睛看东西，耳朵听声音，鼻子闻气味，舌头尝味道，皮肤感觉触摸。",
+      "explanation": "五官分别是眼、耳、鼻、舌、皮肤，各自负责视、听、嗅、味、触觉。",
+      "type": "简答题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "身体部位",
+        "五官"
+      ]
+    },
+    {
+      "content": "电器着火时，首先应该做什么？",
+      "options": [
+        "A. 用水泼",
+        "B. 切断电源",
+        "C. 用手拍打",
+        "D. 用嘴吹"
+      ],
+      "correct_answer": "B",
+      "explanation": "电器着火要先切断电源，再灭火，不能用水泼。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "安全常识",
+        "用电安全"
+      ]
+    },
+    {
+      "content": "下面哪些是冬天的特征？",
+      "options": [
+        "A. 下雪",
+        "B. 穿棉袄",
+        "C. 游泳",
+        "D. 堆雪人"
+      ],
+      "correct_answer": "A、B、D",
+      "explanation": "冬天下雪、穿棉袄、堆雪人，游泳一般是夏天的活动。",
+      "type": "多选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "四季特征"
+      ]
+    },
+    {
+      "content": "仙人掌生活在干燥的____里。",
+      "options": [],
+      "correct_answer": "沙漠",
+      "explanation": "仙人掌适应干旱环境，主要生活在沙漠中。",
+      "type": "填空题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "含羞草被触碰后叶子会合拢，这说明植物有什么特性？",
+      "options": [
+        "A. 向光性",
+        "B. 向水性",
+        "C. 感应性",
+        "D. 向地性"
+      ],
+      "correct_answer": "C",
+      "explanation": "含羞草受到触碰后叶子合拢，说明植物具有对外界刺激作出反应的感应性。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "眼睛看不到东西时，可以用____来触摸感知。",
+      "options": [
+        "A. 耳朵",
+        "B. 皮肤",
+        "C. 鼻子",
+        "D. 舌头"
+      ],
+      "correct_answer": "B",
+      "explanation": "皮肤有触觉，可以感知冷热、软硬和形状。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "身体部位",
+        "皮肤"
+      ]
+    },
+    {
+      "content": "冬天比夏天白天的时间更长。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "冬天白天短、夜晚长，夏天白天长、夜晚短。",
+      "type": "判断题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "四季特征"
+      ]
+    },
+    {
+      "content": "吹笛子时，手指按不同的孔会改变什么？",
+      "options": [
+        "A. 声音的强弱",
+        "B. 声音的高低",
+        "C. 声音的颜色",
+        "D. 声音的大小"
+      ],
+      "correct_answer": "B",
+      "explanation": "按不同的孔改变了空气柱的长度，从而改变声音的高低（音调）。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "声音"
+      ]
+    },
+    {
+      "content": "大树的年轮可以告诉我们它的____。",
+      "options": [],
+      "correct_answer": "年龄",
+      "explanation": "大树每长一年就多一圈年轮，数年轮可知年龄。",
+      "type": "填空题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "下面哪些是植物的繁殖方式？",
+      "options": [
+        "A. 种子繁殖",
+        "B. 扦插",
+        "C. 产卵",
+        "D. 分株"
+      ],
+      "correct_answer": "A、B、D",
+      "explanation": "植物可以通过种子、扦插、分株等方式繁殖，产卵是动物的繁殖方式。",
+      "type": "多选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "下面哪种动物是昆虫？",
+      "options": [
+        "A. 蜘蛛",
+        "B. 蜈蚣",
+        "C. 蝴蝶",
+        "D. 蚯蚓"
+      ],
+      "correct_answer": "C",
+      "explanation": "蝴蝶有六条腿和翅膀，属于昆虫。蜘蛛有八条腿，不属于昆虫。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "昆虫"
+      ]
+    },
+    {
+      "content": "雷雨天在大树下躲雨是安全的。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "错误",
+      "explanation": "雷雨天大树容易被雷击中，不能在大树下躲雨。",
+      "type": "判断题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "安全常识"
+      ]
+    },
+    {
+      "content": "仙人掌的尖刺是它的叶子变成的。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "为了减少水分蒸发，仙人掌的叶子退化成尖刺。",
+      "type": "判断题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "大树的年轮可以告诉我们什么？",
+      "options": [
+        "A. 树的高度",
+        "B. 树的年龄",
+        "C. 树的重量",
+        "D. 树的名字"
+      ],
+      "correct_answer": "B",
+      "explanation": "大树每长一年就多一圈年轮，数年轮可知年龄。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "植物"
+      ]
+    },
+    {
+      "content": "夏天很热，我们可以穿什么衣服？",
+      "options": [
+        "A. 棉袄",
+        "B. 短袖",
+        "C. 羽绒服",
+        "D. 围巾"
+      ],
+      "correct_answer": "B",
+      "explanation": "夏天天气热，穿短袖衣服更凉爽。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "天气季节",
+        "四季特征"
+      ]
+    },
+    {
+      "content": "镜子可以____光线，让我们看到自己的样子。",
+      "options": [],
+      "correct_answer": "反射",
+      "explanation": "镜子表面光滑，能把光线反射回去，形成影像。",
+      "type": "填空题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "光"
+      ]
+    },
+    {
+      "content": "小狗热的时候会伸出____来喘气。",
+      "options": [],
+      "correct_answer": "舌头",
+      "explanation": "小狗没有汗腺，伸出舌头可以帮助散热。",
+      "type": "填空题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "影子在什么情况下会变大？",
+      "options": [
+        "A. 光源很近时",
+        "B. 光源很远时",
+        "C. 没有光时",
+        "D. 黑暗中"
+      ],
+      "correct_answer": "A",
+      "explanation": "当光源离物体较近时，物体的影子会变大。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "影子"
+      ]
+    },
+    {
+      "content": "声音可以通过什么传播？",
+      "options": [
+        "A. 空气",
+        "B. 水",
+        "C. 固体",
+        "D. 真空"
+      ],
+      "correct_answer": "A、B、C",
+      "explanation": "声音需要介质传播，可以在空气、水和固体中传播，不能在真空中传播。",
+      "type": "多选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "声音"
+      ]
+    },
+    {
+      "content": "陌生人的东西不能____。",
+      "options": [],
+      "correct_answer": "要",
+      "explanation": "不能接受陌生人的食物、玩具等，防止被骗。",
+      "type": "填空题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "安全常识",
+        "防拐骗"
+      ]
+    },
+    {
+      "content": "蚂蚁的家叫做什么？",
+      "options": [
+        "A. 鸟巢",
+        "B. 蚁穴",
+        "C. 蜂巢",
+        "D. 洞穴"
+      ],
+      "correct_answer": "B",
+      "explanation": "蚂蚁在地下建造蚁穴，有很多通道和房间。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "昆虫"
+      ]
+    },
+    {
+      "content": "下列哪种材料可以遮光形成影子？",
+      "options": [
+        "A. 透明玻璃",
+        "B. 薄纸",
+        "C. 木板",
+        "D. 清水"
+      ],
+      "correct_answer": "C",
+      "explanation": "木板是不透明的，可以挡住光形成影子。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "影子"
+      ]
+    },
+    {
+      "content": "磁铁能吸住铁制品，这种性质叫做____。",
+      "options": [],
+      "correct_answer": "磁性",
+      "explanation": "磁铁吸引铁制品的性质称为磁性。",
+      "type": "填空题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "磁性"
+      ]
+    },
+    {
+      "content": "请说出三种你认识的动物，并简单描述它们的特点。",
+      "options": [],
+      "correct_answer": "例如：小猫会抓老鼠，小鸟会飞，金鱼在水里游。",
+      "explanation": "常见动物有小猫、小狗、小鸟、金鱼、小兔等，说出三种并描述特点即可。",
+      "type": "简答题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "敲鼓时，鼓面会怎样从而产生声音？",
+      "options": [
+        "A. 发光",
+        "B. 振动",
+        "C. 变热",
+        "D. 变色"
+      ],
+      "correct_answer": "B",
+      "explanation": "声音是由物体振动产生的，敲鼓时鼓面振动发出声音。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "声音"
+      ]
+    },
+    {
+      "content": "下面哪种动物会飞？",
+      "options": [
+        "A. 小兔",
+        "B. 小鸟",
+        "C. 小猫",
+        "D. 小鱼"
+      ],
+      "correct_answer": "B",
+      "explanation": "小鸟有翅膀，可以在天空中飞行。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "你能用身边的物品做个小实验，证明磁铁同极相斥吗？说说怎么做。",
+      "options": [],
+      "correct_answer": "拿两块磁铁，让它们的北极靠近，会发现互相推开，这就是同极相斥。",
+      "explanation": "磁铁同极相斥、异极相吸，可用两块磁铁直接验证。",
+      "type": "简答题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "磁性"
+      ]
+    },
+    {
+      "content": "小狗摇尾巴通常表示什么？",
+      "options": [
+        "A. 生气",
+        "B. 开心",
+        "C. 害怕",
+        "D. 饿了"
+      ],
+      "correct_answer": "B",
+      "explanation": "小狗摇尾巴通常是表达友好和开心。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "用放大镜看东西，东西会显得更____。",
+      "options": [
+        "A. 小",
+        "B. 大",
+        "C. 暗",
+        "D. 远"
+      ],
+      "correct_answer": "B",
+      "explanation": "放大镜是凸透镜，可以把物体放大。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "简单物理现象",
+        "光"
+      ]
+    },
+    {
+      "content": "猫的胡须可以用来测量____的宽度。",
+      "options": [],
+      "correct_answer": "洞口",
+      "explanation": "猫的胡须和身体的宽度差不多，可以测量洞口能否通过。",
+      "type": "填空题",
+      "difficulty": "困难",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    },
+    {
+      "content": "青蛙小时候是蝌蚪，长大了变成青蛙。",
+      "options": [
+        "A. 正确",
+        "B. 错误"
+      ],
+      "correct_answer": "正确",
+      "explanation": "青蛙是两栖动物，幼体是蝌蚪，经过变态发育成青蛙。",
+      "type": "判断题",
+      "difficulty": "简单",
+      "subject": "科学",
+      "age_group": "6-8岁",
+      "grade": "小学一/二年级",
+      "tags": [
+        "动植物",
+        "常见动物"
+      ]
+    }
+  ]
+}

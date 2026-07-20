@@ -1,0 +1,1494 @@
+{
+  "batch_id": "batch_history_16-18",
+  "source": "ai_generated",
+  "subject": "history",
+  "age_group": "16-18",
+  "grade": "高三",
+  "total_questions": 70,
+  "generated_at": "2026-07-15T18:08:38.575849",
+  "questions": [
+    {
+      "content": "1840年，英国发动侵略中国的鸦片战争，其直接原因是什么？",
+      "options": [
+        "A. 英国想打开中国市场",
+        "B. 清政府禁止鸦片贸易",
+        "C. 林则徐虎门销烟",
+        "D. 英国要求通商口岸"
+      ],
+      "correct_answer": "C",
+      "explanation": "鸦片战争的直接原因是林则徐的虎门销烟，英国以此为借口发动战争。根本原因是英国企图打开中国市场。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "鸦片战争",
+        "中国近代史",
+        "虎门销烟"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "中国近代史上第一个不平等条约是？",
+      "options": [
+        "A. 《北京条约》",
+        "B. 《南京条约》",
+        "C. 《天津条约》",
+        "D. 《马关条约》"
+      ],
+      "correct_answer": "B",
+      "explanation": "1842年签订的中英《南京条约》是中国近代史上第一个不平等条约。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "不平等条约",
+        "南京条约",
+        "中国近代史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "太平天国运动的纲领性文件是？",
+      "options": [
+        "A. 《资政新篇》",
+        "B. 《天朝田亩制度》",
+        "C. 《海国图志》",
+        "D. 《变法通议》"
+      ],
+      "correct_answer": "B",
+      "explanation": "《天朝田亩制度》是太平天国前期颁布的纲领性文件，反映了农民阶级对土地的渴望。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "太平天国",
+        "天朝田亩制度",
+        "中国近代史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "洋务运动的口号是？",
+      "options": [
+        "A. 自强、求富",
+        "B. 师夷长技以制夷",
+        "C. 民主、科学",
+        "D. 扶清灭洋"
+      ],
+      "correct_answer": "A",
+      "explanation": "洋务运动前期以“自强”为口号创办军事工业，后期以“求富”为口号创办民用工业。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "洋务运动",
+        "自强求富",
+        "中国近代史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "戊戌变法的主要推动者是？",
+      "options": [
+        "A. 李鸿章",
+        "B. 康有为、梁启超",
+        "C. 孙中山",
+        "D. 陈独秀"
+      ],
+      "correct_answer": "B",
+      "explanation": "康有为、梁启超是维新派的代表，领导了戊戌变法（百日维新）。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "戊戌变法",
+        "康有为",
+        "梁启超"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "辛亥革命爆发于哪一年？",
+      "options": [
+        "A. 1898年",
+        "B. 1901年",
+        "C. 1911年",
+        "D. 1912年"
+      ],
+      "correct_answer": "C",
+      "explanation": "1911年10月10日武昌起义爆发，辛亥革命由此开始。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "辛亥革命",
+        "1911年",
+        "中国近代史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "新文化运动的口号是？",
+      "options": [
+        "A. 自强、求富",
+        "B. 师夷长技以制夷",
+        "C. 民主、科学",
+        "D. 扶清灭洋"
+      ],
+      "correct_answer": "C",
+      "explanation": "新文化运动提倡民主与科学，反对专制和愚昧。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "新文化运动",
+        "民主科学",
+        "中国近代史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "第一次工业革命首先发生在哪个国家？",
+      "options": [
+        "A. 法国",
+        "B. 美国",
+        "C. 英国",
+        "D. 德国"
+      ],
+      "correct_answer": "C",
+      "explanation": "18世纪60年代，工业革命首先在英国发生，以哈格里夫斯发明珍妮纺纱机为标志。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "工业革命",
+        "英国",
+        "世界近代史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "马克思主义诞生的标志是？",
+      "options": [
+        "A. 《共产党宣言》发表",
+        "B. 巴黎公社成立",
+        "C. 十月革命胜利",
+        "D. 第一国际成立"
+      ],
+      "correct_answer": "A",
+      "explanation": "1848年《共产党宣言》的发表标志着马克思主义的诞生。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "马克思主义",
+        "共产党宣言",
+        "世界近代史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "史学研究中，一手史料和二手史料的区别在于？",
+      "options": [
+        "A. 一手史料是实物，二手史料是文献",
+        "B. 一手史料是直接史料，二手史料是间接史料",
+        "C. 一手史料更可靠，二手史料不可靠",
+        "D. 一手史料是文字，二手史料是图像"
+      ],
+      "correct_answer": "B",
+      "explanation": "一手史料是当时人留下的直接记录，二手史料是后人研究形成的间接材料。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史料",
+        "史学方法",
+        "一手史料"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于中国近代史上的不平等条约，下列哪些表述是正确的？",
+      "options": [
+        "A. 《南京条约》是中国近代史上第一个不平等条约",
+        "B. 《马关条约》允许日本在通商口岸开设工厂",
+        "C. 《辛丑条约》规定中国赔偿白银4.5亿两",
+        "D. 《北京条约》割让香港岛给英国",
+        "E. 《天津条约》开放汉口、南京等十处通商口岸"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "A正确，《南京条约》是1842年签订的第一个不平等条约；B正确，《马关条约》允许日本在华设厂；C正确，《辛丑条约》赔款4.5亿两；D错误，割让香港岛的是《南京条约》；E错误，《天津条约》开放汉口等十处，但南京已在《南京条约》中开放。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近代史",
+        "不平等条约",
+        "识记"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "工业革命时期，下列哪些发明或事件具有标志性意义？",
+      "options": [
+        "A. 珍妮纺纱机的发明",
+        "B. 瓦特改良蒸汽机",
+        "C. 铁路的兴建",
+        "D. 电灯的发明",
+        "E. 内燃机的诞生"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "A、B、C均为第一次工业革命的重要标志；D电灯是第二次工业革命的发明；E内燃机也是第二次工业革命的产物。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "世界近代史",
+        "工业革命",
+        "识记"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "以下关于史学理论的说法，正确的是？",
+      "options": [
+        "A. 历史事实是客观存在的，不受研究者主观影响",
+        "B. 历史解释需要基于史料，但不同史料可能有不同视角",
+        "C. 历史研究必须完全摒弃现实关怀，保持绝对中立",
+        "D. 口述史料因其主观性，不具有任何历史价值"
+      ],
+      "correct_answer": "B",
+      "explanation": "A错误，历史事实虽客观，但研究者的选取和解释会受其影响；B正确，史料多样性要求多角度分析；C错误，现实关怀可提供问题意识，但需避免偏见；D错误，口述史料经考证仍有价值。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论",
+        "史料与解释"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于冷战，下列哪些说法是正确的？",
+      "options": [
+        "A. 冷战开始的标志是杜鲁门主义的出台",
+        "B. 马歇尔计划旨在援助西欧，遏制苏联",
+        "C. 北约和华约的成立标志着两极格局正式形成",
+        "D. 古巴导弹危机是冷战期间美苏直接军事冲突",
+        "E. 柏林墙的修建是冷战在欧洲的象征之一"
+      ],
+      "correct_answer": "A,B,C,E",
+      "explanation": "A正确，杜鲁门主义是冷战开始的标志；B正确，马歇尔计划的经济援助旨在遏制苏联；C正确，北约（1949）和华约（1955）的成立标志着两极格局形成；D错误，古巴导弹危机是危机，并未直接军事冲突；E正确，柏林墙是冷战的象征。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "世界现代史",
+        "冷战",
+        "识记"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "中国近代史上第一个不平等条约是《______》，它标志着中国开始沦为半殖民地半封建社会。",
+      "options": [],
+      "correct_answer": "南京条约",
+      "explanation": "1842年鸦片战争后，清政府被迫与英国签订《南京条约》，这是中国近代史上第一个不平等条约，破坏了中国的领土完整和主权，标志着中国开始沦为半殖民地半封建社会。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近代史",
+        "鸦片战争",
+        "不平等条约"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "第一次工业革命首先发生在______国，其标志性发明是______。",
+      "options": [],
+      "correct_answer": "英|蒸汽机",
+      "explanation": "第一次工业革命于18世纪60年代首先从英国开始，瓦特改良的蒸汽机是标志性发明，推动了机械化和工厂制度的建立。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "世界近代史",
+        "工业革命",
+        "蒸汽机"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "史学研究中，史料可分为第一手史料和第二手史料。其中，直接反映历史事件的原始记录属于______手史料。",
+      "options": [],
+      "correct_answer": "第一",
+      "explanation": "第一手史料指直接产生于历史事件发生时期的原始资料，如档案、日记、实物等；第二手史料则是后人根据第一手史料加工整理的材料。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论与方法",
+        "史料分类"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "1919年五四运动爆发，其导火索是巴黎和会上中国外交的失败。五四运动后期，中心由北京转移到______，主力由学生转变为______。",
+      "options": [],
+      "correct_answer": "上海|工人",
+      "explanation": "五四运动前期以北京学生为主，6月3日后，运动中心转移到上海，工人阶级作为独立政治力量登上历史舞台，成为运动主力。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近代史",
+        "五四运动",
+        "新民主主义革命"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "冷战开始的标志是1947年______的提出，其核心内容是“遏制共产主义”。",
+      "options": [],
+      "correct_answer": "杜鲁门主义",
+      "explanation": "1947年3月，美国总统杜鲁门在国会发表演说，提出“杜鲁门主义”，标志着美苏冷战正式开始，其核心是遏制苏联和共产主义扩张。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "世界现代史",
+        "冷战",
+        "杜鲁门主义"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "太平天国运动是中国近代史上一次伟大的反封建反侵略的农民运动。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "太平天国运动（1851-1864）提出了《天朝田亩制度》，反对封建土地制度；后期又抗击英法侵略军，具有反封建反侵略的性质。因此表述正确。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近现代史",
+        "太平天国运动"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "第一次工业革命首先发生在英国，其标志性发明是蒸汽机。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "第一次工业革命始于18世纪60年代的英国，以哈格里夫斯发明珍妮机为开端，瓦特改良蒸汽机是标志性发明，使人类进入蒸汽时代。表述正确。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "世界近现代史",
+        "工业革命"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "历史研究中的“史料”仅指文献记载，不包括实物资料和口述资料。",
+      "options": [],
+      "correct_answer": "错误",
+      "explanation": "史料按载体可分为文献史料、实物史料和口述史料等。实物史料如遗址、文物，口述史料如回忆录、口述史，都是重要的历史研究材料。因此表述错误。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论与方法",
+        "史料分类"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "简述五四运动的历史意义，并说明其在中国近现代史中的地位。",
+      "options": [],
+      "correct_answer": "五四运动是一次彻底的反帝反封建的爱国运动，标志着中国新民主主义革命的开端，促进了马克思主义在中国的传播，为中国共产党的成立做了思想和干部上的准备。",
+      "explanation": "五四运动是1919年5月4日发生在北京的一场以青年学生为主，广大群众、市民、工商人士等阶层共同参与的爱国运动。它是一次彻底的反帝反封建的爱国运动，是新民主主义革命的开端。五四运动促进了马克思主义在中国的传播及其与中国工人运动的结合，为中国共产党的成立准备了条件。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "五四运动",
+        "新民主主义革命",
+        "马克思主义传播"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在《新青年》杂志的推动下，新文化运动倡导“民主”与“科学”，其核心目的是什么？",
+      "options": [
+        "A. 推翻清王朝统治",
+        "B. 批判封建伦理道德",
+        "C. 传播马克思主义",
+        "D. 反对帝国主义侵略"
+      ],
+      "correct_answer": "B",
+      "explanation": "新文化运动提倡民主与科学，反对封建专制和迷信，其核心是批判封建伦理道德，以思想解放促进社会变革。A项是辛亥革命的目标；C项是五四运动后的发展；D项是近代中国反侵略斗争的内容。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "新文化运动",
+        "民主与科学",
+        "思想解放"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "比较英国工业革命与法国大革命，两者对近代社会转型的共同影响是？",
+      "options": [
+        "A. 确立了君主立宪制",
+        "B. 促进了资本主义发展",
+        "C. 实现了无产阶级专政",
+        "D. 推动了民族独立运动"
+      ],
+      "correct_answer": "B",
+      "explanation": "工业革命极大地提高了生产力，巩固了资本主义制度；法国大革命摧毁了封建专制，为资本主义发展扫清障碍。两者都促进了资本主义发展。A项仅英国；C项错误；D项并非两者直接结果。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "工业革命",
+        "法国大革命",
+        "资本主义发展"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "以下哪一事件最能体现19世纪末20世纪初中国民族资产阶级“实业救国”的主张？",
+      "options": [
+        "A. 太平天国运动",
+        "B. 洋务运动",
+        "C. 戊戌变法",
+        "D. 辛亥革命"
+      ],
+      "correct_answer": "B",
+      "explanation": "洋务运动以“自强”“求富”为口号，兴办近代企业，体现了通过发展实业挽救民族危机的思想。A项是农民运动；C项侧重政治改革；D项是革命推翻清朝。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "洋务运动",
+        "实业救国",
+        "民族资产阶级"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于历史研究的“史料实证”原则，以下做法正确的是？",
+      "options": [
+        "A. 仅采用正史记载",
+        "B. 以文学作品为主要依据",
+        "C. 多重史料相互印证",
+        "D. 依赖口述史料"
+      ],
+      "correct_answer": "C",
+      "explanation": "史料实证强调对史料的甄别和互证，通过不同来源、类型的史料相互印证，以确保历史解释的可靠性。A、B、D都过于片面，忽视了史料的多样性和局限性。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学方法",
+        "史料实证",
+        "历史研究原则"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "巴黎公社与十月革命的共同点是？",
+      "options": [
+        "A. 建立了无产阶级政权",
+        "B. 以暴力革命为主要手段",
+        "C. 得到农民广泛支持",
+        "D. 成功巩固了革命成果"
+      ],
+      "correct_answer": "A",
+      "explanation": "巴黎公社是无产阶级建立政权的第一次伟大尝试，十月革命建立了世界上第一个社会主义国家，两者都建立了无产阶级政权。B项巴黎公社是暴力革命，但十月革命有和平过渡可能；C项巴黎公社未获农民支持；D项巴黎公社失败。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "巴黎公社",
+        "十月革命",
+        "无产阶级政权"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "抗日战争时期，中国共产党在敌后根据地实行的“三三制”原则的主要目的是？",
+      "options": [
+        "A. 巩固抗日民族统一战线",
+        "B. 推行土地改革",
+        "C. 建立社会主义制度",
+        "D. 打击国民党顽固派"
+      ],
+      "correct_answer": "A",
+      "explanation": "“三三制”是在抗日根据地政权建设中，共产党员、非党的左派进步分子和中间分子各占三分之一，目的是团结各阶层抗日，巩固抗日民族统一战线。B项是减租减息；C项不符合当时国情；D项不是主要目的。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "抗日战争",
+        "三三制",
+        "统一战线"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "以下哪项最能说明“冷战”对峙格局的形成？",
+      "options": [
+        "A. 杜鲁门主义的提出",
+        "B. 马歇尔计划的实施",
+        "C. 北约与华约的建立",
+        "D. 柏林墙的修筑"
+      ],
+      "correct_answer": "C",
+      "explanation": "北约与华约两大军事政治集团的对峙，标志着以美苏为首的两极格局正式形成。A项是冷战开始的标志；B项是经济措施；D项是冷战的具体表现，但非格局形成的标志。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "冷战",
+        "两极格局",
+        "北约与华约"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "比较戊戌变法和明治维新，两者一败一成，其主要原因在于？",
+      "options": [
+        "A. 改革措施是否彻底",
+        "B. 是否依赖外部力量",
+        "C. 领导力量是否强大",
+        "D. 是否获得民众支持"
+      ],
+      "correct_answer": "A",
+      "explanation": "明治维新进行了全面彻底的政治、经济、社会改革，而戊戌变法只涉及部分改革，且未触动封建根基。B项两者都受外部影响；C项日本改革派更强大，但根本在于改革深度；D项两者民众支持均有限。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "戊戌变法",
+        "明治维新",
+        "改革比较"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "历史研究中，“孤证不立”原则要求我们？",
+      "options": [
+        "A. 只采用权威史料",
+        "B. 避免使用单一史料",
+        "C. 强调史料的真实性",
+        "D. 注重史料的多样性"
+      ],
+      "correct_answer": "B",
+      "explanation": "“孤证不立”指不能仅凭单一史料就得出结论，需要多重证据相互支撑。A项过于绝对；C项是史料考证的要求；D项是获取史料的方法，但“孤证不立”直接针对单一证据的不可靠性。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学方法",
+        "孤证不立",
+        "史料运用"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "1920年代，中国思想界出现“问题与主义”之争，争论的核心是？",
+      "options": [
+        "A. 是否实行社会主义",
+        "B. 是否进行彻底革命",
+        "C. 是否全盘西化",
+        "D. 是否采用马克思主义指导"
+      ],
+      "correct_answer": "D",
+      "explanation": "胡适主张“多研究些问题，少谈些主义”，李大钊则强调用马克思主义根本解决中国问题。争论核心是中国是否需要马克思主义作为指导思想。A、B是具体内容，但核心是主义与问题的方法论；C项是文化论争。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "问题与主义之争",
+        "马克思主义传播",
+        "思想论战"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于中国近代史上“开眼看世界”的思潮，下列哪些人物曾系统介绍西方历史地理知识，并提出了“师夷长技以制夷”的主张？",
+      "options": [
+        "A. 林则徐",
+        "B. 魏源",
+        "C. 康有为",
+        "D. 梁启超"
+      ],
+      "correct_answer": "A,B",
+      "explanation": "林则徐主持编译《四洲志》，魏源在此基础上编成《海国图志》，提出“师夷长技以制夷”。康有为、梁启超属于维新派，虽也主张学习西方，但并非最早系统介绍西方历史地理并提出该主张的人物。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近代史",
+        "开眼看世界",
+        "历史人物"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "工业革命对世界历史进程产生了深远影响。以下关于工业革命影响的表述，哪些是正确的？",
+      "options": [
+        "A. 促进了城市化进程，大量人口涌入城市",
+        "B. 导致了手工工场被现代工厂取代",
+        "C. 引发了社会阶级结构的变化，工业资产阶级和无产阶级形成",
+        "D. 使世界市场初步形成，东方从属于西方"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "工业革命推动了城市化、工厂制度的确立、阶级分化以及世界市场的形成，所有选项均为正确表述。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "工业革命",
+        "世界近代史",
+        "社会影响"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "史学研究中，史料的价值与运用是重要课题。关于不同类型史料的评述，下列哪些说法是合理的？",
+      "options": [
+        "A. 实物史料（如文物、遗址）是历史研究的直接证据，价值通常高于文献史料",
+        "B. 口述史料可能存在记忆偏差，需与其他史料相互印证",
+        "C. 文献史料都带有作者的主观立场，因此不可信",
+        "D. 图像史料（如照片、绘画）能直观反映历史场景，但也要注意其制作背景和意图"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "实物史料是第一手资料，价值较高；口述史料需谨慎使用，宜与其他史料互证；文献史料虽有主观性，但并非完全不可信，需辨析；图像史料同样需要分析其背景与意图。C项说法太绝对。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论",
+        "史料类型",
+        "史料价值"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "冷战期间，美苏两国在全球范围内展开了激烈对抗。下列哪些事件属于冷战的表现？",
+      "options": [
+        "A. 杜鲁门主义的提出",
+        "B. 马歇尔计划的实施",
+        "C. 朝鲜战争的爆发",
+        "D. 北约与华约的建立",
+        "E. 古巴导弹危机"
+      ],
+      "correct_answer": "A,B,D,E",
+      "explanation": "杜鲁门主义、马歇尔计划、北约与华约的建立、古巴导弹危机均为冷战的重要表现。朝鲜战争属于热战，虽然与冷战背景相关，但其本身是局部热战，通常不被视为冷战的表现形式，而是冷战背景下的局部战争。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "冷战",
+        "美苏争霸",
+        "世界现代史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "中国近代史上，第一个具有资本主义色彩的改革方案是《______》，而第一个比较完整的资本主义发展方案是《______》。",
+      "options": [],
+      "correct_answer": "资政新篇|应诏统筹全局折",
+      "explanation": "《资政新篇》是太平天国后期洪仁玕提出的改革方案，主张学习西方，发展资本主义，是近代中国第一个具有资本主义色彩的改革方案。《应诏统筹全局折》是戊戌变法前康有为上清帝的奏折，提出了政治、经济、军事、文教等方面的改革，是维新派的施政纲领，也是近代中国第一个比较完整的资本主义发展方案。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近代史",
+        "太平天国",
+        "戊戌变法"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "第一次工业革命首先发生在______国，而第二次工业革命则主要在______和______两国展开。",
+      "options": [],
+      "correct_answer": "英|美|德",
+      "explanation": "第一次工业革命于18世纪60年代首先从英国开始，以蒸汽机的发明和应用为标志。第二次工业革命发生在19世纪下半叶至20世纪初，以电力的广泛应用和内燃机的发明为标志，主要发生在美国和德国，这两个国家在电气、化学、内燃机等领域成果突出。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "世界近现代史",
+        "工业革命",
+        "比较分析"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "史学研究中，史料可分为第一手史料和第二手史料。例如，______属于第一手史料，而______属于第二手史料。",
+      "options": [],
+      "correct_answer": "出土文物|历史著作",
+      "explanation": "第一手史料指直接反映历史事件的原始资料，如出土文物、档案、日记等。第二手史料指后人根据第一手史料加工整理的资料，如历史著作、论文等。本题要求举例，答案不唯一，但需合理。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论与方法",
+        "史料分类"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "巴黎和会上，中国外交失败的直接原因是______，这引发了国内的______运动。",
+      "options": [],
+      "correct_answer": "列强将德国在山东的权益转让给日本|五四",
+      "explanation": "1919年巴黎和会上，列强无视中国战胜国地位，将德国在山东的权益转让给日本，中国外交失败。消息传回国内，引发了五四运动，这是中国新民主主义革命的开端。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近代史",
+        "五四运动",
+        "巴黎和会"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "冷战开始的标志是______的发表，而两极格局终结的标志是______。",
+      "options": [],
+      "correct_answer": "杜鲁门主义|苏联解体",
+      "explanation": "1947年杜鲁门主义的出台标志着冷战正式开始。1991年苏联解体，标志着两极格局崩溃，冷战结束。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "世界近现代史",
+        "冷战",
+        "两极格局"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "洋务运动期间，洋务派提出了“自强”“求富”的口号，并创办了一系列近代工业和军事工业。然而，甲午战争的失败标志着洋务运动的破产。这说明洋务运动未能实现“自强”的目标。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "洋务运动以“自强”为口号，旨在通过引进西方技术增强国防，但甲午战争惨败，北洋水师覆灭，证明洋务运动并未使中国真正富强，其失败标志着洋务运动破产。因此，该判断正确。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "洋务运动",
+        "甲午战争",
+        "近代化探索"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "工业革命后，资产阶级和无产阶级的矛盾成为资本主义国家的主要矛盾。第一次世界大战的爆发主要是由于帝国主义国家之间政治经济发展不平衡导致的，但战后资本主义世界出现了短暂的和平与繁荣。据此判断，一战的爆发与无产阶级与资产阶级的矛盾无关。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "一战爆发的根本原因是帝国主义国家间政治经济发展不平衡，直接原因是萨拉热窝事件，主要矛盾是帝国主义列强之间的矛盾，而非无产阶级与资产阶级的矛盾。因此，该判断正确。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "第一次世界大战",
+        "工业革命",
+        "国际关系"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "梁启超在《新史学》中批评中国传统史学“知有朝廷而不知有国家”，主张史学应叙述“人群进化之现象”。顾颉刚提出“层累地造成的中国古史”说，认为古史是后人不断添加的结果。两位学者的观点都体现了对传统史学的反思与革新。",
+      "options": [],
+      "correct_answer": "正确",
+      "explanation": "梁启超强调国家与群体，批判旧史学；顾颉刚的“层累说”质疑古史记载，两者都推动了中国史学的现代转型，符合题干表述。因此，该判断正确。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论",
+        "梁启超",
+        "顾颉刚"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "中国近代史上，洋务运动和明治维新几乎同时发生，但结局迥异。请从领导力量、指导思想和外部环境三个方面，分析两者一败一成的原因。",
+      "options": [],
+      "correct_answer": "领导力量：洋务运动由地方督抚主导，中央支持有限，缺乏统一领导；明治维新由天皇和倒幕派武士领导，中央集权，改革力量集中。指导思想：洋务运动坚持“中体西用”，只学技术不学制度；明治维新全面学习西方，包括政治、经济、军事、教育等制度。外部环境：洋务运动面临列强侵略和内部太平天国运动，压力较大；明治维新时西方列强忙于其他事务，日本利用有利国际形势进行改革。",
+      "explanation": "洋务运动与明治维新的比较是理解近代中日差异的关键。洋务运动在维护封建制度的前提下引进西方技术，而明治维新则进行了制度性变革。外部环境方面，日本抓住了19世纪60-70年代西方列强对亚洲干预减弱的时机。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "洋务运动",
+        "明治维新",
+        "比较分析"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "第一次工业革命首先发生在英国，而第二次工业革命几乎同时在多个欧美国家展开。请分析导致这一差异的主要原因。",
+      "options": [],
+      "correct_answer": "第一次工业革命首先在英国发生，是因为英国较早完成资产阶级革命，确立资本主义制度；殖民扩张和圈地运动提供了资金和劳动力；手工工场发达，技术积累较多。第二次工业革命同时发生在多个国家，是因为19世纪中后期，德国、美国等后起资本主义国家通过统一或内战扫清了障碍，并积极采用新技术；同时，自然科学的发展使得技术发明更依赖于科学理论，各国科学家交流密切，因此多个国家几乎同时进入电气时代。",
+      "explanation": "两次工业革命的差异反映了资本主义发展不平衡的规律。第一次工业革命以经验技术为主，英国作为先行者优势明显；第二次工业革命以科学为基础，后起国家可以直接采用最新成果，实现跳跃式发展。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "第一次工业革命",
+        "第二次工业革命",
+        "原因分析"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "有学者认为，抗日战争是中华民族复兴的枢纽，这种观点的主要依据是",
+      "options": [
+        "A. 抗日战争使中国成为世界反法西斯战争东方主战场",
+        "B. 抗日战争促进了中华民族的觉醒和团结",
+        "C. 抗日战争为中国赢得了国际社会的广泛尊重",
+        "D. 抗日战争推动了中国政治民主化的进程"
+      ],
+      "correct_answer": "B",
+      "explanation": "抗日战争是中华民族复兴的枢纽，其核心在于全民族抗战的开展，极大地促进了民族觉醒和团结，为后续的民族独立和解放奠定了坚实基础。其他选项虽也是抗战的成果，但并非“枢纽”的主要依据。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "抗日战争",
+        "民族复兴",
+        "历史评价"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于洋务运动与明治维新的比较，下列表述最准确的是",
+      "options": [
+        "A. 两者都以“自强”为口号，但洋务运动侧重于军事，明治维新侧重于经济",
+        "B. 两者都主张学习西方，但洋务运动是自上而下的改良，明治维新是自下而上的革命",
+        "C. 两者都促进了本国近代化，但洋务运动未能改变封建制度，明治维新则实现了社会转型",
+        "D. 两者都受到西方列强侵略，但洋务运动最终失败，明治维新使日本成为强国"
+      ],
+      "correct_answer": "C",
+      "explanation": "洋务运动在保持封建制度前提下学习西方技术，未能实现制度变革；明治维新通过全面西化，废除封建制度，实现了近代化转型。A、B、D均有片面或错误之处。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "洋务运动",
+        "明治维新",
+        "近代化比较"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "巴黎公社的失败，从根本上看是由于",
+      "options": [
+        "A. 缺乏科学的理论指导和统一政党的领导",
+        "B. 未能建立巩固的工农联盟",
+        "C. 法国资本主义还处于上升时期，无产阶级力量薄弱",
+        "D. 未能及时向凡尔赛进军，消灭反动势力"
+      ],
+      "correct_answer": "C",
+      "explanation": "巴黎公社失败的根本原因是当时法国资本主义还处于上升阶段，无产阶级革命条件不成熟。其他选项是具体原因，而非根本原因。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "巴黎公社",
+        "无产阶级革命",
+        "历史必然性"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "史学界有“史料即史学”的说法，对此理解正确的是",
+      "options": [
+        "A. 历史研究必须完全依赖史料，不能有任何主观解释",
+        "B. 史料是历史研究的基础，但历史学还需要理论和方法",
+        "C. 史料的真伪是历史学的唯一追求",
+        "D. 只有原始史料才有价值，二手史料不可信"
+      ],
+      "correct_answer": "B",
+      "explanation": "“史料即史学”强调史料的重要性，但现代史学认为史料是基础，同时需要理论指导和方法分析。A、C、D均过于绝对。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史料",
+        "史学理论",
+        "历史研究方法"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "以下关于新民主主义革命时期土地政策的表述，正确的是",
+      "options": [
+        "A. 土地革命时期实行“耕者有其田”的政策",
+        "B. 抗日战争时期实行“减租减息”政策",
+        "C. 解放战争时期实行“没收地主土地，分配给农民”的政策",
+        "D. 以上都正确"
+      ],
+      "correct_answer": "D",
+      "explanation": "土地革命时期（1927-1937）实行“打土豪、分田地”，实质是耕者有其田；抗日战争时期（1937-1945）为团结抗日，实行“减租减息”；解放战争时期（1945-1949）实行“没收地主土地，分配给农民”的政策。因此D正确。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "新民主主义革命",
+        "土地政策",
+        "中共党史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "英国工业革命期间，棉纺织业率先实现机械化，其原因不包括",
+      "options": [
+        "A. 英国棉纺织业技术基础较好",
+        "B. 棉纺织品市场需求旺盛",
+        "C. 英国政府大力扶持棉纺织业",
+        "D. 棉纺织业受传统束缚较少，易于创新"
+      ],
+      "correct_answer": "C",
+      "explanation": "英国工业革命期间，政府实行自由放任政策，并未大力扶持特定行业。A、B、D均为棉纺织业率先机械化的原因。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "工业革命",
+        "棉纺织业",
+        "经济史"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "“冷战”期间，美国对苏联实行遏制政策，其理论依据是",
+      "options": [
+        "A. 乔治·凯南的“遏制理论”",
+        "B. 杜鲁门主义的“反共”主张",
+        "C. 马歇尔计划的“经济复兴”",
+        "D. 尼克松主义的“缓和”战略"
+      ],
+      "correct_answer": "A",
+      "explanation": "遏制政策的理论依据是乔治·凯南在1946年提出的“遏制理论”，主张通过政治、经济、军事手段阻止苏联扩张。B是政策，C是经济援助计划，D是后期战略。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "冷战",
+        "遏制政策",
+        "国际关系理论"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "历史研究中的“二重证据法”是指",
+      "options": [
+        "A. 文献与考古相结合",
+        "B. 正史与野史互证",
+        "C. 中国史料与外国史料对照",
+        "D. 实物史料与口述史料互补"
+      ],
+      "correct_answer": "A",
+      "explanation": "“二重证据法”由王国维提出，强调将文献史料与考古发现相互印证，以考证历史。B、C、D虽也是方法，但不是“二重证据法”的特定含义。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学方法",
+        "二重证据法",
+        "王国维"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "辛亥革命后，中国社会出现了“民主共和”观念深入人心的局面，但不久后袁世凯复辟帝制。对此现象最合理的解释是",
+      "options": [
+        "A. 民主共和观念并未真正深入人心，只是表面现象",
+        "B. 封建专制势力依然强大，民主共和道路曲折",
+        "C. 民众对民主共和缺乏认识，容易受袁世凯欺骗",
+        "D. 辛亥革命并未改变中国社会性质，复辟不可避免"
+      ],
+      "correct_answer": "B",
+      "explanation": "辛亥革命后民主共和观念确实得到传播，但封建势力根深蒂固，民主共和的实现是一个长期过程，出现反复是正常的。A过于否定，C片面，D绝对化。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "辛亥革命",
+        "袁世凯复辟",
+        "民主共和"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于“新文化运动”与“五四运动”的关系，下列表述最准确的是",
+      "options": [
+        "A. 新文化运动为五四运动奠定了思想基础",
+        "B. 五四运动是新文化运动的直接产物",
+        "C. 两者相互促进，共同推动了中国社会的变革",
+        "D. 新文化运动是五四运动在思想领域的延续"
+      ],
+      "correct_answer": "C",
+      "explanation": "新文化运动解放了思想，为五四运动准备了条件；五四运动又推动了新文化运动的深入发展，两者相互促进。A、B、D均片面或错误。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "新文化运动",
+        "五四运动",
+        "历史关联"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于中国近代史上的“改良”与“革命”之争，以下说法正确的有（ ）",
+      "options": [
+        "A. 戊戌变法属于自上而下的改良运动，其失败表明改良道路在中国行不通",
+        "B. 辛亥革命后，孙中山曾主张“以革命之手段，达改良之目的”，体现革命与改良的辩证关系",
+        "C. 新文化运动是一场彻底的反封建革命，与改良无关",
+        "D. 20世纪初，梁启超与革命派的论战核心在于是否推翻清政府，改良派主张君主立宪",
+        "E. 1920年代，胡适提出“多研究些问题，少谈些主义”，被视为改良主义思潮的代表"
+      ],
+      "correct_answer": "A,B,D,E",
+      "explanation": "A正确，戊戌变法试图通过自上而下的改良实现政治变革，但遭到顽固派镇压，说明在半殖民地半封建的中国，改良道路难以成功。B正确，辛亥革命后孙中山的表述反映了革命与改良并非完全对立，革命可视为实现改良目标的手段。C错误，新文化运动虽然激进，但前期主要是一场思想启蒙运动，并非严格意义上的革命，且其批判封建思想、提倡民主科学等主张也包含改良成分。D正确，1905-1907年，革命派与改良派论战主要围绕是否推翻清政府、是否实行共和制等问题，改良派主张君主立宪。E正确，胡适的“问题与主义”之争，强调具体问题的解决，反对空谈主义，被视为改良主义在思想界的表现。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近代史",
+        "改良与革命",
+        "思想论战"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于工业革命对世界历史的影响，下列表述正确的有（ ）",
+      "options": [
+        "A. 工业革命首先发生在英国，得益于其君主立宪制、殖民扩张和圈地运动等条件",
+        "B. 工业革命使社会分裂为工业资产阶级和工业无产阶级两大对立阶级",
+        "C. 工业革命后，资本主义世界市场基本形成，亚非拉国家被迫卷入，成为原料产地和商品市场",
+        "D. 工业革命推动了城市化进程，但也导致了环境污染和贫富分化等社会问题",
+        "E. 19世纪中期，工业革命扩展到法国、美国、德国等，但各国进程完全相同"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "A正确，英国最早具备政治、经济、殖民等条件，率先发生工业革命。B正确，工业革命形成了两大对立阶级，为马克思主义诞生提供了阶级基础。C正确，工业革命后，资本主义国家在全球扩张，将落后地区卷入资本主义世界市场。D正确，工业革命带来城市化，同时也带来环境、贫富分化等问题。E错误，各国工业革命进程不同，如法国因小农经济等阻碍进程较慢，德国统一后快速推进，并非完全相同。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "工业革命",
+        "世界近现代史",
+        "资本主义发展"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "历史研究中，史料实证是重要方法。关于史料解读，下列做法合理的有（ ）",
+      "options": [
+        "A. 对于同一事件的记载，官方档案的史料价值一定高于私人日记",
+        "B. 孤证不立，应尽可能搜集多种来源的史料进行互证",
+        "C. 史料的作者身份、写作目的、时代背景等会影响其可信度，需批判性使用",
+        "D. 实物史料（如文物、遗迹）比文献史料更真实可靠，可直接作为证据",
+        "E. 网络史学资料需谨慎甄别，尤其要注意其来源和时效性"
+      ],
+      "correct_answer": "B,C,E",
+      "explanation": "A错误，官方档案可能因政治目的而有所隐瞒或歪曲，私人日记也可能更真实反映个人感受，不能一概而论。B正确，史料实证要求多源互证，避免单一史料导致的偏见。C正确，对史料需进行批判性分析，考虑其主观性。D错误，实物史料也有其局限性，如保存状况、解读方式等，并非绝对可靠。E正确，网络资料质量参差不齐，需要甄别。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论",
+        "史料实证",
+        "历史研究方法"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于冷战时期的国际关系，以下说法正确的有（ ）",
+      "options": [
+        "A. 冷战开始的标志是1947年杜鲁门主义的出台",
+        "B. 马歇尔计划旨在通过经济援助控制西欧，并遏制苏联",
+        "C. 1949年北约成立，1955年华约成立，标志着两极格局正式形成",
+        "D. 冷战期间，美苏直接军事冲突不断，如朝鲜战争和越南战争",
+        "E. 20世纪70年代，美苏关系出现缓和，如尼克松访华、美苏限制战略武器谈判"
+      ],
+      "correct_answer": "A,B,C,E",
+      "explanation": "A正确，杜鲁门主义标志着冷战开始。B正确，马歇尔计划表面是经济援助，实则是美国遏制苏联、控制西欧的战略。C正确，北约和华约的建立，使欧洲形成两大军事集团对峙，两极格局正式形成。D错误，朝鲜战争和越南战争是冷战背景下的局部热战，但美苏并未直接交战，而是通过代理国。E正确，70年代美苏关系缓和，尼克松访华改善中美关系，美苏进行限制战略武器谈判。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "冷战",
+        "世界近现代史",
+        "国际关系"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "1905年，孙中山在《民报》发刊词中将同盟会的十六字纲领阐发为________、________、________三大主义，其中________被具体解释为“驱除鞑虏，恢复中华”。",
+      "options": [],
+      "correct_answer": "民族|民权|民生|民族主义",
+      "explanation": "孙中山在《民报》发刊词中将同盟会纲领“驱除鞑虏，恢复中华，创立民国，平均地权”阐发为民族、民权、民生三大主义。民族主义即“驱除鞑虏，恢复中华”，民权主义即“创立民国”，民生主义即“平均地权”。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "三民主义",
+        "同盟会",
+        "辛亥革命"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "20世纪30年代，苏联在斯大林领导下形成了高度集中的经济政治体制，其经济体制的主要特点是实行________和________，这一体制被称为“________模式”。",
+      "options": [],
+      "correct_answer": "公有制|计划经济|斯大林",
+      "explanation": "斯大林模式在经济上表现为单一的公有制和高度集中的计划经济，否定市场机制；政治上高度集权。该模式在短期内使苏联工业化取得巨大成就，但后来弊端日益显现。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "斯大林模式",
+        "苏联经济",
+        "计划经济"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "1935年遵义会议后，红军长征途中，毛泽东指挥的________战役（填地名）打乱了敌人的追剿计划，________战役（填地名）则跳出了敌人的包围圈。",
+      "options": [],
+      "correct_answer": "四渡赤水|巧渡金沙江",
+      "explanation": "四渡赤水战役是遵义会议后毛泽东指挥的第一个重要战役，使红军摆脱了被动局面；随后巧渡金沙江，跳出了数十万敌军围追堵截的包围圈，取得了战略转移中具有决定意义的胜利。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "长征",
+        "遵义会议",
+        "毛泽东军事思想"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "1947年，美国总统杜鲁门在国会发表咨文，提出以“遏制共产主义”为核心的政策，这被称为________。随后，美国开始实施________计划，以援助西欧国家恢复经济，该计划的正式名称是________。",
+      "options": [],
+      "correct_answer": "杜鲁门主义|马歇尔|欧洲复兴计划",
+      "explanation": "1947年杜鲁门主义出台，标志冷战开始。马歇尔计划正式名称为“欧洲复兴计划”，是美国对西欧的经济援助计划，旨在稳定西欧资本主义制度并遏制苏联。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "冷战",
+        "杜鲁门主义",
+        "马歇尔计划"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "历史研究中，对同一事件的不同解释往往源于史观差异。例如，关于鸦片战争，传统观点强调其________性，而近年来有学者从________史观出发，关注中国社会内部的变化和连续性。请填写两个空白：________和________。",
+      "options": [],
+      "correct_answer": "侵略|现代化（或“近代化”）",
+      "explanation": "传统观点从革命史观出发，强调鸦片战争的侵略性和民族灾难；而现代化史观则关注中国从传统向近代转型的过程，认为鸦片战争客观上推动了中国近代化进程。本题旨在考察不同史学理论视角下的历史解释。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论",
+        "鸦片战争",
+        "史观"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "洋务运动时期，李鸿章等人提出的“中学为体，西学为用”思想，实际上已经突破了封建制度的框架，为中国的近代化开辟了道路。",
+      "options": [],
+      "correct_answer": "错误",
+      "explanation": "“中体西用”思想是在维护封建制度和纲常伦理的前提下，学习西方先进技术，并未触及封建制度的根本。洋务运动以“自强”“求富”为口号，但未能改变封建专制体制，最终因甲午战争的失败而宣告破产。该思想具有一定的进步性，但并未突破封建制度框架。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "洋务运动",
+        "中体西用",
+        "中国近代化"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "关于工业革命的影响，一些历史学家认为，工业革命不仅带来了经济上的巨大变革，还深刻改变了社会结构、家庭关系和人们的思维方式。以下哪些说法符合这一观点？",
+      "options": [
+        "A. 工业革命导致了城市化进程加速，大量人口涌入城市，形成了新的工人阶级。",
+        "B. 工业革命促进了女权运动的兴起，因为工厂工作为女性提供了经济独立的机会。",
+        "C. 工业革命使家庭成为生产的基本单位，强化了父权制家庭结构。",
+        "D. 工业革命推动了教育普及，因为工厂需要受过一定教育的劳动力。",
+        "E. 工业革命使得传统手工业者失去生计，引发了卢德运动等反抗活动。"
+      ],
+      "correct_answer": "A,B,D,E",
+      "explanation": "A正确：工业革命导致城市扩大，工人阶级形成；B正确：女性进入工厂工作，为女权运动奠定经济基础；C错误：工业革命使家庭与生产分离，而非成为生产单位，且削弱了父权制；D正确：工厂需要识字工人，推动基础教育；E正确：手工业者被机器取代，引发卢德运动。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "工业革命",
+        "社会变革",
+        "历史解释"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "在史学研究中，一手史料（原始资料）和二手史料（后人著述）的价值不同。对于研究辛亥革命的历史，以下哪些属于一手史料？",
+      "options": [
+        "A. 孙中山在《民报》发刊词中阐述的三民主义",
+        "B. 1912年中华民国临时约法原件",
+        "C. 历史学家章开沅所著的《辛亥革命史》",
+        "D. 当时报纸对武昌起义的报道"
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "一手史料是指直接反映历史事件的原始记录，如当事人的著作、文件、报刊等。A是孙中山本人的文章，属于一手史料；B是当时的法律文件，属于一手史料；C是后世学者的研究著作，属于二手史料；D是当时报纸的报道，属于一手史料。因此正确答案为A、B、D。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "史学理论与方法",
+        "史料分类",
+        "辛亥革命"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    },
+    {
+      "content": "有学者指出，近代中国社会转型的内生动力不足，主要源于传统社会结构的超稳定性；但外部冲击又迫使中国不得不进行变革。请结合19世纪中期至20世纪初的中国历史，分析“冲击-反应”模式的合理性及其局限，并说明你如何看待这一史学理论范式。",
+      "options": [],
+      "correct_answer": "参考答案要点：合理性：西方列强入侵确实打破了清朝闭关锁国状态，引发洋务运动、戊戌变法、清末新政等改革，客观上推动了中国近代化进程。局限：过度强调外部因素，忽视了中国内部的社会矛盾、经济基础变化和思想启蒙（如经世致用思想、早期维新思潮）等内在动力。评价：冲击-反应模式是理解近代中国变迁的重要视角，但需结合内因论，避免简单化。",
+      "explanation": "本题考查对“冲击-反应”模式的理解和批判性分析。学生需认识到该模式强调外部刺激决定中国变革方向，但忽略了19世纪中叶中国已存在内部危机（如太平天国运动、白银危机、经世思潮）以及洋务运动等自主改革。解析应指出：合理性在于承认鸦片战争等事件的关键转折作用；局限在于简化了历史进程。评价时应强调内因与外因的辩证关系。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "history",
+      "age_group": "16-18",
+      "grade": "高三",
+      "tags": [
+        "中国近现代史",
+        "史学理论与方法",
+        "冲击-反应模式"
+      ],
+      "batch_id": "batch_history_16-18",
+      "source": "ai_generated"
+    }
+  ]
+}

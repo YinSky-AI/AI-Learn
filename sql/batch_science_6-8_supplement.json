@@ -1,0 +1,4237 @@
+{
+  "batch_id": "batch_science_6-8_supplement",
+  "source": "ai_generated",
+  "total_generated": 140,
+  "passed_count": 140,
+  "failed_count": 0,
+  "questions": [
+    {
+      "id": "b5b5096b-3666-4291-8c66-af46deecdfd2",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in summer?",
+      "options": [
+        {
+          "key": "A",
+          "text": "hot"
+        },
+        {
+          "key": "C",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "windy"
+        },
+        {
+          "key": "B",
+          "text": "wet"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Summer weather is usually hot.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 1
+    },
+    {
+      "id": "e47bc199-9e25-41ff-9f9b-a8abf1c3a1fe",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us see?",
+      "options": [
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "C",
+          "text": "lungs"
+        },
+        {
+          "key": "D",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "head"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "We use our eyes to see.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 2
+    },
+    {
+      "id": "79dc890f-5571-4964-b681-83e6347a1b5f",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What does a butterfly use to move?",
+      "options": [
+        {
+          "key": "D",
+          "text": "beak"
+        },
+        {
+          "key": "A",
+          "text": "wings"
+        },
+        {
+          "key": "C",
+          "text": "legs"
+        },
+        {
+          "key": "B",
+          "text": "fins"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "A butterfly uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 3
+    },
+    {
+      "id": "0b8a7271-c1ce-46be-98c9-94492938dd34",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What state is glass?",
+      "options": [
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Glass is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 4
+    },
+    {
+      "id": "0f447048-e109-4b5d-bb38-4f308d8cded7",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in winter?",
+      "options": [
+        {
+          "key": "B",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "dry"
+        },
+        {
+          "key": "C",
+          "text": "windy"
+        },
+        {
+          "key": "A",
+          "text": "cold"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Winter weather is usually cold.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 5
+    },
+    {
+      "id": "c42c62c9-9a36-4844-a0dd-913b663a0cf1",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in autumn?",
+      "options": [
+        {
+          "key": "C",
+          "text": "wet"
+        },
+        {
+          "key": "A",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "cold"
+        },
+        {
+          "key": "B",
+          "text": "windy"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Autumn weather is usually cool.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 6
+    },
+    {
+      "id": "579eb7ca-c99d-49b4-bfe8-0d4074223aa5",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What state is metal?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Metal is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 7
+    },
+    {
+      "id": "a74de6b2-9ad9-4800-807a-69f1d4a022ca",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us touch?",
+      "options": [
+        {
+          "key": "B",
+          "text": "head"
+        },
+        {
+          "key": "A",
+          "text": "skin"
+        },
+        {
+          "key": "D",
+          "text": "hands"
+        },
+        {
+          "key": "C",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use our skin to touch.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 8
+    },
+    {
+      "id": "b4cec725-9af2-42bc-b34c-9dc82a0897f9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What does a chicken use to move?",
+      "options": [
+        {
+          "key": "C",
+          "text": "beak"
+        },
+        {
+          "key": "B",
+          "text": "fins"
+        },
+        {
+          "key": "D",
+          "text": "beak"
+        },
+        {
+          "key": "A",
+          "text": "wings"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "A chicken uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 9
+    },
+    {
+      "id": "e435ea7c-b7c2-45a3-8949-9f489f780e18",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What state is wood?",
+      "options": [
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Wood is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 10
+    },
+    {
+      "id": "a9efd8bc-e255-4fbb-86e8-71396ce5a7e9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 11
+    },
+    {
+      "id": "3cf82aff-23b1-4a1e-a9be-6be025b96f5c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which describe weather?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sunny"
+        },
+        {
+          "key": "B",
+          "text": "rainy"
+        },
+        {
+          "key": "C",
+          "text": "snowy"
+        },
+        {
+          "key": "D",
+          "text": "table"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Sunny, rainy, and snowy are weather conditions.",
+      "knowledge_tags": [
+        "weather",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 12
+    },
+    {
+      "id": "13f9c7e2-4fea-44cc-96d0-b53750594807",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 13
+    },
+    {
+      "id": "d9cb628d-5801-4850-865b-b88ff82cf8ac",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 14
+    },
+    {
+      "id": "03191014-faa0-4859-a680-c4c2938d1b37",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "Ice is _______ water.",
+      "options": [],
+      "correct_answer": "frozen",
+      "explanation": "Ice is water that has become very cold and solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 15
+    },
+    {
+      "id": "3a30b0e3-87c0-48f0-adef-618e810449c2",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "Ice is _______ water.",
+      "options": [],
+      "correct_answer": "frozen",
+      "explanation": "Ice is water that has become very cold and solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 16
+    },
+    {
+      "id": "eca3d30e-f138-4128-bc9b-3f3f2e844ee6",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "Plants need _______, water, and air to grow.",
+      "options": [],
+      "correct_answer": "sunlight",
+      "explanation": "Plants need sunlight, water, and air to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 17
+    },
+    {
+      "id": "20e3252c-1b42-486a-b21f-abc813d8bf30",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 18
+    },
+    {
+      "id": "21230ce7-5f1e-4280-8703-7b05150fec4a",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "Ice is _______ water.",
+      "options": [],
+      "correct_answer": "frozen",
+      "explanation": "Ice is water that has become very cold and solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 19
+    },
+    {
+      "id": "41ce9304-1bed-4a2e-88ff-fb12c54286c0",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Fish can live on land.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Fish need water to breathe and live.",
+      "knowledge_tags": [
+        "animals",
+        "habitats"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 20
+    },
+    {
+      "id": "63f2eda9-60ee-4847-bf67-8e43df0b38e9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Plants can walk from place to place.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Plants cannot move from place to place like animals.",
+      "knowledge_tags": [
+        "plants",
+        "movement"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 21
+    },
+    {
+      "id": "333834f1-d649-4ed3-b967-ec3d8ff8bdf9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Fish can live on land.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Fish need water to breathe and live.",
+      "knowledge_tags": [
+        "animals",
+        "habitats"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 22
+    },
+    {
+      "id": "21e87a87-ddf6-4c1f-b89f-9850e109ef5c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Why do we need to wear a raincoat when it rains?",
+      "options": [],
+      "correct_answer": "To stay dry",
+      "explanation": "A raincoat keeps us dry when it is raining.",
+      "knowledge_tags": [
+        "weather",
+        "daily_life"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 23
+    },
+    {
+      "id": "91359b1b-7c65-4932-ad84-15dffa3cfbf4",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Name two things plants need to grow.",
+      "options": [],
+      "correct_answer": "sunlight, water",
+      "explanation": "Plants need sunlight and water to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 24
+    },
+    {
+      "id": "240ba9f2-2c89-487d-a564-f26d82d81efc",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us see?",
+      "options": [
+        {
+          "key": "D",
+          "text": "lungs"
+        },
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "nose"
+        },
+        {
+          "key": "C",
+          "text": "feet"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use our eyes to see.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 25
+    },
+    {
+      "id": "3780808a-440b-4f65-b120-717037c40b95",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in spring?",
+      "options": [
+        {
+          "key": "D",
+          "text": "cool"
+        },
+        {
+          "key": "B",
+          "text": "windy"
+        },
+        {
+          "key": "A",
+          "text": "warm"
+        },
+        {
+          "key": "C",
+          "text": "hot"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Spring weather is usually warm.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 26
+    },
+    {
+      "id": "d9fc9a90-a6f1-415d-9bf5-26e351e850a5",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What does a butterfly use to move?",
+      "options": [
+        {
+          "key": "D",
+          "text": "tail"
+        },
+        {
+          "key": "C",
+          "text": "tail"
+        },
+        {
+          "key": "B",
+          "text": "tail"
+        },
+        {
+          "key": "A",
+          "text": "wings"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "A butterfly uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 27
+    },
+    {
+      "id": "048d2e21-1c39-46ed-bd5f-74bae8fd93ee",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What state is glass?",
+      "options": [
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Glass is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 28
+    },
+    {
+      "id": "f5750a97-f08d-4470-9716-da1c80c84200",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us smell?",
+      "options": [
+        {
+          "key": "A",
+          "text": "nose"
+        },
+        {
+          "key": "D",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "mouth"
+        },
+        {
+          "key": "C",
+          "text": "head"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "We use our nose to smell.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 29
+    },
+    {
+      "id": "b779eccf-6bb7-4795-b51a-a009cff2c2cd",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What does a dog use to move?",
+      "options": [
+        {
+          "key": "C",
+          "text": "tail"
+        },
+        {
+          "key": "B",
+          "text": "wings"
+        },
+        {
+          "key": "D",
+          "text": "fins"
+        },
+        {
+          "key": "A",
+          "text": "legs"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "A dog uses its legs to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 30
+    },
+    {
+      "id": "48767d4a-940b-458f-9c76-63c209e8d357",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What state is metal?",
+      "options": [
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Metal is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 31
+    },
+    {
+      "id": "f57018eb-856d-42ae-95b2-caa5aee57883",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in autumn?",
+      "options": [
+        {
+          "key": "B",
+          "text": "wet"
+        },
+        {
+          "key": "A",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "dry"
+        },
+        {
+          "key": "C",
+          "text": "windy"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Autumn weather is usually cool.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 32
+    },
+    {
+      "id": "db0ed70b-1a90-4234-8136-dffe2126fc7c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What does a butterfly use to move?",
+      "options": [
+        {
+          "key": "C",
+          "text": "beak"
+        },
+        {
+          "key": "A",
+          "text": "wings"
+        },
+        {
+          "key": "B",
+          "text": "tail"
+        },
+        {
+          "key": "D",
+          "text": "beak"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "A butterfly uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 33
+    },
+    {
+      "id": "20b380a2-c372-4ebf-834f-2b93a4abf01b",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in winter?",
+      "options": [
+        {
+          "key": "C",
+          "text": "windy"
+        },
+        {
+          "key": "B",
+          "text": "wet"
+        },
+        {
+          "key": "D",
+          "text": "wet"
+        },
+        {
+          "key": "A",
+          "text": "cold"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Winter weather is usually cold.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 34
+    },
+    {
+      "id": "6bbf86f0-a596-41d3-a4a5-a6c5ae7b4954",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 35
+    },
+    {
+      "id": "01d5b03e-a647-43a2-8638-d6891c9cf048",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 36
+    },
+    {
+      "id": "0aec6787-6c90-41c7-8a80-06a1d6a8f2ec",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 37
+    },
+    {
+      "id": "62dcd2ee-b2cc-4528-a6ad-8c918acca41d",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which are body parts?",
+      "options": [
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "ears"
+        },
+        {
+          "key": "C",
+          "text": "shoes"
+        },
+        {
+          "key": "D",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Eyes, ears, and nose are parts of our body.",
+      "knowledge_tags": [
+        "body_parts",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 38
+    },
+    {
+      "id": "f253e7e6-5102-4380-987b-298959740fef",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 39
+    },
+    {
+      "id": "59c3fe1c-e831-4412-91c9-d8d0380f783b",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "Plants need _______, water, and air to grow.",
+      "options": [],
+      "correct_answer": "sunlight",
+      "explanation": "Plants need sunlight, water, and air to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 40
+    },
+    {
+      "id": "d7f33d83-99cb-465b-b6d8-351fab96a845",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "Plants need _______, water, and air to grow.",
+      "options": [],
+      "correct_answer": "sunlight",
+      "explanation": "Plants need sunlight, water, and air to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 41
+    },
+    {
+      "id": "4bf1b848-6ad9-4cee-87d1-3d30cb639780",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "We use our _______ to see things.",
+      "options": [],
+      "correct_answer": "eyes",
+      "explanation": "Our eyes help us see the world around us.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 42
+    },
+    {
+      "id": "e9f55e0c-9af7-42a1-90aa-50d03151e30a",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "We use our _______ to see things.",
+      "options": [],
+      "correct_answer": "eyes",
+      "explanation": "Our eyes help us see the world around us.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 43
+    },
+    {
+      "id": "f5095c34-f83b-439d-9870-1012d31a917d",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Plants can walk from place to place.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Plants cannot move from place to place like animals.",
+      "knowledge_tags": [
+        "plants",
+        "movement"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 44
+    },
+    {
+      "id": "bf5b09ea-a346-4dab-a4b4-4ce2744abf64",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Fish can live on land.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Fish need water to breathe and live.",
+      "knowledge_tags": [
+        "animals",
+        "habitats"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 45
+    },
+    {
+      "id": "a106a992-a9e5-4720-a335-157a8596a78d",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "The sun gives us light and heat.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "The sun is a star that provides light and warmth.",
+      "knowledge_tags": [
+        "sun",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 46
+    },
+    {
+      "id": "61b70ee8-e0cf-4728-9c26-dcab46d2c052",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "Name two things plants need to grow.",
+      "options": [],
+      "correct_answer": "sunlight, water",
+      "explanation": "Plants need sunlight and water to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 47
+    },
+    {
+      "id": "22f7fde8-9d0e-4c88-9fa5-2cc74a1d62f3",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in winter?",
+      "options": [
+        {
+          "key": "B",
+          "text": "warm"
+        },
+        {
+          "key": "C",
+          "text": "dry"
+        },
+        {
+          "key": "A",
+          "text": "cold"
+        },
+        {
+          "key": "D",
+          "text": "cool"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Winter weather is usually cold.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 48
+    },
+    {
+      "id": "7e215c76-dac3-4e3f-a61c-e6e458800bc9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in winter?",
+      "options": [
+        {
+          "key": "C",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "dry"
+        },
+        {
+          "key": "B",
+          "text": "wet"
+        },
+        {
+          "key": "A",
+          "text": "cold"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Winter weather is usually cold.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 49
+    },
+    {
+      "id": "062cd39b-00af-47d4-91e8-5ab65713768a",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What does a bird use to move?",
+      "options": [
+        {
+          "key": "D",
+          "text": "tail"
+        },
+        {
+          "key": "C",
+          "text": "fins"
+        },
+        {
+          "key": "A",
+          "text": "wings"
+        },
+        {
+          "key": "B",
+          "text": "tail"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "A bird uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 50
+    },
+    {
+      "id": "ffa43067-bca3-49f2-b6bf-9d0d8d91a0ac",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us taste?",
+      "options": [
+        {
+          "key": "C",
+          "text": "mouth"
+        },
+        {
+          "key": "A",
+          "text": "tongue"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "D",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use our tongue to taste.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 51
+    },
+    {
+      "id": "e1607e51-b93e-4b72-b76b-a5c058a5b836",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What does a dog use to move?",
+      "options": [
+        {
+          "key": "A",
+          "text": "legs"
+        },
+        {
+          "key": "B",
+          "text": "beak"
+        },
+        {
+          "key": "C",
+          "text": "beak"
+        },
+        {
+          "key": "D",
+          "text": "wings"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A dog uses its legs to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 52
+    },
+    {
+      "id": "60fc320e-7557-42f4-9275-275752d8a0cd",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in spring?",
+      "options": [
+        {
+          "key": "D",
+          "text": "cold"
+        },
+        {
+          "key": "B",
+          "text": "cold"
+        },
+        {
+          "key": "C",
+          "text": "cold"
+        },
+        {
+          "key": "A",
+          "text": "warm"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Spring weather is usually warm.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 53
+    },
+    {
+      "id": "58eda27f-f8cb-4243-9a4c-77519cbd8bbb",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What state is metal?",
+      "options": [
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Metal is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 54
+    },
+    {
+      "id": "da6d7660-1417-4df8-a305-34a50302e436",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us smell?",
+      "options": [
+        {
+          "key": "B",
+          "text": "mouth"
+        },
+        {
+          "key": "D",
+          "text": "head"
+        },
+        {
+          "key": "A",
+          "text": "nose"
+        },
+        {
+          "key": "C",
+          "text": "eyes"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "We use our nose to smell.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 55
+    },
+    {
+      "id": "a944482d-b256-45e4-bb05-d7293c936cf5",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us see?",
+      "options": [
+        {
+          "key": "D",
+          "text": "head"
+        },
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "C",
+          "text": "hands"
+        },
+        {
+          "key": "B",
+          "text": "heart"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "We use our eyes to see.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 56
+    },
+    {
+      "id": "c27684de-d79f-416c-a9e6-0c185408483d",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us taste?",
+      "options": [
+        {
+          "key": "A",
+          "text": "tongue"
+        },
+        {
+          "key": "D",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "mouth"
+        },
+        {
+          "key": "C",
+          "text": "eyes"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "We use our tongue to taste.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 57
+    },
+    {
+      "id": "147252e2-e986-4fed-8265-a5205b131e8b",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 58
+    },
+    {
+      "id": "7538d3c8-c029-40f3-868f-8b866efbb6c3",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 59
+    },
+    {
+      "id": "13d8cae2-c315-455d-8f27-544803e74be7",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which of these are animals?",
+      "options": [
+        {
+          "key": "A",
+          "text": "dog"
+        },
+        {
+          "key": "B",
+          "text": "cat"
+        },
+        {
+          "key": "C",
+          "text": "tree"
+        },
+        {
+          "key": "D",
+          "text": "bird"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Animals can move and need food. Tree is a plant.",
+      "knowledge_tags": [
+        "animals",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 60
+    },
+    {
+      "id": "cbc88f7b-0613-4b96-bc60-b53498d99b5d",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are body parts?",
+      "options": [
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "ears"
+        },
+        {
+          "key": "C",
+          "text": "shoes"
+        },
+        {
+          "key": "D",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Eyes, ears, and nose are parts of our body.",
+      "knowledge_tags": [
+        "body_parts",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 61
+    },
+    {
+      "id": "f419b468-b615-4056-aef5-110f238c54d9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Plants need _______, water, and air to grow.",
+      "options": [],
+      "correct_answer": "sunlight",
+      "explanation": "Plants need sunlight, water, and air to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 62
+    },
+    {
+      "id": "f6284d34-5e2a-4546-ad2d-dd6c1331e709",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 63
+    },
+    {
+      "id": "b3ed2817-7b85-44c1-ade9-124312ef5dc6",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "We use our _______ to see things.",
+      "options": [],
+      "correct_answer": "eyes",
+      "explanation": "Our eyes help us see the world around us.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 64
+    },
+    {
+      "id": "fc2f1f7e-6a52-44d5-a48f-ce2f5f188fb4",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Plants need _______, water, and air to grow.",
+      "options": [],
+      "correct_answer": "sunlight",
+      "explanation": "Plants need sunlight, water, and air to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 65
+    },
+    {
+      "id": "45084541-6aee-4e86-88d8-21dc7285b8a6",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Ice is _______ water.",
+      "options": [],
+      "correct_answer": "frozen",
+      "explanation": "Ice is water that has become very cold and solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 66
+    },
+    {
+      "id": "1170ecab-806e-42dd-8a42-64e6ab79aff9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Fish can live on land.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Fish need water to breathe and live.",
+      "knowledge_tags": [
+        "animals",
+        "habitats"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 67
+    },
+    {
+      "id": "2270416f-5241-4fbb-ace8-9d261060346a",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "The sun gives us light and heat.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "The sun is a star that provides light and warmth.",
+      "knowledge_tags": [
+        "sun",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 68
+    },
+    {
+      "id": "e8bb9110-0e0a-4636-a616-143fe8e2ef55",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Plants can walk from place to place.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Plants cannot move from place to place like animals.",
+      "knowledge_tags": [
+        "plants",
+        "movement"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 69
+    },
+    {
+      "id": "21002c4a-1862-48b2-be75-268212ea624a",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "Why do we need to wear a raincoat when it rains?",
+      "options": [],
+      "correct_answer": "To stay dry",
+      "explanation": "A raincoat keeps us dry when it is raining.",
+      "knowledge_tags": [
+        "weather",
+        "daily_life"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 70
+    },
+    {
+      "id": "1c826578-bd91-478f-b9c0-a31d3f319cfd",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "Why do we need to wear a raincoat when it rains?",
+      "options": [],
+      "correct_answer": "To stay dry",
+      "explanation": "A raincoat keeps us dry when it is raining.",
+      "knowledge_tags": [
+        "weather",
+        "daily_life"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 71
+    },
+    {
+      "id": "0020c4f5-de90-4959-b8a0-de37ce9f3a27",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in spring?",
+      "options": [
+        {
+          "key": "A",
+          "text": "warm"
+        },
+        {
+          "key": "B",
+          "text": "cold"
+        },
+        {
+          "key": "C",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "hot"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Spring weather is usually warm.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 72
+    },
+    {
+      "id": "86b2f0a1-64b1-46b3-9e5c-59ebc6445e02",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us see?",
+      "options": [
+        {
+          "key": "B",
+          "text": "feet"
+        },
+        {
+          "key": "D",
+          "text": "heart"
+        },
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "C",
+          "text": "head"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "We use our eyes to see.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 73
+    },
+    {
+      "id": "488109ca-6d79-4ac7-a939-b36355f9d1a9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us smell?",
+      "options": [
+        {
+          "key": "A",
+          "text": "nose"
+        },
+        {
+          "key": "D",
+          "text": "mouth"
+        },
+        {
+          "key": "C",
+          "text": "heart"
+        },
+        {
+          "key": "B",
+          "text": "feet"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "We use our nose to smell.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 74
+    },
+    {
+      "id": "42009dcb-7128-47f4-be13-bad56e5d2266",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What does a bird use to move?",
+      "options": [
+        {
+          "key": "B",
+          "text": "tail"
+        },
+        {
+          "key": "D",
+          "text": "fins"
+        },
+        {
+          "key": "A",
+          "text": "wings"
+        },
+        {
+          "key": "C",
+          "text": "beak"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "A bird uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 75
+    },
+    {
+      "id": "6bc2840d-461d-41ad-a99d-d609f913cc22",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What state is rock?",
+      "options": [
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Rock is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 76
+    },
+    {
+      "id": "da163961-600b-40e5-8986-6bf9887f3fd6",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us smell?",
+      "options": [
+        {
+          "key": "C",
+          "text": "head"
+        },
+        {
+          "key": "D",
+          "text": "feet"
+        },
+        {
+          "key": "B",
+          "text": "hands"
+        },
+        {
+          "key": "A",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "We use our nose to smell.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 77
+    },
+    {
+      "id": "579f2527-b04f-41e5-9d8e-ba6c2db171eb",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What does a duck use to move?",
+      "options": [
+        {
+          "key": "C",
+          "text": "beak"
+        },
+        {
+          "key": "D",
+          "text": "tail"
+        },
+        {
+          "key": "A",
+          "text": "wings"
+        },
+        {
+          "key": "B",
+          "text": "fins"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "A duck uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 78
+    },
+    {
+      "id": "984302f2-ed03-4a8c-be77-a68539467312",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in summer?",
+      "options": [
+        {
+          "key": "A",
+          "text": "hot"
+        },
+        {
+          "key": "C",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "warm"
+        },
+        {
+          "key": "B",
+          "text": "warm"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "Summer weather is usually hot.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 79
+    },
+    {
+      "id": "b0174ba7-69cb-4934-8b29-f8134cfc1c2e",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What does a butterfly use to move?",
+      "options": [
+        {
+          "key": "D",
+          "text": "beak"
+        },
+        {
+          "key": "C",
+          "text": "legs"
+        },
+        {
+          "key": "B",
+          "text": "tail"
+        },
+        {
+          "key": "A",
+          "text": "wings"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "A butterfly uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 80
+    },
+    {
+      "id": "a64f2e68-3777-4e40-8aac-65997e5c4ed3",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What state is water?",
+      "options": [
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Water is a liquid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 81
+    },
+    {
+      "id": "81de8019-23ad-4a28-9f84-419f07f69321",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which describe weather?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sunny"
+        },
+        {
+          "key": "B",
+          "text": "rainy"
+        },
+        {
+          "key": "C",
+          "text": "snowy"
+        },
+        {
+          "key": "D",
+          "text": "table"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Sunny, rainy, and snowy are weather conditions.",
+      "knowledge_tags": [
+        "weather",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 82
+    },
+    {
+      "id": "f6cd5774-ee93-419a-8c5b-0fc6055603fd",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which describe weather?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sunny"
+        },
+        {
+          "key": "B",
+          "text": "rainy"
+        },
+        {
+          "key": "C",
+          "text": "snowy"
+        },
+        {
+          "key": "D",
+          "text": "table"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Sunny, rainy, and snowy are weather conditions.",
+      "knowledge_tags": [
+        "weather",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 83
+    },
+    {
+      "id": "20ee4232-48ca-4839-b806-26c052d9f09f",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which of these are animals?",
+      "options": [
+        {
+          "key": "A",
+          "text": "dog"
+        },
+        {
+          "key": "B",
+          "text": "cat"
+        },
+        {
+          "key": "C",
+          "text": "tree"
+        },
+        {
+          "key": "D",
+          "text": "bird"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Animals can move and need food. Tree is a plant.",
+      "knowledge_tags": [
+        "animals",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 84
+    },
+    {
+      "id": "2d92063f-4052-4b52-ab72-5b2b788a3699",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 85
+    },
+    {
+      "id": "52494480-e077-4842-bd19-e5fd54654d9e",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 86
+    },
+    {
+      "id": "48ac0dfb-5f6b-4599-8601-b92100bddac1",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "We use our _______ to see things.",
+      "options": [],
+      "correct_answer": "eyes",
+      "explanation": "Our eyes help us see the world around us.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 87
+    },
+    {
+      "id": "dca5c1b2-807f-4862-b55f-12b33e08618f",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Plants need _______, water, and air to grow.",
+      "options": [],
+      "correct_answer": "sunlight",
+      "explanation": "Plants need sunlight, water, and air to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 88
+    },
+    {
+      "id": "e5137063-88dd-4222-906d-8127b3a9dbe8",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 89
+    },
+    {
+      "id": "34387d97-9d4e-47c2-bae8-541a9cc35c35",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 90
+    },
+    {
+      "id": "f9a7d305-5604-488e-9da8-48a35317934c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Fish can live on land.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Fish need water to breathe and live.",
+      "knowledge_tags": [
+        "animals",
+        "habitats"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 91
+    },
+    {
+      "id": "92c1e6d6-6e71-4f63-af1c-bbfcf4630e31",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Fish can live on land.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Fish need water to breathe and live.",
+      "knowledge_tags": [
+        "animals",
+        "habitats"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 92
+    },
+    {
+      "id": "96592bd5-140e-46e9-a028-172500b67bd0",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "The sun gives us light and heat.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "The sun is a star that provides light and warmth.",
+      "knowledge_tags": [
+        "sun",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 93
+    },
+    {
+      "id": "08b11964-0aca-486f-a516-8c538faf5e0c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "Name two things plants need to grow.",
+      "options": [],
+      "correct_answer": "sunlight, water",
+      "explanation": "Plants need sunlight and water to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 94
+    },
+    {
+      "id": "316d1b20-276e-4aad-8ed3-24e86d6355ba",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What state is water?",
+      "options": [
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Water is a liquid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 95
+    },
+    {
+      "id": "c61c3889-8ce5-4542-9c2d-54e6e353fd2c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What does a dog use to move?",
+      "options": [
+        {
+          "key": "C",
+          "text": "fins"
+        },
+        {
+          "key": "D",
+          "text": "tail"
+        },
+        {
+          "key": "B",
+          "text": "wings"
+        },
+        {
+          "key": "A",
+          "text": "legs"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "A dog uses its legs to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 96
+    },
+    {
+      "id": "2ee9c18a-fc86-48ff-8ca8-0c176dde2aab",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in autumn?",
+      "options": [
+        {
+          "key": "B",
+          "text": "hot"
+        },
+        {
+          "key": "A",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "wet"
+        },
+        {
+          "key": "C",
+          "text": "warm"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Autumn weather is usually cool.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 97
+    },
+    {
+      "id": "f3438143-1985-4e10-b0e6-49e57c8c6c57",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in spring?",
+      "options": [
+        {
+          "key": "D",
+          "text": "cool"
+        },
+        {
+          "key": "B",
+          "text": "windy"
+        },
+        {
+          "key": "C",
+          "text": "windy"
+        },
+        {
+          "key": "A",
+          "text": "warm"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Spring weather is usually warm.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 98
+    },
+    {
+      "id": "de86b04d-802d-4e38-99c3-f7e0ba8995a2",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us taste?",
+      "options": [
+        {
+          "key": "C",
+          "text": "head"
+        },
+        {
+          "key": "B",
+          "text": "head"
+        },
+        {
+          "key": "A",
+          "text": "tongue"
+        },
+        {
+          "key": "D",
+          "text": "head"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "We use our tongue to taste.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 99
+    },
+    {
+      "id": "4eabe7eb-a700-4993-9d05-a2e559a32d3f",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us hear?",
+      "options": [
+        {
+          "key": "B",
+          "text": "mouth"
+        },
+        {
+          "key": "C",
+          "text": "heart"
+        },
+        {
+          "key": "A",
+          "text": "ears"
+        },
+        {
+          "key": "D",
+          "text": "head"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "We use our ears to hear.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 100
+    },
+    {
+      "id": "4f9beacf-6583-449a-a4d2-cc5747822008",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What state is water?",
+      "options": [
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Water is a liquid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 101
+    },
+    {
+      "id": "bc774c69-fd50-42b8-9ef9-af8d7b2b7671",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us see?",
+      "options": [
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "mouth"
+        },
+        {
+          "key": "D",
+          "text": "heart"
+        },
+        {
+          "key": "C",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "We use our eyes to see.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 102
+    },
+    {
+      "id": "8ae1a5b3-d74f-4aac-b196-0a9e00f5f012",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us taste?",
+      "options": [
+        {
+          "key": "D",
+          "text": "nose"
+        },
+        {
+          "key": "C",
+          "text": "lungs"
+        },
+        {
+          "key": "A",
+          "text": "tongue"
+        },
+        {
+          "key": "B",
+          "text": "head"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "We use our tongue to taste.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 103
+    },
+    {
+      "id": "45ea63d1-f799-4350-8938-a7499199dbc7",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What state is paper?",
+      "options": [
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Paper is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 104
+    },
+    {
+      "id": "aad1d0cd-d2ff-41f1-8956-9b9564dc779a",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which describe weather?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sunny"
+        },
+        {
+          "key": "B",
+          "text": "rainy"
+        },
+        {
+          "key": "C",
+          "text": "snowy"
+        },
+        {
+          "key": "D",
+          "text": "table"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Sunny, rainy, and snowy are weather conditions.",
+      "knowledge_tags": [
+        "weather",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 105
+    },
+    {
+      "id": "f44bb9ce-735c-4862-9d6f-cf50c90d6090",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are body parts?",
+      "options": [
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "ears"
+        },
+        {
+          "key": "C",
+          "text": "shoes"
+        },
+        {
+          "key": "D",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Eyes, ears, and nose are parts of our body.",
+      "knowledge_tags": [
+        "body_parts",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 106
+    },
+    {
+      "id": "d368a0d5-780a-4df9-96f7-cee96763a445",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which describe weather?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sunny"
+        },
+        {
+          "key": "B",
+          "text": "rainy"
+        },
+        {
+          "key": "C",
+          "text": "snowy"
+        },
+        {
+          "key": "D",
+          "text": "table"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Sunny, rainy, and snowy are weather conditions.",
+      "knowledge_tags": [
+        "weather",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 107
+    },
+    {
+      "id": "041504ec-096b-45b2-91d3-a505c5f8c1ac",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 108
+    },
+    {
+      "id": "eec9e64e-4e9c-47a6-9a05-3cdee151cd6c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Plants need _______, water, and air to grow.",
+      "options": [],
+      "correct_answer": "sunlight",
+      "explanation": "Plants need sunlight, water, and air to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 109
+    },
+    {
+      "id": "6bf99976-1386-4740-8d98-de969e474d6e",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 110
+    },
+    {
+      "id": "ea6fa347-3257-4f04-977f-9f78d72c36de",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 111
+    },
+    {
+      "id": "6ad5542e-4da6-4b19-8701-141082e78760",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "We use our _______ to see things.",
+      "options": [],
+      "correct_answer": "eyes",
+      "explanation": "Our eyes help us see the world around us.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 112
+    },
+    {
+      "id": "4507db63-a8df-4e8a-b496-e76f5455655f",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Plants need _______, water, and air to grow.",
+      "options": [],
+      "correct_answer": "sunlight",
+      "explanation": "Plants need sunlight, water, and air to grow.",
+      "knowledge_tags": [
+        "plants",
+        "growth"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 113
+    },
+    {
+      "id": "78cdb896-a46d-433d-9ae2-ffc317dd332b",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Fish can live on land.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Fish need water to breathe and live.",
+      "knowledge_tags": [
+        "animals",
+        "habitats"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 114
+    },
+    {
+      "id": "4ed1aab5-13c3-4dbb-9138-3832cff25b36",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Plants can walk from place to place.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Plants cannot move from place to place like animals.",
+      "knowledge_tags": [
+        "plants",
+        "movement"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 115
+    },
+    {
+      "id": "15708345-c99d-4e4d-baf4-13a8c946c9c8",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Plants can walk from place to place.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Plants cannot move from place to place like animals.",
+      "knowledge_tags": [
+        "plants",
+        "movement"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 116
+    },
+    {
+      "id": "a5dad60d-9c8f-48fa-87d8-fd24b1f288d9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "short_answer",
+      "question_body": "Why do we need to wear a raincoat when it rains?",
+      "options": [],
+      "correct_answer": "To stay dry",
+      "explanation": "A raincoat keeps us dry when it is raining.",
+      "knowledge_tags": [
+        "weather",
+        "daily_life"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 117
+    },
+    {
+      "id": "5d98c7ef-dc00-4d85-80fc-a71fb7371245",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "short_answer",
+      "question_body": "Why do we need to wear a raincoat when it rains?",
+      "options": [],
+      "correct_answer": "To stay dry",
+      "explanation": "A raincoat keeps us dry when it is raining.",
+      "knowledge_tags": [
+        "weather",
+        "daily_life"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 118
+    },
+    {
+      "id": "9ddac9b3-4cad-4603-89e8-7f8369af8133",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us smell?",
+      "options": [
+        {
+          "key": "A",
+          "text": "nose"
+        },
+        {
+          "key": "C",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "mouth"
+        },
+        {
+          "key": "D",
+          "text": "heart"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "We use our nose to smell.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 119
+    },
+    {
+      "id": "3360642a-c4cb-44c3-9b41-0e5dc9ad742d",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What state is paper?",
+      "options": [
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Paper is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 120
+    },
+    {
+      "id": "285bc4c1-2850-4844-841e-8b0edef7de7c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What does a cat use to move?",
+      "options": [
+        {
+          "key": "C",
+          "text": "fins"
+        },
+        {
+          "key": "D",
+          "text": "wings"
+        },
+        {
+          "key": "B",
+          "text": "wings"
+        },
+        {
+          "key": "A",
+          "text": "legs"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "A cat uses its legs to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 121
+    },
+    {
+      "id": "cfc9a2c3-4d20-476d-b061-e186042e2f10",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us taste?",
+      "options": [
+        {
+          "key": "A",
+          "text": "tongue"
+        },
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "C",
+          "text": "hands"
+        },
+        {
+          "key": "D",
+          "text": "head"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "We use our tongue to taste.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 122
+    },
+    {
+      "id": "aee59361-81bf-425f-917b-a1e1521b2776",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What state is glass?",
+      "options": [
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Glass is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 123
+    },
+    {
+      "id": "587d3559-1b30-4aa2-92cd-92bb5f60fd0d",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in summer?",
+      "options": [
+        {
+          "key": "B",
+          "text": "cool"
+        },
+        {
+          "key": "A",
+          "text": "hot"
+        },
+        {
+          "key": "D",
+          "text": "wet"
+        },
+        {
+          "key": "C",
+          "text": "dry"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Summer weather is usually hot.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 124
+    },
+    {
+      "id": "87671ab7-ccbd-4c06-b743-c487ec8019a8",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What state is wood?",
+      "options": [
+        {
+          "key": "B",
+          "text": "liquid"
+        },
+        {
+          "key": "D",
+          "text": "none"
+        },
+        {
+          "key": "C",
+          "text": "gas"
+        },
+        {
+          "key": "A",
+          "text": "solid"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Wood is a solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 125
+    },
+    {
+      "id": "e6c8b2fa-e177-4026-ae9e-a1a4cf9807fa",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which body part helps us smell?",
+      "options": [
+        {
+          "key": "B",
+          "text": "lungs"
+        },
+        {
+          "key": "D",
+          "text": "heart"
+        },
+        {
+          "key": "A",
+          "text": "nose"
+        },
+        {
+          "key": "C",
+          "text": "hands"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "We use our nose to smell.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 126
+    },
+    {
+      "id": "51623df2-ecc3-42b2-893b-ff81c55cb7a4",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "How is the weather in autumn?",
+      "options": [
+        {
+          "key": "B",
+          "text": "cold"
+        },
+        {
+          "key": "C",
+          "text": "windy"
+        },
+        {
+          "key": "A",
+          "text": "cool"
+        },
+        {
+          "key": "D",
+          "text": "warm"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Autumn weather is usually cool.",
+      "knowledge_tags": [
+        "seasons",
+        "weather"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 127
+    },
+    {
+      "id": "74a23c2e-a7df-48eb-bf4e-6acf81ab095f",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What does a butterfly use to move?",
+      "options": [
+        {
+          "key": "A",
+          "text": "wings"
+        },
+        {
+          "key": "B",
+          "text": "beak"
+        },
+        {
+          "key": "C",
+          "text": "fins"
+        },
+        {
+          "key": "D",
+          "text": "beak"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "A butterfly uses its wings to move.",
+      "knowledge_tags": [
+        "animals",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 128
+    },
+    {
+      "id": "792bbc7c-9a3d-44b7-96fa-01b1b1776755",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are body parts?",
+      "options": [
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "ears"
+        },
+        {
+          "key": "C",
+          "text": "shoes"
+        },
+        {
+          "key": "D",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Eyes, ears, and nose are parts of our body.",
+      "knowledge_tags": [
+        "body_parts",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 129
+    },
+    {
+      "id": "6c41d233-af65-4983-b843-588fa7eda9a9",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are body parts?",
+      "options": [
+        {
+          "key": "A",
+          "text": "eyes"
+        },
+        {
+          "key": "B",
+          "text": "ears"
+        },
+        {
+          "key": "C",
+          "text": "shoes"
+        },
+        {
+          "key": "D",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Eyes, ears, and nose are parts of our body.",
+      "knowledge_tags": [
+        "body_parts",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 130
+    },
+    {
+      "id": "b7deaee6-c60b-456f-ab8c-c73118c71c19",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which describe weather?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sunny"
+        },
+        {
+          "key": "B",
+          "text": "rainy"
+        },
+        {
+          "key": "C",
+          "text": "snowy"
+        },
+        {
+          "key": "D",
+          "text": "table"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Sunny, rainy, and snowy are weather conditions.",
+      "knowledge_tags": [
+        "weather",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 131
+    },
+    {
+      "id": "7d0a2bb2-6cac-49e5-a383-bbe0a71c9bcd",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which are seasons?",
+      "options": [
+        {
+          "key": "A",
+          "text": "spring"
+        },
+        {
+          "key": "B",
+          "text": "summer"
+        },
+        {
+          "key": "C",
+          "text": "Monday"
+        },
+        {
+          "key": "D",
+          "text": "winter"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Spring, summer, and winter are seasons. Monday is a day.",
+      "knowledge_tags": [
+        "seasons",
+        "classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 132
+    },
+    {
+      "id": "1d82a5bf-02d3-44ad-a134-68aa4c43deaa",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "We use our _______ to see things.",
+      "options": [],
+      "correct_answer": "eyes",
+      "explanation": "Our eyes help us see the world around us.",
+      "knowledge_tags": [
+        "senses",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 133
+    },
+    {
+      "id": "817e0c6e-dceb-474d-a895-1a266bf460fa",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Ice is _______ water.",
+      "options": [],
+      "correct_answer": "frozen",
+      "explanation": "Ice is water that has become very cold and solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 134
+    },
+    {
+      "id": "ef1066ac-15af-4e0d-9f58-cc0bf8ca178c",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 135
+    },
+    {
+      "id": "d986664d-c60c-4446-bba2-5fae0e6a181e",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Birds build _______ to lay eggs.",
+      "options": [],
+      "correct_answer": "nests",
+      "explanation": "Birds build nests to keep their eggs safe.",
+      "knowledge_tags": [
+        "animals",
+        "behavior"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 136
+    },
+    {
+      "id": "f2ef0a02-62c1-4a2e-ba17-9fd3affdf8a4",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "Ice is _______ water.",
+      "options": [],
+      "correct_answer": "frozen",
+      "explanation": "Ice is water that has become very cold and solid.",
+      "knowledge_tags": [
+        "matter",
+        "states"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 137
+    },
+    {
+      "id": "dee54921-50bb-4c65-8657-5a9aa17ea382",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "The sun gives us light and heat.",
+      "options": [],
+      "correct_answer": "True",
+      "explanation": "The sun is a star that provides light and warmth.",
+      "knowledge_tags": [
+        "sun",
+        "energy"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 138
+    },
+    {
+      "id": "bc0cbfd1-b277-475f-b407-e35b46d19ed2",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Plants can walk from place to place.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Plants cannot move from place to place like animals.",
+      "knowledge_tags": [
+        "plants",
+        "movement"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 139
+    },
+    {
+      "id": "46f55065-89e3-4102-b4d3-10a343e2f664",
+      "batch_id": "science_6-8_supplement",
+      "source": "ai_generated",
+      "subject_code": "science",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "Fish can live on land.",
+      "options": [],
+      "correct_answer": "False",
+      "explanation": "Fish need water to breathe and live.",
+      "knowledge_tags": [
+        "animals",
+        "habitats"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T10:28:48.000000Z",
+      "order": 140
+    }
+  ]
+}

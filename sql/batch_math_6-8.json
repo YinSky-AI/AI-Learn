@@ -1,0 +1,1954 @@
+{
+  "batch_id": "math_6-8_complete",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "content": "小明有3个苹果，妈妈又给他2个，现在一共有几个？",
+      "options": [
+        {
+          "label": "A",
+          "text": "4个"
+        },
+        {
+          "label": "B",
+          "text": "5个"
+        },
+        {
+          "label": "C",
+          "text": "6个"
+        },
+        {
+          "label": "D",
+          "text": "7个"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "3个苹果加上2个苹果，3加2等于5，所以小明现在有5个苹果。这是简单的加法运算。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "加法",
+        "10以内加法",
+        "生活应用"
+      ],
+      "id": 1
+    },
+    {
+      "content": "树上有7只小鸟，飞走了3只，还剩几只？",
+      "options": [
+        {
+          "label": "A",
+          "text": "3只"
+        },
+        {
+          "label": "B",
+          "text": "4只"
+        },
+        {
+          "label": "C",
+          "text": "5只"
+        },
+        {
+          "label": "D",
+          "text": "6只"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "树上原来有7只小鸟，飞走3只，用减法计算：7减3等于4，所以还剩4只小鸟。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "减法",
+        "10以内减法",
+        "生活应用"
+      ],
+      "id": 2
+    },
+    {
+      "content": "下面哪个图形是圆形？",
+      "options": [
+        {
+          "label": "A",
+          "text": "书本"
+        },
+        {
+          "label": "B",
+          "text": "足球"
+        },
+        {
+          "label": "C",
+          "text": "冰箱"
+        },
+        {
+          "label": "D",
+          "text": "门"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "足球是球体，从任何方向看都是圆形。书本、冰箱和门都是长方形，不是圆形。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "几何图形",
+        "圆形识别",
+        "实物认知"
+      ],
+      "id": 3
+    },
+    {
+      "content": "小红有8颗糖，给了弟弟3颗，她还剩几颗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "4颗"
+        },
+        {
+          "label": "B",
+          "text": "5颗"
+        },
+        {
+          "label": "C",
+          "text": "6颗"
+        },
+        {
+          "label": "D",
+          "text": "7颗"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "小红原来有8颗糖，给了弟弟3颗，用减法：8减3等于5，所以小红还剩5颗糖。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "减法",
+        "10以内减法",
+        "生活应用"
+      ],
+      "id": 4
+    },
+    {
+      "content": "现在是3点钟，再过2小时是几点？",
+      "options": [
+        {
+          "label": "A",
+          "text": "4点"
+        },
+        {
+          "label": "B",
+          "text": "5点"
+        },
+        {
+          "label": "C",
+          "text": "6点"
+        },
+        {
+          "label": "D",
+          "text": "7点"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "现在3点，再过2小时，就是把3和2相加：3加2等于5，所以是5点钟。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "时间",
+        "整点",
+        "加法应用"
+      ],
+      "id": 5
+    },
+    {
+      "content": "一个面包5元，买两个面包要多少钱？",
+      "options": [
+        {
+          "label": "A",
+          "text": "8元"
+        },
+        {
+          "label": "B",
+          "text": "9元"
+        },
+        {
+          "label": "C",
+          "text": "10元"
+        },
+        {
+          "label": "D",
+          "text": "12元"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "一个面包5元，买两个面包就是5加5等于10元。也可以用乘法：2乘5等于10元。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "加法",
+        "货币",
+        "生活应用"
+      ],
+      "id": 6
+    },
+    {
+      "content": "桌子上有6本书，又放上来2本，现在有几本？",
+      "options": [
+        {
+          "label": "A",
+          "text": "7本"
+        },
+        {
+          "label": "B",
+          "text": "8本"
+        },
+        {
+          "label": "C",
+          "text": "9本"
+        },
+        {
+          "label": "D",
+          "text": "10本"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "桌子上原来有6本书，又放上来2本，用加法：6加2等于8，所以现在有8本书。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "加法",
+        "10以内加法",
+        "生活应用"
+      ],
+      "id": 7
+    },
+    {
+      "content": "下面哪个物品最贵？",
+      "options": [
+        {
+          "label": "A",
+          "text": "铅笔1元"
+        },
+        {
+          "label": "B",
+          "text": "橡皮2元"
+        },
+        {
+          "label": "C",
+          "text": "尺子3元"
+        },
+        {
+          "label": "D",
+          "text": "本子4元"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "比较价格：1元、2元、3元、4元。4元最大，所以本子4元是最贵的。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "货币",
+        "比较大小",
+        "生活常识"
+      ],
+      "id": 8
+    },
+    {
+      "content": "三角形有几条边？",
+      "options": [
+        {
+          "label": "A",
+          "text": "2条"
+        },
+        {
+          "label": "B",
+          "text": "3条"
+        },
+        {
+          "label": "C",
+          "text": "4条"
+        },
+        {
+          "label": "D",
+          "text": "5条"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "三角形是由3条边组成的封闭图形，它有3条边和3个角。正方形才有4条边。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "几何图形",
+        "三角形",
+        "图形特征"
+      ],
+      "id": 9
+    },
+    {
+      "content": "下面哪些数字比5大？",
+      "options": [
+        {
+          "label": "A",
+          "text": "3"
+        },
+        {
+          "label": "B",
+          "text": "6"
+        },
+        {
+          "label": "C",
+          "text": "8"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "correct_answer": "BC",
+      "explanation": "比5大的数字有6、7、8、9等。选项中6和8都比5大，3和4都比5小。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "数的大小比较",
+        "10以内数"
+      ],
+      "id": 10
+    },
+    {
+      "content": "下面哪些是长方形？",
+      "options": [
+        {
+          "label": "A",
+          "text": "课桌面"
+        },
+        {
+          "label": "B",
+          "text": "黑板"
+        },
+        {
+          "label": "C",
+          "text": "车轮"
+        },
+        {
+          "label": "D",
+          "text": "课本封面"
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "课桌面、黑板和课本封面都是长方形，有4条直边和4个直角。车轮是圆形，不是长方形。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "几何图形",
+        "长方形",
+        "实物认知"
+      ],
+      "id": 11
+    },
+    {
+      "content": "小猫钓了鱼，下面哪些算式结果等于7？",
+      "options": [
+        {
+          "label": "A",
+          "text": "3+4"
+        },
+        {
+          "label": "B",
+          "text": "2+5"
+        },
+        {
+          "label": "C",
+          "text": "8-1"
+        },
+        {
+          "label": "D",
+          "text": "9-3"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "3加4等于7，2加5等于7，8减1等于7。9减3等于6，不等于7。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "加减法",
+        "10以内运算",
+        "计算"
+      ],
+      "id": 12
+    },
+    {
+      "content": "小明去商店，下面哪些东西他10元能买到？",
+      "options": [
+        {
+          "label": "A",
+          "text": "笔记本8元"
+        },
+        {
+          "label": "B",
+          "text": "彩笔12元"
+        },
+        {
+          "label": "C",
+          "text": "铅笔盒9元"
+        },
+        {
+          "label": "D",
+          "text": "书包25元"
+        }
+      ],
+      "correct_answer": "AC",
+      "explanation": "10元能买到价格小于或等于10元的物品。笔记本8元和铅笔盒9元都不超过10元，彩笔12元和书包25元都超过了10元。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "货币",
+        "比较大小",
+        "生活应用"
+      ],
+      "id": 13
+    },
+    {
+      "content": "4加3等于____。",
+      "options": [],
+      "correct_answer": "7",
+      "explanation": "4加3就是把4和3合起来，数一数：4、5、6、7，所以4加3等于7。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "加法",
+        "10以内加法"
+      ],
+      "id": 14
+    },
+    {
+      "content": "9减4等于____。",
+      "options": [],
+      "correct_answer": "5",
+      "explanation": "9减4就是从9里面去掉4个，9、8、7、6、5，所以9减4等于5。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "减法",
+        "10以内减法"
+      ],
+      "id": 15
+    },
+    {
+      "content": "一个正方形有____条边。",
+      "options": [],
+      "correct_answer": "4",
+      "explanation": "正方形是由4条一样长的边组成的图形，它有4条边和4个角。这是正方形的基本特征。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "几何图形",
+        "正方形",
+        "图形特征"
+      ],
+      "id": 16
+    },
+    {
+      "content": "一支铅笔2元，买5支需要____元。",
+      "options": [],
+      "correct_answer": "10",
+      "explanation": "一支铅笔2元，买5支就是5个2元相加：2加2加2加2加2等于10元。也可以理解为5乘2等于10。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "乘法",
+        "货币",
+        "连加"
+      ],
+      "id": 17
+    },
+    {
+      "content": "时钟短针指向6，长针指向12，是____点。",
+      "options": [],
+      "correct_answer": "6",
+      "explanation": "时钟的短针是时针，指向几就是几点。长针指向12表示整点。短针指向6就是6点整。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "时间",
+        "整点",
+        "时钟认知"
+      ],
+      "id": 18
+    },
+    {
+      "content": "5加4等于9，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "5加4等于9是正确的。可以用数数验证：5后面数4个是6、7、8、9。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "加法",
+        "判断正误"
+      ],
+      "id": 19
+    },
+    {
+      "content": "圆形有4条边，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "圆形没有直的边，它是由一条曲线围成的。有4条边的是正方形或长方形。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "几何图形",
+        "圆形",
+        "图形特征"
+      ],
+      "id": 20
+    },
+    {
+      "content": "10元比8元多，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "10比8大，所以10元比8元多。数数时10在8的后面，后面的数比前面的数大。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "货币",
+        "比较大小",
+        "数的大小"
+      ],
+      "id": 21
+    },
+    {
+      "content": "小华有5颗糖，小丽有4颗糖，他们一共有几颗糖？",
+      "options": [],
+      "correct_answer": "9颗",
+      "explanation": "小华有5颗糖，小丽有4颗糖，求一共多少用加法：5加4等于9颗。答：他们一共有9颗糖。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "加法",
+        "应用题",
+        "10以内加法"
+      ],
+      "id": 22
+    },
+    {
+      "content": "妈妈买了10个鸡蛋，早上用了3个，还剩几个？",
+      "options": [],
+      "correct_answer": "7个",
+      "explanation": "妈妈买了10个鸡蛋，用了3个，求剩余用减法：10减3等于7个。答：还剩7个鸡蛋。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "一年级",
+      "tags": [
+        "减法",
+        "应用题",
+        "10以内减法"
+      ],
+      "id": 23
+    },
+    {
+      "content": "一辆公交车上有12人，到站后下去5人，又上来3人，现在车上有几人？",
+      "options": [
+        {
+          "label": "A",
+          "text": "9人"
+        },
+        {
+          "label": "B",
+          "text": "10人"
+        },
+        {
+          "label": "C",
+          "text": "11人"
+        },
+        {
+          "label": "D",
+          "text": "12人"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "先算下去5人后剩下：12减5等于7人。再算上来3人后：7加3等于10人。所以车上有10人。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "加减混合",
+        "应用题",
+        "20以内运算"
+      ],
+      "id": 24
+    },
+    {
+      "content": "每个小朋友分4块饼干，6个小朋友一共需要几块饼干？",
+      "options": [
+        {
+          "label": "A",
+          "text": "20块"
+        },
+        {
+          "label": "B",
+          "text": "22块"
+        },
+        {
+          "label": "C",
+          "text": "24块"
+        },
+        {
+          "label": "D",
+          "text": "26块"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "6个小朋友，每人4块，就是6个4相加：4加4加4加4加4加4等于24块。也可以用乘法口诀：四六二十四。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "表内乘法",
+        "应用题"
+      ],
+      "id": 25
+    },
+    {
+      "content": "现在是9点半，再过半小时是几点？",
+      "options": [
+        {
+          "label": "A",
+          "text": "9点"
+        },
+        {
+          "label": "B",
+          "text": "10点"
+        },
+        {
+          "label": "C",
+          "text": "10点半"
+        },
+        {
+          "label": "D",
+          "text": "11点"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "9点半再过半小时，半时加半时等于1小时。9时加1时等于10时，所以是10点整。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "时间",
+        "半点",
+        "时间推算"
+      ],
+      "id": 26
+    },
+    {
+      "content": "下面哪个是轴对称图形？",
+      "options": [
+        {
+          "label": "A",
+          "text": "平行四边形"
+        },
+        {
+          "label": "B",
+          "text": "等腰三角形"
+        },
+        {
+          "label": "C",
+          "text": "一般梯形"
+        },
+        {
+          "label": "D",
+          "text": "任意三角形"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "等腰三角形沿着中间对折，两边能完全重合，是轴对称图形。平行四边形和一般梯形对折后不能重合。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "轴对称",
+        "三角形"
+      ],
+      "id": 27
+    },
+    {
+      "content": "小明有20元钱，买了一本故事书8元，还剩多少钱？",
+      "options": [
+        {
+          "label": "A",
+          "text": "10元"
+        },
+        {
+          "label": "B",
+          "text": "11元"
+        },
+        {
+          "label": "C",
+          "text": "12元"
+        },
+        {
+          "label": "D",
+          "text": "13元"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "小明有20元，买书花了8元，求剩余用减法：20减8等于12元。所以还剩12元。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "减法",
+        "货币",
+        "应用题"
+      ],
+      "id": 28
+    },
+    {
+      "content": "把12个苹果平均分给3个小朋友，每人分几个？",
+      "options": [
+        {
+          "label": "A",
+          "text": "3个"
+        },
+        {
+          "label": "B",
+          "text": "4个"
+        },
+        {
+          "label": "C",
+          "text": "5个"
+        },
+        {
+          "label": "D",
+          "text": "6个"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "把12个苹果平均分给3人，用除法：12除以3等于4。也可以用乘法口诀：三四十二。每人分4个。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "表内除法",
+        "平均分"
+      ],
+      "id": 29
+    },
+    {
+      "content": "一支铅笔2元，小明有15元，最多能买几支铅笔？",
+      "options": [
+        {
+          "label": "A",
+          "text": "6支"
+        },
+        {
+          "label": "B",
+          "text": "7支"
+        },
+        {
+          "label": "C",
+          "text": "8支"
+        },
+        {
+          "label": "D",
+          "text": "9支"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "每支铅笔2元，15元可以买：2乘7等于14元，还剩1元不够再买1支。所以最多买7支。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "货币",
+        "余数应用"
+      ],
+      "id": 30
+    },
+    {
+      "content": "一个长方形长5厘米，宽3厘米，它的周长是多少厘米？",
+      "options": [
+        {
+          "label": "A",
+          "text": "8厘米"
+        },
+        {
+          "label": "B",
+          "text": "15厘米"
+        },
+        {
+          "label": "C",
+          "text": "16厘米"
+        },
+        {
+          "label": "D",
+          "text": "20厘米"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "长方形周长等于长加宽的和乘2。5加3等于8，8乘2等于16厘米。所以周长是16厘米。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "长方形",
+        "周长"
+      ],
+      "id": 31
+    },
+    {
+      "content": "2乘6等于多少？",
+      "options": [
+        {
+          "label": "A",
+          "text": "10"
+        },
+        {
+          "label": "B",
+          "text": "11"
+        },
+        {
+          "label": "C",
+          "text": "12"
+        },
+        {
+          "label": "D",
+          "text": "14"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "2乘6表示2个6相加或6个2相加。用乘法口诀：二六十二。所以2乘6等于12。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "表内乘法",
+        "乘法口诀"
+      ],
+      "id": 32
+    },
+    {
+      "content": "18除以3等于多少？",
+      "options": [
+        {
+          "label": "A",
+          "text": "5"
+        },
+        {
+          "label": "B",
+          "text": "6"
+        },
+        {
+          "label": "C",
+          "text": "7"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "18除以3就是把18平均分成3份。用乘法口诀：三六十八，所以18除以3等于6。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "表内除法",
+        "乘法口诀"
+      ],
+      "id": 33
+    },
+    {
+      "content": "下面哪些算式的结果是双数？",
+      "options": [
+        {
+          "label": "A",
+          "text": "2+4"
+        },
+        {
+          "label": "B",
+          "text": "3+5"
+        },
+        {
+          "label": "C",
+          "text": "6+1"
+        },
+        {
+          "label": "D",
+          "text": "7+3"
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "2加4等于6是双数，3加5等于8是双数，6加1等于7是单数，7加3等于10是双数。所以结果是双数的有A、B、D。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "加法",
+        "单双数",
+        "奇偶性"
+      ],
+      "id": 34
+    },
+    {
+      "content": "下面哪些图形有4个直角？",
+      "options": [
+        {
+          "label": "A",
+          "text": "正方形"
+        },
+        {
+          "label": "B",
+          "text": "长方形"
+        },
+        {
+          "label": "C",
+          "text": "三角形"
+        },
+        {
+          "label": "D",
+          "text": "平行四边形"
+        }
+      ],
+      "correct_answer": "AB",
+      "explanation": "正方形和长方形都有4个直角。三角形只有3个角，平行四边形不一定有直角。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "直角",
+        "图形特征"
+      ],
+      "id": 35
+    },
+    {
+      "content": "小明有30元，下面哪两样东西他能一起买？",
+      "options": [
+        {
+          "label": "A",
+          "text": "玩具车18元"
+        },
+        {
+          "label": "B",
+          "text": "皮球12元"
+        },
+        {
+          "label": "C",
+          "text": "积木25元"
+        },
+        {
+          "label": "D",
+          "text": "画板15元"
+        }
+      ],
+      "correct_answer": "BD",
+      "explanation": "两件总价不能超过30元。皮球12元加画板15元等于27元，可以买到。其他组合都超过30元。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "货币",
+        "加法",
+        "比较大小"
+      ],
+      "id": 36
+    },
+    {
+      "content": "下面哪些是4的乘法口诀？",
+      "options": [
+        {
+          "label": "A",
+          "text": "三四十二"
+        },
+        {
+          "label": "B",
+          "text": "四四十六"
+        },
+        {
+          "label": "C",
+          "text": "四五二十"
+        },
+        {
+          "label": "D",
+          "text": "四六二十四"
+        }
+      ],
+      "correct_answer": "BCD",
+      "explanation": "四的乘法口诀包括：一四得四、二四得八、三四十二、四四十六、四五二十、六六三十六等。这里B、C、D明确是4的口诀。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "乘法口诀",
+        "表内乘法"
+      ],
+      "id": 37
+    },
+    {
+      "content": "3乘5等于____。",
+      "options": [],
+      "correct_answer": "15",
+      "explanation": "3乘5表示3个5相加：5加5加5等于15。用乘法口诀：三五十五。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "表内乘法",
+        "乘法口诀"
+      ],
+      "id": 38
+    },
+    {
+      "content": "24除以4等于____。",
+      "options": [],
+      "correct_answer": "6",
+      "explanation": "24除以4就是把24平均分成4份。想乘法口诀：四六二十四，所以24除以4等于6。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "表内除法",
+        "乘法口诀"
+      ],
+      "id": 39
+    },
+    {
+      "content": "一个钟面上，短针走一圈是____小时。",
+      "options": [],
+      "correct_answer": "12",
+      "explanation": "钟面上的短针是时针，时针走一圈经过了12个大格，代表12小时。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "时间",
+        "时钟",
+        "时间单位"
+      ],
+      "id": 40
+    },
+    {
+      "content": "一个正方形边长是4厘米，它的周长是____厘米。",
+      "options": [],
+      "correct_answer": "16",
+      "explanation": "正方形周长等于边长乘4。4乘4等于16，所以周长是16厘米。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "正方形",
+        "周长"
+      ],
+      "id": 41
+    },
+    {
+      "content": "小芳有50元，买了一件文具花了28元，还剩____元。",
+      "options": [],
+      "correct_answer": "22",
+      "explanation": "小芳有50元，花了28元，求剩余用减法：50减28等于22元。答：还剩22元。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "减法",
+        "货币",
+        "应用题"
+      ],
+      "id": 42
+    },
+    {
+      "content": "5乘7等于35，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "根据乘法口诀五七三十五，可以知道5乘7等于35。这个口诀是表内乘法的基础知识，答案是正确的。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "乘法口诀",
+        "判断正误"
+      ],
+      "id": 43
+    },
+    {
+      "content": "长方形和正方形都有4条边，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "长方形和正方形都是四边形，都有4条边和4个角。这是它们共同的特点。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "长方形",
+        "正方形"
+      ],
+      "id": 44
+    },
+    {
+      "content": "18除以3等于5，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "18除以3等于6，不是5。因为3乘6等于18，所以18除以3等于6。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "表内除法",
+        "判断正误"
+      ],
+      "id": 45
+    },
+    {
+      "content": "学校买了36本故事书，平均分给6个班，每个班分到几本？",
+      "options": [],
+      "correct_answer": "6本",
+      "explanation": "36本故事书平均分给6个班，用除法：36除以6等于6本。乘法口诀：六六三十六。答：每个班分到6本。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "应用题",
+        "平均分"
+      ],
+      "id": 46
+    },
+    {
+      "content": "小丽上午8点半开始画画，画了1小时，她几点画完？",
+      "options": [],
+      "correct_answer": "9点半",
+      "explanation": "8点半过1小时，就是8时30分加1时等于9时30分，也就是9点半。答：她9点半画完。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "时间",
+        "时间推算",
+        "半点"
+      ],
+      "id": 47
+    },
+    {
+      "content": "一根绳子长45米，第一次用去18米，第二次用去12米，还剩多少米？",
+      "options": [
+        {
+          "label": "A",
+          "text": "13米"
+        },
+        {
+          "label": "B",
+          "text": "15米"
+        },
+        {
+          "label": "C",
+          "text": "17米"
+        },
+        {
+          "label": "D",
+          "text": "20米"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "先算两次一共用去：18加12等于30米。再算剩余：45减30等于15米。所以还剩15米。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "加减混合",
+        "应用题",
+        "连减"
+      ],
+      "id": 48
+    },
+    {
+      "content": "一盒彩笔有8支，买7盒一共有多少支彩笔？",
+      "options": [
+        {
+          "label": "A",
+          "text": "54支"
+        },
+        {
+          "label": "B",
+          "text": "56支"
+        },
+        {
+          "label": "C",
+          "text": "58支"
+        },
+        {
+          "label": "D",
+          "text": "60支"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "7盒，每盒8支，就是7个8相加。用乘法口诀：七八五十六。所以一共有56支彩笔。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "表内乘法",
+        "应用题"
+      ],
+      "id": 49
+    },
+    {
+      "content": "有63颗糖，每9颗装一袋，可以装几袋？",
+      "options": [
+        {
+          "label": "A",
+          "text": "6袋"
+        },
+        {
+          "label": "B",
+          "text": "7袋"
+        },
+        {
+          "label": "C",
+          "text": "8袋"
+        },
+        {
+          "label": "D",
+          "text": "9袋"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "63颗糖，每9颗一袋，就是求63里面有几个9。用除法：63除以9等于7。口诀：七九六十三。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "表内除法",
+        "包含除"
+      ],
+      "id": 50
+    },
+    {
+      "content": "现在是下午2点半，3小时前是几点？",
+      "options": [
+        {
+          "label": "A",
+          "text": "10点半"
+        },
+        {
+          "label": "B",
+          "text": "11点半"
+        },
+        {
+          "label": "C",
+          "text": "12点半"
+        },
+        {
+          "label": "D",
+          "text": "1点半"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "下午2点半往前推3小时：2时30分减3时。先从2时减到11时30分上午，所以3小时前是上午11点半。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "时间",
+        "时间推算",
+        "半点"
+      ],
+      "id": 51
+    },
+    {
+      "content": "一个三角形三条边分别是3厘米、4厘米、5厘米，周长是多少厘米？",
+      "options": [
+        {
+          "label": "A",
+          "text": "10厘米"
+        },
+        {
+          "label": "B",
+          "text": "11厘米"
+        },
+        {
+          "label": "C",
+          "text": "12厘米"
+        },
+        {
+          "label": "D",
+          "text": "13厘米"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "三角形周长等于三条边相加。3加4加5等于12厘米。所以周长是12厘米。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "三角形",
+        "周长"
+      ],
+      "id": 52
+    },
+    {
+      "content": "小明有5张10元和3张5元，他一共有多少钱？",
+      "options": [
+        {
+          "label": "A",
+          "text": "60元"
+        },
+        {
+          "label": "B",
+          "text": "65元"
+        },
+        {
+          "label": "C",
+          "text": "70元"
+        },
+        {
+          "label": "D",
+          "text": "75元"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "5张10元是50元，3张5元是15元。50加15等于65元。所以小明一共有65元。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "货币",
+        "混合运算",
+        "应用题"
+      ],
+      "id": 53
+    },
+    {
+      "content": "8个同学站成一排，每两个同学之间放一盆花，一共要放几盆花？",
+      "options": [
+        {
+          "label": "A",
+          "text": "6盆"
+        },
+        {
+          "label": "B",
+          "text": "7盆"
+        },
+        {
+          "label": "C",
+          "text": "8盆"
+        },
+        {
+          "label": "D",
+          "text": "9盆"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "8个同学之间有间隔数：8减1等于7个间隔。每个间隔放一盆花，所以一共放7盆花。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "间隔问题",
+        "减法",
+        "应用题"
+      ],
+      "id": 54
+    },
+    {
+      "content": "一个数是9的3倍，这个数是多少？",
+      "options": [
+        {
+          "label": "A",
+          "text": "24"
+        },
+        {
+          "label": "B",
+          "text": "27"
+        },
+        {
+          "label": "C",
+          "text": "30"
+        },
+        {
+          "label": "D",
+          "text": "36"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "求9的3倍就是3个9相加：9加9加9等于27。或者用乘法：9乘3等于27。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "倍数",
+        "应用题"
+      ],
+      "id": 55
+    },
+    {
+      "content": "48除以6等于多少？",
+      "options": [
+        {
+          "label": "A",
+          "text": "6"
+        },
+        {
+          "label": "B",
+          "text": "7"
+        },
+        {
+          "label": "C",
+          "text": "8"
+        },
+        {
+          "label": "D",
+          "text": "9"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "48除以6就是想6乘几等于48。乘法口诀：六八四十八，所以48除以6等于8。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "表内除法",
+        "乘法口诀"
+      ],
+      "id": 56
+    },
+    {
+      "content": "下面哪些算式的结果大于30？",
+      "options": [
+        {
+          "label": "A",
+          "text": "5×7"
+        },
+        {
+          "label": "B",
+          "text": "4×8"
+        },
+        {
+          "label": "C",
+          "text": "6×6"
+        },
+        {
+          "label": "D",
+          "text": "3×9"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "5乘7等于35大于30，4乘8等于32大于30，6乘6等于36大于30，3乘9等于27小于30。结果大于30的有A、B、C。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "比较大小",
+        "表内乘法"
+      ],
+      "id": 57
+    },
+    {
+      "content": "下面哪些图形是四边形？",
+      "options": [
+        {
+          "label": "A",
+          "text": "正方形"
+        },
+        {
+          "label": "B",
+          "text": "长方形"
+        },
+        {
+          "label": "C",
+          "text": "三角形"
+        },
+        {
+          "label": "D",
+          "text": "平行四边形"
+        }
+      ],
+      "correct_answer": "ABD",
+      "explanation": "四边形是由4条边组成的图形。正方形、长方形、平行四边形都有4条边，都是四边形。三角形只有3条边。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "四边形",
+        "图形分类"
+      ],
+      "id": 58
+    },
+    {
+      "content": "小明买了3件商品，价格分别是12元、15元、8元，下面哪些说法正确？",
+      "options": [
+        {
+          "label": "A",
+          "text": "一共35元"
+        },
+        {
+          "label": "B",
+          "text": "12元比15元便宜"
+        },
+        {
+          "label": "C",
+          "text": "8元是最便宜的"
+        },
+        {
+          "label": "D",
+          "text": "15元比8元贵7元"
+        }
+      ],
+      "correct_answer": "ABCD",
+      "explanation": "总价12加15加8等于35元，A正确。12元比15元少，B正确。8元是三个价格中最小的，C正确。15减8等于7元，D正确。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "加法",
+        "减法",
+        "货币",
+        "比较大小"
+      ],
+      "id": 59
+    },
+    {
+      "content": "下面哪些数是8的倍数？",
+      "options": [
+        {
+          "label": "A",
+          "text": "16"
+        },
+        {
+          "label": "B",
+          "text": "24"
+        },
+        {
+          "label": "C",
+          "text": "32"
+        },
+        {
+          "label": "D",
+          "text": "36"
+        }
+      ],
+      "correct_answer": "ABC",
+      "explanation": "8乘2等于16，8乘3等于24，8乘4等于32。所以16、24、32都是8的倍数。36不是8的倍数。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "倍数",
+        "表内乘法"
+      ],
+      "id": 60
+    },
+    {
+      "content": "7乘8等于____。",
+      "options": [],
+      "correct_answer": "56",
+      "explanation": "7乘8可以用乘法口诀：七八五十六。也可以想成7个8相加：8加8加8加8加8加8加8等于56。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "表内乘法",
+        "乘法口诀"
+      ],
+      "id": 61
+    },
+    {
+      "content": "72除以9等于____。",
+      "options": [],
+      "correct_answer": "8",
+      "explanation": "72除以9就是想9乘几等于72。乘法口诀：八九七十二，所以72除以9等于8。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "表内除法",
+        "乘法口诀"
+      ],
+      "id": 62
+    },
+    {
+      "content": "一个长方形长8厘米，宽5厘米，周长是____厘米。",
+      "options": [],
+      "correct_answer": "26",
+      "explanation": "长方形周长等于长加宽的和乘2。8加5等于13，13乘2等于26厘米。所以周长是26厘米。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "长方形",
+        "周长"
+      ],
+      "id": 63
+    },
+    {
+      "content": "现在是上午10点，再过____小时是下午2点。",
+      "options": [],
+      "correct_answer": "4",
+      "explanation": "上午10点到中午12点是2小时，中午12点到下午2点是2小时。一共2加2等于4小时。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "时间",
+        "时间推算",
+        "整点"
+      ],
+      "id": 64
+    },
+    {
+      "content": "买5支钢笔，每支6元，一共需要____元。",
+      "options": [],
+      "correct_answer": "30",
+      "explanation": "每支钢笔6元，买5支就是5个6元。用乘法：5乘6等于30元。口诀：五六三十。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "货币",
+        "应用题"
+      ],
+      "id": 65
+    },
+    {
+      "content": "9乘9等于81，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "根据乘法口诀九九八十一，我们可以得出9乘9等于81。这是表内乘法中最大的口诀，答案是正确的。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "乘法口诀",
+        "判断正误"
+      ],
+      "id": 66
+    },
+    {
+      "content": "正方形的4条边一样长，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "正方形的特点是4条边都相等，4个角都是直角。所以正方形的4条边一样长是对的。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "几何图形",
+        "正方形",
+        "图形特征"
+      ],
+      "id": 67
+    },
+    {
+      "content": "35除以5等于6，对吗？",
+      "options": [
+        {
+          "label": "A",
+          "text": "对"
+        },
+        {
+          "label": "B",
+          "text": "错"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "35除以5等于7，不是6。因为5乘7等于35，所以35除以5等于7。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "除法",
+        "表内除法",
+        "判断正误"
+      ],
+      "id": 68
+    },
+    {
+      "content": "果园里有8棵苹果树，每棵树上有7个苹果，一共有多少个苹果？",
+      "options": [],
+      "correct_answer": "56个",
+      "explanation": "8棵苹果树，每棵7个苹果，就是8个7相加。用乘法：8乘7等于56个。口诀：七八五十六。答：一共有56个苹果。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "应用题",
+        "表内乘法"
+      ],
+      "id": 69
+    },
+    {
+      "content": "爸爸买了3千克香蕉，每千克8元，一共花了多少钱？",
+      "options": [],
+      "correct_answer": "24元",
+      "explanation": "每千克香蕉8元，买了3千克，就是3个8元。用乘法：3乘8等于24元。口诀：三八二十四。答：一共花了24元。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "math",
+      "age_group": "6-8",
+      "grade": "二年级",
+      "tags": [
+        "乘法",
+        "货币",
+        "应用题"
+      ],
+      "id": 70
+    }
+  ]
+}

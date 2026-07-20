@@ -1,0 +1,2104 @@
+{
+  "batch_id": "english_6-8_complete",
+  "source": "ai_generated",
+  "total_generated": 70,
+  "passed_count": 69,
+  "failed_count": 1,
+  "questions": [
+    {
+      "id": "8777e8db-9ce5-4201-be5e-135f73b58fdd",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What letter comes after A?",
+      "options": [
+        {
+          "key": "A",
+          "text": "B"
+        },
+        {
+          "key": "B",
+          "text": "C"
+        },
+        {
+          "key": "C",
+          "text": "D"
+        },
+        {
+          "key": "D",
+          "text": "E"
+        }
+      ],
+      "correct_answer": "A",
+      "explanation": "The letter after A is B.",
+      "knowledge_tags": [
+        "alphabet",
+        "letter_sequence"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 1
+    },
+    {
+      "id": "95ff0aad-700b-4b68-81ac-16f7e26950e5",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which word starts with letter C?",
+      "options": [
+        {
+          "key": "A",
+          "text": "apple"
+        },
+        {
+          "key": "B",
+          "text": "banana"
+        },
+        {
+          "key": "C",
+          "text": "cat"
+        },
+        {
+          "key": "D",
+          "text": "dog"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Cat starts with the letter C.",
+      "knowledge_tags": [
+        "alphabet",
+        "initial_sound"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 2
+    },
+    {
+      "id": "c9e3f3c7-6d4f-4196-9ffa-ee7d7c9d3299",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What color is the sky?",
+      "options": [
+        {
+          "key": "A",
+          "text": "red"
+        },
+        {
+          "key": "B",
+          "text": "blue"
+        },
+        {
+          "key": "C",
+          "text": "green"
+        },
+        {
+          "key": "D",
+          "text": "yellow"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "The sky is blue.",
+      "knowledge_tags": [
+        "colors",
+        "daily_life"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 3
+    },
+    {
+      "id": "1ed27c36-d601-41a7-839b-233c5a070e7c",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "How many fingers do you have?",
+      "options": [
+        {
+          "key": "A",
+          "text": "five"
+        },
+        {
+          "key": "B",
+          "text": "eight"
+        },
+        {
+          "key": "C",
+          "text": "ten"
+        },
+        {
+          "key": "D",
+          "text": "twelve"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "You have ten fingers on two hands.",
+      "knowledge_tags": [
+        "numbers",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 4
+    },
+    {
+      "id": "2c2a100e-a8b0-4714-adaf-dd9a78eef0bb",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which animal says moo?",
+      "options": [
+        {
+          "key": "A",
+          "text": "dog"
+        },
+        {
+          "key": "B",
+          "text": "cat"
+        },
+        {
+          "key": "C",
+          "text": "cow"
+        },
+        {
+          "key": "D",
+          "text": "duck"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "A cow says moo.",
+      "knowledge_tags": [
+        "animals",
+        "animal_sounds"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 5
+    },
+    {
+      "id": "dec46b7d-665a-4f3f-a493-856f798095ac",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What letter does DOG start with?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A"
+        },
+        {
+          "key": "B",
+          "text": "B"
+        },
+        {
+          "key": "C",
+          "text": "C"
+        },
+        {
+          "key": "D",
+          "text": "D"
+        }
+      ],
+      "correct_answer": "D",
+      "explanation": "Dog starts with letter D.",
+      "knowledge_tags": [
+        "alphabet",
+        "initial_sound"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 6
+    },
+    {
+      "id": "698f1aad-9bc4-420d-acfb-b46cb47bac44",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Which color is a banana?",
+      "options": [
+        {
+          "key": "A",
+          "text": "red"
+        },
+        {
+          "key": "B",
+          "text": "blue"
+        },
+        {
+          "key": "C",
+          "text": "yellow"
+        },
+        {
+          "key": "D",
+          "text": "purple"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Bananas are yellow.",
+      "knowledge_tags": [
+        "colors",
+        "fruits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 7
+    },
+    {
+      "id": "0cf5bab5-6747-4b7f-a218-5c6ef861bab3",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "What comes after number 3?",
+      "options": [
+        {
+          "key": "A",
+          "text": "two"
+        },
+        {
+          "key": "B",
+          "text": "four"
+        },
+        {
+          "key": "C",
+          "text": "five"
+        },
+        {
+          "key": "D",
+          "text": "six"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "The number after 3 is 4.",
+      "knowledge_tags": [
+        "numbers",
+        "number_sequence"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 8
+    },
+    {
+      "id": "b728777d-e81a-4168-8dc9-c3ef1e721b43",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "single_choice",
+      "question_body": "Who is your mother's mother?",
+      "options": [
+        {
+          "key": "A",
+          "text": "mother"
+        },
+        {
+          "key": "B",
+          "text": "grandma"
+        },
+        {
+          "key": "C",
+          "text": "sister"
+        },
+        {
+          "key": "D",
+          "text": "aunt"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Your mother's mother is your grandma.",
+      "knowledge_tags": [
+        "family_members",
+        "relationships"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 9
+    },
+    {
+      "id": "93ae3d53-f0e5-4b26-8d2a-82d0804293ed",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which letters are vowels?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A"
+        },
+        {
+          "key": "B",
+          "text": "B"
+        },
+        {
+          "key": "C",
+          "text": "E"
+        },
+        {
+          "key": "D",
+          "text": "F"
+        }
+      ],
+      "correct_answer": "A,C",
+      "explanation": "A and E are vowels. B and F are consonants.",
+      "knowledge_tags": [
+        "alphabet",
+        "vowels"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 10
+    },
+    {
+      "id": "a1f4e463-279e-4295-9866-bb92439b4dad",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Select the primary colors.",
+      "options": [
+        {
+          "key": "A",
+          "text": "red"
+        },
+        {
+          "key": "B",
+          "text": "blue"
+        },
+        {
+          "key": "C",
+          "text": "green"
+        },
+        {
+          "key": "D",
+          "text": "yellow"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Red, blue, and yellow are primary colors.",
+      "knowledge_tags": [
+        "colors",
+        "art_knowledge"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 11
+    },
+    {
+      "id": "01381195-5df5-40bf-97be-5b3e85b73eb9",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Which animals can swim?",
+      "options": [
+        {
+          "key": "A",
+          "text": "fish"
+        },
+        {
+          "key": "B",
+          "text": "bird"
+        },
+        {
+          "key": "C",
+          "text": "duck"
+        },
+        {
+          "key": "D",
+          "text": "dog"
+        }
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "Fish, ducks, and dogs can swim. Most birds fly instead.",
+      "knowledge_tags": [
+        "animals",
+        "animal_abilities"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 12
+    },
+    {
+      "id": "bf696ec9-7c22-4f81-bf37-77f0d8927b41",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "multiple_choice",
+      "question_body": "Pick the family members.",
+      "options": [
+        {
+          "key": "A",
+          "text": "father"
+        },
+        {
+          "key": "B",
+          "text": "mother"
+        },
+        {
+          "key": "C",
+          "text": "teacher"
+        },
+        {
+          "key": "D",
+          "text": "sister"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Father, mother, and sister are family members. Teacher is not.",
+      "knowledge_tags": [
+        "family_members",
+        "social_roles"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 13
+    },
+    {
+      "id": "d1e77c3a-331b-443f-8cfb-d3635488b640",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "The sky is ____.",
+      "options": null,
+      "correct_answer": "blue",
+      "explanation": "The sky is blue.",
+      "knowledge_tags": [
+        "colors",
+        "daily_life"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 14
+    },
+    {
+      "id": "6fe9f685-df31-46d8-9982-ebf46dc360e6",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "A ____ says meow.",
+      "options": null,
+      "correct_answer": "cat",
+      "explanation": "A cat says meow.",
+      "knowledge_tags": [
+        "animals",
+        "animal_sounds"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 15
+    },
+    {
+      "id": "4ffdd019-b378-4d3c-b035-6994beae4427",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "I have ____ eyes.",
+      "options": null,
+      "correct_answer": "two",
+      "explanation": "You have two eyes.",
+      "knowledge_tags": [
+        "numbers",
+        "body_parts"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 16
+    },
+    {
+      "id": "a08a4137-e425-440b-bece-8af6d4e1bff1",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "B comes after ____.",
+      "options": null,
+      "correct_answer": "A",
+      "explanation": "B comes after A in the alphabet.",
+      "knowledge_tags": [
+        "alphabet",
+        "letter_sequence"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 17
+    },
+    {
+      "id": "c077c417-a22f-4c77-a6c6-4efc94be0e43",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "fill_blank",
+      "question_body": "My father's father is my ____.",
+      "options": null,
+      "correct_answer": "grandpa",
+      "explanation": "Your father's father is your grandpa.",
+      "knowledge_tags": [
+        "family_members",
+        "relationships"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 18
+    },
+    {
+      "id": "53fe1e54-4383-45cb-a30a-31386fa8224c",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Dogs can fly.",
+      "options": null,
+      "correct_answer": "false",
+      "explanation": "Dogs cannot fly. Birds can fly.",
+      "knowledge_tags": [
+        "animals",
+        "animal_abilities"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 19
+    },
+    {
+      "id": "a8dc8911-2e8b-49a6-8328-52fe3f2474ae",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "Apples are red.",
+      "options": null,
+      "correct_answer": "true",
+      "explanation": "Many apples are red.",
+      "knowledge_tags": [
+        "colors",
+        "fruits"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 20
+    },
+    {
+      "id": "119cf23f-8bf4-4adc-9054-0de0af837514",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "true_false",
+      "question_body": "The letter K comes before J.",
+      "options": null,
+      "correct_answer": "false",
+      "explanation": "J comes before K in the alphabet.",
+      "knowledge_tags": [
+        "alphabet",
+        "letter_sequence"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 21
+    },
+    {
+      "id": "cbdc60dd-0412-4652-aee6-236a50aceab4",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "What color is grass?",
+      "options": null,
+      "correct_answer": "green",
+      "explanation": "Grass is usually green.",
+      "knowledge_tags": [
+        "colors",
+        "nature"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 22
+    },
+    {
+      "id": "1d5a5552-c7cb-46f9-930c-b6f248fd4101",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "beginner",
+      "question_type": "short_answer",
+      "question_body": "How many days are in a week?",
+      "options": null,
+      "correct_answer": "seven",
+      "explanation": "There are seven days in a week.",
+      "knowledge_tags": [
+        "numbers",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 23
+    },
+    {
+      "id": "31df356d-2599-42fe-b8ec-2b31348c881b",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which word has the vowel sound /ae/ like cat?",
+      "options": [
+        {
+          "key": "A",
+          "text": "cake"
+        },
+        {
+          "key": "B",
+          "text": "bed"
+        },
+        {
+          "key": "C",
+          "text": "bag"
+        },
+        {
+          "key": "D",
+          "text": "bike"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Bag has the short /ae/ sound like cat.",
+      "knowledge_tags": [
+        "phonics",
+        "vowel_sounds"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 24
+    },
+    {
+      "id": "5170ab28-7b04-4f12-a260-8087a98991b9",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What is 5 plus 3?",
+      "options": [
+        {
+          "key": "A",
+          "text": "six"
+        },
+        {
+          "key": "B",
+          "text": "seven"
+        },
+        {
+          "key": "C",
+          "text": "eight"
+        },
+        {
+          "key": "D",
+          "text": "nine"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "5 + 3 = 8.",
+      "knowledge_tags": [
+        "numbers",
+        "addition"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 25
+    },
+    {
+      "id": "53d430fa-d841-4f9a-9141-af69fe132c48",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which sentence is correct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I like apple."
+        },
+        {
+          "key": "B",
+          "text": "I likes apples."
+        },
+        {
+          "key": "C",
+          "text": "I like apples."
+        },
+        {
+          "key": "D",
+          "text": "Me like apples."
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Use 'I like apples' with correct subject and plural form.",
+      "knowledge_tags": [
+        "grammar",
+        "sentence_structure"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 26
+    },
+    {
+      "id": "8e6860a6-4170-4241-bf7d-cef86d9aee95",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What animal lays eggs and can fly?",
+      "options": [
+        {
+          "key": "A",
+          "text": "dog"
+        },
+        {
+          "key": "B",
+          "text": "bird"
+        },
+        {
+          "key": "C",
+          "text": "cow"
+        },
+        {
+          "key": "D",
+          "text": "fish"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Birds lay eggs and can fly.",
+      "knowledge_tags": [
+        "animals",
+        "animal_features"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 27
+    },
+    {
+      "id": "b6a2edc9-27b8-44e5-9bc9-a88066e4db07",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which word is spelled correctly?",
+      "options": [
+        {
+          "key": "A",
+          "text": "elefant"
+        },
+        {
+          "key": "B",
+          "text": "elphant"
+        },
+        {
+          "key": "C",
+          "text": "elephant"
+        },
+        {
+          "key": "D",
+          "text": "elephent"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "The correct spelling is elephant.",
+      "knowledge_tags": [
+        "spelling",
+        "vocabulary"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 28
+    },
+    {
+      "id": "4f96f450-2c01-4733-a48e-bd6ee3d40732",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What is ten minus four?",
+      "options": [
+        {
+          "key": "A",
+          "text": "four"
+        },
+        {
+          "key": "B",
+          "text": "five"
+        },
+        {
+          "key": "C",
+          "text": "six"
+        },
+        {
+          "key": "D",
+          "text": "seven"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "10 - 4 = 6.",
+      "knowledge_tags": [
+        "numbers",
+        "subtraction"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 29
+    },
+    {
+      "id": "ab8a70d8-bcca-44c3-91fb-a1ef30d55460",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which is a family member?",
+      "options": [
+        {
+          "key": "A",
+          "text": "doctor"
+        },
+        {
+          "key": "B",
+          "text": "brother"
+        },
+        {
+          "key": "C",
+          "text": "teacher"
+        },
+        {
+          "key": "D",
+          "text": "police"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Brother is a family member.",
+      "knowledge_tags": [
+        "family_members",
+        "social_roles"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 30
+    },
+    {
+      "id": "74ddc515-1cc7-40f6-8f29-59b3edaea4bf",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "What letter makes the sound /k/ in cat?",
+      "options": [
+        {
+          "key": "A",
+          "text": "a"
+        },
+        {
+          "key": "B",
+          "text": "t"
+        },
+        {
+          "key": "C",
+          "text": "c"
+        },
+        {
+          "key": "D",
+          "text": "all"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "The letter C makes the /k/ sound in cat.",
+      "knowledge_tags": [
+        "phonics",
+        "letter_sounds"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 31
+    },
+    {
+      "id": "42ec6d1b-57e2-4513-ab60-4da0aba41b45",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "Which color do you get from mixing red and blue?",
+      "options": [
+        {
+          "key": "A",
+          "text": "orange"
+        },
+        {
+          "key": "B",
+          "text": "green"
+        },
+        {
+          "key": "C",
+          "text": "purple"
+        },
+        {
+          "key": "D",
+          "text": "pink"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Red and blue make purple.",
+      "knowledge_tags": [
+        "colors",
+        "color_mixing"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 32
+    },
+    {
+      "id": "2d567d58-68da-477e-a714-39461cb56a6d",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "single_choice",
+      "question_body": "How many letters are in the word SCHOOL?",
+      "options": [
+        {
+          "key": "A",
+          "text": "five"
+        },
+        {
+          "key": "B",
+          "text": "six"
+        },
+        {
+          "key": "C",
+          "text": "seven"
+        },
+        {
+          "key": "D",
+          "text": "eight"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "S-C-H-O-O-L has six letters.",
+      "knowledge_tags": [
+        "spelling",
+        "letter_count"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 33
+    },
+    {
+      "id": "52149fe3-6399-4dc7-a2a1-e4674b821553",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which words rhyme with cat?",
+      "options": [
+        {
+          "key": "A",
+          "text": "hat"
+        },
+        {
+          "key": "B",
+          "text": "bat"
+        },
+        {
+          "key": "C",
+          "text": "dog"
+        },
+        {
+          "key": "D",
+          "text": "mat"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Hat, bat, and mat rhyme with cat. Dog does not.",
+      "knowledge_tags": [
+        "phonics",
+        "rhyming_words"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 34
+    },
+    {
+      "id": "67ba29b9-c079-487b-9971-aa753c12076f",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Select the fruits.",
+      "options": [
+        {
+          "key": "A",
+          "text": "apple"
+        },
+        {
+          "key": "B",
+          "text": "carrot"
+        },
+        {
+          "key": "C",
+          "text": "banana"
+        },
+        {
+          "key": "D",
+          "text": "orange"
+        }
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "Apple, banana, and orange are fruits. Carrot is a vegetable.",
+      "knowledge_tags": [
+        "fruits",
+        "food_categories"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 35
+    },
+    {
+      "id": "041be053-15c7-428d-8296-d1d2e0fb823b",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Which animals have four legs?",
+      "options": [
+        {
+          "key": "A",
+          "text": "cat"
+        },
+        {
+          "key": "B",
+          "text": "bird"
+        },
+        {
+          "key": "C",
+          "text": "dog"
+        },
+        {
+          "key": "D",
+          "text": "cow"
+        }
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "Cats, dogs, and cows have four legs. Birds have two legs.",
+      "knowledge_tags": [
+        "animals",
+        "animal_features"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 36
+    },
+    {
+      "id": "80511ca4-06f4-4418-b9f5-27ef1124f1d5",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "multiple_choice",
+      "question_body": "Pick the words starting with S.",
+      "options": [
+        {
+          "key": "A",
+          "text": "sun"
+        },
+        {
+          "key": "B",
+          "text": "star"
+        },
+        {
+          "key": "C",
+          "text": "snake"
+        },
+        {
+          "key": "D",
+          "text": "moon"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Sun, star, and snake start with S. Moon starts with M.",
+      "knowledge_tags": [
+        "alphabet",
+        "initial_sound"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 37
+    },
+    {
+      "id": "a686ece6-7780-46cf-8665-f1985d051861",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "I like to eat ____ for breakfast.",
+      "options": null,
+      "correct_answer": "bread",
+      "explanation": "Bread is a common breakfast food.",
+      "knowledge_tags": [
+        "food",
+        "daily_routine"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 38
+    },
+    {
+      "id": "e10ec0f8-334e-4663-ab1e-ec9940f55dca",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "A ____ has a long neck.",
+      "options": null,
+      "correct_answer": "giraffe",
+      "explanation": "A giraffe has a very long neck.",
+      "knowledge_tags": [
+        "animals",
+        "animal_features"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 39
+    },
+    {
+      "id": "3d1575e2-00d0-4949-be18-2226cb67a81d",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "There are ____ months in a year.",
+      "options": null,
+      "correct_answer": "twelve",
+      "explanation": "There are twelve months in a year.",
+      "knowledge_tags": [
+        "numbers",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 40
+    },
+    {
+      "id": "1c61c1fb-e095-4183-8469-c3cd33771135",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "The opposite of hot is ____.",
+      "options": null,
+      "correct_answer": "cold",
+      "explanation": "Cold is the opposite of hot.",
+      "knowledge_tags": [
+        "antonyms",
+        "temperature"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 41
+    },
+    {
+      "id": "ff0c4672-992d-407a-b7ea-5d61b123c6db",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "fill_blank",
+      "question_body": "This is my ____. She reads books.",
+      "options": null,
+      "correct_answer": "mother",
+      "explanation": "This is my mother. She reads books.",
+      "knowledge_tags": [
+        "family_members",
+        "sentence_pattern"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 42
+    },
+    {
+      "id": "0311dfc3-e520-42db-a039-235e9eeab811",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Fish can live in water.",
+      "options": null,
+      "correct_answer": "true",
+      "explanation": "Fish live in water.",
+      "knowledge_tags": [
+        "animals",
+        "animal_habitat"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 43
+    },
+    {
+      "id": "39e119e7-34f1-46e5-aa76-283cc5fd9522",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "The word book has four letters.",
+      "options": null,
+      "correct_answer": "true",
+      "explanation": "B-O-O-K has four letters.",
+      "knowledge_tags": [
+        "spelling",
+        "letter_count"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 44
+    },
+    {
+      "id": "b80d872a-cd43-45ac-8f1e-972b049d6224",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "true_false",
+      "question_body": "Elephants are small animals.",
+      "options": null,
+      "correct_answer": "false",
+      "explanation": "Elephants are very big animals.",
+      "knowledge_tags": [
+        "animals",
+        "animal_features"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 45
+    },
+    {
+      "id": "52b5fc3e-8acb-4b71-89f1-4e14f759b56e",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "What do you use to write on paper?",
+      "options": null,
+      "correct_answer": "pencil",
+      "explanation": "You use a pencil or pen to write on paper.",
+      "knowledge_tags": [
+        "school_supplies",
+        "daily_life"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 46
+    },
+    {
+      "id": "d474bcc0-210e-45f1-92ec-860104a09ff0",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "intermediate",
+      "question_type": "short_answer",
+      "question_body": "How many seasons are there in a year?",
+      "options": null,
+      "correct_answer": "four",
+      "explanation": "There are four seasons: spring, summer, autumn, and winter.",
+      "knowledge_tags": [
+        "nature",
+        "time"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 47
+    },
+    {
+      "id": "f91de1d1-743a-4eb2-90d2-799cb0484fee",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which sentence uses 'This is' correctly?",
+      "options": [
+        {
+          "key": "A",
+          "text": "This is a apples."
+        },
+        {
+          "key": "B",
+          "text": "This is my book."
+        },
+        {
+          "key": "C",
+          "text": "This is two cat."
+        },
+        {
+          "key": "D",
+          "text": "This is she dog."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Use 'This is my book' with correct singular form.",
+      "knowledge_tags": [
+        "grammar",
+        "sentence_pattern",
+        "this_is"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 48
+    },
+    {
+      "id": "8a49843c-f476-4cfd-9bd9-5412b19abb4a",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What is the plural of mouse?",
+      "options": [
+        {
+          "key": "A",
+          "text": "mouses"
+        },
+        {
+          "key": "B",
+          "text": "mice"
+        },
+        {
+          "key": "C",
+          "text": "mousees"
+        },
+        {
+          "key": "D",
+          "text": "mices"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "The plural of mouse is mice.",
+      "knowledge_tags": [
+        "grammar",
+        "plurals",
+        "irregular_nouns"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 49
+    },
+    {
+      "id": "95f0d939-f5a5-451b-994b-9864628af738",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which word has the long vowel sound?",
+      "options": [
+        {
+          "key": "A",
+          "text": "cat"
+        },
+        {
+          "key": "B",
+          "text": "bed"
+        },
+        {
+          "key": "C",
+          "text": "kite"
+        },
+        {
+          "key": "D",
+          "text": "dog"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Kite has the long /i/ sound.",
+      "knowledge_tags": [
+        "phonics",
+        "long_vowels"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 50
+    },
+    {
+      "id": "5eb1d123-faff-4efa-ba99-60e249c9f51b",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "If you have 7 cookies and eat 2, how many are left?",
+      "options": [
+        {
+          "key": "A",
+          "text": "four"
+        },
+        {
+          "key": "B",
+          "text": "five"
+        },
+        {
+          "key": "C",
+          "text": "six"
+        },
+        {
+          "key": "D",
+          "text": "nine"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "7 - 2 = 5 cookies left.",
+      "knowledge_tags": [
+        "numbers",
+        "subtraction",
+        "word_problems"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 51
+    },
+    {
+      "id": "769660de-246b-4fb1-8791-28a56f9e7bcb",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which sentence is polite?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Give me water."
+        },
+        {
+          "key": "B",
+          "text": "I want water."
+        },
+        {
+          "key": "C",
+          "text": "Can I have water?"
+        },
+        {
+          "key": "D",
+          "text": "Water now!"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "Use 'Can I have... please?' to be polite.",
+      "knowledge_tags": [
+        "social_skills",
+        "polite_language"
+      ],
+      "quality_status": "failed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 52
+    },
+    {
+      "id": "7780404a-2886-4a1b-8d1c-503a50c364cb",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What sound does 'sh' make in fish?",
+      "options": [
+        {
+          "key": "A",
+          "text": "/s/"
+        },
+        {
+          "key": "B",
+          "text": "/h/"
+        },
+        {
+          "key": "C",
+          "text": "/sh/"
+        },
+        {
+          "key": "D",
+          "text": "/k/"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "The letters 'sh' make the /sh/ sound.",
+      "knowledge_tags": [
+        "phonics",
+        "digraphs"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 53
+    },
+    {
+      "id": "0fbb2aee-250c-4a80-84f7-a68fbc4ca5da",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which is a question sentence?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I like dogs."
+        },
+        {
+          "key": "B",
+          "text": "Do you like dogs?"
+        },
+        {
+          "key": "C",
+          "text": "Dogs are cute."
+        },
+        {
+          "key": "D",
+          "text": "My dog is big."
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "'Do you like dogs?' is a question.",
+      "knowledge_tags": [
+        "grammar",
+        "sentence_types",
+        "questions"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 54
+    },
+    {
+      "id": "06de0c38-b8f9-4f64-bb43-4d508eebcda2",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "What is fifteen plus three?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sixteen"
+        },
+        {
+          "key": "B",
+          "text": "seventeen"
+        },
+        {
+          "key": "C",
+          "text": "eighteen"
+        },
+        {
+          "key": "D",
+          "text": "nineteen"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "15 + 3 = 18.",
+      "knowledge_tags": [
+        "numbers",
+        "addition"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 55
+    },
+    {
+      "id": "3af23bc1-7cdb-415d-97a2-26006d9d648c",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "single_choice",
+      "question_body": "Which word belongs to the cat family?",
+      "options": [
+        {
+          "key": "A",
+          "text": "dog"
+        },
+        {
+          "key": "B",
+          "text": "tiger"
+        },
+        {
+          "key": "C",
+          "text": "cow"
+        },
+        {
+          "key": "D",
+          "text": "duck"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "Tiger is a big cat.",
+      "knowledge_tags": [
+        "animals",
+        "animal_classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 56
+    },
+    {
+      "id": "74cfa6b7-e9b1-4adc-bc9d-1c9cf4993261",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which words start with the /th/ sound?",
+      "options": [
+        {
+          "key": "A",
+          "text": "this"
+        },
+        {
+          "key": "B",
+          "text": "that"
+        },
+        {
+          "key": "C",
+          "text": "three"
+        },
+        {
+          "key": "D",
+          "text": "fish"
+        }
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "This, that, and three start with /th/. Fish starts with /f/.",
+      "knowledge_tags": [
+        "phonics",
+        "digraphs"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 57
+    },
+    {
+      "id": "4ee7b8f0-95ec-4948-9731-27bfdf313451",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Select the things you find in a classroom.",
+      "options": [
+        {
+          "key": "A",
+          "text": "desk"
+        },
+        {
+          "key": "B",
+          "text": "blackboard"
+        },
+        {
+          "key": "C",
+          "text": "bed"
+        },
+        {
+          "key": "D",
+          "text": "chair"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Desks, blackboards, and chairs are in classrooms. Beds are in bedrooms.",
+      "knowledge_tags": [
+        "school",
+        "places"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 58
+    },
+    {
+      "id": "4c0ad6f5-deeb-4f3c-acff-ce7c8f0af9ab",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Which animals are mammals?",
+      "options": [
+        {
+          "key": "A",
+          "text": "cat"
+        },
+        {
+          "key": "B",
+          "text": "bird"
+        },
+        {
+          "key": "C",
+          "text": "dog"
+        },
+        {
+          "key": "D",
+          "text": "cow"
+        }
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "Cats, dogs, and cows are mammals. Birds are not mammals.",
+      "knowledge_tags": [
+        "animals",
+        "animal_classification"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 59
+    },
+    {
+      "id": "446363ae-aa0b-4751-aa9b-6ba021458173",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "multiple_choice",
+      "question_body": "Pick the words with long vowel sounds.",
+      "options": [
+        {
+          "key": "A",
+          "text": "cake"
+        },
+        {
+          "key": "B",
+          "text": "bike"
+        },
+        {
+          "key": "C",
+          "text": "pen"
+        },
+        {
+          "key": "D",
+          "text": "nose"
+        }
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Cake, bike, and nose have long vowel sounds. Pen has a short vowel sound.",
+      "knowledge_tags": [
+        "phonics",
+        "long_vowels"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 60
+    },
+    {
+      "id": "2c883f3b-26a5-4397-aa18-26e1292bbb72",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "This is ____ father. He is tall.",
+      "options": null,
+      "correct_answer": "my",
+      "explanation": "Use 'my' to show possession: This is my father.",
+      "knowledge_tags": [
+        "grammar",
+        "possessive_adjectives",
+        "sentence_pattern"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 61
+    },
+    {
+      "id": "5424d38b-3a31-48ea-8d2c-3a6c0f9df289",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "I like to ____ apples and bananas.",
+      "options": null,
+      "correct_answer": "eat",
+      "explanation": "You eat apples and bananas.",
+      "knowledge_tags": [
+        "verbs",
+        "food",
+        "sentence_pattern"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 62
+    },
+    {
+      "id": "a3beca90-188c-46c6-ad62-1db408a9f1c0",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "A frog can ____ and swim.",
+      "options": null,
+      "correct_answer": "jump",
+      "explanation": "Frogs can jump and swim.",
+      "knowledge_tags": [
+        "animals",
+        "verbs",
+        "animal_abilities"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 63
+    },
+    {
+      "id": "23262ba8-8ece-4b58-b5a9-4b5283f8c7f3",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "The baby of a dog is a ____.",
+      "options": null,
+      "correct_answer": "puppy",
+      "explanation": "A baby dog is called a puppy.",
+      "knowledge_tags": [
+        "animals",
+        "baby_animals"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 64
+    },
+    {
+      "id": "cd8353c9-db3d-43b3-8ba4-ce0bf6ded464",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "fill_blank",
+      "question_body": "My favorite color is ____ because it is pretty.",
+      "options": null,
+      "correct_answer": "pink",
+      "explanation": "Pink is a popular favorite color.",
+      "knowledge_tags": [
+        "colors",
+        "preferences",
+        "sentence_pattern"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 65
+    },
+    {
+      "id": "51e08f39-1e6d-450c-b53b-3981014a37f4",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "This is a pen means it is not my pen.",
+      "options": null,
+      "correct_answer": "false",
+      "explanation": "'This is a pen' simply identifies the object. It does not mean it is not mine.",
+      "knowledge_tags": [
+        "grammar",
+        "sentence_pattern",
+        "this_is"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 66
+    },
+    {
+      "id": "8ce2d1bc-a59e-4b6e-b4cb-6f131b34e125",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "I like dogs means I enjoy dogs.",
+      "options": null,
+      "correct_answer": "true",
+      "explanation": "'I like dogs' means you enjoy dogs.",
+      "knowledge_tags": [
+        "grammar",
+        "sentence_pattern",
+        "i_like"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 67
+    },
+    {
+      "id": "be0331ba-f0fb-40a8-b00b-d3049119d493",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "true_false",
+      "question_body": "The plural of child is childs.",
+      "options": null,
+      "correct_answer": "false",
+      "explanation": "The plural of child is children.",
+      "knowledge_tags": [
+        "grammar",
+        "plurals",
+        "irregular_nouns"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 68
+    },
+    {
+      "id": "d80337b7-ccc4-427a-a3db-2893c48ebae5",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "short_answer",
+      "question_body": "What does This is my mother mean?",
+      "options": null,
+      "correct_answer": "It means the woman is my mother.",
+      "explanation": "It identifies the woman as the speaker's mother.",
+      "knowledge_tags": [
+        "grammar",
+        "sentence_pattern",
+        "this_is",
+        "family_members"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 69
+    },
+    {
+      "id": "6d03f7df-a17c-41ff-a763-c5a6c6bc56a0",
+      "batch_id": "english_6-8_complete",
+      "source": "ai_generated",
+      "subject_code": "english",
+      "age_group_code": "6-8",
+      "difficulty_level": "advanced",
+      "question_type": "short_answer",
+      "question_body": "Complete: I like ____ because they are cute.",
+      "options": null,
+      "correct_answer": "rabbits",
+      "explanation": "Example answer: rabbits. The sentence pattern is I like... because...",
+      "knowledge_tags": [
+        "grammar",
+        "sentence_pattern",
+        "i_like",
+        "animals"
+      ],
+      "quality_status": "passed",
+      "created_at": "2026-07-15T08:18:52.517367Z",
+      "order": 70
+    }
+  ]
+}

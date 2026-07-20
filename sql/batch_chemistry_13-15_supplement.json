@@ -1,0 +1,2551 @@
+{
+  "batch_id": "chemistry_13-15_supplement",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "content": "水由什么微粒构成？",
+      "options": [
+        "水分子",
+        "氢原子",
+        "氧原子",
+        "水离子"
+      ],
+      "correct_answer": "A",
+      "explanation": "水由水分子构成。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "下列由原子直接构成的是？",
+      "options": [
+        "氧气",
+        "铁",
+        "水",
+        "二氧化碳"
+      ],
+      "correct_answer": "B",
+      "explanation": "金属由原子直接构成。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "原子"
+      ]
+    },
+    {
+      "content": "氯化钠由什么微粒构成？",
+      "options": [
+        "氯化钠分子",
+        "钠离子和氯离子",
+        "钠原子和氯原子",
+        "钠分子和氯分子"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaCl是离子化合物。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "离子"
+      ]
+    },
+    {
+      "content": "关于分子和原子，正确的是？",
+      "options": [
+        "分子大原子小",
+        "分子可分原子不可分",
+        "分子是保持物质化学性质的最小粒子",
+        "原子不能构成物质"
+      ],
+      "correct_answer": "C",
+      "explanation": "分子是保持化学性质的最小粒子。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "下列关于原子的说法正确的是？",
+      "options": [
+        "原子由原子核和核外电子构成",
+        "原子核带正电",
+        "电子带负电",
+        "原子质量集中在原子核"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "原子结构基本知识。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "微粒"
+      ]
+    },
+    {
+      "content": "水是由________构成的。",
+      "options": null,
+      "correct_answer": "水分子",
+      "explanation": "水由水分子构成。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "分子是化学变化中的最小粒子。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "原子才是化学变化中的最小粒子。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "常识"
+      ]
+    },
+    {
+      "content": "简述原子结构。",
+      "options": null,
+      "correct_answer": "原子由原子核和核外电子构成，原子核由质子和中子构成。",
+      "explanation": "原子结构基本组成。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "2H₂+O₂=2H₂O中，O₂的化学计量数是？",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": "A",
+      "explanation": "O₂前面系数为1。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "2H₂O通电分解，生成4g氢气时，生成氧气质量为？",
+      "options": [
+        "16 g",
+        "32 g",
+        "8 g",
+        "64 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "质量比H₂:O₂=1:8，故氧气=32g。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "下列化学方程式书写正确的是？",
+      "options": [
+        "2Fe+6HCl=2FeCl₃+3H₂↑",
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "Cu+H₂SO₄=CuSO₄+H₂↑",
+        "2Al+O₂=2AlO"
+      ],
+      "correct_answer": "B",
+      "explanation": "铁与盐酸反应生成FeCl₂和H₂。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "书写"
+      ]
+    },
+    {
+      "content": "12g碳完全燃烧，生成CO₂质量为？",
+      "options": [
+        "22 g",
+        "44 g",
+        "28 g",
+        "56 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "C+O₂=CO₂，12g C生成44g CO₂。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "化学方程式表示的意义有？",
+      "options": [
+        "反应物和生成物",
+        "反应条件",
+        "各物质的质量比",
+        "各物质的粒子个数比"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "化学方程式有多重含义。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "意义"
+      ]
+    },
+    {
+      "content": "____H₂+____O₂=____H₂O",
+      "options": null,
+      "correct_answer": "2,1,2",
+      "explanation": "配平后系数为2,1,2。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "化学方程式必须遵循质量守恒定律。",
+      "options": null,
+      "correct_answer": "正确",
+      "explanation": "质量守恒是配平依据。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "原则"
+      ]
+    },
+    {
+      "content": "加热分解15.8g高锰酸钾，可生成氧气多少克？",
+      "options": null,
+      "correct_answer": "1.6 g",
+      "explanation": "2KMnO₄=K₂MnO₄+MnO₂+O₂↑，计算得1.6g。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "能使紫色石蕊试液变红的是？",
+      "options": [
+        "NaOH溶液",
+        "HCl溶液",
+        "NaCl溶液",
+        "水"
+      ],
+      "correct_answer": "B",
+      "explanation": "酸使石蕊变红。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "指示剂"
+      ]
+    },
+    {
+      "content": "下列物质属于碱的是？",
+      "options": [
+        "H₂SO₄",
+        "NaOH",
+        "NaCl",
+        "CO₂"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaOH是碱。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "性质"
+      ]
+    },
+    {
+      "content": "下列反应属于中和反应的是？",
+      "options": [
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "NaOH+HCl=NaCl+H₂O",
+        "CaO+H₂O=Ca(OH)₂",
+        "2Na+2H₂O=2NaOH+H₂↑"
+      ],
+      "correct_answer": "B",
+      "explanation": "酸和碱反应生成盐和水是中和反应。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "反应"
+      ]
+    },
+    {
+      "content": "鉴别稀盐酸和稀硫酸，可选用的试剂是？",
+      "options": [
+        "酚酞",
+        "石蕊",
+        "BaCl₂溶液",
+        "NaOH"
+      ],
+      "correct_answer": "C",
+      "explanation": "BaCl₂与H₂SO₄反应生成白色沉淀。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "鉴别"
+      ]
+    },
+    {
+      "content": "酸的通性有？",
+      "options": [
+        "使石蕊变红",
+        "与活泼金属反应",
+        "与碱反应",
+        "与某些盐反应"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "酸具有多种通性。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "性质"
+      ]
+    },
+    {
+      "content": "pH=7的溶液呈________性。",
+      "options": null,
+      "correct_answer": "中",
+      "explanation": "pH=7为中性。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "概念"
+      ]
+    },
+    {
+      "content": "pH<7的溶液呈酸性。",
+      "options": null,
+      "correct_answer": "正确",
+      "explanation": "pH<7为酸性。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "概念"
+      ]
+    },
+    {
+      "content": "简述用熟石灰改良酸性土壤的原理。",
+      "options": null,
+      "correct_answer": "熟石灰Ca(OH)₂与土壤中的酸发生中和反应。",
+      "explanation": "酸碱中和原理。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "应用"
+      ]
+    },
+    {
+      "content": "金属活动性顺序中，排在氢前的金属？",
+      "options": [
+        "都能与酸反应生成氢气",
+        "都不能与酸反应",
+        "都不活泼",
+        "都不导电"
+      ],
+      "correct_answer": "A",
+      "explanation": "氢前金属可与酸反应放出H₂。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "下列金属中活动性最强的是？",
+      "options": [
+        "Fe",
+        "Cu",
+        "Zn",
+        "Mg"
+      ],
+      "correct_answer": "D",
+      "explanation": "Mg活动性强于Zn、Fe、Cu。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "应用"
+      ]
+    },
+    {
+      "content": "将铁钉放入硫酸铜溶液中，现象是？",
+      "options": [
+        "无明显变化",
+        "溶液变红",
+        "铁钉表面有红色固体析出",
+        "有气泡产生"
+      ],
+      "correct_answer": "C",
+      "explanation": "Fe+CuSO₄=FeSO₄+Cu，析出红色铜。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "置换"
+      ]
+    },
+    {
+      "content": "X、Y、Z三种金属，X能与稀硫酸反应，Y不能，Z能从Y的盐溶液中置换出Y，则活动性顺序为？",
+      "options": [
+        "X>Y>Z",
+        "X>Z>Y",
+        "Z>X>Y",
+        "Y>Z>X"
+      ],
+      "correct_answer": "B",
+      "explanation": "X>H>Y，Z>Y，故X>Z>Y。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "判断"
+      ]
+    },
+    {
+      "content": "金属活动性顺序中，排在前面的金属具有的性质有？",
+      "options": [
+        "易失去电子",
+        "还原性强",
+        "可与后面的金属盐发生置换",
+        "都易与氧气反应"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "前面金属还原性强，但不一定都易与氧气反应。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "金属活动性顺序：K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt ______。",
+      "options": null,
+      "correct_answer": "Au",
+      "explanation": "最后是金Au。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "铜能与稀硫酸反应生成氢气。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "Cu在H后，不与稀硫酸反应。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "概念"
+      ]
+    },
+    {
+      "content": "设计实验比较铁和铜的金属活动性。",
+      "options": null,
+      "correct_answer": "将铁钉放入硫酸铜溶液中，铁钉表面有红色固体析出，说明铁比铜活泼。",
+      "explanation": "利用置换反应比较活动性。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "应用"
+      ]
+    },
+    {
+      "content": "水由什么微粒构成？",
+      "options": [
+        "水分子",
+        "氢原子",
+        "氧原子",
+        "水离子"
+      ],
+      "correct_answer": "A",
+      "explanation": "水由水分子构成。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "下列由原子直接构成的是？",
+      "options": [
+        "氧气",
+        "铁",
+        "水",
+        "二氧化碳"
+      ],
+      "correct_answer": "B",
+      "explanation": "金属由原子直接构成。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "原子"
+      ]
+    },
+    {
+      "content": "氯化钠由什么微粒构成？",
+      "options": [
+        "氯化钠分子",
+        "钠离子和氯离子",
+        "钠原子和氯原子",
+        "钠分子和氯分子"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaCl是离子化合物。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "离子"
+      ]
+    },
+    {
+      "content": "关于分子和原子，正确的是？",
+      "options": [
+        "分子大原子小",
+        "分子可分原子不可分",
+        "分子是保持物质化学性质的最小粒子",
+        "原子不能构成物质"
+      ],
+      "correct_answer": "C",
+      "explanation": "分子是保持化学性质的最小粒子。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "下列关于原子的说法正确的是？",
+      "options": [
+        "原子由原子核和核外电子构成",
+        "原子核带正电",
+        "电子带负电",
+        "原子质量集中在原子核"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "原子结构基本知识。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "微粒"
+      ]
+    },
+    {
+      "content": "水是由________构成的。",
+      "options": null,
+      "correct_answer": "水分子",
+      "explanation": "水由水分子构成。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "分子是化学变化中的最小粒子。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "原子才是化学变化中的最小粒子。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "常识"
+      ]
+    },
+    {
+      "content": "简述原子结构。",
+      "options": null,
+      "correct_answer": "原子由原子核和核外电子构成，原子核由质子和中子构成。",
+      "explanation": "原子结构基本组成。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "2H₂+O₂=2H₂O中，O₂的化学计量数是？",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": "A",
+      "explanation": "O₂前面系数为1。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "2H₂O通电分解，生成4g氢气时，生成氧气质量为？",
+      "options": [
+        "16 g",
+        "32 g",
+        "8 g",
+        "64 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "质量比H₂:O₂=1:8，故氧气=32g。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "下列化学方程式书写正确的是？",
+      "options": [
+        "2Fe+6HCl=2FeCl₃+3H₂↑",
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "Cu+H₂SO₄=CuSO₄+H₂↑",
+        "2Al+O₂=2AlO"
+      ],
+      "correct_answer": "B",
+      "explanation": "铁与盐酸反应生成FeCl₂和H₂。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "书写"
+      ]
+    },
+    {
+      "content": "12g碳完全燃烧，生成CO₂质量为？",
+      "options": [
+        "22 g",
+        "44 g",
+        "28 g",
+        "56 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "C+O₂=CO₂，12g C生成44g CO₂。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "化学方程式表示的意义有？",
+      "options": [
+        "反应物和生成物",
+        "反应条件",
+        "各物质的质量比",
+        "各物质的粒子个数比"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "化学方程式有多重含义。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "意义"
+      ]
+    },
+    {
+      "content": "____H₂+____O₂=____H₂O",
+      "options": null,
+      "correct_answer": "2,1,2",
+      "explanation": "配平后系数为2,1,2。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "化学方程式必须遵循质量守恒定律。",
+      "options": null,
+      "correct_answer": "正确",
+      "explanation": "质量守恒是配平依据。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "原则"
+      ]
+    },
+    {
+      "content": "加热分解15.8g高锰酸钾，可生成氧气多少克？",
+      "options": null,
+      "correct_answer": "1.6 g",
+      "explanation": "2KMnO₄=K₂MnO₄+MnO₂+O₂↑，计算得1.6g。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "能使紫色石蕊试液变红的是？",
+      "options": [
+        "NaOH溶液",
+        "HCl溶液",
+        "NaCl溶液",
+        "水"
+      ],
+      "correct_answer": "B",
+      "explanation": "酸使石蕊变红。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "指示剂"
+      ]
+    },
+    {
+      "content": "下列物质属于碱的是？",
+      "options": [
+        "H₂SO₄",
+        "NaOH",
+        "NaCl",
+        "CO₂"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaOH是碱。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "性质"
+      ]
+    },
+    {
+      "content": "下列反应属于中和反应的是？",
+      "options": [
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "NaOH+HCl=NaCl+H₂O",
+        "CaO+H₂O=Ca(OH)₂",
+        "2Na+2H₂O=2NaOH+H₂↑"
+      ],
+      "correct_answer": "B",
+      "explanation": "酸和碱反应生成盐和水是中和反应。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "反应"
+      ]
+    },
+    {
+      "content": "鉴别稀盐酸和稀硫酸，可选用的试剂是？",
+      "options": [
+        "酚酞",
+        "石蕊",
+        "BaCl₂溶液",
+        "NaOH"
+      ],
+      "correct_answer": "C",
+      "explanation": "BaCl₂与H₂SO₄反应生成白色沉淀。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "鉴别"
+      ]
+    },
+    {
+      "content": "酸的通性有？",
+      "options": [
+        "使石蕊变红",
+        "与活泼金属反应",
+        "与碱反应",
+        "与某些盐反应"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "酸具有多种通性。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "性质"
+      ]
+    },
+    {
+      "content": "pH=7的溶液呈________性。",
+      "options": null,
+      "correct_answer": "中",
+      "explanation": "pH=7为中性。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "概念"
+      ]
+    },
+    {
+      "content": "pH<7的溶液呈酸性。",
+      "options": null,
+      "correct_answer": "正确",
+      "explanation": "pH<7为酸性。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "概念"
+      ]
+    },
+    {
+      "content": "简述用熟石灰改良酸性土壤的原理。",
+      "options": null,
+      "correct_answer": "熟石灰Ca(OH)₂与土壤中的酸发生中和反应。",
+      "explanation": "酸碱中和原理。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "应用"
+      ]
+    },
+    {
+      "content": "金属活动性顺序中，排在氢前的金属？",
+      "options": [
+        "都能与酸反应生成氢气",
+        "都不能与酸反应",
+        "都不活泼",
+        "都不导电"
+      ],
+      "correct_answer": "A",
+      "explanation": "氢前金属可与酸反应放出H₂。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "下列金属中活动性最强的是？",
+      "options": [
+        "Fe",
+        "Cu",
+        "Zn",
+        "Mg"
+      ],
+      "correct_answer": "D",
+      "explanation": "Mg活动性强于Zn、Fe、Cu。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "应用"
+      ]
+    },
+    {
+      "content": "将铁钉放入硫酸铜溶液中，现象是？",
+      "options": [
+        "无明显变化",
+        "溶液变红",
+        "铁钉表面有红色固体析出",
+        "有气泡产生"
+      ],
+      "correct_answer": "C",
+      "explanation": "Fe+CuSO₄=FeSO₄+Cu，析出红色铜。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "置换"
+      ]
+    },
+    {
+      "content": "X、Y、Z三种金属，X能与稀硫酸反应，Y不能，Z能从Y的盐溶液中置换出Y，则活动性顺序为？",
+      "options": [
+        "X>Y>Z",
+        "X>Z>Y",
+        "Z>X>Y",
+        "Y>Z>X"
+      ],
+      "correct_answer": "B",
+      "explanation": "X>H>Y，Z>Y，故X>Z>Y。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "判断"
+      ]
+    },
+    {
+      "content": "金属活动性顺序中，排在前面的金属具有的性质有？",
+      "options": [
+        "易失去电子",
+        "还原性强",
+        "可与后面的金属盐发生置换",
+        "都易与氧气反应"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "前面金属还原性强，但不一定都易与氧气反应。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "金属活动性顺序：K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt ______。",
+      "options": null,
+      "correct_answer": "Au",
+      "explanation": "最后是金Au。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "铜能与稀硫酸反应生成氢气。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "Cu在H后，不与稀硫酸反应。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "概念"
+      ]
+    },
+    {
+      "content": "设计实验比较铁和铜的金属活动性。",
+      "options": null,
+      "correct_answer": "将铁钉放入硫酸铜溶液中，铁钉表面有红色固体析出，说明铁比铜活泼。",
+      "explanation": "利用置换反应比较活动性。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "应用"
+      ]
+    },
+    {
+      "content": "水由什么微粒构成？",
+      "options": [
+        "水分子",
+        "氢原子",
+        "氧原子",
+        "水离子"
+      ],
+      "correct_answer": "A",
+      "explanation": "水由水分子构成。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "下列由原子直接构成的是？",
+      "options": [
+        "氧气",
+        "铁",
+        "水",
+        "二氧化碳"
+      ],
+      "correct_answer": "B",
+      "explanation": "金属由原子直接构成。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "原子"
+      ]
+    },
+    {
+      "content": "氯化钠由什么微粒构成？",
+      "options": [
+        "氯化钠分子",
+        "钠离子和氯离子",
+        "钠原子和氯原子",
+        "钠分子和氯分子"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaCl是离子化合物。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "离子"
+      ]
+    },
+    {
+      "content": "关于分子和原子，正确的是？",
+      "options": [
+        "分子大原子小",
+        "分子可分原子不可分",
+        "分子是保持物质化学性质的最小粒子",
+        "原子不能构成物质"
+      ],
+      "correct_answer": "C",
+      "explanation": "分子是保持化学性质的最小粒子。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "下列关于原子的说法正确的是？",
+      "options": [
+        "原子由原子核和核外电子构成",
+        "原子核带正电",
+        "电子带负电",
+        "原子质量集中在原子核"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "原子结构基本知识。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "微粒"
+      ]
+    },
+    {
+      "content": "水是由________构成的。",
+      "options": null,
+      "correct_answer": "水分子",
+      "explanation": "水由水分子构成。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "分子是化学变化中的最小粒子。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "原子才是化学变化中的最小粒子。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "常识"
+      ]
+    },
+    {
+      "content": "简述原子结构。",
+      "options": null,
+      "correct_answer": "原子由原子核和核外电子构成，原子核由质子和中子构成。",
+      "explanation": "原子结构基本组成。",
+      "type": "multiple_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "2H₂+O₂=2H₂O中，O₂的化学计量数是？",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": "A",
+      "explanation": "O₂前面系数为1。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "2H₂O通电分解，生成4g氢气时，生成氧气质量为？",
+      "options": [
+        "16 g",
+        "32 g",
+        "8 g",
+        "64 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "质量比H₂:O₂=1:8，故氧气=32g。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "下列化学方程式书写正确的是？",
+      "options": [
+        "2Fe+6HCl=2FeCl₃+3H₂↑",
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "Cu+H₂SO₄=CuSO₄+H₂↑",
+        "2Al+O₂=2AlO"
+      ],
+      "correct_answer": "B",
+      "explanation": "铁与盐酸反应生成FeCl₂和H₂。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "书写"
+      ]
+    },
+    {
+      "content": "12g碳完全燃烧，生成CO₂质量为？",
+      "options": [
+        "22 g",
+        "44 g",
+        "28 g",
+        "56 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "C+O₂=CO₂，12g C生成44g CO₂。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "化学方程式表示的意义有？",
+      "options": [
+        "反应物和生成物",
+        "反应条件",
+        "各物质的质量比",
+        "各物质的粒子个数比"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "化学方程式有多重含义。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "意义"
+      ]
+    },
+    {
+      "content": "____H₂+____O₂=____H₂O",
+      "options": null,
+      "correct_answer": "2,1,2",
+      "explanation": "配平后系数为2,1,2。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "化学方程式必须遵循质量守恒定律。",
+      "options": null,
+      "correct_answer": "正确",
+      "explanation": "质量守恒是配平依据。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "原则"
+      ]
+    },
+    {
+      "content": "加热分解15.8g高锰酸钾，可生成氧气多少克？",
+      "options": null,
+      "correct_answer": "1.6 g",
+      "explanation": "2KMnO₄=K₂MnO₄+MnO₂+O₂↑，计算得1.6g。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "能使紫色石蕊试液变红的是？",
+      "options": [
+        "NaOH溶液",
+        "HCl溶液",
+        "NaCl溶液",
+        "水"
+      ],
+      "correct_answer": "B",
+      "explanation": "酸使石蕊变红。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "指示剂"
+      ]
+    },
+    {
+      "content": "下列物质属于碱的是？",
+      "options": [
+        "H₂SO₄",
+        "NaOH",
+        "NaCl",
+        "CO₂"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaOH是碱。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "性质"
+      ]
+    },
+    {
+      "content": "下列反应属于中和反应的是？",
+      "options": [
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "NaOH+HCl=NaCl+H₂O",
+        "CaO+H₂O=Ca(OH)₂",
+        "2Na+2H₂O=2NaOH+H₂↑"
+      ],
+      "correct_answer": "B",
+      "explanation": "酸和碱反应生成盐和水是中和反应。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "反应"
+      ]
+    },
+    {
+      "content": "鉴别稀盐酸和稀硫酸，可选用的试剂是？",
+      "options": [
+        "酚酞",
+        "石蕊",
+        "BaCl₂溶液",
+        "NaOH"
+      ],
+      "correct_answer": "C",
+      "explanation": "BaCl₂与H₂SO₄反应生成白色沉淀。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "鉴别"
+      ]
+    },
+    {
+      "content": "酸的通性有？",
+      "options": [
+        "使石蕊变红",
+        "与活泼金属反应",
+        "与碱反应",
+        "与某些盐反应"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "酸具有多种通性。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "性质"
+      ]
+    },
+    {
+      "content": "pH=7的溶液呈________性。",
+      "options": null,
+      "correct_answer": "中",
+      "explanation": "pH=7为中性。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "概念"
+      ]
+    },
+    {
+      "content": "pH<7的溶液呈酸性。",
+      "options": null,
+      "correct_answer": "正确",
+      "explanation": "pH<7为酸性。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "概念"
+      ]
+    },
+    {
+      "content": "简述用熟石灰改良酸性土壤的原理。",
+      "options": null,
+      "correct_answer": "熟石灰Ca(OH)₂与土壤中的酸发生中和反应。",
+      "explanation": "酸碱中和原理。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "应用"
+      ]
+    },
+    {
+      "content": "金属活动性顺序中，排在氢前的金属？",
+      "options": [
+        "都能与酸反应生成氢气",
+        "都不能与酸反应",
+        "都不活泼",
+        "都不导电"
+      ],
+      "correct_answer": "A",
+      "explanation": "氢前金属可与酸反应放出H₂。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "下列金属中活动性最强的是？",
+      "options": [
+        "Fe",
+        "Cu",
+        "Zn",
+        "Mg"
+      ],
+      "correct_answer": "D",
+      "explanation": "Mg活动性强于Zn、Fe、Cu。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "应用"
+      ]
+    },
+    {
+      "content": "将铁钉放入硫酸铜溶液中，现象是？",
+      "options": [
+        "无明显变化",
+        "溶液变红",
+        "铁钉表面有红色固体析出",
+        "有气泡产生"
+      ],
+      "correct_answer": "C",
+      "explanation": "Fe+CuSO₄=FeSO₄+Cu，析出红色铜。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "置换"
+      ]
+    },
+    {
+      "content": "X、Y、Z三种金属，X能与稀硫酸反应，Y不能，Z能从Y的盐溶液中置换出Y，则活动性顺序为？",
+      "options": [
+        "X>Y>Z",
+        "X>Z>Y",
+        "Z>X>Y",
+        "Y>Z>X"
+      ],
+      "correct_answer": "B",
+      "explanation": "X>H>Y，Z>Y，故X>Z>Y。",
+      "type": "short_answer",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "判断"
+      ]
+    },
+    {
+      "content": "金属活动性顺序中，排在前面的金属具有的性质有？",
+      "options": [
+        "易失去电子",
+        "还原性强",
+        "可与后面的金属盐发生置换",
+        "都易与氧气反应"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "前面金属还原性强，但不一定都易与氧气反应。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "金属活动性顺序：K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt ______。",
+      "options": null,
+      "correct_answer": "Au",
+      "explanation": "最后是金Au。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "铜能与稀硫酸反应生成氢气。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "Cu在H后，不与稀硫酸反应。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "概念"
+      ]
+    },
+    {
+      "content": "设计实验比较铁和铜的金属活动性。",
+      "options": null,
+      "correct_answer": "将铁钉放入硫酸铜溶液中，铁钉表面有红色固体析出，说明铁比铜活泼。",
+      "explanation": "利用置换反应比较活动性。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "应用"
+      ]
+    },
+    {
+      "content": "水由什么微粒构成？",
+      "options": [
+        "水分子",
+        "氢原子",
+        "氧原子",
+        "水离子"
+      ],
+      "correct_answer": "A",
+      "explanation": "水由水分子构成。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "下列由原子直接构成的是？",
+      "options": [
+        "氧气",
+        "铁",
+        "水",
+        "二氧化碳"
+      ],
+      "correct_answer": "B",
+      "explanation": "金属由原子直接构成。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "原子"
+      ]
+    },
+    {
+      "content": "氯化钠由什么微粒构成？",
+      "options": [
+        "氯化钠分子",
+        "钠离子和氯离子",
+        "钠原子和氯原子",
+        "钠分子和氯分子"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaCl是离子化合物。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "离子"
+      ]
+    },
+    {
+      "content": "关于分子和原子，正确的是？",
+      "options": [
+        "分子大原子小",
+        "分子可分原子不可分",
+        "分子是保持物质化学性质的最小粒子",
+        "原子不能构成物质"
+      ],
+      "correct_answer": "C",
+      "explanation": "分子是保持化学性质的最小粒子。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "下列关于原子的说法正确的是？",
+      "options": [
+        "原子由原子核和核外电子构成",
+        "原子核带正电",
+        "电子带负电",
+        "原子质量集中在原子核"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "原子结构基本知识。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "微粒"
+      ]
+    },
+    {
+      "content": "水是由________构成的。",
+      "options": null,
+      "correct_answer": "水分子",
+      "explanation": "水由水分子构成。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "分子是化学变化中的最小粒子。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "原子才是化学变化中的最小粒子。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "常识"
+      ]
+    },
+    {
+      "content": "简述原子结构。",
+      "options": null,
+      "correct_answer": "原子由原子核和核外电子构成，原子核由质子和中子构成。",
+      "explanation": "原子结构基本组成。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "2H₂+O₂=2H₂O中，O₂的化学计量数是？",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": "A",
+      "explanation": "O₂前面系数为1。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "2H₂O通电分解，生成4g氢气时，生成氧气质量为？",
+      "options": [
+        "16 g",
+        "32 g",
+        "8 g",
+        "64 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "质量比H₂:O₂=1:8，故氧气=32g。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "下列化学方程式书写正确的是？",
+      "options": [
+        "2Fe+6HCl=2FeCl₃+3H₂↑",
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "Cu+H₂SO₄=CuSO₄+H₂↑",
+        "2Al+O₂=2AlO"
+      ],
+      "correct_answer": "B",
+      "explanation": "铁与盐酸反应生成FeCl₂和H₂。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "书写"
+      ]
+    },
+    {
+      "content": "12g碳完全燃烧，生成CO₂质量为？",
+      "options": [
+        "22 g",
+        "44 g",
+        "28 g",
+        "56 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "C+O₂=CO₂，12g C生成44g CO₂。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "化学方程式表示的意义有？",
+      "options": [
+        "反应物和生成物",
+        "反应条件",
+        "各物质的质量比",
+        "各物质的粒子个数比"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "化学方程式有多重含义。",
+      "type": "multiple_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "意义"
+      ]
+    },
+    {
+      "content": "____H₂+____O₂=____H₂O",
+      "options": null,
+      "correct_answer": "2,1,2",
+      "explanation": "配平后系数为2,1,2。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "化学方程式必须遵循质量守恒定律。",
+      "options": null,
+      "correct_answer": "正确",
+      "explanation": "质量守恒是配平依据。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "原则"
+      ]
+    },
+    {
+      "content": "加热分解15.8g高锰酸钾，可生成氧气多少克？",
+      "options": null,
+      "correct_answer": "1.6 g",
+      "explanation": "2KMnO₄=K₂MnO₄+MnO₂+O₂↑，计算得1.6g。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "能使紫色石蕊试液变红的是？",
+      "options": [
+        "NaOH溶液",
+        "HCl溶液",
+        "NaCl溶液",
+        "水"
+      ],
+      "correct_answer": "B",
+      "explanation": "酸使石蕊变红。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "指示剂"
+      ]
+    },
+    {
+      "content": "下列物质属于碱的是？",
+      "options": [
+        "H₂SO₄",
+        "NaOH",
+        "NaCl",
+        "CO₂"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaOH是碱。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "性质"
+      ]
+    },
+    {
+      "content": "下列反应属于中和反应的是？",
+      "options": [
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "NaOH+HCl=NaCl+H₂O",
+        "CaO+H₂O=Ca(OH)₂",
+        "2Na+2H₂O=2NaOH+H₂↑"
+      ],
+      "correct_answer": "B",
+      "explanation": "酸和碱反应生成盐和水是中和反应。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "反应"
+      ]
+    },
+    {
+      "content": "鉴别稀盐酸和稀硫酸，可选用的试剂是？",
+      "options": [
+        "酚酞",
+        "石蕊",
+        "BaCl₂溶液",
+        "NaOH"
+      ],
+      "correct_answer": "C",
+      "explanation": "BaCl₂与H₂SO₄反应生成白色沉淀。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "鉴别"
+      ]
+    },
+    {
+      "content": "酸的通性有？",
+      "options": [
+        "使石蕊变红",
+        "与活泼金属反应",
+        "与碱反应",
+        "与某些盐反应"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "酸具有多种通性。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "性质"
+      ]
+    },
+    {
+      "content": "pH=7的溶液呈________性。",
+      "options": null,
+      "correct_answer": "中",
+      "explanation": "pH=7为中性。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "概念"
+      ]
+    },
+    {
+      "content": "pH<7的溶液呈酸性。",
+      "options": null,
+      "correct_answer": "正确",
+      "explanation": "pH<7为酸性。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "概念"
+      ]
+    },
+    {
+      "content": "简述用熟石灰改良酸性土壤的原理。",
+      "options": null,
+      "correct_answer": "熟石灰Ca(OH)₂与土壤中的酸发生中和反应。",
+      "explanation": "酸碱中和原理。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "酸碱盐",
+        "应用"
+      ]
+    },
+    {
+      "content": "金属活动性顺序中，排在氢前的金属？",
+      "options": [
+        "都能与酸反应生成氢气",
+        "都不能与酸反应",
+        "都不活泼",
+        "都不导电"
+      ],
+      "correct_answer": "A",
+      "explanation": "氢前金属可与酸反应放出H₂。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "下列金属中活动性最强的是？",
+      "options": [
+        "Fe",
+        "Cu",
+        "Zn",
+        "Mg"
+      ],
+      "correct_answer": "D",
+      "explanation": "Mg活动性强于Zn、Fe、Cu。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "应用"
+      ]
+    },
+    {
+      "content": "将铁钉放入硫酸铜溶液中，现象是？",
+      "options": [
+        "无明显变化",
+        "溶液变红",
+        "铁钉表面有红色固体析出",
+        "有气泡产生"
+      ],
+      "correct_answer": "C",
+      "explanation": "Fe+CuSO₄=FeSO₄+Cu，析出红色铜。",
+      "type": "single_choice",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "置换"
+      ]
+    },
+    {
+      "content": "X、Y、Z三种金属，X能与稀硫酸反应，Y不能，Z能从Y的盐溶液中置换出Y，则活动性顺序为？",
+      "options": [
+        "X>Y>Z",
+        "X>Z>Y",
+        "Z>X>Y",
+        "Y>Z>X"
+      ],
+      "correct_answer": "B",
+      "explanation": "X>H>Y，Z>Y，故X>Z>Y。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "判断"
+      ]
+    },
+    {
+      "content": "金属活动性顺序中，排在前面的金属具有的性质有？",
+      "options": [
+        "易失去电子",
+        "还原性强",
+        "可与后面的金属盐发生置换",
+        "都易与氧气反应"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "前面金属还原性强，但不一定都易与氧气反应。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "金属活动性顺序：K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt ______。",
+      "options": null,
+      "correct_answer": "Au",
+      "explanation": "最后是金Au。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "顺序"
+      ]
+    },
+    {
+      "content": "铜能与稀硫酸反应生成氢气。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "Cu在H后，不与稀硫酸反应。",
+      "type": "fill_blank",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "概念"
+      ]
+    },
+    {
+      "content": "设计实验比较铁和铜的金属活动性。",
+      "options": null,
+      "correct_answer": "将铁钉放入硫酸铜溶液中，铁钉表面有红色固体析出，说明铁比铜活泼。",
+      "explanation": "利用置换反应比较活动性。",
+      "type": "true_false",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "金属活动性",
+        "应用"
+      ]
+    },
+    {
+      "content": "水由什么微粒构成？",
+      "options": [
+        "水分子",
+        "氢原子",
+        "氧原子",
+        "水离子"
+      ],
+      "correct_answer": "A",
+      "explanation": "水由水分子构成。",
+      "type": "fill_blank",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "下列由原子直接构成的是？",
+      "options": [
+        "氧气",
+        "铁",
+        "水",
+        "二氧化碳"
+      ],
+      "correct_answer": "B",
+      "explanation": "金属由原子直接构成。",
+      "type": "single_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "原子"
+      ]
+    },
+    {
+      "content": "氯化钠由什么微粒构成？",
+      "options": [
+        "氯化钠分子",
+        "钠离子和氯离子",
+        "钠原子和氯原子",
+        "钠分子和氯分子"
+      ],
+      "correct_answer": "B",
+      "explanation": "NaCl是离子化合物。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "离子"
+      ]
+    },
+    {
+      "content": "关于分子和原子，正确的是？",
+      "options": [
+        "分子大原子小",
+        "分子可分原子不可分",
+        "分子是保持物质化学性质的最小粒子",
+        "原子不能构成物质"
+      ],
+      "correct_answer": "C",
+      "explanation": "分子是保持化学性质的最小粒子。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "下列关于原子的说法正确的是？",
+      "options": [
+        "原子由原子核和核外电子构成",
+        "原子核带正电",
+        "电子带负电",
+        "原子质量集中在原子核"
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "原子结构基本知识。",
+      "type": "true_false",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "微粒"
+      ]
+    },
+    {
+      "content": "水是由________构成的。",
+      "options": null,
+      "correct_answer": "水分子",
+      "explanation": "水由水分子构成。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "分子"
+      ]
+    },
+    {
+      "content": "分子是化学变化中的最小粒子。",
+      "options": null,
+      "correct_answer": "错误",
+      "explanation": "原子才是化学变化中的最小粒子。",
+      "type": "true_false",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "常识"
+      ]
+    },
+    {
+      "content": "简述原子结构。",
+      "options": null,
+      "correct_answer": "原子由原子核和核外电子构成，原子核由质子和中子构成。",
+      "explanation": "原子结构基本组成。",
+      "type": "single_choice",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "物质构成",
+        "结构"
+      ]
+    },
+    {
+      "content": "2H₂+O₂=2H₂O中，O₂的化学计量数是？",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": "A",
+      "explanation": "O₂前面系数为1。",
+      "type": "fill_blank",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "配平"
+      ]
+    },
+    {
+      "content": "2H₂O通电分解，生成4g氢气时，生成氧气质量为？",
+      "options": [
+        "16 g",
+        "32 g",
+        "8 g",
+        "64 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "质量比H₂:O₂=1:8，故氧气=32g。",
+      "type": "short_answer",
+      "difficulty": "intermediate",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    },
+    {
+      "content": "下列化学方程式书写正确的是？",
+      "options": [
+        "2Fe+6HCl=2FeCl₃+3H₂↑",
+        "Fe+2HCl=FeCl₂+H₂↑",
+        "Cu+H₂SO₄=CuSO₄+H₂↑",
+        "2Al+O₂=2AlO"
+      ],
+      "correct_answer": "B",
+      "explanation": "铁与盐酸反应生成FeCl₂和H₂。",
+      "type": "multiple_choice",
+      "difficulty": "beginner",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "书写"
+      ]
+    },
+    {
+      "content": "12g碳完全燃烧，生成CO₂质量为？",
+      "options": [
+        "22 g",
+        "44 g",
+        "28 g",
+        "56 g"
+      ],
+      "correct_answer": "B",
+      "explanation": "C+O₂=CO₂，12g C生成44g CO₂。",
+      "type": "short_answer",
+      "difficulty": "advanced",
+      "subject": "chemistry",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "化学方程式",
+        "计算"
+      ]
+    }
+  ]
+}

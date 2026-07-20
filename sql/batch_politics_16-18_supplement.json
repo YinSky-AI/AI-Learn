@@ -1,0 +1,2371 @@
+[
+  {
+    "id": "pol_001",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "商品的基本属性是？",
+    "options": [
+      "使用价值和交换价值",
+      "使用价值和价值",
+      "价值和价格",
+      "价格和交换价值"
+    ],
+    "answer": "B",
+    "explanation": "商品是用于交换的劳动产品，具有使用价值和价值两个基本属性。"
+  },
+  {
+    "id": "pol_002",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "货币的本质是？",
+    "options": [
+      "一般等价物",
+      "商品",
+      "金银",
+      "交换媒介"
+    ],
+    "answer": "A",
+    "explanation": "货币是从商品中分离出来固定地充当一般等价物的商品，其本质是一般等价物。"
+  },
+  {
+    "id": "pol_003",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "价值规律的表现形式是？",
+    "options": [
+      "价格等于价值",
+      "价格围绕价值上下波动",
+      "价格高于价值",
+      "价格低于价值"
+    ],
+    "answer": "B",
+    "explanation": "价值规律的表现形式是商品价格受供求关系影响，围绕价值上下波动。"
+  },
+  {
+    "id": "pol_004",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "我国社会主义初级阶段的基本经济制度是？",
+    "options": [
+      "单一的公有制",
+      "公有制为主体、多种所有制经济共同发展",
+      "私有制为主体",
+      "混合所有制"
+    ],
+    "answer": "B",
+    "explanation": "我国社会主义初级阶段的基本经济制度是公有制为主体、多种所有制经济共同发展。"
+  },
+  {
+    "id": "pol_005",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "multiple_choice",
+    "knowledge_area": "经济生活",
+    "content": "下列关于纸币的叙述，正确的有？（多选）",
+    "options": [
+      "纸币是由国家（或某些地区）发行并强制使用的",
+      "纸币的发行量必须以流通中所需的货币量为限度",
+      "纸币的本质是一般等价物",
+      "纸币具有价值尺度和流通手段职能",
+      "纸币可以代替金属货币执行所有职能"
+    ],
+    "answer": "ABD",
+    "explanation": "纸币由国家发行并强制使用，发行量必须以流通中所需货币量为限度，具有价值尺度和流通手段职能；纸币本质不是一般等价物，不能执行贮藏手段职能。"
+  },
+  {
+    "id": "pol_006",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "经济生活",
+    "content": "商品的价值量由生产该商品的______决定，商品交换以______为基础实行等价交换。",
+    "options": null,
+    "answer": "社会必要劳动时间,价值量",
+    "explanation": "商品价值量由社会必要劳动时间决定，商品交换以价值量为基础实行等价交换，这是价值规律的基本内容。"
+  },
+  {
+    "id": "pol_007",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "经济生活",
+    "content": "我国坚持______为主体、______共同发展的基本经济制度。",
+    "options": null,
+    "answer": "公有制,多种所有制经济",
+    "explanation": "我国基本经济制度是公有制为主体、多种所有制经济共同发展。"
+  },
+  {
+    "id": "pol_008",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "true_false",
+    "knowledge_area": "经济生活",
+    "content": "有使用价值的东西一定有价值，有价值的东西一定有使用价值。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "有使用价值的东西不一定是商品，因而不一定有价值；但价值是凝结在商品中的无差别的人类劳动，有价值的东西一定是商品，一定有使用价值。"
+  },
+  {
+    "id": "pol_009",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "short_answer",
+    "knowledge_area": "经济生活",
+    "content": "简述价格变动对生产的影响。",
+    "options": null,
+    "answer": "①调节产量：某种商品价格上涨，生产者获利增加，会扩大生产规模，增加产量；反之则缩减规模。②调节生产要素投入：当生产要素可以相互替代时，哪种生产要素价格下降，生产者就会增加这种要素的使用量。",
+    "explanation": "价格变动对生产的影响主要体现在调节产量和调节生产要素投入两个方面。"
+  },
+  {
+    "id": "pol_010",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "下列关于影响消费水平的因素，正确的是？",
+    "options": [
+      "收入水平是影响消费的基础和前提",
+      "物价水平与消费水平成正相关",
+      "消费心理不影响消费行为",
+      "社会保障水平与消费无关"
+    ],
+    "answer": "A",
+    "explanation": "收入是消费的基础和前提；物价水平与消费水平一般成反比；消费心理影响消费行为；社会保障水平影响消费预期。"
+  },
+  {
+    "id": "pol_011",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "我国现阶段实行的分配制度是？",
+    "options": [
+      "按劳分配",
+      "按生产要素分配",
+      "按劳分配为主体、多种分配方式并存",
+      "平均分配"
+    ],
+    "answer": "C",
+    "explanation": "我国现阶段实行按劳分配为主体、多种分配方式并存的分配制度。"
+  },
+  {
+    "id": "pol_012",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "财政的巨大作用不包括？",
+    "options": [
+      "促进社会公平",
+      "促进资源合理配置",
+      "决定企业生产",
+      "促进国民经济平稳运行"
+    ],
+    "answer": "C",
+    "explanation": "财政具有促进社会公平、改善人民生活，促进资源合理配置，促进国民经济平稳运行的作用，但不能决定企业生产。"
+  },
+  {
+    "id": "pol_013",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "市场经济是？",
+    "options": [
+      "计划经济",
+      "市场在资源配置中起决定性作用的经济",
+      "完全自由放任的经济",
+      "政府完全控制的经济"
+    ],
+    "answer": "B",
+    "explanation": "市场经济是市场在资源配置中起决定性作用的经济，同时需要科学的宏观调控。"
+  },
+  {
+    "id": "pol_014",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "multiple_choice",
+    "knowledge_area": "经济生活",
+    "content": "下列关于宏观调控的叙述，正确的有？（多选）",
+    "options": [
+      "宏观调控的主要目标是促进经济增长、增加就业、稳定物价、保持国际收支平衡",
+      "宏观调控的手段包括经济手段、法律手段和行政手段",
+      "宏观调控是社会主义市场经济特有的",
+      "科学的宏观调控是发挥社会主义市场经济体制优势的内在要求",
+      "宏观调控可以完全消除市场调节的弊端"
+    ],
+    "answer": "ABD",
+    "explanation": "宏观调控目标包括促进经济增长等四大目标；手段包括经济、法律、行政手段；宏观调控不是社会主义市场经济特有，资本主义也有；科学的宏观调控是社会主义市场经济体制优势的内在要求；宏观调控可以弥补市场弊端，但不能完全消除。"
+  },
+  {
+    "id": "pol_015",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "经济生活",
+    "content": "科学发展观的第一要义是______，核心立场是______，基本要求是全面协调可持续，根本方法是统筹兼顾。",
+    "options": null,
+    "answer": "发展,以人为本",
+    "explanation": "科学发展观第一要义是发展，核心立场是以人为本，基本要求是全面协调可持续，根本方法是统筹兼顾。"
+  },
+  {
+    "id": "pol_016",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "经济生活",
+    "content": "转变经济发展方式，要实施______驱动发展战略，推进经济结构______调整。",
+    "options": null,
+    "answer": "创新,战略性",
+    "explanation": "转变经济发展方式，要实施创新驱动发展战略，推进经济结构战略性调整。"
+  },
+  {
+    "id": "pol_017",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "true_false",
+    "knowledge_area": "经济生活",
+    "content": "非公有制经济是社会主义市场经济的重要组成部分，在支撑经济增长、促进创新、扩大就业、增加税收等方面具有重要作用。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "A",
+    "explanation": "非公有制经济是社会主义市场经济的重要组成部分，在经济社会发展中发挥着不可替代的作用，国家鼓励、支持、引导非公有制经济发展。"
+  },
+  {
+    "id": "pol_018",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "short_answer",
+    "knowledge_area": "经济生活",
+    "content": "简述社会主义市场经济的基本特征。",
+    "options": null,
+    "answer": "①坚持公有制的主体地位，这是社会主义市场经济的基本标志；②以共同富裕为根本目标；③能够实行科学的宏观调控，发挥集中力量办大事的优势。",
+    "explanation": "社会主义市场经济的基本特征包括公有制主体地位、共同富裕目标和科学的宏观调控。"
+  },
+  {
+    "id": "pol_019",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "关于供给侧结构性改革的叙述，正确的是？",
+    "options": [
+      "只关注扩大需求",
+      "重点是解放和发展社会生产力，用改革的办法推进结构调整",
+      "就是简单减少供给",
+      "与需求侧管理完全对立"
+    ],
+    "answer": "B",
+    "explanation": "供给侧结构性改革重点是解放和发展社会生产力，用改革的办法推进结构调整，减少无效和低端供给，扩大有效和中高端供给。"
+  },
+  {
+    "id": "pol_020",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "经济全球化的实质是？",
+    "options": [
+      "各国经济同步发展",
+      "以发达资本主义国家为主导的资本在全球范围内的新一轮扩张",
+      "发展中国家主导",
+      "完全平等的全球经济合作"
+    ],
+    "answer": "B",
+    "explanation": "经济全球化实质上是以发达资本主义国家为主导的，跨国公司成为主要载体，加剧全球经济发展不平衡。"
+  },
+  {
+    "id": "pol_021",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "关于新发展理念的叙述，正确的是？",
+    "options": [
+      "只需要关注经济增长速度",
+      "创新、协调、绿色、开放、共享的发展理念",
+      "只需要关注城市发展",
+      "只需要关注发达地区"
+    ],
+    "answer": "B",
+    "explanation": "新发展理念是创新、协调、绿色、开放、共享的发展理念，是指导我国经济社会发展的重要理论。"
+  },
+  {
+    "id": "pol_022",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "建设现代化经济体系，必须把发展经济的着力点放在？",
+    "options": [
+      "虚拟经济上",
+      "房地产上",
+      "实体经济上",
+      "金融投机上"
+    ],
+    "answer": "C",
+    "explanation": "建设现代化经济体系，必须把发展经济的着力点放在实体经济上，把提高供给体系质量作为主攻方向。"
+  },
+  {
+    "id": "pol_023",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "multiple_choice",
+    "knowledge_area": "经济生活",
+    "content": "下列关于建设现代化经济体系的叙述，正确的有？（多选）",
+    "options": [
+      "要大力发展实体经济",
+      "要实施乡村振兴战略",
+      "要实施区域协调发展战略",
+      "只需发展大城市经济",
+      "要着力发展开放型经济"
+    ],
+    "answer": "ABCE",
+    "explanation": "建设现代化经济体系要大力发展实体经济、实施乡村振兴战略、区域协调发展战略、创新驱动发展战略和开放型经济。"
+  },
+  {
+    "id": "pol_024",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "经济生活",
+    "content": "建设现代化经济体系，要大力发展______经济，筑牢现代化经济体系的坚实基础；要实施______战略，将其作为建设现代化经济体系的战略支撑。",
+    "options": null,
+    "answer": "实体,创新驱动发展",
+    "explanation": "建设现代化经济体系，要大力发展实体经济，实施创新驱动发展战略。"
+  },
+  {
+    "id": "pol_025",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "经济生活",
+    "content": "经济全球化主要表现为生产全球化、______全球化和______全球化。",
+    "options": null,
+    "answer": "贸易,资本（或金融）",
+    "explanation": "经济全球化主要表现为生产全球化、贸易全球化和资本（金融）全球化。"
+  },
+  {
+    "id": "pol_026",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "true_false",
+    "knowledge_area": "经济生活",
+    "content": "市场在资源配置中起决定性作用，因此不需要政府进行宏观调控。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "市场在资源配置中起决定性作用，但市场调节存在自发性、盲目性、滞后性等弊端，需要政府进行科学的宏观调控，二者相辅相成。"
+  },
+  {
+    "id": "pol_027",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "short_answer",
+    "knowledge_area": "经济生活",
+    "content": "论述如何推动经济高质量发展。",
+    "options": null,
+    "answer": "①贯彻新发展理念：坚持创新、协调、绿色、开放、共享发展。②建设现代化经济体系：大力发展实体经济，实施创新驱动发展战略，实施乡村振兴战略和区域协调发展战略。③深化供给侧结构性改革：减少无效供给，扩大有效供给，提高供给体系质量。④发展更高层次开放型经济：以一带一路建设为重点，形成陆海内外联动、东西双向互济的开放格局。⑤完善社会主义市场经济体制：处理好政府和市场关系，推动有效市场和有为政府更好结合。",
+    "explanation": "推动经济高质量发展需要贯彻新发展理念、建设现代化经济体系、深化供给侧改革、扩大开放和完善市场经济体制。"
+  },
+  {
+    "id": "pol_028",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "我国的国家性质是？",
+    "options": [
+      "人民民主专政的社会主义国家",
+      "资本主义国家",
+      "君主立宪制国家",
+      "联邦制国家"
+    ],
+    "answer": "A",
+    "explanation": "我国宪法规定：中华人民共和国是工人阶级领导的、以工农联盟为基础的人民民主专政的社会主义国家。"
+  },
+  {
+    "id": "pol_029",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "我国人民当家作主的根本政治制度是？",
+    "options": [
+      "人民代表大会制度",
+      "中国共产党领导的多党合作和政治协商制度",
+      "民族区域自治制度",
+      "基层群众自治制度"
+    ],
+    "answer": "A",
+    "explanation": "人民代表大会制度是我国的根本政治制度，是人民当家作主的重要途径和最高实现形式。"
+  },
+  {
+    "id": "pol_030",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "我国公民参与管理国家和管理社会的基础和标志是？",
+    "options": [
+      "享有生存权和发展权",
+      "行使选举权和被选举权",
+      "享有政治自由",
+      "行使监督权"
+    ],
+    "answer": "B",
+    "explanation": "选举权和被选举权是公民基本的民主权利，行使这个权利是公民参与管理国家和管理社会的基础和标志。"
+  },
+  {
+    "id": "pol_031",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "我国政府的宗旨是？",
+    "options": [
+      "管理人民",
+      "为人民服务",
+      "统治社会",
+      "发展经济"
+    ],
+    "answer": "B",
+    "explanation": "我国政府的宗旨是为人民服务，政府工作的基本原则是对人民负责。"
+  },
+  {
+    "id": "pol_032",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "multiple_choice",
+    "knowledge_area": "政治生活",
+    "content": "下列关于我国人民民主的叙述，正确的有？（多选）",
+    "options": [
+      "人民民主专政的本质是人民当家作主",
+      "人民民主具有广泛性和真实性",
+      "人民民主是全民的民主",
+      "人民民主是最广泛、最真实、最管用的民主",
+      "人民民主专政包括对人民民主和对敌人专政两个方面"
+    ],
+    "answer": "ABDE",
+    "explanation": "人民民主专政本质是人民当家作主，人民民主是最广泛、最真实、最管用的民主，具有广泛性和真实性；人民民主不是全民民主，民主具有阶级性。"
+  },
+  {
+    "id": "pol_033",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "政治生活",
+    "content": "中华人民共和国的一切权力属于______，人民行使国家权力的机关是______。",
+    "options": null,
+    "answer": "人民,全国人民代表大会和地方各级人民代表大会",
+    "explanation": "我国宪法规定，一切权力属于人民，人民通过人民代表大会行使国家权力。"
+  },
+  {
+    "id": "pol_034",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "政治生活",
+    "content": "我国政府是国家权力机关的______机关，是人民意旨的执行者和人民利益的捍卫者。",
+    "options": null,
+    "answer": "执行",
+    "explanation": "我国政府是国家权力机关的执行机关，是国家行政机关，为人民服务。"
+  },
+  {
+    "id": "pol_035",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "true_false",
+    "knowledge_area": "政治生活",
+    "content": "我国公民在法律面前一律平等，是指公民平等地享有权利、平等地履行义务、平等地适用法律。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "A",
+    "explanation": "公民在法律面前一律平等是我国公民参与政治生活的基本原则之一，包括平等享有权利、平等履行义务、平等适用法律。"
+  },
+  {
+    "id": "pol_036",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "short_answer",
+    "knowledge_area": "政治生活",
+    "content": "简述我国公民参与政治生活应遵循的基本原则。",
+    "options": null,
+    "answer": "①坚持公民在法律面前一律平等的原则；②坚持权利与义务统一的原则；③坚持个人利益与国家利益相结合的原则。",
+    "explanation": "公民参与政治生活应遵循法律面前一律平等、权利义务统一、个人利益与国家利益相结合三大原则。"
+  },
+  {
+    "id": "pol_037",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "中国共产党执政的基本方式是？",
+    "options": [
+      "科学执政",
+      "民主执政",
+      "依法执政",
+      "长期执政"
+    ],
+    "answer": "C",
+    "explanation": "依法执政是中国共产党执政的基本方式，科学执政、民主执政要通过依法执政体现出来。"
+  },
+  {
+    "id": "pol_038",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "我国处理民族关系的基本原则是？",
+    "options": [
+      "民族平等、民族团结、各民族共同繁荣",
+      "民族同化",
+      "民族歧视",
+      "民族分裂"
+    ],
+    "answer": "A",
+    "explanation": "我国处理民族关系的基本原则是民族平等、民族团结和各民族共同繁荣。"
+  },
+  {
+    "id": "pol_039",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "人民代表大会的职权不包括？",
+    "options": [
+      "立法权",
+      "决定权",
+      "任免权",
+      "行政权"
+    ],
+    "answer": "D",
+    "explanation": "人民代表大会享有立法权、决定权、任免权和监督权；行政权由政府行使。"
+  },
+  {
+    "id": "pol_040",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "中国特色社会主义最本质的特征是？",
+    "options": [
+      "人民当家作主",
+      "中国共产党领导",
+      "依法治国",
+      "多党合作"
+    ],
+    "answer": "B",
+    "explanation": "中国共产党领导是中国特色社会主义最本质的特征，是中国特色社会主义制度的最大优势。"
+  },
+  {
+    "id": "pol_041",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "multiple_choice",
+    "knowledge_area": "政治生活",
+    "content": "下列关于人民代表大会制度的叙述，正确的有？（多选）",
+    "options": [
+      "是我国的根本政治制度",
+      "组织和活动原则是民主集中制",
+      "人大代表由人民民主选举产生",
+      "人大代表直接行使国家权力",
+      "其他国家机关由人大产生，对人大负责，受人大监督"
+    ],
+    "answer": "ABCE",
+    "explanation": "人民代表大会制度是我国根本政治制度，组织和活动原则是民主集中制；人大代表由人民选举产生，代表人民行使国家权力；其他国家机关由人大产生，对人大负责，受人大监督。"
+  },
+  {
+    "id": "pol_042",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "政治生活",
+    "content": "中国共产党的领导方式是______领导、______领导和思想领导。",
+    "options": null,
+    "answer": "政治,组织",
+    "explanation": "中国共产党的领导方式包括政治领导、组织领导和思想领导。"
+  },
+  {
+    "id": "pol_043",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "政治生活",
+    "content": "人民政协围绕______和______两大主题，履行政治协商、民主监督和参政议政的职能。",
+    "options": null,
+    "answer": "团结,民主",
+    "explanation": "人民政协围绕团结和民主两大主题，履行政治协商、民主监督、参政议政职能。"
+  },
+  {
+    "id": "pol_044",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "true_false",
+    "knowledge_area": "政治生活",
+    "content": "中国共产党与各民主党派的关系是执政党与反对党的关系。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "中国共产党与各民主党派是执政党与参政党的关系，不是执政党与反对党的关系；中国共产党领导的多党合作和政治协商制度是我国的基本政治制度。"
+  },
+  {
+    "id": "pol_045",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "short_answer",
+    "knowledge_area": "政治生活",
+    "content": "简述我国政府的基本职能。",
+    "options": null,
+    "answer": "①保障人民民主和维护国家长治久安；②组织社会主义经济建设；③组织社会主义文化建设；④加强社会建设；⑤推进生态文明建设。",
+    "explanation": "我国政府具有保障人民民主、经济建设、文化建设、社会建设和生态文明建设五大基本职能。"
+  },
+  {
+    "id": "pol_046",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "关于全面依法治国的叙述，正确的是？",
+    "options": [
+      "只需要完善立法",
+      "坚持依法治国、依法执政、依法行政共同推进",
+      "法治与德治完全对立",
+      "只需要政府守法"
+    ],
+    "answer": "B",
+    "explanation": "全面依法治国要坚持依法治国、依法执政、依法行政共同推进，坚持法治国家、法治政府、法治社会一体建设。"
+  },
+  {
+    "id": "pol_047",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "我国外交政策的基本立场是？",
+    "options": [
+      "维护世界和平",
+      "促进共同发展",
+      "独立自主",
+      "对外开放"
+    ],
+    "answer": "C",
+    "explanation": "独立自主是我国外交政策的基本立场，和平共处五项原则是我国对外关系的基本准则。"
+  },
+  {
+    "id": "pol_048",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "关于国家监察体制改革的叙述，正确的是？",
+    "options": [
+      "监察委员会只监督党员",
+      "监察委员会是最高国家权力机关",
+      "监察委员会依法独立行使监察权",
+      "监察委员会不受任何监督"
+    ],
+    "answer": "C",
+    "explanation": "监察委员会是行使国家监察职能的专责机关，依法独立行使监察权，对所有行使公权力的公职人员进行监察。"
+  },
+  {
+    "id": "pol_049",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "发展社会主义民主政治，必须坚持党的领导、人民当家作主和依法治国的有机统一，其中根本保证是？",
+    "options": [
+      "人民当家作主",
+      "依法治国",
+      "党的领导",
+      "多党合作"
+    ],
+    "answer": "C",
+    "explanation": "党的领导是人民当家作主和依法治国的根本保证，人民当家作主是社会主义民主政治的本质特征，依法治国是党领导人民治理国家的基本方式。"
+  },
+  {
+    "id": "pol_050",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "multiple_choice",
+    "knowledge_area": "政治生活",
+    "content": "下列关于人类命运共同体的叙述，正确的有？（多选）",
+    "options": [
+      "是中国特色大国外交的重要目标",
+      "旨在建设持久和平、普遍安全、共同繁荣、开放包容、清洁美丽的世界",
+      "只关注中国自身利益",
+      "体现了中国智慧和中国方案",
+      "需要各国共同努力建设"
+    ],
+    "answer": "ABDE",
+    "explanation": "构建人类命运共同体是中国特色大国外交的重要目标，旨在建设持久和平、普遍安全、共同繁荣、开放包容、清洁美丽的世界，体现了中国智慧，需要各国共同努力。"
+  },
+  {
+    "id": "pol_051",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "政治生活",
+    "content": "全面依法治国是中国特色社会主义的______和______。",
+    "options": null,
+    "answer": "本质要求,重要保障",
+    "explanation": "全面依法治国是中国特色社会主义的本质要求和重要保障。"
+  },
+  {
+    "id": "pol_052",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "政治生活",
+    "content": "中国特色社会主义政治发展道路，必须坚持党的领导、______、依法治国有机统一。",
+    "options": null,
+    "answer": "人民当家作主",
+    "explanation": "发展社会主义民主政治必须坚持党的领导、人民当家作主、依法治国有机统一。"
+  },
+  {
+    "id": "pol_053",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "true_false",
+    "knowledge_area": "政治生活",
+    "content": "我国是人民民主专政的社会主义国家，人民是国家的主人，因此人民可以直接行使管理国家的一切权力。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "我国人民是国家的主人，但人民行使国家权力是通过人民代表大会制度间接行使的，人民选举人大代表组成人民代表大会，代表人民统一行使国家权力。"
+  },
+  {
+    "id": "pol_054",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "short_answer",
+    "knowledge_area": "政治生活",
+    "content": "论述坚持和完善人民代表大会制度的重要性。",
+    "options": null,
+    "answer": "①人民代表大会制度是我国的根本政治制度，是中国特色社会主义制度的重要组成部分。②是坚持党的领导、人民当家作主、依法治国有机统一的根本政治制度安排。③能够保证人民当家作主，体现社会主义国家性质。④能够集中力量办大事，有效动员全体人民投身社会主义建设。⑤能够保证国家机关协调高效运转，维护国家统一和民族团结。⑥是支撑中国国家治理体系和治理能力的根本政治制度。",
+    "explanation": "坚持和完善人民代表大会制度对保证人民当家作主、推进国家治理体系和治理能力现代化具有重要意义。"
+  },
+  {
+    "id": "pol_055",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "文化是相对于经济、政治而言的人类全部______及其产品。",
+    "options": [
+      "精神活动",
+      "物质活动",
+      "生产活动",
+      "消费活动"
+    ],
+    "answer": "A",
+    "explanation": "文化是相对于经济、政治而言的人类全部精神活动及其产品，既包括世界观、人生观、价值观等意识形态部分，也包括自然科学和技术、语言和文字等非意识形态部分。"
+  },
+  {
+    "id": "pol_056",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "文化对人的影响具有______和深远持久的特点。",
+    "options": [
+      "强制性",
+      "潜移默化",
+      "立竿见影",
+      "直接迅速"
+    ],
+    "answer": "B",
+    "explanation": "文化对人的影响具有潜移默化和深远持久的特点，不是强制的、立竿见影的。"
+  },
+  {
+    "id": "pol_057",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "中华民族精神的核心是？",
+    "options": [
+      "团结统一",
+      "爱好和平",
+      "爱国主义",
+      "自强不息"
+    ],
+    "answer": "C",
+    "explanation": "爱国主义是中华民族精神的核心，贯穿于民族精神的各个方面。"
+  },
+  {
+    "id": "pol_058",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "对待传统文化的正确态度是？",
+    "options": [
+      "全盘继承",
+      "全盘否定",
+      "取其精华、去其糟粕",
+      "原封不动保留"
+    ],
+    "answer": "C",
+    "explanation": "对待传统文化的正确态度是取其精华、去其糟粕，批判继承，古为今用。"
+  },
+  {
+    "id": "pol_059",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "multiple_choice",
+    "knowledge_area": "文化生活",
+    "content": "下列关于文化与经济、政治关系的叙述，正确的有？（多选）",
+    "options": [
+      "经济是基础，政治是经济的集中表现，文化是经济和政治的反映",
+      "一定的文化由一定的经济、政治所决定",
+      "文化对经济、政治有反作用",
+      "文化与经济、政治完全同步发展",
+      "先进的、健康的文化会促进社会的发展"
+    ],
+    "answer": "ABCE",
+    "explanation": "经济是基础，政治是经济的集中表现，文化是经济和政治的反映；文化由经济政治决定，又对其有反作用；文化具有相对独立性，与经济政治不完全同步；先进文化促进社会发展。"
+  },
+  {
+    "id": "pol_060",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "文化生活",
+    "content": "文化作为一种______力量，能够在人们认识世界、改造世界的过程中转化为______力量。",
+    "options": null,
+    "answer": "精神,物质",
+    "explanation": "文化作为一种精神力量，能够在人们认识世界、改造世界的过程中转化为物质力量，对社会发展产生深刻影响。"
+  },
+  {
+    "id": "pol_061",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "文化生活",
+    "content": "中华民族精神的基本内涵包括：以______为核心，团结统一、爱好和平、勤劳勇敢、______。",
+    "options": null,
+    "answer": "爱国主义,自强不息",
+    "explanation": "中华民族精神以爱国主义为核心，包括团结统一、爱好和平、勤劳勇敢、自强不息。"
+  },
+  {
+    "id": "pol_062",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "true_false",
+    "knowledge_area": "文化生活",
+    "content": "文化对人的影响是强制的、有形的，人们只能被动接受。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "文化对人的影响一般不是强制的、有形的，而是潜移默化的；人们接受健康向上的文化影响，往往是自觉学习、主动接受文化熏陶的过程。"
+  },
+  {
+    "id": "pol_063",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "short_answer",
+    "knowledge_area": "文化生活",
+    "content": "简述文化在综合国力竞争中的地位和作用。",
+    "options": null,
+    "answer": "①文化越来越成为民族凝聚力和创造力的重要源泉；②越来越成为经济社会发展的重要支撑；③越来越成为综合国力竞争的重要因素；④对于发展中国家来说，文化是综合国力竞争中维护国家利益和安全的重要精神武器。",
+    "explanation": "文化在综合国力竞争中的地位日益重要，是民族凝聚力、创造力、经济支撑和维护国家利益的重要因素。"
+  },
+  {
+    "id": "pol_064",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "大众传媒能够最大程度地超越时空的局限，汇集来自世界各地的信息，日益显示出文化______的强大功能。",
+    "options": [
+      "传递、沟通、共享",
+      "创造、生产、消费",
+      "选择、传递、储存",
+      "批判、继承、发展"
+    ],
+    "answer": "A",
+    "explanation": "大众传媒能够最大程度地超越时空局限，汇集世界各地信息，日益显示出文化传递、沟通、共享的强大功能。"
+  },
+  {
+    "id": "pol_065",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "文化创新的根本途径是？",
+    "options": [
+      "继承传统",
+      "面向世界",
+      "立足社会实践",
+      "学习外来文化"
+    ],
+    "answer": "C",
+    "explanation": "社会实践是文化创新的源泉和动力，立足社会实践是文化创新的根本途径。"
+  },
+  {
+    "id": "pol_066",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "下列关于中华文化的叙述，正确的是？",
+    "options": [
+      "中华文化是世界上最优秀的文化",
+      "中华文化源远流长、博大精深",
+      "中华文化与其他文化完全对立",
+      "中华文化不需要创新发展"
+    ],
+    "answer": "B",
+    "explanation": "中华文化源远流长、博大精深，具有强大的生命力和凝聚力；各民族文化一律平等，不存在优劣之分；中华文化需要在继承中发展创新。"
+  },
+  {
+    "id": "pol_067",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "发展中国特色社会主义文化，要推动中华优秀传统文化______转化、______发展。",
+    "options": [
+      "创造性 创新性",
+      "批判性 选择性",
+      "全盘性 整体性",
+      "保守性 封闭性"
+    ],
+    "answer": "A",
+    "explanation": "发展中国特色社会主义文化，要推动中华优秀传统文化创造性转化、创新性发展。"
+  },
+  {
+    "id": "pol_068",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "multiple_choice",
+    "knowledge_area": "文化生活",
+    "content": "下列关于文化创新的叙述，正确的有？（多选）",
+    "options": [
+      "文化创新的源泉和动力是社会实践",
+      "文化创新要继承传统、推陈出新",
+      "文化创新要面向世界、博采众长",
+      "文化创新要全盘吸收外来文化",
+      "文化创新要坚持正确方向，克服错误倾向"
+    ],
+    "answer": "ABCE",
+    "explanation": "社会实践是文化创新源泉；文化创新要继承传统、推陈出新，面向世界、博采众长，但不能全盘吸收外来文化，要以我为主、为我所用；要坚持正确方向。"
+  },
+  {
+    "id": "pol_069",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "文化生活",
+    "content": "______是文化创新的源泉和动力；______是文化创新的根本途径。",
+    "options": null,
+    "answer": "社会实践,立足于社会实践",
+    "explanation": "社会实践是文化创新的源泉和动力，立足社会实践是文化创新的根本途径。"
+  },
+  {
+    "id": "pol_070",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "文化生活",
+    "content": "发展中国特色社会主义文化，就是以______为指导，坚守______立场，立足当代中国现实。",
+    "options": null,
+    "answer": "马克思主义,中华文化",
+    "explanation": "发展中国特色社会主义文化，就是以马克思主义为指导，坚守中华文化立场，立足当代中国现实。"
+  },
+  {
+    "id": "pol_071",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "true_false",
+    "knowledge_area": "文化生活",
+    "content": "对待外来文化，应当全盘吸收，照搬照抄。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "对待外来文化，应当面向世界、博采众长，以我为主、为我所用，吸收借鉴外来文化中的有益成果，反对全盘西化和封闭主义。"
+  },
+  {
+    "id": "pol_072",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "short_answer",
+    "knowledge_area": "文化生活",
+    "content": "简述如何弘扬和培育中华民族精神。",
+    "options": null,
+    "answer": "①最重要的是发挥中国特色社会主义理论体系的指导作用；②必须继承和发扬中华民族的优良传统；③必须正确对待外来思想文化；④必须与弘扬时代精神相结合；⑤要立足于发展中国特色社会主义的伟大实践，人人都应成为民族精神的传播者、弘扬者和建设者。",
+    "explanation": "弘扬和培育民族精神需要发挥理论指导作用、继承优良传统、正确对待外来文化、与时代精神结合、立足实践。"
+  },
+  {
+    "id": "pol_073",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "关于文化自信，下列叙述正确的是？",
+    "options": [
+      "文化自信就是排斥外来文化",
+      "文化自信是一个国家、一个民族发展中更基本、更深沉、更持久的力量",
+      "文化自信只需要关注传统文化",
+      "文化自信与经济政治无关"
+    ],
+    "answer": "B",
+    "explanation": "文化自信是一个国家、一个民族发展中更基本、更深沉、更持久的力量，事关国运兴衰、事关文化安全、事关民族精神独立性。"
+  },
+  {
+    "id": "pol_074",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "社会主义核心价值观中，属于国家层面价值目标的是？",
+    "options": [
+      "富强、民主、文明、和谐",
+      "自由、平等、公正、法治",
+      "爱国、敬业、诚信、友善",
+      "改革、开放、创新、包容"
+    ],
+    "answer": "A",
+    "explanation": "社会主义核心价值观：国家层面是富强、民主、文明、和谐；社会层面是自由、平等、公正、法治；公民个人层面是爱国、敬业、诚信、友善。"
+  },
+  {
+    "id": "pol_075",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "关于中国特色社会主义文化的叙述，正确的是？",
+    "options": [
+      "源自中华民族五千多年文明历史所孕育的中华优秀传统文化",
+      "只需要学习西方文化",
+      "与革命文化和社会主义先进文化无关",
+      "不需要马克思主义指导"
+    ],
+    "answer": "A",
+    "explanation": "中国特色社会主义文化源自中华优秀传统文化，熔铸于革命文化和社会主义先进文化，植根于中国特色社会主义伟大实践。"
+  },
+  {
+    "id": "pol_076",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "文化生活",
+    "content": "发展中国特色社会主义文化，要坚持______在意识形态领域指导地位的根本制度。",
+    "options": [
+      "儒家思想",
+      "马克思主义",
+      "自由主义",
+      "传统文化"
+    ],
+    "answer": "B",
+    "explanation": "发展中国特色社会主义文化，要坚持马克思主义在意识形态领域指导地位的根本制度。"
+  },
+  {
+    "id": "pol_077",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "multiple_choice",
+    "knowledge_area": "文化生活",
+    "content": "下列关于建设社会主义文化强国的叙述，正确的有？（多选）",
+    "options": [
+      "要坚持以马克思主义为指导",
+      "要培育和践行社会主义核心价值观",
+      "要提高全民族思想道德素质和科学文化素质",
+      "只需要发展文化产业",
+      "要推动中华文化走出去，提升中华文化影响力"
+    ],
+    "answer": "ABCE",
+    "explanation": "建设社会主义文化强国要坚持马克思主义指导，培育和践行社会主义核心价值观，提高全民素质，推动中华文化走出去；既要发展文化产业，也要发展文化事业。"
+  },
+  {
+    "id": "pol_078",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "文化生活",
+    "content": "坚定文化自信，事关______兴衰、事关______安全、事关民族精神独立性。",
+    "options": null,
+    "answer": "国运,文化",
+    "explanation": "坚定文化自信，事关国运兴衰、事关文化安全、事关民族精神独立性。"
+  },
+  {
+    "id": "pol_079",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "文化生活",
+    "content": "发展中国特色社会主义文化，要坚持______为人民服务、为______服务的方向。",
+    "options": null,
+    "answer": "以人民为中心（或为人民服务）,社会主义",
+    "explanation": "发展中国特色社会主义文化，要坚持以人民为中心的创作导向，为人民服务、为社会主义服务。"
+  },
+  {
+    "id": "pol_080",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "true_false",
+    "knowledge_area": "文化生活",
+    "content": "中华文化是世界上最古老的文化，因此比其他文化都优越。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "各民族文化一律平等，没有优劣之分。中华文化是世界文化宝库中的瑰宝，但不应因此认为中华文化比其他文化优越，要尊重世界文化多样性。"
+  },
+  {
+    "id": "pol_081",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "short_answer",
+    "knowledge_area": "文化生活",
+    "content": "论述如何推动中华优秀传统文化创造性转化、创新性发展。",
+    "options": null,
+    "answer": "①深入挖掘中华优秀传统文化蕴含的思想观念、人文精神、道德规范；②结合时代要求继承创新，让中华文化展现出永久魅力和时代风采；③运用现代科技手段和新媒体传播中华优秀传统文化；④推动中华优秀传统文化与现代社会相适应、与现代文明相协调；⑤把中华优秀传统文化融入国民教育、精神文明建设全过程；⑥以人民为中心，创作出人民喜闻乐见的文化产品。",
+    "explanation": "推动中华优秀传统文化创造性转化、创新性发展需要挖掘内涵、结合时代、运用科技、融入教育和以人民为中心。"
+  },
+  {
+    "id": "pol_082",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "哲学的基本问题是？",
+    "options": [
+      "思维和存在的关系问题",
+      "物质和意识的辩证关系问题",
+      "实践和认识的关系问题",
+      "量变和质变的关系问题"
+    ],
+    "answer": "A",
+    "explanation": "哲学的基本问题是思维和存在的关系问题，也就是意识和物质的关系问题。"
+  },
+  {
+    "id": "pol_083",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "划分唯物主义和唯心主义的唯一标准是？",
+    "options": [
+      "对思维和存在何者为第一性的不同回答",
+      "对思维和存在有无同一性的不同回答",
+      "对世界状态的不同回答",
+      "对认识来源的不同回答"
+    ],
+    "answer": "A",
+    "explanation": "对思维和存在何者为第一性的不同回答，是划分唯物主义和唯心主义的唯一标准。"
+  },
+  {
+    "id": "pol_084",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "物质的唯一特性是？",
+    "options": [
+      "运动",
+      "可知性",
+      "客观实在性",
+      "多样性"
+    ],
+    "answer": "C",
+    "explanation": "物质是不依赖于人的意识，并能为人的意识所反映的客观实在，客观实在性是物质的唯一特性。"
+  },
+  {
+    "id": "pol_085",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "规律是事物运动过程中固有的______、必然的、稳定的联系。",
+    "options": [
+      "现象的",
+      "本质的",
+      "偶然的",
+      "外在的"
+    ],
+    "answer": "B",
+    "explanation": "规律是事物运动过程中固有的本质的、必然的、稳定的联系。"
+  },
+  {
+    "id": "pol_086",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "multiple_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "下列关于意识的叙述，正确的有？（多选）",
+    "options": [
+      "意识是物质世界长期发展的产物",
+      "意识是人脑的机能",
+      "意识是客观存在的主观映象",
+      "意识的内容是主观的，形式是客观的",
+      "意识对物质具有能动作用"
+    ],
+    "answer": "ABCE",
+    "explanation": "意识是物质世界长期发展的产物，是人脑机能，是客观存在的主观映象；意识内容是客观的，形式是主观的；意识对物质具有能动作用。"
+  },
+  {
+    "id": "pol_087",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "生活与哲学",
+    "content": "马克思主义哲学包括______和______两大组成部分。",
+    "options": null,
+    "answer": "辩证唯物主义,历史唯物主义",
+    "explanation": "马克思主义哲学包括辩证唯物主义和历史唯物主义，是科学的世界观和方法论。"
+  },
+  {
+    "id": "pol_088",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "生活与哲学",
+    "content": "实践是人们改造______的一切物质性活动，具有客观物质性、______和______。",
+    "options": null,
+    "answer": "客观世界,能动性,社会历史性",
+    "explanation": "实践是人们改造客观世界的一切物质性活动，具有客观物质性、能动性和社会历史性。"
+  },
+  {
+    "id": "pol_089",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "true_false",
+    "knowledge_area": "生活与哲学",
+    "content": "物质和意识相互依赖，谁也离不开谁。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "物质是不依赖于人的意识的客观实在，可以离开意识而独立存在；意识依赖于物质，是人脑对客观存在的反映。"
+  },
+  {
+    "id": "pol_090",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "short_answer",
+    "knowledge_area": "生活与哲学",
+    "content": "简述实践与认识的辩证关系。",
+    "options": null,
+    "answer": "①实践是认识的基础：实践是认识的来源，是认识发展的动力，是检验认识真理性的唯一标准，是认识的目的。②认识对实践具有反作用：正确的认识、科学理论对实践有巨大的指导作用；错误的认识则会把实践引向歧途。",
+    "explanation": "实践与认识的辩证关系包括实践决定认识和认识反作用于实践两个方面。"
+  },
+  {
+    "id": "pol_091",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "下列关于联系的叙述，正确的是？",
+    "options": [
+      "联系是主观的",
+      "联系是普遍的、客观的、多样的",
+      "任何两个事物之间都存在直接联系",
+      "联系是不可改变的"
+    ],
+    "answer": "B",
+    "explanation": "联系是普遍的、客观的、多样的；联系是有条件的，不是任何两个事物之间都存在直接联系；联系可以随条件变化而改变。"
+  },
+  {
+    "id": "pol_092",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "发展的实质是？",
+    "options": [
+      "事物的运动变化",
+      "事物数量的增减",
+      "新事物的产生和旧事物的灭亡",
+      "事物位置的移动"
+    ],
+    "answer": "C",
+    "explanation": "发展的实质是事物的前进和上升，是新事物的产生和旧事物的灭亡。"
+  },
+  {
+    "id": "pol_093",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "矛盾的基本属性是？",
+    "options": [
+      "普遍性和特殊性",
+      "同一性和斗争性",
+      "前进性和曲折性",
+      "主要方面和次要方面"
+    ],
+    "answer": "B",
+    "explanation": "矛盾就是对立统一，矛盾的基本属性是同一性和斗争性。"
+  },
+  {
+    "id": "pol_094",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "关于量变和质变的叙述，正确的是？",
+    "options": [
+      "量变就是质变",
+      "质变是量变的必然结果",
+      "量变和质变没有关系",
+      "质变不需要量变做准备"
+    ],
+    "answer": "B",
+    "explanation": "量变是质变的必要准备，质变是量变的必然结果；量变达到一定程度必然引起质变。"
+  },
+  {
+    "id": "pol_095",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "multiple_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "下列关于辩证否定观的叙述，正确的有？（多选）",
+    "options": [
+      "辩证的否定是事物自身的否定",
+      "辩证的否定是发展的环节",
+      "辩证的否定是联系的环节",
+      "辩证否定的实质是扬弃",
+      "辩证否定是外力强加的否定"
+    ],
+    "answer": "ABCD",
+    "explanation": "辩证否定是事物自身的否定，是发展的环节、联系的环节，实质是扬弃（既肯定又否定，既克服又保留）；不是外力强加的否定。"
+  },
+  {
+    "id": "pol_096",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "生活与哲学",
+    "content": "矛盾分析法是我们认识世界和改造世界的______方法，包括一分为二看问题、具体问题具体分析、坚持______与______相结合等方法。",
+    "options": null,
+    "answer": "根本,两点论,重点论",
+    "explanation": "矛盾分析法是根本方法，包括一分为二、具体问题具体分析、两点论与重点论相结合。"
+  },
+  {
+    "id": "pol_097",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "生活与哲学",
+    "content": "认识的反复性是指人们对一个事物的正确认识往往要经过从______到______，再从______到______的多次反复才能完成。",
+    "options": null,
+    "answer": "实践,认识,认识,实践",
+    "explanation": "认识具有反复性，人们对事物的正确认识往往要经过从实践到认识、再从认识到实践的多次反复才能完成。"
+  },
+  {
+    "id": "pol_098",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "true_false",
+    "knowledge_area": "生活与哲学",
+    "content": "矛盾的普遍性和特殊性的关系是共性和个性、一般和个别的关系，普遍性寓于特殊性之中。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "A",
+    "explanation": "矛盾的普遍性和特殊性是共性和个性、一般和个别的关系，普遍性寓于特殊性之中，并通过特殊性表现出来。"
+  },
+  {
+    "id": "pol_099",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "short_answer",
+    "knowledge_area": "生活与哲学",
+    "content": "简述唯物辩证法和形而上学的分歧。",
+    "options": null,
+    "answer": "①联系观点与孤立观点的对立：唯物辩证法用联系的观点看问题，形而上学用孤立的观点看问题。②发展观点与静止观点的对立：唯物辩证法用发展的观点看问题，形而上学用静止的观点看问题。③全面观点与片面观点的对立：唯物辩证法用全面的观点看问题，形而上学用片面的观点看问题。④二者最根本的分歧在于是否承认矛盾，是否承认矛盾是事物发展的源泉和动力。",
+    "explanation": "唯物辩证法与形而上学的根本分歧在于是否承认矛盾，是否承认矛盾是事物发展的源泉和动力。"
+  },
+  {
+    "id": "pol_100",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "关于社会存在与社会意识关系的叙述，正确的是？",
+    "options": [
+      "社会意识决定社会存在",
+      "社会存在与社会意识完全同步",
+      "社会存在决定社会意识，社会意识具有相对独立性",
+      "社会意识对社会存在没有反作用"
+    ],
+    "answer": "C",
+    "explanation": "社会存在决定社会意识，社会意识对社会存在具有反作用；社会意识具有相对独立性，与社会存在的发展不完全同步。"
+  },
+  {
+    "id": "pol_101",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "人类社会发展的基本规律是？",
+    "options": [
+      "生产力与生产关系的矛盾运动规律、经济基础与上层建筑的矛盾运动规律",
+      "对立统一规律",
+      "量变质变规律",
+      "否定之否定规律"
+    ],
+    "answer": "A",
+    "explanation": "人类社会发展的基本规律是生产关系一定要适合生产力状况的规律，上层建筑一定要适合经济基础状况的规律。"
+  },
+  {
+    "id": "pol_102",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "关于价值观的叙述，正确的是？",
+    "options": [
+      "价值观对人生道路的选择没有影响",
+      "价值观对人们认识世界和改造世界具有重要的导向作用",
+      "所有人的价值观都是一样的",
+      "价值观属于社会存在"
+    ],
+    "answer": "B",
+    "explanation": "价值观对人们认识世界和改造世界、对人生道路的选择具有重要的导向作用；价值观属于社会意识，不同人有不同的价值观。"
+  },
+  {
+    "id": "pol_103",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "实现人生价值的根本途径是？",
+    "options": [
+      "等待机遇",
+      "投身于为人民服务的实践",
+      "依靠父母",
+      "追求个人利益最大化"
+    ],
+    "answer": "B",
+    "explanation": "实现人生价值的根本途径是投身于为人民服务的实践，在劳动和奉献中创造价值，在个人与社会的统一中实现价值。"
+  },
+  {
+    "id": "pol_104",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "multiple_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "下列关于人民群众是历史创造者的叙述，正确的有？（多选）",
+    "options": [
+      "人民群众是社会物质财富的创造者",
+      "人民群众是社会精神财富的创造者",
+      "人民群众是社会变革的决定力量",
+      "英雄人物是历史的唯一创造者",
+      "要坚持群众观点和群众路线"
+    ],
+    "answer": "ABCE",
+    "explanation": "人民群众是社会物质财富和精神财富的创造者，是社会变革的决定力量；要坚持群众观点和群众路线；英雄人物对历史发展有重要影响，但不是历史的唯一创造者。"
+  },
+  {
+    "id": "pol_105",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "生活与哲学",
+    "content": "______是社会历史的主体，是历史的创造者；______是判断一种价值观是否正确的根本标准。",
+    "options": null,
+    "answer": "人民群众,是否符合社会发展规律和最广大人民的根本利益",
+    "explanation": "人民群众是社会历史的主体；是否符合社会发展规律和最广大人民的根本利益是判断价值观正确与否的根本标准。"
+  },
+  {
+    "id": "pol_106",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "生活与哲学",
+    "content": "人生的真正价值在于对______的贡献；要在______与______的统一中实现价值。",
+    "options": null,
+    "answer": "社会,个人,社会",
+    "explanation": "人生的真正价值在于对社会的贡献，要在个人与社会的统一中实现价值。"
+  },
+  {
+    "id": "pol_107",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "true_false",
+    "knowledge_area": "生活与哲学",
+    "content": "真理是标志主观与客观相符合的哲学范畴，是人们对客观事物及其规律的正确反映；真理是具体的、有条件的，不存在绝对真理。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "真理是具体的、有条件的，任何真理都有自己适用的条件和范围；但真理又是客观的，就真理的内容而言，真理具有绝对性，绝对真理和相对真理是辩证统一的。"
+  },
+  {
+    "id": "pol_108",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "short_answer",
+    "knowledge_area": "生活与哲学",
+    "content": "论述如何运用矛盾分析法分析和解决实际问题。",
+    "options": null,
+    "answer": "①坚持一分为二的观点：全面地看问题，既要看到矛盾的主要方面，也要看到矛盾的次要方面。②坚持具体问题具体分析：根据不同事物的不同矛盾，采取不同的解决方法，这是马克思主义活的灵魂。③坚持两点论与重点论的统一：既要抓住主要矛盾和矛盾的主要方面，又要兼顾次要矛盾和矛盾的次要方面。④把握矛盾的普遍性和特殊性的辩证关系：把马克思主义普遍原理与中国具体实际相结合。⑤善于分析矛盾的特殊性：区分不同性质的矛盾，采取不同的解决方法。",
+    "explanation": "运用矛盾分析法需要坚持一分为二、具体问题具体分析、两点论与重点论统一、把握普遍性与特殊性关系。"
+  },
+  {
+    "id": "pol_109",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "党的二十大报告指出，从现在起，中国共产党的中心任务就是团结带领全国各族人民全面建成社会主义现代化强国、实现第二个百年奋斗目标，以______全面推进中华民族伟大复兴。",
+    "options": [
+      "中国式现代化",
+      "西方现代化模式",
+      "传统工业化道路",
+      "粗放式发展"
+    ],
+    "answer": "A",
+    "explanation": "党的二十大报告明确指出，以中国式现代化全面推进中华民族伟大复兴是中国共产党的中心任务。"
+  },
+  {
+    "id": "pol_110",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "中国式现代化的本质要求包括：坚持中国共产党领导，坚持中国特色社会主义，实现高质量发展，发展全过程人民民主，丰富人民精神世界，实现全体人民______，促进人与自然和谐共生，推动构建人类命运共同体，创造人类文明新形态。",
+    "options": [
+      "共同富裕",
+      "平均富裕",
+      "同步富裕",
+      "同等富裕"
+    ],
+    "answer": "A",
+    "explanation": "中国式现代化的本质要求之一是实现全体人民共同富裕，不是平均富裕、同步富裕或同等富裕。"
+  },
+  {
+    "id": "pol_111",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "我国发展新的历史方位是？",
+    "options": [
+      "社会主义初级阶段",
+      "中国特色社会主义进入了新时代",
+      "新民主主义社会",
+      "共产主义社会"
+    ],
+    "answer": "B",
+    "explanation": "党的十九大报告指出，中国特色社会主义进入了新时代，这是我国发展新的历史方位。"
+  },
+  {
+    "id": "pol_112",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于全过程人民民主的叙述，正确的是？",
+    "options": [
+      "只有选举时才体现民主",
+      "是全链条、全方位、全覆盖的民主",
+      "只存在于政治领域",
+      "与西方民主没有区别"
+    ],
+    "answer": "B",
+    "explanation": "全过程人民民主是最广泛、最真实、最管用的社会主义民主，是全链条、全方位、全覆盖的民主。"
+  },
+  {
+    "id": "pol_113",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "multiple_choice",
+    "knowledge_area": "时事政治",
+    "content": "下列关于中国式现代化的叙述，正确的有？（多选）",
+    "options": [
+      "是人口规模巨大的现代化",
+      "是全体人民共同富裕的现代化",
+      "是物质文明和精神文明相协调的现代化",
+      "是人与自然和谐共生的现代化",
+      "是走和平发展道路的现代化"
+    ],
+    "answer": "ABCDE",
+    "explanation": "中国式现代化具有五个方面的中国特色：人口规模巨大、全体人民共同富裕、物质文明和精神文明相协调、人与自然和谐共生、走和平发展道路。"
+  },
+  {
+    "id": "pol_114",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "时事政治",
+    "content": "党的二十大报告指出，中国式现代化是______的现代化，是______的现代化。",
+    "options": null,
+    "answer": "中国共产党领导,社会主义现代化",
+    "explanation": "中国式现代化是中国共产党领导的社会主义现代化，既有各国现代化的共同特征，更有基于自己国情的中国特色。"
+  },
+  {
+    "id": "pol_115",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "时事政治",
+    "content": "新时代中国特色社会主义思想明确坚持和发展中国特色社会主义，总任务是实现社会主义现代化和中华民族伟大复兴，在全面建成小康社会的基础上，分两步走在本世纪中叶建成______的社会主义现代化强国。",
+    "options": null,
+    "answer": "富强民主文明和谐美丽",
+    "explanation": "总任务是实现社会主义现代化和中华民族伟大复兴，分两步走在本世纪中叶建成富强民主文明和谐美丽的社会主义现代化强国。"
+  },
+  {
+    "id": "pol_116",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "true_false",
+    "knowledge_area": "时事政治",
+    "content": "共同富裕是全体人民同步富裕、同等富裕，意味着所有人的收入和生活水平完全一样。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "共同富裕是全体人民共同富裕，是人民群众物质生活和精神生活都富裕，不是少数人的富裕，也不是整齐划一的平均主义，不是同步富裕、同等富裕。"
+  },
+  {
+    "id": "pol_117",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "short_answer",
+    "knowledge_area": "时事政治",
+    "content": "简述中国式现代化的中国特色。",
+    "options": null,
+    "answer": "中国式现代化具有五个方面的中国特色：①是人口规模巨大的现代化；②是全体人民共同富裕的现代化；③是物质文明和精神文明相协调的现代化；④是人与自然和谐共生的现代化；⑤是走和平发展道路的现代化。",
+    "explanation": "中国式现代化的五个特色包括人口规模巨大、共同富裕、两个文明协调、人与自然和谐共生、和平发展道路。"
+  },
+  {
+    "id": "pol_118",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于总体国家安全观的叙述，正确的是？",
+    "options": [
+      "只关注军事安全",
+      "以人民安全为宗旨，以政治安全为根本",
+      "只关注经济安全",
+      "只关注国土安全"
+    ],
+    "answer": "B",
+    "explanation": "总体国家安全观以人民安全为宗旨，以政治安全为根本，以经济安全为基础，以军事、科技、文化、社会安全为保障，以促进国际安全为依托。"
+  },
+  {
+    "id": "pol_119",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于新发展格局的叙述，正确的是？",
+    "options": [
+      "完全放弃国际市场",
+      "以国内大循环为主体、国内国际双循环相互促进",
+      "只发展沿海经济",
+      "只依靠出口拉动经济"
+    ],
+    "answer": "B",
+    "explanation": "新发展格局是以国内大循环为主体、国内国际双循环相互促进的发展格局，不是封闭的国内循环，而是更加开放的国内国际双循环。"
+  },
+  {
+    "id": "pol_120",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于一带一路倡议的叙述，正确的是？",
+    "options": [
+      "是中国主导的地缘政治工具",
+      "是合作共建、互利共赢的开放平台",
+      "只对中国有利",
+      "排斥其他国家参与"
+    ],
+    "answer": "B",
+    "explanation": "一带一路倡议是合作共建、互利共赢的开放平台，秉持共商共建共享原则，不是地缘政治工具，欢迎所有感兴趣的国家参与。"
+  },
+  {
+    "id": "pol_121",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于共同富裕的叙述，正确的是？",
+    "options": [
+      "共同富裕就是平均主义",
+      "共同富裕是一个长远目标，需要一个过程",
+      "共同富裕就是劫富济贫",
+      "共同富裕只关注物质富裕"
+    ],
+    "answer": "B",
+    "explanation": "共同富裕是一个长远目标，需要一个过程，对其长期性、艰巨性、复杂性要有充分估计，不是平均主义，也不是劫富济贫。"
+  },
+  {
+    "id": "pol_122",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "multiple_choice",
+    "knowledge_area": "时事政治",
+    "content": "下列关于全面从严治党的叙述，正确的有？（多选）",
+    "options": [
+      "是新时代党的建设的鲜明主题",
+      "关系党的先进性和纯洁性",
+      "关系人心向背",
+      "关系国家和民族的兴衰",
+      "只需要抓领导干部"
+    ],
+    "answer": "ABCD",
+    "explanation": "全面从严治党是新时代党的建设的鲜明主题，关系党的先进性纯洁性、人心向背、国家和民族兴衰；全面从严治党面向全体党员。"
+  },
+  {
+    "id": "pol_123",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "时事政治",
+    "content": "总体国家安全观以______安全为宗旨，以______安全为根本，以经济安全为基础。",
+    "options": null,
+    "answer": "人民,政治",
+    "explanation": "总体国家安全观以人民安全为宗旨，以政治安全为根本，以经济安全为基础。"
+  },
+  {
+    "id": "pol_124",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "fill_blank",
+    "knowledge_area": "时事政治",
+    "content": "党的二十大报告指出，______是全面建设社会主义现代化国家的基础性、战略性支撑。",
+    "options": null,
+    "answer": "教育、科技、人才",
+    "explanation": "党的二十大报告指出，教育、科技、人才是全面建设社会主义现代化国家的基础性、战略性支撑。"
+  },
+  {
+    "id": "pol_125",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "true_false",
+    "knowledge_area": "时事政治",
+    "content": "一带一路倡议是中国向世界提供的国际公共产品，是推动构建人类命运共同体的重要实践平台。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "A",
+    "explanation": "一带一路倡议是中国向世界提供的国际公共产品，是推动构建人类命运共同体的重要实践平台，为世界经济增长开辟了新空间。"
+  },
+  {
+    "id": "pol_126",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "short_answer",
+    "knowledge_area": "时事政治",
+    "content": "简述为什么中国式现代化是走和平发展道路的现代化。",
+    "options": null,
+    "answer": "①中华民族历来是爱好和平的民族，和平融入了中华民族的血脉中；②中国现代化建设需要和平的国际环境；③中国式现代化打破了现代化等于西方化的迷思，为广大发展中国家独立自主迈向现代化提供了全新选择；④中国不走殖民掠夺的老路，不走国强必霸的歪路，坚定站在历史正确的一边、站在人类文明进步的一边；⑤中国坚持互利共赢的开放战略，推动构建人类命运共同体。",
+    "explanation": "中国式现代化走和平发展道路，源于中华民族爱好和平的传统、现代化建设的需要、对历史教训的总结和推动构建人类命运共同体的担当。"
+  },
+  {
+    "id": "pol_127",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于中国式现代化和西方现代化的叙述，正确的是？",
+    "options": [
+      "中国式现代化是照搬西方现代化模式",
+      "中国式现代化打破了现代化等于西方化的迷思",
+      "西方现代化是唯一正确的现代化道路",
+      "所有国家都必须走西方现代化道路"
+    ],
+    "answer": "B",
+    "explanation": "中国式现代化打破了现代化等于西方化的迷思，展现了现代化的另一幅图景，拓展了发展中国家走向现代化的路径选择。"
+  },
+  {
+    "id": "pol_128",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于新质生产力的叙述，正确的是？",
+    "options": [
+      "就是传统生产力的简单延续",
+      "是创新起主导作用，摆脱传统经济增长方式的生产力",
+      "只需要发展劳动密集型产业",
+      "与科技创新无关"
+    ],
+    "answer": "B",
+    "explanation": "新质生产力是创新起主导作用，摆脱传统经济增长方式、生产力发展路径，具有高科技、高效能、高质量特征的先进生产力。"
+  },
+  {
+    "id": "pol_129",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于两个确立的叙述，正确的是？",
+    "options": [
+      "对中国发展没有影响",
+      "是党在新时代取得的重大政治成果",
+      "只是口号",
+      "不需要坚决维护"
+    ],
+    "answer": "B",
+    "explanation": "两个确立是党在新时代取得的重大政治成果，是推动党和国家事业取得历史性成就、发生历史性变革的决定性因素。"
+  },
+  {
+    "id": "pol_130",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "时事政治",
+    "content": "关于全过程人民民主与西方民主比较的叙述，正确的是？",
+    "options": [
+      "两者完全一样",
+      "全过程人民民主是最广泛、最真实、最管用的民主",
+      "西方民主是完美的民主模式",
+      "中国不需要民主"
+    ],
+    "answer": "B",
+    "explanation": "全过程人民民主实现了过程民主和成果民主、程序民主和实质民主、直接民主和间接民主、人民民主和国家意志相统一，是最广泛、最真实、最管用的社会主义民主。"
+  },
+  {
+    "id": "pol_131",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "multiple_choice",
+    "knowledge_area": "时事政治",
+    "content": "下列关于推动构建人类命运共同体的叙述，正确的有？（多选）",
+    "options": [
+      "是应对全球挑战的中国方案",
+      "体现了中华文明天下为公的情怀",
+      "只关注中国自身利益",
+      "旨在建设持久和平、普遍安全、共同繁荣、开放包容、清洁美丽的世界",
+      "已被写入联合国决议"
+    ],
+    "answer": "ABDE",
+    "explanation": "构建人类命运共同体是应对全球挑战的中国方案，体现中华文明天下为公的情怀，旨在建设美好世界，已被写入联合国决议；不是只关注中国自身利益。"
+  },
+  {
+    "id": "pol_132",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "时事政治",
+    "content": "党的二十大报告强调，全党同志务必不忘初心、______，务必谦虚谨慎、______，务必敢于斗争、善于斗争。",
+    "options": null,
+    "answer": "牢记使命,艰苦奋斗",
+    "explanation": "三个务必：务必不忘初心、牢记使命，务必谦虚谨慎、艰苦奋斗，务必敢于斗争、善于斗争。"
+  },
+  {
+    "id": "pol_133",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "fill_blank",
+    "knowledge_area": "时事政治",
+    "content": "一百年来，中国共产党团结带领中国人民进行的一切奋斗、一切牺牲、一切创造，归结起来就是一个主题：______。",
+    "options": null,
+    "answer": "实现中华民族伟大复兴",
+    "explanation": "一百年来，中国共产党团结带领中国人民进行的一切奋斗、一切牺牲、一切创造，归结起来就是一个主题：实现中华民族伟大复兴。"
+  },
+  {
+    "id": "pol_134",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "true_false",
+    "knowledge_area": "时事政治",
+    "content": "中国式现代化是走和平发展道路的现代化，中国永远不称霸、永远不搞扩张，坚定奉行独立自主的和平外交政策。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "A",
+    "explanation": "中国式现代化打破了现代化等于西方化的迷思，中国坚定走和平发展道路，永远不称霸、永远不搞扩张，奉行独立自主的和平外交政策和互利共赢的开放战略。"
+  },
+  {
+    "id": "pol_135",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "short_answer",
+    "knowledge_area": "时事政治",
+    "content": "论述中国式现代化的世界意义。",
+    "options": null,
+    "answer": "①打破了现代化等于西方化的迷思：证明现代化不等于西方化，各国可以探索符合自身国情的现代化道路。②为广大发展中国家提供新选择：为广大发展中国家独立自主迈向现代化提供了全新选择。③推动全球治理体系变革：中国积极参与全球治理，推动构建人类命运共同体，促进国际秩序朝着更加公正合理的方向发展。④促进世界和平与发展：中国式现代化是走和平发展道路的现代化，不走殖民掠夺、国强必霸的老路，为世界和平发展作出重要贡献。⑤创造人类文明新形态：中国式现代化创造的人类文明新形态，丰富了世界文明多样性。",
+    "explanation": "中国式现代化的世界意义体现在打破西方模式迷信、提供新选择、推动全球治理变革、促进和平发展和创造文明新形态等方面。"
+  },
+  {
+    "id": "pol_136",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "single_choice",
+    "knowledge_area": "经济生活",
+    "content": "商品的价格由______决定，并受______影响。",
+    "options": [
+      "价值 供求关系",
+      "供求关系 价值",
+      "使用价值 价值",
+      "价格 价值"
+    ],
+    "answer": "A",
+    "explanation": "商品的价格由价值决定，并受供求关系影响，围绕价值上下波动。"
+  },
+  {
+    "id": "pol_137",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "single_choice",
+    "knowledge_area": "政治生活",
+    "content": "我国的根本制度是？",
+    "options": [
+      "人民代表大会制度",
+      "社会主义制度",
+      "中国共产党领导的多党合作和政治协商制度",
+      "民族区域自治制度"
+    ],
+    "answer": "B",
+    "explanation": "社会主义制度是我国的根本制度，人民代表大会制度是我国的根本政治制度。"
+  },
+  {
+    "id": "pol_138",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "advanced",
+    "question_type": "single_choice",
+    "knowledge_area": "生活与哲学",
+    "content": "关于社会基本矛盾运动的叙述，正确的是？",
+    "options": [
+      "生产力决定生产关系，生产关系对生产力有反作用",
+      "生产关系决定生产力",
+      "上层建筑决定经济基础",
+      "经济基础对上层建筑没有反作用"
+    ],
+    "answer": "A",
+    "explanation": "生产力决定生产关系，生产关系对生产力具有反作用；经济基础决定上层建筑，上层建筑对经济基础具有反作用。"
+  },
+  {
+    "id": "pol_139",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "beginner",
+    "question_type": "fill_blank",
+    "knowledge_area": "文化生活",
+    "content": "文化创新的基本途径是：继承传统、______，面向世界、______。",
+    "options": null,
+    "answer": "推陈出新,博采众长",
+    "explanation": "文化创新的基本途径是继承传统、推陈出新，面向世界、博采众长。"
+  },
+  {
+    "id": "pol_140",
+    "subject": "politics",
+    "age_group": "16-18",
+    "grade": "高三",
+    "difficulty": "intermediate",
+    "question_type": "true_false",
+    "knowledge_area": "时事政治",
+    "content": "高质量发展是全面建设社会主义现代化国家的首要任务，必须完整、准确、全面贯彻新发展理念。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "A",
+    "explanation": "高质量发展是全面建设社会主义现代化国家的首要任务，必须完整、准确、全面贯彻创新、协调、绿色、开放、共享的新发展理念。"
+  }
+]

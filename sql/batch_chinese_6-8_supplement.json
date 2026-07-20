@@ -1,0 +1,2295 @@
+{
+  "batch_id": "chinese_6-8_supplement",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "id": "602ca269-6c26-4721-a9d2-1824073a7035",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-象形",
+      "question": "'日'字像什么？",
+      "explanation": "日字像太阳的形状。",
+      "options": [
+        "月亮",
+        "太阳",
+        "星星",
+        "云朵"
+      ],
+      "correct_answer": "太阳"
+    },
+    {
+      "id": "9d291616-88a7-4b3a-8e6e-d17a192179f2",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "词语-反义词",
+      "question": "下面哪个是反义词？",
+      "explanation": "大和小是反义词。",
+      "options": [
+        "大-小",
+        "红-花",
+        "天-空",
+        "山-水"
+      ],
+      "correct_answer": "大-小"
+    },
+    {
+      "id": "a172f232-e1cb-49f8-8976-89ed0f4373c3",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-整体认读",
+      "question": "下面哪个是整体认读音节？",
+      "explanation": "zhi是整体认读音节，不用拼读。",
+      "options": [
+        "zhi",
+        "za",
+        "ze",
+        "zu"
+      ],
+      "correct_answer": "zhi"
+    },
+    {
+      "id": "95c9dd1d-5c26-4ed0-a28a-9c1915f0932e",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-汉字",
+      "question": "'春'的拼音是？",
+      "explanation": "春字的正确拼音是chun。",
+      "options": [
+        "cun",
+        "chun",
+        "chong",
+        "cheng"
+      ],
+      "correct_answer": "chun"
+    },
+    {
+      "id": "e0e50832-6735-4c96-9ff6-452240cb4b38",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小明的书包里有很多书，他每天都认真读书。 问题：小明每天做什么？",
+      "explanation": "文中说他每天都认真读书。",
+      "options": [
+        "玩游戏",
+        "睡觉",
+        "认真读书",
+        "看电视"
+      ],
+      "correct_answer": "认真读书"
+    },
+    {
+      "id": "e5402460-b596-4387-a433-c9b0dd640eef",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-颜色",
+      "question": "天空是什么颜色的？",
+      "explanation": "晴天的时候，天空是蓝色的。",
+      "options": [
+        "红色",
+        "蓝色",
+        "绿色",
+        "黑色"
+      ],
+      "correct_answer": "蓝色"
+    },
+    {
+      "id": "3cfc1895-9873-45fd-bf5b-cbf27c3c4ac9",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-颜色",
+      "question": "天空是什么颜色的？",
+      "explanation": "晴天的时候，天空是蓝色的。",
+      "options": [
+        "红色",
+        "蓝色",
+        "绿色",
+        "黑色"
+      ],
+      "correct_answer": "蓝色"
+    },
+    {
+      "id": "155d4046-0593-4719-ac15-dd92e4a246c6",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "8c4720b5-a016-48a2-8fc1-3274d4616054",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-汉字",
+      "question": "'花'的拼音是？",
+      "explanation": "花字的正确拼音是hua。",
+      "options": [
+        "hua",
+        "fa",
+        "ha",
+        "huo"
+      ],
+      "correct_answer": "hua"
+    },
+    {
+      "id": "df604916-6f82-4a31-b9a2-bec947dc46ee",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-副词",
+      "question": "'快乐地'应该搭配什么？",
+      "explanation": "快乐地唱歌是常见搭配。",
+      "options": [
+        "跑步",
+        "唱歌",
+        "吃饭",
+        "写字"
+      ],
+      "correct_answer": "唱歌"
+    },
+    {
+      "id": "8a9360e5-2bae-4042-892d-165b0db91288",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-构字",
+      "question": "'口'字里面加一横是什么字？",
+      "explanation": "口里面加一横是日字。",
+      "options": [
+        "日",
+        "目",
+        "白",
+        "田"
+      ],
+      "correct_answer": "日"
+    },
+    {
+      "id": "251e2fe4-5edf-4ad4-a2eb-4f25aed125d8",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-笔画",
+      "question": "'山'字一共有几画？",
+      "explanation": "山字有竖、竖折、竖，共3画。",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answer": "3"
+    },
+    {
+      "id": "06981b2f-f4c2-49b6-98b7-d1dbf26a1fbc",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "词语-反义词",
+      "question": "下面哪个是反义词？",
+      "explanation": "大和小是反义词。",
+      "options": [
+        "大-小",
+        "红-花",
+        "天-空",
+        "山-水"
+      ],
+      "correct_answer": "大-小"
+    },
+    {
+      "id": "151693db-9230-457f-b0ab-67bb353a1f5a",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "a8d024e8-4054-4efc-9c31-a950c19c8d1a",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小明的书包里有很多书，他每天都认真读书。 问题：小明每天做什么？",
+      "explanation": "文中说他每天都认真读书。",
+      "options": [
+        "玩游戏",
+        "睡觉",
+        "认真读书",
+        "看电视"
+      ],
+      "correct_answer": "认真读书"
+    },
+    {
+      "id": "3072dc78-2444-4194-a4e6-b1db2eb8f90d",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-形容词",
+      "question": "'美丽的'应该搭配什么？",
+      "explanation": "美丽的花朵是常见搭配。",
+      "options": [
+        "歌声",
+        "花朵",
+        "桌子",
+        "椅子"
+      ],
+      "correct_answer": "花朵"
+    },
+    {
+      "id": "52bb3b0f-89c8-4612-89a4-5f1737ae3c1b",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-象形",
+      "question": "'日'字像什么？",
+      "explanation": "日字像太阳的形状。",
+      "options": [
+        "月亮",
+        "太阳",
+        "星星",
+        "云朵"
+      ],
+      "correct_answer": "太阳"
+    },
+    {
+      "id": "7a1eddb8-0452-4339-9218-3d641a1c5d64",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-副词",
+      "question": "'快乐地'应该搭配什么？",
+      "explanation": "快乐地唱歌是常见搭配。",
+      "options": [
+        "跑步",
+        "唱歌",
+        "吃饭",
+        "写字"
+      ],
+      "correct_answer": "唱歌"
+    },
+    {
+      "id": "f322e3e7-ed6f-41bc-9e38-0eb8d11df232",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-构字",
+      "question": "'口'字里面加一横是什么字？",
+      "explanation": "口里面加一横是日字。",
+      "options": [
+        "日",
+        "目",
+        "白",
+        "田"
+      ],
+      "correct_answer": "日"
+    },
+    {
+      "id": "a7bea7f2-dcf5-4c50-99ad-7fa7e50fe522",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "bd8b25ba-47e1-4f5e-a078-5f772094dd39",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_tag": "汉字-结构",
+      "question": "哪些字是左右结构？",
+      "explanation": "明和林是左右结构。",
+      "options": [
+        "明",
+        "林",
+        "日",
+        "月"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "b58e41f3-7e03-4034-9ade-a023639775f0",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "哪些是水果？",
+      "explanation": "苹果、香蕉、西瓜是水果。",
+      "options": [
+        "苹果",
+        "香蕉",
+        "白菜",
+        "西瓜"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "e74c3350-9f6b-4714-931d-397829fb8946",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "哪些是水果？",
+      "explanation": "苹果、香蕉、西瓜是水果。",
+      "options": [
+        "苹果",
+        "香蕉",
+        "白菜",
+        "西瓜"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "71e99a0f-dbaa-4910-a6f5-3e83276be38c",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是颜色？",
+      "explanation": "红、蓝、绿是颜色。",
+      "options": [
+        "红",
+        "蓝",
+        "大",
+        "绿"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "fce308fd-ba17-478e-9ff6-9fedaae8ed69",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是颜色？",
+      "explanation": "红、蓝、绿是颜色。",
+      "options": [
+        "红",
+        "蓝",
+        "大",
+        "绿"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "a175ac47-2e9a-4a17-aedd-2fd99964e4cf",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是动物？",
+      "explanation": "猫和狗是动物。",
+      "options": [
+        "猫",
+        "狗",
+        "树",
+        "花"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "fbf16d32-0ce4-4dc2-9fc7-20deef6bd2dd",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是动物？",
+      "explanation": "猫和狗是动物。",
+      "options": [
+        "猫",
+        "狗",
+        "树",
+        "花"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "2ba9e6b3-a481-44ef-8543-7ef5f5cc5f40",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_tag": "汉字-结构",
+      "question": "哪些字是左右结构？",
+      "explanation": "明和林是左右结构。",
+      "options": [
+        "明",
+        "林",
+        "日",
+        "月"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "99b8f940-5990-44a6-b96d-792e3da3ebb5",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-默写",
+      "question": "床前明月____",
+      "explanation": "床前明月光。",
+      "options": [],
+      "correct_answer": "光"
+    },
+    {
+      "id": "9008bf07-177f-48e1-abe1-0facff2bbcac",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'火'的拼音是h____",
+      "explanation": "火字的拼音是huo。",
+      "options": [],
+      "correct_answer": "uo"
+    },
+    {
+      "id": "dc63e7cc-81f3-4b9b-9f43-bba0d863ed7c",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-作者",
+      "question": "春晓的作者姓____",
+      "explanation": "《春晓》的作者是孟浩然。",
+      "options": [],
+      "correct_answer": "孟"
+    },
+    {
+      "id": "50b013f9-9195-450b-be55-bfc89652894a",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'妈'的拼音是m____",
+      "explanation": "妈字的拼音是ma。",
+      "options": [],
+      "correct_answer": "a"
+    },
+    {
+      "id": "0b832ad0-1b5a-4a15-bb3d-b322b323b49f",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "汉字-构字",
+      "question": "'日'加一笔可以变成____",
+      "explanation": "日加一笔可以变成目、白、田或旦。",
+      "options": [],
+      "correct_answer": "目/白/田/旦"
+    },
+    {
+      "id": "5bc31f38-9bf2-4aaf-99da-7a4e2f17fb34",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "汉字-构字",
+      "question": "'日'加一笔可以变成____",
+      "explanation": "日加一笔可以变成目、白、田或旦。",
+      "options": [],
+      "correct_answer": "目/白/田/旦"
+    },
+    {
+      "id": "9e06f549-aacb-40a4-9e44-3ca4ebc4a0e5",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-默写",
+      "question": "床前明月____",
+      "explanation": "床前明月光。",
+      "options": [],
+      "correct_answer": "光"
+    },
+    {
+      "id": "dc352b00-ddb2-4e6f-a4a4-53c0e2d99bc6",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-作者",
+      "question": "春晓的作者姓____",
+      "explanation": "《春晓》的作者是孟浩然。",
+      "options": [],
+      "correct_answer": "孟"
+    },
+    {
+      "id": "69c55f50-d696-4380-bc68-cb4dd80e4052",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-作者",
+      "question": "春晓的作者姓____",
+      "explanation": "《春晓》的作者是孟浩然。",
+      "options": [],
+      "correct_answer": "孟"
+    },
+    {
+      "id": "36113059-9d0d-4c38-a4a8-72d92258da29",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_tag": "汉字-构字",
+      "question": "'大'字加一笔变成____",
+      "explanation": "大字加一笔可以变成天、太或犬。",
+      "options": [],
+      "correct_answer": "天/太/犬"
+    },
+    {
+      "id": "e45a62b4-b609-4297-bc4c-d383c080e796",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "春天花儿会开",
+      "explanation": "春天是花开季节。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "6c477c6b-1ca7-45df-af69-b72a65303288",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "春天花儿会开",
+      "explanation": "春天是花开季节。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "4caadb7a-4e15-405c-8e35-8b60597d4370",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_tag": "词语-反义词",
+      "question": "'上'和'下'是反义词",
+      "explanation": "上和下是反义词。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "276d0192-9d0c-4801-8886-f495aa743d60",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "春天花儿会开",
+      "explanation": "春天是花开季节。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "f7e8d99c-3a0a-470f-9202-32e73e5b8f35",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "一年有12个月",
+      "explanation": "一年有12个月。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "3de1b274-34d8-4a99-88ec-5295fe27a834",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_tag": "汉字-结构",
+      "question": "'日'字是左右结构",
+      "explanation": "日字是独体字，不是左右结构。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误"
+    },
+    {
+      "id": "2ad6fe26-109d-4f06-8cb2-a141cba8381d",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "knowledge_tag": "表达-写作",
+      "question": "简述你最喜欢的小动物及原因",
+      "explanation": "自由发挥，言之有理即可。",
+      "options": [],
+      "correct_answer": "（开放题）"
+    },
+    {
+      "id": "6bf78d0a-0e74-4c4f-aea0-e4339766f4f2",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "knowledge_tag": "词语-颜色",
+      "question": "请写出两个表示颜色的词语",
+      "explanation": "红色、黄色、蓝色、绿色等都是颜色词。",
+      "options": [],
+      "correct_answer": "红色、蓝色（答案不唯一）"
+    },
+    {
+      "id": "51bf4613-0565-4c81-9e4c-e5eb8aed884e",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "knowledge_tag": "词语-造句",
+      "question": "请用'快乐'造一个句子",
+      "explanation": "用快乐造句即可，答案不唯一。",
+      "options": [],
+      "correct_answer": "（示例）我今天很快乐。"
+    },
+    {
+      "id": "c8bb3878-c4b5-4b94-b2da-54ec26253066",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-构字",
+      "question": "'人'字加一横变成什么字？",
+      "explanation": "人字加一横变成大字。",
+      "options": [
+        "大",
+        "天",
+        "太",
+        "夫"
+      ],
+      "correct_answer": "大"
+    },
+    {
+      "id": "47b2f0d1-fb11-425c-8a60-79f88cb37b30",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-构字",
+      "question": "'人'字加一横变成什么字？",
+      "explanation": "人字加一横变成大字。",
+      "options": [
+        "大",
+        "天",
+        "太",
+        "夫"
+      ],
+      "correct_answer": "大"
+    },
+    {
+      "id": "743a30db-8245-4636-9b5e-11f9ac5bd1ed",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-构字",
+      "question": "'人'字加一横变成什么字？",
+      "explanation": "人字加一横变成大字。",
+      "options": [
+        "大",
+        "天",
+        "太",
+        "夫"
+      ],
+      "correct_answer": "大"
+    },
+    {
+      "id": "4c2425bc-f67f-4968-9bd8-b53183763452",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-整体认读",
+      "question": "下面哪个是整体认读音节？",
+      "explanation": "zhi是整体认读音节，不用拼读。",
+      "options": [
+        "zhi",
+        "za",
+        "ze",
+        "zu"
+      ],
+      "correct_answer": "zhi"
+    },
+    {
+      "id": "28dd4ad5-849d-4290-b060-6a5479e77eaf",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-构字",
+      "question": "'人'字加一横变成什么字？",
+      "explanation": "人字加一横变成大字。",
+      "options": [
+        "大",
+        "天",
+        "太",
+        "夫"
+      ],
+      "correct_answer": "大"
+    },
+    {
+      "id": "56eb7181-3a69-4367-8813-d79e6be62782",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-声母",
+      "question": "下面哪个是声母？",
+      "explanation": "声母是音节开头的辅音，b是声母。",
+      "options": [
+        "a",
+        "b",
+        "ang",
+        "ao"
+      ],
+      "correct_answer": "b"
+    },
+    {
+      "id": "20d10166-d66d-4b01-b6bc-cf7b4a11ddeb",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-颜色",
+      "question": "小草是什么颜色的？",
+      "explanation": "小草通常是绿色的。",
+      "options": [
+        "红色",
+        "黄色",
+        "绿色",
+        "白色"
+      ],
+      "correct_answer": "绿色"
+    },
+    {
+      "id": "ac0214d7-87da-4ca0-a0c2-e12f4135367e",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小猫喜欢吃鱼。它每天都去河边钓鱼。 问题：小猫喜欢吃什么？",
+      "explanation": "文中说小猫喜欢吃鱼。",
+      "options": [
+        "肉",
+        "鱼",
+        "草",
+        "米"
+      ],
+      "correct_answer": "鱼"
+    },
+    {
+      "id": "a07f4623-0c75-4974-b35e-600ec5200078",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-整体认读",
+      "question": "下面哪个是整体认读音节？",
+      "explanation": "zhi是整体认读音节，不用拼读。",
+      "options": [
+        "zhi",
+        "za",
+        "ze",
+        "zu"
+      ],
+      "correct_answer": "zhi"
+    },
+    {
+      "id": "4cc168ee-f225-4b3d-983a-86406d2d9bc8",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-副词",
+      "question": "'快乐地'应该搭配什么？",
+      "explanation": "快乐地唱歌是常见搭配。",
+      "options": [
+        "跑步",
+        "唱歌",
+        "吃饭",
+        "写字"
+      ],
+      "correct_answer": "唱歌"
+    },
+    {
+      "id": "d71b379c-16f2-4d3f-b28e-ff6db1629d17",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "739fc966-5ac2-4b4c-9d1d-7add96776976",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-颜色",
+      "question": "小草是什么颜色的？",
+      "explanation": "小草通常是绿色的。",
+      "options": [
+        "红色",
+        "黄色",
+        "绿色",
+        "白色"
+      ],
+      "correct_answer": "绿色"
+    },
+    {
+      "id": "c6a8337d-3c68-4a92-8600-3cb0273cd71a",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-汉字",
+      "question": "'春'的拼音是？",
+      "explanation": "春字的正确拼音是chun。",
+      "options": [
+        "cun",
+        "chun",
+        "chong",
+        "cheng"
+      ],
+      "correct_answer": "chun"
+    },
+    {
+      "id": "51323517-1b6c-471a-8f06-9a370fccedbd",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小猫喜欢吃鱼。它每天都去河边钓鱼。 问题：小猫喜欢吃什么？",
+      "explanation": "文中说小猫喜欢吃鱼。",
+      "options": [
+        "肉",
+        "鱼",
+        "草",
+        "米"
+      ],
+      "correct_answer": "鱼"
+    },
+    {
+      "id": "192fb71b-be36-4a90-b151-fb877924ef50",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-汉字",
+      "question": "'花'的拼音是？",
+      "explanation": "花字的正确拼音是hua。",
+      "options": [
+        "hua",
+        "fa",
+        "ha",
+        "huo"
+      ],
+      "correct_answer": "hua"
+    },
+    {
+      "id": "5cc2d503-a4a5-422b-afc1-11d46aa2c0c2",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小猫喜欢吃鱼。它每天都去河边钓鱼。 问题：小猫喜欢吃什么？",
+      "explanation": "文中说小猫喜欢吃鱼。",
+      "options": [
+        "肉",
+        "鱼",
+        "草",
+        "米"
+      ],
+      "correct_answer": "鱼"
+    },
+    {
+      "id": "f0c8b81d-114f-4abc-97b9-dba837c1f751",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-韵母",
+      "question": "下面哪个是单韵母？",
+      "explanation": "单韵母只有一个元音，o是单韵母。",
+      "options": [
+        "ai",
+        "ei",
+        "o",
+        "ou"
+      ],
+      "correct_answer": "o"
+    },
+    {
+      "id": "23983d75-a48c-42aa-8fff-f167b177fffb",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-笔画",
+      "question": "'山'字一共有几画？",
+      "explanation": "山字有竖、竖折、竖，共3画。",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answer": "3"
+    },
+    {
+      "id": "dfe29b6e-6c18-4160-94f6-67008cc2ec93",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-颜色",
+      "question": "天空是什么颜色的？",
+      "explanation": "晴天的时候，天空是蓝色的。",
+      "options": [
+        "红色",
+        "蓝色",
+        "绿色",
+        "黑色"
+      ],
+      "correct_answer": "蓝色"
+    },
+    {
+      "id": "1528ac07-b543-4d98-a318-a22d91e5cd6e",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-象形",
+      "question": "'日'字像什么？",
+      "explanation": "日字像太阳的形状。",
+      "options": [
+        "月亮",
+        "太阳",
+        "星星",
+        "云朵"
+      ],
+      "correct_answer": "太阳"
+    },
+    {
+      "id": "c0dd2f4c-6159-4cae-aa94-359dc46ce0a4",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "哪些是水果？",
+      "explanation": "苹果、香蕉、西瓜是水果。",
+      "options": [
+        "苹果",
+        "香蕉",
+        "白菜",
+        "西瓜"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "909c37da-7b20-490b-b0bf-d81d4b71319e",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_tag": "汉字-结构",
+      "question": "哪些字是左右结构？",
+      "explanation": "明和林是左右结构。",
+      "options": [
+        "明",
+        "林",
+        "日",
+        "月"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "ab8f4477-536d-41f8-9601-24b2e7991d4d",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是颜色？",
+      "explanation": "红、蓝、绿是颜色。",
+      "options": [
+        "红",
+        "蓝",
+        "大",
+        "绿"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "c341c076-24c0-496d-915e-d85c253d6a25",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是颜色？",
+      "explanation": "红、蓝、绿是颜色。",
+      "options": [
+        "红",
+        "蓝",
+        "大",
+        "绿"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "d02653f1-e3cb-4d0d-989e-0ef6bb3e502b",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是动物？",
+      "explanation": "猫和狗是动物。",
+      "options": [
+        "猫",
+        "狗",
+        "树",
+        "花"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "a1866c9f-55cc-425f-a4d5-3198015d29a4",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "哪些是水果？",
+      "explanation": "苹果、香蕉、西瓜是水果。",
+      "options": [
+        "苹果",
+        "香蕉",
+        "白菜",
+        "西瓜"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "15b6830f-a7e9-4150-97b1-65f410791c35",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是动物？",
+      "explanation": "猫和狗是动物。",
+      "options": [
+        "猫",
+        "狗",
+        "树",
+        "花"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "d78a9366-091b-4214-90b4-474185874822",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "哪些是水果？",
+      "explanation": "苹果、香蕉、西瓜是水果。",
+      "options": [
+        "苹果",
+        "香蕉",
+        "白菜",
+        "西瓜"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "def097c0-457a-4aee-ae87-665642e9aab3",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'中'的拼音是zh____",
+      "explanation": "中字的拼音是zhong。",
+      "options": [],
+      "correct_answer": "ong"
+    },
+    {
+      "id": "d5a237d8-b024-4b1b-b8f2-e93553093de1",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'爸'的拼音是b____",
+      "explanation": "爸字的拼音是ba。",
+      "options": [],
+      "correct_answer": "a"
+    },
+    {
+      "id": "50e1eb09-f706-42fc-b27f-fda4f346d1b5",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'火'的拼音是h____",
+      "explanation": "火字的拼音是huo。",
+      "options": [],
+      "correct_answer": "uo"
+    },
+    {
+      "id": "11c84f1e-33dd-4fcb-b942-2a12ef8ae8d0",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-默写",
+      "question": "床前明月____",
+      "explanation": "床前明月光。",
+      "options": [],
+      "correct_answer": "光"
+    },
+    {
+      "id": "812bb3ee-3dff-4a8e-9616-1bb1d7985706",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "汉字-构字",
+      "question": "'大'字加一笔变成____",
+      "explanation": "大字加一笔可以变成天、太或犬。",
+      "options": [],
+      "correct_answer": "天/太/犬"
+    },
+    {
+      "id": "1b5f4e48-7472-4306-a1d5-152fda389fd7",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'爸'的拼音是b____",
+      "explanation": "爸字的拼音是ba。",
+      "options": [],
+      "correct_answer": "a"
+    },
+    {
+      "id": "ec1d08f0-f3ec-4783-8c74-84e52c542cd3",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "汉字-构字",
+      "question": "'大'字加一笔变成____",
+      "explanation": "大字加一笔可以变成天、太或犬。",
+      "options": [],
+      "correct_answer": "天/太/犬"
+    },
+    {
+      "id": "1ffe6253-24cf-4b31-ad31-afcfae9a47f3",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "汉字-成语",
+      "question": "一____二____（填数字）",
+      "explanation": "一二是一二。",
+      "options": [],
+      "correct_answer": "一,二"
+    },
+    {
+      "id": "aadf517f-2ae1-4af3-b064-e340d3a4fef5",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'水'的拼音是sh____",
+      "explanation": "水字的拼音是shui。",
+      "options": [],
+      "correct_answer": "ui"
+    },
+    {
+      "id": "edbf820b-9a4a-4ced-a2d5-c28bb00d4baa",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'火'的拼音是h____",
+      "explanation": "火字的拼音是huo。",
+      "options": [],
+      "correct_answer": "uo"
+    },
+    {
+      "id": "a0530058-846c-4312-b912-393fe2b4cb9d",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "猫会飞",
+      "explanation": "猫不会飞。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误"
+    },
+    {
+      "id": "ea3f3c88-0603-48e4-993f-c9f986957cff",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "一年有12个月",
+      "explanation": "一年有12个月。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "e8be2342-cc5c-441a-bbac-1740be1bd3e4",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "春天花儿会开",
+      "explanation": "春天是花开季节。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "19367400-69f0-442d-a018-540d33d115c8",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_tag": "词语-反义词",
+      "question": "'上'和'下'是反义词",
+      "explanation": "上和下是反义词。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "156e7bf2-ec45-4cd2-aecc-abfded9d40f2",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_tag": "汉字-结构",
+      "question": "'日'字是左右结构",
+      "explanation": "日字是独体字，不是左右结构。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误"
+    },
+    {
+      "id": "70a7bbe4-a30a-4828-a58f-32fb98520ba1",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "猫会飞",
+      "explanation": "猫不会飞。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误"
+    },
+    {
+      "id": "f6a7b282-25fc-4826-82c5-16a7a2030567",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "knowledge_tag": "词语-颜色",
+      "question": "请写出两个表示颜色的词语",
+      "explanation": "红色、黄色、蓝色、绿色等都是颜色词。",
+      "options": [],
+      "correct_answer": "红色、蓝色（答案不唯一）"
+    },
+    {
+      "id": "f83f0ce5-0c88-4a63-95c7-ecb065bd76f4",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "knowledge_tag": "词语-颜色",
+      "question": "请写出两个表示颜色的词语",
+      "explanation": "红色、黄色、蓝色、绿色等都是颜色词。",
+      "options": [],
+      "correct_answer": "红色、蓝色（答案不唯一）"
+    },
+    {
+      "id": "522e817a-15af-401e-ab38-a10158126e02",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "knowledge_tag": "表达-写作",
+      "question": "简述你最喜欢的小动物及原因",
+      "explanation": "自由发挥，言之有理即可。",
+      "options": [],
+      "correct_answer": "（开放题）"
+    },
+    {
+      "id": "75ac1e71-8171-4fa7-8348-c4056f3f2a9a",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "554b4b0a-04e8-49ca-b8b7-eb545e4885d8",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "48c558a2-9eba-4e0f-827b-a3c19f96d827",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-整体认读",
+      "question": "下面哪个是整体认读音节？",
+      "explanation": "zhi是整体认读音节，不用拼读。",
+      "options": [
+        "zhi",
+        "za",
+        "ze",
+        "zu"
+      ],
+      "correct_answer": "zhi"
+    },
+    {
+      "id": "4ab0f506-d1e2-4d9c-af14-f890ee0ff45c",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-汉字",
+      "question": "'花'的拼音是？",
+      "explanation": "花字的正确拼音是hua。",
+      "options": [
+        "hua",
+        "fa",
+        "ha",
+        "huo"
+      ],
+      "correct_answer": "hua"
+    },
+    {
+      "id": "9f0a9591-db90-41b0-b492-2562d2aa6d58",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "词语-反义词",
+      "question": "下面哪个是反义词？",
+      "explanation": "大和小是反义词。",
+      "options": [
+        "大-小",
+        "红-花",
+        "天-空",
+        "山-水"
+      ],
+      "correct_answer": "大-小"
+    },
+    {
+      "id": "eea3f573-254c-4fab-9cdf-876ac8e2d47d",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-颜色",
+      "question": "天空是什么颜色的？",
+      "explanation": "晴天的时候，天空是蓝色的。",
+      "options": [
+        "红色",
+        "蓝色",
+        "绿色",
+        "黑色"
+      ],
+      "correct_answer": "蓝色"
+    },
+    {
+      "id": "8cf027ff-f34b-4413-a782-53626675116d",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-韵母",
+      "question": "下面哪个是单韵母？",
+      "explanation": "单韵母只有一个元音，o是单韵母。",
+      "options": [
+        "ai",
+        "ei",
+        "o",
+        "ou"
+      ],
+      "correct_answer": "o"
+    },
+    {
+      "id": "219ece5a-a5f2-4a35-b139-522426bf6dad",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-汉字",
+      "question": "'春'的拼音是？",
+      "explanation": "春字的正确拼音是chun。",
+      "options": [
+        "cun",
+        "chun",
+        "chong",
+        "cheng"
+      ],
+      "correct_answer": "chun"
+    },
+    {
+      "id": "b161f7ca-5154-4e7d-93dc-24c2fc8290e9",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "拼音-韵母",
+      "question": "下面哪个是单韵母？",
+      "explanation": "单韵母只有一个元音，o是单韵母。",
+      "options": [
+        "ai",
+        "ei",
+        "o",
+        "ou"
+      ],
+      "correct_answer": "o"
+    },
+    {
+      "id": "13c9e72d-63ee-4454-b997-0d6b084f79be",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小明的书包里有很多书，他每天都认真读书。 问题：小明每天做什么？",
+      "explanation": "文中说他每天都认真读书。",
+      "options": [
+        "玩游戏",
+        "睡觉",
+        "认真读书",
+        "看电视"
+      ],
+      "correct_answer": "认真读书"
+    },
+    {
+      "id": "276c87ad-3e0a-4dee-b11c-74c34f8ebe1e",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "97b96a55-6ac2-4e06-ac7c-6ffd4ccc759c",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-笔画",
+      "question": "'山'字一共有几画？",
+      "explanation": "山字有竖、竖折、竖，共3画。",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answer": "3"
+    },
+    {
+      "id": "e7454162-b0de-48e4-8e12-6c6785c968b6",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小明的书包里有很多书，他每天都认真读书。 问题：小明每天做什么？",
+      "explanation": "文中说他每天都认真读书。",
+      "options": [
+        "玩游戏",
+        "睡觉",
+        "认真读书",
+        "看电视"
+      ],
+      "correct_answer": "认真读书"
+    },
+    {
+      "id": "f1607712-ee43-41d8-b8c7-9f079388bcbd",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小猫喜欢吃鱼。它每天都去河边钓鱼。 问题：小猫喜欢吃什么？",
+      "explanation": "文中说小猫喜欢吃鱼。",
+      "options": [
+        "肉",
+        "鱼",
+        "草",
+        "米"
+      ],
+      "correct_answer": "鱼"
+    },
+    {
+      "id": "7483b8a1-4f7f-474e-9daf-0dc080ab2658",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "8e2b1e21-e335-4cdf-8a65-7310ab8a5910",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：春天来了，花儿开了，小鸟在树上唱歌。 问题：什么季节花儿开了？",
+      "explanation": "文中说春天来了，花儿开了。",
+      "options": [
+        "夏天",
+        "秋天",
+        "冬天",
+        "春天"
+      ],
+      "correct_answer": "春天"
+    },
+    {
+      "id": "0fcd7046-b0a3-4cae-988e-f9aaf2033a0b",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "词语搭配-颜色",
+      "question": "天空是什么颜色的？",
+      "explanation": "晴天的时候，天空是蓝色的。",
+      "options": [
+        "红色",
+        "蓝色",
+        "绿色",
+        "黑色"
+      ],
+      "correct_answer": "蓝色"
+    },
+    {
+      "id": "c58d02fc-11c2-4e98-bff2-91a8446afcbe",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "汉字-构字",
+      "question": "'人'字加一横变成什么字？",
+      "explanation": "人字加一横变成大字。",
+      "options": [
+        "大",
+        "天",
+        "太",
+        "夫"
+      ],
+      "correct_answer": "大"
+    },
+    {
+      "id": "d2391c3a-0efa-4cdd-be53-7d72f2907a61",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_tag": "阅读理解-细节",
+      "question": "阅读短文：小明的书包里有很多书，他每天都认真读书。 问题：小明每天做什么？",
+      "explanation": "文中说他每天都认真读书。",
+      "options": [
+        "玩游戏",
+        "睡觉",
+        "认真读书",
+        "看电视"
+      ],
+      "correct_answer": "认真读书"
+    },
+    {
+      "id": "d97b572f-0240-4a45-8ecf-1a6cb48b2e7b",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是颜色？",
+      "explanation": "红、蓝、绿是颜色。",
+      "options": [
+        "红",
+        "蓝",
+        "大",
+        "绿"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "19e8e9b1-c715-4093-9c57-e9a70618e676",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是动物？",
+      "explanation": "猫和狗是动物。",
+      "options": [
+        "猫",
+        "狗",
+        "树",
+        "花"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "cb4a3b84-0a4a-48b1-bd3b-301c283adc33",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是动物？",
+      "explanation": "猫和狗是动物。",
+      "options": [
+        "猫",
+        "狗",
+        "树",
+        "花"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "99d86af4-c3f6-40a6-b18a-195a6638eca5",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是颜色？",
+      "explanation": "红、蓝、绿是颜色。",
+      "options": [
+        "红",
+        "蓝",
+        "大",
+        "绿"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "658223d5-5a54-4d4c-b614-636c7d8ae9b0",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是动物？",
+      "explanation": "猫和狗是动物。",
+      "options": [
+        "猫",
+        "狗",
+        "树",
+        "花"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "c7c24e69-dcd1-4370-89b3-77689486ae28",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "下面哪些是动物？",
+      "explanation": "猫和狗是动物。",
+      "options": [
+        "猫",
+        "狗",
+        "树",
+        "花"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "0001e667-3824-4bfa-9496-be2f12391741",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_tag": "汉字-结构",
+      "question": "哪些字是左右结构？",
+      "explanation": "明和林是左右结构。",
+      "options": [
+        "明",
+        "林",
+        "日",
+        "月"
+      ],
+      "correct_answer": "A,B"
+    },
+    {
+      "id": "81f2898e-a89f-478f-929c-ec85ba7beca2",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_tag": "词语-分类",
+      "question": "哪些是水果？",
+      "explanation": "苹果、香蕉、西瓜是水果。",
+      "options": [
+        "苹果",
+        "香蕉",
+        "白菜",
+        "西瓜"
+      ],
+      "correct_answer": "A,B,D"
+    },
+    {
+      "id": "666d7f5e-4030-4d08-a016-3beb889e3618",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-默写",
+      "question": "床前明月____",
+      "explanation": "床前明月光。",
+      "options": [],
+      "correct_answer": "光"
+    },
+    {
+      "id": "06355597-f500-4a7d-a8e5-beebf364e01d",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-作者",
+      "question": "春晓的作者姓____",
+      "explanation": "《春晓》的作者是孟浩然。",
+      "options": [],
+      "correct_answer": "孟"
+    },
+    {
+      "id": "079568d2-cafc-4920-8891-b13cbfa8864b",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'爸'的拼音是b____",
+      "explanation": "爸字的拼音是ba。",
+      "options": [],
+      "correct_answer": "a"
+    },
+    {
+      "id": "4fae7839-6ffe-4150-81a9-1b5dc2760127",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-默写",
+      "question": "床前明月____",
+      "explanation": "床前明月光。",
+      "options": [],
+      "correct_answer": "光"
+    },
+    {
+      "id": "07479ff0-de9c-4cda-903c-f4d738628ea3",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'水'的拼音是sh____",
+      "explanation": "水字的拼音是shui。",
+      "options": [],
+      "correct_answer": "ui"
+    },
+    {
+      "id": "0967ee8d-cc36-4340-b767-54fcaa6dd68c",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-作者",
+      "question": "春晓的作者姓____",
+      "explanation": "《春晓》的作者是孟浩然。",
+      "options": [],
+      "correct_answer": "孟"
+    },
+    {
+      "id": "8fbead5f-c8ac-4d6c-a028-8d2602ce90d9",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'妈'的拼音是m____",
+      "explanation": "妈字的拼音是ma。",
+      "options": [],
+      "correct_answer": "a"
+    },
+    {
+      "id": "77e6dd48-29a6-4eef-a0a2-81dc8b53493d",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "拼音-拼写",
+      "question": "'爸'的拼音是b____",
+      "explanation": "爸字的拼音是ba。",
+      "options": [],
+      "correct_answer": "a"
+    },
+    {
+      "id": "d740af43-267e-4dec-9d7c-908d9ebd9553",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_tag": "古诗词-默写",
+      "question": "床前明月____",
+      "explanation": "床前明月光。",
+      "options": [],
+      "correct_answer": "光"
+    },
+    {
+      "id": "8d1e5cf7-8560-4844-99eb-2f0adfc4b4b3",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "猫会飞",
+      "explanation": "猫不会飞。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误"
+    },
+    {
+      "id": "20ba0d32-1da8-460e-b2c2-abf97fc56989",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_tag": "词语-反义词",
+      "question": "'上'和'下'是反义词",
+      "explanation": "上和下是反义词。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "223a604a-58f7-45a7-8ec4-1da6c92b9801",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_tag": "词语-反义词",
+      "question": "'上'和'下'是反义词",
+      "explanation": "上和下是反义词。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "e27f0889-4153-4b39-8095-fe0639ef8e30",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_tag": "词语-反义词",
+      "question": "'上'和'下'是反义词",
+      "explanation": "上和下是反义词。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "正确"
+    },
+    {
+      "id": "98f74bc2-8ed4-4602-a541-efab7f9b6a72",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_tag": "汉字-笔画",
+      "question": "'山'字有4画",
+      "explanation": "山字只有3画。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误"
+    },
+    {
+      "id": "29b720f8-3054-47e4-8c4b-c9ccc5438fe7",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_tag": "常识",
+      "question": "猫会飞",
+      "explanation": "猫不会飞。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "correct_answer": "错误"
+    },
+    {
+      "id": "18279988-d721-44d6-b586-d522deaeb97a",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_tag": "词语-颜色",
+      "question": "请写出两个表示颜色的词语",
+      "explanation": "红色、黄色、蓝色、绿色等都是颜色词。",
+      "options": [],
+      "correct_answer": "红色、蓝色（答案不唯一）"
+    },
+    {
+      "id": "0d015f7f-f226-46d8-9427-8d2d60794d8f",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_tag": "词语-颜色",
+      "question": "请写出两个表示颜色的词语",
+      "explanation": "红色、黄色、蓝色、绿色等都是颜色词。",
+      "options": [],
+      "correct_answer": "红色、蓝色（答案不唯一）"
+    },
+    {
+      "id": "0d02f4d4-8c7a-438b-98bd-9d16bccc9eed",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_tag": "词语-颜色",
+      "question": "请写出两个表示颜色的词语",
+      "explanation": "红色、黄色、蓝色、绿色等都是颜色词。",
+      "options": [],
+      "correct_answer": "红色、蓝色（答案不唯一）"
+    },
+    {
+      "id": "c9c898a5-cacb-432a-8b09-61e2b8181a5b",
+      "subject": "chinese",
+      "age_group": "6-8",
+      "grade": "一年级/二年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_tag": "词语-颜色",
+      "question": "请写出两个表示颜色的词语",
+      "explanation": "红色、黄色、蓝色、绿色等都是颜色词。",
+      "options": [],
+      "correct_answer": "红色、蓝色（答案不唯一）"
+    }
+  ]
+}

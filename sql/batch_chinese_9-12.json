@@ -1,0 +1,1199 @@
+{
+  "batch_id": "chinese_9-12_complete",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "question_id": "ch_001",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"画龙点睛\"这个成语比喻什么？",
+      "options": [
+        "画一条龙",
+        "说话或写作时加上关键一笔",
+        "画眼睛",
+        "画龙很难"
+      ],
+      "answer": "B",
+      "explanation": "\"画龙点睛\"比喻在关键处加上精辟的一笔，使内容更生动有力。"
+    },
+    {
+      "question_id": "ch_002",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"守株待兔\"告诉我们什么道理？",
+      "options": [
+        "要爱护兔子",
+        "不主动努力，心存侥幸是不对的",
+        "种田很辛苦",
+        "兔子很可爱"
+      ],
+      "answer": "B",
+      "explanation": "\"守株待兔\"比喻不主动努力，而存侥幸心理，希望得到意外收获。"
+    },
+    {
+      "question_id": "ch_003",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"亡羊补牢\"的意思是？",
+      "options": [
+        "羊丢了就不管了",
+        "出了问题后及时补救",
+        "羊圈很结实",
+        "狼来了"
+      ],
+      "answer": "B",
+      "explanation": "\"亡羊补牢\"比喻出了问题以后想办法补救，可以防止继续受损失。"
+    },
+    {
+      "question_id": "ch_004",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "\"床前明月光，疑是地上霜\"出自哪首诗？",
+      "options": [
+        "《春晓》",
+        "《静夜思》",
+        "《山行》",
+        "《登鹳雀楼》"
+      ],
+      "answer": "B",
+      "explanation": "这两句诗出自李白的《静夜思》，表达了诗人对故乡的思念。"
+    },
+    {
+      "question_id": "ch_005",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "\"春眠不觉晓，处处闻啼鸟\"的作者是？",
+      "options": [
+        "李白",
+        "杜甫",
+        "孟浩然",
+        "杜牧"
+      ],
+      "answer": "C",
+      "explanation": "这首诗是孟浩然的《春晓》，描写了春天早晨的美好景色。"
+    },
+    {
+      "question_id": "ch_006",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文的六要素不包括以下哪一项？",
+      "options": [
+        "时间",
+        "地点",
+        "修辞手法",
+        "人物"
+      ],
+      "answer": "C",
+      "explanation": "记叙文六要素是：时间、地点、人物、事情的起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_007",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "按照事情发生先后顺序写的记叙顺序叫？",
+      "options": [
+        "倒叙",
+        "插叙",
+        "顺叙",
+        "补叙"
+      ],
+      "answer": "C",
+      "explanation": "顺叙就是按照事情发生、发展的先后顺序来进行叙述。"
+    },
+    {
+      "question_id": "ch_008",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'这座塔高65米'这句话用了什么说明方法？",
+      "options": [
+        "打比方",
+        "列数字",
+        "举例子",
+        "作比较"
+      ],
+      "answer": "B",
+      "explanation": "用具体数字\"65米\"来说明塔的高度，这是\"列数字\"的说明方法。"
+    },
+    {
+      "question_id": "ch_009",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"狐假虎威\"中的\"假\"是什么意思？",
+      "options": [
+        "真假",
+        "借",
+        "假装",
+        "假期"
+      ],
+      "answer": "B",
+      "explanation": "\"假\"在这里是\"借\"的意思，狐狸借老虎的威风吓唬其他动物。"
+    },
+    {
+      "question_id": "ch_010",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "\"欲穷千里目，更上一层楼\"出自？",
+      "options": [
+        "《望庐山瀑布》",
+        "《登鹳雀楼》",
+        "《题西林壁》",
+        "《山行》"
+      ],
+      "answer": "B",
+      "explanation": "出自王之涣的《登鹳雀楼》，比喻想要取得更大成功，就要更加努力。"
+    },
+    {
+      "question_id": "ch_011",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "成语",
+      "question_text": "下列哪些成语来自寓言故事？",
+      "options": [
+        "守株待兔",
+        "亡羊补牢",
+        "春暖花开",
+        "掩耳盗铃"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "\"春暖花开\"是描写景色的成语，不是寓言故事。其他三个都来自寓言故事。"
+    },
+    {
+      "question_id": "ch_012",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "下列哪些诗句是李白的作品？",
+      "options": [
+        "飞流直下三千尺",
+        "桃花潭水深千尺",
+        "两个黄鹂鸣翠柳",
+        "两岸青山相对出"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "\"两个黄鹂鸣翠柳\"出自杜甫的《绝句》，其他三句都是李白的诗句。"
+    },
+    {
+      "question_id": "ch_013",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "常见的记叙顺序有哪些？",
+      "options": [
+        "顺叙",
+        "倒叙",
+        "插叙",
+        "分叙"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "常见的记叙顺序有顺叙、倒叙和插叙三种。"
+    },
+    {
+      "question_id": "ch_014",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "下列哪些是常见的说明方法？",
+      "options": [
+        "举例子",
+        "列数字",
+        "比喻",
+        "打比方"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "\"举例子\"\"列数字\"\"打比方\"都是说明方法，\"比喻\"是修辞手法。"
+    },
+    {
+      "question_id": "ch_015",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "成语",
+      "question_text": "比喻出了问题以后想办法补救，还不算太晚的成语是____。",
+      "options": [],
+      "answer": "亡羊补牢",
+      "explanation": "\"亡羊补牢\"出自《战国策》，意思是羊丢了再修补羊圈，还不算晚。"
+    },
+    {
+      "question_id": "ch_016",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "成语",
+      "question_text": "比喻自己欺骗自己的成语是____。",
+      "options": [],
+      "answer": "掩耳盗铃",
+      "explanation": "\"掩耳盗铃\"比喻自己欺骗自己，明明掩盖不了的事偏要设法掩盖。"
+    },
+    {
+      "question_id": "ch_017",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词",
+      "question_text": "床前明月光，____。",
+      "options": [],
+      "answer": "疑是地上霜",
+      "explanation": "出自李白《静夜思》，下一句是\"疑是地上霜\"。"
+    },
+    {
+      "question_id": "ch_018",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文的六要素包括：时间、地点、人物、起因、经过、____。",
+      "options": [],
+      "answer": "结果",
+      "explanation": "记叙文六要素是时间、地点、人物、事情的起因、经过、结果。"
+    },
+    {
+      "question_id": "ch_019",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "knowledge_area": "说明文阅读",
+      "question_text": "用具体数字来说明事物特征的方法叫做____。",
+      "options": [],
+      "answer": "列数字",
+      "explanation": "\"列数字\"是用具体的数据来说明事物的特征，使说明更准确、更有说服力。"
+    },
+    {
+      "question_id": "ch_020",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "成语",
+      "question_text": "\"狐假虎威\"是指狐狸比老虎更厉害。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "错误",
+      "explanation": "\"狐假虎威\"是指狐狸借老虎的威风吓唬别人，比喻倚仗别人的势力欺压人。"
+    },
+    {
+      "question_id": "ch_021",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文的中心思想只能在文章开头找到。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "错误",
+      "explanation": "中心思想可能在开头、中间或结尾，需要通读全文来把握。"
+    },
+    {
+      "question_id": "ch_022",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "knowledge_area": "说明文阅读",
+      "question_text": "\"打比方\"是一种说明方法。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "正确",
+      "explanation": "\"打比方\"就是比喻说明，是常见的说明方法之一。"
+    },
+    {
+      "question_id": "ch_023",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "knowledge_area": "成语",
+      "question_text": "请用自己的话解释'井底之蛙'这个成语的意思。",
+      "options": [],
+      "answer": "比喻见识短浅、眼界狭窄的人。（意思相近即可）",
+      "explanation": "\"井底之蛙\"比喻那些眼界狭窄、见识有限的人。"
+    },
+    {
+      "question_id": "ch_024",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"自相矛盾\"比喻什么？",
+      "options": [
+        "武器很锋利",
+        "自己的言行相互抵触",
+        "打仗很厉害",
+        "卖东西很贵"
+      ],
+      "answer": "B",
+      "explanation": "\"自相矛盾\"比喻自己的言行或观点前后抵触，不能自圆其说。"
+    },
+    {
+      "question_id": "ch_025",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"刻舟求剑\"讽刺了什么样的人？",
+      "options": [
+        "勇敢的人",
+        "不懂事物变化的人",
+        "会游泳的人",
+        "会做记号的人"
+      ],
+      "answer": "B",
+      "explanation": "\"刻舟求剑\"讽刺那些不懂得事物是发展变化的，死守教条的人。"
+    },
+    {
+      "question_id": "ch_026",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"画蛇添足\"的意思是？",
+      "options": [
+        "画蛇画得很好",
+        "做多余的事反而坏事",
+        "蛇跑得很快",
+        "画画很辛苦"
+      ],
+      "answer": "B",
+      "explanation": "\"画蛇添足\"比喻做了多余的事，不但无益，反而有害。"
+    },
+    {
+      "question_id": "ch_027",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "\"飞流直下三千尺，疑是银河落九天\"描写的是什么景色？",
+      "options": [
+        "黄河",
+        "庐山瀑布",
+        "长江",
+        "泰山"
+      ],
+      "answer": "B",
+      "explanation": "出自李白的《望庐山瀑布》，用夸张手法描写了庐山瀑布的壮丽景色。"
+    },
+    {
+      "question_id": "ch_028",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "\"停车坐爱枫林晚，霜叶红于二月花\"中的\"坐\"是什么意思？",
+      "options": [
+        "坐下",
+        "因为",
+        "坐车",
+        "座位"
+      ],
+      "answer": "B",
+      "explanation": "\"坐\"在这里是\"因为\"的意思，全句意思是：因为喜爱枫林晚景而停车观赏。"
+    },
+    {
+      "question_id": "ch_029",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "概括记叙文中心思想最常用的方法是？",
+      "options": [
+        "只看开头",
+        "通读全文，找出主要内容",
+        "只看结尾",
+        "随便猜一个"
+      ],
+      "answer": "B",
+      "explanation": "概括中心思想需要通读全文，理解主要内容，体会作者表达的思想感情。"
+    },
+    {
+      "question_id": "ch_030",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "把事情的结局或某个片段先写出来，再写起因和经过，这叫？",
+      "options": [
+        "顺叙",
+        "倒叙",
+        "插叙",
+        "平叙"
+      ],
+      "answer": "B",
+      "explanation": "倒叙就是把事件的结局或某个最突出的片段提到前面叙述，再按顺序叙述。"
+    },
+    {
+      "question_id": "ch_031",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'我国的石拱桥几乎到处都有，其中最著名的有河北赵州桥'用了什么说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "打比方",
+        "下定义"
+      ],
+      "answer": "B",
+      "explanation": "通过举\"赵州桥\"的例子，具体说明我国石拱桥分布广泛的特点。"
+    },
+    {
+      "question_id": "ch_032",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"杯弓蛇影\"比喻什么？",
+      "options": [
+        "喝酒很多",
+        "疑神疑鬼，自相惊扰",
+        "杯子很漂亮",
+        "蛇的影子"
+      ],
+      "answer": "B",
+      "explanation": "\"杯弓蛇影\"比喻因疑神疑鬼而引起恐惧，自己吓自己。"
+    },
+    {
+      "question_id": "ch_033",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "\"桃花潭水深千尺，不及汪伦送我情\"表达了什么情感？",
+      "options": [
+        "喜欢桃花",
+        "对朋友的深厚情谊",
+        "潭水很深",
+        "喜欢旅游"
+      ],
+      "answer": "B",
+      "explanation": "出自李白《赠汪伦》，用潭水之深比喻朋友情谊之深。"
+    },
+    {
+      "question_id": "ch_034",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "成语",
+      "question_text": "下列哪些成语来自历史故事？",
+      "options": [
+        "卧薪尝胆",
+        "三顾茅庐",
+        "守株待兔",
+        "完璧归赵"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "\"守株待兔\"是寓言故事，其他三个都来自历史故事。"
+    },
+    {
+      "question_id": "ch_035",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "下列哪些是杜甫的诗句？",
+      "options": [
+        "两个黄鹂鸣翠柳",
+        "窗含西岭千秋雪",
+        "桃花潭水深千尺",
+        "门泊东吴万里船"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "\"两个黄鹂鸣翠柳\"等三句出自杜甫《绝句》，\"桃花潭水深千尺\"是李白的诗句。"
+    },
+    {
+      "question_id": "ch_036",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "理解记叙文中心思想可以从哪些方面入手？",
+      "options": [
+        "文章的标题",
+        "重点段落",
+        "关键句子",
+        "作者的生平"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "理解中心思想可以从标题、重点段落和关键句子入手，作者的生平不是直接依据。"
+    },
+    {
+      "question_id": "ch_037",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "下列哪些句子用了'作比较'的说明方法？",
+      "options": [
+        "这座塔比那座塔高10米",
+        "大象的鼻子像管子",
+        "鲸的舌头有十几头大肥猪那么重",
+        "地球是圆的"
+      ],
+      "answer": [
+        "A",
+        "C"
+      ],
+      "explanation": "A和C都进行了比较，B是打比方，D是下定义。"
+    },
+    {
+      "question_id": "ch_038",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "成语",
+      "question_text": "比喻违反事物发展规律，急于求成的成语是____。",
+      "options": [],
+      "answer": "拔苗助长",
+      "explanation": "\"拔苗助长\"出自寓言故事，比喻违反事物发展的客观规律，急于求成。"
+    },
+    {
+      "question_id": "ch_039",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "成语",
+      "question_text": "比喻行动和目的正好相反的成语是____。",
+      "options": [],
+      "answer": "南辕北辙",
+      "explanation": "\"南辕北辙\"比喻行动和目的正好相反，越努力离目标越远。"
+    },
+    {
+      "question_id": "ch_040",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词",
+      "question_text": "____，碧水东流至此回。（李白《望天门山》）",
+      "options": [],
+      "answer": "天门中断楚江开",
+      "explanation": "出自李白《望天门山》，上句是\"天门中断楚江开\"。"
+    },
+    {
+      "question_id": "ch_041",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文的记叙顺序主要有顺叙、____和插叙。",
+      "options": [],
+      "answer": "倒叙",
+      "explanation": "记叙顺序主要有顺叙、倒叙和插叙三种。"
+    },
+    {
+      "question_id": "ch_042",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "knowledge_area": "说明文阅读",
+      "question_text": "把两种事物放在一起比较来说明特征的方法叫____。",
+      "options": [],
+      "answer": "作比较",
+      "explanation": "\"作比较\"是通过对比突出事物特征的说明方法。"
+    },
+    {
+      "question_id": "ch_043",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "成语",
+      "question_text": "\"滥竽充数\"是指没有真才实学的人混在行家里面充数。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "正确",
+      "explanation": "\"滥竽充数\"比喻没有真才实学的人混在内行人之中，以次充好。"
+    },
+    {
+      "question_id": "ch_044",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "插叙是在叙述主要事件的过程中，插入与主要情节相关的内容。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "正确",
+      "explanation": "插叙就是在叙述中心事件的过程中，暂时中断主线，插入一些与主要情节有关的内容。"
+    },
+    {
+      "question_id": "ch_045",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "knowledge_area": "说明文阅读",
+      "question_text": "说明文中的'打比方'和修辞手法中的'比喻'是完全一样的。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "错误",
+      "explanation": "\"打比方\"是说明方法，目的是说明事物特征；\"比喻\"是修辞手法，目的是使语言生动。"
+    },
+    {
+      "question_id": "ch_046",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "请简要说明'顺叙'和'倒叙'有什么区别。",
+      "options": [],
+      "answer": "顺叙按事情发生先后顺序写；倒叙先写结局或片段，再写起因经过。（意思相近即可）",
+      "explanation": "顺叙按时间先后顺序叙述，倒叙把结局或精彩片段提前。"
+    },
+    {
+      "question_id": "ch_047",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "knowledge_area": "古诗词",
+      "question_text": "《题西林壁》中'不识庐山真面目，只缘身在此山中'告诉我们什么道理？",
+      "options": [],
+      "answer": "旁观者清，当局者迷；要全面看待问题，跳出局部才能看清全貌。（意思相近即可）",
+      "explanation": "苏轼借此告诉我们：由于人们所处的地位不同，看问题的出发点不同，会有片面性。"
+    },
+    {
+      "question_id": "ch_048",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"叶公好龙\"讽刺了什么样的人？",
+      "options": [
+        "喜欢龙的人",
+        "口头上说喜欢，实际上害怕的人",
+        "画家",
+        "勇敢的人"
+      ],
+      "answer": "B",
+      "explanation": "\"叶公好龙\"讽刺那些口头上说爱好某事物，实际上并不真正爱好的人。"
+    },
+    {
+      "question_id": "ch_049",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"邯郸学步\"的结果是？",
+      "options": [
+        "学会了新本领",
+        "把自己原来的本领也忘了",
+        "走路更快了",
+        "到了邯郸"
+      ],
+      "answer": "B",
+      "explanation": "\"邯郸学步\"比喻一味模仿别人，不仅学不到本事，反而把自己原来的本事也丢了。"
+    },
+    {
+      "question_id": "ch_050",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "\"郑人买履\"告诉我们什么道理？",
+      "options": [
+        "买鞋要量尺寸",
+        "做事要灵活变通，不能死守教条",
+        "鞋子很贵",
+        "要去市场买鞋"
+      ],
+      "answer": "B",
+      "explanation": "\"郑人买履\"讽刺那些墨守成规、迷信教条而不尊重客观事实的人。"
+    },
+    {
+      "question_id": "ch_051",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "\"横看成岭侧成峰，远近高低各不同\"出自哪首诗？",
+      "options": [
+        "《望庐山瀑布》",
+        "《题西林壁》",
+        "《山行》",
+        "《己亥杂诗》"
+      ],
+      "answer": "B",
+      "explanation": "出自苏轼的《题西林壁》，说明观察角度不同，看到的样子也不同。"
+    },
+    {
+      "question_id": "ch_052",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "\"落红不是无情物，化作春泥更护花\"中的\"落红\"指什么？",
+      "options": [
+        "红色的花",
+        "落花",
+        "红色的泥土",
+        "夕阳"
+      ],
+      "answer": "B",
+      "explanation": "\"落红\"指落花，诗人借落花表达自己虽然离开官场，仍关心国家命运。"
+    },
+    {
+      "question_id": "ch_053",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中使用插叙的主要作用是什么？",
+      "options": [
+        "让文章变长",
+        "补充交代背景，丰富内容",
+        "改变文章主题",
+        "增加字数"
+      ],
+      "answer": "B",
+      "explanation": "插叙可以补充交代人物背景或事件缘由，使文章内容更丰富、情节更完整。"
+    },
+    {
+      "question_id": "ch_054",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "归纳记叙文中心思想时，下列哪项最重要？",
+      "options": [
+        "背诵全文",
+        "抓住主要内容，体会作者情感",
+        "抄写优美句子",
+        "数段落数量"
+      ],
+      "answer": "B",
+      "explanation": "归纳中心思想要抓住文章主要内容，理解作者的写作目的和情感态度。"
+    },
+    {
+      "question_id": "ch_055",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'统筹方法，是一种安排工作进程的数学方法'用了什么说明方法？",
+      "options": [
+        "举例子",
+        "列数字",
+        "下定义",
+        "作比较"
+      ],
+      "answer": "C",
+      "explanation": "用简洁明确的语言揭示事物的本质属性，这是\"下定义\"的说明方法。"
+    },
+    {
+      "question_id": "ch_056",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "'石拱桥的桥洞成弧形，就像虹'用了什么说明方法？",
+      "options": [
+        "列数字",
+        "举例子",
+        "打比方",
+        "下定义"
+      ],
+      "answer": "C",
+      "explanation": "把石拱桥的桥洞比作虹，形象地说明了桥洞的形状特点。"
+    },
+    {
+      "question_id": "ch_057",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "knowledge_area": "成语",
+      "question_text": "下列哪个成语与'卧薪尝胆'表达的精神最相近？",
+      "options": [
+        "半途而废",
+        "坚持不懈",
+        "三心二意",
+        "纸上谈兵"
+      ],
+      "answer": "B",
+      "explanation": "\"卧薪尝胆\"形容刻苦自励、发愤图强，与\"坚持不懈\"精神相近。"
+    },
+    {
+      "question_id": "ch_058",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "成语",
+      "question_text": "下列哪些成语表达了刻苦努力的精神？",
+      "options": [
+        "卧薪尝胆",
+        "破釜沉舟",
+        "半途而废",
+        "愚公移山"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "\"半途而废\"表示中途放弃，与刻苦努力相反。其他三个都表达了坚持不懈的精神。"
+    },
+    {
+      "question_id": "ch_059",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "古诗词",
+      "question_text": "下列哪些诗句描写了秋天的景色？",
+      "options": [
+        "霜叶红于二月花",
+        "停车坐爱枫林晚",
+        "春眠不觉晓",
+        "落红不是无情物"
+      ],
+      "answer": [
+        "A",
+        "B"
+      ],
+      "explanation": "\"霜叶\"\"枫林\"都是秋天的景物。C写春天，D写落花。"
+    },
+    {
+      "question_id": "ch_060",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中，理解人物情感可以通过哪些方法？",
+      "options": [
+        "人物的语言",
+        "人物的动作",
+        "人物的内心独白",
+        "文章的字数"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "通过人物的语言、动作、心理描写可以理解人物情感，字数与情感理解无关。"
+    },
+    {
+      "question_id": "ch_061",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "knowledge_area": "说明文阅读",
+      "question_text": "好的说明文应该具备哪些特点？",
+      "options": [
+        "内容准确",
+        "条理清楚",
+        "语言生动",
+        "虚构想象"
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "说明文要求内容准确、条理清楚，语言可以生动但不可以虚构想象。"
+    },
+    {
+      "question_id": "ch_062",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "成语",
+      "question_text": "比喻把原物完好地归还本人的成语是____。",
+      "options": [],
+      "answer": "完璧归赵",
+      "explanation": "\"完璧归赵\"出自历史故事，比喻把原物完好地归还本人。"
+    },
+    {
+      "question_id": "ch_063",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "成语",
+      "question_text": "比喻主动向对方承认错误，请求责罚的成语是____。",
+      "options": [],
+      "answer": "负荆请罪",
+      "explanation": "\"负荆请罪\"出自廉颇蔺相如的故事，表示主动认错赔罪。"
+    },
+    {
+      "question_id": "ch_064",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "古诗词",
+      "question_text": "远上寒山石径斜，____。（杜牧《山行》）",
+      "options": [],
+      "answer": "白云生处有人家",
+      "explanation": "出自杜牧《山行》，下句是\"白云生处有人家\"。"
+    },
+    {
+      "question_id": "ch_065",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "记叙文中，作者通过叙述事件所要表达的主要观点或情感叫做____。",
+      "options": [],
+      "answer": "中心思想",
+      "explanation": "中心思想是文章的灵魂，是作者通过文章内容表达的主要观点或情感。"
+    },
+    {
+      "question_id": "ch_066",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "knowledge_area": "说明文阅读",
+      "question_text": "用简洁明确的语言揭示事物本质特征的说明方法叫做____。",
+      "options": [],
+      "answer": "下定义",
+      "explanation": "\"下定义\"能准确揭示事物的本质属性，使读者对事物有明确的认识。"
+    },
+    {
+      "question_id": "ch_067",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "成语",
+      "question_text": "\"纸上谈兵\"是指只会空谈理论，不能解决实际问题。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "正确",
+      "explanation": "\"纸上谈兵\"比喻空谈理论，不能解决实际问题，也比喻空谈不能成为现实。"
+    },
+    {
+      "question_id": "ch_068",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "倒叙的作用是设置悬念，吸引读者阅读兴趣。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "正确",
+      "explanation": "倒叙把精彩或出人意料的内容提前，能制造悬念，吸引读者继续读下去。"
+    },
+    {
+      "question_id": "ch_069",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "knowledge_area": "说明文阅读",
+      "question_text": "说明文的主要目的是抒发作者的情感。",
+      "options": [
+        "正确",
+        "错误"
+      ],
+      "answer": "错误",
+      "explanation": "说明文的主要目的是说明事物特征、阐明事理，而不是抒发情感。"
+    },
+    {
+      "question_id": "ch_070",
+      "subject": "chinese",
+      "age_group": "9-12",
+      "grade": "4-5",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "knowledge_area": "记叙文阅读",
+      "question_text": "阅读记叙文时，怎样快速找到文章的中心思想？请写出两种方法。",
+      "options": [],
+      "answer": "①关注开头和结尾；②找反复出现的关键词句；③概括各段主要内容。（答出两种即可）",
+      "explanation": "找中心思想的方法有：看标题、抓首尾、找关键句、概括段意等。"
+    }
+  ]
+}

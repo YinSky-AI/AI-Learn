@@ -1,0 +1,142 @@
+{
+  "batch_id": "math_13-15_fix",
+  "source": "ai_generated",
+  "questions": [
+    {
+      "id": 1,
+      "content": "一元二次方程x²减5x加6等于0的解是？",
+      "options": [
+        {
+          "label": "A",
+          "text": "x₁=1，x₂=6"
+        },
+        {
+          "label": "B",
+          "text": "x₁=2，x₂=3"
+        },
+        {
+          "label": "C",
+          "text": "x₁=-2，x₂=-3"
+        },
+        {
+          "label": "D",
+          "text": "x₁=1，x₂=-6"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "用因式分解法：x²减5x加6等于(x减2)(x减3)等于0，所以x₁等于2，x₂等于3。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "数学",
+      "age_group": "13-15",
+      "grade": "初二",
+      "tags": [
+        "方程",
+        "一元二次方程",
+        "因式分解"
+      ]
+    },
+    {
+      "id": 2,
+      "content": "点(2,3)关于x轴对称的点的坐标是？",
+      "options": [
+        {
+          "label": "A",
+          "text": "(2,3)"
+        },
+        {
+          "label": "B",
+          "text": "(-2,3)"
+        },
+        {
+          "label": "C",
+          "text": "(2,-3)"
+        },
+        {
+          "label": "D",
+          "text": "(-2,-3)"
+        }
+      ],
+      "correct_answer": "C",
+      "explanation": "关于x轴对称的点，横坐标不变，纵坐标取相反数。所以(2,3)关于x轴对称的点是(2,-3)。",
+      "type": "单选题",
+      "difficulty": "简单",
+      "subject": "数学",
+      "age_group": "13-15",
+      "grade": "初二",
+      "tags": [
+        "几何",
+        "坐标系",
+        "对称"
+      ]
+    },
+    {
+      "id": 3,
+      "content": "一次函数y等于2x减1的图像经过哪个象限？",
+      "options": [
+        {
+          "label": "A",
+          "text": "第一、二、三象限"
+        },
+        {
+          "label": "B",
+          "text": "第一、三、四象限"
+        },
+        {
+          "label": "C",
+          "text": "第二、三、四象限"
+        },
+        {
+          "label": "D",
+          "text": "第一、二、四象限"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "一次函数y=2x-1中，斜率k=2大于0，图像从左下到右上；截距b=-1小于0，与y轴交于负半轴。因此图像经过第一、三、四象限。",
+      "type": "单选题",
+      "difficulty": "中等",
+      "subject": "数学",
+      "age_group": "13-15",
+      "grade": "初二",
+      "tags": [
+        "函数",
+        "一次函数",
+        "函数图像"
+      ]
+    },
+    {
+      "id": 4,
+      "content": "在直角三角形ABC中，角C等于90度，AC等于3，BC等于4，则sinA的值是多少？",
+      "options": [
+        {
+          "label": "A",
+          "text": "3/5"
+        },
+        {
+          "label": "B",
+          "text": "4/5"
+        },
+        {
+          "label": "C",
+          "text": "3/4"
+        },
+        {
+          "label": "D",
+          "text": "4/3"
+        }
+      ],
+      "correct_answer": "B",
+      "explanation": "先由勾股定理求斜边AB：AB等于√(3²+4²)等于5。sinA等于对边BC除以斜边AB，即4/5。",
+      "type": "单选题",
+      "difficulty": "困难",
+      "subject": "数学",
+      "age_group": "13-15",
+      "grade": "初三",
+      "tags": [
+        "几何",
+        "三角函数",
+        "直角三角形"
+      ]
+    }
+  ]
+}

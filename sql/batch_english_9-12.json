@@ -1,0 +1,1716 @@
+{
+  "batch_id": "english_9-12_complete",
+  "source": "ai_generated",
+  "total_generated": 70,
+  "passed_count": 70,
+  "failed_count": 0,
+  "questions": [
+    {
+      "id": "ee1ae97f-9be5-4385-99d3-7c8bf15b1d1b",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "She ___ to school every day.",
+      "options": [
+        "A. go",
+        "B. goes",
+        "C. going",
+        "D. gone"
+      ],
+      "correct_answer": "B",
+      "explanation": "For third person singular in simple present tense, we add -es to go.",
+      "tags": [
+        "simple_present",
+        "verb_forms",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 1
+    },
+    {
+      "id": "4a7ada60-4c94-41e1-9fa8-aa29cbd82054",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "They ___ football on Sundays.",
+      "options": [
+        "A. plays",
+        "B. playing",
+        "C. play",
+        "D. played"
+      ],
+      "correct_answer": "C",
+      "explanation": "With plural subject 'they' in simple present tense, use the base form 'play'.",
+      "tags": [
+        "simple_present",
+        "verb_forms",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 2
+    },
+    {
+      "id": "72523973-b36a-4b97-a8d9-0ace9022bf28",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "He ___ a cake yesterday.",
+      "options": [
+        "A. eat",
+        "B. eats",
+        "C. eating",
+        "D. ate"
+      ],
+      "correct_answer": "D",
+      "explanation": "Yesterday indicates simple past tense. 'Ate' is the past form of eat.",
+      "tags": [
+        "simple_past",
+        "irregular_verbs",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 3
+    },
+    {
+      "id": "265ee528-ca8f-4b36-85ed-c38e802e0098",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "We ___ to the park last week.",
+      "options": [
+        "A. go",
+        "B. goes",
+        "C. went",
+        "D. going"
+      ],
+      "correct_answer": "C",
+      "explanation": "'Last week' indicates past time. 'Went' is the past form of go.",
+      "tags": [
+        "simple_past",
+        "irregular_verbs",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 4
+    },
+    {
+      "id": "4cc24b35-bb1e-4a67-a637-dbb5b5bafcc5",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "I ___ visit my grandma tomorrow.",
+      "options": [
+        "A. am",
+        "B. will",
+        "C. was",
+        "D. do"
+      ],
+      "correct_answer": "B",
+      "explanation": "'Tomorrow' indicates future time. Use 'will' for simple future tense.",
+      "tags": [
+        "simple_future",
+        "will",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 5
+    },
+    {
+      "id": "a6b71853-9dc2-4089-8ca8-888cfe6ecefc",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "It ___ rain this afternoon.",
+      "options": [
+        "A. is",
+        "B. will",
+        "C. was",
+        "D. does"
+      ],
+      "correct_answer": "B",
+      "explanation": "'This afternoon' (future context) uses 'will' for future tense.",
+      "tags": [
+        "simple_future",
+        "will",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 6
+    },
+    {
+      "id": "e8d69926-e793-47e3-9a62-d2fc1a2c2421",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "Look! The cat ___ on the sofa.",
+      "options": [
+        "A. sleep",
+        "B. sleeps",
+        "C. is sleeping",
+        "D. slept"
+      ],
+      "correct_answer": "C",
+      "explanation": "'Look!' indicates action happening now. Use present continuous: is + verb-ing.",
+      "tags": [
+        "present_continuous",
+        "verb_forms",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 7
+    },
+    {
+      "id": "e11546c5-4261-46ee-807e-1e8af8d55285",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "Listen! The birds ___ in the tree.",
+      "options": [
+        "A. sing",
+        "B. sings",
+        "C. are singing",
+        "D. sang"
+      ],
+      "correct_answer": "C",
+      "explanation": "'Listen!' indicates action happening now. Use present continuous: are + verb-ing.",
+      "tags": [
+        "present_continuous",
+        "verb_forms",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 8
+    },
+    {
+      "id": "e64a8732-6649-4793-bf7f-dd33124b7639",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "My birthday is ___ July.",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. at",
+        "D. by"
+      ],
+      "correct_answer": "A",
+      "explanation": "We use 'in' for months and years.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 9
+    },
+    {
+      "id": "ab4b334f-14af-4b5a-a579-0cb5e0f59eb8",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "single_choice",
+      "content": "We have class ___ 8 o'clock.",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. at",
+        "D. by"
+      ],
+      "correct_answer": "C",
+      "explanation": "We use 'at' for specific clock times.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 10
+    },
+    {
+      "id": "3d5046be-447d-455a-81e3-a15643d1c9cd",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "content": "Which sentences are in simple present tense? (Select all that apply)",
+      "options": [
+        "A. He plays soccer.",
+        "B. She reads books.",
+        "C. They went home.",
+        "D. We are happy."
+      ],
+      "correct_answer": "A,B",
+      "explanation": "'He plays' and 'She reads' are simple present tense. 'Went' is past tense. 'Are happy' is present simple (state verb).",
+      "tags": [
+        "simple_present",
+        "tense_identification",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 11
+    },
+    {
+      "id": "9f8349bb-0d3a-45f3-9726-4205f97f37d5",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "content": "Which prepositions can fill the blank? 'The book is ___ the table.' (Select all that apply)",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. under",
+        "D. at"
+      ],
+      "correct_answer": "B,C",
+      "explanation": "'On the table' and 'under the table' are both correct spatial prepositions.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "spatial_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 12
+    },
+    {
+      "id": "64215044-9f71-4b0c-9dea-67edbc38d114",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "content": "Which words are past tense verbs? (Select all that apply)",
+      "options": [
+        "A. went",
+        "B. eat",
+        "C. ate",
+        "D. saw"
+      ],
+      "correct_answer": "A,C,D",
+      "explanation": "Went (go), ate (eat), and saw (see) are past tense forms.",
+      "tags": [
+        "simple_past",
+        "irregular_verbs",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 13
+    },
+    {
+      "id": "b58159cc-5555-48f8-9ad6-47bb5b0f5cd9",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "multiple_choice",
+      "content": "Which sentences use present continuous tense? (Select all that apply)",
+      "options": [
+        "A. She is running.",
+        "B. They are playing.",
+        "C. He eats lunch.",
+        "D. We are singing."
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Present continuous uses am/is/are + verb-ing. 'Eats' is simple present.",
+      "tags": [
+        "present_continuous",
+        "tense_identification",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 14
+    },
+    {
+      "id": "ee8271ce-fa37-411c-979b-493c2d59bd8e",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "She often ___ (watch) TV in the evening.",
+      "options": [],
+      "correct_answer": "watches",
+      "explanation": "For third person singular in simple present tense, add -es to watch.",
+      "tags": [
+        "simple_present",
+        "verb_forms",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 15
+    },
+    {
+      "id": "91011c27-612b-4216-98ea-891cb2cd0692",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "Yesterday they ___ (play) basketball.",
+      "options": [],
+      "correct_answer": "played",
+      "explanation": "Yesterday indicates past tense. Add -ed to play for regular past form.",
+      "tags": [
+        "simple_past",
+        "regular_verbs",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 16
+    },
+    {
+      "id": "bc4fd559-11e0-4174-bab3-1983a85f7faf",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "Tomorrow I ___ (go) to Beijing.",
+      "options": [],
+      "correct_answer": "will go",
+      "explanation": "Tomorrow indicates future tense. Use will + base verb.",
+      "tags": [
+        "simple_future",
+        "will",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 17
+    },
+    {
+      "id": "47356064-4c15-4095-9186-d200555aa187",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "We play games ___ the playground.",
+      "options": [],
+      "correct_answer": "on",
+      "explanation": "We use 'on' for surfaces like playground.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "spatial_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 18
+    },
+    {
+      "id": "88dc08a7-e7be-46c7-8559-ecbde56ccef7",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "fill_blank",
+      "content": "Look! The dog ___ (run) after the ball.",
+      "options": [],
+      "correct_answer": "is running",
+      "explanation": "'Look!' indicates action now. Present continuous: is + running.",
+      "tags": [
+        "present_continuous",
+        "verb_forms",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 19
+    },
+    {
+      "id": "265cdc86-c464-4591-9416-f3e68a155c51",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "content": "'He go to school every day.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "B",
+      "explanation": "Incorrect. Third person singular requires 'goes', not 'go'.",
+      "tags": [
+        "simple_present",
+        "grammar",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 20
+    },
+    {
+      "id": "32c56e8f-f1d7-4351-ba25-eb1dd8b6e21c",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "content": "'My birthday is on Monday.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "Correct. We use 'on' for days of the week.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 21
+    },
+    {
+      "id": "8b7335ea-b375-471f-b95a-82c12824d059",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "true_false",
+      "content": "'They are play games now.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "B",
+      "explanation": "Incorrect. Present continuous requires 'playing', not 'play'.",
+      "tags": [
+        "present_continuous",
+        "grammar",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 22
+    },
+    {
+      "id": "a9c6215d-60ed-4ba7-9cf1-7fa7cf8f40e2",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "beginner",
+      "type": "short_answer",
+      "content": "Write 3 sentences about what you did yesterday. Use simple past tense.",
+      "options": [],
+      "correct_answer": "Sample: I woke up at 7. I ate breakfast. I went to school.",
+      "explanation": "Use simple past tense verbs like woke, ate, went, played, studied.",
+      "tags": [
+        "simple_past",
+        "writing",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 23
+    },
+    {
+      "id": "ae882d9f-01e5-47b5-a05d-c4fef2ce748a",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "The sun ___ in the east.",
+      "options": [
+        "A. rise",
+        "B. rises",
+        "C. rising",
+        "D. rose"
+      ],
+      "correct_answer": "B",
+      "explanation": "The sun rising is a universal truth, so we use simple present tense with -es for third person.",
+      "tags": [
+        "simple_present",
+        "verb_forms",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 24
+    },
+    {
+      "id": "b12a7894-fcd6-4732-a63e-e2317340af1e",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "She ___ her homework last night.",
+      "options": [
+        "A. do",
+        "B. does",
+        "C. did",
+        "D. doing"
+      ],
+      "correct_answer": "C",
+      "explanation": "'Last night' indicates past tense. 'Did' is the past form of do.",
+      "tags": [
+        "simple_past",
+        "irregular_verbs",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 25
+    },
+    {
+      "id": "0635f6d8-68e1-4904-b38f-acbb753a14ab",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "Look at the clouds. It ___ rain.",
+      "options": [
+        "A. will",
+        "B. is going to",
+        "C. is",
+        "D. goes to"
+      ],
+      "correct_answer": "B",
+      "explanation": "When we see evidence now, we use 'be going to' for future predictions.",
+      "tags": [
+        "simple_future",
+        "be_going_to",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 26
+    },
+    {
+      "id": "95816854-fa92-418b-8ee1-198eee11bd51",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "We ___ a party next Saturday.",
+      "options": [
+        "A. have",
+        "B. are having",
+        "C. had",
+        "D. has"
+      ],
+      "correct_answer": "B",
+      "explanation": "Present continuous can express definite future plans.",
+      "tags": [
+        "present_continuous_future",
+        "future_tense",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 27
+    },
+    {
+      "id": "33344941-c3ab-4bf4-9b71-d3cf3e2cce43",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "I was born ___ 2014.",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. at",
+        "D. by"
+      ],
+      "correct_answer": "A",
+      "explanation": "We use 'in' for years.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 28
+    },
+    {
+      "id": "de85232d-6126-4a69-8d97-ccf60dde8c9a",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "We have lunch ___ noon.",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. at",
+        "D. by"
+      ],
+      "correct_answer": "C",
+      "explanation": "We use 'at' for noon, midnight, and specific times.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 29
+    },
+    {
+      "id": "52d990da-ec92-4734-aec0-f1233322ba96",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "The meeting is ___ Monday morning.",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. at",
+        "D. by"
+      ],
+      "correct_answer": "B",
+      "explanation": "We use 'on' for specific days and day parts (Monday morning).",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 30
+    },
+    {
+      "id": "42c66e51-10ef-4a68-94a1-94ccf2239081",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "He ___ his leg last month.",
+      "options": [
+        "A. break",
+        "B. breaks",
+        "C. broke",
+        "D. broken"
+      ],
+      "correct_answer": "C",
+      "explanation": "'Last month' indicates past tense. 'Broke' is the past form of break.",
+      "tags": [
+        "simple_past",
+        "irregular_verbs",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 31
+    },
+    {
+      "id": "8bbfc45e-d058-4fc8-afcb-34cabf21e25e",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "He usually ___ coffee, but today he ___ tea.",
+      "options": [
+        "A. drinks, drinks",
+        "B. drinks, is drinking",
+        "C. is drinking, drinks",
+        "D. drink, is drinking"
+      ],
+      "correct_answer": "B",
+      "explanation": "'Usually' indicates habit (simple present). 'Today' indicates current exception (present continuous).",
+      "tags": [
+        "simple_present",
+        "present_continuous",
+        "tense_contrast"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 32
+    },
+    {
+      "id": "38532036-77b9-4ae4-8ea5-7743b5464455",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "single_choice",
+      "content": "Read the passage: 'Tom woke up early. He put on his uniform and went to school. At school, he met his best friend Jack.' Where did Tom meet Jack?",
+      "options": [
+        "A. At home",
+        "B. At school",
+        "C. In the park",
+        "D. On the bus"
+      ],
+      "correct_answer": "B",
+      "explanation": "The passage clearly states 'At school, he met his best friend Jack.'",
+      "tags": [
+        "reading_comprehension",
+        "detail_question",
+        "reading"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 33
+    },
+    {
+      "id": "39f1deb0-d14f-4c4f-babb-71b47782d6e5",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "content": "Which sentences are in simple past tense? (Select all that apply)",
+      "options": [
+        "A. She walked home.",
+        "B. They played games.",
+        "C. He eats breakfast.",
+        "D. We watched a movie."
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "Walked, played, and watched are past tense verbs. 'Eats' is present tense.",
+      "tags": [
+        "simple_past",
+        "tense_identification",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 34
+    },
+    {
+      "id": "08f7afb3-e652-4ca8-b0b2-59f45192aeb3",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "content": "Which sentences use 'in' correctly? (Select all that apply)",
+      "options": [
+        "A. I was born in May.",
+        "B. We play in the morning.",
+        "C. The meeting is in Monday.",
+        "D. She lives in London."
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "'In' is correct for months, morning/afternoon/evening, and cities. Days use 'on'.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 35
+    },
+    {
+      "id": "1f26f33c-7cde-4541-8394-401516d44942",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "content": "Which sentences are grammatically correct? (Select all that apply)",
+      "options": [
+        "A. She doesn't like apples.",
+        "B. They aren't playing now.",
+        "C. He go to school.",
+        "D. We will visit grandma tomorrow."
+      ],
+      "correct_answer": "A,B,D",
+      "explanation": "'He go' is incorrect; it should be 'He goes' or 'He went'.",
+      "tags": [
+        "grammar",
+        "sentence_structure",
+        "mixed_tenses"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 36
+    },
+    {
+      "id": "2043d75b-8031-4175-bfb9-4238e4094f36",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "multiple_choice",
+      "content": "Read the passage: 'It was a hot summer day. The sun was shining brightly. Children were playing in the pool.' Which words describe the weather? (Select all that apply)",
+      "options": [
+        "A. hot",
+        "B. summer",
+        "C. shining",
+        "D. playing"
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Hot, summer, and shining describe weather conditions. 'Playing' describes activity.",
+      "tags": [
+        "reading_comprehension",
+        "vocabulary",
+        "reading"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 37
+    },
+    {
+      "id": "27a20422-7c95-4646-8b8b-2e25ea28a9ea",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "Water ___ (boil) at 100 degrees Celsius.",
+      "options": [],
+      "correct_answer": "boils",
+      "explanation": "Scientific facts use simple present tense. Third person singular adds -s.",
+      "tags": [
+        "simple_present",
+        "scientific_facts",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 38
+    },
+    {
+      "id": "eb2d5062-1465-4492-8a98-617ec08301ca",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "Last summer, we ___ (swim) in the sea.",
+      "options": [],
+      "correct_answer": "swam",
+      "explanation": "'Last summer' indicates past tense. 'Swam' is the past form of swim.",
+      "tags": [
+        "simple_past",
+        "irregular_verbs",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 39
+    },
+    {
+      "id": "136e1e56-bdef-49e9-8eac-f5a3ae7259ad",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "Next year, my sister ___ (be) 12 years old.",
+      "options": [],
+      "correct_answer": "will be",
+      "explanation": "'Next year' indicates future. Use will + be.",
+      "tags": [
+        "simple_future",
+        "will",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 40
+    },
+    {
+      "id": "a51bada8-f011-41fe-b384-d30115a33dc3",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "Please put the books ___ the shelf.",
+      "options": [],
+      "correct_answer": "on",
+      "explanation": "We use 'on' for surfaces.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "spatial_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 41
+    },
+    {
+      "id": "6ec5511b-54a5-427e-8932-658573a52375",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "fill_blank",
+      "content": "Be quiet! The baby ___ (sleep) now.",
+      "options": [],
+      "correct_answer": "is sleeping",
+      "explanation": "'Now' indicates present continuous: is + sleeping.",
+      "tags": [
+        "present_continuous",
+        "verb_forms",
+        "tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 42
+    },
+    {
+      "id": "e22fad76-b871-4854-b35e-0aef233780e7",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "content": "'She is liking apples.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "B",
+      "explanation": "'Like' is a stative verb and is not normally used in continuous tenses.",
+      "tags": [
+        "present_continuous",
+        "stative_verbs",
+        "grammar"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 43
+    },
+    {
+      "id": "d412a495-3a00-4100-be5b-cf2dbbc71012",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "content": "'We met him in the library yesterday.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "Correct. 'Met' is past tense, and 'in the library' uses correct preposition.",
+      "tags": [
+        "simple_past",
+        "prepositions",
+        "grammar"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 44
+    },
+    {
+      "id": "853c9b36-2077-405e-98c3-d19bd38ab272",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "true_false",
+      "content": "'The concert is on Friday evening.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "Correct. We use 'on' for specific days and day parts.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 45
+    },
+    {
+      "id": "24951573-6b85-4841-aca2-99caeaf7aa29",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "content": "Describe your best friend using 3-5 sentences. Include what he/she looks like and what he/she likes to do.",
+      "options": [],
+      "correct_answer": "Sample: My best friend is tall. She has long hair. She likes reading books. We play together every day.",
+      "explanation": "Use simple present tense for descriptions and habits.",
+      "tags": [
+        "writing",
+        "description",
+        "simple_present"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 46
+    },
+    {
+      "id": "91483f20-eabd-49a2-8408-ee3ac7bfdb0c",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "intermediate",
+      "type": "short_answer",
+      "content": "Write what you are going to do this weekend. Use 'be going to' in your answer.",
+      "options": [],
+      "correct_answer": "Sample: I am going to visit my grandparents. I am going to play basketball with my brother.",
+      "explanation": "Use am/is/are going to + verb for future plans.",
+      "tags": [
+        "writing",
+        "future_tense",
+        "be_going_to"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 47
+    },
+    {
+      "id": "fc78c358-db8f-4cff-936d-e9c12d5e4253",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "When I called, he ___ a shower.",
+      "options": [
+        "A. took",
+        "B. was taking",
+        "C. is taking",
+        "D. would take"
+      ],
+      "correct_answer": "B",
+      "explanation": "Past continuous describes an action in progress when another action interrupted it.",
+      "tags": [
+        "past_continuous",
+        "tense",
+        "interrupted_action"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 48
+    },
+    {
+      "id": "3b0fb040-a8d5-49ab-8af5-d6703d01ae42",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "This time tomorrow, we ___ on the train to Paris.",
+      "options": [
+        "A. sit",
+        "B. will sit",
+        "C. will be sitting",
+        "D. are sitting"
+      ],
+      "correct_answer": "C",
+      "explanation": "Future continuous (will be + verb-ing) describes an action in progress at a specific future time.",
+      "tags": [
+        "future_continuous",
+        "tense",
+        "specific_future_time"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 49
+    },
+    {
+      "id": "e1f1ebb7-c221-46fd-8c18-ee865873258a",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "I ___ this book before.",
+      "options": [
+        "A. read",
+        "B. am reading",
+        "C. have read",
+        "D. was reading"
+      ],
+      "correct_answer": "C",
+      "explanation": "Present perfect (have + past participle) connects past action to present experience.",
+      "tags": [
+        "present_perfect",
+        "tense",
+        "past_experience"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 50
+    },
+    {
+      "id": "b92dc6dc-ae9f-4d8d-b009-3785e14173ae",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "The picture is ___ the wall.",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. at",
+        "D. above"
+      ],
+      "correct_answer": "B",
+      "explanation": "Pictures hang on the surface of walls, so we use 'on'.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "spatial_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 51
+    },
+    {
+      "id": "e51d7c19-6e6f-40ca-ad72-85e27f040b01",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "We will leave ___ the morning of July 20th.",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. at",
+        "D. by"
+      ],
+      "correct_answer": "B",
+      "explanation": "When morning/afternoon/evening has a specific date, use 'on'.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "time_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 52
+    },
+    {
+      "id": "7004b6f0-37b2-4c26-bd05-8dcf98db88c9",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "He said he ___ come to the party tomorrow.",
+      "options": [
+        "A. will",
+        "B. would",
+        "C. can",
+        "D. shall"
+      ],
+      "correct_answer": "B",
+      "explanation": "In reported speech, will changes to would.",
+      "tags": [
+        "reported_speech",
+        "modal_verbs",
+        "indirect_speech"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 53
+    },
+    {
+      "id": "ef253c28-c420-4b4f-a356-e29846db4de1",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "Read the passage: 'The old man sat on a bench in the park. He watched the children playing. A little girl came up and gave him a flower. He smiled and thanked her.' What is the main idea of this passage?",
+      "options": [
+        "A. Children like to play in the park.",
+        "B. An old man received kindness from a child.",
+        "C. Flowers grow in the park.",
+        "D. Old people like sitting on benches."
+      ],
+      "correct_answer": "B",
+      "explanation": "The passage centers on the interaction where a girl gives a flower to an old man.",
+      "tags": [
+        "reading_comprehension",
+        "main_idea",
+        "reading"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 54
+    },
+    {
+      "id": "9103fbae-c2a1-4d37-b754-493763e24880",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "She is interested ___ learning French.",
+      "options": [
+        "A. on",
+        "B. in",
+        "C. at",
+        "D. with"
+      ],
+      "correct_answer": "B",
+      "explanation": "The correct collocation is 'interested in'.",
+      "tags": [
+        "prepositions",
+        "collocations",
+        "adjective_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 55
+    },
+    {
+      "id": "880f24ab-e3fd-454c-8058-4b0ed4e1793c",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "The train ___ at 6 PM every day.",
+      "options": [
+        "A. will leave",
+        "B. is leaving",
+        "C. leaves",
+        "D. left"
+      ],
+      "correct_answer": "C",
+      "explanation": "Timetabled events use simple present tense for future meaning.",
+      "tags": [
+        "simple_present_future",
+        "tense",
+        "timetables"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 56
+    },
+    {
+      "id": "1a08466d-172c-4abf-9635-ad6c3ed93d85",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "single_choice",
+      "content": "Read the passage: 'Maya loved drawing. Every day after school, she drew pictures of animals. Her favorite animal was the elephant. She drew big ears and long trunks.' What was Maya's favorite animal?",
+      "options": [
+        "A. Tiger",
+        "B. Elephant",
+        "C. Lion",
+        "D. Monkey"
+      ],
+      "correct_answer": "B",
+      "explanation": "The passage states 'Her favorite animal was the elephant.'",
+      "tags": [
+        "reading_comprehension",
+        "detail_question",
+        "reading"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 57
+    },
+    {
+      "id": "29eff558-8d29-46d1-8ba4-72beb4554f32",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "content": "Which sentences use future tense? (Select all that apply)",
+      "options": [
+        "A. I will call you later.",
+        "B. She is going to study medicine.",
+        "C. The train leaves at 5.",
+        "D. They are playing tennis."
+      ],
+      "correct_answer": "A,B,C",
+      "explanation": "Will, be going to, and present simple for timetables all express future. 'Are playing' is present continuous.",
+      "tags": [
+        "future_tense",
+        "tense_identification",
+        "mixed_future"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 58
+    },
+    {
+      "id": "deb1fddb-9230-475c-be72-11292e3e7006",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "content": "Which prepositions can fill the blank? 'The shop is ___ the corner of Main Street.' (Select all that apply)",
+      "options": [
+        "A. in",
+        "B. on",
+        "C. at",
+        "D. around"
+      ],
+      "correct_answer": "B,C",
+      "explanation": "Both 'on the corner' (American English) and 'at the corner' (British English) are acceptable.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "spatial_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 59
+    },
+    {
+      "id": "72d252d2-df85-4d8e-b2cd-74eadd4fdad2",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "content": "Read the passage: 'Tom and Lily went camping. They set up a tent near a lake. At night, they saw many stars. They cooked fish over a fire.' Which statements are true? (Select all that apply)",
+      "options": [
+        "A. They stayed in a hotel.",
+        "B. They camped near water.",
+        "C. They saw stars at night.",
+        "D. They cooked food."
+      ],
+      "correct_answer": "B,C,D",
+      "explanation": "They set up a tent (not hotel), near a lake, saw stars, and cooked fish.",
+      "tags": [
+        "reading_comprehension",
+        "detail_question",
+        "reading"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 60
+    },
+    {
+      "id": "ed4ef858-095f-47d4-ad26-04a6fabf4db5",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "multiple_choice",
+      "content": "Which sentences are grammatically correct? (Select all that apply)",
+      "options": [
+        "A. She has lived here since 2020.",
+        "B. I have seen that movie twice.",
+        "C. They are being very quiet.",
+        "D. He will have finished by 5 PM."
+      ],
+      "correct_answer": "A,B,C,D",
+      "explanation": "All four sentences use advanced tenses correctly: present perfect, present perfect, present continuous with 'being', future perfect.",
+      "tags": [
+        "grammar",
+        "advanced_tenses",
+        "sentence_structure"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 61
+    },
+    {
+      "id": "2a2168b1-7887-4d58-8463-108c08d256f5",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "While I ___ (walk) home, it started to rain.",
+      "options": [],
+      "correct_answer": "was walking",
+      "explanation": "Past continuous for ongoing action when another action (started) interrupted.",
+      "tags": [
+        "past_continuous",
+        "tense",
+        "interrupted_action"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 62
+    },
+    {
+      "id": "408982ae-dcc9-459f-9c16-f60ca7b903cc",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "I ___ never ___ (be) to Paris.",
+      "options": [],
+      "correct_answer": "have, been",
+      "explanation": "Present perfect: have/has + been (past participle of be).",
+      "tags": [
+        "present_perfect",
+        "tense",
+        "past_experience"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 63
+    },
+    {
+      "id": "e6aebbce-fbcb-4776-be62-1ff21394d456",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "The ball rolled ___ the door and stopped.",
+      "options": [],
+      "correct_answer": "under",
+      "explanation": "'Under' indicates movement to a position beneath something.",
+      "tags": [
+        "prepositions",
+        "spatial_prepositions",
+        "movement"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 64
+    },
+    {
+      "id": "e8e2a0de-eb43-46dd-9d85-c73eae656315",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "If it ___ (not rain), we will go hiking.",
+      "options": [],
+      "correct_answer": "doesn't rain",
+      "explanation": "In first conditional, use simple present in the if-clause.",
+      "tags": [
+        "first_conditional",
+        "tense",
+        "if_clauses"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 65
+    },
+    {
+      "id": "63ed948f-c59d-43c3-a4d5-4851974c7b97",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "fill_blank",
+      "content": "We arrived ___ the airport two hours early.",
+      "options": [],
+      "correct_answer": "at",
+      "explanation": "We use 'at' for specific points/locations like airports.",
+      "tags": [
+        "prepositions",
+        "in_on_at",
+        "place_prepositions"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 66
+    },
+    {
+      "id": "a174a569-e53d-4570-87ed-0366b4aac989",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "content": "'I have seen that movie last week.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "B",
+      "explanation": "Present perfect cannot be used with specific past time expressions like 'last week'. Use simple past: 'I saw that movie last week.'",
+      "tags": [
+        "present_perfect",
+        "time_expressions",
+        "grammar"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 67
+    },
+    {
+      "id": "91c32dac-313a-422e-885c-ff89828f0a28",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "content": "'She sat beside me during the lesson.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "Correct. 'Beside' means next to, and simple past 'sat' is correct for a completed action.",
+      "tags": [
+        "prepositions",
+        "spatial_prepositions",
+        "simple_past"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 68
+    },
+    {
+      "id": "4e75d9fd-66f0-4338-9239-8353ab09f7a9",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "true_false",
+      "content": "'The shop is between the bank and the post office.' Is this sentence correct?",
+      "options": [
+        "A. True",
+        "B. False"
+      ],
+      "correct_answer": "A",
+      "explanation": "Correct. 'Between' is used when something is in the middle of two things.",
+      "tags": [
+        "prepositions",
+        "spatial_prepositions",
+        "between_among"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 69
+    },
+    {
+      "id": "07a29765-7f22-438a-adf0-e8f89c564474",
+      "batch_id": "english_9-12_complete",
+      "source": "ai_generated",
+      "subject": "english",
+      "age_group": "9-12",
+      "grade": "四年级/五年级",
+      "difficulty": "advanced",
+      "type": "short_answer",
+      "content": "Look at the picture description: A boy is helping an old lady cross the street. Write 4-6 sentences describing what happened. Use past tense.",
+      "options": [],
+      "correct_answer": "Sample: Yesterday, Tom saw an old lady at the crosswalk. She looked worried. He walked over and offered his hand. He helped her cross the street slowly. The old lady smiled and thanked him. Tom felt very happy.",
+      "explanation": "Use simple past tense for the main events and past continuous for background actions.",
+      "tags": [
+        "writing",
+        "picture_description",
+        "past_tense"
+      ],
+      "created_at": "2026-07-15T09:12:19.336722Z",
+      "order": 70
+    }
+  ]
+}

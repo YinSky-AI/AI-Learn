@@ -231,3 +231,79 @@ async def list_questions_by_node(
     stmt = stmt.order_by(Question.sort_order)
     result = await db.execute(stmt)
     return list(result.scalars().all())
+
+
+async def list_all_questions(
+    db: AsyncSession,
+    subject: Optional[str] = None,
+    age_group: Optional[str] = None,
+    difficulty: Optional[str] = None,
+    question_type: Optional[str] = None,
+    limit: int = 20,
+    offset: int = 0,
+) -> List[Question]:
+    """
+    获取全部题目列表（支持多条件筛选与分页）
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        subject (Optional[str]): 学科筛选
+        age_group (Optional[str]): 年龄段筛选
+        difficulty (Optional[str]): 难度筛选
+        question_type (Optional[str]): 题型筛选
+        limit (int): 每页数量
+        offset (int): 偏移量
+
+    Returns:
+        List[Question]: 题目列表
+    """
+    stmt = select(Question)
+
+    # 多条件筛选
+    if subject:
+        stmt = stmt.where(Question.subject == subject)
+    if age_group:
+        stmt = stmt.where(Question.age_group == age_group)
+    if difficulty:
+        stmt = stmt.where(Question.difficulty == difficulty)
+    if question_type:
+        stmt = stmt.where(Question.type == question_type)
+
+    stmt = stmt.order_by(Question.created_at.desc()).offset(offset).limit(limit)
+    result = await db.execute(stmt)
+    return list(result.scalars().all())
+
+
+async def count_all_questions(
+    db: AsyncSession,
+    subject: Optional[str] = None,
+    age_group: Optional[str] = None,
+    difficulty: Optional[str] = None,
+    question_type: Optional[str] = None,
+) -> int:
+    """
+    统计符合条件的题目总数
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        subject (Optional[str]): 学科筛选
+        age_group (Optional[str]): 年龄段筛选
+        difficulty (Optional[str]): 难度筛选
+        question_type (Optional[str]): 题型筛选
+
+    Returns:
+        int: 总数
+    """
+    stmt = select(func.count(Question.id))
+
+    if subject:
+        stmt = stmt.where(Question.subject == subject)
+    if age_group:
+        stmt = stmt.where(Question.age_group == age_group)
+    if difficulty:
+        stmt = stmt.where(Question.difficulty == difficulty)
+    if question_type:
+        stmt = stmt.where(Question.type == question_type)
+
+    result = await db.execute(stmt)
+    return result.scalar() or 0

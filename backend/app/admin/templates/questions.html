@@ -1,0 +1,671 @@
+{% extends "base.html" %}
+
+{% block title %}题库管理{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <!-- 页面标题 -->
+    <div class="flex items-center justify-between mb-6">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800">题库管理</h1>
+            <p class="text-sm text-gray-500 mt-1">管理平台题库，支持手动添加、批量导入、文件上传</p>
+        </div>
+        <div class="flex space-x-3">
+            <button onclick="openImportModal()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center space-x-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                <span>批量导入</span>
+            </button>
+            <button onclick="openAddModal()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center space-x-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                <span>添加题目</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 统计卡片 -->
+    <div class="grid grid-cols-4 gap-4 mb-6">
+        <div class="stat-card bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+            <div class="text-sm text-gray-500">总题量</div>
+            <div class="text-2xl font-bold text-gray-800" id="stat-total">-</div>
+        </div>
+        <div class="stat-card bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+            <div class="text-sm text-gray-500">单选题</div>
+            <div class="text-2xl font-bold text-blue-600" id="stat-single">-</div>
+        </div>
+        <div class="stat-card bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+            <div class="text-sm text-gray-500">多选题</div>
+            <div class="text-2xl font-bold text-purple-600" id="stat-multiple">-</div>
+        </div>
+        <div class="stat-card bg-white rounded-lg shadow-sm p-4 border border-gray-100">
+            <div class="text-sm text-gray-500">填空题</div>
+            <div class="text-2xl font-bold text-orange-600" id="stat-fill">-</div>
+        </div>
+    </div>
+
+    <!-- 筛选栏 -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 mb-4">
+        <div class="flex flex-wrap items-center gap-3">
+            <select id="filter-subject" class="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">全部学科</option>
+                <option value="math">数学</option>
+                <option value="chinese">语文</option>
+                <option value="english">英语</option>
+                <option value="science">科学</option>
+                <option value="physics">物理</option>
+                <option value="chemistry">化学</option>
+                <option value="biology">生物</option>
+                <option value="history">历史</option>
+                <option value="geography">地理</option>
+                <option value="politics">政治</option>
+            </select>
+            <select id="filter-age" class="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">全部年龄段</option>
+                <option value="6-8">6-8 岁</option>
+                <option value="9-12">9-12 岁</option>
+                <option value="13-15">13-15 岁</option>
+                <option value="16-18">16-18 岁</option>
+            </select>
+            <select id="filter-difficulty" class="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">全部难度</option>
+                <option value="beginner">入门</option>
+                <option value="intermediate">中等</option>
+                <option value="advanced">困难</option>
+            </select>
+            <select id="filter-type" class="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">全部题型</option>
+                <option value="single_choice">单选题</option>
+                <option value="multiple_choice">多选题</option>
+                <option value="fill_blank">填空题</option>
+                <option value="true_false">判断题</option>
+                <option value="short_answer">简答题</option>
+            </select>
+            <input type="text" id="filter-keyword" placeholder="搜索题干关键词..." class="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-48">
+            <button onclick="loadQuestions(1)" class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition text-sm">
+                查询
+            </button>
+            <button onclick="resetFilters()" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50 transition text-sm">
+                重置
+            </button>
+        </div>
+    </div>
+
+    <!-- 题目列表 -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+        <table class="w-full">
+            <thead class="bg-gray-50 border-b border-gray-100">
+                <tr>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">学科</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">年龄段</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">难度</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">题型</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">题干</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">答案</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                </tr>
+            </thead>
+            <tbody id="questions-tbody" class="divide-y divide-gray-100">
+                <tr><td colspan="8" class="px-4 py-8 text-center text-gray-400">加载中...</td></tr>
+            </tbody>
+        </table>
+
+        <!-- 分页 -->
+        <div class="px-4 py-3 border-t border-gray-100 flex items-center justify-between">
+            <div class="text-sm text-gray-500">
+                共 <span id="pagination-total">0</span> 条，第 <span id="pagination-page">1</span> / <span id="pagination-pages">1</span> 页
+            </div>
+            <div id="pagination-controls" class="flex space-x-1">
+                <!-- 分页按钮由 JS 生成 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 添加/编辑弹窗 -->
+<div id="question-modal" class="modal-overlay hidden">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto mx-4">
+        <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-800" id="modal-title">添加题目</h3>
+            <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="px-6 py-4 space-y-4">
+            <input type="hidden" id="edit-id">
+            <div class="grid grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">学科 <span class="text-red-500">*</span></label>
+                    <select id="edit-subject" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="math">数学</option>
+                        <option value="chinese">语文</option>
+                        <option value="english">英语</option>
+                        <option value="science">科学</option>
+                        <option value="physics">物理</option>
+                        <option value="chemistry">化学</option>
+                        <option value="biology">生物</option>
+                        <option value="history">历史</option>
+                        <option value="geography">地理</option>
+                        <option value="politics">政治</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">年龄段 <span class="text-red-500">*</span></label>
+                    <select id="edit-age_group" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="6-8">6-8 岁</option>
+                        <option value="9-12">9-12 岁</option>
+                        <option value="13-15">13-15 岁</option>
+                        <option value="16-18">16-18 岁</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">难度 <span class="text-red-500">*</span></label>
+                    <select id="edit-difficulty" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="beginner">入门</option>
+                        <option value="intermediate">中等</option>
+                        <option value="advanced">困难</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">题型 <span class="text-red-500">*</span></label>
+                    <select id="edit-type" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" onchange="toggleOptions()">
+                        <option value="single_choice">单选题</option>
+                        <option value="multiple_choice">多选题</option>
+                        <option value="fill_blank">填空题</option>
+                        <option value="true_false">判断题</option>
+                        <option value="short_answer">简答题</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">年级</label>
+                    <input type="text" id="edit-grade" placeholder="如：三年级、初三" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">题干 <span class="text-red-500">*</span></label>
+                <textarea id="edit-content" rows="3" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+            </div>
+            <div id="options-section">
+                <label class="block text-sm font-medium text-gray-700 mb-1">选项（JSON 格式）</label>
+                <textarea id="edit-options" rows="3" placeholder='[{"label":"A","text":"选项A"},{"label":"B","text":"选项B"}]' class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-xs"></textarea>
+                <p class="text-xs text-gray-400 mt-1">填空题和简答题无需填写</p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">正确答案 <span class="text-red-500">*</span></label>
+                <input type="text" id="edit-correct_answer" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">解析</label>
+                <textarea id="edit-explanation" rows="3" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">标签（逗号分隔）</label>
+                <input type="text" id="edit-tags" placeholder="一元二次方程, 因式分解" class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+        <div class="px-6 py-4 border-t border-gray-100 flex justify-end space-x-3">
+            <button onclick="closeModal()" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50 transition">取消</button>
+            <button onclick="saveQuestion()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">保存</button>
+        </div>
+    </div>
+</div>
+
+<!-- 批量导入弹窗 -->
+<div id="import-modal" class="modal-overlay hidden">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto mx-4">
+        <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-800">批量导入题目</h3>
+            <button onclick="closeImportModal()" class="text-gray-400 hover:text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="px-6 py-4 space-y-4">
+            <!-- JSON 导入 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">JSON 数据导入</label>
+                <textarea id="import-json" rows="8" placeholder='[{"content":"题目内容","options":[{"label":"A","text":"选项A"}],"correct_answer":"A","explanation":"解析","type":"single_choice","subject":"math","age_group":"13-15","difficulty":"beginner","tags":["标签1"]}]' class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none font-mono text-xs"></textarea>
+                <p class="text-xs text-gray-400 mt-1">粘贴 JSON 数组，每道题一个对象</p>
+            </div>
+            <div class="flex items-center">
+                <div class="flex-1 border-t border-gray-200"></div>
+                <span class="px-3 text-sm text-gray-400">或</span>
+                <div class="flex-1 border-t border-gray-200"></div>
+            </div>
+            <!-- 文件上传 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">上传文件导入</label>
+                <div class="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center" id="drop-zone">
+                    <svg class="w-10 h-10 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+                    <p class="text-sm text-gray-500">拖拽 PDF / Excel / Word 文件到此处</p>
+                    <p class="text-xs text-gray-400 mt-1">或点击选择文件</p>
+                    <input type="file" id="import-file" accept=".pdf,.xlsx,.xls,.doc,.docx" class="hidden" onchange="handleFileSelect(event)">
+                    <button onclick="document.getElementById('import-file').click()" class="mt-2 px-3 py-1.5 bg-gray-100 text-gray-600 rounded text-sm hover:bg-gray-200 transition">选择文件</button>
+                </div>
+                <p class="text-xs text-gray-400 mt-1">注意：文件导入需要后端解析支持，当前版本仅支持 JSON 直接导入</p>
+            </div>
+            <!-- 导入结果 -->
+            <div id="import-result" class="hidden">
+                <div class="bg-gray-50 rounded-lg p-3">
+                    <p class="text-sm font-medium text-gray-700">导入结果</p>
+                    <p class="text-sm text-gray-600 mt-1" id="import-result-text"></p>
+                </div>
+            </div>
+        </div>
+        <div class="px-6 py-4 border-t border-gray-100 flex justify-end space-x-3">
+            <button onclick="closeImportModal()" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50 transition">取消</button>
+            <button onclick="importQuestions()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">导入</button>
+        </div>
+    </div>
+</div>
+
+<!-- 详情弹窗 -->
+<div id="detail-modal" class="modal-overlay hidden">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto mx-4">
+        <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-800">题目详情</h3>
+            <button onclick="closeDetailModal()" class="text-gray-400 hover:text-gray-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="px-6 py-4 space-y-3" id="detail-content">
+            <!-- 由 JS 填充 -->
+        </div>
+        <div class="px-6 py-4 border-t border-gray-100 flex justify-end">
+            <button onclick="closeDetailModal()" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50 transition">关闭</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script>
+const SUBJECT_MAP = {
+    math: '数学', chinese: '语文', english: '英语', science: '科学',
+    physics: '物理', chemistry: '化学', biology: '生物',
+    history: '历史', geography: '地理', politics: '政治'
+};
+const DIFFICULTY_MAP = { beginner: '入门', intermediate: '中等', advanced: '困难', '简单': '入门', '初级': '入门', '中级': '中等', '高级': '困难' };
+const DIFFICULTY_COLOR = {
+    beginner: 'bg-green-100 text-green-700', '简单': 'bg-green-100 text-green-700', '初级': 'bg-green-100 text-green-700',
+    intermediate: 'bg-yellow-100 text-yellow-700', '中等': 'bg-yellow-100 text-yellow-700', '中级': 'bg-yellow-100 text-yellow-700',
+    advanced: 'bg-red-100 text-red-700', '困难': 'bg-red-100 text-red-700', '高级': 'bg-red-100 text-red-700'
+};
+const TYPE_MAP = {
+    single_choice: '单选', multiple_choice: '多选',
+    fill_blank: '填空', true_false: '判断', short_answer: '简答'
+};
+const TYPE_COLOR = {
+    single_choice: 'bg-blue-100 text-blue-700',
+    multiple_choice: 'bg-purple-100 text-purple-700',
+    fill_blank: 'bg-orange-100 text-orange-700',
+    true_false: 'bg-green-100 text-green-700',
+    short_answer: 'bg-gray-100 text-gray-700'
+};
+
+let currentPage = 1;
+let currentData = { items: [], total: 0 };
+
+// 加载题目列表
+async function loadQuestions(page = 1) {
+    currentPage = page;
+    const tbody = document.getElementById('questions-tbody');
+    tbody.innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-gray-400">加载中...</td></tr>';
+
+    const params = new URLSearchParams();
+    params.set('page', page);
+    params.set('page_size', 15);
+
+    const subject = document.getElementById('filter-subject').value;
+    const age = document.getElementById('filter-age').value;
+    const difficulty = document.getElementById('filter-difficulty').value;
+    const type = document.getElementById('filter-type').value;
+    const keyword = document.getElementById('filter-keyword').value;
+
+    if (subject) params.set('subject', subject);
+    if (age) params.set('age_group', age);
+    if (difficulty) params.set('difficulty', difficulty);
+    if (type) params.set('type', type);
+    if (keyword) params.set('keyword', keyword);
+
+    try {
+        const res = await fetch('/admin/questions/api/list?' + params.toString());
+        const data = await res.json();
+        currentData = data;
+        renderTable(data.items);
+        renderPagination(data.total, data.page, data.page_size);
+        loadStats();
+    } catch (e) {
+        tbody.innerHTML = `<tr><td colspan="8" class="px-4 py-8 text-center text-red-400">加载失败: ${e.message}</td></tr>`;
+    }
+}
+
+// 渲染表格
+function renderTable(items) {
+    const tbody = document.getElementById('questions-tbody');
+    if (!items || items.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-gray-400">暂无数据</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = items.map(item => `
+        <tr class="hover:bg-gray-50 transition">
+            <td class="px-4 py-3 text-sm text-gray-600">${item.id}</td>
+            <td class="px-4 py-3 text-sm text-gray-800">${SUBJECT_MAP[item.subject] || item.subject}</td>
+            <td class="px-4 py-3 text-sm text-gray-600">${item.age_group}</td>
+            <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs ${DIFFICULTY_COLOR[item.difficulty] || 'bg-gray-100 text-gray-700'}">${DIFFICULTY_MAP[item.difficulty] || item.difficulty}</span></td>
+            <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs ${TYPE_COLOR[item.type] || 'bg-gray-100 text-gray-700'}">${TYPE_MAP[item.type] || item.type}</span></td>
+            <td class="px-4 py-3 text-sm text-gray-700 max-w-xs truncate" title="${escapeHtml(item.content)}">${escapeHtml(item.content)}</td>
+            <td class="px-4 py-3 text-sm text-gray-600 font-medium">${escapeHtml(item.correct_answer)}</td>
+            <td class="px-4 py-3">
+                <div class="flex space-x-2">
+                    <button onclick="viewDetail(${item.id})" class="text-blue-600 hover:text-blue-800 text-sm">查看</button>
+                    <button onclick="editQuestion(${item.id})" class="text-green-600 hover:text-green-800 text-sm">编辑</button>
+                    <button onclick="deleteQuestion(${item.id})" class="text-red-600 hover:text-red-800 text-sm">删除</button>
+                </div>
+            </td>
+        </tr>
+    `).join('');
+}
+
+// 渲染分页
+function renderPagination(total, page, pageSize) {
+    const totalPages = Math.ceil(total / pageSize) || 1;
+    document.getElementById('pagination-total').textContent = total;
+    document.getElementById('pagination-page').textContent = page;
+    document.getElementById('pagination-pages').textContent = totalPages;
+
+    let html = '';
+    html += `<button onclick="loadQuestions(${page - 1})" class="page-btn" ${page <= 1 ? 'disabled' : ''}>&lt;</button>`;
+
+    const maxButtons = 5;
+    let start = Math.max(1, page - Math.floor(maxButtons / 2));
+    let end = Math.min(totalPages, start + maxButtons - 1);
+    if (end - start < maxButtons - 1) start = Math.max(1, end - maxButtons + 1);
+
+    for (let i = start; i <= end; i++) {
+        html += `<button onclick="loadQuestions(${i})" class="page-btn ${i === page ? 'active' : ''}">${i}</button>`;
+    }
+
+    html += `<button onclick="loadQuestions(${page + 1})" class="page-btn" ${page >= totalPages ? 'disabled' : ''}>&gt;</button>`;
+    document.getElementById('pagination-controls').innerHTML = html;
+}
+
+// 加载统计
+async function loadStats() {
+    try {
+        const res = await fetch('/admin/questions/api/list?page=1&page_size=1');
+        const data = await res.json();
+        document.getElementById('stat-total').textContent = data.total || 0;
+
+        // 按题型统计
+        const types = ['single_choice', 'multiple_choice', 'fill_blank', 'true_false', 'short_answer'];
+        const typeCounts = {};
+        for (const t of types) {
+            const r = await fetch('/admin/questions/api/list?page=1&page_size=1&type=' + t);
+            const d = await r.json();
+            typeCounts[t] = d.total || 0;
+        }
+        document.getElementById('stat-single').textContent = typeCounts['single_choice'] || 0;
+        document.getElementById('stat-multiple').textContent = typeCounts['multiple_choice'] || 0;
+        document.getElementById('stat-fill').textContent = typeCounts['fill_blank'] || 0;
+    } catch (e) {
+        console.error('统计加载失败', e);
+    }
+}
+
+// 重置筛选
+function resetFilters() {
+    document.getElementById('filter-subject').value = '';
+    document.getElementById('filter-age').value = '';
+    document.getElementById('filter-difficulty').value = '';
+    document.getElementById('filter-type').value = '';
+    document.getElementById('filter-keyword').value = '';
+    loadQuestions(1);
+}
+
+// 弹窗控制
+function openAddModal() {
+    document.getElementById('modal-title').textContent = '添加题目';
+    document.getElementById('edit-id').value = '';
+    document.getElementById('edit-subject').value = 'math';
+    document.getElementById('edit-age_group').value = '6-8';
+    document.getElementById('edit-difficulty').value = 'beginner';
+    document.getElementById('edit-type').value = 'single_choice';
+    document.getElementById('edit-grade').value = '';
+    document.getElementById('edit-content').value = '';
+    document.getElementById('edit-options').value = '';
+    document.getElementById('edit-correct_answer').value = '';
+    document.getElementById('edit-explanation').value = '';
+    document.getElementById('edit-tags').value = '';
+    toggleOptions();
+    document.getElementById('question-modal').classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('question-modal').classList.add('hidden');
+}
+
+function openImportModal() {
+    document.getElementById('import-json').value = '';
+    document.getElementById('import-result').classList.add('hidden');
+    document.getElementById('import-modal').classList.remove('hidden');
+}
+
+function closeImportModal() {
+    document.getElementById('import-modal').classList.add('hidden');
+}
+
+function closeDetailModal() {
+    document.getElementById('detail-modal').classList.add('hidden');
+}
+
+// 切换选项显示
+function toggleOptions() {
+    const type = document.getElementById('edit-type').value;
+    const section = document.getElementById('options-section');
+    if (type === 'fill_blank' || type === 'short_answer') {
+        section.style.display = 'none';
+    } else {
+        section.style.display = 'block';
+    }
+}
+
+// 保存题目
+async function saveQuestion() {
+    const id = document.getElementById('edit-id').value;
+    const body = {
+        subject: document.getElementById('edit-subject').value,
+        age_group: document.getElementById('edit-age_group').value,
+        difficulty: document.getElementById('edit-difficulty').value,
+        type: document.getElementById('edit-type').value,
+        grade: document.getElementById('edit-grade').value || null,
+        content: document.getElementById('edit-content').value,
+        options: document.getElementById('edit-options').value || null,
+        correct_answer: document.getElementById('edit-correct_answer').value,
+        explanation: document.getElementById('edit-explanation').value || null,
+        tags: document.getElementById('edit-tags').value || null,
+    };
+
+    if (!body.content) { alert('请填写题干'); return; }
+
+    // 尝试解析 options JSON
+    if (body.options) {
+        try {
+            body.options = JSON.parse(body.options);
+        } catch (e) {
+            alert('选项 JSON 格式错误'); return;
+        }
+    }
+
+    try {
+        const url = id ? `/admin/questions/api/${id}` : '/admin/questions/api/create';
+        const method = id ? 'PUT' : 'POST';
+        const res = await fetch(url, {
+            method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        if (data.success) {
+            closeModal();
+            loadQuestions(currentPage);
+        } else {
+            alert(data.message || '保存失败');
+        }
+    } catch (e) {
+        alert('保存失败: ' + e.message);
+    }
+}
+
+// 编辑题目
+async function editQuestion(id) {
+    try {
+        const res = await fetch(`/admin/questions/api/${id}`);
+        const data = await res.json();
+        if (!data.success) { alert(data.message); return; }
+
+        const q = data.data;
+        document.getElementById('modal-title').textContent = '编辑题目';
+        document.getElementById('edit-id').value = q.id;
+        document.getElementById('edit-subject').value = q.subject;
+        document.getElementById('edit-age_group').value = q.age_group;
+        document.getElementById('edit-difficulty').value = q.difficulty;
+        document.getElementById('edit-type').value = q.type;
+        document.getElementById('edit-grade').value = q.grade || '';
+        document.getElementById('edit-content').value = q.content;
+        document.getElementById('edit-options').value = q.options ? JSON.stringify(q.options, null, 2) : '';
+        document.getElementById('edit-correct_answer').value = q.correct_answer;
+        document.getElementById('edit-explanation').value = q.explanation || '';
+        document.getElementById('edit-tags').value = q.tags ? q.tags.join(', ') : '';
+        toggleOptions();
+        document.getElementById('question-modal').classList.remove('hidden');
+    } catch (e) {
+        alert('加载失败: ' + e.message);
+    }
+}
+
+// 删除题目
+async function deleteQuestion(id) {
+    if (!confirm('确定要删除这道题目吗？此操作不可恢复。')) return;
+    try {
+        const res = await fetch(`/admin/questions/api/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+            loadQuestions(currentPage);
+        } else {
+            alert(data.message || '删除失败');
+        }
+    } catch (e) {
+        alert('删除失败: ' + e.message);
+    }
+}
+
+// 查看详情
+async function viewDetail(id) {
+    try {
+        const res = await fetch(`/admin/questions/api/${id}`);
+        const data = await res.json();
+        if (!data.success) { alert(data.message); return; }
+
+        const q = data.data;
+        let optionsHtml = '';
+        if (q.options && Array.isArray(q.options)) {
+            optionsHtml = '<div class="mt-2"><p class="text-sm font-medium text-gray-700">选项：</p>' +
+                q.options.map(o => `<p class="text-sm text-gray-600 ml-2">${o.label}. ${o.text}</p>`).join('') + '</div>';
+        }
+
+        document.getElementById('detail-content').innerHTML = `
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div><span class="text-gray-500">ID：</span><span class="text-gray-800">${q.id}</span></div>
+                <div><span class="text-gray-500">学科：</span><span class="text-gray-800">${SUBJECT_MAP[q.subject] || q.subject}</span></div>
+                <div><span class="text-gray-500">年龄段：</span><span class="text-gray-800">${q.age_group}</span></div>
+                <div><span class="text-gray-500">难度：</span><span class="text-gray-800">${DIFFICULTY_MAP[q.difficulty] || q.difficulty}</span></div>
+                <div><span class="text-gray-500">题型：</span><span class="text-gray-800">${TYPE_MAP[q.type] || q.type}</span></div>
+                <div><span class="text-gray-500">年级：</span><span class="text-gray-800">${q.grade || '-'}</span></div>
+            </div>
+            <div class="mt-3"><p class="text-sm font-medium text-gray-700">题干：</p><p class="text-sm text-gray-800 mt-1 whitespace-pre-wrap">${escapeHtml(q.content)}</p></div>
+            ${optionsHtml}
+            <div class="mt-3"><p class="text-sm font-medium text-gray-700">正确答案：</p><p class="text-sm text-blue-600 font-medium mt-1">${escapeHtml(q.correct_answer)}</p></div>
+            <div class="mt-3"><p class="text-sm font-medium text-gray-700">解析：</p><p class="text-sm text-gray-600 mt-1 whitespace-pre-wrap">${escapeHtml(q.explanation || '无')}</p></div>
+            <div class="mt-3"><p class="text-sm font-medium text-gray-700">标签：</p><p class="text-sm text-gray-600 mt-1">${q.tags ? q.tags.join(', ') : '-'}</p></div>
+            <div class="mt-3"><p class="text-sm font-medium text-gray-700">来源：</p><p class="text-sm text-gray-600 mt-1">${q.source || '-'}</p></div>
+        `;
+        document.getElementById('detail-modal').classList.remove('hidden');
+    } catch (e) {
+        alert('加载失败: ' + e.message);
+    }
+}
+
+// 批量导入
+async function importQuestions() {
+    const jsonText = document.getElementById('import-json').value.trim();
+    if (!jsonText) { alert('请输入 JSON 数据'); return; }
+
+    let questions;
+    try {
+        questions = JSON.parse(jsonText);
+        if (!Array.isArray(questions)) throw new Error('数据必须是数组');
+    } catch (e) {
+        alert('JSON 格式错误: ' + e.message); return;
+    }
+
+    if (!confirm(`确定导入 ${questions.length} 道题目吗？`)) return;
+
+    try {
+        const res = await fetch('/admin/questions/api/import', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ questions })
+        });
+        const data = await res.json();
+
+        const resultDiv = document.getElementById('import-result');
+        const resultText = document.getElementById('import-result-text');
+        resultDiv.classList.remove('hidden');
+
+        if (data.success) {
+            resultText.innerHTML = `成功导入 <b>${data.imported}</b> 道，失败 <b>${data.failed}</b> 道，共 ${data.total} 道`;
+            resultText.className = 'text-sm text-green-600 mt-1';
+            if (data.errors && data.errors.length > 0) {
+                resultText.innerHTML += '<br><span class="text-red-500">前 10 条错误: ' + data.errors.map(e => `#${e.index}: ${e.reason}`).join('; ') + '</span>';
+            }
+            setTimeout(() => {
+                closeImportModal();
+                loadQuestions(1);
+            }, 2000);
+        } else {
+            resultText.textContent = data.message || '导入失败';
+            resultText.className = 'text-sm text-red-600 mt-1';
+        }
+    } catch (e) {
+        alert('导入失败: ' + e.message);
+    }
+}
+
+// 文件选择（占位，实际解析需后端支持）
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    alert('文件导入功能需要后端解析支持。请先使用 JSON 导入，或联系开发团队添加 PDF/Excel/Word 解析模块。\n\n已选文件: ' + file.name);
+}
+
+// HTML 转义
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// 点击弹窗外部关闭
+document.querySelectorAll('.modal-overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+        if (e.target === el) el.classList.add('hidden');
+    });
+});
+
+// 初始化加载
+loadQuestions(1);
+</script>
+{% endblock %}

@@ -17,13 +17,25 @@ from typing import Optional
 
 from fastapi import APIRouter, Request, Depends, Form, Query
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
-from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy import text
 from jinja2 import Environment, FileSystemLoader
 
 router = APIRouter(prefix="/admin", tags=["管理后台"])
 
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin123")
+
+# 题库独立数据库连接（ai_learn 库，存放外部导入的题库数据）
+_AI_LEARN_DB_URL = os.getenv(
+    "AI_LEARN_DB_URL",
+    "postgresql+asyncpg://postgres:postgres@postgres:5432/ai_learn"
+)
+_ai_learn_engine = create_async_engine(_AI_LEARN_DB_URL, echo=False)
+AiLearnSessionLocal = async_sessionmaker(
+    _ai_learn_engine,
+    class_=AsyncSession,
+    expire_on_commit=False,
+)
 
 SUBJECT_MAP = {
     "math": "数学",
@@ -55,6 +67,20 @@ async def get_db():
     from app.core.database import AsyncSessionLocal
 
     async with AsyncSessionLocal() as session:
+        try:
+            yield session
+            await session.commit()
+        except Exception:
+            await session.rollback()
+
+
+async def get_ai_learn_db():
+    """
+    题库数据库依赖（ai_learn 库）
+
+    为题库管理 API 提供独立的数据库会话，连接到 ai_learn 数据库。
+    """
+    async with AiLearnSessionLocal() as session:
         try:
             yield session
             await session.commit()
@@ -1246,3 +1272,461 @@ async def lessons_reorder_api(
         return JSONResponse(status_code=500, content={"success": False, "message": f"排序失败: {str(e)}"})
 
     return {"success": True, "message": "排序已更新"}
+
+
+# ============ 题库管理页面 ============
+
+@router.get("/questions", response_class=HTMLResponse)
+async def questions_page(request: Request):
+    """
+    题库管理页面
+
+    渲染题库列表管理页面，需登录后方可访问。
+
+    Args:
+        request (Request): FastAPI 请求对象
+
+    Returns:
+        HTMLResponse: 题库管理页面 HTML
+    """
+    redirect = _check_session(request)
+    if redirect:
+        return redirect
+    template = jinja_env.get_template("questions.html")
+    return HTMLResponse(template.render(active_page="questions"))
+
+
+# ============ 题库 API ============
+
+@router.get("/questions/api/list")
+async def questions_api_list(
+    request: Request,
+    db: AsyncSession = Depends(get_ai_learn_db),
+    subject: Optional[str] = Query(None),
+    age_group: Optional[str] = Query(None),
+    difficulty: Optional[str] = Query(None),
+    question_type: Optional[str] = Query(None, alias="type"),
+    keyword: Optional[str] = Query(None),
+    page: int = Query(1, ge=1),
+    page_size: int = Query(15, ge=1, le=100),
+):
+    """
+    题库列表 API（后台管理）
+
+    分页查询题目列表，支持按学科、年龄段、难度、题型、关键词筛选。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+        subject (Optional[str]): 学科筛选
+        age_group (Optional[str]): 年龄段筛选
+        difficulty (Optional[str]): 难度筛选
+        question_type (Optional[str]): 题型筛选
+        keyword (Optional[str]): 题干关键词
+        page (int): 页码，默认 1
+        page_size (int): 每页数量，默认 15
+
+    Returns:
+        dict: 分页题目列表
+    """
+    auth = _check_api_auth(request)
+    if auth:
+        return auth
+
+    conditions = ["TRUE"]
+    params: dict = {}
+
+    if subject:
+        conditions.append("subject = :subject")
+        params["subject"] = subject
+    if age_group:
+        conditions.append("age_group = :age_group")
+        params["age_group"] = age_group
+    if difficulty:
+        conditions.append("difficulty = :difficulty")
+        params["difficulty"] = difficulty
+    if question_type:
+        conditions.append("type = :qtype")
+        params["qtype"] = question_type
+    if keyword:
+        conditions.append("content ILIKE :kw")
+        params["kw"] = f"%{keyword}%"
+
+    where = " AND ".join(conditions)
+
+    total = (await db.execute(
+        text(f"SELECT COUNT(*) FROM public.questions WHERE {where}"), params
+    )).scalar()
+
+    offset = (page - 1) * page_size
+    params["limit"] = page_size
+    params["offset"] = offset
+
+    data_sql = (
+        "SELECT id, subject, age_group, difficulty, grade, content, "
+        "options, correct_answer, explanation, type, tags, source, created_at "
+        f"FROM public.questions WHERE {where} "
+        "ORDER BY id DESC LIMIT :limit OFFSET :offset"
+    )
+    rows = (await db.execute(text(data_sql), params)).fetchall()
+
+    items = []
+    for row in rows:
+        items.append({
+            "id": row[0],
+            "subject": row[1],
+            "age_group": row[2],
+            "difficulty": row[3],
+            "grade": row[4],
+            "content": row[5][:120] + "..." if row[5] and len(row[5]) > 120 else (row[5] or ""),
+            "options": row[6],
+            "correct_answer": row[7],
+            "explanation": row[8][:100] + "..." if row[8] and len(row[8]) > 100 else (row[8] or ""),
+            "type": row[9],
+            "tags": row[10],
+            "source": row[11],
+            "created_at": row[12].isoformat() if row[12] else None,
+        })
+
+    return {
+        "items": items,
+        "total": total or 0,
+        "page": page,
+        "page_size": page_size,
+    }
+
+
+@router.get("/questions/api/{question_id}")
+async def question_detail_api(
+    question_id: int,
+    request: Request,
+    db: AsyncSession = Depends(get_ai_learn_db),
+):
+    """
+    题目详情 API
+
+    Args:
+        question_id (int): 题目 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        JSONResponse: 题目详情或错误信息
+    """
+    auth = _check_api_auth(request)
+    if auth:
+        return auth
+
+    try:
+        row = (await db.execute(
+            text(
+                "SELECT id, subject, age_group, difficulty, grade, content, "
+                "options, correct_answer, explanation, type, tags, source "
+                "FROM public.questions WHERE id = :id"
+            ),
+            {"id": question_id},
+        )).fetchone()
+
+        if not row:
+            return JSONResponse(status_code=404, content={"success": False, "message": "题目不存在"})
+
+        return JSONResponse(content={
+            "success": True,
+            "data": {
+                "id": row[0],
+                "subject": row[1],
+                "age_group": row[2],
+                "difficulty": row[3],
+                "grade": row[4],
+                "content": row[5],
+                "options": row[6],
+                "correct_answer": row[7],
+                "explanation": row[8],
+                "type": row[9],
+                "tags": row[10],
+                "source": row[11],
+            }
+        })
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"success": False, "message": str(e)})
+
+
+@router.post("/questions/api/create")
+async def question_create_api(
+    request: Request,
+    db: AsyncSession = Depends(get_ai_learn_db),
+):
+    """
+    创建题目
+
+    接收题目基本信息并插入数据库。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 创建结果（含新题目 ID）
+    """
+    auth = _check_api_auth(request)
+    if auth:
+        return auth
+
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse(status_code=400, content={"success": False, "message": "无效的请求数据"})
+
+    content = body.get("content")
+    if not content:
+        return JSONResponse(status_code=400, content={"success": False, "message": "缺少必填字段 content"})
+
+    options_raw = body.get("options")
+    options_value = None
+    if options_raw:
+        if isinstance(options_raw, list):
+            import json
+            options_value = json.dumps(options_raw)
+        elif isinstance(options_raw, str):
+            options_value = options_raw
+
+    tags_raw = body.get("tags")
+    tags_value = None
+    if tags_raw:
+        if isinstance(tags_raw, list):
+            tags_value = tags_raw
+        elif isinstance(tags_raw, str):
+            tags_value = [t.strip() for t in tags_raw.split(",") if t.strip()]
+
+    try:
+        result = await db.execute(
+            text(
+                "INSERT INTO public.questions (subject, age_group, difficulty, grade, content, "
+                "options, correct_answer, explanation, type, tags, source) "
+                "VALUES (:subject, :age_group, :difficulty, :grade, :content, "
+                ":options, :correct_answer, :explanation, :type, :tags, :source) "
+                "RETURNING id"
+            ),
+            {
+                "subject": body.get("subject", "math"),
+                "age_group": body.get("age_group", "6-8"),
+                "difficulty": body.get("difficulty", "beginner"),
+                "grade": body.get("grade"),
+                "content": content,
+                "options": options_value,
+                "correct_answer": body.get("correct_answer", ""),
+                "explanation": body.get("explanation", ""),
+                "type": body.get("type", "single_choice"),
+                "tags": tags_value,
+                "source": body.get("source", "manual"),
+            },
+        )
+        question_id = result.scalar()
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"success": False, "message": f"创建失败: {str(e)}"})
+
+    return {"success": True, "message": "题目已创建", "id": question_id}
+
+
+@router.put("/questions/api/{question_id}")
+async def question_update_api(
+    question_id: int,
+    request: Request,
+    db: AsyncSession = Depends(get_ai_learn_db),
+):
+    """
+    编辑题目（动态更新提供的字段）
+
+    Args:
+        question_id (int): 题目 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
+    auth = _check_api_auth(request)
+    if auth:
+        return auth
+
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse(status_code=400, content={"success": False, "message": "无效的请求数据"})
+
+    allowed_fields = [
+        "subject", "age_group", "difficulty", "grade",
+        "content", "correct_answer", "explanation", "type", "source",
+    ]
+    updates = []
+    params: dict = {"id": question_id}
+
+    for field in allowed_fields:
+        if field in body:
+            updates.append(f"{field} = :{field}")
+            params[field] = body[field]
+
+    # options 需要特殊处理（数组 -> JSON）
+    if "options" in body:
+        options_raw = body["options"]
+        if options_raw:
+            if isinstance(options_raw, list):
+                import json
+                params["options"] = json.dumps(options_raw)
+            elif isinstance(options_raw, str):
+                params["options"] = options_raw
+        else:
+            params["options"] = None
+        updates.append("options = :options")
+
+    # tags 需要特殊处理（字符串 -> 数组）
+    if "tags" in body:
+        tags_raw = body["tags"]
+        if tags_raw:
+            if isinstance(tags_raw, list):
+                params["tags"] = tags_raw
+            elif isinstance(tags_raw, str):
+                params["tags"] = [t.strip() for t in tags_raw.split(",") if t.strip()]
+        else:
+            params["tags"] = None
+        updates.append("tags = :tags")
+
+    if not updates:
+        return JSONResponse(status_code=400, content={"success": False, "message": "没有需要更新的字段"})
+
+    updates.append("created_at = NOW()")
+
+    sql = f"UPDATE public.questions SET {', '.join(updates)} WHERE id = :id"
+    result = await db.execute(text(sql), params)
+
+    if result.rowcount == 0:
+        return JSONResponse(status_code=404, content={"success": False, "message": "题目不存在"})
+
+    return {"success": True, "message": "题目已更新"}
+
+
+@router.delete("/questions/api/{question_id}")
+async def question_delete_api(
+    question_id: int,
+    request: Request,
+    db: AsyncSession = Depends(get_ai_learn_db),
+):
+    """
+    删除题目
+
+    Args:
+        question_id (int): 题目 ID
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 操作结果
+    """
+    auth = _check_api_auth(request)
+    if auth:
+        return auth
+
+    result = await db.execute(
+        text("DELETE FROM public.questions WHERE id = :id"),
+        {"id": question_id},
+    )
+
+    if result.rowcount == 0:
+        return JSONResponse(status_code=404, content={"success": False, "message": "题目不存在"})
+
+    return {"success": True, "message": "题目已删除"}
+
+
+@router.post("/questions/api/import")
+async def questions_import_api(
+    request: Request,
+    db: AsyncSession = Depends(get_ai_learn_db),
+):
+    """
+    批量导入题目（JSON 格式）
+
+    接收 JSON 数组，批量插入题目。适用于外部 AI 生成的题库导入。
+
+    Args:
+        request (Request): FastAPI 请求对象
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        dict: 导入结果统计
+    """
+    auth = _check_api_auth(request)
+    if auth:
+        return auth
+
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse(status_code=400, content={"success": False, "message": "无效的请求数据"})
+
+    questions = body.get("questions") if isinstance(body, dict) else body
+    if not questions or not isinstance(questions, list):
+        return JSONResponse(status_code=400, content={"success": False, "message": "缺少 questions 数组"})
+
+    imported = 0
+    failed = 0
+    errors = []
+    import json
+
+    for idx, q in enumerate(questions):
+        try:
+            content = q.get("content")
+            if not content:
+                failed += 1
+                errors.append({"index": idx, "reason": "content 为空"})
+                continue
+
+            options_raw = q.get("options")
+            options_value = None
+            if options_raw:
+                if isinstance(options_raw, list):
+                    options_value = json.dumps(options_raw)
+                elif isinstance(options_raw, str):
+                    options_value = options_raw
+
+            tags_raw = q.get("tags")
+            tags_value = None
+            if tags_raw:
+                if isinstance(tags_raw, list):
+                    tags_value = tags_raw
+                elif isinstance(tags_raw, str):
+                    tags_value = [t.strip() for t in tags_raw.split(",") if t.strip()]
+
+            await db.execute(
+                text(
+                    "INSERT INTO public.questions (subject, age_group, difficulty, grade, content, "
+                    "options, correct_answer, explanation, type, tags, source, batch_id) "
+                    "VALUES (:subject, :age_group, :difficulty, :grade, :content, "
+                    ":options, :correct_answer, :explanation, :type, :tags, :source, :batch_id)"
+                ),
+                {
+                    "subject": q.get("subject", "math"),
+                    "age_group": q.get("age_group", "6-8"),
+                    "difficulty": q.get("difficulty", "beginner"),
+                    "grade": q.get("grade"),
+                    "content": content,
+                    "options": options_value,
+                    "correct_answer": q.get("correct_answer", ""),
+                    "explanation": q.get("explanation", ""),
+                    "type": q.get("type", "single_choice"),
+                    "tags": tags_value,
+                    "source": q.get("source", "imported"),
+                    "batch_id": q.get("batch_id"),
+                },
+            )
+            imported += 1
+        except Exception as e:
+            failed += 1
+            errors.append({"index": idx, "reason": str(e)})
+
+    return {
+        "success": True,
+        "imported": imported,
+        "failed": failed,
+        "total": len(questions),
+        "errors": errors[:10],
+    }

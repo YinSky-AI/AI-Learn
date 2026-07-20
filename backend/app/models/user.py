@@ -39,7 +39,7 @@ class User(SoftDeleteModel, Base):
         streak_days: 连续学习天数，用于激励体系
         behavior_profile: JSONB 行为模型，支持 AI 自适应学习
         last_login_date: 上次登录日期
-        ruoyi_user_id: 若依管理后台关联 ID
+        admin_user_id: 管理后台关联 ID（预留字段）
         is_admin: 是否为管理员
     """
 
@@ -63,11 +63,11 @@ class User(SoftDeleteModel, Base):
     # 登录信息
     last_login_date = Column(Date, nullable=True, comment="上次登录日期")
 
-    # 若依管理后台关联
-    ruoyi_user_id = Column(Integer, nullable=True, unique=True,
-                           comment="若依 sys_user 表的 user_id，用于关联管理后台")
+    # 管理后台关联（预留字段）
+    admin_user_id = Column(Integer, nullable=True, unique=True,
+                           comment="管理后台用户 ID，用于关联外部管理系统")
     is_admin = Column(Boolean, default=False, server_default=text("false"),
-                     comment="是否为管理员（同步自若依角色）")
+                     comment="是否为管理员")
 
     # 索引
     __table_args__ = (

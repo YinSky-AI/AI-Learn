@@ -19,6 +19,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.deps import get_pagination_params
 from app.schemas.common import ApiResponse, paged_response, success_response
 from app.schemas.content import (
     AgeGroupResponse,
@@ -189,4 +190,60 @@ async def list_questions(
     return success_response(
         data=[QuestionResponse.model_validate(q) for q in questions],
         message="获取题目列表成功",
+    )
+
+
+@router.get("/questions", response_model=ApiResponse)
+async def list_all_questions(
+    subject: Optional[str] = Query(None, description="学科筛选：math/chinese/english/physics/chemistry/biology/history/geography/politics/science"),
+    age_group: Optional[str] = Query(None, description="年龄段筛选：6-8/9-12/13-15/16-18"),
+    difficulty: Optional[str] = Query(None, description="难度筛选：beginner/intermediate/advanced"),
+    question_type: Optional[str] = Query(None, description="题型筛选：single_choice/multiple_choice/fill_blank/true_false/short_answer"),
+    pagination: dict = Depends(get_pagination_params),
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    全部题目列表接口（支持多条件筛选与分页）
+
+    查询题库中所有题目，支持按学科、年龄段、难度、题型筛选，默认分页返回。
+
+    Args:
+        subject (Optional[str]): 学科筛选
+        age_group (Optional[str]): 年龄段筛选
+        difficulty (Optional[str]): 难度筛选
+        question_type (Optional[str]): 题型筛选
+        pagination (dict): 分页参数（page / page_size）
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 分页题目列表（QuestionResponse）
+    """
+    page = pagination["page"]
+    page_size = pagination["page_size"]
+    offset = (page - 1) * page_size
+
+    questions = await content_service.list_all_questions(
+        db,
+        subject=subject,
+        age_group=age_group,
+        difficulty=difficulty,
+        question_type=question_type,
+        limit=page_size,
+        offset=offset,
+    )
+
+    total = await content_service.count_all_questions(
+        db,
+        subject=subject,
+        age_group=age_group,
+        difficulty=difficulty,
+        question_type=question_type,
+    )
+
+    return paged_response(
+        data=[QuestionResponse.model_validate(q) for q in questions],
+        total=total,
+        page=page,
+        page_size=page_size,
+        message="获取全部题目列表成功",
     )

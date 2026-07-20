@@ -38,17 +38,3 @@ fmt: ## 格式化后端代码（需安装 black）
 
 lint: ## 后端代码检查（需安装 flake8）
 	cd backend && flake8 app/ tests/ --max-line-length=120
-
-# ============ 若依管理后台相关 ============
-
-ruoyi-build: ## 构建若依管理后台镜像
-	docker-compose build ruoyi-admin-backend ruoyi-admin-frontend
-
-ruoyi-logs: ## 查看若依管理后台日志
-	docker-compose logs -f ruoyi-admin-backend ruoyi-admin-frontend
-
-ruoyi-restart: ## 重启若依管理后台服务
-	docker-compose restart ruoyi-admin-backend ruoyi-admin-frontend
-
-ruoyi-sql: ## 手动执行若依数据库初始化 SQL
-	docker exec -i ai-learn-postgres psql -U postgres -d learning_platform -f /docker-entrypoint-initdb.d/02-ruoyi-init.sql

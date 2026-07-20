@@ -21,6 +21,7 @@ build/
 # Docker volumes
 postgres_data/
 redis_data/
+docker-data/
 
 # IDE
 .idea/

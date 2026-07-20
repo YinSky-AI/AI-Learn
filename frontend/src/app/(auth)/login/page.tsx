@@ -26,7 +26,20 @@ import { useAuthStore } from "@/stores/auth-store";
  * @returns 用户友好的错误提示字符串
  */
 function getErrorMessage(error: unknown): string {
-  if (typeof error === "string") return error;
+  if (typeof error === "string") {
+    // 尝试从 JSON 字符串中提取 message 字段
+    try {
+      // 兼容单引号（Python dict 风格）和双引号（标准 JSON）
+      const fixed = error.replace(/'/g, '"');
+      const parsed = JSON.parse(fixed);
+      if (parsed && typeof parsed.message === "string") {
+        return parsed.message;
+      }
+    } catch {
+      // 非 JSON 字符串，直接返回
+    }
+    return error;
+  }
   if (error && typeof error === "object") {
     if ("message" in error && typeof (error as Record<string, unknown>).message === "string") {
       return (error as { message: string }).message;

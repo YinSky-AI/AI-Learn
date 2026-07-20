@@ -90,22 +90,23 @@
     </div>
 
     <!-- 题目列表 -->
-    <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-        <table class="w-full">
+    <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-x-auto">
+        <table class="w-full min-w-[1200px]">
             <thead class="bg-gray-50 border-b border-gray-100">
                 <tr>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">学科</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">年龄段</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">难度</th>
-                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">题型</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">ID</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">学科</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">年龄段</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">难度</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">语言</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">题型</th>
                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">题干</th>
                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">答案</th>
                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
                 </tr>
             </thead>
             <tbody id="questions-tbody" class="divide-y divide-gray-100">
-                <tr><td colspan="8" class="px-4 py-8 text-center text-gray-400">加载中...</td></tr>
+                <tr><td colspan="9" class="px-4 py-8 text-center text-gray-400">加载中...</td></tr>
             </tbody>
         </table>
 
@@ -310,7 +311,7 @@ let currentData = { items: [], total: 0 };
 async function loadQuestions(page = 1) {
     currentPage = page;
     const tbody = document.getElementById('questions-tbody');
-    tbody.innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-gray-400">加载中...</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="11" class="px-4 py-8 text-center text-gray-400">加载中...</td></tr>';
 
     const params = new URLSearchParams();
     params.set('page', page);
@@ -336,7 +337,7 @@ async function loadQuestions(page = 1) {
         renderPagination(data.total, data.page, data.page_size);
         loadStats();
     } catch (e) {
-        tbody.innerHTML = `<tr><td colspan="8" class="px-4 py-8 text-center text-red-400">加载失败: ${e.message}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="11" class="px-4 py-8 text-center text-red-400">加载失败: ${e.message}</td></tr>`;
     }
 }
 
@@ -344,7 +345,7 @@ async function loadQuestions(page = 1) {
 function renderTable(items) {
     const tbody = document.getElementById('questions-tbody');
     if (!items || items.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-gray-400">暂无数据</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="11" class="px-4 py-8 text-center text-gray-400">暂无数据</td></tr>';
         return;
     }
 
@@ -354,9 +355,14 @@ function renderTable(items) {
             <td class="px-4 py-3 text-sm text-gray-800">${SUBJECT_MAP[item.subject] || item.subject}</td>
             <td class="px-4 py-3 text-sm text-gray-600">${item.age_group}</td>
             <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs ${DIFFICULTY_COLOR[item.difficulty] || 'bg-gray-100 text-gray-700'}">${DIFFICULTY_MAP[item.difficulty] || item.difficulty}</span></td>
-            <td class="px-4 py-3"><span class="px-2 py-0.5 rounded text-xs ${TYPE_COLOR[item.type] || 'bg-gray-100 text-gray-700'}">${TYPE_MAP[item.type] || item.type}</span></td>
-            <td class="px-4 py-3 text-sm text-gray-700 max-w-xs truncate" title="${escapeHtml(item.content)}">${escapeHtml(item.content)}</td>
-            <td class="px-4 py-3 text-sm text-gray-600 font-medium">${escapeHtml(item.correct_answer)}</td>
+            <td class="px-4 py-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded text-xs ${
+                item.language === 'zh' ? 'bg-blue-50 text-blue-700' :
+                item.language === 'en' ? 'bg-purple-50 text-purple-700' :
+                'bg-gray-100 text-gray-700'
+            }">${item.language === 'zh' ? '中文' : item.language === 'en' ? '英文' : '-'}</span></td>
+            <td class="px-4 py-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded text-xs ${TYPE_COLOR[item.type] || 'bg-gray-100 text-gray-700'}">${TYPE_MAP[item.type] || item.type}</span></td>
+            <td class="px-4 py-3 text-sm text-gray-700 max-w-sm truncate" title="${escapeHtml(item.content)}">${escapeHtml(item.content)}</td>
+            <td class="px-4 py-3 text-sm text-gray-600 font-medium max-w-[200px] line-clamp-2" title="${escapeHtml(item.correct_answer)}">${escapeHtml(item.correct_answer)}</td>
             <td class="px-4 py-3">
                 <div class="flex space-x-2">
                     <button onclick="viewDetail(${item.id})" class="text-blue-600 hover:text-blue-800 text-sm">查看</button>
@@ -376,6 +382,7 @@ function renderPagination(total, page, pageSize) {
     document.getElementById('pagination-pages').textContent = totalPages;
 
     let html = '';
+    html += `<button onclick="loadQuestions(1)" class="page-btn" ${page <= 1 ? 'disabled' : ''} title="首页">&lt;&lt;</button>`;
     html += `<button onclick="loadQuestions(${page - 1})" class="page-btn" ${page <= 1 ? 'disabled' : ''}>&lt;</button>`;
 
     const maxButtons = 5;
@@ -388,7 +395,27 @@ function renderPagination(total, page, pageSize) {
     }
 
     html += `<button onclick="loadQuestions(${page + 1})" class="page-btn" ${page >= totalPages ? 'disabled' : ''}>&gt;</button>`;
+    html += `<button onclick="loadQuestions(${totalPages})" class="page-btn" ${page >= totalPages ? 'disabled' : ''} title="末页">&gt;&gt;</button>`;
+
+    // 跳转到指定页
+    html += `<span class="ml-2 text-sm text-gray-500 flex items-center gap-1">跳至 <input type="number" min="1" max="${totalPages}" class="w-14 px-2 py-1 border border-gray-200 rounded text-sm text-center" id="jump-page-input" onkeydown="if(event.key==='Enter'){jumpToPage(${totalPages})}"> 页 <button onclick="jumpToPage(${totalPages})" class="px-2 py-1 bg-gray-800 text-white rounded text-sm hover:bg-gray-900 transition">GO</button></span>`;
+
     document.getElementById('pagination-controls').innerHTML = html;
+}
+
+function jumpToPage(totalPages) {
+    const input = document.getElementById('jump-page-input');
+    if (!input) return;
+    const val = parseInt(input.value, 10);
+    if (isNaN(val) || val < 1) {
+        input.value = 1;
+        loadQuestions(1);
+    } else if (val > totalPages) {
+        input.value = totalPages;
+        loadQuestions(totalPages);
+    } else {
+        loadQuestions(val);
+    }
 }
 
 // 加载统计

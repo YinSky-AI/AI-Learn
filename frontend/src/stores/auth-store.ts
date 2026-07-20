@@ -69,10 +69,19 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       await get().fetchProfile();
       await get().fetchUserStats();
     } catch (error) {
-      const message =
-        error && typeof error === "object" && "message" in error
-          ? (error as { message: string }).message
-          : "登录失败，请检查用户名和密码";
+      let message = "登录失败，请检查用户名和密码";
+      if (error && typeof error === "object" && "message" in error) {
+        message = (error as { message: string }).message;
+      } else if (typeof error === "string") {
+        // 尝试从 JSON 字符串（可能是 Python dict 格式）中提取 message
+        try {
+          const fixed = error.replace(/'/g, '"');
+          const parsed = JSON.parse(fixed);
+          if (parsed && typeof parsed.message === "string") {
+            message = parsed.message;
+          }
+        } catch { /* 保持默认 message */ }
+      }
       set({ error: message, isLoading: false });
       throw error;
     }

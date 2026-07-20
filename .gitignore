@@ -39,14 +39,25 @@ Thumbs.db
 # Cache
 .cache/
 *.tsbuildinfo
-
-# 若依管理后台（已废弃）
-ruoyi-admin-backend/
-ruoyi-admin-frontend/
-_ruoyi-temp/
+.pytest_cache/
+*.log
 
 # 开发中间产物
 agents/
 test/
 design_imgs/
 admin-test-screenshots/
+
+# 题库生成中间产物
+sql/batch_*.json
+sql/pipeline_*.json
+sql/pipeline_report*.md
+
+# TRAE 临时文件
+trae-agent-instructions.md
+user_profile.md
+
+# 临时方案文档
+改进方案.md
+秋招冲刺改进方案.md
+竞品对比分析与改进建议.md

@@ -1364,7 +1364,8 @@ async def questions_api_list(
 
     data_sql = (
         "SELECT id, subject, age_group, difficulty, grade, content, "
-        "options, correct_answer, explanation, type, tags, source, created_at "
+        "options, correct_answer, explanation, type, tags, source, created_at, "
+        "language "
         f"FROM public.questions WHERE {where} "
         "ORDER BY id DESC LIMIT :limit OFFSET :offset"
     )
@@ -1378,7 +1379,7 @@ async def questions_api_list(
             "age_group": row[2],
             "difficulty": row[3],
             "grade": row[4],
-            "content": row[5][:120] + "..." if row[5] and len(row[5]) > 120 else (row[5] or ""),
+            "content": row[5] or "",
             "options": row[6],
             "correct_answer": row[7],
             "explanation": row[8][:100] + "..." if row[8] and len(row[8]) > 100 else (row[8] or ""),
@@ -1386,6 +1387,7 @@ async def questions_api_list(
             "tags": row[10],
             "source": row[11],
             "created_at": row[12].isoformat() if row[12] else None,
+            "language": row[13],
         })
 
     return {
@@ -1421,7 +1423,8 @@ async def question_detail_api(
         row = (await db.execute(
             text(
                 "SELECT id, subject, age_group, difficulty, grade, content, "
-                "options, correct_answer, explanation, type, tags, source "
+                "options, correct_answer, explanation, type, tags, source, "
+                "language "
                 "FROM public.questions WHERE id = :id"
             ),
             {"id": question_id},
@@ -1445,6 +1448,7 @@ async def question_detail_api(
                 "type": row[9],
                 "tags": row[10],
                 "source": row[11],
+                "language": row[12],
             }
         })
     except Exception as e:

@@ -45,11 +45,21 @@ def add_exception_handlers(app: FastAPI) -> None:
         记录警告日志并返回包含状态码的标准化响应。
         """
         logger.warning(f"HTTP {exc.status_code}: {exc.detail} - {request.url.path}")
+
+        # 提取用户友好的错误信息
+        # exc.detail 可能是 str 或 dict（FastAPI HTTPException 支持 dict）
+        if isinstance(exc.detail, dict):
+            code = exc.detail.get("code", f"HTTP_{exc.status_code}")
+            message = exc.detail.get("message", str(exc.detail))
+        else:
+            code = f"HTTP_{exc.status_code}"
+            message = str(exc.detail)
+
         return JSONResponse(
             status_code=exc.status_code,
             content=ApiResponse(
-                code=f"HTTP_{exc.status_code}",
-                message=str(exc.detail),
+                code=code,
+                message=message,
                 data=None,
             ).model_dump(),
         )

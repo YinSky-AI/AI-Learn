@@ -90,7 +90,7 @@ async def submit_answer(
         HTTPException: 会话不存在、已结束或题目不存在时抛出相应错误
     """
     # 调用学习服务完成判题与统计更新
-    answer = await learning_service.submit_answer(
+    answer_result = await learning_service.submit_answer(
         db,
         session_id=session_id,
         question_id=request.question_id,
@@ -98,7 +98,7 @@ async def submit_answer(
         time_spent_seconds=request.time_spent_seconds,
     )
     return success_response(
-        data=AnswerResult.model_validate(answer),
+        data=AnswerResult.model_validate(answer_result),
         message="答案提交成功",
     )
 

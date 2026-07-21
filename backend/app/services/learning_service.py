@@ -18,6 +18,7 @@ from datetime import datetime, timezone
 from fastapi import HTTPException, status
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import joinedload
 
 from app.models.content import Question
 from app.models.learning import LearningSession, Answer
@@ -88,7 +89,7 @@ async def submit_answer(
     question_id: uuid.UUID,
     user_answer: str,
     time_spent_seconds: int,
-) -> Answer:
+) -> dict:
     """
     提交答案
 
@@ -106,7 +107,7 @@ async def submit_answer(
         time_spent_seconds (int): 答题用时（秒）
 
     Returns:
-        Answer: 答题记录 ORM 对象
+        dict: 答题记录及题目反馈
 
     Raises:
         HTTPException: 会话不存在、已结束或题目不存在时抛出
@@ -121,7 +122,11 @@ async def submit_answer(
         )
 
     # 获取题目信息
-    stmt = select(Question).where(Question.id == question_id)
+    stmt = (
+        select(Question)
+        .options(joinedload(Question.knowledge_node_rel))
+        .where(Question.id == question_id)
+    )
     result = await db.execute(stmt)
     question = result.scalar_one_or_none()
 
@@ -153,7 +158,29 @@ async def submit_answer(
 
     await db.flush()
 
-    return answer
+    knowledge_point = (
+        question.knowledge_node_rel.title
+        if question.knowledge_node_rel is not None
+        else None
+    )
+    tutor_prompt = None
+    if not is_correct:
+        topic = knowledge_point or "这道题的核心知识点"
+        tutor_prompt = (
+            f"我在“{topic}”这道题上回答错了。"
+            f"我原来的思路是“{user_answer.strip()}”。"
+            "请不要直接告诉我完整答案，先用一个问题引导我找出题目条件与运算含义的关系。"
+        )
+
+    return {
+        "id": answer.id,
+        "is_correct": answer.is_correct,
+        "correct_answer": question.correct_answer,
+        "explanation": question.explanation,
+        "knowledge_point": knowledge_point,
+        "tutor_prompt": tutor_prompt,
+        "time_spent_seconds": answer.time_spent_seconds,
+    }
 
 
 async def complete_session(

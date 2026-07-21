@@ -87,6 +87,8 @@ class AnswerResult(BaseModel):
     is_correct: bool
     correct_answer: str
     explanation: Optional[str] = None
+    knowledge_point: Optional[str] = None
+    tutor_prompt: Optional[str] = None
     time_spent_seconds: int
 
     model_config = {"from_attributes": True}

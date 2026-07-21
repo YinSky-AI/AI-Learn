@@ -14,7 +14,6 @@ AI 出题服务模块
 
 import uuid
 import hashlib
-from datetime import datetime, timezone
 from typing import List, Optional
 
 from sqlalchemy import select, func
@@ -23,16 +22,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models.ai_generated import (
     GeneratedQuestionBatch,
     GeneratedQuestion,
-    QuestionQualityCheck,
-    HarnessRun,
 )
-from app.models.content import KnowledgeNode
 from app.ai.tools.question_save_tool import QuestionSaveTool
-from app.schemas.question import (
-    QuestionGenerateRequest,
-    GeneratedQuestionResponse,
-    GenerateResultResponse,
-)
+from app.schemas.question import QuestionGenerateRequest
 
 
 async def generate_reviewed_batch(
@@ -175,7 +167,8 @@ async def update_batch_status(
 async def get_batch_by_id(
     db: AsyncSession,
     batch_id: uuid.UUID,
-) -> Optional[GeneratedQuestion]:
+    user_id: uuid.UUID,
+) -> Optional[GeneratedQuestionBatch]:
     """
     根据 ID 获取生成批次
 
@@ -184,9 +177,12 @@ async def get_batch_by_id(
         batch_id (uuid.UUID): 生成批次 UUID
 
     Returns:
-        Optional[GeneratedQuestion]: 生成记录，不存在返回 None
+        Optional[GeneratedQuestionBatch]: 当前用户的生成批次，不存在返回 None
     """
-    stmt = select(GeneratedQuestion).where(GeneratedQuestion.id == batch_id)
+    stmt = select(GeneratedQuestionBatch).where(
+        GeneratedQuestionBatch.id == batch_id,
+        GeneratedQuestionBatch.user_id == user_id,
+    )
     result = await db.execute(stmt)
     return result.scalar_one_or_none()
 
@@ -248,6 +244,7 @@ async def list_user_batches(
 async def get_batch_questions(
     db: AsyncSession,
     batch_id: uuid.UUID,
+    user_id: uuid.UUID,
 ) -> List[GeneratedQuestion]:
     """获取批次下的所有生成题目
 
@@ -260,7 +257,10 @@ async def get_batch_questions(
     """
     stmt = (
         select(GeneratedQuestion)
-        .where(GeneratedQuestion.batch_id == batch_id)
+        .where(
+            GeneratedQuestion.batch_id == batch_id,
+            GeneratedQuestion.user_id == user_id,
+        )
         .order_by(GeneratedQuestion.created_at)
     )
     result = await db.execute(stmt)
@@ -291,7 +291,10 @@ async def generate_variant(
     Raises:
         ValueError: 原题目不存在时抛出
     """
-    stmt = select(GeneratedQuestion).where(GeneratedQuestion.id == original_question_id)
+    stmt = select(GeneratedQuestion).where(
+        GeneratedQuestion.id == original_question_id,
+        GeneratedQuestion.user_id == user_id,
+    )
     result = await db.execute(stmt)
     original = result.scalar_one_or_none()
 

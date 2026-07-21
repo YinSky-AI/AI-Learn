@@ -57,6 +57,7 @@ class Settings(BaseSettings):
 
     # ============ 数据库配置 ============
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/learning_platform"
+    AI_LEARN_DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/ai_learn"
     DATABASE_ECHO: bool = False
     DATABASE_POOL_SIZE: int = 10
     DATABASE_MAX_OVERFLOW: int = 20

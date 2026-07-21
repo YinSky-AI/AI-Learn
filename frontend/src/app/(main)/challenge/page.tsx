@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Clock3, Medal, Sparkles, Target, Trophy } from "lucide-react";
+import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import apiClient from "@/lib/api-client";
 
@@ -39,6 +40,14 @@ function errorMessage(error: unknown, fallback: string) {
 }
 
 export default function ChallengePage() {
+  return (
+    <MainLayout>
+      <ChallengeContent />
+    </MainLayout>
+  );
+}
+
+function ChallengeContent() {
   const [challenge, setChallenge] = useState<Challenge | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [error, setError] = useState("");

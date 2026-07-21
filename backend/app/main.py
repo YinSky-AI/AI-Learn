@@ -158,6 +158,16 @@ async def lifespan(app: FastAPI):
             # 避免两个 create_all 同时创建同名复合类型/表。
             await conn.execute(text("SELECT pg_advisory_xact_lock(hashtext('learning_platform_schema'))"))
             await conn.run_sync(Base.metadata.create_all)
+            # create_all 不会调整已有字段宽度。内部标准难度编码（如 DIFF_MEDIUM）
+            # 长于旧版 VARCHAR(10)，启动时进行幂等、非破坏性的字段扩容。
+            await conn.execute(text(
+                "ALTER TABLE IF EXISTS generated_question_batches "
+                "ALTER COLUMN difficulty_level TYPE VARCHAR(20)"
+            ))
+            await conn.execute(text(
+                "ALTER TABLE IF EXISTS generated_questions "
+                "ALTER COLUMN difficulty_level TYPE VARCHAR(20)"
+            ))
         logger.info("数据库表检查/创建完成")
     except Exception:
         logger.exception("数据库表检查/创建失败，服务将停止启动")

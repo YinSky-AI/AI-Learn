@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Crown, Flame, Medal, Trophy } from "lucide-react";
+import { MainLayout } from "@/components/layout/main-layout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import apiClient from "@/lib/api-client";
 
@@ -31,6 +32,14 @@ function errorMessage(error: unknown) {
 }
 
 export default function LeaderboardPage() {
+  return (
+    <MainLayout>
+      <LeaderboardContent />
+    </MainLayout>
+  );
+}
+
+function LeaderboardContent() {
   const [kind, setKind] = useState<Kind>("daily");
   const [data, setData] = useState<Leaderboard>({ items: [], message: "" });
   const [loading, setLoading] = useState(true);

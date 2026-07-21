@@ -21,7 +21,7 @@ class PracticeAnswerSubmit(BaseModel):
 
 def _serialize(record):
     question = record.question
-    return {"id": str(record.id), "question_id": str(question.id), "question_text": question.question_body, "options": question.options, "correct_answer": question.correct_answer, "explanation": question.explanation, "subject": record.subject, "knowledge_point": question.knowledge_node_rel.title if question.knowledge_node_rel else None, "difficulty": question.difficulty_level, "wrong_count": record.wrong_count, "review_count": record.review_count, "last_wrong_at": record.last_wrong_at.isoformat(), "is_mastered": record.is_mastered, "user_note": record.user_note}
+    return {"id": str(record.id), "question_id": str(question.id), "question_text": question.question_body, "options": question.options, "subject": record.subject, "knowledge_point": question.knowledge_node_rel.title if question.knowledge_node_rel else None, "difficulty": question.difficulty_level, "wrong_count": record.wrong_count, "review_count": record.review_count, "last_wrong_at": record.last_wrong_at.isoformat(), "is_mastered": record.is_mastered, "user_note": record.user_note}
 
 
 @router.get("/stats")

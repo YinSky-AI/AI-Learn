@@ -203,6 +203,29 @@ async def get_course_detail(
     return course
 
 
+async def get_lesson_by_id(
+    db: AsyncSession,
+    lesson_id: str,
+) -> Optional[Lesson]:
+    """
+    根据 ID 获取课时
+
+    Args:
+        db (AsyncSession): 异步数据库会话
+        lesson_id (str): 课时 UUID 字符串
+
+    Returns:
+        Optional[Lesson]: 课时对象，不存在或格式错误返回 None
+    """
+    lesson_uid = _try_uuid(lesson_id)
+    if not lesson_uid:
+        return None
+
+    stmt = select(Lesson).where(Lesson.id == str(lesson_uid), Lesson.is_active == True)
+    result = await db.execute(stmt)
+    return result.scalar_one_or_none()
+
+
 async def get_lessons_by_course(
     db: AsyncSession,
     course_id: str,

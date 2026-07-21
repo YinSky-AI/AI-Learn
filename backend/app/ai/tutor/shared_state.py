@@ -122,6 +122,58 @@ class SharedState:
             if turn.get("role") in {"user", "student"}
         )
 
+    def to_provider_context(self, target: TutorRole) -> str:
+        """构造仅含辅导所需白名单字段的模型上下文。
+
+        题目标准答案与解析可能仍存在于 ``question`` 原始字典中，但这里绝不读取，
+        避免将未授权答案发送给外部 Provider。
+        """
+
+        history_lines = []
+        for turn in self.conversation_history[-10:]:
+            role = str(turn.get("role", ""))
+            content = str(turn.get("content", "")).strip()
+            if role in {"user", "student", "assistant"} and content:
+                speaker = "学生" if role in {"user", "student"} else "辅导老师"
+                history_lines.append(f"{speaker}：{content[:500]}")
+
+        result_status = "尚未判定"
+        if isinstance(self.context.get("is_correct"), bool):
+            result_status = "回答正确" if not self.is_incorrect else "回答有误"
+
+        sections = [
+            f"学生年龄段：{self.student_profile.age_group}",
+            f"学科：{self.student_profile.subject or '未提供'}",
+            f"题目：{self.question_text}",
+            f"知识点：{self.knowledge_point}",
+            f"学生作答：{self.student_attempt or '尚未作答'}",
+            f"服务端判定：{result_status}",
+            f"掌握度：{self.mastery.level:.3f}",
+            (
+                "教学策略："
+                f"{self.teaching_strategy.approach} / {self.teaching_strategy.pace} / "
+                f"{self.teaching_strategy.focus_area}"
+            ),
+            f"诊断：{self.diagnosis or '需要继续了解当前思路。'}",
+        ]
+        note = self.latest_note(target)
+        if note:
+            sections.append(f"团队留言：{note}")
+        if history_lines:
+            sections.append("最近对话：\n" + "\n".join(history_lines))
+        return "\n".join(sections)
+
+    def contains_forbidden_answer(self, content: str) -> bool:
+        """检查 Provider 输出是否复述了原始标准答案或解析。"""
+
+        if not self.question:
+            return False
+        for field in ("correct_answer", "explanation", "answer", "analysis"):
+            value = self.question.get(field)
+            if isinstance(value, str) and value.strip() and value.strip() in content:
+                return True
+        return False
+
     @property
     def question_text(self) -> str:
         """从前端题目上下文提取题干，绝不读取标准答案。"""

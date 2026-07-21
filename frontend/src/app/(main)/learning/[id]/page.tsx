@@ -8,6 +8,7 @@
  * - 未登录用户提示登录
  * - 完成所有课时后显示祝贺界面
  * - 支持 Markdown 内容渲染
+ * - 支持测验课时（quiz）渲染 QuizPractice 组件
  */
 
 "use client";
@@ -52,6 +53,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { LoadingSkeleton } from "@/components/common/loading-skeleton";
 import { MarkdownRenderer } from "@/components/common/markdown-renderer";
+import QuizPractice from "@/components/quiz/quiz-practice";
+import { mapQuizQuestion, type QuizQuestionPayload } from "@/components/learning/quiz-question-mapper";
+import apiClient from "@/lib/api-client";
+import type { QuizQuestion } from "@/types";
 
 /**
  * 课程详情与学习页面组件
@@ -63,6 +68,11 @@ export default function LearningPage() {
 
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const [loginPrompt, setLoginPrompt] = useState(false);
+
+  // 测验相关状态
+  const [quizQuestions, setQuizQuestions] = useState<QuizQuestion[]>([]);
+  const [isQuizLoading, setIsQuizLoading] = useState(false);
+  const [quizLoadError, setQuizLoadError] = useState("");
 
   // 从学习 store 获取课程详情和课时数据
   const {
@@ -84,6 +94,49 @@ export default function LearningPage() {
       fetchCourseDetail(courseId);
     }
   }, [courseId, fetchCourseDetail]);
+
+  // 当切换到 quiz 类型课时，加载题目
+  useEffect(() => {
+    if (!currentLesson || currentLesson.type !== "quiz" || !course) {
+      setQuizQuestions([]);
+      setQuizLoadError("");
+      return;
+    }
+
+    const quizEndpoint = `/v1/courses/${course.id}/lessons/${currentLesson.id}/quiz`;
+    const quizSubject = course.subject;
+    let cancelled = false;
+
+    async function loadQuestions() {
+      setIsQuizLoading(true);
+      setQuizLoadError("");
+      try {
+        // 课程测验专用接口不会在作答前下发正确答案或解析。
+        const data = await apiClient.get<QuizQuestionPayload[]>(quizEndpoint);
+        if (!cancelled) {
+          const mapped: QuizQuestion[] = (data || [])
+            .map((question) => mapQuizQuestion(question, quizSubject))
+            .filter((question): question is QuizQuestion => question !== null);
+          setQuizQuestions(mapped);
+        }
+      } catch (error) {
+        console.warn("获取测验题目失败:", error);
+        if (!cancelled) {
+          setQuizQuestions([]);
+          setQuizLoadError("测验题目加载失败，请稍后重试或切换课时后再试。");
+        }
+      } finally {
+        if (!cancelled) {
+          setIsQuizLoading(false);
+        }
+      }
+    }
+
+    loadQuestions();
+    return () => {
+      cancelled = true;
+    };
+  }, [currentLesson, course]);
 
   // 加载中或课程不存在时显示骨架屏
   if (isLoading || !course) {
@@ -121,6 +174,18 @@ export default function LearningPage() {
       default:
         return <BookOpen className="h-4 w-4" />;
     }
+  };
+
+  /** 测验完成回调 */
+  const handleQuizComplete = (result: {
+    correctCount: number;
+    totalCount: number;
+    accuracy: number;
+    timeSpentSeconds: number;
+  }) => {
+    console.log("测验完成:", result);
+    // 标记课时完成
+    startLearning();
   };
 
   return (
@@ -188,30 +253,55 @@ export default function LearningPage() {
                 {/* 内容区域 */}
                 <div className="rounded-xl bg-gray-50 p-6">
                   <div className="max-w-none">
-                    <MarkdownRenderer content={currentLesson.content} />
-                  </div>
-                  <div className="mt-6 flex flex-col items-center">
-                    {loginPrompt && (
-                      <div className="mb-3 flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700">
-                        <Lock className="h-4 w-4 shrink-0" />
-                        <span>请先登录后再开始学习</span>
-                        <Link href="/login" className="ml-1 font-medium text-brand-blue hover:underline">
-                          去登录
-                        </Link>
-                      </div>
+                    {/* 测验类型课时渲染 QuizPractice */}
+                    {currentLesson.type === "quiz" ? (
+                      isQuizLoading ? (
+                        <div className="flex flex-col items-center justify-center py-12">
+                          <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand-blue border-t-transparent" />
+                          <p className="mt-3 text-sm text-brand-gray">加载测验题目中...</p>
+                        </div>
+                      ) : quizLoadError ? (
+                        <p role="alert" className="rounded-lg bg-rose-50 p-4 text-sm text-rose-700">
+                          {quizLoadError}
+                        </p>
+                      ) : (
+                        <QuizPractice
+                          questions={quizQuestions}
+                          knowledgeNodeId={currentLesson.knowledgeNodeId}
+                          difficultyLevel={course.difficulty}
+                          onComplete={handleQuizComplete}
+                        />
+                      )
+                    ) : (
+                      <MarkdownRenderer content={currentLesson.content} />
                     )}
-                    <Button className="mt-2" onClick={() => {
-                      if (!isAuthenticated) {
-                        setLoginPrompt(true);
-                        return;
-                      }
-                      setLoginPrompt(false);
-                      startLearning();
-                    }}>
-                      <Play className="mr-2 h-4 w-4" />
-                      开始学习
-                    </Button>
                   </div>
+
+                  {/* 非 quiz 类型显示开始学习按钮 */}
+                  {currentLesson.type !== "quiz" && (
+                    <div className="mt-6 flex flex-col items-center">
+                      {loginPrompt && (
+                        <div className="mb-3 flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700">
+                          <Lock className="h-4 w-4 shrink-0" />
+                          <span>请先登录后再开始学习</span>
+                          <Link href="/login" className="ml-1 font-medium text-brand-blue hover:underline">
+                            去登录
+                          </Link>
+                        </div>
+                      )}
+                      <Button className="mt-2" onClick={() => {
+                        if (!isAuthenticated) {
+                          setLoginPrompt(true);
+                          return;
+                        }
+                        setLoginPrompt(false);
+                        startLearning();
+                      }}>
+                        <Play className="mr-2 h-4 w-4" />
+                        开始学习
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -285,6 +375,12 @@ export default function LearningPage() {
                         </p>
                       </div>
 
+                      {/* 类型标签 */}
+                      {lesson.type === "quiz" && (
+                        <Badge className="shrink-0 bg-purple-100 text-purple-700 text-[10px] px-1.5 py-0">
+                          测验
+                        </Badge>
+                      )}
                       {/* 类型图标 */}
                       <span className="text-brand-gray">{lessonTypeIcon(lesson.type)}</span>
                     </button>

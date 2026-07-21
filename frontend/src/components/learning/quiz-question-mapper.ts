@@ -3,7 +3,7 @@ export interface QuizQuestionPayload {
   question_type: string;
   question_body: string;
   options?: Array<{ key: string; value: string }>;
-  correct_answer: string;
+  correct_answer?: string;
   explanation?: string;
   knowledge_points?: string[];
   difficulty?: "beginner" | "intermediate" | "advanced";
@@ -15,7 +15,6 @@ export interface MappedQuizQuestion {
   type: "CHOICE" | "MULTIPLE_CHOICE" | "FILL_BLANK";
   body: string;
   options?: Array<{ key: string; value: string }>;
-  correctAnswer: string;
   explanation?: string;
   knowledgePoints?: string[];
   difficulty?: "beginner" | "intermediate" | "advanced";
@@ -33,7 +32,6 @@ export function mapQuizQuestion(payload: QuizQuestionPayload, subject?: string):
     type: payload.question_type,
     body: payload.question_body,
     options: payload.options,
-    correctAnswer: payload.correct_answer,
     explanation: payload.explanation,
     knowledgePoints: payload.knowledge_points,
     difficulty: payload.difficulty ?? payload.difficulty_level,

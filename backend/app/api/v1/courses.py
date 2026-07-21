@@ -21,8 +21,9 @@ from app.core.database import get_db
 from app.core.deps import get_current_user_id_optional
 from app.models.course import UserLesson
 from app.schemas.common import ApiResponse, paged_response, success_response
+from app.schemas.content import QuestionBrief
 from app.schemas.course import CourseBrief, CourseDetail, LessonBrief
-from app.services import course_service
+from app.services import content_service, course_service
 
 router = APIRouter()
 
@@ -162,4 +163,57 @@ async def list_lessons(
     return success_response(
         data=data,
         message="获取课时列表成功",
+    )
+
+
+@router.get("/{course_id}/lessons/{lesson_id}/quiz", response_model=ApiResponse)
+async def get_lesson_quiz(
+    course_id: str,
+    lesson_id: str,
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    课时测验题目接口
+
+    查询指定课时的测验题目列表。仅当课时类型为 quiz 且已绑定知识点时返回题目。
+    返回的题目列表不含正确答案和解析，用于前端答题展示。
+
+    Args:
+        course_id (str): 课程 ID（UUID）或 slug
+        lesson_id (str): 课时 ID（UUID）
+        db (AsyncSession): 异步数据库会话
+
+    Returns:
+        ApiResponse: 题目列表（QuestionBrief，不含答案和解析）
+    """
+    # 校验课程是否存在
+    course = await course_service.get_course_by_id(db, course_id)
+    if course is None:
+        return ApiResponse(code="BIZ_001", message="课程不存在", data=None)
+
+    # 查询课时并校验是否属于该课程
+    lesson = await course_service.get_lesson_by_id(db, lesson_id)
+    if lesson is None:
+        return ApiResponse(code="BIZ_001", message="课时不存在", data=None)
+    if str(lesson.course_id) != str(course.id):
+        return ApiResponse(code="BIZ_001", message="该课时不属于指定课程", data=None)
+    if lesson.type != "quiz":
+        return ApiResponse(code="BIZ_001", message="该课时不是测验课时", data=None)
+
+    # 未绑定知识点则返回空列表
+    if lesson.knowledge_node_id is None:
+        return success_response(data=[], message="该课时未绑定知识点")
+
+    # 获取知识点下的题目列表
+    questions = await content_service.list_questions_by_node(
+        db,
+        lesson.knowledge_node_id,
+        local_only=True,
+    )
+    # 单次课时测验固定最多 10 题，避免把整个知识点题库一次性推给用户。
+    data = [QuestionBrief.model_validate(q) for q in questions[:10]]
+
+    return success_response(
+        data=data,
+        message="获取测验题目成功",
     )

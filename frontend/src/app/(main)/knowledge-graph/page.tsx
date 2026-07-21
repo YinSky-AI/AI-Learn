@@ -174,7 +174,7 @@ export default function KnowledgeGraphPage() {
                 </CardContent>
               </Card>
 
-              <NodeDetails node={selectedNode} />
+              <NodeDetails node={selectedNode} subject={subject} />
             </div>
 
             <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-card" aria-label="掌握度图例">
@@ -237,13 +237,18 @@ function KnowledgeTreeNode({
   );
 }
 
-function NodeDetails({ node }: { node: KnowledgeGraphNode | null }) {
+function NodeDetails({ node, subject }: { node: KnowledgeGraphNode | null; subject: SubjectCode }) {
   if (!node) {
     return (
       <Card className="shadow-card"><CardContent className="flex min-h-[260px] flex-col items-center justify-center text-center text-sm text-brand-gray"><Network className="mb-3 h-10 w-10 text-gray-200" />选择左侧节点查看知识点详情</CardContent></Card>
     );
   }
   const meta = masteryMeta(node.mastery);
+  const practiceHref = `/knowledge-practice?${new URLSearchParams({
+    node_id: node.id,
+    name: node.name,
+    subject,
+  }).toString()}`;
   return (
     <Card className="h-fit shadow-card lg:sticky lg:top-6">
       <CardHeader className="pb-3">
@@ -274,11 +279,9 @@ function NodeDetails({ node }: { node: KnowledgeGraphNode | null }) {
               <h3 className="flex items-center gap-2 text-sm font-semibold text-blue-800"><Target className="h-4 w-4" />学习建议</h3>
               <p className="mt-2 text-sm leading-6 text-blue-700">{learningAdvice(node.mastery)}</p>
             </div>
-            {node.practice_href && (
-              <Button asChild className="min-h-[44px] w-full">
-                <Link href={node.practice_href}><BookOpen className="mr-2 h-4 w-4" />练习这个知识点</Link>
-              </Button>
-            )}
+            <Button asChild className="min-h-[44px] w-full">
+              <Link href={practiceHref}><BookOpen className="mr-2 h-4 w-4" />练习这个知识点</Link>
+            </Button>
           </>
         ) : (
           <div>

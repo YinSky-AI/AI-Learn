@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BookOpenCheck, CheckCircle2, Lightbulb, RefreshCw } from "lucide-react";
+import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -11,10 +12,18 @@ import { TutorChat } from "@/components/ai/tutor-chat";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import apiClient, { TokenManager } from "@/lib/api-client";
 
-type WrongQuestion = { id: string; question_id: string; question_text: string; subject: string; wrong_count: number; is_mastered: boolean; knowledge_point?: string; explanation?: string; correct_answer: string; options?: Array<{ key: string; value: string }>; difficulty?: string };
+type WrongQuestion = { id: string; question_id: string; question_text: string; subject: string; wrong_count: number; is_mastered: boolean; knowledge_point?: string; options?: Array<{ key: string; value: string }>; difficulty?: string };
 type Stats = { total: number; mastered: number; unmastered: number; need_review_today: number; by_subject: Record<string, number> };
 
 export default function WrongBookPage() {
+  return (
+    <MainLayout>
+      <WrongBookContent />
+    </MainLayout>
+  );
+}
+
+function WrongBookContent() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [questions, setQuestions] = useState<WrongQuestion[]>([]);
   const [subject, setSubject] = useState("all");
@@ -53,7 +62,7 @@ export default function WrongBookPage() {
     {notice && <p role="status" className="rounded-lg bg-amber-50 p-3 text-sm text-amber-800">{notice}</p>}
     <div className="flex flex-wrap gap-2"><Badge className="cursor-pointer" variant={subject === "all" ? "default" : "outline"} onClick={() => setSubject("all")}>全部</Badge>{Object.entries(stats?.by_subject || {}).map(([name, count]) => <Badge key={name} className="cursor-pointer" variant={subject === name ? "default" : "outline"} onClick={() => setSubject(name)}>{name} ({count})</Badge>)}</div>
     <Tabs value={tab} onValueChange={setTab}><TabsList className="grid w-full grid-cols-2"><TabsTrigger value="unmastered">待掌握 {stats ? `(${stats.unmastered})` : ""}</TabsTrigger><TabsTrigger value="mastered">已掌握 {stats ? `(${stats.mastered})` : ""}</TabsTrigger></TabsList><TabsContent value={tab} className="space-y-3 pt-2">{loading ? <p className="py-10 text-center text-sm text-gray-500">正在加载错题…</p> : questions.length === 0 ? <Empty mastered={tab === "mastered"} /> : questions.map((question) => <article key={question.id} className="rounded-xl border bg-white p-4 shadow-sm"><div className="mb-2 flex items-center justify-between gap-3"><Badge variant="outline">{question.subject}</Badge><span className="text-xs text-rose-600">错 {question.wrong_count} 次</span></div><h2 className="font-medium leading-6 text-gray-900">{question.question_text}</h2>{question.knowledge_point && <p className="mt-2 text-xs text-gray-500">知识点：{question.knowledge_point}</p>}<div className="mt-4 flex gap-2"><Button variant="outline" className="flex-1" onClick={() => setExplaining(question)}><Lightbulb className="mr-1 h-4 w-4" />AI 讲解</Button>{!question.is_mastered && <Button className="flex-1" onClick={() => void master(question.question_id)}><CheckCircle2 className="mr-1 h-4 w-4" />标记掌握</Button>}</div></article>)}</TabsContent></Tabs>
-    <Dialog open={Boolean(explaining)} onOpenChange={(open) => !open && setExplaining(null)}><DialogContent className="max-w-2xl p-0">{explaining && <TutorChat topic={explaining.subject} questionContext={{ id: explaining.question_id, question_text: explaining.question_text, correct_answer: explaining.correct_answer, explanation: explaining.explanation, knowledge_points: explaining.knowledge_point ? [explaining.knowledge_point] : [], difficulty: explaining.difficulty, subject: explaining.subject }} initialPrompt="我想复盘这道错题，请先引导我找到自己的思路问题。" />}</DialogContent></Dialog>
+    <Dialog open={Boolean(explaining)} onOpenChange={(open) => !open && setExplaining(null)}><DialogContent className="max-w-2xl p-0">{explaining && <TutorChat topic={explaining.subject} questionContext={{ id: explaining.question_id, question_text: explaining.question_text, knowledge_points: explaining.knowledge_point ? [explaining.knowledge_point] : [], difficulty: explaining.difficulty, subject: explaining.subject }} initialPrompt="我想复盘这道错题，请先引导我找到自己的思路问题。" />}</DialogContent></Dialog>
   </main>;
 }
 

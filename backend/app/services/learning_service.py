@@ -12,6 +12,7 @@
     - 会话统计与历史列表查询
 """
 
+import re
 import uuid
 from datetime import datetime, timezone
 
@@ -23,10 +24,45 @@ from sqlalchemy.orm import joinedload
 from app.models.content import Question
 from app.models.learning import LearningSession, Answer
 from app.models.user import User
+from app.models.gamification import GamificationEvent
+from app.services.gamification_service import event_to_payload, reward_answer_event
 from app.services.wrong_book_service import WrongBookService
 from app.services.behavior_service import BehaviorService
 
-def _build_answer_result(answer: Answer, question: Question) -> dict:
+
+def judge_answer(question, user_answer):
+    """
+    判题函数
+
+    根据题目类型对用户答案进行判分：
+    - MULTIPLE_CHOICE: 多选题，选项排序后比较（不区分大小写）
+    - CHOICE: 单选题，直接比较（不区分大小写）
+    - FILL_BLANK: 填空题，去除标点空白后比较（不区分大小写）
+    - 其他类型: 直接比较（不区分大小写）
+
+    Args:
+        question (Question): 题目对象
+        user_answer (str): 用户提交的答案
+
+    Returns:
+        bool: 是否正确
+    """
+    q_type = question.question_type
+    correct = question.correct_answer.strip()
+    answer = user_answer.strip()
+
+    if q_type == "MULTIPLE_CHOICE":
+        return "".join(sorted(answer.upper())) == "".join(sorted(correct.upper()))
+    elif q_type == "CHOICE":
+        return answer.upper() == correct.upper()
+    elif q_type == "FILL_BLANK":
+        clean_a = re.sub(r'[\s\.,;:，。；：、！？!?\(\)（）\[\]【】]', '', answer)
+        clean_c = re.sub(r'[\s\.,;:，。；：、！？!?\(\)（）\[\]【】]', '', correct)
+        return clean_a.upper() == clean_c.upper()
+    return answer.upper() == correct.upper()
+
+
+def _build_answer_result(answer: Answer, question: Question, gamification: dict | None = None) -> dict:
     knowledge_point = question.knowledge_node_rel.title if question.knowledge_node_rel is not None else None
     tutor_prompt = None
     if not answer.is_correct:
@@ -44,8 +80,8 @@ def _build_answer_result(answer: Answer, question: Question) -> dict:
         "knowledge_point": knowledge_point,
         "tutor_prompt": tutor_prompt,
         "time_spent_seconds": answer.time_spent_seconds,
+        "gamification": gamification,
     }
-
 
 
 async def create_session(
@@ -149,7 +185,6 @@ async def submit_answer(
     # 获取会话并校验状态
     session = await get_session_by_id(db, session_id, user_id=user_id)
 
-    # 获取题目信息
     existing_result = await db.execute(select(Answer).where(Answer.id == answer_id))
     existing_answer = existing_result.scalar_one_or_none()
 
@@ -176,7 +211,8 @@ async def submit_answer(
                 status_code=status.HTTP_410_GONE,
                 detail={"code": "BIZ_001", "message": "原题已删除，无法回放该作答结果"},
             )
-        return _build_answer_result(existing_answer, question)
+        event = (await db.execute(select(GamificationEvent).where(GamificationEvent.answer_id == existing_answer.id))).scalar_one_or_none()
+        return _build_answer_result(existing_answer, question, event_to_payload(event) if event else None)
 
     result = await db.execute(stmt)
     question = result.scalar_one_or_none()
@@ -186,14 +222,21 @@ async def submit_answer(
             detail={"code": "BIZ_001", "message": "题目不存在"},
         )
 
+    question_node_id = getattr(question, "knowledge_node_id", None)
+    if question_node_id is not None and question_node_id != session.knowledge_node_id:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={"code": "BIZ_001", "message": "题目不属于本次学习会话"},
+        )
+
     if session.status != "in_progress":
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail={"code": "BIZ_001", "message": "该学习会话已结束"},
         )
 
-    # 判断正误（去除空白并不区分大小写比较）
-    is_correct = user_answer.strip().upper() == question.correct_answer.strip().upper()
+    # 判断正误（根据题型调用对应的判题逻辑）
+    is_correct = judge_answer(question, user_answer)
 
     # 创建答题记录
     answer = Answer(
@@ -206,6 +249,7 @@ async def submit_answer(
         answered_at=datetime.now(timezone.utc),
     )
     db.add(answer)
+    # AsyncSession 关闭 autoflush；先写入 answers，才能安全写入引用它的错题事件。
     await db.flush()
 
     # 答题记录和错题收录使用同一个数据库事务，任一失败都会统一回滚。
@@ -234,9 +278,9 @@ async def submit_answer(
             response_time_ms=time_spent_seconds * 1000,
             answered_at=answer.answered_at,
         )
-    await db.flush()
-
-    return _build_answer_result(answer, question)
+    # 认证依赖保证正常请求一定有用户；保留旧数据回放/测试场景的答题结果可用性。
+    gamification = await reward_answer_event(db, user=user, answer=answer, difficulty=question.difficulty_level) if user else None
+    return _build_answer_result(answer, question, gamification)
 
 
 async def complete_session(
@@ -314,8 +358,8 @@ async def get_session_stats(
         "session_id": str(session_id),
         "total_questions": total,
         "correct_count": correct,
-        "accuracy": accuracy,
-        "total_time": total_time,
+        "accuracy_rate": accuracy,
+        "total_time_seconds": total_time,
         "session_duration": session_duration,
         "status": session.status,
     }

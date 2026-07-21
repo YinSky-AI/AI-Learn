@@ -26,10 +26,9 @@ from app.ai.question_pipeline import QuestionGenerationError, QuestionPipeline
 from app.schemas.common import ApiResponse, paged_response, success_response
 from app.schemas.question import (
     QuestionGenerateRequest,
-    GeneratedQuestionResponse,
+    GeneratedQuestionPublicResponse,
     BatchResponse,
     VariantRequest,
-    GenerateResultResponse,
 )
 from app.services import question_generation_service
 
@@ -71,12 +70,24 @@ async def generate_questions(
             detail=str(error),
         ) from error
 
+    questions = await question_generation_service.get_batch_questions(
+        db,
+        batch_id=batch.id,
+        user_id=user_id,
+    )
+    public_questions = [
+        GeneratedQuestionPublicResponse.model_validate(question).model_dump(mode="json")
+        for question in questions
+    ]
+
     return success_response(
         data={
             "batch_id": str(batch.id),
             "status": "completed",
+            "total_generated": len(public_questions),
+            "questions": public_questions,
         },
-        message="题目生成完成",
+        message=f"成功生成 {len(public_questions)} 道题目",
     )
 
 
@@ -143,16 +154,18 @@ async def get_batch_detail(
         ApiResponse: 批次详情 + 生成题目列表
     """
     # 查询批次基本信息
-    batch = await question_generation_service.get_batch_by_id(db, batch_id)
+    batch = await question_generation_service.get_batch_by_id(db, batch_id, user_id)
     if batch is None:
-        return ApiResponse(code="BIZ_001", message="批次不存在", data=None)
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="批次不存在")
 
     # 查询批次关联的生成题目
-    questions = await question_generation_service.get_batch_questions(db, batch_id)
+    questions = await question_generation_service.get_batch_questions(db, batch_id, user_id)
     return success_response(
         data={
             "batch": BatchResponse.model_validate(batch),
-            "questions": [GeneratedQuestionResponse.model_validate(q) for q in questions],
+            "questions": [
+                GeneratedQuestionPublicResponse.model_validate(q) for q in questions
+            ],
         },
         message="获取批次详情成功",
     )
@@ -181,12 +194,18 @@ async def generate_variant(
         HTTPException: 原题目不存在时抛出错误
     """
     # 创建变式题记录（状态为 pending，等待 AI 填充内容）
-    variant = await question_generation_service.generate_variant(
-        db,
-        original_question_id=request.question_id,
-        user_id=user_id,
-        difficulty_level=request.difficulty_level,
-    )
+    try:
+        variant = await question_generation_service.generate_variant(
+            db,
+            original_question_id=request.question_id,
+            user_id=user_id,
+            difficulty_level=request.difficulty_level,
+        )
+    except ValueError as error:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="原题目不存在",
+        ) from error
 
     return success_response(
         data={
@@ -239,7 +258,7 @@ async def question_history(
         page=page,
         page_size=page_size,
     )
-    items = [GeneratedQuestionResponse.model_validate(q) for q in result["items"]]
+    items = [GeneratedQuestionPublicResponse.model_validate(q) for q in result["items"]]
     return paged_response(
         data=items,
         total=result["total"],

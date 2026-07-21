@@ -195,22 +195,23 @@ async def list_questions(
 
 @router.get("/questions", response_model=ApiResponse)
 async def list_all_questions(
-    subject: Optional[str] = Query(None, description="学科筛选：math/chinese/english/physics/chemistry/biology/history/geography/politics/science"),
-    age_group: Optional[str] = Query(None, description="年龄段筛选：6-8/9-12/13-15/16-18"),
-    difficulty: Optional[str] = Query(None, description="难度筛选：beginner/intermediate/advanced"),
-    question_type: Optional[str] = Query(None, description="题型筛选：single_choice/multiple_choice/fill_blank/true_false/short_answer"),
+    subject_code: Optional[str] = Query(None, description="学科编码筛选：SUBJ_MATH/SUBJ_CHINESE/SUBJ_ENGLISH/SUBJ_PHYSICS/SUBJ_CHEMISTRY/SUBJ_BIOLOGY/SUBJ_HISTORY/SUBJ_GEOGRAPHY/SUBJ_POLITICS/SUBJ_SCIENCE"),
+    age_group_code: Optional[str] = Query(None, description="年龄段编码筛选：AGE_06_08/AGE_09_11/AGE_12_14/AGE_15_18"),
+    difficulty_level: Optional[str] = Query(None, description="难度筛选：DIFF_EASY/DIFF_MEDIUM/DIFF_HARD"),
+    question_type: Optional[str] = Query(None, description="题型筛选：CHOICE/MULTIPLE_CHOICE/FILL_BLANK"),
     pagination: dict = Depends(get_pagination_params),
     db: AsyncSession = Depends(get_db),
 ):
     """
     全部题目列表接口（支持多条件筛选与分页）
 
-    查询题库中所有题目，支持按学科、年龄段、难度、题型筛选，默认分页返回。
+    查询题库中所有题目，通过知识点节点 JOIN 实现按学科、年龄段筛选。
+    参数使用平台编码而非友好名称。
 
     Args:
-        subject (Optional[str]): 学科筛选
-        age_group (Optional[str]): 年龄段筛选
-        difficulty (Optional[str]): 难度筛选
+        subject_code (Optional[str]): 学科编码筛选
+        age_group_code (Optional[str]): 年龄段编码筛选
+        difficulty_level (Optional[str]): 难度筛选
         question_type (Optional[str]): 题型筛选
         pagination (dict): 分页参数（page / page_size）
         db (AsyncSession): 异步数据库会话
@@ -224,9 +225,9 @@ async def list_all_questions(
 
     questions = await content_service.list_all_questions(
         db,
-        subject=subject,
-        age_group=age_group,
-        difficulty=difficulty,
+        subject_code=subject_code,
+        age_group_code=age_group_code,
+        difficulty_level=difficulty_level,
         question_type=question_type,
         limit=page_size,
         offset=offset,
@@ -234,9 +235,9 @@ async def list_all_questions(
 
     total = await content_service.count_all_questions(
         db,
-        subject=subject,
-        age_group=age_group,
-        difficulty=difficulty,
+        subject_code=subject_code,
+        age_group_code=age_group_code,
+        difficulty_level=difficulty_level,
         question_type=question_type,
     )
 

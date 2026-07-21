@@ -495,6 +495,7 @@ async def list_error_logs(
     agent_name: Optional[str] = Query(None, description="Agent 名称"),
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
+    user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
     """
@@ -513,6 +514,9 @@ async def list_error_logs(
     Returns:
         ApiResponse: 分页错误日志列表
     """
+    if not user.is_admin:
+        raise HTTPException(status_code=403, detail="仅管理员可以查看错误日志")
+
     # 构建动态查询条件
     stmt = select(ErrorLog)
     count_stmt = select(func.count()).select_from(ErrorLog)

@@ -50,6 +50,50 @@ class _SubmissionSession:
         self.flush_count += 1
 
 
+class _ScalarsCollection:
+    def __init__(self, values):
+        self.values = values
+
+    def unique(self):
+        return self
+
+    def all(self):
+        return self.values
+
+
+class _ListResult:
+    def __init__(self, values):
+        self.values = values
+
+    def scalars(self):
+        return _ScalarsCollection(self.values)
+
+
+class _ListSession:
+    def __init__(self):
+        self.results = [_ScalarResult(0), _ListResult([])]
+
+    async def execute(self, _statement):
+        return self.results.pop(0)
+
+
+@pytest.mark.asyncio
+async def test_list_questions_uses_sqlalchemy_scalars_result_api():
+    from app.services.wrong_book_service import WrongBookService
+
+    records, total = await WrongBookService(_ListSession()).list_questions(
+        user_id=uuid.uuid4(),
+        subject=None,
+        knowledge_point=None,
+        is_mastered=False,
+        page=1,
+        page_size=20,
+    )
+
+    assert records == []
+    assert total == 0
+
+
 @pytest.mark.asyncio
 async def test_record_wrong_answer_uses_event_deduplication_then_upsert():
     from app.services.wrong_book_service import WrongBookService
@@ -190,3 +234,37 @@ async def test_replayed_answer_with_deleted_original_question_returns_safe_error
     with pytest.raises(HTTPException, match="原题已删除，无法回放该作答结果") as error:
         await learning_service.submit_answer(db, session_id, user_id, question_id, answer_id, "B", 3)
     assert error.value.status_code == 410
+
+
+@pytest.mark.asyncio
+async def test_answer_question_must_belong_to_session_knowledge_node():
+    from fastapi import HTTPException
+    from app.services import learning_service
+
+    user_id, session_id, session_node_id, other_node_id, question_id, answer_id = (
+        uuid.uuid4() for _ in range(6)
+    )
+    learning_session = SimpleNamespace(
+        user_id=user_id,
+        knowledge_node_id=session_node_id,
+        status="in_progress",
+        total_questions=0,
+        correct_count=0,
+    )
+    question = SimpleNamespace(
+        id=question_id,
+        knowledge_node_id=other_node_id,
+        question_type="CHOICE",
+        correct_answer="A",
+        explanation="解析",
+        knowledge_node_rel=None,
+    )
+    db = _SubmissionSession(learning_session, None, question)
+
+    with pytest.raises(HTTPException, match="题目不属于本次学习会话") as error:
+        await learning_service.submit_answer(
+            db, session_id, user_id, question_id, answer_id, "A", 3
+        )
+
+    assert error.value.status_code == 400
+    assert db.added == []

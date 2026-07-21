@@ -34,6 +34,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # 设置构建时环境变量
+ARG API_PROXY_TARGET=http://backend:8000
+ENV API_PROXY_TARGET=$API_PROXY_TARGET
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 

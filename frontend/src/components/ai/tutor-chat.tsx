@@ -21,6 +21,7 @@ interface TutorChatProps {
   courseId?: string;
   lessonId?: string;
   quickPrompts?: readonly string[];
+  onQuickPrompt?: (prompt: string) => boolean | void;
   showHeader?: boolean;
   className?: string;
 }
@@ -34,6 +35,7 @@ export function TutorChat({
   courseId,
   lessonId,
   quickPrompts = [],
+  onQuickPrompt,
   showHeader = true,
   className,
 }: TutorChatProps) {
@@ -108,7 +110,10 @@ export function TutorChat({
               size="sm"
               className="min-h-9 shrink-0 rounded-full text-xs"
               disabled={isLoading}
-              onClick={() => void sendMessage(prompt)}
+              onClick={() => {
+                if (onQuickPrompt?.(prompt)) return;
+                void sendMessage(prompt);
+              }}
             >
               {prompt}
             </Button>

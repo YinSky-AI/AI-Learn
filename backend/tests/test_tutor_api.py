@@ -13,6 +13,17 @@ from app.models.content import KnowledgeNode, Question
 from app.models.learning import Answer, LearningSession
 
 
+@pytest.fixture(autouse=True)
+def _disable_external_tutor_provider(monkeypatch):
+    """既有 API 测试保持离线确定性；Provider 行为由专项测试覆盖。"""
+
+    monkeypatch.setattr(
+        TutorHarness,
+        "_resolve_configured_provider",
+        staticmethod(lambda: None),
+    )
+
+
 class _ScalarResult:
     def __init__(self, value):
         self._value = value

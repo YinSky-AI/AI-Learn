@@ -76,14 +76,16 @@ class WrongBookService:
             filters.append(WrongQuestion.subject == subject)
         if is_mastered is not None:
             filters.append(WrongQuestion.is_mastered == is_mastered)
-        statement = select(WrongQuestion).options(joinedload(WrongQuestion.question)).where(*filters)
+        statement = select(WrongQuestion).options(
+            joinedload(WrongQuestion.question).joinedload(Question.knowledge_node_rel)
+        ).where(*filters)
         count_statement = select(func.count(WrongQuestion.id)).where(*filters)
         if knowledge_point:
             statement = statement.join(Question, WrongQuestion.question_id == Question.id).join(KnowledgeNode, Question.knowledge_node_id == KnowledgeNode.id).where(func.lower(KnowledgeNode.title).contains(knowledge_point.lower()))
             count_statement = count_statement.select_from(WrongQuestion).join(Question, WrongQuestion.question_id == Question.id).join(KnowledgeNode, Question.knowledge_node_id == KnowledgeNode.id).where(func.lower(KnowledgeNode.title).contains(knowledge_point.lower()))
         total = (await self.db.execute(count_statement)).scalar_one()
         result = await self.db.execute(statement.order_by(desc(WrongQuestion.last_wrong_at)).offset((page - 1) * page_size).limit(page_size))
-        return list(result.scalalars().unique().all()), total
+        return list(result.scalars().unique().all()), total
 
     async def mark_mastered(self, user_id: uuid.UUID, question_id: uuid.UUID) -> bool:
         result = await self.db.execute(select(WrongQuestion).where(WrongQuestion.user_id == user_id, WrongQuestion.question_id == question_id))

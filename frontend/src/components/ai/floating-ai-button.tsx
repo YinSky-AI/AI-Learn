@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { MessageCircle, Minus, Sparkles, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,6 +27,7 @@ type PanelState = "closed" | "open" | "minimized";
 /** 全站可用的 AI 辅导入口；学习页会自动附带当前课程和课时上下文。 */
 export function FloatingAIButton() {
   const pathname = usePathname();
+  const router = useRouter();
   const currentCourse = useLearningStore((state) => state.currentCourse);
   const currentLesson = useLearningStore((state) => state.currentLesson);
   const [panelState, setPanelState] = useState<PanelState>("closed");
@@ -111,6 +112,12 @@ export function FloatingAIButton() {
               courseId={isLearningPage ? currentCourse?.id : undefined}
               lessonId={isLearningPage ? currentLesson?.id : undefined}
               quickPrompts={QUICK_PROMPTS}
+              onQuickPrompt={(prompt) => {
+                if (!prompt.includes("出一道题")) return false;
+                setPanelState("closed");
+                router.push("/ai-questions");
+                return true;
+              }}
               showHeader={false}
               className="h-full rounded-none border-0"
             />

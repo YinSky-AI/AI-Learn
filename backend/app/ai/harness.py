@@ -1,7 +1,9 @@
 """四角色辅导编排入口。"""
 
+import logging
 from typing import Any
 
+from app.ai.provider import get_ai_provider
 from app.ai.tutor import (
     DiagnosticianAgent,
     EncouragerAgent,
@@ -12,17 +14,48 @@ from app.ai.tutor import (
     TeacherAgent,
     TutorResponse,
 )
+from app.ai.tutor.agents import TutorProvider
+from app.core.config import settings
+
+logger = logging.getLogger(__name__)
+
+_AUTO_PROVIDER = object()
 
 
 class TutorHarness:
-    """编排确定性辅导角色，不参与两层出题流程。"""
+    """编排四角色辅导；Provider 不可用时逐角色安全降级。"""
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        provider: TutorProvider | None | object = _AUTO_PROVIDER,
+        provider_timeout_seconds: float = 20.0,
+    ) -> None:
         self._diagnostician = DiagnosticianAgent()
         self._teacher = TeacherAgent()
         self._assistant = SocratesAgent()
         self._encourager = EncouragerAgent()
+        self._provider = (
+            self._resolve_configured_provider()
+            if provider is _AUTO_PROVIDER
+            else provider
+        )
+        self._provider_timeout_seconds = max(0.001, provider_timeout_seconds)
         self._last_state: SharedState | None = None
+
+    @staticmethod
+    def _resolve_configured_provider() -> TutorProvider | None:
+        """仅在应用已配置密钥时启用真实 Provider。"""
+
+        if not settings.DEEPSEEK_API_KEY.strip():
+            return None
+        try:
+            return get_ai_provider()
+        except Exception as exc:
+            logger.warning(
+                "辅导 Provider 初始化失败，将使用模板降级: error_type=%s",
+                type(exc).__name__,
+            )
+            return None
 
     async def reply(self, context: dict[str, Any]) -> TutorResponse:
         """根据题目与学生上下文生成苏格拉底式角色消息。"""
@@ -61,11 +94,19 @@ class TutorHarness:
         )
 
         self._diagnostician.diagnose(state)
-        self._teacher.respond(state)
-        self._assistant.respond(state)
-        self._diagnostician.respond(state)
+        await self._teacher.respond(
+            state, self._provider, self._provider_timeout_seconds
+        )
+        await self._assistant.respond(
+            state, self._provider, self._provider_timeout_seconds
+        )
+        await self._diagnostician.respond(
+            state, self._provider, self._provider_timeout_seconds
+        )
         if state.is_incorrect or state.is_frustrated:
-            self._encourager.respond(state)
+            await self._encourager.respond(
+                state, self._provider, self._provider_timeout_seconds
+            )
         self._last_state = state
 
         next_step = (

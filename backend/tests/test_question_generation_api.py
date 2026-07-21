@@ -2,7 +2,7 @@ import hashlib
 import json
 import os
 import uuid
-from datetime import date
+from datetime import date, datetime, timezone
 
 import pytest
 import pytest_asyncio
@@ -24,6 +24,7 @@ from app.models.ai_generated import (
     QuestionQualityCheck,
 )
 from app.models.user import User
+from app.schemas.question import BatchResponse, GeneratedQuestionResponse
 
 
 REQUEST_PAYLOAD = {
@@ -48,6 +49,14 @@ GENERATED_QUESTION = {
     "tags": ["同分母分数加法"],
     "difficulty": "medium",
 }
+
+
+def test_generated_question_difficulty_columns_fit_platform_codes():
+    """ORM 字段必须能保存内部标准难度编码（例如 DIFF_MEDIUM）。"""
+    required_length = len("DIFF_MEDIUM")
+
+    assert GeneratedQuestionBatch.__table__.c.difficulty_level.type.length >= required_length
+    assert GeneratedQuestion.__table__.c.difficulty_level.type.length >= required_length
 
 
 @pytest_asyncio.fixture
@@ -151,6 +160,12 @@ async def test_generate_persists_reviewed_questions(
     assert response.status_code == 200
     payload = response.json()
     assert payload["data"]["status"] == "completed"
+    assert payload["data"]["total_generated"] == 1
+    assert len(payload["data"]["questions"]) == 1
+    generated_payload = payload["data"]["questions"][0]
+    assert generated_payload["question_body"] == GENERATED_QUESTION["question_body"]
+    assert "correct_answer" not in generated_payload
+    assert "explanation" not in generated_payload
     batch_id = uuid.UUID(payload["data"]["batch_id"])
 
     batch = await question_db_session.get(GeneratedQuestionBatch, batch_id)
@@ -192,6 +207,111 @@ async def test_generate_persists_reviewed_questions(
     )
     assert memory["total"] == 1
     assert memory["questions"][0]["similarity_hash"] == expected_hash
+
+
+@pytest.mark.asyncio
+async def test_batch_detail_and_variant_are_scoped_to_current_user(
+    api_client,
+    question_db_session,
+    monkeypatch,
+):
+    owner_id = await _create_user(question_db_session)
+    provider = FakeProvider(
+        [
+            json.dumps([GENERATED_QUESTION], ensure_ascii=False),
+            json.dumps({"passed": True, "revision_notes": ""}, ensure_ascii=False),
+        ]
+    )
+    _override_generation_dependencies(owner_id, provider, monkeypatch)
+    try:
+        generated = await api_client.post("/api/v1/questions/generate", json=REQUEST_PAYLOAD)
+        batch_id = generated.json()["data"]["batch_id"]
+        owner_detail = await api_client.get(f"/api/v1/questions/batches/{batch_id}")
+    finally:
+        _clear_generation_dependencies()
+
+    assert owner_detail.status_code == 200
+    assert owner_detail.json()["code"] == "SUCCESS"
+    owner_questions = owner_detail.json()["data"]["questions"]
+    assert len(owner_questions) == 1
+    assert "correct_answer" not in owner_questions[0]
+    assert "explanation" not in owner_questions[0]
+
+    question_id = owner_questions[0]["id"]
+    _override_generation_dependencies(owner_id, provider, monkeypatch)
+    try:
+        owner_variant = await api_client.post(
+            "/api/v1/questions/variant",
+            json={"question_id": question_id},
+        )
+        owner_history = await api_client.get("/api/v1/questions/history")
+    finally:
+        _clear_generation_dependencies()
+
+    assert owner_variant.status_code == 200
+    assert owner_variant.json()["data"]["parent_question_id"] == question_id
+    assert owner_history.status_code == 200
+    assert owner_history.json()["data"]["items"]
+    assert all(
+        "correct_answer" not in item and "explanation" not in item
+        for item in owner_history.json()["data"]["items"]
+    )
+
+    attacker_id = await _create_user(question_db_session)
+    _override_generation_dependencies(attacker_id, provider, monkeypatch)
+    try:
+        foreign_detail = await api_client.get(f"/api/v1/questions/batches/{batch_id}")
+        foreign_variant = await api_client.post(
+            "/api/v1/questions/variant",
+            json={"question_id": question_id},
+        )
+    finally:
+        _clear_generation_dependencies()
+
+    assert foreign_detail.status_code == 404
+    assert foreign_detail.json()["message"] == "批次不存在"
+    assert foreign_variant.status_code == 404
+    assert foreign_variant.json()["message"] == "原题目不存在"
+
+
+def test_question_and_batch_schemas_accept_orm_datetimes():
+    now = datetime.now(timezone.utc)
+
+    question = GeneratedQuestionResponse.model_validate(
+        {
+            "id": uuid.uuid4(),
+            "batch_id": uuid.uuid4(),
+            "subject_code": "数学",
+            "course_topic": "分数加法",
+            "difficulty_level": "medium",
+            "question_type": "choice",
+            "question_body": "1/2 + 1/2 = ?",
+            "options": [{"key": "A", "value": "1"}],
+            "correct_answer": "A",
+            "explanation": "同分母分数相加。",
+            "knowledge_tags": ["分数"],
+            "quality_status": "passed",
+            "created_at": now,
+        }
+    )
+    batch = BatchResponse.model_validate(
+        {
+            "id": uuid.uuid4(),
+            "user_id": uuid.uuid4(),
+            "age_group_code": "10-12",
+            "subject_code": "数学",
+            "course_topic": "分数加法",
+            "difficulty_level": "medium",
+            "question_types": ["choice"],
+            "question_count": 1,
+            "status": "completed",
+            "prompt_version": "v1.0",
+            "created_at": now,
+        }
+    )
+
+    assert question.created_at == now
+    assert batch.created_at == now
 
 
 @pytest.mark.asyncio

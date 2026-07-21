@@ -95,14 +95,6 @@ export default function ProfilePage() {
   const [editBio, setEditBio] = useState("");
   const [editSaving, setEditSaving] = useState(false);
 
-  // 页面挂载时获取最新统计数据和成就
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchUserStats();
-      fetchAchievements();
-    }
-  }, [isAuthenticated, fetchUserStats]);
-
   /**
    * 获取用户成就数据
    */
@@ -118,6 +110,14 @@ export default function ProfilePage() {
       setAchievementsLoading(false);
     }
   }, []);
+
+  // 页面挂载时获取最新统计数据和成就
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchUserStats();
+      fetchAchievements();
+    }
+  }, [isAuthenticated, fetchAchievements, fetchUserStats]);
 
   // 从真实数据计算等级和经验值（每 200 分升一级）
   const totalScore = stats?.total_score ?? user?.points ?? 0;

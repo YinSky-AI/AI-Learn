@@ -29,9 +29,27 @@ engine = create_async_engine(
     pool_pre_ping=True,
 )
 
+# ai_learn 题库数据库引擎（管理后台题库）
+ai_learn_engine = create_async_engine(
+    settings.AI_LEARN_DATABASE_URL,
+    echo=False,
+    pool_size=5,
+    max_overflow=10,
+    pool_pre_ping=True,
+)
+
 # 创建异步会话工厂
 AsyncSessionLocal = async_sessionmaker(
     engine,
+    class_=AsyncSession,
+    expire_on_commit=False,
+    autocommit=False,
+    autoflush=False,
+)
+
+# ai_learn 会话工厂
+AI_LearnAsyncSessionLocal = async_sessionmaker(
+    ai_learn_engine,
     class_=AsyncSession,
     expire_on_commit=False,
     autocommit=False,

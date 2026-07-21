@@ -45,6 +45,11 @@ SUBJECTS = [
     {"code": "SUBJ_PROGRAMMING", "name": "编程", "icon": "programming.svg", "sort_order": 5},
     {"code": "SUBJ_ART", "name": "艺术", "icon": "art.svg", "sort_order": 6},
     {"code": "SUBJ_HISTORY", "name": "历史", "icon": "history.svg", "sort_order": 7},
+    {"code": "SUBJ_PHYSICS", "name": "物理", "icon": "physics.svg", "sort_order": 8},
+    {"code": "SUBJ_CHEMISTRY", "name": "化学", "icon": "chemistry.svg", "sort_order": 9},
+    {"code": "SUBJ_BIOLOGY", "name": "生物", "icon": "biology.svg", "sort_order": 10},
+    {"code": "SUBJ_GEOGRAPHY", "name": "地理", "icon": "geography.svg", "sort_order": 11},
+    {"code": "SUBJ_POLITICS", "name": "政治", "icon": "politics.svg", "sort_order": 12},
 ]
 
 # ============ 年龄分级数据 ============
@@ -108,6 +113,11 @@ SUBJECT_MAP = {
     "SUBJ_PROGRAMMING": "programming",
     "SUBJ_ART": "art",
     "SUBJ_HISTORY": "history",
+    "SUBJ_PHYSICS": "physics",
+    "SUBJ_CHEMISTRY": "chemistry",
+    "SUBJ_BIOLOGY": "biology",
+    "SUBJ_GEOGRAPHY": "geography",
+    "SUBJ_POLITICS": "politics",
 }
 
 # 年龄编码 -> 年龄 key 映射

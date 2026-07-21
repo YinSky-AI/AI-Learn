@@ -29,6 +29,7 @@ import {
   ChevronRight,
   Settings,
   LogOut,
+  Sparkles,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -43,6 +44,7 @@ const NAV_ITEMS = [
   { label: "首页", href: "/home", icon: Home },
   { label: "探索", href: "/explore", icon: Compass },
   { label: "学习", href: "/learning", icon: BookOpen },
+  { label: "AI出题", href: "/ai-questions", icon: Sparkles },
   { label: "错题本", href: "/wrong-book", icon: NotebookPen },
   { label: "每日挑战", href: "/challenge", icon: Trophy },
   { label: "排行榜", href: "/leaderboard", icon: Medal },

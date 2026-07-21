@@ -157,6 +157,25 @@ export interface ChatResponse {
   mastery?: number;
 }
 
+/** 知识图谱节点；未学习节点的掌握度为 null。 */
+export interface KnowledgeGraphNode {
+  id: string;
+  name: string;
+  description?: string;
+  is_leaf: boolean;
+  mastery: number | null;
+  mastery_percent: number | null;
+  practice_href?: string;
+  children?: KnowledgeGraphNode[];
+}
+
+/** 当前用户的单学科知识图谱。 */
+export interface KnowledgeGraphResponse extends KnowledgeGraphNode {
+  subject: "math" | "chinese" | "english";
+  learned_leaf_count: number;
+  total_leaf_count: number;
+}
+
 /** 首页仪表盘数据响应 */
 export interface DashboardResponse {
   welcomeMessage: string;

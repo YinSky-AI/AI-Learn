@@ -95,6 +95,7 @@ async def submit_answer(
         session_id=session_id,
         user_id=user_id,
         question_id=request.question_id,
+        answer_id=request.answer_id,
         user_answer=request.user_answer,
         time_spent_seconds=request.time_spent_seconds,
     )

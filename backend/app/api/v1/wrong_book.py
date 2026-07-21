@@ -1,6 +1,7 @@
 """错题本 API。"""
 
 import uuid
+from pydantic import BaseModel, Field
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -11,6 +12,11 @@ from app.schemas.common import paged_response, success_response
 from app.services.wrong_book_service import WrongBookService
 
 router = APIRouter()
+
+
+class PracticeAnswerSubmit(BaseModel):
+    question_id: uuid.UUID
+    user_answer: str = Field(min_length=1, max_length=500)
 
 
 def _serialize(record):
@@ -26,7 +32,15 @@ async def get_stats(user_id: uuid.UUID = Depends(get_current_user_id), db: Async
 @router.get("/practice")
 async def get_practice(subject: str | None = None, count: int = Query(5, ge=1, le=20), user_id: uuid.UUID = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
     questions = await WrongBookService(db).get_practice_questions(user_id, subject, count)
-    return success_response({"questions": [{"id": str(q.id), "question_text": q.question_body, "options": q.options, "correct_answer": q.correct_answer, "subject": subject, "difficulty": q.difficulty_level} for q in questions], "count": len(questions)})
+    return success_response({"questions": [{"id": str(q.id), "question_text": q.question_body, "options": q.options, "subject": subject, "difficulty": q.difficulty_level} for q in questions], "count": len(questions)})
+
+
+@router.post("/practice/answer")
+async def submit_practice_answer(request: PracticeAnswerSubmit, user_id: uuid.UUID = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
+    result = await WrongBookService(db).submit_practice_answer(user_id, request.question_id, request.user_answer)
+    if not result.pop("found"):
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail={"code": "BIZ_001", "message": "错题不存在或无权练习"})
+    return success_response(result, "答案提交成功")
 
 
 @router.get("")

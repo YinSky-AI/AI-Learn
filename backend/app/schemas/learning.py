@@ -12,7 +12,7 @@
 """
 
 from typing import Optional
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from pydantic import BaseModel, Field
 
@@ -55,6 +55,7 @@ class AnswerSubmit(BaseModel):
     time_spent_seconds 必须大于等于 0。
     """
     question_id: UUID = Field(..., description="题目 ID")
+    answer_id: UUID = Field(default_factory=uuid4, description="正式作答事件 ID；重试必须复用同一 ID")
     user_answer: str = Field(..., description="用户答案")
     time_spent_seconds: int = Field(..., ge=0, description="答题用时（秒）")
 

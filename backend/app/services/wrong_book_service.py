@@ -9,15 +9,22 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
 
 from app.models.content import KnowledgeNode, Question
-from app.models.wrong_book import WrongQuestion
+from app.models.wrong_book import WrongQuestion, WrongQuestionEvent
 
 
 class WrongBookService:
     def __init__(self, db: AsyncSession):
         self.db = db
 
-    async def add_wrong_question(self, user_id: uuid.UUID, question_id: uuid.UUID, subject: str, wrong_answer: str = "") -> WrongQuestion:
-        """原子化收录错题，避免并发答题时的查询-插入竞争。"""
+    async def record_wrong_answer(self, user_id: uuid.UUID, question_id: uuid.UUID, answer_id: uuid.UUID, subject: str, wrong_answer: str = "") -> WrongQuestion | None:
+        """仅处理一次正式 Answer 事件；重复请求不会改变错题计数。"""
+        event_result = await self.db.execute(
+            insert(WrongQuestionEvent).values(answer_id=answer_id, user_id=user_id, question_id=question_id)
+            .on_conflict_do_nothing(index_elements=[WrongQuestionEvent.answer_id])
+            .returning(WrongQuestionEvent.id)
+        )
+        if event_result.scalar_one_or_none() is None:
+            return None
         now = datetime.now(timezone.utc)
         statement = insert(WrongQuestion).values(
             user_id=user_id,
@@ -44,6 +51,24 @@ class WrongBookService:
         wrong_question = result.scalar_one()
         await self.db.flush()
         return wrong_question
+
+    async def submit_practice_answer(self, user_id: uuid.UUID, question_id: uuid.UUID, user_answer: str) -> dict:
+        """服务端判定错题重练，确认题目归属后才返回答案与解析。"""
+        result = await self.db.execute(
+            select(WrongQuestion).options(joinedload(WrongQuestion.question)).where(
+                WrongQuestion.user_id == user_id,
+                WrongQuestion.question_id == question_id,
+                WrongQuestion.is_mastered.is_(False),
+            )
+        )
+        record = result.scalar_one_or_none()
+        if record is None:
+            return {"found": False}
+        from app.services.learning_service import judge_answer
+        is_correct = judge_answer(record.question, user_answer)
+        record.review_count += 1
+        await self.db.flush()
+        return {"found": True, "is_correct": is_correct, "correct_answer": record.question.correct_answer, "explanation": record.question.explanation}
 
     async def list_questions(self, user_id: uuid.UUID, subject: str | None, knowledge_point: str | None, is_mastered: bool | None, page: int, page_size: int) -> tuple[list[WrongQuestion], int]:
         filters = [WrongQuestion.user_id == user_id]

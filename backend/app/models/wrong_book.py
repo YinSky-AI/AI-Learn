@@ -34,3 +34,15 @@ class WrongQuestion(BaseModel, Base):
         Index("idx_wrong_question_user_subject", "user_id", "subject"),
         Index("idx_wrong_question_user_review", "user_id", "is_mastered", "last_wrong_at"),
     )
+
+
+class WrongQuestionEvent(BaseModel, Base):
+    """已处理的正式答错事件，用 Answer.id 保证重试不重复累计。"""
+
+    __tablename__ = "wrong_question_events"
+
+    answer_id = Column(UUID(as_uuid=True), ForeignKey("answers.id", ondelete="CASCADE"), nullable=False, unique=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    question_id = Column(UUID(as_uuid=True), ForeignKey("questions.id", ondelete="CASCADE"), nullable=False)
+
+    __table_args__ = (Index("idx_wrong_question_event_user_question", "user_id", "question_id"),)

@@ -96,6 +96,7 @@ async def submit_answer(
     session_id: uuid.UUID,
     user_id: uuid.UUID,
     question_id: uuid.UUID,
+    answer_id: uuid.UUID,
     user_answer: str,
     time_spent_seconds: int,
 ) -> dict:
@@ -151,7 +152,7 @@ async def submit_answer(
 
     # 创建答题记录
     answer = Answer(
-        id=uuid.uuid4(),
+        id=answer_id,
         session_id=session_id,
         question_id=question_id,
         user_answer=user_answer,
@@ -164,9 +165,10 @@ async def submit_answer(
     # 答题记录和错题收录使用同一个数据库事务，任一失败都会统一回滚。
     if not is_correct:
         subject = question.knowledge_node_rel.subject_code if question.knowledge_node_rel else "未分类"
-        await WrongBookService(db).add_wrong_question(
+        await WrongBookService(db).record_wrong_answer(
             user_id=user_id,
             question_id=question_id,
+            answer_id=answer.id,
             subject=subject,
             wrong_answer=user_answer,
         )

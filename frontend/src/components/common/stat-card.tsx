@@ -73,7 +73,7 @@ export function StatCard({
           <div className="flex-1">
             <p className="text-sm text-brand-gray">{label}</p>
             <div className="mt-0.5 flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-gray-900">{value}</span>
+              <span className="whitespace-nowrap text-2xl font-bold text-gray-900">{value}</span>
               {trend && (
                 <span
                   className={cn(

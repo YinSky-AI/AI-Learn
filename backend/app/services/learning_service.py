@@ -22,6 +22,7 @@ from sqlalchemy.orm import joinedload
 
 from app.models.content import Question
 from app.models.learning import LearningSession, Answer
+from app.services.wrong_book_service import WrongBookService
 
 
 async def create_session(
@@ -159,6 +160,16 @@ async def submit_answer(
         answered_at=datetime.now(timezone.utc),
     )
     db.add(answer)
+
+    # 答题记录和错题收录使用同一个数据库事务，任一失败都会统一回滚。
+    if not is_correct:
+        subject = question.knowledge_node_rel.subject_code if question.knowledge_node_rel else "未分类"
+        await WrongBookService(db).add_wrong_question(
+            user_id=user_id,
+            question_id=question_id,
+            subject=subject,
+            wrong_answer=user_answer,
+        )
 
     # 更新会话统计
     session.total_questions += 1

@@ -19,6 +19,7 @@ import {
   Home,
   Compass,
   BookOpen,
+  NotebookPen,
   User,
   GraduationCap,
   ChevronLeft,
@@ -39,6 +40,7 @@ const NAV_ITEMS = [
   { label: "首页", href: "/home", icon: Home },
   { label: "探索", href: "/explore", icon: Compass },
   { label: "学习", href: "/learning", icon: BookOpen },
+  { label: "错题本", href: "/wrong-book", icon: NotebookPen },
   { label: "我的", href: "/profile", icon: User },
 ];
 

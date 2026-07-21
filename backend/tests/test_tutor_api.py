@@ -27,7 +27,8 @@ class _FakeSession:
         self.added = []
 
     async def execute(self, _statement):
-        return _ScalarResult(self._results.pop(0))
+        # 错题本收录会额外查询一次既有记录；未显式准备时表示不存在。
+        return _ScalarResult(self._results.pop(0) if self._results else None)
 
     def add(self, value):
         self.added.append(value)

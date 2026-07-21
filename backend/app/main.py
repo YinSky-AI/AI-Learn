@@ -22,6 +22,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from sqlalchemy import text
 
 from loguru import logger
 
@@ -153,6 +154,9 @@ async def lifespan(app: FastAPI):
     # 自动创建数据库表（开发环境）
     try:
         async with engine.begin() as conn:
+            # 多 worker 会并行触发生命周期；用事务级 PostgreSQL 锁串行化建表，
+            # 避免两个 create_all 同时创建同名复合类型/表。
+            await conn.execute(text("SELECT pg_advisory_xact_lock(hashtext('learning_platform_schema'))"))
             await conn.run_sync(Base.metadata.create_all)
         logger.info("数据库表检查/创建完成")
     except Exception as e:

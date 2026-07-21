@@ -13,7 +13,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Compass, BookOpen, User } from "lucide-react";
+import { Home, Compass, BookOpen, NotebookPen, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -22,6 +22,7 @@ const MOBILE_NAV_ITEMS = [
   { label: "首页", href: "/home", icon: Home },
   { label: "探索", href: "/explore", icon: Compass },
   { label: "学习", href: "/learning", icon: BookOpen },
+  { label: "错题", href: "/wrong-book", icon: NotebookPen },
   { label: "我的", href: "/profile", icon: User },
 ];
 

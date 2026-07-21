@@ -20,6 +20,9 @@ class _ScalarResult:
     def scalar_one_or_none(self):
         return self._value
 
+    def scalar_one(self):
+        return self._value
+
 
 class _FakeSession:
     def __init__(self, *results):

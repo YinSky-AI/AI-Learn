@@ -26,7 +26,7 @@ async def get_stats(user_id: uuid.UUID = Depends(get_current_user_id), db: Async
 @router.get("/practice")
 async def get_practice(subject: str | None = None, count: int = Query(5, ge=1, le=20), user_id: uuid.UUID = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
     questions = await WrongBookService(db).get_practice_questions(user_id, subject, count)
-    return success_response({"questions": [{"id": str(q.id), "question_text": q.question_body, "options": q.options, "subject": subject, "difficulty": q.difficulty_level} for q in questions], "count": len(questions)})
+    return success_response({"questions": [{"id": str(q.id), "question_text": q.question_body, "options": q.options, "correct_answer": q.correct_answer, "subject": subject, "difficulty": q.difficulty_level} for q in questions], "count": len(questions)})
 
 
 @router.get("")

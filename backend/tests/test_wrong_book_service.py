@@ -12,15 +12,20 @@ class _ScalarResult:
     def scalar_one_or_none(self):
         return self.value
 
+    def scalar_one(self):
+        return self.value
+
 
 class _FakeSession:
-    def __init__(self, existing=None):
-        self.existing = existing
+    def __init__(self, record=None):
+        self.record = record
         self.added = []
         self.flushed = False
+        self.statements = []
 
-    async def execute(self, _statement):
-        return _ScalarResult(self.existing)
+    async def execute(self, statement):
+        self.statements.append(statement)
+        return _ScalarResult(self.record)
 
     def add(self, value):
         self.added.append(value)
@@ -30,7 +35,7 @@ class _FakeSession:
 
 
 @pytest.mark.asyncio
-async def test_add_wrong_question_updates_existing_record_without_duplicate():
+async def test_add_wrong_question_uses_single_postgresql_upsert_for_existing_record():
     from app.services.wrong_book_service import WrongBookService
 
     existing = SimpleNamespace(
@@ -50,21 +55,23 @@ async def test_add_wrong_question_updates_existing_record_without_duplicate():
     )
 
     assert result is existing
-    assert existing.wrong_count == 3
-    assert existing.last_wrong_answer == "B"
-    assert existing.is_mastered is False
-    assert existing.mastered_at is None
+    assert len(session.statements) == 1
+    compiled = str(session.statements[0].compile(dialect=__import__("sqlalchemy.dialects.postgresql", fromlist=["dialect"]).dialect()))
+    assert "ON CONFLICT ON CONSTRAINT uq_wrong_question_user_question DO UPDATE" in compiled
     assert session.added == []
     assert session.flushed is True
 
 
 @pytest.mark.asyncio
-async def test_add_wrong_question_creates_an_unmastered_record():
+async def test_add_wrong_question_returns_upserted_record_for_first_wrong_answer():
     from app.services.wrong_book_service import WrongBookService
 
     user_id = uuid.uuid4()
     question_id = uuid.uuid4()
-    session = _FakeSession()
+    expected = SimpleNamespace(
+        user_id=user_id, question_id=question_id, subject="数学", wrong_count=1, is_mastered=False
+    )
+    session = _FakeSession(expected)
 
     result = await WrongBookService(session).add_wrong_question(
         user_id=user_id,
@@ -73,10 +80,6 @@ async def test_add_wrong_question_creates_an_unmastered_record():
         wrong_answer="C",
     )
 
-    assert result.user_id == user_id
-    assert result.question_id == question_id
-    assert result.subject == "数学"
-    assert result.wrong_count == 1
-    assert result.is_mastered is False
-    assert session.added == [result]
+    assert result is expected
+    assert session.added == []
     assert session.flushed is True

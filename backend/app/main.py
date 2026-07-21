@@ -159,8 +159,9 @@ async def lifespan(app: FastAPI):
             await conn.execute(text("SELECT pg_advisory_xact_lock(hashtext('learning_platform_schema'))"))
             await conn.run_sync(Base.metadata.create_all)
         logger.info("数据库表检查/创建完成")
-    except Exception as e:
-        logger.warning(f"数据库表创建失败（可能已存在）: {e}")
+    except Exception:
+        logger.exception("数据库表检查/创建失败，服务将停止启动")
+        raise
 
     try:
         await redis_client.init()

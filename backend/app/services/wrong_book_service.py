@@ -4,6 +4,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 
 from sqlalchemy import desc, func, select
+from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
 
@@ -16,25 +17,31 @@ class WrongBookService:
         self.db = db
 
     async def add_wrong_question(self, user_id: uuid.UUID, question_id: uuid.UUID, subject: str, wrong_answer: str = "") -> WrongQuestion:
-        """幂等收录错题；调用方统一提交事务，避免答题记录与错题本不一致。"""
-        result = await self.db.execute(
-            select(WrongQuestion).where(WrongQuestion.user_id == user_id, WrongQuestion.question_id == question_id)
-        )
-        wrong_question = result.scalar_one_or_none()
+        """原子化收录错题，避免并发答题时的查询-插入竞争。"""
         now = datetime.now(timezone.utc)
-        if wrong_question is None:
-            wrong_question = WrongQuestion(
-                user_id=user_id, question_id=question_id, subject=subject,
-                last_wrong_answer=wrong_answer, first_wrong_at=now, last_wrong_at=now,
-                wrong_count=1, is_mastered=False, review_count=0,
-            )
-            self.db.add(wrong_question)
-        else:
-            wrong_question.wrong_count += 1
-            wrong_question.last_wrong_at = now
-            wrong_question.last_wrong_answer = wrong_answer
-            wrong_question.is_mastered = False
-            wrong_question.mastered_at = None
+        statement = insert(WrongQuestion).values(
+            user_id=user_id,
+            question_id=question_id,
+            subject=subject,
+            wrong_count=1,
+            first_wrong_at=now,
+            last_wrong_at=now,
+            last_wrong_answer=wrong_answer,
+            is_mastered=False,
+            review_count=0,
+        ).on_conflict_do_update(
+            constraint="uq_wrong_question_user_question",
+            set_={
+                "wrong_count": WrongQuestion.wrong_count + 1,
+                "last_wrong_at": now,
+                "last_wrong_answer": wrong_answer,
+                "is_mastered": False,
+                "mastered_at": None,
+                "updated_at": now,
+            },
+        ).returning(WrongQuestion)
+        result = await self.db.execute(statement)
+        wrong_question = result.scalar_one()
         await self.db.flush()
         return wrong_question
 

@@ -1,13 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { BookOpenCheck, CheckCircle2, Lightbulb, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TutorChat } from "@/components/ai/tutor-chat";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import apiClient from "@/lib/api-client";
+import apiClient, { TokenManager } from "@/lib/api-client";
 
 type WrongQuestion = { id: string; question_id: string; question_text: string; subject: string; wrong_count: number; is_mastered: boolean; knowledge_point?: string; explanation?: string; correct_answer: string; options?: Array<{ key: string; value: string }>; difficulty?: string };
 type Stats = { total: number; mastered: number; unmastered: number; need_review_today: number; by_subject: Record<string, number> };
@@ -20,8 +22,13 @@ export default function WrongBookPage() {
   const [loading, setLoading] = useState(true);
   const [notice, setNotice] = useState("");
   const [explaining, setExplaining] = useState<WrongQuestion | null>(null);
+  const [authRequired, setAuthRequired] = useState(false);
+  const router = useRouter();
 
   const load = useCallback(async () => {
+    const token = TokenManager.getAccessToken();
+    if (!token || TokenManager.isTokenExpired(token)) { setAuthRequired(true); setLoading(false); return; }
+    setAuthRequired(false);
     setLoading(true); setNotice("");
     try {
       const [nextStats, nextQuestions] = await Promise.all([
@@ -29,13 +36,15 @@ export default function WrongBookPage() {
         apiClient.get<{ items: WrongQuestion[] }>(`/v1/wrong-book?is_mastered=${tab === "mastered"}${subject === "all" ? "" : `&subject=${encodeURIComponent(subject)}`}`),
       ]);
       setStats(nextStats); setQuestions(nextQuestions.items || []);
-    } catch { setNotice("错题本暂时无法加载，请稍后重试。"); }
+    } catch (error: unknown) { setNotice((error as { code?: number }).code === 401 ? "登录已失效，请重新登录。" : "错题本暂时无法加载，请稍后重试。"); }
     finally { setLoading(false); }
   }, [subject, tab]);
 
   useEffect(() => { void load(); }, [load]);
   async function master(questionId: string) { try { await apiClient.post(`/v1/wrong-book/${questionId}/master`, {}); await load(); } catch { setNotice("标记失败，请稍后重试。"); } }
-  async function practice() { try { const data = await apiClient.get<{ count: number }>(`/v1/wrong-book/practice?${subject === "all" ? "" : `subject=${encodeURIComponent(subject)}`}`); setNotice(data.count ? `已为你挑选 ${data.count} 道错题，可在学习页继续练习。` : "当前没有可重练的错题。"); } catch { setNotice("暂时无法开始重练，请稍后重试。"); } }
+  function practice() { router.push(`/wrong-book/practice${subject === "all" ? "" : `?subject=${encodeURIComponent(subject)}`}`); }
+
+  if (authRequired) return <main className="mx-auto max-w-xl px-4 py-16 text-center"><BookOpenCheck className="mx-auto h-12 w-12 text-brand-blue" /><h1 className="mt-4 text-xl font-bold">登录后查看错题本</h1><p className="mt-2 text-sm text-gray-600">错题、掌握状态和复习记录只属于你的学习账户。</p><Button asChild className="mt-6"><Link href="/login">去登录</Link></Button></main>;
 
   return <main className="mx-auto max-w-5xl space-y-6 px-4 py-6 md:px-8" aria-label="错题本">
     <section className="rounded-2xl bg-gradient-to-r from-rose-500 to-orange-500 p-6 text-white shadow-sm"><div className="flex items-center gap-3"><BookOpenCheck className="h-8 w-8" /><div><h1 className="text-2xl font-bold">错题本</h1><p className="mt-1 text-sm text-white/90">回顾错因，逐步把薄弱点变成掌握点。</p></div></div></section>

@@ -11,6 +11,7 @@
 - 会话完成和统计
 """
 
+from datetime import datetime
 from typing import Optional
 from uuid import UUID, uuid4
 
@@ -38,11 +39,11 @@ class LearningSessionResponse(BaseModel):
     knowledge_node_id: UUID
     difficulty_level: str
     status: str
-    started_at: str
-    completed_at: Optional[str] = None
+    started_at: datetime
+    completed_at: Optional[datetime] = None
     correct_count: int
     total_questions: int
-    created_at: str
+    created_at: datetime
 
     model_config = {"from_attributes": True}
 

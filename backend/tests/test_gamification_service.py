@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import date, datetime, timezone
 from types import SimpleNamespace
 
 from app.services.gamification_service import apply_answer_reward, calculate_level
@@ -69,3 +69,23 @@ def test_level_uses_cumulative_thresholds():
     assert calculate_level(100) == 2
     assert calculate_level(219) == 2
     assert calculate_level(220) == 3
+
+
+def test_learning_session_response_accepts_orm_datetime_fields():
+    from app.schemas.learning import LearningSessionResponse
+
+    now = datetime.now(timezone.utc)
+    response = LearningSessionResponse.model_validate(_user(
+        id="00000000-0000-0000-0000-000000000001",
+        user_id="00000000-0000-0000-0000-000000000002",
+        knowledge_node_id="00000000-0000-0000-0000-000000000003",
+        difficulty_level="DIFF_EASY",
+        status="in_progress",
+        started_at=now,
+        completed_at=None,
+        correct_count=0,
+        total_questions=0,
+        created_at=now,
+    ))
+
+    assert response.started_at == now

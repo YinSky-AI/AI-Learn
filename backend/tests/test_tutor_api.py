@@ -7,10 +7,10 @@ from httpx import ASGITransport, AsyncClient
 
 from app.ai.harness import TutorHarness
 from app.core.database import get_db
-from app.core.deps import get_current_user_id
+from app.core.deps import get_current_user_id, get_current_user_id_optional
 from app.main import app
 from app.models.content import KnowledgeNode, Question
-from app.models.learning import LearningSession
+from app.models.learning import Answer, LearningSession
 
 
 class _ScalarResult:
@@ -314,7 +314,7 @@ async def test_explain_question_returns_question_context_and_first_tutor_reply()
         explanation="平均分成三份，就是把整体看作三等份。",
         knowledge_node_rel=knowledge_node,
     )
-    fake_db = _FakeSession(question)
+    fake_db = _FakeSession(question, None)
 
     async def override_get_db():
         yield fake_db
@@ -338,6 +338,100 @@ async def test_explain_question_returns_question_context_and_first_tutor_reply()
     assert data["question"]["knowledge_point"] == "平均分与分数"
     assert data["ai_reply"]["content"]
     assert data["ai_reply"]["role"] == "teacher"
+    assert data["answer_verified"] is False
+    assert "correct_answer" not in data["question"]
+    assert "explanation" not in data["question"]
+
+
+@pytest.mark.asyncio
+async def test_explain_question_only_question_id_hides_answer_and_explanation():
+    question_id = uuid.uuid4()
+    knowledge_node_id = uuid.uuid4()
+    question = Question(
+        id=question_id,
+        knowledge_node_id=knowledge_node_id,
+        difficulty_level="DIFF_EASY",
+        question_type="CHOICE",
+        question_body="一个蛋糕平均分成三份，每份是多少？",
+        correct_answer="三分之一",
+        explanation="平均分成三份，就是把整体看作三等份。",
+        knowledge_node_rel=KnowledgeNode(id=knowledge_node_id, title="平均分与分数"),
+    )
+    fake_db = _FakeSession(question)
+
+    async def override_get_db():
+        yield fake_db
+
+    app.dependency_overrides[get_db] = override_get_db
+    try:
+        response = await _post(
+            "/api/v1/ai/explain-question",
+            json={"question_id": str(question_id)},
+        )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    data = response.json()["data"]
+    assert data["answer_verified"] is False
+    assert data["question"]["text"] == question.question_body
+    assert "correct_answer" not in data["question"]
+    assert "explanation" not in data["question"]
+
+
+@pytest.mark.asyncio
+async def test_explain_question_reveals_answer_only_after_server_verified_attempt():
+    question_id = uuid.uuid4()
+    knowledge_node_id = uuid.uuid4()
+    user_id = uuid.uuid4()
+    session_id = uuid.uuid4()
+    question = Question(
+        id=question_id,
+        knowledge_node_id=knowledge_node_id,
+        difficulty_level="DIFF_EASY",
+        question_type="CHOICE",
+        question_body="一个蛋糕平均分成三份，每份是多少？",
+        correct_answer="三分之一",
+        explanation="平均分成三份，就是把整体看作三等份。",
+        knowledge_node_rel=KnowledgeNode(id=knowledge_node_id, title="平均分与分数"),
+    )
+    answer = Answer(
+        id=uuid.uuid4(),
+        session_id=session_id,
+        question_id=question_id,
+        user_answer="三",
+        is_correct=False,
+        time_spent_seconds=8,
+    )
+    fake_db = _FakeSession(question, answer)
+
+    async def override_get_db():
+        yield fake_db
+
+    async def override_optional_user_id():
+        return user_id
+
+    app.dependency_overrides[get_db] = override_get_db
+    app.dependency_overrides[get_current_user_id_optional] = override_optional_user_id
+    try:
+        response = await _post(
+            "/api/v1/ai/explain-question",
+            json={
+                "question_id": str(question_id),
+                "user_answer": "伪造答案",
+                "is_correct": True,
+            },
+        )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    data = response.json()["data"]
+    assert data["answer_verified"] is True
+    assert data["question"]["correct_answer"] == "三分之一"
+    assert data["question"]["explanation"] == question.explanation
+    assert "你刚才写的是“伪造答案”" not in data["ai_reply"]["content"]
+    assert "你刚才写的是“三”" in data["ai_reply"]["content"]
 
 
 @pytest.mark.asyncio

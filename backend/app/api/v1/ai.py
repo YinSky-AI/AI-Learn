@@ -31,6 +31,7 @@ from app.core.database import get_db
 from app.core.deps import get_current_user_id, get_current_user, get_current_user_id_optional
 from app.models.ai_generated import Skill, SessionMemory, ErrorLog, EvolutionRecord, HarnessRun
 from app.models.content import Question
+from app.models.learning import Answer, LearningSession
 from app.models.user import User
 from app.schemas.common import ApiResponse, paged_response, success_response
 
@@ -196,8 +197,9 @@ class ExplainQuestionRequest(BaseModel):
     """答题后请求辅导讲解。"""
 
     question_id: uuid.UUID
-    user_answer: Optional[str] = None
-    is_correct: Optional[bool] = None
+    # 兼容已有调用方；答案权限只信任服务端 Answer 记录，绝不使用这两个字段。
+    user_answer: Optional[str] = Field(default=None, deprecated=True)
+    is_correct: Optional[bool] = Field(default=None, deprecated=True)
 
 
 @router.post("/explain-question")
@@ -217,6 +219,20 @@ async def explain_question_after_answer(
     if question is None:
         raise HTTPException(status_code=404, detail="题目不存在")
 
+    verified_answer = None
+    if user_id is not None:
+        answer_result = await db.execute(
+            select(Answer)
+            .join(LearningSession, Answer.session_id == LearningSession.id)
+            .where(
+                Answer.question_id == body.question_id,
+                LearningSession.user_id == user_id,
+            )
+            .order_by(Answer.answered_at.desc())
+            .limit(1)
+        )
+        verified_answer = answer_result.scalar_one_or_none()
+
     knowledge_point = (
         question.knowledge_node_rel.title
         if question.knowledge_node_rel is not None
@@ -225,15 +241,14 @@ async def explain_question_after_answer(
     context = {
         "question": {
             "question_body": question.question_body,
-            "correct_answer": question.correct_answer,
-            "explanation": question.explanation,
+            "knowledge_point": knowledge_point,
         },
-        "student_answer": body.user_answer,
-        "is_correct": body.is_correct,
+        "student_answer": verified_answer.user_answer if verified_answer else None,
+        "is_correct": verified_answer.is_correct if verified_answer else None,
         "student_message": (
             "我做对了，想继续理解为什么。"
-            if body.is_correct
-            else "我做错了，请先提示我应该检查哪里。"
+            if verified_answer is not None and verified_answer.is_correct
+            else "请先提示我应该检查哪些条件和关系。"
         ),
         "topic": knowledge_point,
     }
@@ -246,17 +261,25 @@ async def explain_question_after_answer(
         user_id,
         body.question_id,
     )
-    return success_response(
-        data={
-            "question": {
-                "id": str(question.id),
-                "text": question.question_body,
+    question_data = {
+        "id": str(question.id),
+        "text": question.question_body,
+        "knowledge_point": knowledge_point,
+    }
+    if verified_answer is not None:
+        question_data.update(
+            {
                 "correct_answer": question.correct_answer,
                 "explanation": question.explanation,
-                "knowledge_point": knowledge_point,
-            },
+            }
+        )
+
+    return success_response(
+        data={
+            "question": question_data,
             "ai_reply": teacher_reply,
             "tutor_response": tutor_response,
+            "answer_verified": verified_answer is not None,
         },
         message="题目辅导生成成功",
     )

@@ -22,6 +22,13 @@ from app.schemas.common import ApiResponse
 logger = logging.getLogger(__name__)
 
 
+def user_message(detail: object, fallback: str) -> str:
+    """将异常详情转换为可安全展示给用户的纯文本。"""
+    if isinstance(detail, dict):
+        return str(detail.get("message") or fallback)
+    return str(detail) if isinstance(detail, str) else fallback
+
+
 def add_exception_handlers(app: FastAPI) -> None:
     """
     注册全局异常处理器
@@ -50,10 +57,10 @@ def add_exception_handlers(app: FastAPI) -> None:
         # exc.detail 可能是 str 或 dict（FastAPI HTTPException 支持 dict）
         if isinstance(exc.detail, dict):
             code = exc.detail.get("code", f"HTTP_{exc.status_code}")
-            message = exc.detail.get("message", str(exc.detail))
+            message = user_message(exc.detail, "请求失败")
         else:
             code = f"HTTP_{exc.status_code}"
-            message = str(exc.detail)
+            message = user_message(exc.detail, "请求失败")
 
         return JSONResponse(
             status_code=exc.status_code,
@@ -73,7 +80,8 @@ def add_exception_handlers(app: FastAPI) -> None:
         提取第一条错误信息记录日志，并返回详细的校验错误列表。
         """
         errors = exc.errors()
-        message = errors[0]["msg"] if errors else "请求参数验证失败"
+        detail = errors[0].get("msg") if errors else None
+        message = user_message(detail, "请求参数验证失败")
         logger.warning(f"Validation error: {message} - {request.url.path}")
         return JSONResponse(
             status_code=422,
@@ -97,7 +105,7 @@ def add_exception_handlers(app: FastAPI) -> None:
             status_code=500,
             content=ApiResponse(
                 code="INTERNAL_ERROR",
-                message="服务器内部错误，请稍后重试",
+                message=user_message(None, "服务暂时不可用，请稍后重试"),
                 data=None,
             ).model_dump(),
         )

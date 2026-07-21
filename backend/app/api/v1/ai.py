@@ -19,16 +19,18 @@ import logging
 import uuid
 from typing import Any, Dict, List, Optional
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import joinedload
 
 from app.ai.harness import TutorHarness
 from app.ai.tutor import TutorMessage, TutorResponse
 from app.core.database import get_db
 from app.core.deps import get_current_user_id, get_current_user, get_current_user_id_optional
 from app.models.ai_generated import Skill, SessionMemory, ErrorLog, EvolutionRecord, HarnessRun
+from app.models.content import Question
 from app.models.user import User
 from app.schemas.common import ApiResponse, paged_response, success_response
 
@@ -44,6 +46,9 @@ router = APIRouter()
 class ChatRequest(BaseModel):
     """AI 聊天请求"""
     message: str = Field(..., min_length=1, description="用户消息")
+    message_type: str = Field(default="question", description="消息类型")
+    topic: str = Field(default="", description="当前知识点")
+    age_group: str = Field(default="9-12", description="学生年龄段")
     context: Optional[Dict[str, Any]] = Field(
         default=None,
         description="上下文信息，可包含 courseId, lessonId, subject, ageGroup 等",
@@ -155,8 +160,12 @@ async def chat(
     try:
         context = dict(body.context or {})
         context["student_message"] = body.message
+        context.setdefault("topic", body.topic)
+        context.setdefault("age_group", body.age_group)
+        if body.message_type == "answer" and not context.get("student_answer"):
+            context["student_answer"] = body.message
         if body.conversationHistory:
-            context["conversation_history"] = body.conversationHistory[-20:]
+            context["conversation_history"] = body.conversationHistory[-10:]
 
         response = await TutorHarness().reply(context)
         logger.info("四角色辅导完成: user_id=%s, roles=%s", user_id, len(response.messages))
@@ -174,6 +183,76 @@ async def chat(
             suggested_next_step="请用一句话重新描述题目和你的思路。",
         )
         return success_response(data=fallback, message="已提供基础辅导提示")
+
+
+class ExplainQuestionRequest(BaseModel):
+    """答题后请求辅导讲解。"""
+
+    question_id: uuid.UUID
+    user_answer: Optional[str] = None
+    is_correct: Optional[bool] = None
+
+
+@router.post("/explain-question")
+async def explain_question_after_answer(
+    body: ExplainQuestionRequest,
+    user_id: Optional[uuid.UUID] = Depends(get_current_user_id_optional),
+    db: AsyncSession = Depends(get_db),
+):
+    """返回题目上下文和受诊断策略影响的导师首条回复。"""
+
+    result = await db.execute(
+        select(Question)
+        .options(joinedload(Question.knowledge_node_rel))
+        .where(Question.id == body.question_id)
+    )
+    question = result.scalar_one_or_none()
+    if question is None:
+        raise HTTPException(status_code=404, detail="题目不存在")
+
+    knowledge_point = (
+        question.knowledge_node_rel.title
+        if question.knowledge_node_rel is not None
+        else "相关知识点"
+    )
+    context = {
+        "question": {
+            "question_body": question.question_body,
+            "correct_answer": question.correct_answer,
+            "explanation": question.explanation,
+        },
+        "student_answer": body.user_answer,
+        "is_correct": body.is_correct,
+        "student_message": (
+            "我做对了，想继续理解为什么。"
+            if body.is_correct
+            else "我做错了，请先提示我应该检查哪里。"
+        ),
+        "topic": knowledge_point,
+    }
+    tutor_response = await TutorHarness().reply(context)
+    teacher_reply = next(
+        message for message in tutor_response.messages if message.role == "teacher"
+    )
+    logger.info(
+        "答题后辅导生成完成: user_id=%s, question_id=%s",
+        user_id,
+        body.question_id,
+    )
+    return success_response(
+        data={
+            "question": {
+                "id": str(question.id),
+                "text": question.question_body,
+                "correct_answer": question.correct_answer,
+                "explanation": question.explanation,
+                "knowledge_point": knowledge_point,
+            },
+            "ai_reply": teacher_reply,
+            "tutor_response": tutor_response,
+        },
+        message="题目辅导生成成功",
+    )
 
 
 # ==============================

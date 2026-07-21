@@ -24,25 +24,81 @@ class TeacherAgent(TutorAgent):
     name = "老师"
 
     def _build_content(self, state: SharedState) -> str:
-        return "先不急着看答案。你能用自己的话说说题目在问什么，并找出最关键的条件吗？"
+        note = state.latest_note("teacher")
+        if state.teaching_strategy.approach == "simplified":
+            return (
+                f"根据诊断，我们先放慢节奏，聚焦{state.teaching_strategy.focus_area}。"
+                f"{note}请先用自己的话说出题目要找什么，好吗？"
+            )
+        if state.teaching_strategy.approach == "deep":
+            return (
+                f"你目前掌握得不错，我们围绕{state.teaching_strategy.focus_area}再深入一步。"
+                "你能说明每一步为什么成立吗？"
+            )
+        return f"{note}先不急着看答案。你能说说题目在问什么，并找出最关键的条件吗？"
 
 
-class AssistantAgent(TutorAgent):
+class SocratesAgent(TutorAgent):
     role = "assistant"
-    name = "助教"
+    name = "苏格拉底助教"
 
     def _build_content(self, state: SharedState) -> str:
-        return "试着画一幅简单的图，或者换成更小的数。这样看时，你认为第一步应该处理哪个数量？"
+        note = state.latest_note("assistant")
+        if state.history_mentions("画图"):
+            return (
+                "沿用你上一轮提出的画图方法：先在图中标出整体和平均分成的份数。"
+                "接着你认为应该比较哪两个量？"
+            )
+        if state.conversation_history:
+            return (
+                f"结合上一轮的思路，{note}我们把问题拆成“已知什么、要求什么”两个小问题。"
+                "你想先回答哪一个？"
+            )
+        return f"{note}我们把问题拆成两个小步骤：先找已知条件，再判断它们之间的关系。你想先做哪一步？"
+
+
+# 保留已发布的导入名，角色语义由 SocratesAgent 实现。
+AssistantAgent = SocratesAgent
 
 
 class DiagnosticianAgent(TutorAgent):
     role = "diagnostician"
     name = "诊断师"
 
-    def _build_content(self, state: SharedState) -> str:
+    def diagnose(self, state: SharedState) -> None:
+        """根据回答更新共享诊断、掌握度、策略和角色留言。"""
+
+        has_result = isinstance(state.context.get("is_correct"), bool)
+        if has_result:
+            state.mastery.record(state.is_incorrect is False)
+
         if state.is_incorrect:
-            return "你的思路已经有了起点，但运算含义可能和题意没有完全对应。请比较“合在一起”和“平均分”有什么不同。"
-        return "你的表达抓住了主要方向。再检查一次：每个条件都用上了吗，结论能由这些条件一步步推出吗？"
+            state.diagnosis = "当前回答可能混淆了题目关系，需要回到条件和运算含义。"
+            state.teaching_strategy.approach = "simplified"
+            state.teaching_strategy.pace = "slow"
+            state.teaching_strategy.focus_area = "题意和运算含义"
+            state.add_note("teacher", "先确认所求量，不要展开完整计算。")
+            state.add_note("assistant", "用小步骤或图示帮助学生检查原思路。")
+            state.add_note("encourager", "肯定学生已做出的尝试，再邀请完成一个小步骤。")
+        elif has_result:
+            state.diagnosis = "当前回答方向正确，可以继续说明推理依据。"
+            state.teaching_strategy.approach = "deep"
+            state.teaching_strategy.pace = "normal"
+            state.teaching_strategy.focus_area = "推理依据"
+            state.add_note("teacher", "用追问帮助学生解释理由。")
+            state.add_note("assistant", "引导学生检查能否迁移到相似情境。")
+        else:
+            state.diagnosis = "信息不足，需要通过追问了解学生当前思路。"
+            state.add_note("teacher", "先询问学生已经想到哪一步。")
+            state.add_note("assistant", "提供一个可选择的小步骤。")
+
+        if state.is_frustrated:
+            state.student_profile.frustration_level = max(
+                state.student_profile.frustration_level, 0.7
+            )
+
+    def _build_content(self, state: SharedState) -> str:
+        return f"诊断结果：{state.diagnosis}你愿意根据这个线索检查刚才的思路吗？"
 
 
 class EncouragerAgent(TutorAgent):
@@ -50,4 +106,8 @@ class EncouragerAgent(TutorAgent):
     name = "鼓励师"
 
     def _build_content(self, state: SharedState) -> str:
-        return "暂时答错并不代表不会，你已经找到了可以继续检查的地方。先完成一个小步骤，我们再一起往下想。"
+        note = state.latest_note("encourager")
+        return (
+            f"{note}暂时答错并不代表不会。我们会按“{state.teaching_strategy.focus_area}”"
+            "这个重点慢慢来，你先完成一个小步骤就很好。"
+        )

@@ -121,3 +121,37 @@ class SharedState:
             for turn in self.conversation_history
             if turn.get("role") in {"user", "student"}
         )
+
+    @property
+    def question_text(self) -> str:
+        """从前端题目上下文提取题干，绝不读取标准答案。"""
+
+        if not self.question:
+            return "这道题"
+        for field in ("question_text", "question_body", "text"):
+            value = self.question.get(field)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+        return "这道题"
+
+    @property
+    def knowledge_point(self) -> str:
+        """提取可用于追问的知识点，不从答案或解析中推断。"""
+
+        if self.question:
+            points = self.question.get("knowledge_points")
+            if isinstance(points, list):
+                values = [str(point).strip() for point in points if str(point).strip()]
+                if values:
+                    return "、".join(values[:2])
+            for field in ("knowledge_point", "topic"):
+                value = self.question.get(field)
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
+        return self.student_profile.topic or "题意与条件"
+
+    @property
+    def student_attempt(self) -> str:
+        """返回学生已提交的作答；未作答时保持为空，避免泄露答案。"""
+
+        return self.student_answer or ""

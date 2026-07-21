@@ -181,6 +181,13 @@ async def chat(
                 )
             ],
             suggested_next_step="请用一句话重新描述题目和你的思路。",
+            diagnosis="暂时无法完成完整诊断，请换一种说法说明已知条件和你的思路。",
+            teaching_strategy={
+                "approach": "standard",
+                "pace": "normal",
+                "focus_area": "题意与条件",
+            },
+            mastery=0.5,
         )
         return success_response(data=fallback, message="已提供基础辅导提示")
 

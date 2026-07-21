@@ -161,6 +161,87 @@ async def test_chat_returns_four_role_messages_for_wrong_answer():
 
 
 @pytest.mark.asyncio
+async def test_chat_returns_complete_chinese_fallback_when_harness_fails(monkeypatch):
+    async def raise_harness_error(self, _context):
+        raise RuntimeError("模拟辅导服务异常")
+
+    monkeypatch.setattr(TutorHarness, "reply", raise_harness_error)
+
+    response = await _post(
+        "/api/v1/ai/chat",
+        {"message": "我卡住了"},
+    )
+
+    assert response.status_code == 200
+    data = response.json()["data"]
+    assert data["messages"][0]["role"] == "teacher"
+    assert data["diagnosis"]
+    assert data["teaching_strategy"] == {
+        "approach": "standard",
+        "pace": "normal",
+        "focus_area": "题意与条件",
+    }
+    assert data["mastery"] == 0.5
+    assert all("RuntimeError" not in value for value in data["messages"][0].values())
+
+
+@pytest.mark.asyncio
+async def test_question_context_changes_guidance_without_leaking_answer_before_attempt():
+    base_context = {"is_correct": False}
+    fraction_response = await TutorHarness().reply(
+        {
+            **base_context,
+            "question": {
+                "question_text": "一个披萨平均分成四份，每份占整体的几分之几？",
+                "knowledge_points": ["分数的意义"],
+                "correct_answer": "保密答案：四分之一",
+            },
+        }
+    )
+    perimeter_response = await TutorHarness().reply(
+        {
+            **base_context,
+            "question": {
+                "question_text": "长方形长 8 厘米、宽 3 厘米，怎样求周长？",
+                "knowledge_points": ["长方形周长"],
+                "correct_answer": "保密答案：二十二厘米",
+            },
+        }
+    )
+
+    fraction_messages = "\n".join(message.content for message in fraction_response.messages)
+    perimeter_messages = "\n".join(message.content for message in perimeter_response.messages)
+    assert "披萨平均分成四份" in fraction_messages
+    assert "分数的意义" in fraction_messages
+    assert "长方形长 8 厘米" in perimeter_messages
+    assert "长方形周长" in perimeter_messages
+    assert fraction_messages != perimeter_messages
+    assert "保密答案：四分之一" not in fraction_messages
+    assert "保密答案：二十二厘米" not in perimeter_messages
+
+
+@pytest.mark.asyncio
+async def test_tutor_uses_student_attempt_when_context_contains_an_answer():
+    response = await TutorHarness().reply(
+        {
+            "question": {
+                "question_text": "9 支铅笔平均分给 3 人，每人几支？",
+                "knowledge_points": ["平均分"],
+                "correct_answer": "保密答案：三支",
+            },
+            "student_answer": "我先算 9 加 3。",
+            "is_correct": False,
+        }
+    )
+
+    messages = "\n".join(message.content for message in response.messages)
+    assert "9 支铅笔平均分给 3 人" in messages
+    assert "平均分" in messages
+    assert "9 加 3" in messages
+    assert "保密答案：三支" not in messages
+
+
+@pytest.mark.asyncio
 async def test_wrong_answer_returns_explanation_knowledge_point_and_tutor_prompt():
     session_id = uuid.uuid4()
     question_id = uuid.uuid4()

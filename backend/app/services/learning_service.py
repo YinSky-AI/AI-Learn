@@ -154,17 +154,8 @@ async def submit_answer(
     stmt = (
         select(Question)
         .options(joinedload(Question.knowledge_node_rel))
-        .where(Question.id == question_id)
+        .where(Question.id == (existing_answer.question_id if existing_answer else question_id))
     )
-    result = await db.execute(stmt)
-    question = result.scalar_one_or_none()
-
-    if question is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail={"code": "BIZ_001", "message": "题目不存在"},
-        )
-
     if existing_answer is not None:
         if (
             existing_answer.session_id != session_id
@@ -176,7 +167,22 @@ async def submit_answer(
                 status_code=status.HTTP_409_CONFLICT,
                 detail={"code": "BIZ_001", "message": "作答事件与原请求不一致"},
             )
+        result = await db.execute(stmt)
+        question = result.scalar_one_or_none()
+        if question is None:
+            raise HTTPException(
+                status_code=status.HTTP_410_GONE,
+                detail={"code": "BIZ_001", "message": "原题已删除，无法回放该作答结果"},
+            )
         return _build_answer_result(existing_answer, question)
+
+    result = await db.execute(stmt)
+    question = result.scalar_one_or_none()
+    if question is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={"code": "BIZ_001", "message": "题目不存在"},
+        )
 
     if session.status != "in_progress":
         raise HTTPException(

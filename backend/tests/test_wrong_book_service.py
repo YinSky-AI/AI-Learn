@@ -165,12 +165,28 @@ async def test_retried_answer_id_rejects_every_mismatched_payload_field(field, v
 
     user_id, session_id, question_id, answer_id = (uuid.uuid4() for _ in range(4))
     learning_session = SimpleNamespace(user_id=user_id, status="completed", total_questions=1, correct_count=0)
-    question = SimpleNamespace(question_type="CHOICE", correct_answer="A", explanation="解析", id=question_id, knowledge_node_rel=SimpleNamespace(title="知识点", subject_code="数学"))
     existing = Answer(id=answer_id, session_id=session_id, question_id=question_id, user_answer="B", is_correct=False, time_spent_seconds=3)
-    db = _SubmissionSession(learning_session, existing, question)
+    db = _SubmissionSession(learning_session, existing)
     request = {"session_id": session_id, "question_id": question_id, "user_answer": "B", "time_spent_seconds": 3}
     request[field] = value
 
     with pytest.raises(HTTPException, match="作答事件与原请求不一致") as error:
         await learning_service.submit_answer(db, user_id=user_id, answer_id=answer_id, **request)
     assert error.value.status_code == 409
+    assert db.records == []
+
+
+@pytest.mark.asyncio
+async def test_replayed_answer_with_deleted_original_question_returns_safe_error():
+    from fastapi import HTTPException
+    from app.models.learning import Answer
+    from app.services import learning_service
+
+    user_id, session_id, question_id, answer_id = (uuid.uuid4() for _ in range(4))
+    session = SimpleNamespace(user_id=user_id, status="completed", total_questions=1, correct_count=0)
+    existing = Answer(id=answer_id, session_id=session_id, question_id=question_id, user_answer="B", is_correct=False, time_spent_seconds=3)
+    db = _SubmissionSession(session, existing, None)
+
+    with pytest.raises(HTTPException, match="原题已删除，无法回放该作答结果") as error:
+        await learning_service.submit_answer(db, session_id, user_id, question_id, answer_id, "B", 3)
+    assert error.value.status_code == 410

@@ -86,6 +86,7 @@ async def get_session_by_id(
 async def submit_answer(
     db: AsyncSession,
     session_id: uuid.UUID,
+    user_id: uuid.UUID,
     question_id: uuid.UUID,
     user_answer: str,
     time_spent_seconds: int,
@@ -102,6 +103,7 @@ async def submit_answer(
     Args:
         db (AsyncSession): 异步数据库会话
         session_id (uuid.UUID): 学习会话 UUID
+        user_id (uuid.UUID): 当前认证用户 UUID
         question_id (uuid.UUID): 题目 UUID
         user_answer (str): 用户提交的答案
         time_spent_seconds (int): 答题用时（秒）
@@ -114,6 +116,12 @@ async def submit_answer(
     """
     # 获取会话并校验状态
     session = await get_session_by_id(db, session_id)
+
+    if session.user_id != user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail={"code": "AUTH_004", "message": "无权提交该学习会话的答案"},
+        )
 
     if session.status != "in_progress":
         raise HTTPException(

@@ -93,6 +93,7 @@ async def submit_answer(
     answer_result = await learning_service.submit_answer(
         db,
         session_id=session_id,
+        user_id=user_id,
         question_id=request.question_id,
         user_answer=request.user_answer,
         time_spent_seconds=request.time_spent_seconds,

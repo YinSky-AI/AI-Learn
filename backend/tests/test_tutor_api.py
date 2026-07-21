@@ -300,6 +300,51 @@ async def test_wrong_answer_returns_explanation_knowledge_point_and_tutor_prompt
 
 
 @pytest.mark.asyncio
+async def test_cross_user_answer_submission_is_rejected_without_question_leakage():
+    session_id = uuid.uuid4()
+    question_id = uuid.uuid4()
+    owner_id = uuid.uuid4()
+    other_user_id = uuid.uuid4()
+    learning_session = LearningSession(
+        id=session_id,
+        user_id=owner_id,
+        knowledge_node_id=uuid.uuid4(),
+        difficulty_level="DIFF_EASY",
+        status="in_progress",
+        correct_count=0,
+        total_questions=0,
+    )
+    fake_db = _FakeSession(learning_session)
+
+    async def override_get_db():
+        yield fake_db
+
+    async def override_user_id():
+        return other_user_id
+
+    app.dependency_overrides[get_db] = override_get_db
+    app.dependency_overrides[get_current_user_id] = override_user_id
+    try:
+        response = await _post(
+            f"/api/v1/learning/sessions/{session_id}/answer",
+            json={
+                "question_id": str(question_id),
+                "user_answer": "伪造作答",
+                "time_spent_seconds": 3,
+            },
+        )
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 403
+    body = response.json()
+    assert body["message"] == "无权提交该学习会话的答案"
+    assert "correct_answer" not in body
+    assert "explanation" not in body
+    assert fake_db.added == []
+
+
+@pytest.mark.asyncio
 async def test_explain_question_returns_question_context_and_first_tutor_reply():
     question_id = uuid.uuid4()
     knowledge_node_id = uuid.uuid4()

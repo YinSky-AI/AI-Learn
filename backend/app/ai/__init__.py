@@ -24,3 +24,17 @@ v0.1 约束：
 - Skill 文件大小不超过 15KB
 - 记忆 TTL 默认 90 天
 """
+
+from .question_pipeline import (
+    GeneratedBatchResult,
+    QuestionGenerationError,
+    QuestionPipeline,
+    QuestionReviewResult,
+)
+
+__all__ = [
+    "GeneratedBatchResult",
+    "QuestionGenerationError",
+    "QuestionPipeline",
+    "QuestionReviewResult",
+]

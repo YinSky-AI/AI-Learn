@@ -71,6 +71,7 @@ def build_question_generation_prompt(
     error_patterns: list[dict] = None,
     coverage_gaps: list[str] = None,
     control_signal: dict = None,
+    revision_notes: str = "",
 ) -> list[dict[str, str]]:
     """
     构建出题 Prompt
@@ -87,6 +88,7 @@ def build_question_generation_prompt(
         error_patterns: 错误模式
         coverage_gaps: 知识覆盖缺口
         control_signal: 控制信号
+        revision_notes: 上次审题未通过时的修订意见
 
     Returns:
         消息列表
@@ -167,6 +169,9 @@ def build_question_generation_prompt(
 - 推荐场景: {req['scenario_examples']}
 - 禁止内容: {req['avoid']}
 {avoid_section}{skill_section}{error_section}{gap_section}{control_section}
+
+## 审题修订意见
+{revision_notes or "无。请直接按基本要求生成题目。"}
 
 ## 输出格式
 请以 JSON 数组格式输出题目：

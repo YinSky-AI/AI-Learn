@@ -12,14 +12,17 @@ AI 出题 API 模块
     - 查询生成题目历史记录
 """
 
+import logging
 import uuid
 from typing import Optional
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
 from app.core.deps import get_current_user_id
+from app.ai.provider import get_ai_provider
+from app.ai.question_pipeline import QuestionGenerationError, QuestionPipeline
 from app.schemas.common import ApiResponse, paged_response, success_response
 from app.schemas.question import (
     QuestionGenerateRequest,
@@ -31,6 +34,7 @@ from app.schemas.question import (
 from app.services import question_generation_service
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 
 @router.post("/generate", response_model=ApiResponse)
@@ -42,8 +46,7 @@ async def generate_questions(
     """
     AI 生成题目接口
 
-    根据学科、主题、难度、题型等参数创建题目生成任务，返回批次 ID 供后续查询。
-    实际生成由外部 AI Harness 异步执行。
+    通过独立的两层流水线生成并审核题目，在同一事务中持久化通过的批次。
 
     Args:
         request (QuestionGenerateRequest): 生成请求体（学科、主题、难度、题型、数量等）
@@ -53,20 +56,27 @@ async def generate_questions(
     Returns:
         ApiResponse: 包含 batch_id 与任务状态的提交结果
     """
-    # 创建生成批次记录（状态为 pending）
-    batch = await question_generation_service.create_generation_batch(
-        db, user_id=user_id, request=request
-    )
+    pipeline = QuestionPipeline(get_ai_provider())
+    try:
+        batch = await question_generation_service.generate_reviewed_batch(
+            db,
+            user_id=user_id,
+            request=request,
+            pipeline=pipeline,
+        )
+    except QuestionGenerationError as error:
+        logger.warning("题目生成未通过审核: %s", error)
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=str(error),
+        ) from error
 
-    # TODO: 调用 AI Harness 执行实际生成
-    # 目前返回批次信息，实际生成为异步流程
     return success_response(
         data={
             "batch_id": str(batch.id),
-            "status": batch.status,
-            "message": "题目生成任务已提交，请稍后查询结果",
+            "status": "completed",
         },
-        message="题目生成任务已创建",
+        message="题目生成完成",
     )
 
 

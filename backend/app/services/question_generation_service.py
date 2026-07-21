@@ -2,8 +2,8 @@
 """
 AI 出题服务模块
 
-提供 AI 题目生成任务的管理业务逻辑，包括批次创建、查询、变式题生成等。
-实际题目内容由外部 AI Harness 异步填充，本模块负责状态管理与记录查询。
+提供 AI 题目生成任务的管理业务逻辑，包括同步生成持久化、批次查询、变式题生成等。
+新生成接口使用独立的两层 QuestionPipeline；兼容保留原有批次管理方法。
 
 主要功能：
     - 创建生成批次（状态为 pending）
@@ -27,11 +27,26 @@ from app.models.ai_generated import (
     HarnessRun,
 )
 from app.models.content import KnowledgeNode
+from app.ai.tools.question_save_tool import QuestionSaveTool
 from app.schemas.question import (
     QuestionGenerateRequest,
     GeneratedQuestionResponse,
     GenerateResultResponse,
 )
+
+
+async def generate_reviewed_batch(
+    db: AsyncSession,
+    user_id: uuid.UUID,
+    request: QuestionGenerateRequest,
+    pipeline,
+) -> GeneratedQuestionBatch:
+    """在单一事务中生成、审核并保存一个完成批次。"""
+    save_tool = QuestionSaveTool(request)
+    async with db.begin():
+        result = await pipeline.generate(request, user_id, db)
+        batch = await save_tool.save_batch(db, result, user_id)
+    return batch
 
 
 async def create_generation_batch(

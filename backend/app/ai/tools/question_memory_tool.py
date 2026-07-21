@@ -29,6 +29,10 @@ import logging
 import time
 from typing import Any, Optional
 
+from sqlalchemy import select
+
+from app.models.ai_generated import GeneratedQuestion
+
 logger = logging.getLogger(__name__)
 
 
@@ -53,7 +57,7 @@ class QuestionMemoryTool:
         初始化检索工具
 
         Args:
-            db_session: SQLAlchemy 数据库会话（由 Harness 注入）
+            db_session: learning_platform 的 SQLAlchemy 数据库会话
         """
         self._db_session = db_session
 
@@ -67,17 +71,19 @@ class QuestionMemoryTool:
         subject: str,
         course_topic: str,
         limit: int = 20,
+        similarity_hash: Optional[str] = None,
     ) -> dict[str, Any]:
         """
         搜索相似题目（用于去重）
 
-        使用 tsvector 全文检索 + pg_trgm 模糊匹配
+        按用户、学科和课程主题检索历史生成题；提供指纹时执行精确去重检索。
 
         Args:
             user_id: 用户 ID
             subject: 学科
             course_topic: 课程主题
             limit: 返回数量上限
+            similarity_hash: 可选题目指纹，用于确认精确重复
 
         Returns:
             {
@@ -93,34 +99,39 @@ class QuestionMemoryTool:
             return {"questions": [], "total": 0}
 
         try:
-            # 构建 tsvector 全文检索查询
-            # SELECT id, similarity_hash, LEFT(question_body, 50) as preview,
-            #        ts_rank(to_tsvector('zh_simple', question_body || ' ' || course_topic), query) as score
-            # FROM generated_questions
-            # WHERE user_id = :user_id
-            #   AND subject_code = :subject
-            #   AND to_tsvector('zh_simple', question_body || ' ' || course_topic) @@ to_tsquery('zh_simple', :topic_query)
-            # ORDER BY score DESC
-            # LIMIT :limit
+            query = (
+                select(GeneratedQuestion)
+                .where(
+                    GeneratedQuestion.user_id == user_id,
+                    GeneratedQuestion.subject_code == subject,
+                    GeneratedQuestion.course_topic.ilike(f"%{course_topic}%"),
+                    GeneratedQuestion.quality_status == "passed",
+                )
+                .order_by(GeneratedQuestion.created_at.desc())
+                .limit(limit)
+            )
+            if similarity_hash:
+                query = query.where(
+                    GeneratedQuestion.similarity_hash == similarity_hash
+                )
 
-            # pg_trgm 模糊匹配
-            # SELECT id, similarity_hash, LEFT(question_body, 50) as preview,
-            #        similarity(question_body, :target_body) as sim_score
-            # FROM generated_questions
-            # WHERE user_id = :user_id
-            #   AND subject_code = :subject
-            #   AND similarity(question_body, :target_body) > 0.3
-            # ORDER BY sim_score DESC
-            # LIMIT :limit
-
-            # TODO: 当数据库模型就绪后实现实际查询
-            result = {"questions": [], "total": 0}
+            rows = list((await self._db_session.execute(query)).scalars().all())
+            questions = [
+                {
+                    "id": str(question.id),
+                    "similarity_hash": question.similarity_hash,
+                    "question_body_preview": question.question_body[:100],
+                    "similarity_score": 1.0 if similarity_hash else None,
+                }
+                for question in rows
+            ]
+            result = {"questions": questions, "total": len(questions)}
 
             latency_ms = int((time.monotonic() - start_time) * 1000)
             logger.info(
                 f"[QuestionMemoryTool] 相似题检索: "
                 f"user={user_id} | subject={subject} | topic={course_topic} | "
-                f"found=0 | latency={latency_ms}ms"
+                f"found={len(questions)} | latency={latency_ms}ms"
             )
 
             return result
@@ -130,7 +141,7 @@ class QuestionMemoryTool:
             logger.error(
                 f"[QuestionMemoryTool] 检索失败 | latency={latency_ms}ms | {e}"
             )
-            return {"questions": [], "total": 0, "error": str(e)}
+            return {"questions": [], "total": 0}
 
     async def search_error_patterns(
         self,

@@ -18,9 +18,25 @@ interface TutorChatProps {
   userAnswer?: string;
   topic?: string;
   initialPrompt?: string;
+  courseId?: string;
+  lessonId?: string;
+  quickPrompts?: readonly string[];
+  showHeader?: boolean;
+  className?: string;
 }
 
-export function TutorChat({ questionContext, isCorrect, userAnswer, topic, initialPrompt }: TutorChatProps) {
+export function TutorChat({
+  questionContext,
+  isCorrect,
+  userAnswer,
+  topic,
+  initialPrompt,
+  courseId,
+  lessonId,
+  quickPrompts = [],
+  showHeader = true,
+  className,
+}: TutorChatProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +61,7 @@ export function TutorChat({ questionContext, isCorrect, userAnswer, topic, initi
     try {
       const request: ChatRequest = {
         message: text,
-        context: { question: questionContext, is_correct: isCorrect, student_answer: userAnswer, subject: topic || questionContext?.subject },
+        context: { courseId, lessonId, question: questionContext, is_correct: isCorrect, student_answer: userAnswer, subject: topic || questionContext?.subject },
         conversationHistory: history,
       };
       const result = await apiClient.post<ChatResponse>("/v1/ai/chat", request);
@@ -66,8 +82,8 @@ export function TutorChat({ questionContext, isCorrect, userAnswer, topic, initi
   function onSubmit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); void sendMessage(input); }
 
   return (
-    <section className="flex h-[min(70vh,560px)] flex-col overflow-hidden rounded-xl border bg-white" aria-label="多角色 AI 辅导对话">
-      <header className="bg-gradient-to-r from-blue-600 to-violet-600 p-4 text-white"><h2 className="font-semibold">AI 辅导老师</h2><p className="mt-1 text-sm text-white/85">老师、助教、诊断师和鼓励师会一起陪你梳理思路。</p></header>
+    <section className={cn("flex h-[min(70vh,560px)] flex-col overflow-hidden rounded-xl border bg-white", className)} aria-label="多角色 AI 辅导对话">
+      {showHeader && <header className="bg-gradient-to-r from-blue-600 to-violet-600 p-4 text-white"><h2 className="font-semibold">AI 辅导老师</h2><p className="mt-1 text-sm text-white/85">老师、助教、诊断师和鼓励师会一起陪你梳理思路。</p></header>}
       <div className="flex-1 space-y-3 overflow-y-auto p-4">
         {!messages.length && !isLoading && <div className="py-10 text-center text-sm text-gray-500"><Sparkles className="mx-auto mb-2 h-8 w-8 text-violet-500" />说说你卡在哪一步，我来陪你想。</div>}
         {messages.map((message) => {
@@ -82,6 +98,23 @@ export function TutorChat({ questionContext, isCorrect, userAnswer, topic, initi
         {error && <p role="alert" className="rounded-lg bg-rose-50 p-3 text-sm text-rose-700">{error}</p>}
         <div ref={bottomRef} />
       </div>
+      {quickPrompts.length > 0 && (
+        <div className="flex shrink-0 gap-2 overflow-x-auto border-t px-3 py-2" aria-label="快捷问题">
+          {quickPrompts.map((prompt) => (
+            <Button
+              key={prompt}
+              type="button"
+              variant="outline"
+              size="sm"
+              className="min-h-9 shrink-0 rounded-full text-xs"
+              disabled={isLoading}
+              onClick={() => void sendMessage(prompt)}
+            >
+              {prompt}
+            </Button>
+          ))}
+        </div>
+      )}
       <form onSubmit={onSubmit} className="flex gap-2 border-t p-3"><Input value={input} onChange={(event) => setInput(event.target.value)} disabled={isLoading} placeholder="输入你的思路或问题…" aria-label="输入给 AI 辅导老师的消息" /><Button type="submit" size="icon" disabled={isLoading || !input.trim()} aria-label="发送消息"><Send className="h-4 w-4" /></Button></form>
     </section>
   );

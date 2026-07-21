@@ -15,6 +15,7 @@ import { Sidebar } from "./sidebar";
 import { Topbar } from "./topbar";
 import { MobileNav } from "./mobile-nav";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { FloatingAIButton } from "@/components/ai/floating-ai-button";
 import { cn } from "@/lib/utils";
 
 /** 主布局属性 */
@@ -63,6 +64,8 @@ export function MainLayout({ children }: MainLayoutProps) {
       <div className="lg:hidden">
         <MobileNav />
       </div>
+
+      <FloatingAIButton />
     </div>
   );
 }

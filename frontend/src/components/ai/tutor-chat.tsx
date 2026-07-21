@@ -6,19 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import apiClient from "@/lib/api-client";
 import { cn } from "@/lib/utils";
-import { getTutorRoleMeta, type TutorRole } from "./tutor-presentation";
+import type { ChatRequest, ChatResponse, TutorQuestionContext } from "@/types/api";
+import { getTutorRoleMeta, TUTOR_UNAVAILABLE_MESSAGE, type TutorRole } from "./tutor-presentation";
 
-interface TutorApiMessage { role: Exclude<TutorRole, "student">; name: string; content: string; }
-interface TutorApiResponse { messages: TutorApiMessage[]; suggested_next_step?: string; }
-export interface TutorQuestionContext {
-  id: string;
-  question_text?: string;
-  correct_answer?: string;
-  explanation?: string;
-  knowledge_points?: string[];
-  difficulty?: string;
-  subject?: string;
-}
+export type { TutorQuestionContext } from "@/types/api";
 interface ChatMessage { id: string; role: TutorRole; name?: string; content: string; }
 
 interface TutorChatProps {
@@ -43,22 +34,26 @@ export function TutorChat({ questionContext, isCorrect, userAnswer, topic, initi
     const text = rawText.trim();
     if (!text || isLoading) return;
     const userMessage: ChatMessage = { id: `${Date.now()}-student`, role: "student", content: text };
-    const history = messages.slice(-10).map((message) => ({ role: message.role === "student" ? "user" : "assistant", content: message.content }));
+    const history: NonNullable<ChatRequest["conversationHistory"]> = messages.slice(-10).map((message) => ({
+      role: message.role === "student" ? "user" : "assistant",
+      content: message.content,
+    }));
     setMessages((current) => [...current, userMessage]);
     setInput("");
     setError("");
     setIsLoading(true);
     try {
-      const result = await apiClient.post<TutorApiResponse>("/v1/ai/chat", {
+      const request: ChatRequest = {
         message: text,
         context: { question: questionContext, is_correct: isCorrect, student_answer: userAnswer, subject: topic || questionContext?.subject },
         conversationHistory: history,
-      });
+      };
+      const result = await apiClient.post<ChatResponse>("/v1/ai/chat", request);
       const tutorMessages = result.messages.map((message, index): ChatMessage => ({ id: `${Date.now()}-${index}-${message.role}`, role: message.role, name: message.name, content: message.content }));
       if (result.suggested_next_step) tutorMessages.push({ id: `${Date.now()}-next`, role: "assistant", name: "下一步", content: result.suggested_next_step });
       setMessages((current) => [...current, ...tutorMessages]);
     } catch {
-      setError("暂时无法连接 AI 辅导老师，请稍后再试。");
+      setError(TUTOR_UNAVAILABLE_MESSAGE);
     } finally { setIsLoading(false); }
   }
 

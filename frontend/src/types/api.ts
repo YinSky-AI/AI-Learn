@@ -118,26 +118,43 @@ export interface LearningProgressResponse {
 /** AI 对话请求 */
 export interface ChatRequest {
   message: string;
+  message_type?: "question" | "answer" | "casual";
   context?: {
     courseId?: string;
     lessonId?: string;
     subject?: string;
+    question?: TutorQuestionContext;
+    is_correct?: boolean;
+    student_answer?: string;
   };
-  conversationHistory: Array<{
+  conversationHistory?: Array<{
     role: "user" | "assistant";
     content: string;
   }>;
 }
 
-/** AI 对话响应 */
+export interface TutorQuestionContext {
+  id: string;
+  question_text?: string;
+  correct_answer?: string;
+  explanation?: string;
+  knowledge_points?: string[];
+  difficulty?: string;
+  subject?: string;
+}
+
+export type TutorRole = "teacher" | "assistant" | "diagnostician" | "encourager";
+
+/** 四角色 AI 辅导响应。失败由客户端显示中文兜底文案，不暴露技术错误。 */
 export interface ChatResponse {
-  reply: string;
-  suggestions?: string[];
-  relatedResources?: Array<{
-    id: string;
-    title: string;
-    type: string;
+  messages: Array<{
+    role: TutorRole;
+    name: string;
+    content: string;
   }>;
+  suggested_next_step?: string;
+  diagnosis?: string;
+  mastery?: number;
 }
 
 /** 首页仪表盘数据响应 */

@@ -6,6 +6,8 @@ export interface TutorRoleMeta {
   className: string;
 }
 
+export const TUTOR_UNAVAILABLE_MESSAGE = "暂时无法连接 AI 辅导老师，请稍后再试。";
+
 const ROLE_META: Record<TutorRole, Omit<TutorRoleMeta, "name">> = {
   teacher: { emoji: "⭐", className: "border-blue-200 bg-blue-50 text-blue-900" },
   assistant: { emoji: "🧩", className: "border-violet-200 bg-violet-50 text-violet-900" },

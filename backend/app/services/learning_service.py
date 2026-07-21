@@ -22,7 +22,9 @@ from sqlalchemy.orm import joinedload
 
 from app.models.content import Question
 from app.models.learning import LearningSession, Answer
+from app.models.user import User
 from app.services.wrong_book_service import WrongBookService
+from app.services.behavior_service import BehaviorService
 
 def _build_answer_result(answer: Answer, question: Question) -> dict:
     knowledge_point = question.knowledge_node_rel.title if question.knowledge_node_rel is not None else None
@@ -222,6 +224,16 @@ async def submit_answer(
     if is_correct:
         session.correct_count += 1
 
+    user = (await db.execute(select(User).where(User.id == user_id))).scalar_one_or_none()
+    if user:
+        await BehaviorService(db).update_after_answer(
+            user_id=user_id,
+            answer_id=answer.id,
+            question=question,
+            is_correct=is_correct,
+            response_time_ms=time_spent_seconds * 1000,
+            answered_at=answer.answered_at,
+        )
     await db.flush()
 
     return _build_answer_result(answer, question)

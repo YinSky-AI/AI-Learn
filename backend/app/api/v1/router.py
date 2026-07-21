@@ -22,6 +22,7 @@ from app.api.v1.progress import router as progress_router
 from app.api.v1.courses import router as courses_router
 from app.api.v1.user_courses import router as user_courses_router
 from app.api.v1.wrong_book import router as wrong_book_router
+from app.api.v1.behavior import router as behavior_router
 
 # v1 总路由
 router = APIRouter()
@@ -38,3 +39,4 @@ router.include_router(progress_router, prefix="/progress", tags=["进度"])
 router.include_router(courses_router, prefix="/courses", tags=["课程"])
 router.include_router(user_courses_router, prefix="/user", tags=["用户课程"])
 router.include_router(wrong_book_router, prefix="/wrong-book", tags=["错题本"])
+router.include_router(behavior_router, prefix="/user/behavior", tags=["学习行为"])

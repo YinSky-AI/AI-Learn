@@ -147,12 +147,6 @@ async def submit_answer(
     # 获取会话并校验状态
     session = await get_session_by_id(db, session_id, user_id=user_id)
 
-    if session.status != "in_progress":
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail={"code": "BIZ_001", "message": "该学习会话已结束"},
-        )
-
     # 获取题目信息
     existing_result = await db.execute(select(Answer).where(Answer.id == answer_id))
     existing_answer = existing_result.scalar_one_or_none()
@@ -183,6 +177,12 @@ async def submit_answer(
                 detail={"code": "BIZ_001", "message": "作答事件与原请求不一致"},
             )
         return _build_answer_result(existing_answer, question)
+
+    if session.status != "in_progress":
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={"code": "BIZ_001", "message": "该学习会话已结束"},
+        )
 
     # 判断正误（去除空白并不区分大小写比较）
     is_correct = user_answer.strip().upper() == question.correct_answer.strip().upper()

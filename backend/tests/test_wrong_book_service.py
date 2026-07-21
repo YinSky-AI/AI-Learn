@@ -136,7 +136,7 @@ async def test_retried_answer_id_returns_existing_result_without_new_side_effect
     from app.services.wrong_book_service import WrongBookService
 
     user_id, session_id, question_id, answer_id = (uuid.uuid4() for _ in range(4))
-    learning_session = SimpleNamespace(user_id=user_id, status="in_progress", total_questions=1, correct_count=0)
+    learning_session = SimpleNamespace(user_id=user_id, status="completed", total_questions=1, correct_count=0)
     question = SimpleNamespace(
         question_type="CHOICE", correct_answer="A", explanation="解析", id=question_id,
         knowledge_node_rel=SimpleNamespace(title="知识点", subject_code="数学"),
@@ -154,3 +154,23 @@ async def test_retried_answer_id_returns_existing_result_without_new_side_effect
     assert db.added == []
     assert db.flush_count == 0
     assert learning_session.total_questions == 1
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("field,value", [("session_id", uuid.uuid4()), ("question_id", uuid.uuid4()), ("user_answer", "A"), ("time_spent_seconds", 9)])
+async def test_retried_answer_id_rejects_every_mismatched_payload_field(field, value):
+    from fastapi import HTTPException
+    from app.models.learning import Answer
+    from app.services import learning_service
+
+    user_id, session_id, question_id, answer_id = (uuid.uuid4() for _ in range(4))
+    learning_session = SimpleNamespace(user_id=user_id, status="completed", total_questions=1, correct_count=0)
+    question = SimpleNamespace(question_type="CHOICE", correct_answer="A", explanation="解析", id=question_id, knowledge_node_rel=SimpleNamespace(title="知识点", subject_code="数学"))
+    existing = Answer(id=answer_id, session_id=session_id, question_id=question_id, user_answer="B", is_correct=False, time_spent_seconds=3)
+    db = _SubmissionSession(learning_session, existing, question)
+    request = {"session_id": session_id, "question_id": question_id, "user_answer": "B", "time_spent_seconds": 3}
+    request[field] = value
+
+    with pytest.raises(HTTPException, match="作答事件与原请求不一致") as error:
+        await learning_service.submit_answer(db, user_id=user_id, answer_id=answer_id, **request)
+    assert error.value.status_code == 409

@@ -24,6 +24,27 @@ from app.models.content import Question
 from app.models.learning import LearningSession, Answer
 from app.services.wrong_book_service import WrongBookService
 
+def _build_answer_result(answer: Answer, question: Question) -> dict:
+    knowledge_point = question.knowledge_node_rel.title if question.knowledge_node_rel is not None else None
+    tutor_prompt = None
+    if not answer.is_correct:
+        topic = knowledge_point or "这道题的核心知识点"
+        tutor_prompt = (
+            f"我在“{topic}”这道题上回答错了。"
+            f"我原来的思路是“{answer.user_answer.strip()}”。"
+            "请不要直接告诉我完整答案，先用一个问题引导我找出题目条件与运算含义的关系。"
+        )
+    return {
+        "id": answer.id,
+        "is_correct": answer.is_correct,
+        "correct_answer": question.correct_answer,
+        "explanation": question.explanation,
+        "knowledge_point": knowledge_point,
+        "tutor_prompt": tutor_prompt,
+        "time_spent_seconds": answer.time_spent_seconds,
+    }
+
+
 
 async def create_session(
     db: AsyncSession,
@@ -133,6 +154,9 @@ async def submit_answer(
         )
 
     # 获取题目信息
+    existing_result = await db.execute(select(Answer).where(Answer.id == answer_id))
+    existing_answer = existing_result.scalar_one_or_none()
+
     stmt = (
         select(Question)
         .options(joinedload(Question.knowledge_node_rel))
@@ -146,6 +170,19 @@ async def submit_answer(
             status_code=status.HTTP_404_NOT_FOUND,
             detail={"code": "BIZ_001", "message": "题目不存在"},
         )
+
+    if existing_answer is not None:
+        if (
+            existing_answer.session_id != session_id
+            or existing_answer.question_id != question_id
+            or existing_answer.user_answer != user_answer
+            or existing_answer.time_spent_seconds != time_spent_seconds
+        ):
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail={"code": "BIZ_001", "message": "作答事件与原请求不一致"},
+            )
+        return _build_answer_result(existing_answer, question)
 
     # 判断正误（去除空白并不区分大小写比较）
     is_correct = user_answer.strip().upper() == question.correct_answer.strip().upper()
@@ -161,6 +198,7 @@ async def submit_answer(
         answered_at=datetime.now(timezone.utc),
     )
     db.add(answer)
+    await db.flush()
 
     # 答题记录和错题收录使用同一个数据库事务，任一失败都会统一回滚。
     if not is_correct:
@@ -180,29 +218,7 @@ async def submit_answer(
 
     await db.flush()
 
-    knowledge_point = (
-        question.knowledge_node_rel.title
-        if question.knowledge_node_rel is not None
-        else None
-    )
-    tutor_prompt = None
-    if not is_correct:
-        topic = knowledge_point or "这道题的核心知识点"
-        tutor_prompt = (
-            f"我在“{topic}”这道题上回答错了。"
-            f"我原来的思路是“{user_answer.strip()}”。"
-            "请不要直接告诉我完整答案，先用一个问题引导我找出题目条件与运算含义的关系。"
-        )
-
-    return {
-        "id": answer.id,
-        "is_correct": answer.is_correct,
-        "correct_answer": question.correct_answer,
-        "explanation": question.explanation,
-        "knowledge_point": knowledge_point,
-        "tutor_prompt": tutor_prompt,
-        "time_spent_seconds": answer.time_spent_seconds,
-    }
+    return _build_answer_result(answer, question)
 
 
 async def complete_session(

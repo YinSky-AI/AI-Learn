@@ -34,6 +34,22 @@ class _FakeSession:
         self.flushed = True
 
 
+class _SubmissionSession:
+    def __init__(self, *records):
+        self.records = list(records)
+        self.added = []
+        self.flush_count = 0
+
+    async def execute(self, _statement):
+        return _ScalarResult(self.records.pop(0))
+
+    def add(self, value):
+        self.added.append(value)
+
+    async def flush(self):
+        self.flush_count += 1
+
+
 @pytest.mark.asyncio
 async def test_record_wrong_answer_uses_event_deduplication_then_upsert():
     from app.services.wrong_book_service import WrongBookService
@@ -85,3 +101,56 @@ async def test_record_wrong_answer_does_not_increment_for_retried_answer_event()
     assert len(session.statements) == 1
     assert session.added == []
     assert session.flushed is False
+
+
+@pytest.mark.asyncio
+async def test_new_answer_is_flushed_before_wrong_event_is_written(monkeypatch):
+    from app.services import learning_service
+    from app.services.wrong_book_service import WrongBookService
+
+    user_id, session_id, question_id, answer_id = (uuid.uuid4() for _ in range(4))
+    learning_session = SimpleNamespace(user_id=user_id, status="in_progress", total_questions=0, correct_count=0)
+    question = SimpleNamespace(
+        question_type="CHOICE", correct_answer="A", explanation="解析", id=question_id,
+        knowledge_node_rel=SimpleNamespace(title="知识点", subject_code="数学"),
+    )
+    db = _SubmissionSession(learning_session, None, question)
+
+    async def verify_flush_before_event(self, **_kwargs):
+        assert db.flush_count >= 1
+        return None
+
+    monkeypatch.setattr(WrongBookService, "record_wrong_answer", verify_flush_before_event)
+    result = await learning_service.submit_answer(
+        db, session_id, user_id, question_id, answer_id, "B", 3
+    )
+
+    assert result["id"] == answer_id
+    assert learning_session.total_questions == 1
+
+
+@pytest.mark.asyncio
+async def test_retried_answer_id_returns_existing_result_without_new_side_effects(monkeypatch):
+    from app.models.learning import Answer
+    from app.services import learning_service
+    from app.services.wrong_book_service import WrongBookService
+
+    user_id, session_id, question_id, answer_id = (uuid.uuid4() for _ in range(4))
+    learning_session = SimpleNamespace(user_id=user_id, status="in_progress", total_questions=1, correct_count=0)
+    question = SimpleNamespace(
+        question_type="CHOICE", correct_answer="A", explanation="解析", id=question_id,
+        knowledge_node_rel=SimpleNamespace(title="知识点", subject_code="数学"),
+    )
+    existing = Answer(id=answer_id, session_id=session_id, question_id=question_id, user_answer="B", is_correct=False, time_spent_seconds=3)
+    db = _SubmissionSession(learning_session, existing, question)
+
+    async def should_not_record(self, **_kwargs):
+        raise AssertionError("重试不应再次收录错题")
+
+    monkeypatch.setattr(WrongBookService, "record_wrong_answer", should_not_record)
+    result = await learning_service.submit_answer(db, session_id, user_id, question_id, answer_id, "B", 3)
+
+    assert result["id"] == answer_id
+    assert db.added == []
+    assert db.flush_count == 0
+    assert learning_session.total_questions == 1

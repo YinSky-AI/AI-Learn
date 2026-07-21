@@ -278,7 +278,7 @@ async def test_wrong_answer_returns_explanation_knowledge_point_and_tutor_prompt
         explanation="平均分成三份，就是把整体看作三等份。",
         knowledge_node_rel=knowledge_node,
     )
-    fake_db = _FakeSession(learning_session, question)
+    fake_db = _FakeSession(learning_session, None, question)
 
     async def override_get_db():
         yield fake_db

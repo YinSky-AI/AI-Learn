@@ -13,7 +13,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Compass, BookOpen, NotebookPen, User } from "lucide-react";
+import { Home, Compass, BookOpen, NotebookPen, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
@@ -23,7 +23,7 @@ const MOBILE_NAV_ITEMS = [
   { label: "探索", href: "/explore", icon: Compass },
   { label: "学习", href: "/learning", icon: BookOpen },
   { label: "错题", href: "/wrong-book", icon: NotebookPen },
-  { label: "我的", href: "/profile", icon: User },
+  { label: "报告", href: "/report", icon: TrendingUp },
 ];
 
 /**
@@ -46,9 +46,10 @@ export function MobileNav() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex flex-col items-center gap-0.5 px-3 py-1.5 text-xs transition-colors",
+              "flex min-h-[44px] flex-col items-center justify-center gap-0.5 rounded-lg px-3 py-1.5 text-xs transition-colors active:bg-blue-50",
               isActive ? "text-brand-blue" : "text-gray-400",
             )}
+            aria-current={isActive ? "page" : undefined}
           >
             <div className="relative">
               <Icon className={cn("h-5 w-5", isActive && "text-brand-blue")} />

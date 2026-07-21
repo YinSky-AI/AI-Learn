@@ -1,6 +1,6 @@
 export interface QuizQuestionPayload {
   id: string;
-  question_type: "CHOICE" | "MULTIPLE_CHOICE" | "FILL_BLANK" | string;
+  question_type: string;
   question_body: string;
   options?: Array<{ key: string; value: string }>;
   correct_answer: string;
@@ -23,10 +23,14 @@ export interface MappedQuizQuestion {
 }
 
 /** Converts both content API difficulty field spellings into the quiz UI shape. */
-export function mapQuizQuestion(payload: QuizQuestionPayload, subject?: string): MappedQuizQuestion {
+export function mapQuizQuestion(payload: QuizQuestionPayload, subject?: string): MappedQuizQuestion | null {
+  if (payload.question_type !== "CHOICE" && payload.question_type !== "MULTIPLE_CHOICE" && payload.question_type !== "FILL_BLANK") {
+    return null;
+  }
+
   return {
     id: String(payload.id),
-    type: payload.question_type as MappedQuizQuestion["type"],
+    type: payload.question_type,
     body: payload.question_body,
     options: payload.options,
     correctAnswer: payload.correct_answer,

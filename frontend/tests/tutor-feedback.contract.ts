@@ -33,8 +33,12 @@ const mappedQuestion = mapQuizQuestion({
   difficulty_level: "intermediate",
   knowledge_points: ["加法"],
 });
-if (mappedQuestion.difficulty !== "intermediate" || mappedQuestion.knowledgePoints?.[0] !== "加法") {
+if (!mappedQuestion || mappedQuestion.difficulty !== "intermediate" || mappedQuestion.knowledgePoints?.[0] !== "加法") {
   throw new Error("题目映射应兼容 difficulty_level 与 knowledge_points");
+}
+
+if (mapQuizQuestion({ id: "unknown", question_type: "ESSAY", question_body: "说明原因", correct_answer: "" }) !== null) {
+  throw new Error("未知题型不得被强制伪装为可作答题型");
 }
 
 const tutorRequest: ChatRequest = {

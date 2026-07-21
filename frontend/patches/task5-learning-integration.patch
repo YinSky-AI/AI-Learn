@@ -1,39 +1,42 @@
 # Applies after the existing, uncommitted quiz-learning integration is present.
 # Dependency: frontend/src/components/quiz/quiz-practice.tsx must expose the
-# extended QuizQuestion fields used by AnswerFeedback and TutorChat.
+# extended QuizQuestion fields used by AnswerFeedback and TutorChat. This patch
+# is intentionally limited to the mapper import and its two call sites.
 diff --git a/frontend/src/app/(main)/learning/[id]/page.tsx b/frontend/src/app/(main)/learning/[id]/page.tsx
+index 0000000..0000000 100644
 --- a/frontend/src/app/(main)/learning/[id]/page.tsx
 +++ b/frontend/src/app/(main)/learning/[id]/page.tsx
-@@
+@@ -51,2 +51,3 @@
  import QuizPractice from "@/components/quiz/quiz-practice";
 +import { mapQuizQuestion, type QuizQuestionPayload } from "@/components/learning/quiz-question-mapper";
  import apiClient from "@/lib/api-client";
-@@
--            Array<{
--              id: string;
--              question_type: string;
--              question_body: string;
--              options?: Array<{ key: string; value: string }>;
--              correct_answer: string;
--              explanation?: string;
--            }>
-+            QuizQuestionPayload[]
-@@
+@@ -145,11 +145,6 @@
+           if (!cancelled) {
 -            const mapped: QuizQuestion[] = (data || []).map((q) => ({
--              id: String(q.id), type: q.question_type as QuizQuestion["type"], body: q.question_body,
--              options: q.options, correctAnswer: q.correct_answer, explanation: q.explanation,
+-              id: String(q.id),
+-              type: q.question_type as QuizQuestion["type"],
+-              body: q.question_body,
+-              options: q.options,
+-              correctAnswer: q.correct_answer,
+-              explanation: q.explanation,
 -            }));
-+            const mapped: QuizQuestion[] = (data || []).map((q) => mapQuizQuestion(q, course?.subject));
-@@
--            items: Array<{
--              id: string; question_type: string; question_body: string;
--              options?: Array<{ key: string; value: string }>;
--              correct_answer: string; explanation?: string;
--            }>;
-+            items: QuizQuestionPayload[];
-@@
++            const mapped: QuizQuestion[] = (data || [])
++              .map((q) => mapQuizQuestion(q as QuizQuestionPayload, course?.subject))
++              .filter((q): q is QuizQuestion => q !== null);
+             setQuizQuestions(mapped.length > 0 ? mapped : getMockQuizQuestions(course?.subject || ""));
+           }
+@@ -173,11 +173,6 @@
+           if (!cancelled) {
 -            const mapped: QuizQuestion[] = (data?.items || []).map((q) => ({
--              id: String(q.id), type: q.question_type as QuizQuestion["type"], body: q.question_body,
--              options: q.options, correctAnswer: q.correct_answer, explanation: q.explanation,
+-              id: String(q.id),
+-              type: q.question_type as QuizQuestion["type"],
+-              body: q.question_body,
+-              options: q.options,
+-              correctAnswer: q.correct_answer,
+-              explanation: q.explanation,
 -            }));
-+            const mapped: QuizQuestion[] = (data?.items || []).map((q) => mapQuizQuestion(q, course?.subject));
++            const mapped: QuizQuestion[] = (data?.items || [])
++              .map((q) => mapQuizQuestion(q as QuizQuestionPayload, course?.subject))
++              .filter((q): q is QuizQuestion => q !== null);
+             setQuizQuestions(mapped.length > 0 ? mapped : getMockQuizQuestions(course?.subject || ""));
+           }

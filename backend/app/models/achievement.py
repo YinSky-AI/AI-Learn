@@ -13,7 +13,7 @@
 成就类型示例：首次学习（FIRST_LEARN）、连续学习 7 天（STREAK_7）等。
 """
 
-from sqlalchemy import Column, String, Text, DateTime, Index, ForeignKey
+from sqlalchemy import Column, String, Text, DateTime, Index, ForeignKey, UniqueConstraint
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 
 from app.core.database import BaseModel
@@ -84,6 +84,7 @@ class UserAchievement(BaseModel, Base):
     __table_args__ = (
         Index("idx_user_achievement_user", "user_id"),
         Index("idx_user_achievement_achieved", "achievement_id"),
+        UniqueConstraint("user_id", "achievement_id", name="uq_user_achievement_user_achievement"),
     )
 
     def __repr__(self) -> str:

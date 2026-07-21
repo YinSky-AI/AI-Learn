@@ -91,6 +91,7 @@ class AnswerResult(BaseModel):
     knowledge_point: Optional[str] = None
     tutor_prompt: Optional[str] = None
     time_spent_seconds: int
+    gamification: Optional[dict] = None
 
     model_config = {"from_attributes": True}
 

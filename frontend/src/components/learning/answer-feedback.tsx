@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getDifficultyMeta } from "./answer-feedback-meta";
+import { RewardSummary, type GamificationReward } from "@/components/gamification/reward-summary";
 
 export interface FeedbackQuestion {
   id: string;
@@ -20,9 +21,10 @@ interface AnswerFeedbackProps {
   userAnswer: string;
   onExplain: () => void;
   onNext: () => void;
+  gamification?: GamificationReward | null;
 }
 
-export function AnswerFeedback({ isCorrect, question, userAnswer, onExplain, onNext }: AnswerFeedbackProps) {
+export function AnswerFeedback({ isCorrect, question, userAnswer, onExplain, onNext, gamification }: AnswerFeedbackProps) {
   const difficulty = getDifficultyMeta(question.difficulty);
 
   return (
@@ -56,6 +58,8 @@ export function AnswerFeedback({ isCorrect, question, userAnswer, onExplain, onN
           <p className="mt-1 whitespace-pre-wrap text-sm leading-6 text-gray-700">{question.explanation}</p>
         </div>
       )}
+
+      <RewardSummary reward={gamification} />
 
       <div className="mt-3 flex flex-wrap items-center gap-2">
         {question.knowledgePoints?.map((point) => <Badge key={point} variant="subject" className="bg-blue-100 text-blue-800">{point}</Badge>)}

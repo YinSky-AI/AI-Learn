@@ -22,8 +22,18 @@ from app.models.user import User
 from app.schemas.common import ApiResponse, success_response
 from app.schemas.user import UserResponse, UserUpdate, UserProfileResponse, UserStatsResponse
 from app.services import user_service
+from app.services.gamification_service import get_gamification_summary
 
 router = APIRouter()
+
+
+@router.get("/me/gamification", response_model=ApiResponse)
+async def get_my_gamification(
+    user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    """获取当前用户的服务端奖励、等级、连续学习和成就状态。"""
+    return success_response(data=await get_gamification_summary(db, user), message="获取游戏化数据成功")
 
 
 @router.get("/me", response_model=ApiResponse[UserResponse])

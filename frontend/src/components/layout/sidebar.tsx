@@ -21,6 +21,8 @@ import {
   BookOpen,
   NotebookPen,
   TrendingUp,
+  Trophy,
+  Medal,
   User,
   GraduationCap,
   ChevronLeft,
@@ -42,6 +44,8 @@ const NAV_ITEMS = [
   { label: "探索", href: "/explore", icon: Compass },
   { label: "学习", href: "/learning", icon: BookOpen },
   { label: "错题本", href: "/wrong-book", icon: NotebookPen },
+  { label: "每日挑战", href: "/challenge", icon: Trophy },
+  { label: "排行榜", href: "/leaderboard", icon: Medal },
   { label: "学习报告", href: "/report", icon: TrendingUp },
   { label: "我的", href: "/profile", icon: User },
 ];

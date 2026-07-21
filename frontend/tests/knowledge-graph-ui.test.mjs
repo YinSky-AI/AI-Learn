@@ -33,3 +33,9 @@ test("API types retain nullable mastery for never-learned nodes", () => {
   assert.match(types, /mastery: number \| null/);
   assert.match(types, /practice_href\?: string/);
 });
+
+test("learning report provides a discoverable knowledge graph entry", () => {
+  const report = read("src/app/(main)/report/page.tsx");
+  assert.match(report, /href="\/knowledge-graph"/);
+  assert.match(report, />知识图谱</);
+});

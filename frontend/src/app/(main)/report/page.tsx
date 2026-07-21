@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { AlertCircle, Award, BarChart3, BookOpen, Clock3, Target, TrendingUp } from "lucide-react";
+import { AlertCircle, Award, BarChart3, BookOpen, Clock3, Network, Target, TrendingUp } from "lucide-react";
 import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -66,8 +66,11 @@ export default function LearningReportPage() {
             <h1 className="flex items-center gap-2 text-2xl font-bold text-gray-900"><TrendingUp className="h-7 w-7 text-brand-blue" />学习报告</h1>
             <p className="mt-1 text-sm text-brand-gray">用每一次答题记录，发现自己的进步与下一步重点。</p>
           </div>
-          <div className="flex rounded-lg border border-gray-200 bg-white p-1" role="tablist" aria-label="报告时间范围">
-            {PERIODS.map((period) => <Button key={period} size="sm" variant={days === period ? "default" : "ghost"} onClick={() => setDays(period)}>{period} 天</Button>)}
+          <div className="flex flex-wrap items-center gap-2">
+            <Button asChild variant="outline" className="min-h-[44px]"><Link href="/knowledge-graph"><Network className="mr-2 h-4 w-4" />知识图谱</Link></Button>
+            <div className="flex rounded-lg border border-gray-200 bg-white p-1" role="tablist" aria-label="报告时间范围">
+              {PERIODS.map((period) => <Button key={period} size="sm" variant={days === period ? "default" : "ghost"} onClick={() => setDays(period)}>{period} 天</Button>)}
+            </div>
           </div>
         </header>
 

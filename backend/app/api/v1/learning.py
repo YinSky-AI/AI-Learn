@@ -127,8 +127,8 @@ async def complete_session(
         HTTPException: 会话不存在或已结束时抛出相应错误
     """
     # 标记会话完成并结算统计数据
-    await learning_service.complete_session(db, session_id)
-    stats = await learning_service.get_session_stats(db, session_id)
+    await learning_service.complete_session(db, session_id, user_id=user_id)
+    stats = await learning_service.get_session_stats(db, session_id, user_id=user_id)
     return success_response(
         data=SessionStats(**stats),
         message="学习会话已完成",
@@ -155,7 +155,7 @@ async def get_session_stats(
         ApiResponse[SessionStats]: 会话统计详情
     """
     # 查询会话统计（若未完成则计算当前已用时间）
-    stats = await learning_service.get_session_stats(db, session_id)
+    stats = await learning_service.get_session_stats(db, session_id, user_id=user_id)
     return success_response(
         data=SessionStats(**stats),
         message="获取会话统计成功",

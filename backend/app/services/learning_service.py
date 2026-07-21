@@ -58,6 +58,7 @@ async def create_session(
 async def get_session_by_id(
     db: AsyncSession,
     session_id: uuid.UUID,
+    user_id: uuid.UUID,
 ) -> LearningSession:
     """
     根据 ID 获取学习会话
@@ -65,6 +66,7 @@ async def get_session_by_id(
     Args:
         db (AsyncSession): 异步数据库会话
         session_id (uuid.UUID): 学习会话 UUID
+        user_id (uuid.UUID): 当前认证用户 UUID
 
     Returns:
         LearningSession: 学习会话 ORM 对象
@@ -79,6 +81,11 @@ async def get_session_by_id(
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail={"code": "BIZ_001", "message": "学习会话不存在"},
+        )
+    if session.user_id != user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail={"code": "AUTH_004", "message": "无权访问该学习会话"},
         )
     return session
 
@@ -115,13 +122,7 @@ async def submit_answer(
         HTTPException: 会话不存在、已结束或题目不存在时抛出
     """
     # 获取会话并校验状态
-    session = await get_session_by_id(db, session_id)
-
-    if session.user_id != user_id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail={"code": "AUTH_004", "message": "无权提交该学习会话的答案"},
-        )
+    session = await get_session_by_id(db, session_id, user_id=user_id)
 
     if session.status != "in_progress":
         raise HTTPException(
@@ -194,6 +195,7 @@ async def submit_answer(
 async def complete_session(
     db: AsyncSession,
     session_id: uuid.UUID,
+    user_id: uuid.UUID,
 ) -> LearningSession:
     """
     完成学习会话
@@ -210,7 +212,7 @@ async def complete_session(
     Raises:
         HTTPException: 会话不存在或已结束时抛出
     """
-    session = await get_session_by_id(db, session_id)
+    session = await get_session_by_id(db, session_id, user_id=user_id)
 
     if session.status != "in_progress":
         raise HTTPException(
@@ -229,6 +231,7 @@ async def complete_session(
 async def get_session_stats(
     db: AsyncSession,
     session_id: uuid.UUID,
+    user_id: uuid.UUID,
 ) -> dict:
     """
     获取学习会话统计信息
@@ -242,7 +245,7 @@ async def get_session_stats(
     Returns:
         dict: 会话统计字典
     """
-    session = await get_session_by_id(db, session_id)
+    session = await get_session_by_id(db, session_id, user_id=user_id)
 
     total = session.total_questions or 0
     correct = session.correct_count or 0

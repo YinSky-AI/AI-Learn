@@ -42,6 +42,12 @@ async def _post(path: str, json: dict):
         return await client.post(path, json=json)
 
 
+async def _get(path: str):
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        return await client.get(path)
+
+
 @pytest.mark.asyncio
 async def test_tutor_harness_uses_four_socratic_roles_for_wrong_answer():
     harness = TutorHarness()
@@ -338,9 +344,76 @@ async def test_cross_user_answer_submission_is_rejected_without_question_leakage
 
     assert response.status_code == 403
     body = response.json()
-    assert body["message"] == "无权提交该学习会话的答案"
+    assert body["message"] == "无权访问该学习会话"
     assert "correct_answer" not in body
     assert "explanation" not in body
+    assert fake_db.added == []
+
+
+@pytest.mark.asyncio
+async def test_cross_user_session_stats_are_rejected_without_detail_leakage():
+    session_id = uuid.uuid4()
+    learning_session = LearningSession(
+        id=session_id,
+        user_id=uuid.uuid4(),
+        knowledge_node_id=uuid.uuid4(),
+        difficulty_level="DIFF_EASY",
+        status="in_progress",
+        correct_count=2,
+        total_questions=3,
+    )
+    fake_db = _FakeSession(learning_session)
+
+    async def override_get_db():
+        yield fake_db
+
+    async def override_user_id():
+        return uuid.uuid4()
+
+    app.dependency_overrides[get_db] = override_get_db
+    app.dependency_overrides[get_current_user_id] = override_user_id
+    try:
+        response = await _get(f"/api/v1/learning/sessions/{session_id}")
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 403
+    body = response.json()
+    assert body["message"] == "无权访问该学习会话"
+    assert "correct_count" not in body
+    assert "total_questions" not in body
+
+
+@pytest.mark.asyncio
+async def test_cross_user_complete_is_rejected_without_changing_session():
+    session_id = uuid.uuid4()
+    learning_session = LearningSession(
+        id=session_id,
+        user_id=uuid.uuid4(),
+        knowledge_node_id=uuid.uuid4(),
+        difficulty_level="DIFF_EASY",
+        status="in_progress",
+        correct_count=0,
+        total_questions=1,
+    )
+    fake_db = _FakeSession(learning_session)
+
+    async def override_get_db():
+        yield fake_db
+
+    async def override_user_id():
+        return uuid.uuid4()
+
+    app.dependency_overrides[get_db] = override_get_db
+    app.dependency_overrides[get_current_user_id] = override_user_id
+    try:
+        response = await _post(f"/api/v1/learning/sessions/{session_id}/complete", json={})
+    finally:
+        app.dependency_overrides.clear()
+
+    assert response.status_code == 403
+    assert response.json()["message"] == "无权访问该学习会话"
+    assert learning_session.status == "in_progress"
     assert fake_db.added == []
 
 

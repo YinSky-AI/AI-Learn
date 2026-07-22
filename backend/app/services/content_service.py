@@ -19,44 +19,24 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import AI_LearnAsyncSessionLocal
 from app.models.content import AgeGroup, Subject, KnowledgeNode, Question
+from app.domain.learning_dimensions import (
+    AGE_GROUP_TO_CATALOG,
+    DIFFICULTY_FROM_CATALOG,
+    DIFFICULTY_TO_CATALOG,
+    SUBJECT_TO_CATALOG,
+    normalize_age_group,
+    normalize_difficulty,
+    normalize_subject,
+)
 
 # ---------------------------------------------------------------------------
 # ai_learn ↔ learning_platform 字段映射
 # ---------------------------------------------------------------------------
 
-_SUBJECT_CODE_TO_AI = {
-    "SUBJ_MATH": "math",
-    "SUBJ_CHINESE": "chinese",
-    "SUBJ_ENGLISH": "english",
-    "SUBJ_PHYSICS": "physics",
-    "SUBJ_CHEMISTRY": "chemistry",
-    "SUBJ_BIOLOGY": "biology",
-    "SUBJ_HISTORY": "history",
-    "SUBJ_GEOGRAPHY": "geography",
-    "SUBJ_POLITICS": "politics",
-    "SUBJ_SCIENCE": "science",
-    "SUBJ_ART": "art",
-    "SUBJ_PROGRAMMING": "programming",
-}
-
-_AGE_GROUP_CODE_TO_AI = {
-    "AGE_06_08": "6-8",
-    "AGE_09_11": "9-12",
-    "AGE_12_14": "13-15",
-    "AGE_15_18": "16-18",
-}
-
-_DIFFICULTY_TO_AI = {
-    "DIFF_EASY": "beginner",
-    "DIFF_MEDIUM": "intermediate",
-    "DIFF_HARD": "advanced",
-}
-
-_DIFFICULTY_FROM_AI = {
-    "beginner": "DIFF_EASY",
-    "intermediate": "DIFF_MEDIUM",
-    "advanced": "DIFF_HARD",
-}
+_SUBJECT_CODE_TO_AI = SUBJECT_TO_CATALOG
+_AGE_GROUP_CODE_TO_AI = AGE_GROUP_TO_CATALOG
+_DIFFICULTY_TO_AI = DIFFICULTY_TO_CATALOG
+_DIFFICULTY_FROM_AI = DIFFICULTY_FROM_CATALOG
 
 # ai_learn 的 type 有多种写法，统一映射到 learning_platform 的题型
 # 判断题、简答题等 learning_platform 不支持，直接跳过
@@ -157,15 +137,21 @@ async def _fetch_questions_from_ai_learn(
         conditions = ["deleted_at IS NULL"]
         params: dict = {}
 
-        if subject_code and subject_code in _SUBJECT_CODE_TO_AI:
+        raw_subject, raw_age, raw_difficulty = subject_code, age_group_code, difficulty_level
+        subject_code = normalize_subject(subject_code)
+        age_group_code = normalize_age_group(age_group_code)
+        difficulty_level = normalize_difficulty(difficulty_level)
+        if (raw_subject is not None and subject_code is None) or (raw_age is not None and age_group_code is None) or (raw_difficulty is not None and difficulty_level is None):
+            return []
+        if subject_code:
             conditions.append("subject = :subject")
             params["subject"] = _SUBJECT_CODE_TO_AI[subject_code]
 
-        if age_group_code and age_group_code in _AGE_GROUP_CODE_TO_AI:
+        if age_group_code:
             conditions.append("age_group = :age_group")
             params["age_group"] = _AGE_GROUP_CODE_TO_AI[age_group_code]
 
-        if difficulty_level and difficulty_level in _DIFFICULTY_TO_AI:
+        if difficulty_level:
             conditions.append("difficulty = :difficulty")
             params["difficulty"] = _DIFFICULTY_TO_AI[difficulty_level]
 
@@ -229,15 +215,21 @@ async def _count_questions_in_ai_learn(
         conditions = ["deleted_at IS NULL"]
         params: dict = {}
 
-        if subject_code and subject_code in _SUBJECT_CODE_TO_AI:
+        raw_subject, raw_age, raw_difficulty = subject_code, age_group_code, difficulty_level
+        subject_code = normalize_subject(subject_code)
+        age_group_code = normalize_age_group(age_group_code)
+        difficulty_level = normalize_difficulty(difficulty_level)
+        if (raw_subject is not None and subject_code is None) or (raw_age is not None and age_group_code is None) or (raw_difficulty is not None and difficulty_level is None):
+            return 0
+        if subject_code:
             conditions.append("subject = :subject")
             params["subject"] = _SUBJECT_CODE_TO_AI[subject_code]
 
-        if age_group_code and age_group_code in _AGE_GROUP_CODE_TO_AI:
+        if age_group_code:
             conditions.append("age_group = :age_group")
             params["age_group"] = _AGE_GROUP_CODE_TO_AI[age_group_code]
 
-        if difficulty_level and difficulty_level in _DIFFICULTY_TO_AI:
+        if difficulty_level:
             conditions.append("difficulty = :difficulty")
             params["difficulty"] = _DIFFICULTY_TO_AI[difficulty_level]
 
@@ -467,8 +459,13 @@ async def list_questions_by_node(
     node = await get_knowledge_node_by_id(db, knowledge_node_id)
     if node is None:
         return []
-
-    effective_difficulty = difficulty_level or node.difficulty_level
+    if subject_code is not None and normalize_subject(subject_code) != node.subject_code:
+        return []
+    if age_group_code is not None and normalize_age_group(age_group_code) != node.age_group_code:
+        return []
+    effective_difficulty = normalize_difficulty(difficulty_level) if difficulty_level is not None else node.difficulty_level
+    if difficulty_level is not None and effective_difficulty is None:
+        return []
 
     # 1. 普通内容浏览优先查 ai_learn；交互式答题必须使用主业务库中的题目，
     # 因为学习会话、判题、错题本和行为报告都以主库 questions.id 为外键。
@@ -537,6 +534,12 @@ async def list_all_questions(
         List[dict]: 题目 dict 列表，可直接被 QuestionResponse.model_validate
     """
     # 1. 优先查 ai_learn
+    raw_subject, raw_age, raw_difficulty = subject_code, age_group_code, difficulty_level
+    subject_code = normalize_subject(subject_code)
+    age_group_code = normalize_age_group(age_group_code)
+    difficulty_level = normalize_difficulty(difficulty_level)
+    if (raw_subject is not None and subject_code is None) or (raw_age is not None and age_group_code is None) or (raw_difficulty is not None and difficulty_level is None):
+        return []
     items = await _fetch_questions_from_ai_learn(
         subject_code=subject_code,
         age_group_code=age_group_code,
@@ -599,6 +602,12 @@ async def count_all_questions(
         int: 总数
     """
     # 1. 优先统计 ai_learn
+    raw_subject, raw_age, raw_difficulty = subject_code, age_group_code, difficulty_level
+    subject_code = normalize_subject(subject_code)
+    age_group_code = normalize_age_group(age_group_code)
+    difficulty_level = normalize_difficulty(difficulty_level)
+    if (raw_subject is not None and subject_code is None) or (raw_age is not None and age_group_code is None) or (raw_difficulty is not None and difficulty_level is None):
+        return 0
     ai_count = await _count_questions_in_ai_learn(
         subject_code=subject_code,
         age_group_code=age_group_code,

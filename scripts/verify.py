@@ -25,7 +25,20 @@ def build_steps(mode: str) -> list[Step]:
     """返回确定、有序且遇错即停的验证步骤。"""
 
     steps = [
-        Step("交付脚本单元测试", (sys.executable, "-m", "unittest", "scripts.tests.test_verify_delivery", "-v")),
+        Step(
+            "交付脚本单元测试",
+            (
+                sys.executable,
+                "-m",
+                "unittest",
+                "discover",
+                "-s",
+                "scripts/tests",
+                "-p",
+                "test_*.py",
+                "-v",
+            ),
+        ),
         Step("前端测试", ("npm", "test"), ROOT / "frontend"),
         Step("前端类型检查", ("npm", "run", "typecheck"), ROOT / "frontend"),
         Step("前端生产构建", ("npm", "run", "build"), ROOT / "frontend"),
@@ -38,6 +51,7 @@ def build_steps(mode: str) -> list[Step]:
         *steps,
         Step("后端镜像构建", ("docker", "compose", "build", "backend")),
         Step("隔离后端测试", (sys.executable, "scripts/run_backend_tests.py")),
+        Step("加密备份与隔离恢复演练", (sys.executable, "scripts/run_backup_restore_drill.py")),
         Step("Compose 构建与启动", ("docker", "compose", "up", "-d", "--build", "--wait")),
         Step("Docker smoke", (sys.executable, "scripts/verify_delivery.py")),
         Step("真实浏览器 E2E", ("npm", "run", "e2e"), ROOT / "frontend"),

@@ -28,11 +28,13 @@ class DeliveryVerificationTests(unittest.TestCase):
                 "前端生产构建",
                 "后端镜像构建",
                 "隔离后端测试",
+                "加密备份与隔离恢复演练",
                 "Compose 构建与启动",
                 "Docker smoke",
                 "真实浏览器 E2E",
             ],
         )
+        self.assertIn("discover", build_steps("fast")[0].command)
 
     def test_subprocesses_are_forced_to_emit_utf8_diagnostics(self):
         environment = build_subprocess_env({"PATH": "example"})

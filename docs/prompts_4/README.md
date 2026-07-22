@@ -26,7 +26,7 @@
 - [ ] [01 题目访问隔离](P0/01-question-access.md)
 - [ ] [02 访问控制](P0/02-access-control.md)
 - [ ] [03 管理变更保护](P0/03-administrative-change.md)
-- [ ] [04 备份与恢复](P0/04-backup-and-recovery.md)
+- [x] [04 备份与恢复](P0/04-backup-and-recovery.md)
 - [ ] [05 答题提交事务](P0/05-answer-submission-transaction.md)
 - [ ] [06 学习维度与题库目录](P0/06-learning-dimensions-and-question-catalog.md)
 - [ ] [07 Schema 迁移](P0/07-schema-migration.md)

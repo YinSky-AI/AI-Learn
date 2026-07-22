@@ -53,6 +53,33 @@ services:
     networks:
       - ai-learn-net
 
+  # 独立 tmpfs 恢复目标；只允许 P0-04/P0-07 隔离演练。
+  postgres-restore:
+    image: postgres:16-alpine
+    profiles: ["delivery-test"]
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: learning_platform_restore
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d learning_platform_restore"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    networks:
+      - ai-learn-net
+
+  # 一次性运维 Adapter；不随业务服务启动，不包含凭据或持久卷。
+  backup-tool:
+    build:
+      context: ./ops/backup
+      dockerfile: Dockerfile
+    profiles: ["delivery-test"]
+    networks:
+      - ai-learn-net
+
   # ---------------------------------------------------------------------------
   # Redis 7 - 缓存 & 会话存储
   # ---------------------------------------------------------------------------

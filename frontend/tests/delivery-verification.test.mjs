@@ -43,5 +43,7 @@ test("repository exposes the same blocking verification entry to local and CI ad
   assert.match(makefile, /^docker-smoke:/m);
   assert.match(makefile, /^test-backend-isolated:/m);
   assert.match(workflow, /python scripts\/verify\.py full/);
+  assert.match(workflow, /PLAYWRIGHT_BASE_URL:\s*http:\/\/localhost\s*$/m);
+  assert.doesNotMatch(workflow, /PLAYWRIGHT_BASE_URL:\s*http:\/\/localhost:3000/);
   assert.doesNotMatch(workflow, /continue-on-error:\s*true/);
 });

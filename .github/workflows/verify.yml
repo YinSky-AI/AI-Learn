@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 45
     env:
       DELIVERY_TEST_ENV: ci
-      PLAYWRIGHT_BASE_URL: http://localhost:3000
+      PLAYWRIGHT_BASE_URL: http://localhost
       API_BASE_URL: http://localhost:8000
     steps:
       - uses: actions/checkout@v4
@@ -45,13 +45,16 @@ jobs:
       - name: Run the shared delivery gate
         run: python scripts/verify.py full
 
-      - name: Upload browser failure evidence
+      - name: Upload delivery evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-evidence
+          name: delivery-evidence
           if-no-files-found: ignore
           retention-days: 7
           path: |
             test/acceptance/P0-08/artifacts
             test/acceptance/P0-08/playwright-report
+            test/acceptance/P0-04/backups
+            test/acceptance/P0-04/drill-report.json
+            test/acceptance/P0-04/logs

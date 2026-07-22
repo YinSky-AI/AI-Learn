@@ -1,4 +1,4 @@
-.PHONY: help build up down logs test migrate seed fmt lint test-delivery-scripts test-frontend typecheck-frontend build-frontend test-backend-isolated docker-smoke e2e verify-fast verify-ci
+.PHONY: help build up down logs test migrate seed fmt lint test-delivery-scripts test-frontend typecheck-frontend build-frontend test-backend-isolated backup-safety-tests backup-drill docker-smoke e2e verify-fast verify-ci
 
 PYTHON ?= python
 COMPOSE ?= docker compose
@@ -28,7 +28,7 @@ test: ## 运行后端测试（需要先启动服务）
 	$(COMPOSE) exec backend pytest -v
 
 test-delivery-scripts: ## 运行交付验证脚本单元测试
-	$(PYTHON) -m unittest scripts.tests.test_verify_delivery -v
+	$(PYTHON) -m unittest discover -s scripts/tests -p "test_*.py" -v
 
 test-frontend: ## 运行前端正式测试入口
 	cd frontend && npm test
@@ -42,6 +42,12 @@ build-frontend: ## 构建前端生产制品
 test-backend-isolated: ## 在无持久卷的可丢弃 PostgreSQL 中运行后端测试
 	$(COMPOSE) build backend
 	$(PYTHON) scripts/run_backend_tests.py
+
+backup-safety-tests: ## 运行备份目标、校验、加密清单和保留策略安全测试
+	$(PYTHON) -m unittest scripts.tests.test_backup_recovery -v
+
+backup-drill: ## 在两个 tmpfs PostgreSQL 容器中真实执行加密备份与恢复
+	$(PYTHON) scripts/run_backup_restore_drill.py
 
 docker-smoke: ## 验证 Compose 服务、HTTP 健康端点与近期日志
 	$(PYTHON) scripts/verify_delivery.py

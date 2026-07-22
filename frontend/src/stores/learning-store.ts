@@ -97,6 +97,7 @@ interface LearningState {
   isLoading: boolean;
   /** 是否 AI 正在回复 */
   isAIResponding: boolean;
+  tutorStatus: "idle" | "streaming" | "ready" | "unavailable";
   /** 总页数 */
   totalPages: number;
   /** 当前页 */
@@ -158,6 +159,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   chatMessages: [],
   isLoading: false,
   isAIResponding: false,
+  tutorStatus: "idle",
   totalPages: 1,
   currentPage: 1,
   quizQuestions: [],
@@ -419,6 +421,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     set((state) => ({
       chatMessages: [...state.chatMessages, userMessage],
       isAIResponding: true,
+      tutorStatus: "streaming",
     }));
 
     // 创建一个空的 AI 消息占位，用于实时更新流式内容
@@ -491,6 +494,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
             msg.id === aiMessageId ? { ...msg, content: fullContent } : msg
           ),
           isAIResponding: false,
+          tutorStatus: "ready",
         }));
         const currentState = get();
         if (currentState.currentCourse) {
@@ -562,26 +566,18 @@ export const useLearningStore = create<LearningState>((set, get) => ({
         saveLocalChatHistory(currentState.currentCourse.id, currentState.chatMessages);
       }
 
-      set({ isAIResponding: false });
+      set({ isAIResponding: false, tutorStatus: fullContent ? "ready" : "unavailable" });
     } catch (error) {
-      console.error("AI 对话失败，使用 fallback 回复:", error);
-
-      // fallback 模拟回复
-      const fallbackReplies = [
-        "抱歉，AI 服务暂时无法连接。你可以先尝试自行探索课程内容，稍后再来问我问题。",
-        "我目前处于离线模式，无法提供智能回复。请确保网络连接正常后重试。",
-        "连接出现问题，请检查后端服务是否正常运行。",
-      ];
-      const fallbackContent = fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
-
-      // 更新 AI 占位消息为 fallback 内容
+      console.warn("AI 对话不可用", error instanceof Error ? error.name : "unknown_error");
+      const unavailableContent = "AI 辅导服务暂时不可用，请稍后重试。";
       set((state) => ({
         chatMessages: state.chatMessages.map((msg) =>
           msg.id === aiMessageId
-            ? { ...msg, content: fallbackContent }
+            ? { ...msg, content: unavailableContent }
             : msg
         ),
         isAIResponding: false,
+        tutorStatus: "unavailable",
       }));
 
       // 保存到 localStorage

@@ -40,7 +40,7 @@
 - [x] [12 运行诊断](P1/12-operational-diagnostics.md)
 - [x] [13 生成任务](P1/13-generation-job.md)
 - [x] [14 练习会话](P1/14-practice-session.md)
-- [ ] [15 导师对话](P1/15-tutor-conversation.md)
+- [x] [15 导师对话](P1/15-tutor-conversation.md)
 - [ ] [16 学习契约与旅程](P1/16-learning-contract-and-journey.md)
 - [ ] [17 复习调度](P1/17-review-scheduler.md)
 

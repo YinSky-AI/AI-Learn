@@ -5,7 +5,8 @@
 ## 当前入口
 
 - [`../agent.md`](../agent.md)：项目提示词体系的顶层入口。
-- [`prompts_3/`](prompts_3/)：当前学习平台重构与功能实现设计，包含两层 AI 出题、四角色辅导、错题本、游戏化、行为报告、知识图谱、PWA 和竞赛系统。
+- [`prompts_3/`](prompts_3/)：当前已实施功能的设计依据，包含两层 AI 出题、四角色辅导、错题本、游戏化、行为报告、知识图谱、PWA 和竞赛系统。
+- [`prompts_4/README.md`](prompts_4/README.md)：基于优化报告拆分的尚未实施优化待办包；提示词已编写，不代表功能已经实施。
 - [`reviews/project-optimization-summary.html`](reviews/project-optimization-summary.html)：合并后的架构、安全、交付、性能和产品优化报告。
 
 ## 产品与历史设计

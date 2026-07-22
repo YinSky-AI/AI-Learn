@@ -13,6 +13,7 @@
 
 import hmac
 import hashlib
+import json
 import secrets
 from pathlib import Path
 from typing import Optional
@@ -31,6 +32,7 @@ from app.services.admin_auth import (
     SESSION_COOKIE_NAME,
 )
 from app.services.admin_changes import AdminChangeService
+from app.services.admin_course_service import build_course_update, serialize_tags
 
 router = APIRouter(prefix="/admin", tags=["管理后台"])
 
@@ -876,7 +878,7 @@ async def course_create_api(
     except Exception:
         return JSONResponse(status_code=400, content={"success": False, "message": "无效的请求数据"})
 
-    import uuid, json
+    import uuid
 
     course_id = str(uuid.uuid4())
 
@@ -885,15 +887,7 @@ async def course_create_api(
         return JSONResponse(status_code=400, content={"success": False, "message": "缺少必填字段 title"})
 
     # 处理 tags：前端传逗号分隔字符串，数据库存 JSON 数组
-    tags_raw = body.get("tags")
-    tags_value = None
-    if tags_raw:
-        if isinstance(tags_raw, str):
-            tags_value = json.dumps([t.strip() for t in tags_raw.split(",") if t.strip()])
-        elif isinstance(tags_raw, list):
-            tags_value = json.dumps(tags_raw)
-        else:
-            tags_value = json.dumps([str(tags_raw)])
+    tags_value = serialize_tags(body.get("tags"))
 
     try:
         await db.execute(
@@ -957,33 +951,9 @@ async def course_update_api(
     except Exception:
         return JSONResponse(status_code=400, content={"success": False, "message": "无效的请求数据"})
 
-    allowed_fields = [
-        "title", "description", "subject", "difficulty", "age_group",
-        "duration", "image_url", "is_active", "sort_order", "slug",
-    ]
-    updates = []
-    params: dict = {"id": course_id}
+    updates, params = build_course_update({**body, "id": course_id})
 
-    # 动态构建允许字段的更新
-    for field in allowed_fields:
-        if field in body:
-            updates.append(f"{field} = :{field}")
-            # slug 空字符串转 None，避免唯一约束冲突
-            params[field] = body[field] if body[field] != "" else None
-
-    # tags 需要特殊处理（字符串 -> JSON 数组）
-    if "tags" in body:
-        tags_raw = body["tags"]
-        if tags_raw:
-            if isinstance(tags_raw, str):
-                params["tags"] = json.dumps([t.strip() for t in tags_raw.split(",") if t.strip()])
-            elif isinstance(tags_raw, list):
-                params["tags"] = json.dumps(tags_raw)
-            else:
-                params["tags"] = json.dumps([str(tags_raw)])
-        else:
-            params["tags"] = None
-        updates.append("tags = :tags")
+    # Field normalization is handled by the admin course service.
 
     if not updates:
         return JSONResponse(status_code=400, content={"success": False, "message": "没有需要更新的字段"})

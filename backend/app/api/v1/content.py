@@ -26,9 +26,10 @@ from app.schemas.content import (
     SubjectResponse,
     KnowledgeNodeResponse,
     KnowledgeNodeBrief,
-    QuestionResponse,
+    QuestionBrief,
 )
 from app.services import content_service
+from app.services.question_access import public_question_brief
 
 router = APIRouter()
 
@@ -178,7 +179,7 @@ async def list_questions(
         db (AsyncSession): 异步数据库会话
 
     Returns:
-        ApiResponse: 题目列表（QuestionResponse）
+        ApiResponse: 不含答案与解析的题目列表（QuestionBrief）
     """
     # 查询知识点关联的题目
     questions = await content_service.list_questions_by_node(
@@ -188,7 +189,7 @@ async def list_questions(
         question_type=question_type,
     )
     return success_response(
-        data=[QuestionResponse.model_validate(q) for q in questions],
+        data=[QuestionBrief.model_validate(public_question_brief(q)) for q in questions],
         message="获取题目列表成功",
     )
 
@@ -217,7 +218,7 @@ async def list_all_questions(
         db (AsyncSession): 异步数据库会话
 
     Returns:
-        ApiResponse: 分页题目列表（QuestionResponse）
+        ApiResponse: 不含答案与解析的分页题目列表（QuestionBrief）
     """
     page = pagination["page"]
     page_size = pagination["page_size"]
@@ -242,7 +243,7 @@ async def list_all_questions(
     )
 
     return paged_response(
-        data=[QuestionResponse.model_validate(q) for q in questions],
+        data=[QuestionBrief.model_validate(public_question_brief(q)) for q in questions],
         total=total,
         page=page,
         page_size=page_size,

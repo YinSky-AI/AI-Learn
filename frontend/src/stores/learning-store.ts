@@ -14,6 +14,10 @@ import type { Course, CourseFilter, Lesson, ChatMessage, Subject, DifficultyLeve
 import apiClient, { API_BASE_URL_FOR_CLIENT, TokenManager } from "@/lib/api-client";
 import { useAuthStore } from "@/stores/auth-store";
 import {
+  mapQuizQuestion,
+  type QuizQuestionPayload,
+} from "@/components/learning/quiz-question-mapper";
+import {
   getAllLocalCourseProgress,
   getLocalChatHistory,
   saveLocalCourseProgress,
@@ -681,15 +685,10 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   fetchQuizQuestions: async (courseId: string, lessonId: string) => {
     set({ isQuizLoading: true });
     try {
-      const data = await apiClient.get<any>(`/v1/courses/${courseId}/lessons/${lessonId}/quiz`);
-      const questions: QuizQuestion[] = (data.questions ?? []).map((q: any) => ({
-        id: q.id ?? "",
-        type: q.question_type ?? "CHOICE",
-        body: q.question_body ?? "",
-        options: Array.isArray(q.options) ? q.options : [],
-        correctAnswer: q.correct_answer ?? "",
-        explanation: q.explanation ?? "",
-      }));
+      const data = await apiClient.get<QuizQuestionPayload[]>(`/v1/courses/${courseId}/lessons/${lessonId}/quiz`);
+      const questions: QuizQuestion[] = data
+        .map((question) => mapQuizQuestion(question))
+        .filter((question): question is NonNullable<typeof question> => question !== null);
       set({ quizQuestions: questions, quizAnswers: [], quizResult: null, isQuizLoading: false });
     } catch (error) {
       console.error("获取测验题目失败:", error);

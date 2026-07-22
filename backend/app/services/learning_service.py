@@ -28,6 +28,7 @@ from app.models.gamification import GamificationEvent
 from app.services.gamification_service import event_to_payload, reward_answer_event
 from app.services.wrong_book_service import WrongBookService
 from app.services.behavior_service import BehaviorService
+from app.services.question_access import verified_answer_feedback
 
 
 def judge_answer(question, user_answer):
@@ -72,11 +73,14 @@ def _build_answer_result(answer: Answer, question: Question, gamification: dict 
             f"我原来的思路是“{answer.user_answer.strip()}”。"
             "请不要直接告诉我完整答案，先用一个问题引导我找出题目条件与运算含义的关系。"
         )
+    feedback = verified_answer_feedback(
+        question,
+        verified_question_id=answer.question_id,
+        is_correct=answer.is_correct,
+    )
     return {
         "id": answer.id,
-        "is_correct": answer.is_correct,
-        "correct_answer": question.correct_answer,
-        "explanation": question.explanation,
+        **feedback,
         "knowledge_point": knowledge_point,
         "tutor_prompt": tutor_prompt,
         "time_spent_seconds": answer.time_spent_seconds,

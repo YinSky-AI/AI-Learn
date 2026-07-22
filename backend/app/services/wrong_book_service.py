@@ -10,6 +10,7 @@ from sqlalchemy.orm import joinedload
 
 from app.models.content import KnowledgeNode, Question
 from app.models.wrong_book import WrongQuestion, WrongQuestionEvent
+from app.services.question_access import verified_answer_feedback
 
 
 class WrongBookService:
@@ -68,7 +69,14 @@ class WrongBookService:
         is_correct = judge_answer(record.question, user_answer)
         record.review_count += 1
         await self.db.flush()
-        return {"found": True, "is_correct": is_correct, "correct_answer": record.question.correct_answer, "explanation": record.question.explanation}
+        return {
+            "found": True,
+            **verified_answer_feedback(
+                record.question,
+                verified_question_id=question_id,
+                is_correct=is_correct,
+            ),
+        }
 
     async def list_questions(self, user_id: uuid.UUID, subject: str | None, knowledge_point: str | None, is_mastered: bool | None, page: int, page_size: int) -> tuple[list[WrongQuestion], int]:
         filters = [WrongQuestion.user_id == user_id]

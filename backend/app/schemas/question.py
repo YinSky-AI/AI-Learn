@@ -17,7 +17,9 @@ from datetime import datetime
 from typing import Any, List, Optional
 from uuid import UUID
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
+
+from app.services.question_access import sanitize_public_value
 
 
 class QuestionGenerateRequest(BaseModel):
@@ -75,6 +77,11 @@ class GeneratedQuestionPublicResponse(BaseModel):
     created_at: datetime
 
     model_config = {"from_attributes": True}
+
+    @field_validator("options", "knowledge_tags", mode="before")
+    @classmethod
+    def sanitize_options(cls, value):
+        return sanitize_public_value(value)
 
 
 class BatchQueryRequest(BaseModel):

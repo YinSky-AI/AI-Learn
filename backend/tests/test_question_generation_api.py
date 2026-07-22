@@ -36,7 +36,16 @@ GENERATED_QUESTION = {
     "question_type": "choice",
     "question_body": "小明吃了八分之三块蛋糕，又吃了八分之二块，一共吃了多少？",
     "options": [
-        {"key": "A", "value": "八分之五"},
+        {
+            "key": "A",
+            "value": "八分之五",
+            "is_correct": True,
+            "metadata": {
+                "correct_answer": "A",
+                "analysis": "同分母直接相加",
+                "safe_hint": "先观察分母",
+            },
+        },
         {"key": "B", "value": "八分之六"},
     ],
     "correct_answer": "A",
@@ -143,6 +152,10 @@ async def test_generate_persists_reviewed_questions(
     assert generated_payload["question_body"] == GENERATED_QUESTION["question_body"]
     assert "correct_answer" not in generated_payload
     assert "explanation" not in generated_payload
+    assert "is_correct" not in generated_payload["options"][0]
+    assert "correct_answer" not in generated_payload["options"][0]["metadata"]
+    assert "analysis" not in generated_payload["options"][0]["metadata"]
+    assert generated_payload["options"][0]["metadata"]["safe_hint"] == "先观察分母"
     batch_id = uuid.UUID(payload["data"]["batch_id"])
 
     batch = await question_db_session.get(GeneratedQuestionBatch, batch_id)
@@ -213,6 +226,8 @@ async def test_batch_detail_and_variant_are_scoped_to_current_user(
     assert len(owner_questions) == 1
     assert "correct_answer" not in owner_questions[0]
     assert "explanation" not in owner_questions[0]
+    assert "is_correct" not in owner_questions[0]["options"][0]
+    assert "correct_answer" not in owner_questions[0]["options"][0]["metadata"]
 
     question_id = owner_questions[0]["id"]
     _override_generation_dependencies(owner_id, provider, monkeypatch)
@@ -232,6 +247,15 @@ async def test_batch_detail_and_variant_are_scoped_to_current_user(
     assert all(
         "correct_answer" not in item and "explanation" not in item
         for item in owner_history.json()["data"]["items"]
+    )
+    history_items_with_options = [
+        item for item in owner_history.json()["data"]["items"] if item["options"]
+    ]
+    assert history_items_with_options
+    assert all(
+        "is_correct" not in item["options"][0]
+        and "analysis" not in item["options"][0]["metadata"]
+        for item in history_items_with_options
     )
 
     attacker_id = await _create_user(question_db_session)

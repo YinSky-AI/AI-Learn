@@ -14,7 +14,9 @@
 from typing import Any, List, Optional
 from uuid import UUID
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
+
+from app.services.question_access import sanitize_public_value
 
 
 # ============ 年龄分级 ============
@@ -140,13 +142,20 @@ class QuestionBrief(BaseModel):
     防止前端泄露答案信息。
     """
     id: UUID
+    knowledge_node_id: Optional[UUID] = None
     difficulty_level: str
     question_type: str
     question_body: str
-    options: Optional[List[OptionItem]] = None
+    options: Optional[List[dict[str, Any]]] = None
     standard_time_seconds: int
+    sort_order: Optional[int] = None
 
     model_config = {"from_attributes": True}
+
+    @field_validator("options", mode="before")
+    @classmethod
+    def sanitize_options(cls, value):
+        return sanitize_public_value(value)
 
 
 class KnowledgePracticeResponse(BaseModel):

@@ -6,6 +6,7 @@ import pytest
 
 from app.ai.harness import TutorHarness
 from app.ai.provider import get_ai_provider, reset_ai_provider
+from app.ai.provider import AIProvider
 from app.core.config import settings
 
 
@@ -103,3 +104,12 @@ def test_global_provider_reads_application_ai_settings(monkeypatch):
         assert provider.model == "provider-model"
     finally:
         reset_ai_provider()
+
+
+@pytest.mark.asyncio
+async def test_provider_rejects_oversized_input_and_output_budget_before_network_call():
+    provider = AIProvider(api_key="test", max_input_chars=10, default_max_tokens=8)
+    with pytest.raises(ValueError, match="输入内容过长"):
+        await provider.generate([{"role": "user", "content": "01234567890"}])
+    with pytest.raises(ValueError, match="输出预算"):
+        await provider.generate([{"role": "user", "content": "ok"}], max_tokens=9)

@@ -25,6 +25,7 @@ from fastapi.responses import JSONResponse
 from loguru import logger
 
 from app.core.config import settings
+from app.core.security import decode_token
 from app.core.redis import redis_client
 from app.core.database import ai_learn_engine, engine
 from app.core.schema_version import SchemaVersionError, verify_schema_targets
@@ -58,7 +59,15 @@ async def rate_limit_middleware(request: Request, call_next):
         return await call_next(request)
 
     # 获取客户端标识（优先使用用户ID，否则使用 IP）
-    client_id = request.headers.get("X-Client-ID") or request.client.host
+    client_id = request.client.host or "unknown"
+    authorization = request.headers.get("Authorization", "")
+    if authorization.lower().startswith("bearer "):
+        try:
+            payload = decode_token(authorization[7:].strip())
+            if payload.get("type") == "access" and payload.get("sub"):
+                client_id = f"user:{payload['sub']}"
+        except ValueError:
+            pass
     key = f"rate:{client_id}"
 
     try:
@@ -66,14 +75,16 @@ async def rate_limit_middleware(request: Request, call_next):
         window_start = current_time - 60  # 60秒窗口
 
         # 使用 Redis 有序集合实现滑动窗口
-        now = f"{current_time:.3f}"
-        await redis_client.client.zadd(key, {now: current_time})
-        # 清理窗口外的记录
-        await redis_client.client.zremrangebyscore(key, 0, window_start)
-        # 统计窗口内请求数
-        count = await redis_client.client.zcard(key)
+        member = f"{current_time:.6f}:{uuid.uuid4().hex}"
+        count = await redis_client.client.eval(
+            "local key=KEYS[1]; local now=tonumber(ARGV[1]); "
+            "redis.call('ZREMRANGEBYSCORE', key, 0, now-tonumber(ARGV[2])); "
+            "redis.call('ZADD', key, now, ARGV[3]); "
+            "redis.call('EXPIRE', key, 120); return redis.call('ZCARD', key)",
+            1, key, current_time, 60, member,
+        )
 
-        if count > settings.RATE_LIMIT_PER_MINUTE:
+        if count > settings.RATE_LIMIT_PER_MINUTE + settings.RATE_LIMIT_BURST:
             response = JSONResponse(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
                 content={
@@ -92,8 +103,6 @@ async def rate_limit_middleware(request: Request, call_next):
                 response.headers["Access-Control-Allow-Origin"] = "*"
             return response
 
-        # 设置 key 过期时间
-        await redis_client.client.expire(key, 120)
     except Exception as e:
         # Redis 不可用时不阻止请求，仅记录日志
         logger.warning(f"速率限制检查失败（已跳过）: {e}")

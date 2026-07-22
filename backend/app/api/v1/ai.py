@@ -46,16 +46,16 @@ router = APIRouter()
 
 class ChatRequest(BaseModel):
     """AI 聊天请求"""
-    message: str = Field(..., min_length=1, description="用户消息")
-    message_type: str = Field(default="question", description="消息类型")
-    topic: str = Field(default="", description="当前知识点")
-    age_group: str = Field(default="9-12", description="学生年龄段")
+    message: str = Field(..., min_length=1, max_length=8000, description="用户消息")
+    message_type: str = Field(default="question", max_length=32, description="消息类型")
+    topic: str = Field(default="", max_length=200, description="当前知识点")
+    age_group: str = Field(default="9-12", max_length=20, description="学生年龄段")
     context: Optional[Dict[str, Any]] = Field(
         default=None,
         description="上下文信息，可包含 courseId, lessonId, subject, ageGroup 等",
     )
     conversationHistory: Optional[List[Dict[str, str]]] = Field(
-        default=None,
+        default=None, max_length=20,
         description="对话历史，格式为 [{role, content}, ...]",
     )
 

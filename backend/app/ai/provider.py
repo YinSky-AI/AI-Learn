@@ -36,6 +36,8 @@ logger = logging.getLogger(__name__)
 DEFAULT_MODEL = "deepseek-chat"
 DEFAULT_MAX_TOKENS = 4096
 DEFAULT_TEMPERATURE = 0.7
+MAX_INPUT_CHARS = 32000
+MAX_CONCURRENT_REQUESTS = 4
 # 最大重试次数
 MAX_RETRIES = 3
 # 重试基础等待时间（秒）
@@ -65,6 +67,8 @@ class AIProvider:
         default_temperature: float = DEFAULT_TEMPERATURE,
         max_retries: int = MAX_RETRIES,
         timeout: float = 60.0,
+        max_input_chars: int = MAX_INPUT_CHARS,
+        max_concurrent_requests: int = MAX_CONCURRENT_REQUESTS,
     ):
         """
         初始化 AI Provider
@@ -87,6 +91,8 @@ class AIProvider:
         self.default_temperature = default_temperature
         self.max_retries = max_retries
         self.timeout = timeout
+        self.max_input_chars = max_input_chars
+        self._concurrency = asyncio.Semaphore(max_concurrent_requests)
 
         # 初始化 AsyncOpenAI 客户端
         client_kwargs: dict[str, Any] = {
@@ -240,9 +246,13 @@ class AIProvider:
         Returns:
             响应字典，包含 content, usage, model, latency_ms
         """
-        start_time = time.monotonic()
+        total_chars = sum(len(str(message.get("content", ""))) for message in messages)
+        if total_chars > self.max_input_chars:
+            raise ValueError("AI 输入内容过长，请缩短后重试")
         use_model = model or self.model
         use_max_tokens = max_tokens or self.default_max_tokens
+        if use_max_tokens < 1 or use_max_tokens > self.default_max_tokens:
+            raise ValueError("AI 输出预算超出允许范围")
         use_temperature = temperature if temperature is not None else self.default_temperature
 
         kwargs: dict[str, Any] = {
@@ -259,7 +269,8 @@ class AIProvider:
             kwargs["tool_choice"] = tool_choice
 
         try:
-            response = await self._retry_call(self._client.chat.completions.create, **kwargs)
+            async with self._concurrency:
+                response = await self._retry_call(self._client.chat.completions.create, **kwargs)
 
             latency_ms = int((time.monotonic() - start_time) * 1000)
             usage = self._record_usage(
@@ -306,8 +317,13 @@ class AIProvider:
         Yields:
             每个 chunk 的文本内容
         """
+        total_chars = sum(len(str(message.get("content", ""))) for message in messages)
+        if total_chars > self.max_input_chars:
+            raise ValueError("AI 输入内容过长，请缩短后重试")
         use_model = model or self.model
         use_max_tokens = max_tokens or self.default_max_tokens
+        if use_max_tokens < 1 or use_max_tokens > self.default_max_tokens:
+            raise ValueError("AI 输出预算超出允许范围")
         use_temperature = temperature if temperature is not None else self.default_temperature
 
         kwargs: dict[str, Any] = {
@@ -319,15 +335,15 @@ class AIProvider:
         }
 
         try:
-            stream = await self._retry_call(
-                self._client.chat.completions.create, **kwargs
-            )
-
-            async for chunk in stream:
-                if chunk.choices and chunk.choices[0].delta:
-                    content = chunk.choices[0].delta.content
-                    if content:
-                        yield content
+            async with self._concurrency:
+                stream = await self._retry_call(
+                    self._client.chat.completions.create, **kwargs
+                )
+                async for chunk in stream:
+                    if chunk.choices and chunk.choices[0].delta:
+                        content = chunk.choices[0].delta.content
+                        if content:
+                            yield content
 
         except Exception as e:
             logger.error(f"AI Provider 流式生成失败: {e}")

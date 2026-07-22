@@ -60,14 +60,14 @@ async def _resolve_course_id(db: AsyncSession, course_id: str) -> Optional[str]:
     uid = _try_uuid(course_id)
     if uid:
         # 先按 UUID 查
-        stmt = select(Course.id).where(Course.id == str(uid), Course.is_active == True)
+        stmt = select(Course.id).where(Course.id == str(uid), Course.is_active == True, Course.deleted_at.is_(None))
         result = await db.execute(stmt)
         found = result.scalar_one_or_none()
         if found:
             return found
 
     # 再按 slug 查
-    stmt = select(Course.id).where(Course.slug == course_id, Course.is_active == True)
+    stmt = select(Course.id).where(Course.slug == course_id, Course.is_active == True, Course.deleted_at.is_(None))
     result = await db.execute(stmt)
     return result.scalar_one_or_none()
 
@@ -91,7 +91,7 @@ async def get_course_by_id(
     resolved = await _resolve_course_id(db, course_id)
     if not resolved:
         return None
-    stmt = select(Course).where(Course.id == resolved, Course.is_active == True)
+    stmt = select(Course).where(Course.id == resolved, Course.is_active == True, Course.deleted_at.is_(None))
     result = await db.execute(stmt)
     return result.scalar_one_or_none()
 
@@ -120,9 +120,10 @@ async def list_courses(
     Returns:
         dict: 包含 items、total、page、page_size 的分页结果字典
     """
-    stmt = select(Course).where(Course.is_active == True)
+    stmt = select(Course).where(Course.is_active == True, Course.deleted_at.is_(None))
     count_stmt = select(func.count()).select_from(Course).where(
-        Course.is_active == True
+        Course.is_active == True,
+        Course.deleted_at.is_(None),
     )
 
     # 条件筛选：学科、难度、年龄段
@@ -184,7 +185,7 @@ async def get_course_detail(
         return None
 
     # 查询课程基本信息
-    stmt = select(Course).where(Course.id == resolved, Course.is_active == True)
+    stmt = select(Course).where(Course.id == resolved, Course.is_active == True, Course.deleted_at.is_(None))
     result = await db.execute(stmt)
     course = result.scalar_one_or_none()
 
@@ -194,7 +195,7 @@ async def get_course_detail(
     # 显式查询并绑定课时列表（避免懒加载问题）
     lesson_stmt = (
         select(Lesson)
-        .where(Lesson.course_id == resolved, Lesson.is_active == True)
+        .where(Lesson.course_id == resolved, Lesson.is_active == True, Lesson.deleted_at.is_(None))
         .order_by(Lesson.order)
     )
     lesson_result = await db.execute(lesson_stmt)
@@ -221,7 +222,7 @@ async def get_lesson_by_id(
     if not lesson_uid:
         return None
 
-    stmt = select(Lesson).where(Lesson.id == str(lesson_uid), Lesson.is_active == True)
+    stmt = select(Lesson).where(Lesson.id == str(lesson_uid), Lesson.is_active == True, Lesson.deleted_at.is_(None))
     result = await db.execute(stmt)
     return result.scalar_one_or_none()
 
@@ -246,7 +247,7 @@ async def get_lessons_by_course(
 
     stmt = (
         select(Lesson)
-        .where(Lesson.course_id == resolved, Lesson.is_active == True)
+        .where(Lesson.course_id == resolved, Lesson.is_active == True, Lesson.deleted_at.is_(None))
         .order_by(Lesson.order)
     )
     result = await db.execute(stmt)
@@ -388,6 +389,9 @@ async def update_course_progress(
             UserLesson.user_id == user_id,
             UserLesson.course_id == resolved,
             UserLesson.completed == True,
+        ).join(Lesson, Lesson.id == UserLesson.lesson_id).where(
+            Lesson.is_active == True,
+            Lesson.deleted_at.is_(None),
         )
         completed_count = (await db.execute(completed_stmt)).scalar() or 0
         user_course.completed_lessons = completed_count
@@ -425,11 +429,15 @@ async def get_user_courses(
 
     stmt = (
         select(UserCourse)
-        .where(UserCourse.user_id == user_id)
+        .join(Course, Course.id == UserCourse.course_id)
+        .where(UserCourse.user_id == user_id, Course.deleted_at.is_(None))
         .order_by(UserCourse.last_accessed_at.desc())
     )
-    count_stmt = select(func.count()).select_from(UserCourse).where(
-        UserCourse.user_id == user_id
+    count_stmt = (
+        select(func.count())
+        .select_from(UserCourse)
+        .join(Course, Course.id == UserCourse.course_id)
+        .where(UserCourse.user_id == user_id, Course.deleted_at.is_(None))
     )
 
     total = (await db.execute(count_stmt)).scalar()
@@ -443,7 +451,10 @@ async def get_user_courses(
     # 显式加载关联的课程信息（避免懒加载问题）
     for item in items:
         if item.course_id is not None:
-            course_stmt = select(Course).where(Course.id == item.course_id)
+            course_stmt = select(Course).where(
+                Course.id == item.course_id,
+                Course.deleted_at.is_(None),
+            )
             course_result = await db.execute(course_stmt)
             item.course = course_result.scalar_one_or_none()
 
@@ -519,7 +530,11 @@ async def complete_lesson(
         raise ValueError("课时不存在")
 
     # 获取课时基本信息（用于确定所属课程）
-    lesson_stmt = select(Lesson).where(Lesson.id == str(lesson_uid))
+    lesson_stmt = select(Lesson).where(
+        Lesson.id == str(lesson_uid),
+        Lesson.is_active == True,
+        Lesson.deleted_at.is_(None),
+    )
     lesson_result = await db.execute(lesson_stmt)
     lesson = lesson_result.scalar_one_or_none()
     if lesson is None:
@@ -596,13 +611,17 @@ async def save_chat_message(
     resolved_course = None
     if course_id:
         resolved_course = await _resolve_course_id(db, course_id)
+        if resolved_course is None:
+            raise ValueError("课程不存在")
 
     # 解析课时 ID
     resolved_lesson = None
     if lesson_id:
         lid = _try_uuid(lesson_id)
-        if lid:
-            resolved_lesson = str(lid)
+        lesson = await get_lesson_by_id(db, str(lid)) if lid else None
+        if lesson is None:
+            raise ValueError("课时不存在")
+        resolved_lesson = str(lesson.id)
 
     message = ChatMessage(
         user_id=user_id,
@@ -649,13 +668,16 @@ async def get_chat_history(
     # 按课程 ID 筛选（自动解析 UUID / slug）
     if course_id is not None:
         resolved = await _resolve_course_id(db, course_id)
-        if resolved:
-            conditions.append(ChatMessage.course_id == resolved)
+        if not resolved:
+            return {"items": [], "total": 0, "page": page, "page_size": page_size}
+        conditions.append(ChatMessage.course_id == resolved)
     # 按课时 ID 筛选
     if lesson_id is not None:
         lid = _try_uuid(lesson_id)
-        if lid:
-            conditions.append(ChatMessage.lesson_id == str(lid))
+        lesson = await get_lesson_by_id(db, str(lid)) if lid else None
+        if lesson is None:
+            return {"items": [], "total": 0, "page": page, "page_size": page_size}
+        conditions.append(ChatMessage.lesson_id == str(lesson.id))
 
     stmt = select(ChatMessage).where(and_(*conditions)).order_by(ChatMessage.created_at.desc())
     count_stmt = select(func.count()).select_from(ChatMessage).where(and_(*conditions))

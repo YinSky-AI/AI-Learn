@@ -101,6 +101,7 @@ class Course(BaseModel, Base):
     slug: Mapped[Optional[str]] = mapped_column(
         String(100), nullable=True, unique=True, index=True, comment="URL标识"
     )
+    deleted_at = mapped_column(DateTime(timezone=True), nullable=True, default=None, index=True)
 
     # 关系
     lessons: Mapped[List["Lesson"]] = relationship(
@@ -173,6 +174,7 @@ class Lesson(BaseModel, Base):
         index=True,
         comment="关联知识点ID（quiz 类型课时绑定）",
     )
+    deleted_at = mapped_column(DateTime(timezone=True), nullable=True, default=None, index=True)
 
     # 关系
     course: Mapped["Course"] = relationship("Course", back_populates="lessons")

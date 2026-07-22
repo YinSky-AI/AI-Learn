@@ -58,6 +58,7 @@ from app.models.course import (  # noqa: E402, F401
     UserLesson,
     ChatMessage,
 )
+from app.models.admin_change import AdminChangeAudit  # noqa: E402, F401
 
 __all__ = [
     "Base",
@@ -91,4 +92,5 @@ __all__ = [
     "UserCourse",
     "UserLesson",
     "ChatMessage",
+    "AdminChangeAudit",
 ]

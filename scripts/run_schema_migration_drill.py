@@ -31,15 +31,15 @@ CATALOG_BOOTSTRAP_DATABASE = "ai_learn_bootstrap"
 ENVIRONMENT = os.getenv("DELIVERY_TEST_ENV", "local")
 BACKEND_PROBE_CONTAINER = "ai-learn-schema-drill-backend"
 
-PRIMARY_HEAD = "lp_0002_owned_contract"
+PRIMARY_HEAD = "lp_0003_admin_recovery"
 PRIMARY_BASELINE = "lp_0001_legacy_baseline"
-CATALOG_HEAD = "catalog_0001_baseline"
+CATALOG_HEAD = "catalog_0002_admin_recovery"
 PERSISTENT_HOST = "postgres"
 PERSISTENT_PRIMARY_DATABASE = "learning_platform"
 PERSISTENT_CATALOG_DATABASE = "ai_learn"
 _TMPFS_DATABASE_PASSWORD: str | None = None
 PRIMARY_MANAGED_TABLES = (
-    "achievements", "age_groups", "answers", "chat_messages", "courses",
+    "achievements", "admin_change_audits", "age_groups", "answers", "chat_messages", "courses",
     "daily_challenge_answers", "daily_challenge_attempts",
     "daily_challenge_questions", "daily_challenges", "error_logs",
     "evolution_records", "gamification_events", "generated_question_batches",
@@ -50,7 +50,7 @@ PRIMARY_MANAGED_TABLES = (
     "wrong_question_events", "wrong_questions",
 )
 CATALOG_MANAGED_TABLES = (
-    "knowledge_points", "question_knowledge", "question_stats", "questions",
+    "admin_change_audits", "knowledge_points", "question_knowledge", "question_stats", "questions",
 )
 
 
@@ -421,6 +421,7 @@ def _database_fingerprint(
     *,
     managed_tables: tuple[str, ...],
     version_table: str,
+    head_revision: str,
 ) -> dict[str, Any]:
     """对精确受管表、列/default/约束/索引和全表行数做确定性摘要。"""
 
@@ -435,12 +436,14 @@ def _database_fingerprint(
         ).splitlines()
         if line
     }
-    expected_tables = set(managed_tables)
-    if actual_tables != expected_tables:
-        missing = sorted(expected_tables - actual_tables)
+    revision = _revision(host, database, version_table)
+    all_managed_tables = set(managed_tables)
+    if revision == head_revision and actual_tables != all_managed_tables:
+        missing = sorted(all_managed_tables - actual_tables)
         raise SchemaMigrationDrillError(
             "完整 Schema 指纹缺少受管理表：" + ",".join(missing)
         )
+    expected_tables = actual_tables
     structure_rows = _psql(
         host,
         database,
@@ -493,14 +496,27 @@ SELECT item FROM (
             for row_hash in _psql(
                 host,
                 database,
-                f"SELECT md5(row_to_json(row_value)::text) "
+                f"SELECT md5(to_jsonb(row_value)::text) "
                 f"FROM public.\"{table_name}\" row_value ORDER BY 1;",
             ).splitlines()
             if row_hash
         ]
-        for table_name in managed_tables
+        for table_name in actual_tables
     }
-    revision = _revision(host, database, version_table)
+    business_row_hashes = {
+        table_name: [
+            row_hash
+            for row_hash in _psql(
+                host,
+                database,
+                f"SELECT md5((to_jsonb(row_value) - 'deleted_at')::text) "
+                f"FROM public.\"{table_name}\" row_value ORDER BY 1;",
+            ).splitlines()
+            if row_hash
+        ]
+        for table_name in actual_tables
+        if table_name != "admin_change_audits"
+    }
     data_rows = "\n".join(f"{name}|{counts[name]}" for name in sorted(counts))
     return {
         "managed_table_count": len(actual_tables),
@@ -510,6 +526,7 @@ SELECT item FROM (
         "table_row_counts": counts,
         "data_sha256": hashlib.sha256(data_rows.encode("utf-8")).hexdigest(),
         "content_sha256": content_digest(table_row_hashes),
+        "business_content_sha256": content_digest(business_row_hashes),
     }
 
 
@@ -519,6 +536,7 @@ def _primary_fingerprint(host: str, database: str) -> dict[str, Any]:
         database,
         managed_tables=PRIMARY_MANAGED_TABLES,
         version_table="alembic_version_learning",
+        head_revision=PRIMARY_HEAD,
     )
 
 
@@ -528,6 +546,7 @@ def _catalog_fingerprint(host: str, database: str) -> dict[str, Any]:
         database,
         managed_tables=CATALOG_MANAGED_TABLES,
         version_table="alembic_version_catalog",
+        head_revision=CATALOG_HEAD,
     )
 
 
@@ -817,6 +836,7 @@ def _reject_strict_stale() -> bool:
         host=SOURCE_HOST,
         database=PRIMARY_SOURCE_DATABASE,
         revision=PRIMARY_BASELINE,
+        allow_destructive=True,
     )
     rejected = _strict_start_rejected(
         stage="strict 真正 stale revision 启动拒绝",
@@ -944,7 +964,11 @@ def run_drill() -> dict[str, Any]:
                 _database_url(SOURCE_HOST, CATALOG_SOURCE_DATABASE),
             ),
         )
-        _compose(*compose, "build", "backend", "backup-tool", stage="演练镜像构建")
+        _compose(
+            *compose, "build", "backend", "backup-tool",
+            "schema-bootstrap-primary", "schema-bootstrap-catalog",
+            stage="演练镜像构建",
+        )
         _compose(
             *compose,
             "up",
@@ -1067,6 +1091,7 @@ def run_drill() -> dict[str, Any]:
             host=SOURCE_HOST,
             database=PRIMARY_SOURCE_DATABASE,
             revision=PRIMARY_BASELINE,
+            allow_destructive=True,
         )
         primary_at_baseline = assert_revision_observation(
             stage="primary lp_0002 -> lp_0001",
@@ -1203,6 +1228,7 @@ def run_drill() -> dict[str, Any]:
             _schema_admin(
                 action="downgrade", alias="primary", host=SOURCE_HOST,
                 database=PRIMARY_SOURCE_DATABASE, revision=PRIMARY_BASELINE,
+                allow_destructive=True,
             )
             _psql(
                 SOURCE_HOST, PRIMARY_SOURCE_DATABASE,
@@ -1229,68 +1255,81 @@ def run_drill() -> dict[str, Any]:
                 source_password_secret="tmpfs_postgres_password",
             )
 
-        # 真实 PostgreSQL 破坏一个命名索引，adoption 必须在 stamp 前拒绝。
-        _psql(
-            RESTORE_HOST, PRIMARY_RESTORE_DATABASE,
-            "DROP INDEX idx_user_achievement_user;",
-        )
-        broken_contract = _schema_admin(
-            action="adopt-baseline",
-            alias="primary",
-            host=RESTORE_HOST,
-            database=PRIMARY_RESTORE_DATABASE,
-            allow_baseline=True,
-            expect_failure=True,
-        )
-        if "索引" not in f"{broken_contract.stdout}\n{broken_contract.stderr}":
-            raise SchemaMigrationDrillError("约束破坏基线虽被拒绝，但诊断不清晰")
-        if _revision(
-            RESTORE_HOST, PRIMARY_RESTORE_DATABASE, "alembic_version_learning"
-        ) is not None:
-            raise SchemaMigrationDrillError("adoption 拒绝后不得残留 baseline stamp")
-        _psql(
-            RESTORE_HOST, PRIMARY_RESTORE_DATABASE,
-            "CREATE INDEX idx_user_achievement_user ON user_achievements(user_id);",
-        )
-        for alias, database in (
-            ("primary", PRIMARY_RESTORE_DATABASE),
-            ("question-bank", CATALOG_RESTORE_DATABASE),
-        ):
-            _schema_admin(
-                action="adopt-baseline",
-                alias=alias,
-                host=RESTORE_HOST,
-                database=database,
-                allow_baseline=True,
+        if snapshot_mode == "current_persistent_snapshot":
+            # 当前快照已经版本化；不得伪装成 legacy 重复 baseline adoption。
+            final_primary_restore = _primary_fingerprint(
+                RESTORE_HOST, PRIMARY_RESTORE_DATABASE
             )
-        final_primary_restore = _primary_fingerprint(
-            RESTORE_HOST, PRIMARY_RESTORE_DATABASE
-        )
-        final_catalog_restore = _catalog_fingerprint(
-            RESTORE_HOST, CATALOG_RESTORE_DATABASE
-        )
-        for label, before, after in (
-            (
-                "primary",
-                primary_backup["restored_fingerprint_before_adoption"],
-                final_primary_restore,
-            ),
-            (
-                "question-bank",
-                catalog_backup["restored_fingerprint_before_adoption"],
-                final_catalog_restore,
-            ),
-        ):
-            if before["content_sha256"] != after["content_sha256"]:
-                raise SchemaMigrationDrillError(
-                    f"{label} adoption/upgrade 改变了受管理表行内容"
+            final_catalog_restore = _catalog_fingerprint(
+                RESTORE_HOST, CATALOG_RESTORE_DATABASE
+            )
+            for label, backup, after in (
+                ("primary", primary_backup, final_primary_restore),
+                ("question-bank", catalog_backup, final_catalog_restore),
+            ):
+                before = backup["restored_fingerprint_before_adoption"]
+                if before["content_sha256"] != after["content_sha256"]:
+                    raise SchemaMigrationDrillError(f"{label} 当前版本化快照恢复后内容不一致")
+                if before["table_row_counts"] != after["table_row_counts"]:
+                    raise SchemaMigrationDrillError(f"{label} 当前版本化快照恢复后行数不一致")
+                backup["versioned_snapshot_content_preserved"] = True
+            adoption_evidence: dict[str, Any] = {
+                "mode": "not_applicable_already_versioned",
+                "primary_restore": final_primary_restore,
+                "catalog_restore": final_catalog_restore,
+            }
+        else:
+            # 真实 PostgreSQL 破坏一个命名索引，adoption 必须在 stamp 前拒绝。
+            _psql(
+                RESTORE_HOST, PRIMARY_RESTORE_DATABASE,
+                "DROP INDEX idx_user_achievement_user;",
+            )
+            broken_contract = _schema_admin(
+                action="adopt-baseline", alias="primary", host=RESTORE_HOST,
+                database=PRIMARY_RESTORE_DATABASE, allow_baseline=True,
+                expect_failure=True,
+            )
+            if "索引" not in f"{broken_contract.stdout}\n{broken_contract.stderr}":
+                raise SchemaMigrationDrillError("约束破坏基线虽被拒绝，但诊断不清晰")
+            if _revision(
+                RESTORE_HOST, PRIMARY_RESTORE_DATABASE, "alembic_version_learning"
+            ) is not None:
+                raise SchemaMigrationDrillError("adoption 拒绝后不得残留 baseline stamp")
+            _psql(
+                RESTORE_HOST, PRIMARY_RESTORE_DATABASE,
+                "CREATE INDEX idx_user_achievement_user ON user_achievements(user_id);",
+            )
+            for alias, database in (
+                ("primary", PRIMARY_RESTORE_DATABASE),
+                ("question-bank", CATALOG_RESTORE_DATABASE),
+            ):
+                _schema_admin(
+                    action="adopt-baseline", alias=alias, host=RESTORE_HOST,
+                    database=database, allow_baseline=True,
                 )
-            if before["table_row_counts"] != after["table_row_counts"]:
-                raise SchemaMigrationDrillError(
-                    f"{label} adoption/upgrade 改变了受管理表行数"
-                )
-        primary_backup["adoption_content_preserved"] = True
-        catalog_backup["adoption_content_preserved"] = True
+            final_primary_restore = _primary_fingerprint(
+                RESTORE_HOST, PRIMARY_RESTORE_DATABASE
+            )
+            final_catalog_restore = _catalog_fingerprint(
+                RESTORE_HOST, CATALOG_RESTORE_DATABASE
+            )
+            for label, before, after in (
+                ("primary", primary_backup["restored_fingerprint_before_adoption"], final_primary_restore),
+                ("question-bank", catalog_backup["restored_fingerprint_before_adoption"], final_catalog_restore),
+            ):
+                if before["business_content_sha256"] != after["business_content_sha256"]:
+                    raise SchemaMigrationDrillError(f"{label} adoption/upgrade 改变了受管理表行内容")
+                before_counts = {k: v for k, v in before["table_row_counts"].items() if k != "admin_change_audits"}
+                after_counts = {k: v for k, v in after["table_row_counts"].items() if k != "admin_change_audits"}
+                if before_counts != after_counts:
+                    raise SchemaMigrationDrillError(f"{label} adoption/upgrade 改变了受管理表行数")
+            primary_backup["adoption_content_preserved"] = True
+            catalog_backup["adoption_content_preserved"] = True
+            adoption_evidence = {
+                "mode": "legacy_adoption_verified",
+                "primary_restore": final_primary_restore,
+                "catalog_restore": final_catalog_restore,
+            }
         strict_health = _start_strict_backend(
             primary_host=RESTORE_HOST,
             primary_database=PRIMARY_RESTORE_DATABASE,
@@ -1345,10 +1384,7 @@ def run_drill() -> dict[str, Any]:
                 "mode": snapshot_mode,
                 "sources": snapshot_sources,
             },
-            "restored_baseline_adoption": {
-                "primary_restore": final_primary_restore,
-                "catalog_restore": final_catalog_restore,
-            },
+            "restored_baseline_adoption": adoption_evidence,
             "backup_restore": {
                 "primary": primary_backup,
                 "question_bank": catalog_backup,

@@ -51,6 +51,15 @@ ALLOWED_EXTERNAL_TABLES = {
 ALLOWED_EXTERNAL_COLUMNS = {
     ("primary", "users"): {"ruoyi_user_id"},
 }
+POST_BASELINE_TABLES = {
+    "primary": {"admin_change_audits"},
+    "question-bank": {"admin_change_audits"},
+}
+POST_BASELINE_COLUMNS = {
+    ("primary", "courses"): {"deleted_at"},
+    ("primary", "lessons"): {"deleted_at"},
+    ("question-bank", "questions"): {"deleted_at"},
+}
 
 
 def validate_migration_action(
@@ -68,9 +77,9 @@ def validate_migration_action(
     if action == "downgrade":
         if not revision:
             raise SchemaVersionError("downgrade 必须指定目标 revision")
+        if not allow_destructive_downgrade:
+            raise SchemaVersionError("downgrade 会移除已发布 Schema 或数据，必须提供破坏性降级确认")
         if revision == "base":
-            if not allow_destructive_downgrade:
-                raise SchemaVersionError("降到 base 属于破坏性降级，必须提供显式确认")
             return
         script = ScriptDirectory.from_config(_config(target_alias))
         exact_revisions = {value.revision for value in script.walk_revisions()}
@@ -570,7 +579,7 @@ def validate_legacy_schema(engine: Engine | Connection, target_alias: str) -> No
     actual_tables = set(inspector.get_table_names(schema="public"))
     if version_table in actual_tables:
         raise SchemaVersionError("数据库已经存在版本表，拒绝重复基线采用")
-    required_tables = set(metadata.tables)
+    required_tables = set(metadata.tables) - POST_BASELINE_TABLES.get(target_alias, set())
     validate_table_ownership(
         target_alias=target_alias,
         actual_tables=actual_tables,
@@ -578,7 +587,16 @@ def validate_legacy_schema(engine: Engine | Connection, target_alias: str) -> No
     )
 
     for table_name, table in metadata.tables.items():
+        if table_name not in required_tables:
+            continue
         expected = build_expected_contract_snapshot(table)
+        post_baseline_columns = POST_BASELINE_COLUMNS.get((target_alias, table_name), set())
+        for column_name in post_baseline_columns:
+            expected["columns"].pop(column_name, None)
+        expected["indexes"] = {
+            value for value in expected["indexes"]
+            if not any(column in post_baseline_columns for column in value[1])
+        }
         actual = build_actual_contract_snapshot(inspector, table_name)
         required_columns = set(expected["columns"])
         actual_columns = set(actual["columns"])

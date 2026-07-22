@@ -230,7 +230,7 @@ def test_verified_empty_release_bootstrap_has_a_separate_confirmation_path():
     validate_release_authorization(
         action="upgrade",
         target=target,
-        current_revision="lp_0002_owned_contract",
+        current_revision="lp_0003_admin_recovery",
         has_user_tables=True,
         approval_reference="CHG-124",
         backup_reference=None,
@@ -279,8 +279,8 @@ def test_unknown_schema_policy_is_rejected_with_plain_text():
 
 
 def test_two_database_targets_publish_independent_revision_heads():
-    assert get_expected_schema_revision("primary") == "lp_0002_owned_contract"
-    assert get_expected_schema_revision("question-bank") == "catalog_0001_baseline"
+    assert get_expected_schema_revision("primary") == "lp_0003_admin_recovery"
+    assert get_expected_schema_revision("question-bank") == "catalog_0002_admin_recovery"
     assert get_schema_version_table("primary") == "alembic_version_learning"
     assert get_schema_version_table("question-bank") == "alembic_version_catalog"
 
@@ -445,20 +445,28 @@ def test_downgrade_accepts_only_an_exact_revision_from_the_selected_root(revisio
         )
 
 
-def test_downgrade_accepts_exact_revision_ids_from_each_selected_root():
+def test_every_downgrade_requires_destructive_confirmation_then_accepts_exact_revisions():
+    with pytest.raises(SchemaVersionError, match="破坏性降级确认"):
+        validate_migration_action(
+            "downgrade",
+            target_alias="primary",
+            revision="lp_0001_legacy_baseline",
+            allow_baseline_adoption=False,
+            allow_destructive_downgrade=False,
+        )
     validate_migration_action(
         "downgrade",
         target_alias="primary",
         revision="lp_0001_legacy_baseline",
         allow_baseline_adoption=False,
-        allow_destructive_downgrade=False,
+        allow_destructive_downgrade=True,
     )
     validate_migration_action(
         "downgrade",
         target_alias="question-bank",
         revision="catalog_0001_baseline",
         allow_baseline_adoption=False,
-        allow_destructive_downgrade=False,
+        allow_destructive_downgrade=True,
     )
 
 
@@ -814,8 +822,8 @@ def test_primary_allows_only_named_external_tables_and_catalog_allows_no_unknown
 @pytest.mark.asyncio
 async def test_schema_guard_checks_both_database_heads_before_startup():
     current = {
-        "primary": "lp_0002_owned_contract",
-        "question-bank": "catalog_0001_baseline",
+        "primary": "lp_0003_admin_recovery",
+        "question-bank": "catalog_0002_admin_recovery",
     }
 
     async def revision_reader(engine, target_alias):
@@ -839,7 +847,7 @@ async def test_schema_guard_checks_both_database_heads_before_startup():
 async def test_schema_guard_rejects_when_either_database_is_stale():
     async def revision_reader(_engine, target_alias):
         if target_alias == "primary":
-            return "lp_0002_owned_contract"
+            return "lp_0003_admin_recovery"
         return None
 
     with pytest.raises(SchemaVersionError, match="question-bank.*尚未纳入版本管理"):

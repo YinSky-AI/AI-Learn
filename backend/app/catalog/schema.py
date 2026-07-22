@@ -15,7 +15,7 @@ from sqlalchemy import (
     UniqueConstraint,
     text,
 )
-from sqlalchemy.dialects.postgresql import ARRAY, JSONB
+from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 
 
 catalog_metadata = MetaData()
@@ -46,6 +46,7 @@ questions = Table(
     Column("generation_source", String(30), server_default=text("'ai_generated'")),
     Column("quality_score", Integer),
     Column("review_status", String(20), server_default=text("'approved'")),
+    Column("deleted_at", DateTime(timezone=True)),
 )
 Index("idx_subject_age", questions.c.subject, questions.c.age_group)
 Index("idx_difficulty", questions.c.difficulty)
@@ -54,6 +55,24 @@ Index("idx_questions_knowledge_fp", questions.c.knowledge_fingerprint, postgresq
 Index("idx_questions_language", questions.c.language)
 Index("idx_questions_quality", questions.c.quality_score)
 Index("idx_questions_review", questions.c.review_status)
+Index("ix_questions_deleted_at", questions.c.deleted_at)
+
+admin_change_audits = Table(
+    "admin_change_audits", catalog_metadata,
+    Column("id", UUID(as_uuid=True), primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("actor_id", UUID(as_uuid=True)),
+    Column("action", String(30), nullable=False),
+    Column("entity_type", String(30), nullable=False),
+    Column("entity_id", String(64), nullable=False),
+    Column("reason", String(500), nullable=False),
+    Column("status", String(20), nullable=False),
+    Column("request_id", String(100), nullable=False),
+    Column("before_summary", JSONB, nullable=False),
+    Column("after_summary", JSONB, nullable=False),
+    Column("impact_scope", JSONB, nullable=False),
+    Column("created_at", DateTime(timezone=True), nullable=False, server_default=text("NOW()")),
+)
+Index("ix_catalog_admin_change_entity", admin_change_audits.c.entity_type, admin_change_audits.c.entity_id, admin_change_audits.c.created_at)
 
 knowledge_points = Table(
     "knowledge_points",

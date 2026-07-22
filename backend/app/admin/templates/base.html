@@ -71,6 +71,10 @@
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
                     用户管理
                 </a>
+                <a href="/admin/recovery" class="sidebar-link flex items-center px-5 py-3 text-sm {% if active_page == 'recovery' %}active{% endif %}">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M3 10l4-4m-4 4l4 4m4-8h2a6 6 0 010 12H9"/></svg>
+                    恢复中心
+                </a>
             </div>
         </aside>
 
@@ -88,6 +92,12 @@
             const logoutToken = document.getElementById('admin-logout-csrf');
             if (logoutToken) logoutToken.value = csrfToken;
             const originalFetch = window.fetch.bind(window);
+            window.readAdminResponse = async (response) => {
+                const contentType = response.headers.get('content-type') || '';
+                if (contentType.includes('application/json')) return response.json();
+                const message = await response.text();
+                return { success: response.ok, message: message || '请求失败' };
+            };
             window.fetch = (input, init = {}) => {
                 const method = String(init.method || 'GET').toUpperCase();
                 if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {

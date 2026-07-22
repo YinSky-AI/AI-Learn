@@ -154,7 +154,7 @@ async def _fetch_questions_from_ai_learn(
     返回的 dict 可直接被 QuestionResponse.model_validate() 序列化。
     """
     async with AI_LearnAsyncSessionLocal() as ai_db:
-        conditions = ["1=1"]
+        conditions = ["deleted_at IS NULL"]
         params: dict = {}
 
         if subject_code and subject_code in _SUBJECT_CODE_TO_AI:
@@ -226,7 +226,7 @@ async def _count_questions_in_ai_learn(
 ) -> int:
     """从 ai_learn 统计符合条件的题目数"""
     async with AI_LearnAsyncSessionLocal() as ai_db:
-        conditions = ["1=1"]
+        conditions = ["deleted_at IS NULL"]
         params: dict = {}
 
         if subject_code and subject_code in _SUBJECT_CODE_TO_AI:

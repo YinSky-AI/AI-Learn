@@ -14,10 +14,12 @@
 
 import re
 import uuid
+import hashlib
 from datetime import datetime, timezone
 
 from fastapi import HTTPException, status
-from sqlalchemy import select, func
+from loguru import logger
+from sqlalchemy import select, func, text
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
 
@@ -29,6 +31,11 @@ from app.services.gamification_service import event_to_payload, reward_answer_ev
 from app.services.wrong_book_service import WrongBookService
 from app.services.behavior_service import BehaviorService
 from app.services.question_access import verified_answer_feedback
+
+
+def _submission_log_key(value: uuid.UUID | int) -> str:
+    """Return a short non-sensitive correlation key for submission logs."""
+    return hashlib.sha256(str(value).encode("utf-8")).hexdigest()[:12]
 
 
 def judge_answer(question, user_answer):
@@ -123,6 +130,8 @@ async def get_session_by_id(
     db: AsyncSession,
     session_id: uuid.UUID,
     user_id: uuid.UUID,
+    *,
+    for_update: bool = False,
 ) -> LearningSession:
     """
     根据 ID 获取学习会话
@@ -139,8 +148,23 @@ async def get_session_by_id(
         HTTPException: 会话不存在时抛出 404
     """
     stmt = select(LearningSession).where(LearningSession.id == session_id)
+    if for_update:
+        stmt = select(LearningSession).where(
+            LearningSession.id == session_id,
+            LearningSession.user_id == user_id,
+        ).with_for_update()
     result = await db.execute(stmt)
     session = result.scalar_one_or_none()
+    if session is None and for_update:
+        ownership = await db.execute(
+            select(LearningSession.user_id).where(LearningSession.id == session_id)
+        )
+        owner_id = ownership.scalar_one_or_none()
+        if owner_id is not None and owner_id != user_id:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail={"code": "AUTH_004", "message": "无权访问该学习会话"},
+            )
     if session is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -187,8 +211,16 @@ async def submit_answer(
         HTTPException: 会话不存在、已结束或题目不存在时抛出
     """
     # 获取会话并校验状态
-    session = await get_session_by_id(db, session_id, user_id=user_id)
+    session = await get_session_by_id(db, session_id, user_id=user_id, for_update=True)
 
+    # Answer.id 是全局幂等键；事务级 advisory lock 也覆盖跨会话并发重放。
+    if isinstance(db, AsyncSession):
+        await db.execute(
+            text(
+                "SELECT pg_advisory_xact_lock(hashtextextended(:key, 0))"
+            ),
+            {"key": str(answer_id)},
+        )
     existing_result = await db.execute(select(Answer).where(Answer.id == answer_id))
     existing_answer = existing_result.scalar_one_or_none()
 
@@ -216,6 +248,11 @@ async def submit_answer(
                 detail={"code": "BIZ_001", "message": "原题已删除，无法回放该作答结果"},
             )
         event = (await db.execute(select(GamificationEvent).where(GamificationEvent.answer_id == existing_answer.id))).scalar_one_or_none()
+        logger.info(
+            "answer_submission session_key={} answer_key={} result=replayed",
+            _submission_log_key(session_id),
+            _submission_log_key(answer_id),
+        )
         return _build_answer_result(existing_answer, question, event_to_payload(event) if event else None)
 
     result = await db.execute(stmt)
@@ -238,6 +275,11 @@ async def submit_answer(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail={"code": "BIZ_001", "message": "该学习会话已结束"},
         )
+
+    # 锁定用户行，串行化积分、连胜和 JSONB 行为画像的读-改-写。
+    user = (await db.execute(
+        select(User).where(User.id == user_id).with_for_update()
+    )).scalar_one_or_none()
 
     # 判断正误（根据题型调用对应的判题逻辑）
     is_correct = judge_answer(question, user_answer)
@@ -272,7 +314,6 @@ async def submit_answer(
     if is_correct:
         session.correct_count += 1
 
-    user = (await db.execute(select(User).where(User.id == user_id))).scalar_one_or_none()
     if user:
         await BehaviorService(db).update_after_answer(
             user_id=user_id,
@@ -284,6 +325,12 @@ async def submit_answer(
         )
     # 认证依赖保证正常请求一定有用户；保留旧数据回放/测试场景的答题结果可用性。
     gamification = await reward_answer_event(db, user=user, answer=answer, difficulty=question.difficulty_level) if user else None
+    logger.info(
+        "answer_submission session_key={} answer_key={} result=prepared is_correct={}",
+        _submission_log_key(session_id),
+        _submission_log_key(answer_id),
+        is_correct,
+    )
     return _build_answer_result(answer, question, gamification)
 
 
@@ -307,7 +354,7 @@ async def complete_session(
     Raises:
         HTTPException: 会话不存在或已结束时抛出
     """
-    session = await get_session_by_id(db, session_id, user_id=user_id)
+    session = await get_session_by_id(db, session_id, user_id=user_id, for_update=True)
 
     if session.status != "in_progress":
         raise HTTPException(

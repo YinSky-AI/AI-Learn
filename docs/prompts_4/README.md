@@ -27,7 +27,7 @@
 - [x] [02 访问控制](P0/02-access-control.md)
 - [x] [03 管理变更保护](P0/03-administrative-change.md)
 - [x] [04 备份与恢复](P0/04-backup-and-recovery.md)
-- [ ] [05 答题提交事务](P0/05-answer-submission-transaction.md)
+- [x] [05 答题提交事务](P0/05-answer-submission-transaction.md)
 - [ ] [06 学习维度与题库目录](P0/06-learning-dimensions-and-question-catalog.md)
 - [x] [07 Schema 迁移](P0/07-schema-migration.md)
 - [x] [08 交付验证](P0/08-delivery-verification.md)

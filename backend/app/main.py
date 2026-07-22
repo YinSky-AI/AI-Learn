@@ -31,6 +31,8 @@ from app.core.schema_version import SchemaVersionError, verify_schema_targets
 from app.api.v1.router import router as v1_router
 from app.admin.routes import router as admin_router
 from app.middlewares import add_exception_handlers, RequestLoggingMiddleware
+from app.middlewares.admin_access import AdminAccessMiddleware
+from app.services.admin_auth import AdminAuthService
 
 
 # ============ 速率限制中间件（基于 Redis 滑动窗口）============
@@ -201,6 +203,7 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
+app.state.admin_auth_service = AdminAuthService()
 
 # ============ 注册中间件 ============
 
@@ -215,6 +218,7 @@ app.add_middleware(
 
 # 注册请求日志中间件
 app.add_middleware(RequestLoggingMiddleware)
+app.add_middleware(AdminAccessMiddleware)
 # 注册全局异常处理器
 add_exception_handlers(app)
 

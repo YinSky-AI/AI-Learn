@@ -24,7 +24,7 @@
 ### P0
 
 - [x] [01 题目访问隔离](P0/01-question-access.md)
-- [ ] [02 访问控制](P0/02-access-control.md)
+- [x] [02 访问控制](P0/02-access-control.md)
 - [ ] [03 管理变更保护](P0/03-administrative-change.md)
 - [x] [04 备份与恢复](P0/04-backup-and-recovery.md)
 - [ ] [05 答题提交事务](P0/05-answer-submission-transaction.md)

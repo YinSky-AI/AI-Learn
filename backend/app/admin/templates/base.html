@@ -37,10 +37,13 @@
         </div>
         <div class="flex items-center space-x-4">
             <a href="/admin" class="text-gray-300 hover:text-white text-sm">仪表盘</a>
-            <a href="/admin/logout" class="text-gray-300 hover:text-red-400 text-sm flex items-center space-x-1">
+            <form method="POST" action="/admin/logout" class="inline">
+                <input type="hidden" name="csrf_token" id="admin-logout-csrf">
+                <button type="submit" class="text-gray-300 hover:text-red-400 text-sm flex items-center space-x-1">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                 <span>退出</span>
-            </a>
+                </button>
+            </form>
         </div>
     </nav>
 
@@ -77,6 +80,25 @@
         </main>
     </div>
 
+    <script>
+        (() => {
+            const csrfToken = decodeURIComponent(
+                (document.cookie.match(/(?:^|; )admin_csrf=([^;]*)/) || [])[1] || ''
+            );
+            const logoutToken = document.getElementById('admin-logout-csrf');
+            if (logoutToken) logoutToken.value = csrfToken;
+            const originalFetch = window.fetch.bind(window);
+            window.fetch = (input, init = {}) => {
+                const method = String(init.method || 'GET').toUpperCase();
+                if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
+                    const headers = new Headers(init.headers || {});
+                    headers.set('X-CSRF-Token', csrfToken);
+                    init = { ...init, headers };
+                }
+                return originalFetch(input, init);
+            };
+        })();
+    </script>
     {% block extra_script %}{% endblock %}
 </body>
 </html>

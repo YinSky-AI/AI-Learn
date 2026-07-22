@@ -11,21 +11,27 @@
     - AI 审查记录查询
 """
 
-import os
+import hmac
+import hashlib
+import secrets
 from pathlib import Path
 from typing import Optional
 
 from fastapi import APIRouter, Request, Depends, Form, Query
-from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse, PlainTextResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from jinja2 import Environment, FileSystemLoader
+from loguru import logger
 
 from app.core.database import AI_LearnAsyncSessionLocal
+from app.services.admin_auth import (
+    CSRF_COOKIE_NAME,
+    LOGIN_CSRF_COOKIE_NAME,
+    SESSION_COOKIE_NAME,
+)
 
 router = APIRouter(prefix="/admin", tags=["管理后台"])
-
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin123")
 
 # 兼容旧依赖名，但统一复用 core 中受启动版本检查覆盖的题库 Session。
 AiLearnSessionLocal = AI_LearnAsyncSessionLocal
@@ -88,10 +94,9 @@ def _check_session(request: Request):
     """
     HTML 页面会话检查
 
-    检查请求中是否携带有效的 admin_session Cookie，
-    未登录则返回重定向到登录页面。
+    中间件已完成签名、过期、撤销和角色复核；此处仅保留路由级纵深防御。
     """
-    if request.cookies.get("admin_session") != "authenticated":
+    if not getattr(request.state, "admin_principal", None):
         return RedirectResponse(url="/admin/login", status_code=302)
     return None
 
@@ -100,21 +105,41 @@ def _check_api_auth(request: Request):
     """
     API 端点会话验证
 
-    检查请求中是否携带有效的 admin_session Cookie，
-    未登录则返回 401 JSON 响应。
+    中间件已完成统一授权；此处仅防止路由被脱离应用单独挂载后失守。
     """
-    if request.cookies.get("admin_session") != "authenticated":
-        return JSONResponse(
-            status_code=401,
-            content={"success": False, "message": "未登录或会话已过期"},
-        )
+    if not getattr(request.state, "admin_principal", None):
+        return PlainTextResponse("未登录或会话已过期", status_code=401)
     return None
 
 
 # ============ 登录 / 登出 ============
 
+def _login_response(request: Request, error: str = "", status_code: int = 200):
+    service = request.app.state.admin_auth_service
+    csrf_token = secrets.token_urlsafe(32)
+    template = jinja_env.get_template("login.html")
+    response = HTMLResponse(
+        template.render(error=error, csrf_token=csrf_token),
+        status_code=status_code,
+    )
+    response.set_cookie(
+        LOGIN_CSRF_COOKIE_NAME,
+        csrf_token,
+        max_age=600,
+        secure=service.cookie_secure,
+        httponly=True,
+        samesite="strict",
+        path="/admin/login",
+    )
+    return response
+
+
+def _login_identifier_fingerprint(identifier: str) -> str:
+    return hashlib.sha256(identifier.strip().lower().encode("utf-8")).hexdigest()[:12]
+
+
 @router.get("/login", response_class=HTMLResponse)
-async def login_page(error: str = ""):
+async def login_page(request: Request, error: str = ""):
     """
     管理后台登录页面
 
@@ -126,16 +151,20 @@ async def login_page(error: str = ""):
     Returns:
         HTMLResponse: 登录页面 HTML
     """
-    template = jinja_env.get_template("login.html")
-    return HTMLResponse(template.render(error=error))
+    return _login_response(request, error)
 
 
 @router.post("/login")
-async def login_submit(password: str = Form(...)):
+async def login_submit(
+    request: Request,
+    identifier: str = Form(...),
+    password: str = Form(...),
+    csrf_token: str = Form(...),
+):
     """
     管理后台登录提交
 
-    校验密码，通过后设置 admin_session Cookie 并重定向到仪表盘。
+    校验登录 CSRF、平台管理员账号与密码，成功后创建可撤销签名会话。
 
     Args:
         password (str): 提交的密码
@@ -143,26 +172,90 @@ async def login_submit(password: str = Form(...)):
     Returns:
         RedirectResponse: 登录成功重定向到仪表盘，失败返回登录页
     """
-    if password == ADMIN_PASSWORD:
-        response = RedirectResponse(url="/admin", status_code=302)
-        response.set_cookie("admin_session", "authenticated", max_age=86400, httponly=True)
-        return response
-    template = jinja_env.get_template("login.html")
-    return HTMLResponse(template.render(error="密码错误，请重试"))
+    cookie_csrf = request.cookies.get(LOGIN_CSRF_COOKIE_NAME, "")
+    if not cookie_csrf or not hmac.compare_digest(cookie_csrf, csrf_token):
+        return PlainTextResponse("安全校验失败，请刷新页面后重试", status_code=403)
+
+    service = request.app.state.admin_auth_service
+    request_id = getattr(request.state, "request_id", "unassigned")
+    identifier_fingerprint = _login_identifier_fingerprint(identifier)
+    try:
+        user = await service.authenticate(identifier, password)
+    except Exception as exc:
+        logger.bind(audit_event="admin_login_unavailable").error(
+            "admin_audit event=admin_login_unavailable identifier_fingerprint={} "
+            "request_id={} error_type={}",
+            identifier_fingerprint,
+            request_id,
+            type(exc).__name__,
+        )
+        return _login_response(request, "登录服务暂不可用，请稍后重试", status_code=503)
+    if user is None:
+        logger.bind(audit_event="admin_login_rejected").warning(
+            "admin_audit event=admin_login_rejected identifier_fingerprint={} "
+            "request_id={}",
+            identifier_fingerprint,
+            request_id,
+        )
+        return _login_response(request, "账号或密码错误", status_code=401)
+
+    try:
+        issued = await service.create_session(user)
+    except Exception as exc:
+        logger.bind(audit_event="admin_login_unavailable").error(
+            "admin_audit event=admin_login_unavailable actor_id={} request_id={} "
+            "error_type={}",
+            user.id,
+            request_id,
+            type(exc).__name__,
+        )
+        return _login_response(request, "登录服务暂不可用，请稍后重试", status_code=503)
+    logger.bind(audit_event="admin_login_succeeded").info(
+        "admin_audit event=admin_login_succeeded actor_id={} request_id={}",
+        user.id,
+        request_id,
+    )
+    response = RedirectResponse(url="/admin", status_code=302)
+    response.set_cookie(
+        SESSION_COOKIE_NAME,
+        issued.token,
+        max_age=service.session_ttl_seconds,
+        secure=service.cookie_secure,
+        httponly=True,
+        samesite="strict",
+        path="/admin",
+    )
+    response.set_cookie(
+        CSRF_COOKIE_NAME,
+        issued.csrf_token,
+        max_age=service.session_ttl_seconds,
+        secure=service.cookie_secure,
+        httponly=False,
+        samesite="strict",
+        path="/admin",
+    )
+    response.delete_cookie(LOGIN_CSRF_COOKIE_NAME, path="/admin/login")
+    return response
 
 
-@router.get("/logout")
-async def logout():
+@router.post("/logout")
+async def logout(request: Request, csrf_token: str = Form(...)):
     """
     管理后台退出登录
 
-    清除 admin_session Cookie 并重定向到登录页面。
+    校验会话绑定的 CSRF，服务端撤销会话后清除 Cookie。
 
     Returns:
         RedirectResponse: 重定向到登录页
     """
+    principal = getattr(request.state, "admin_principal", None)
+    if principal is None or not hmac.compare_digest(principal.csrf_token, csrf_token):
+        return PlainTextResponse("安全校验失败，请刷新页面后重试", status_code=403)
+    service = request.app.state.admin_auth_service
+    await service.revoke_session(request.cookies.get(SESSION_COOKIE_NAME))
     response = RedirectResponse(url="/admin/login", status_code=302)
-    response.delete_cookie("admin_session")
+    response.delete_cookie(SESSION_COOKIE_NAME, path="/admin")
+    response.delete_cookie(CSRF_COOKIE_NAME, path="/admin")
     return response
 
 

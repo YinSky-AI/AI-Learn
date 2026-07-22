@@ -22,7 +22,7 @@
 
 from pathlib import Path
 from typing import Any, List, Literal
-from pydantic import model_validator
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -112,6 +112,10 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     JWT_REFRESH_TOKEN_EXPIRE_DAYS: int = 7
+
+    # ============ 管理后台会话 ============
+    ADMIN_SESSION_TTL_SECONDS: int = Field(default=1800, ge=300, le=86400)
+    ADMIN_COOKIE_SECURE: bool = False
 
     # ============ CORS 配置 ============
     CORS_ORIGINS: List[str] = [

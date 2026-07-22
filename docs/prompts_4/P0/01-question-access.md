@@ -1,6 +1,6 @@
 # P0-01：题目访问隔离（Question Access）
 
-将本文件完整交给编码 AI 执行。你必须先调查当前代码再做设计和实现；HTML 报告的文件与行号只是待核验证据，不能直接当作现状。严格遵守项目 `AGENTS.md` 与 `docs/prompts_4/00-global-execution-rules.md`。
+将本文件完整交给编码 AI 执行。你必须先调查当前代码再做设计和实现；HTML 报告的文件与行号只是待核验证据，不能直接当作现状。严格遵守项目 `AGENTS.md` 与 [全局执行规则](../00-global-execution-rules.md)。
 
 ## 任务定位
 

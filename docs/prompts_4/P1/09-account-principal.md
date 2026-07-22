@@ -1,6 +1,6 @@
 # P1-09：账号主体（Account Principal）
 
-将本文件完整交给编码 AI 执行。先调查当前代码再设计和实施；HTML 行号只是候选证据。严格遵守 `AGENTS.md` 与 `docs/prompts_4/00-global-execution-rules.md`。
+将本文件完整交给编码 AI 执行。先调查当前代码再设计和实施；HTML 行号只是候选证据。严格遵守 `AGENTS.md` 与 [全局执行规则](../00-global-execution-rules.md)。
 
 ## 任务定位
 

@@ -1,6 +1,6 @@
 # P0-02：后台访问控制（Access Control）
 
-将本文件完整交给编码 AI 执行。先调查、后设计、再实施；HTML 旧行号仅为待核验证据。遵守 `AGENTS.md` 与 `docs/prompts_4/00-global-execution-rules.md`，并保持“出题 Agent + 审题 Agent”两层 AI 约束。
+将本文件完整交给编码 AI 执行。先调查、后设计、再实施；HTML 旧行号仅为待核验证据。遵守 `AGENTS.md` 与 [全局执行规则](../00-global-execution-rules.md)，并保持“出题 Agent + 审题 Agent”两层 AI 约束。
 
 ## 任务定位
 

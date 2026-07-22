@@ -98,6 +98,7 @@ interface LearningState {
   /** 是否 AI 正在回复 */
   isAIResponding: boolean;
   tutorStatus: "idle" | "streaming" | "ready" | "unavailable";
+  journeyStatus: "loading" | "ready" | "empty" | "error" | "offline";
   /** 总页数 */
   totalPages: number;
   /** 当前页 */
@@ -160,6 +161,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   isLoading: false,
   isAIResponding: false,
   tutorStatus: "idle",
+  journeyStatus: "loading",
   totalPages: 1,
   currentPage: 1,
   quizQuestions: [],
@@ -347,6 +349,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
           currentLesson: lessons.find((l) => !l.completed) || lessons[0] || null,
           chatMessages: localChat,
           isLoading: false,
+          journeyStatus: course ? "ready" : "empty",
         });
       } catch {
         // 后端不可用时 fallback 到 mock 数据
@@ -379,11 +382,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
           currentLesson: lessons.find((l) => !l.completed) || lessons[0] || null,
           chatMessages: localChat,
           isLoading: false,
+          journeyStatus: "offline",
         });
       }
     } catch (error) {
       console.error("获取课程详情失败:", error);
-      set({ isLoading: false });
+      set({ isLoading: false, journeyStatus: "error" });
     }
   },
 

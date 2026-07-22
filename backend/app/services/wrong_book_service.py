@@ -13,6 +13,14 @@ from app.models.wrong_book import WrongQuestion, WrongQuestionEvent
 from app.services.question_access import verified_answer_feedback
 
 
+def calculate_next_review_at(*, now: datetime, is_correct: bool, review_count: int, difficulty_factor: float = 1.0) -> datetime:
+    """Deterministic interval scheduler; inputs are explicit for reproducible tests."""
+    intervals = (1, 3, 7, 14, 30)
+    index = min(max(review_count, 0), len(intervals) - 1)
+    days = intervals[index] if is_correct else 1
+    return now + timedelta(days=max(1, round(days * max(0.5, difficulty_factor))))
+
+
 class WrongBookService:
     def __init__(self, db: AsyncSession):
         self.db = db
@@ -37,6 +45,7 @@ class WrongBookService:
             last_wrong_answer=wrong_answer,
             is_mastered=False,
             review_count=0,
+            next_review_at=now + timedelta(days=1),
         ).on_conflict_do_update(
             constraint="uq_wrong_question_user_question",
             set_={
@@ -46,6 +55,7 @@ class WrongBookService:
                 "is_mastered": False,
                 "mastered_at": None,
                 "updated_at": now,
+                "next_review_at": now + timedelta(days=1),
             },
         ).returning(WrongQuestion)
         result = await self.db.execute(statement)
@@ -68,6 +78,11 @@ class WrongBookService:
         from app.services.learning_service import judge_answer
         is_correct = judge_answer(record.question, user_answer)
         record.review_count += 1
+        record.next_review_at = calculate_next_review_at(
+            now=datetime.now(timezone.utc),
+            is_correct=is_correct,
+            review_count=record.review_count,
+        )
         await self.db.flush()
         return {
             "found": True,
@@ -106,7 +121,7 @@ class WrongBookService:
         return True
 
     async def get_practice_questions(self, user_id: uuid.UUID, subject: str | None, count: int) -> list[Question]:
-        statement = select(Question).join(WrongQuestion, WrongQuestion.question_id == Question.id).where(WrongQuestion.user_id == user_id, WrongQuestion.is_mastered.is_(False))
+        statement = select(Question).join(WrongQuestion, WrongQuestion.question_id == Question.id).where(WrongQuestion.user_id == user_id, WrongQuestion.is_mastered.is_(False), WrongQuestion.next_review_at <= datetime.now(timezone.utc))
         if subject:
             statement = statement.where(WrongQuestion.subject == subject)
         result = await self.db.execute(statement.order_by(desc(WrongQuestion.wrong_count), func.random()).limit(count))

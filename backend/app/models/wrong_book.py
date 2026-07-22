@@ -25,6 +25,7 @@ class WrongQuestion(BaseModel, Base):
     is_mastered = Column(Boolean, nullable=False, default=False, server_default="false")
     mastered_at = Column(DateTime(timezone=True), nullable=True)
     review_count = Column(Integer, nullable=False, default=0, server_default="0")
+    next_review_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
     user_note = Column(Text, nullable=False, default="", server_default="")
 
     question = relationship("Question", lazy="joined")

@@ -5,6 +5,15 @@ from types import SimpleNamespace
 import pytest
 
 
+def test_review_scheduler_is_deterministic_and_distinguishes_success():
+    from app.services.wrong_book_service import calculate_next_review_at
+
+    now = datetime(2026, 1, 1, 0, 0, 0)
+    assert (calculate_next_review_at(now=now, is_correct=True, review_count=0) - now).days == 1
+    assert (calculate_next_review_at(now=now, is_correct=True, review_count=3) - now).days == 14
+    assert (calculate_next_review_at(now=now, is_correct=False, review_count=3) - now).days == 1
+
+
 class _ScalarResult:
     def __init__(self, value):
         self.value = value

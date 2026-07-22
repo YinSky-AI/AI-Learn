@@ -201,6 +201,29 @@ class GeneratedQuestion(BaseModel, Base):
         return f"<GeneratedQuestion(id={self.id}, type={self.question_type})>"
 
 
+class GenerationJob(BaseModel, Base):
+    """Durable queue record for long-running, two-stage variant generation."""
+
+    __tablename__ = "generation_jobs"
+
+    idempotency_key = Column(String(128), nullable=False, unique=True)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    source_question_id = Column(UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="CASCADE"), nullable=False)
+    target_difficulty = Column(String(20), nullable=False)
+    status = Column(String(20), nullable=False, default="queued", server_default="queued")
+    attempts = Column(Integer, nullable=False, default=0, server_default="0")
+    max_attempts = Column(Integer, nullable=False, default=3, server_default="3")
+    lease_owner = Column(String(128), nullable=True)
+    lease_expires_at = Column(DateTime(timezone=True), nullable=True)
+    failure_reason = Column(Text, nullable=True)
+    result_question_id = Column(UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="SET NULL"), nullable=True)
+
+    __table_args__ = (
+        Index("idx_generation_job_status_lease", "status", "lease_expires_at"),
+        Index("idx_generation_job_user_created", "user_id", "created_at"),
+    )
+
+
 class QuestionQualityCheck(BaseModel, Base):
     """
     题目质量检查记录模型

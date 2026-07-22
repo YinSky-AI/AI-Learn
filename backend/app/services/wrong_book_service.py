@@ -13,6 +13,9 @@ from app.models.wrong_book import WrongQuestion, WrongQuestionEvent
 from app.services.question_access import verified_answer_feedback
 
 
+SCHEDULER_VERSION = "v1"
+
+
 def calculate_next_review_at(*, now: datetime, is_correct: bool, review_count: int, difficulty_factor: float = 1.0) -> datetime:
     """Deterministic interval scheduler; inputs are explicit for reproducible tests."""
     intervals = (1, 3, 7, 14, 30)
@@ -45,6 +48,8 @@ class WrongBookService:
             last_wrong_answer=wrong_answer,
             is_mastered=False,
             review_count=0,
+            scheduler_version=SCHEDULER_VERSION,
+            difficulty_factor=100,
             next_review_at=now + timedelta(days=1),
         ).on_conflict_do_update(
             constraint="uq_wrong_question_user_question",
@@ -56,6 +61,8 @@ class WrongBookService:
                 "mastered_at": None,
                 "updated_at": now,
                 "next_review_at": now + timedelta(days=1),
+                "scheduler_version": SCHEDULER_VERSION,
+                "difficulty_factor": 100,
             },
         ).returning(WrongQuestion)
         result = await self.db.execute(statement)
@@ -78,11 +85,18 @@ class WrongBookService:
         from app.services.learning_service import judge_answer
         is_correct = judge_answer(record.question, user_answer)
         record.review_count += 1
+        current_factor = getattr(record, "difficulty_factor", 100)
+        record.difficulty_factor = min(150, current_factor + 10) if is_correct else max(50, current_factor - 20)
+        record.scheduler_version = SCHEDULER_VERSION
         record.next_review_at = calculate_next_review_at(
             now=datetime.now(timezone.utc),
             is_correct=is_correct,
             review_count=record.review_count,
+            difficulty_factor=record.difficulty_factor / 100,
         )
+        if is_correct and record.review_count >= 5:
+            record.is_mastered = True
+            record.mastered_at = datetime.now(timezone.utc)
         await self.db.flush()
         return {
             "found": True,

@@ -279,7 +279,7 @@ def test_unknown_schema_policy_is_rejected_with_plain_text():
 
 
 def test_two_database_targets_publish_independent_revision_heads():
-    assert get_expected_schema_revision("primary") == "lp_0006_review_scheduler"
+    assert get_expected_schema_revision("primary") == "lp_0008_review_contract"
     assert get_expected_schema_revision("question-bank") == "catalog_0002_admin_recovery"
     assert get_schema_version_table("primary") == "alembic_version_learning"
     assert get_schema_version_table("question-bank") == "alembic_version_catalog"
@@ -639,7 +639,7 @@ def test_primary_baseline_excludes_account_columns_added_after_baseline():
         "generation_failure_reason",
     }
     assert schema_admin_module.POST_BASELINE_COLUMNS[("primary", "wrong_questions")] == {
-        "next_review_at",
+        "next_review_at", "scheduler_version", "difficulty_factor",
     }
 
 
@@ -838,7 +838,7 @@ def test_primary_allows_only_named_external_tables_and_catalog_allows_no_unknown
 @pytest.mark.asyncio
 async def test_schema_guard_checks_both_database_heads_before_startup():
     current = {
-        "primary": "lp_0006_review_scheduler",
+        "primary": "lp_0008_review_contract",
         "question-bank": "catalog_0002_admin_recovery",
     }
 
@@ -863,7 +863,7 @@ async def test_schema_guard_checks_both_database_heads_before_startup():
 async def test_schema_guard_rejects_when_either_database_is_stale():
     async def revision_reader(_engine, target_alias):
         if target_alias == "primary":
-            return "lp_0006_review_scheduler"
+            return "lp_0008_review_contract"
         return None
 
     with pytest.raises(SchemaVersionError, match="question-bank.*尚未纳入版本管理"):

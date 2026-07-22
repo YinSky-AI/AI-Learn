@@ -52,7 +52,7 @@ ALLOWED_EXTERNAL_COLUMNS = {
     ("primary", "users"): {"ruoyi_user_id"},
 }
 POST_BASELINE_TABLES = {
-    "primary": {"admin_change_audits"},
+    "primary": {"admin_change_audits", "generation_jobs"},
     "question-bank": {"admin_change_audits"},
 }
 POST_BASELINE_COLUMNS = {
@@ -65,7 +65,7 @@ POST_BASELINE_COLUMNS = {
         "generation_max_attempts",
         "generation_failure_reason",
     },
-    ("primary", "wrong_questions"): {"next_review_at"},
+    ("primary", "wrong_questions"): {"next_review_at", "scheduler_version", "difficulty_factor"},
     ("question-bank", "questions"): {"deleted_at"},
 }
 

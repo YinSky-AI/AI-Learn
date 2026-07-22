@@ -31,7 +31,7 @@ CATALOG_BOOTSTRAP_DATABASE = "ai_learn_bootstrap"
 ENVIRONMENT = os.getenv("DELIVERY_TEST_ENV", "local")
 BACKEND_PROBE_CONTAINER = "ai-learn-schema-drill-backend"
 
-PRIMARY_HEAD = "lp_0006_review_scheduler"
+PRIMARY_HEAD = "lp_0008_review_contract"
 PRIMARY_BASELINE = "lp_0001_legacy_baseline"
 CATALOG_HEAD = "catalog_0002_admin_recovery"
 PERSISTENT_HOST = "postgres"
@@ -42,7 +42,7 @@ PRIMARY_MANAGED_TABLES = (
     "achievements", "admin_change_audits", "age_groups", "answers", "chat_messages", "courses",
     "daily_challenge_answers", "daily_challenge_attempts",
     "daily_challenge_questions", "daily_challenges", "error_logs",
-    "evolution_records", "gamification_events", "generated_question_batches",
+    "evolution_records", "gamification_events", "generated_question_batches", "generation_jobs",
     "generated_questions", "harness_runs", "knowledge_nodes",
     "learning_sessions", "lessons", "question_quality_checks", "questions",
     "session_memories", "skills", "subjects", "tool_call_logs",

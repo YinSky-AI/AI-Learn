@@ -43,6 +43,7 @@ from app.models.achievement import Achievement, UserAchievement  # noqa: E402, F
 from app.models.ai_generated import (  # noqa: E402, F401
     GeneratedQuestionBatch,
     GeneratedQuestion,
+    GenerationJob,
     QuestionQualityCheck,
     HarnessRun,
     ToolCallLog,
@@ -80,6 +81,7 @@ __all__ = [
     "UserAchievement",
     "GeneratedQuestionBatch",
     "GeneratedQuestion",
+    "GenerationJob",
     "QuestionQualityCheck",
     "HarnessRun",
     "ToolCallLog",

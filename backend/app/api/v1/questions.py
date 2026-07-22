@@ -195,7 +195,7 @@ async def generate_variant(
     """
     # 创建变式题记录（状态为 pending，等待 AI 填充内容）
     try:
-        variant = await question_generation_service.generate_variant(
+        job = await question_generation_service.enqueue_variant_job(
             db,
             original_question_id=request.question_id,
             user_id=user_id,
@@ -209,9 +209,9 @@ async def generate_variant(
 
     return success_response(
         data={
-            "variant_id": str(variant.id),
+            "job_id": str(job.id),
             "parent_question_id": str(request.question_id),
-            "status": variant.quality_status,
+            "status": job.status,
             "message": "变式题生成任务已提交",
         },
         message="变式题生成任务已创建",

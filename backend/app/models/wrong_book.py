@@ -25,6 +25,8 @@ class WrongQuestion(BaseModel, Base):
     is_mastered = Column(Boolean, nullable=False, default=False, server_default="false")
     mastered_at = Column(DateTime(timezone=True), nullable=True)
     review_count = Column(Integer, nullable=False, default=0, server_default="0")
+    scheduler_version = Column(String(20), nullable=False, default="v1", server_default="v1")
+    difficulty_factor = Column(Integer, nullable=False, default=100, server_default="100")
     next_review_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
     user_note = Column(Text, nullable=False, default="", server_default="")
 
@@ -34,6 +36,7 @@ class WrongQuestion(BaseModel, Base):
         UniqueConstraint("user_id", "question_id", name="uq_wrong_question_user_question"),
         Index("idx_wrong_question_user_subject", "user_id", "subject"),
         Index("idx_wrong_question_user_review", "user_id", "is_mastered", "last_wrong_at"),
+        Index("idx_wrong_question_due", "user_id", "is_mastered", "next_review_at"),
     )
 
 

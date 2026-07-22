@@ -109,6 +109,14 @@ class AdminChangeService:
             value = "NOW()" if desired == "deleted" else "NULL"
             updated = ", updated_at=NOW()" if table != "questions" else ""
             await self.db.execute(text(f"UPDATE {table} SET deleted_at={value}{updated} WHERE id=:id"), {"id": normalized_id})
+            if entity_type == "user":
+                await self.db.execute(
+                    text(
+                        "UPDATE users SET credential_version = credential_version + 1, "
+                        "credentials_revoked_at = NOW() WHERE id=:id"
+                    ),
+                    {"id": normalized_id},
+                )
             if entity_type == "lesson":
                 await self.db.execute(
                     text(

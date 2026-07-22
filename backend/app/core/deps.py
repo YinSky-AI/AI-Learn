@@ -28,6 +28,7 @@ security = HTTPBearer(auto_error=False)
 
 async def get_current_user_id(
     credentials: Optional[HTTPAuthorizationCredentials] = Depends(security),
+    db: AsyncSession = Depends(get_db),
 ) -> uuid.UUID:
     """
     获取当前用户 ID（强制认证）
@@ -59,6 +60,11 @@ async def get_current_user_id(
         if payload.get("type") != "access":
             raise ValueError("Token 类型错误")
         user_id = uuid.UUID(payload["sub"])
+        user = (await db.execute(
+            select(User).where(User.id == user_id, User.deleted_at.is_(None))
+        )).scalar_one_or_none()
+        if user is None or int(payload.get("ver", 1)) != int(user.credential_version or 1):
+            raise ValueError("account principal is inactive")
         return user_id
     except (ValueError, KeyError) as e:
         raise HTTPException(

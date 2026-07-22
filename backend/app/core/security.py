@@ -70,6 +70,7 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 def create_access_token(
     user_id: uuid.UUID,
+    credential_version: int = 1,
     extra_data: Optional[dict] = None,
 ) -> str:
     """
@@ -92,6 +93,8 @@ def create_access_token(
     payload = {
         "sub": str(user_id),
         "type": "access",
+        "ver": credential_version,
+        "jti": str(uuid.uuid4()),
         "iat": now,
         "exp": now + timedelta(minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES),
     }
@@ -102,6 +105,7 @@ def create_access_token(
 
 def create_refresh_token(
     user_id: uuid.UUID,
+    credential_version: int = 1,
     extra_data: Optional[dict] = None,
 ) -> str:
     """
@@ -124,6 +128,7 @@ def create_refresh_token(
     payload = {
         "sub": str(user_id),
         "type": "refresh",
+        "ver": credential_version,
         "jti": str(uuid.uuid4()),  # JWT ID，用于吊销
         "iat": now,
         "exp": now + timedelta(days=settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS),

@@ -230,7 +230,7 @@ def test_verified_empty_release_bootstrap_has_a_separate_confirmation_path():
     validate_release_authorization(
         action="upgrade",
         target=target,
-        current_revision="lp_0003_admin_recovery",
+            current_revision="lp_0004_account_principal",
         has_user_tables=True,
         approval_reference="CHG-124",
         backup_reference=None,
@@ -279,7 +279,7 @@ def test_unknown_schema_policy_is_rejected_with_plain_text():
 
 
 def test_two_database_targets_publish_independent_revision_heads():
-    assert get_expected_schema_revision("primary") == "lp_0003_admin_recovery"
+    assert get_expected_schema_revision("primary") == "lp_0004_account_principal"
     assert get_expected_schema_revision("question-bank") == "catalog_0002_admin_recovery"
     assert get_schema_version_table("primary") == "alembic_version_learning"
     assert get_schema_version_table("question-bank") == "alembic_version_catalog"
@@ -822,7 +822,7 @@ def test_primary_allows_only_named_external_tables_and_catalog_allows_no_unknown
 @pytest.mark.asyncio
 async def test_schema_guard_checks_both_database_heads_before_startup():
     current = {
-        "primary": "lp_0003_admin_recovery",
+        "primary": "lp_0004_account_principal",
         "question-bank": "catalog_0002_admin_recovery",
     }
 
@@ -847,7 +847,7 @@ async def test_schema_guard_checks_both_database_heads_before_startup():
 async def test_schema_guard_rejects_when_either_database_is_stale():
     async def revision_reader(_engine, target_alias):
         if target_alias == "primary":
-            return "lp_0003_admin_recovery"
+            return "lp_0004_account_principal"
         return None
 
     with pytest.raises(SchemaVersionError, match="question-bank.*尚未纳入版本管理"):

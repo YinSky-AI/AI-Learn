@@ -17,7 +17,8 @@ async def main() -> None:
             async with db.begin():
                 job = await claim_next_generation_job(db, worker_id)
                 if job is None:
-                    return
+                    await asyncio.sleep(2)
+                    continue
                 await process_claimed_generation_job(db, job, QuestionPipeline(get_ai_provider()))
 
 

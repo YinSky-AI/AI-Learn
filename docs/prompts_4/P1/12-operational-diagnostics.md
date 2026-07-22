@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 12 候选为 `middlewares/request_logging.py`、`main.py:106-126`、`models/ai_generated.py:253-386`、`ai/provider.py`：ID 与日志未贯穿，观测模型部分未接线。
-- 建议统一阶段状态、耗时、token、成本和错误分类，使一次查询可定位完整链路；先核验真实调用顺序。
+- Finding 12 的候选为 `middlewares/request_logging.py`、`main.py:106-126`、`models/ai_generated.py:253-386`、`ai/provider.py`。问题：报告指出 request ID、HarnessRun、ToolCallLog 与 provider 日志可能未贯穿，部分观测模型可能未接线；影响：一次 AI 失败可能需跨多处猜测，缺少阶段耗时、token、成本和错误分类。
+- 建议边界：报告建议以统一 run ID 串联结构化日志、指标、脱敏错误和阶段状态，形成 Operational Run；预期收益：一次查询即可定位完整链路并集中诊断知识。候选文件、行号、调用顺序和结论均须在当前代码中重验，建议不得视为已实施。
 
 ## 开始前调查
 

@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 13 候选为 `backend/app/api/v1/questions.py:174-218`、`services/question_generation_service.py:270-321`：变式题仅写空 pending 占位，无队列消费者、超时或重试。
-- 目标边界是 Generation Job 统一状态与执行，收益是 future AI 长任务复用；先在当前代码确认短/长任务和数据污染路径。
+- Finding 13 的候选为 `backend/app/api/v1/questions.py:174-218`、`services/question_generation_service.py:270-321`。问题：报告指出变式题可能只写入空 `pending` 占位，缺少队列消费者、worker、超时或重试；影响：任务可能永久 pending，空题会污染历史、批次和统计。
+- 建议边界：报告建议以 Generation Job 统一短/长任务的状态与执行，短任务同步完成，长任务采用持久状态、worker、幂等、租约、有限重试和失败原因；预期收益：状态与执行一致并可复用给未来 AI 长任务。候选文件、行号、短/长任务和污染路径均须在当前代码中重验，建议不得视为已实施。
 
 ## 开始前调查
 

@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 20 候选为 `backend/app/models/user.py:67`、`models/course.py:297+`、`services/user_service.py`、`frontend/src/lib/local-storage.ts`：平台可能保存未成年人画像、答题和聊天数据，但保留、导出、匿名化和监护规则未集中。
-- 这是待验证线索。必须以当前数据流、数据库、对象存储（若有）、日志、缓存、AI provider 适配与前端存储重做数据盘点。
+- Finding 20 的候选为 `backend/app/models/user.py:67`、`models/course.py:297+`、`services/user_service.py`、`frontend/src/lib/local-storage.ts`。问题：报告指出平台可能保存未成年人画像、答题和聊天数据，但保留、导出、匿名化和监护规则可能未集中；影响：敏感数据生命周期会依赖各调用点，难以满足用户权利和合规要求。
+- 建议边界：报告建议先确认业务/法规要求，再以 Student Data Governance 统一数据分类、保留、导出、删除/匿名化和审计，覆盖数据库、浏览器缓存与 AI 日志；预期收益：形成单一治理 seam。候选文件、行号、数据流、数据库、对象存储（若有）、日志、缓存、AI provider 适配、前端存储和结论均须在当前代码中重验，建议不得视为已实施。
 
 ## 开始前调查
 

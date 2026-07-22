@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 11 候选为 `backend/app/main.py:241-260`、`nginx/nginx.conf:210-215`、`docker-compose.yml:76-127`：后端 health 可能无条件 healthy、Nginx 为静态 200，编排不等待真实依赖。
-- 建议 readiness 聚合数据库、Redis、必需配置和必要下游，liveness 只反映进程可响应；必须复核服务实际依赖。
+- Finding 11 的候选为 `backend/app/main.py:241-260`、`nginx/nginx.conf:210-215`、`docker-compose.yml:76-127`。问题：报告指出后端 health 可能无条件 healthy、Nginx 可能为静态 200，且编排可能未等待真实依赖；影响：数据库、Redis 或配置不可用时，监控仍可能误判服务健康。
+- 建议边界：报告建议区分 liveness/readiness，并在 readiness 聚合 DB、Redis、必需配置和必要下游，使 Compose、网关和监控消费同一真实可用性 seam；预期收益：提升故障隔离可靠性。候选文件、行号、依赖和结论均须在当前代码中重验，建议不得视为已实施。
 
 ## 开始前调查
 

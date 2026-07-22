@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 16 候选为 `frontend/src/stores/learning-store.ts`、`components/learning/quiz-question-mapper.ts`、`types/index.ts`、`types/api.ts`、`app/(main)/learning/*`：课程/题目/反馈多形状与 `any`，store 混合目录、进度、对话、测验和 fallback，可能永久骨架。
-- 建议以 Contract Adapter 统一 DTO 验证和领域形状，页面只消费明确 Journey 状态；逐项复核现有 API。
+- Finding 16 的候选为 `frontend/src/stores/learning-store.ts`、`components/learning/quiz-question-mapper.ts`、`types/index.ts`、`types/api.ts`、`app/(main)/learning/*`。问题：报告指出课程、题目和反馈可能有多套形状与 `any` 映射，巨大 store 混合目录、进度、对话、测验和本地 fallback；影响：后端字段变更可能扩散，失败/空数据/mock 难区分，页面可能永久显示骨架。
+- 建议边界：报告建议在传输 seam 以 Contract Adapter 统一 DTO 验证和 canonical 领域形状，并将 Learning Journey 从 AI/Practice 状态分离；预期收益：契约变动和进度规则具有 locality，页面只消费明确旅程状态。候选文件、行号、现有 API 和结论均须在当前代码中重验，建议不得视为已实施。
 
 ## 开始前调查
 

@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 15 候选为 `frontend/src/stores/learning-store.ts:403-588`、`components/ai/tutor-chat.tsx`、`types/api.ts`：两套聊天实现，失败被伪装成成功，SSE 半行未缓冲。
-- 建议统一协议、历史、取消、持久化和 unavailable；先复核端点的 JSON/SSE 格式及后端错误契约。
+- Finding 15 的候选为 `frontend/src/stores/learning-store.ts:403-588`、`components/ai/tutor-chat.tsx`、`types/api.ts`。问题：报告指出可能存在两套聊天实现，失败可能被 fallback 伪装成成功回复，SSE 半行可能未缓冲；影响：错误会污染聊天历史，不同入口的上下文、角色和协议行为可能不一致。
+- 建议边界：报告建议以单一 TutorConversation 统一协议、历史、取消、持久化和明确 unavailable 状态，JSON/SSE 仅作为传输 Adapter；预期收益：协议兼容和错误语义具有 locality。候选文件、行号、JSON/SSE 格式及后端错误契约均须在当前代码中重验，建议不得视为已实施。
 
 ## 开始前调查
 

@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 14 候选为 `frontend/src/components/quiz/quiz-practice.tsx:108-280`、`learning/[id]/page.tsx`、`knowledge-practice/page.tsx`、`wrong-book/practice/page.tsx`：十余相关 state 表达隐式状态，三类旅程重复。
-- 建议集中题组、会话、提交、反馈、下一题、重试、结算和焦点；先逐页复核来源差异与后端契约。
+- Finding 14 的候选为 `frontend/src/components/quiz/quiz-practice.tsx:108-280`、`learning/[id]/page.tsx`、`knowledge-practice/page.tsx`、`wrong-book/practice/page.tsx`。问题：报告指出十余相关 state 可能表达隐式状态机，课程、知识图谱和错题本三类旅程重复；影响：同一 bug 可能需多处修复，竞态、错误和无障碍行为难以一致。
+- 建议边界：报告建议以单一 PracticeSession 集中题组、会话、提交、反馈、下一题、重试、结算和焦点，页面仅作为来源 Adapter；预期收益：一次修复覆盖各练习入口且状态转换可直接测试。候选文件、行号、来源差异和后端契约均须在当前代码中重验，建议不得视为已实施。
 
 ## 开始前调查
 

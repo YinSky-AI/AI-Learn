@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 17 候选为 `backend/app/models/wrong_book.py`、`services/wrong_book_service.py:101-112`、`frontend/src/app/(main)/wrong-book/*`：当前按错误次数/随机排序，掌握人工标记，无到期字段和算法。
-- 建议共享调度模型，使错题、复习和报告一致；具体质量等级和默认间隔须由当前业务与测试数据验证。
+- Finding 17 的候选为 `backend/app/models/wrong_book.py`、`services/wrong_book_service.py:101-112`、`frontend/src/app/(main)/wrong-book/*`。问题：报告指出错题本可能按错误次数和随机排序，掌握可能依赖人工标记，且没有 `next_review_at` 或到期算法；影响：“今日复习”可能不是真正的间隔复习，难以持续提升记忆效果。
+- 建议边界：报告建议以 Review Scheduler 根据答题质量更新 interval、难度因子、到期时间和掌握规则，供错题、复习和报告共享；预期收益：形成可解释的学习调度模型。候选文件、行号、质量等级、默认间隔和结论均须在当前业务与测试数据中重验，建议不得视为已实施。
 
 ## 开始前调查
 

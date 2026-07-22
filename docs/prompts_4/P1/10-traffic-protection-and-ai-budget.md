@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 10 候选为 `backend/app/main.py:55-99`、`core/config.py:90-91`、`api/v1/ai.py:47-179`、`api/v1/user_courses.py:209-232`：可替换 `X-Client-ID` 绕过非原子限流，匿名 AI 输入/历史无总量限制。
-- 建议集中可信 principal、原子窗口、配额和故障策略，通过 Provider Adapter 统一高成本入口；逐项复核当前实现。
+- Finding 10 的候选为 `backend/app/main.py:55-99`、`core/config.py:90-91`、`api/v1/ai.py:47-179`、`api/v1/user_courses.py:209-232`。问题：报告指出可替换 `X-Client-ID` 可能绕过非原子限流，匿名 AI 输入/历史可能无总量限制；影响：可能带来暴力请求、费用滥用、超大上下文和匿名垃圾写入风险。
+- 建议边界：报告建议集中可信 principal、原子窗口、burst、AI 配额/输入预算/并发和故障策略，并经 Provider Adapter 统一高成本入口；预期收益：使保护 seam 与算法/降级具有 locality。候选文件、行号和上述结论均须在当前代码中逐项重验，建议不得视为已实施。
 
 ## 开始前调查
 

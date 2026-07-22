@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 18 候选为 `backend/app/services/course_service.py:427-447`、`progress_service.py`、`achievement_service.py`、`daily_challenge_service.py:59`：报告怀疑“我的课程”有 N+1，进度/成就重复聚合，随机排序在大数据量下成本较高。
-- 该结论仅为待重验假设。执行时须以当前代码、真实/脱敏代表性数据和数据库观测重新确认每个入口、SQL、索引、结果集和调用频率。
+- Finding 18 的候选为 `backend/app/services/course_service.py:427-447`、`progress_service.py`、`achievement_service.py`、`daily_challenge_service.py:59`。问题：报告指出“我的课程”可能有 N+1，进度/成就可能重复聚合，随机排序在大数据量下成本较高；影响：数据增长时页面延迟和数据库负载可能非线性上升。
+- 建议边界：报告建议以 Learning Read Model 先建立查询数/延迟基线，再采用批量查询、聚合投影、索引和可失效缓存；预期收益：查询和缓存策略具有 locality，避免无测量的全局缓存。候选文件、行号、入口、SQL、索引、结果集、调用频率和结论均须以当前代码、代表性数据及数据库观测重验，建议不得视为已实施。
 
 ## 开始前调查
 

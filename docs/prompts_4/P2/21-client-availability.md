@@ -11,8 +11,8 @@
 
 ## 当前证据
 
-- Finding 21 候选为 `frontend/src/stores/loading-store.ts`、`components/common/error-state.tsx`、`public/sw.js`、`components/pwa/*`、`wrong-book/page.tsx`：页面各自组合 loading/error/offline/PWA 更新；部分失败会落为空数据，部分 Badge 缺少按钮语义。
-- 执行时须重验每个页面的状态来源、HTTP/SW 事件、缓存策略、PWA 清单、交互元素和真实辅助技术语义。
+- Finding 21 的候选为 `frontend/src/stores/loading-store.ts`、`components/common/error-state.tsx`、`public/sw.js`、`components/pwa/*`、`wrong-book/page.tsx`。问题：报告指出页面可能各自组合 loading/error/offline/PWA 更新，部分失败可能伪装为空数据，部分 Badge 可能缺少按钮语义；影响：用户可能无法分辨实时、缓存或失败状态，离线更新和键盘体验可能不一致。
+- 建议边界：报告建议统一 pending、ready、empty、failed、offline-cached、updating、installable 状态及可访问性播报，由 Availability State 经 HTTP/SW Adapter 供页面使用；预期收益：一处实现为全部页面提供移动端、PWA 和无障碍 leverage。候选文件、行号、每页状态来源、HTTP/SW 事件、缓存策略、PWA 清单、交互元素、辅助技术语义和结论均须在当前代码中重验，建议不得视为已实施。
 
 ## 开始前调查
 

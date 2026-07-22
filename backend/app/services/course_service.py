@@ -19,6 +19,7 @@ from typing import Any, Dict, List, Optional
 
 from sqlalchemy import select, func, or_, and_
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import joinedload
 
 from app.models.course import Course, Lesson, UserCourse, UserLesson, ChatMessage
 
@@ -428,7 +429,7 @@ async def get_user_courses(
         return {"items": [], "total": 0, "page": page, "page_size": page_size}
 
     stmt = (
-        select(UserCourse)
+        select(UserCourse).options(joinedload(UserCourse.course))
         .join(Course, Course.id == UserCourse.course_id)
         .where(UserCourse.user_id == user_id, Course.deleted_at.is_(None))
         .order_by(UserCourse.last_accessed_at.desc())
@@ -447,16 +448,6 @@ async def get_user_courses(
 
     result = await db.execute(stmt)
     items = list(result.scalars().all())
-
-    # 显式加载关联的课程信息（避免懒加载问题）
-    for item in items:
-        if item.course_id is not None:
-            course_stmt = select(Course).where(
-                Course.id == item.course_id,
-                Course.deleted_at.is_(None),
-            )
-            course_result = await db.execute(course_stmt)
-            item.course = course_result.scalar_one_or_none()
 
     return {
         "items": items,

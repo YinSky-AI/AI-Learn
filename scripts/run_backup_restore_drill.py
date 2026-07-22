@@ -13,6 +13,7 @@ import subprocess
 import sys
 import time
 from typing import Any
+from urllib.parse import quote
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -90,6 +91,27 @@ def parse_probe_fingerprint(value: str) -> dict[str, int]:
     if fingerprint != {"row_count": 2, "unique_markers": 2, "constraints": 2}:
         raise BackupDrillError("恢复指纹不匹配，行数、唯一值或约束缺失")
     return fingerprint
+
+
+def load_password_secret(path: Path) -> str:
+    """读取不带 BOM 的非空单行密码文件，且不在诊断中回显内容。"""
+
+    if not path.is_absolute() or path.is_symlink():
+        raise BackupDrillError("PostgreSQL 密码 secret 必须是绝对路径普通文件")
+    try:
+        if not path.is_file() or path.stat().st_size > 4096:
+            raise BackupDrillError("PostgreSQL 密码 secret 文件无效")
+        raw_value = path.read_text(encoding="utf-8")
+    except BackupDrillError:
+        raise
+    except (OSError, UnicodeError) as exc:
+        raise BackupDrillError("PostgreSQL 密码 secret 文件不可读") from exc
+    if raw_value.startswith("\ufeff"):
+        raise BackupDrillError("PostgreSQL 密码 secret 禁止包含 UTF-8 BOM")
+    lines = raw_value.splitlines()
+    if len(lines) != 1 or not lines[0].strip():
+        raise BackupDrillError("PostgreSQL 密码 secret 必须是非空单行文件")
+    return lines[0].strip()
 
 
 def _run(
@@ -210,9 +232,45 @@ def run_drill() -> dict[str, Any]:
         directory.mkdir(parents=True, exist_ok=True)
     key_file = RUNTIME_ROOT / "backup_key"
     password_file = RUNTIME_ROOT / "postgres_password"
+    primary_url_file = RUNTIME_ROOT / "primary_database_url"
+    catalog_url_file = RUNTIME_ROOT / "catalog_database_url"
     corrupted_archive = RUNTIME_ROOT / "corrupted.aibak"
     key_file.write_bytes(secrets.token_bytes(32))
-    password_file.write_text("postgres\n", encoding="utf-8")
+    provided_password_file = os.getenv("POSTGRES_PASSWORD_SECRET_FILE")
+    password = (
+        load_password_secret(Path(provided_password_file))
+        if provided_password_file
+        else secrets.token_urlsafe(32)
+    )
+    password_file.write_text(password + "\n", encoding="utf-8", newline="\n")
+    encoded_password = quote(password, safe="")
+    primary_url_file.write_text(
+        "postgresql+asyncpg://postgres:"
+        f"{encoded_password}@{SOURCE_HOST}:5432/{SOURCE_DATABASE}\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    catalog_url_file.write_text(
+        "postgresql+asyncpg://postgres:"
+        f"{encoded_password}@{SOURCE_HOST}:5432/ai_learn_test\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    secret_environment = {
+        "POSTGRES_PASSWORD_SECRET_FILE": (
+            provided_password_file or str(password_file.resolve())
+        ),
+        "PRIMARY_DATABASE_URL_SECRET_FILE": os.getenv(
+            "PRIMARY_DATABASE_URL_SECRET_FILE", str(primary_url_file.resolve())
+        ),
+        "CATALOG_DATABASE_URL_SECRET_FILE": os.getenv(
+            "CATALOG_DATABASE_URL_SECRET_FILE", str(catalog_url_file.resolve())
+        ),
+    }
+    previous_secret_environment = {
+        key: os.environ.get(key) for key in secret_environment
+    }
+    os.environ.update(secret_environment)
     before_manifests = set(primary_dir.glob("*.manifest.json"))
     compose = ["--profile", "delivery-test"]
 
@@ -429,7 +487,18 @@ def run_drill() -> dict[str, Any]:
             stage="停止可丢弃数据库",
             echo=False,
         )
-        for runtime_file in (key_file, password_file, corrupted_archive):
+        for key, previous_value in previous_secret_environment.items():
+            if previous_value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = previous_value
+        for runtime_file in (
+            key_file,
+            password_file,
+            primary_url_file,
+            catalog_url_file,
+            corrupted_archive,
+        ):
             runtime_file.unlink(missing_ok=True)
 
 

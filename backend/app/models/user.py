@@ -72,7 +72,7 @@ class User(SoftDeleteModel, Base):
     # 管理后台关联（预留字段）
     admin_user_id = Column(Integer, nullable=True, unique=True,
                            comment="管理后台用户 ID，用于关联外部管理系统")
-    is_admin = Column(Boolean, default=False, server_default=text("false"),
+    is_admin = Column(Boolean, nullable=False, default=False, server_default=text("false"),
                      comment="是否为管理员")
 
     # 索引

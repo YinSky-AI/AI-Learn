@@ -5,4 +5,9 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 
--- 应用首次启动会根据 ORM 创建游戏化表；已有数据库可重复执行 migrate_gamification.py 补齐字段。
+-- 只建立两个明确的数据库边界；表、索引和约束仍全部来自各自 Alembic root。
+SELECT 'CREATE DATABASE ai_learn'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'ai_learn')\gexec
+
+-- 本文件只准备数据库级扩展。应用 Schema 必须通过两个显式 Alembic root 部署；
+-- FastAPI 启动、导入脚本和旧 migrate_gamification.py 均不得定义或修补 Schema。

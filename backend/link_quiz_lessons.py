@@ -26,14 +26,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sqlalchemy import select, and_
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 
+from app.core.config import settings
+from app.core.schema_version import SchemaVersionError, verify_schema_target
 from app.models.course import Lesson, Course
 from app.models.content import KnowledgeNode
 
-# 数据库连接（从环境变量读取，fallback 到 docker compose 默认值）
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql+asyncpg://postgres:postgres@postgres:5432/learning_platform",
-)
+DATABASE_URL = settings.DATABASE_URL
 
 # 学科编码映射
 SUBJECT_MAP = {
@@ -69,11 +67,18 @@ DIFF_MAP = {
 }
 
 
+async def ensure_schema_ready(engine) -> None:
+    """任何查询或 DML 前要求主业务库处于批准 head。"""
+
+    await verify_schema_target(engine, "primary", policy="strict")
+
+
 async def link_quiz_lessons():
     """主逻辑：绑定 quiz 课时到知识点"""
     engine = create_async_engine(DATABASE_URL, echo=False)
     async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
+    await ensure_schema_ready(engine)
     async with async_session() as db:
         # 1. 查询所有 quiz 类型的课时及其所属课程信息
         stmt = (
@@ -155,5 +160,17 @@ async def link_quiz_lessons():
     await engine.dispose()
 
 
+def run() -> int:
+    try:
+        asyncio.run(link_quiz_lessons())
+    except SchemaVersionError as exc:
+        print(f"绑定已拒绝：{exc}", file=sys.stderr)
+        return 2
+    except Exception:
+        print("绑定失败，事务已停止；请检查脱敏服务日志。", file=sys.stderr)
+        return 1
+    return 0
+
+
 if __name__ == "__main__":
-    asyncio.run(link_quiz_lessons())
+    raise SystemExit(run())

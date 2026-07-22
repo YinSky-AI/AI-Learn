@@ -18,6 +18,7 @@ from ops.backup.backup_recovery import (
 )
 from scripts.run_backup_restore_drill import (
     BackupDrillError,
+    load_password_secret,
     parse_probe_fingerprint,
     validate_drill_targets,
 )
@@ -145,6 +146,16 @@ class BackupRecoverySafetyTests(unittest.TestCase):
 
         with self.assertRaisesRegex(BackupDrillError, "恢复指纹"):
             parse_probe_fingerprint("2|1|2")
+
+    def test_drill_password_is_loaded_from_a_single_line_secret_without_bom(self):
+        password_file = self.temp_dir / "postgres_password"
+        password_file.write_text("sentinel-password\n", encoding="utf-8")
+
+        self.assertEqual(load_password_secret(password_file), "sentinel-password")
+
+        password_file.write_bytes(b"\xef\xbb\xbfsentinel-password\n")
+        with self.assertRaisesRegex(BackupDrillError, "BOM"):
+            load_password_secret(password_file)
 
 
 if __name__ == "__main__":

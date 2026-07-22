@@ -20,8 +20,27 @@
 - AI 服务配置（DeepSeek API 调用参数）
 """
 
-from typing import List
+from pathlib import Path
+from typing import Any, List, Literal
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+def _read_database_url_file(value: object, field_name: str) -> str:
+    path = Path(str(value))
+    if not path.is_absolute() or path.is_symlink():
+        raise ValueError(f"{field_name} 必须指向非符号链接的绝对 secret 文件")
+    try:
+        if not path.is_file() or path.stat().st_size > 4096:
+            raise ValueError(f"{field_name} secret 文件无效")
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except ValueError:
+        raise
+    except (OSError, UnicodeError) as exc:
+        raise ValueError(f"{field_name} secret 文件不可读") from exc
+    if len(lines) != 1 or not lines[0].strip():
+        raise ValueError(f"{field_name} secret 必须是非空单行文件")
+    return lines[0].strip()
 
 
 class Settings(BaseSettings):
@@ -58,9 +77,30 @@ class Settings(BaseSettings):
     # ============ 数据库配置 ============
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/learning_platform"
     AI_LEARN_DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/ai_learn"
+    DATABASE_URL_FILE: str | None = None
+    AI_LEARN_DATABASE_URL_FILE: str | None = None
     DATABASE_ECHO: bool = False
     DATABASE_POOL_SIZE: int = 10
     DATABASE_MAX_OVERFLOW: int = 20
+    SCHEMA_VERSION_POLICY: Literal["strict", "warn"] = "strict"
+
+    @model_validator(mode="before")
+    @classmethod
+    def resolve_database_url_files(cls, values: Any) -> Any:
+        if not isinstance(values, dict):
+            return values
+        resolved = dict(values)
+        for url_field, file_field in (
+            ("DATABASE_URL", "DATABASE_URL_FILE"),
+            ("AI_LEARN_DATABASE_URL", "AI_LEARN_DATABASE_URL_FILE"),
+        ):
+            file_value = resolved.get(file_field)
+            if not file_value:
+                continue
+            if resolved.get(url_field):
+                raise ValueError(f"{url_field} 与 {file_field} 不得同时提供")
+            resolved[url_field] = _read_database_url_file(file_value, file_field)
+        return resolved
 
     # ============ Redis 配置 ============
     REDIS_URL: str = "redis://localhost:6379/0"

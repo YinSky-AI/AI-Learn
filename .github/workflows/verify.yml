@@ -58,3 +58,15 @@ jobs:
             test/acceptance/P0-04/backups
             test/acceptance/P0-04/drill-report.json
             test/acceptance/P0-04/logs
+
+      - name: Upload P0-07 schema migration evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-migration-evidence
+          if-no-files-found: warn
+          retention-days: 7
+          path: |
+            test/acceptance/P0-07/drill-report.json
+            test/acceptance/P0-07/backups/**/*.manifest.json
+            test/acceptance/P0-07/backups/**/*.sha256

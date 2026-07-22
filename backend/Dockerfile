@@ -47,10 +47,5 @@ USER appuser
 # 暴露端口
 EXPOSE 8000
 
-# 使用 uvicorn 启动
-CMD ["uvicorn", "app.main:app", \
-     "--host", "0.0.0.0", \
-     "--port", "8000", \
-     "--workers", "2", \
-     "--log-level", "info", \
-     "--access-log"]
+# 由启动器在创建 worker 前只读核验两个数据库的批准 revision。
+CMD ["python", "run.py"]

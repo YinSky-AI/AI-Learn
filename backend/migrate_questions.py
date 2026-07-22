@@ -9,14 +9,14 @@
 - 幂等执行：KnowledgeNode 使用 UUID5 生成固定 ID；题目按内容+答案去重
 - 分批写入：每 200 题 flush 一次，控制内存和事务大小
 - 数据清洗：自动处理缺失字段（从文件名推断）、中文字段映射、选项格式转换
-- 不依赖项目内部 models，使用纯 SQLAlchemy Core 操作
+- 复用受 Alembic 版本管理的 canonical ORM Table，只执行数据导入
 
 用法：
     cd backend
     python migrate_questions.py
 
-环境变量：
-    DATABASE_URL — 目标数据库连接字符串（默认连接本地 learning_platform）
+连接配置：
+    复用 app.core.config.settings，支持 DATABASE_URL_FILE secret 注入。
 """
 
 import asyncio
@@ -25,74 +25,45 @@ import json
 import os
 import re
 import uuid
+import sys
 from collections import defaultdict
 from datetime import datetime
 
-from sqlalchemy import (
-    Boolean,
-    Column,
-    ForeignKey,
-    Integer,
-    MetaData,
-    String,
-    Table,
-    Text,
-    select,
-    text,
-)
-from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
+from sqlalchemy import select
+from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
+
+from app.models.content import KnowledgeNode, Question
+from app.core.config import settings
+from app.core.schema_version import SchemaVersionError, verify_schema_target
 
 # ---------------------------------------------------------------------------
 # 数据库连接
 # ---------------------------------------------------------------------------
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql+asyncpg://postgres:postgres@localhost:5432/learning_platform",
-)
+DATABASE_URL = settings.DATABASE_URL
 
 engine = create_async_engine(DATABASE_URL)
 SessionLocal = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 # ---------------------------------------------------------------------------
-# 表元数据定义（纯 SQLAlchemy Core，不依赖项目 models）
+# 表契约（由 Alembic revision 与 canonical ORM 共同管理）
 # ---------------------------------------------------------------------------
-metadata = MetaData()
+knowledge_nodes_table = KnowledgeNode.__table__
+questions_table = Question.__table__
 
-knowledge_nodes_table = Table(
-    "knowledge_nodes",
-    metadata,
-    Column("id", UUID(as_uuid=True), primary_key=True),
-    Column("title", String(200), nullable=False),
-    Column("description", Text, nullable=True),
-    Column("subject_code", String(20), ForeignKey("subjects.code", ondelete="RESTRICT"), nullable=False),
-    Column("age_group_code", String(10), ForeignKey("age_groups.code", ondelete="RESTRICT"), nullable=False),
-    Column("difficulty_level", String(10), nullable=False),
-    Column("content_type", String(20), nullable=False),
-    Column("content_body", Text, nullable=False),
-    Column("estimated_minutes", Integer, server_default="5"),
-    Column("prerequisites", ARRAY(UUID(as_uuid=True)), nullable=True),
-    Column("sort_order", Integer, server_default="0"),
-    Column("is_active", Boolean, server_default="true"),
-    Column("created_at", Text, server_default=text("NOW()")),
-    Column("updated_at", Text, server_default=text("NOW()")),
-)
 
-questions_table = Table(
-    "questions",
-    metadata,
-    Column("id", UUID(as_uuid=True), primary_key=True),
-    Column("knowledge_node_id", UUID(as_uuid=True), ForeignKey("knowledge_nodes.id", ondelete="CASCADE"), nullable=False),
-    Column("difficulty_level", String(10), nullable=False),
-    Column("question_type", String(20), nullable=False),
-    Column("question_body", Text, nullable=False),
-    Column("options", JSONB, nullable=True),
-    Column("correct_answer", Text, nullable=False),
-    Column("explanation", Text, nullable=True),
-    Column("standard_time_seconds", Integer, server_default="30"),
-    Column("sort_order", Integer, server_default="0"),
-)
+def describe_database_target(database_url: str) -> str:
+    """仅返回脱敏 host/database，不输出用户、密码或完整 DSN。"""
+
+    parsed = make_url(database_url)
+    return f"host={parsed.host or ''} database={parsed.database or ''}"
+
+
+async def ensure_schema_ready() -> None:
+    """在读取或写入题目数据前要求主业务库已处于批准 head。"""
+
+    await verify_schema_target(engine, "primary", policy="strict")
 
 # ---------------------------------------------------------------------------
 # 映射字典
@@ -594,9 +565,11 @@ async def insert_questions(session, questions):
 async def main():
     print("=" * 60)
     print("题库迁移脚本启动")
-    print(f"目标数据库: {DATABASE_URL.replace('+asyncpg', '')}")
+    print(f"目标数据库: {describe_database_target(DATABASE_URL)}")
     print(f"当前时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60 + "\n")
+
+    await ensure_schema_ready()
 
     # 1. 确定 sql/ 目录路径（相对于本脚本位于 backend/ 目录）
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -710,5 +683,19 @@ async def main():
     print("=" * 60)
 
 
+def run() -> int:
+    """运行导入并把 Schema 拒绝转为不含堆栈和凭据的纯文本诊断。"""
+
+    try:
+        asyncio.run(main())
+        return 0
+    except SchemaVersionError as exc:
+        print(f"题库导入已拒绝：{exc}", file=sys.stderr)
+        return 2
+    except Exception:
+        print("题库导入失败，已停止；请查看脱敏运维日志。", file=sys.stderr)
+        return 1
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    raise SystemExit(run())

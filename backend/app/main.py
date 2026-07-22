@@ -22,14 +22,12 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from sqlalchemy import text
-
 from loguru import logger
 
 from app.core.config import settings
 from app.core.redis import redis_client
-from app.core.database import engine
-from app.models import Base
+from app.core.database import ai_learn_engine, engine
+from app.core.schema_version import SchemaVersionError, verify_schema_targets
 from app.api.v1.router import router as v1_router
 from app.admin.routes import router as admin_router
 from app.middlewares import add_exception_handlers, RequestLoggingMiddleware
@@ -134,11 +132,11 @@ async def lifespan(app: FastAPI):
     应用生命周期管理器
 
     使用异步上下文管理器管理应用的启动和关闭过程：
-    - 启动阶段：自动创建数据库表、初始化 Redis 连接
+    - 启动阶段：只读核验两个数据库 revision、初始化 Redis 连接
     - 关闭阶段：安全关闭 Redis 连接
 
-    数据库创建失败和 Redis 连接失败时仅记录警告日志，不会阻止应用启动，
-    确保服务具备降级运行能力。
+    Schema strict 策略不匹配时阻止启动；warn 仅用于未完成基线采用的本地兼容期。
+    Redis 连接失败时记录警告并使用降级模式。
 
     Args:
         app: FastAPI 应用实例
@@ -151,26 +149,28 @@ async def lifespan(app: FastAPI):
     logger.info(f"版本: {settings.APP_VERSION}")
     logger.info(f"调试模式: {settings.DEBUG}")
 
-    # 自动创建数据库表（开发环境）
     try:
-        async with engine.begin() as conn:
-            # 多 worker 会并行触发生命周期；用事务级 PostgreSQL 锁串行化建表，
-            # 避免两个 create_all 同时创建同名复合类型/表。
-            await conn.execute(text("SELECT pg_advisory_xact_lock(hashtext('learning_platform_schema'))"))
-            await conn.run_sync(Base.metadata.create_all)
-            # create_all 不会调整已有字段宽度。内部标准难度编码（如 DIFF_MEDIUM）
-            # 长于旧版 VARCHAR(10)，启动时进行幂等、非破坏性的字段扩容。
-            await conn.execute(text(
-                "ALTER TABLE IF EXISTS generated_question_batches "
-                "ALTER COLUMN difficulty_level TYPE VARCHAR(20)"
-            ))
-            await conn.execute(text(
-                "ALTER TABLE IF EXISTS generated_questions "
-                "ALTER COLUMN difficulty_level TYPE VARCHAR(20)"
-            ))
-        logger.info("数据库表检查/创建完成")
-    except Exception:
-        logger.exception("数据库表检查/创建失败，服务将停止启动")
+        schema_statuses = await verify_schema_targets(
+            {"primary": engine, "question-bank": ai_learn_engine},
+            policy=settings.SCHEMA_VERSION_POLICY,
+        )
+        for target_alias, schema_status in zip(
+            ("primary", "question-bank"), schema_statuses, strict=True
+        ):
+            if schema_status.compatible:
+                logger.info(
+                    "Schema revision 已核验: alias={} revision={}",
+                    target_alias,
+                    schema_status.expected_revision,
+                )
+            else:
+                logger.warning(
+                    "Schema revision 兼容期警告: alias={} message={}",
+                    target_alias,
+                    schema_status.message,
+                )
+    except SchemaVersionError as exc:
+        logger.error("Schema 版本检查失败，服务将停止启动: {}", exc)
         raise
 
     try:

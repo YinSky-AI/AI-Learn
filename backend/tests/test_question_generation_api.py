@@ -1,6 +1,5 @@
 import hashlib
 import json
-import os
 import uuid
 from datetime import date, datetime, timezone
 
@@ -8,16 +7,12 @@ import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import func, select
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.pool import NullPool
 
 from app.ai.tools.question_memory_tool import QuestionMemoryTool
 from app.api.v1 import questions as questions_api
 from app.core.database import get_db
 from app.core.deps import get_current_user_id
 from app.main import app
-from app.models import Base
 from app.models.ai_generated import (
     GeneratedQuestion,
     GeneratedQuestionBatch,
@@ -60,26 +55,8 @@ def test_generated_question_difficulty_columns_fit_platform_codes():
 
 
 @pytest_asyncio.fixture
-async def question_db_session():
-    database_url = os.getenv("QUESTION_TEST_DATABASE_URL") or os.getenv(
-        "TEST_DATABASE_URL",
-        "postgresql+asyncpg://postgres:postgres@localhost:5432/learning_platform_test",
-    )
-    test_engine = create_async_engine(database_url, poolclass=NullPool)
-    async with test_engine.begin() as connection:
-        await connection.run_sync(Base.metadata.drop_all)
-        await connection.run_sync(Base.metadata.create_all)
-    session_factory = sessionmaker(
-        test_engine,
-        class_=AsyncSession,
-        expire_on_commit=False,
-    )
-    async with session_factory() as session:
-        yield session
-        await session.rollback()
-    async with test_engine.begin() as connection:
-        await connection.run_sync(Base.metadata.drop_all)
-    await test_engine.dispose()
+async def question_db_session(db_session):
+    yield db_session
 
 
 @pytest_asyncio.fixture

@@ -1,0 +1,861 @@
+"""经目标二次核验的双数据库 Alembic 管理入口。"""
+
+from __future__ import annotations
+
+import argparse
+from contextlib import contextmanager, nullcontext
+import os
+from pathlib import Path
+import re
+import sys
+import time
+from typing import Iterator
+import uuid
+
+from alembic import command
+from alembic.config import Config
+from alembic.script import ScriptDirectory
+from sqlalchemy import create_engine, inspect, literal, text
+from sqlalchemy.dialects import postgresql
+from sqlalchemy.engine import Connection, Engine, make_url
+from sqlalchemy.schema import CheckConstraint, ForeignKeyConstraint, UniqueConstraint
+
+from app.catalog import catalog_metadata
+from app.core.schema_version import (
+    MigrationTarget,
+    SchemaVersionError,
+    get_expected_schema_revision,
+    get_schema_version_table,
+    validate_migration_target,
+)
+from app.models import Base
+
+
+ROOT = Path(__file__).resolve().parent
+CONFIG_FILES = {
+    "primary": ROOT / "alembic-primary.ini",
+    "question-bank": ROOT / "alembic-question-bank.ini",
+}
+BASELINE_REVISIONS = {
+    "primary": "lp_0001_legacy_baseline",
+    "question-bank": "catalog_0001_baseline",
+}
+TARGET_METADATA = {
+    "primary": Base.metadata,
+    "question-bank": catalog_metadata,
+}
+ALLOWED_EXTERNAL_TABLES = {
+    "primary": {"apscheduler_jobs", "sys_role_dept"},
+    "question-bank": set(),
+}
+ALLOWED_EXTERNAL_COLUMNS = {
+    ("primary", "users"): {"ruoyi_user_id"},
+}
+
+
+def validate_migration_action(
+    action: str,
+    *,
+    target_alias: str,
+    revision: str | None,
+    allow_baseline_adoption: bool,
+    allow_destructive_downgrade: bool,
+) -> None:
+    """要求对高风险动作作出独立、可审计的显式确认。"""
+
+    if action == "adopt-baseline" and not allow_baseline_adoption:
+        raise SchemaVersionError("基线采用必须提供显式确认")
+    if action == "downgrade":
+        if not revision:
+            raise SchemaVersionError("downgrade 必须指定目标 revision")
+        if revision == "base":
+            if not allow_destructive_downgrade:
+                raise SchemaVersionError("降到 base 属于破坏性降级，必须提供显式确认")
+            return
+        script = ScriptDirectory.from_config(_config(target_alias))
+        exact_revisions = {value.revision for value in script.walk_revisions()}
+        if revision not in exact_revisions:
+            raise SchemaVersionError(
+                "downgrade 只允许当前迁移 root 中已审批的显式 revision ID"
+            )
+
+
+def validate_contract_snapshot(
+    table_name: str,
+    expected: dict,
+    actual: dict,
+) -> None:
+    """比较已规范化的完整单表契约，拒绝任何未授权漂移。"""
+
+    expected_columns = expected.get("columns", {})
+    actual_columns = actual.get("columns", {})
+    if set(expected_columns) != set(actual_columns):
+        raise SchemaVersionError(f"基线表 {table_name} 列集合不匹配")
+    for column_name, expected_column in expected_columns.items():
+        actual_column = actual_columns[column_name]
+        if expected_column.get("type") != actual_column.get("type"):
+            raise SchemaVersionError(
+                f"基线表 {table_name}.{column_name} 类型不匹配"
+            )
+        if expected_column.get("nullable") != actual_column.get("nullable"):
+            raise SchemaVersionError(
+                f"基线表 {table_name}.{column_name} 空值约束不匹配"
+            )
+        if expected_column.get("default") != actual_column.get("default"):
+            raise SchemaVersionError(
+                f"基线表 {table_name}.{column_name} server default 不匹配"
+            )
+
+    comparisons = (
+        ("primary_key", "主键"),
+        ("foreign_keys", "外键"),
+        ("uniques", "唯一约束"),
+        ("indexes", "索引"),
+        ("required_named_unique_indexes", "命名唯一索引"),
+        ("checks", "check 约束"),
+    )
+    for key, label in comparisons:
+        if key == "required_named_unique_indexes":
+            mismatch = not expected.get(key, set()).issubset(actual.get(key, set()))
+        else:
+            mismatch = expected.get(key) != actual.get(key)
+        if mismatch:
+            if key == "foreign_keys":
+                expected_without_delete = {
+                    value[:3] for value in expected.get(key, set())
+                }
+                actual_without_delete = {value[:3] for value in actual.get(key, set())}
+                if expected_without_delete == actual_without_delete:
+                    label = "外键 ON DELETE"
+            raise SchemaVersionError(f"基线表 {table_name} {label}不匹配")
+
+
+def validate_release_authorization(
+    *,
+    action: str,
+    target: MigrationTarget,
+    current_revision: str | None,
+    has_user_tables: bool,
+    approval_reference: str | None,
+    backup_reference: str | None,
+    confirm_empty_bootstrap: bool,
+) -> None:
+    """普通数据库发布需审批+备份，或独立确认的真空库 bootstrap。"""
+
+    if target.disposable or action in {"current", "check"}:
+        return
+    if not approval_reference:
+        raise SchemaVersionError("普通数据库迁移缺少审批参考号")
+    if (
+        action == "upgrade"
+        and current_revision == get_expected_schema_revision(target.alias)
+    ):
+        return
+    if (
+        action == "upgrade"
+        and current_revision is None
+        and not has_user_tables
+        and confirm_empty_bootstrap
+    ):
+        return
+    if not backup_reference:
+        raise SchemaVersionError("普通数据库迁移缺少已验证备份参考号")
+
+
+def validate_table_ownership(
+    *,
+    target_alias: str,
+    actual_tables: set[str],
+    required_tables: set[str],
+) -> None:
+    """只放行明确归属表和已调查确认的历史外部表。"""
+
+    missing = required_tables - actual_tables
+    if missing:
+        raise SchemaVersionError(
+            "基线结构缺少受管理表：" + ", ".join(sorted(missing))
+        )
+    allowed_external = ALLOWED_EXTERNAL_TABLES.get(target_alias)
+    if allowed_external is None:
+        raise SchemaVersionError("Schema 目标别名无效")
+    unknown = actual_tables - required_tables - allowed_external
+    if unknown:
+        raise SchemaVersionError(
+            "基线结构包含未知表，拒绝 stamp：" + ", ".join(sorted(unknown))
+        )
+
+
+def _sync_url(database_url: str) -> str:
+    try:
+        return make_url(database_url).set(drivername="postgresql+psycopg2").render_as_string(
+            hide_password=False
+        )
+    except Exception as exc:
+        raise SchemaVersionError("数据库连接配置格式无效") from exc
+
+
+def load_database_url(database_url_file: str) -> str:
+    """从容器内只读 secret 文件加载单行 DSN，绝不输出内容。"""
+
+    path = Path(database_url_file)
+    if not path.is_absolute():
+        raise SchemaVersionError("数据库连接 secret 必须使用绝对文件路径")
+    if path.is_symlink():
+        raise SchemaVersionError("数据库连接 secret 不允许使用符号链接")
+    try:
+        if not path.is_file() or path.stat().st_size > 4096:
+            raise SchemaVersionError("数据库连接 secret 文件无效")
+        raw_value = path.read_text(encoding="utf-8")
+    except SchemaVersionError:
+        raise
+    except (OSError, UnicodeError) as exc:
+        raise SchemaVersionError("数据库连接 secret 文件不可读") from exc
+    lines = raw_value.splitlines()
+    if len(lines) != 1 or not lines[0].strip():
+        raise SchemaVersionError("数据库连接 secret 必须是非空单行文件")
+    return lines[0].strip()
+
+
+def _config(target_alias: str) -> Config:
+    try:
+        config = Config(str(CONFIG_FILES[target_alias]))
+    except KeyError as exc:
+        raise SchemaVersionError("Schema 目标别名无效") from exc
+    heads = ScriptDirectory.from_config(config).get_heads()
+    expected = get_expected_schema_revision(target_alias)
+    if heads != [expected]:
+        raise SchemaVersionError("迁移目录 head 与应用批准 revision 不一致")
+    return config
+
+
+@contextmanager
+def _verified_environment(
+    target_alias: str,
+    database_url: str,
+) -> Iterator[None]:
+    previous_url = os.environ.get("DATABASE_URL")
+    previous_verified = os.environ.get("MIGRATION_TARGET_VERIFIED")
+    os.environ["DATABASE_URL"] = database_url
+    os.environ["MIGRATION_TARGET_VERIFIED"] = target_alias
+    try:
+        yield
+    finally:
+        if previous_url is None:
+            os.environ.pop("DATABASE_URL", None)
+        else:
+            os.environ["DATABASE_URL"] = previous_url
+        if previous_verified is None:
+            os.environ.pop("MIGRATION_TARGET_VERIFIED", None)
+        else:
+            os.environ["MIGRATION_TARGET_VERIFIED"] = previous_verified
+
+
+def _current_revision(engine: Engine, target_alias: str) -> str | None:
+    version_table = get_schema_version_table(target_alias)
+    with engine.connect() as connection:
+        if version_table not in inspect(connection).get_table_names(schema="public"):
+            return None
+        rows = connection.execute(
+            text(f'SELECT version_num FROM "{version_table}"')
+        ).scalars().all()
+    if len(rows) > 1:
+        raise SchemaVersionError("数据库存在多个 revision head，拒绝继续")
+    return rows[0] if rows else None
+
+
+def _type_affinity_name(column_type) -> str:
+    return column_type._type_affinity.__name__
+
+
+def _normalize_sql(value: object | None) -> str | None:
+    if value is None:
+        return None
+    normalized = " ".join(str(value).strip().split())
+    while normalized.startswith("(") and normalized.endswith(")"):
+        normalized = normalized[1:-1].strip()
+    normalized = re.sub(r"(?i)\bcurrent_timestamp\b", "now()", normalized)
+    normalized = re.sub(r"(?i)\bnow\(\)", "now()", normalized)
+    normalized = normalized.replace("'false'::boolean", "false")
+    normalized = normalized.replace("'true'::boolean", "true")
+    normalized = normalized.replace("::character varying", "")
+    normalized = normalized.replace("::text", "")
+    normalized = re.sub(r"::jsonb?$", "", normalized, flags=re.IGNORECASE)
+    normalized = re.sub(
+        r"::(?:smallint|integer|bigint|numeric|real|double precision|boolean)$",
+        "",
+        normalized,
+        flags=re.IGNORECASE,
+    )
+    return normalized
+
+
+def _normalize_type(column_type: object) -> str:
+    normalized = " ".join(
+        str(column_type.compile(dialect=postgresql.dialect())).upper().split()
+    )
+    if normalized == "FLOAT":
+        return "DOUBLE PRECISION"
+    return normalized
+
+
+def _normalize_default(
+    value: object | None,
+    *,
+    table_name: str,
+    column_name: str,
+    implicit_serial: bool = False,
+) -> str | None:
+    normalized = _normalize_sql(value)
+    if normalized and normalized.lower().startswith("nextval("):
+        return f"serial:{table_name}.{column_name}"
+    if normalized is None and implicit_serial:
+        return f"serial:{table_name}.{column_name}"
+    return normalized
+
+
+def _index_expression(value: object) -> str:
+    name = getattr(value, "name", None)
+    if name:
+        return str(name)
+    return _normalize_sql(value) or ""
+
+
+def _normalize_index_predicate(value: object | None, table_name: str) -> str | None:
+    normalized = _normalize_sql(value)
+    if normalized is None:
+        return None
+    normalized = normalized.replace(f'"{table_name}".', "")
+    normalized = normalized.replace(f"{table_name}.", "")
+    normalized = re.sub(
+        r"(?i)\bIS\s+(true|false)\b",
+        lambda match: f"= {match.group(1).lower()}",
+        normalized,
+    )
+    normalized = re.sub(
+        r"(?i)(=\s*)(true|false)\b",
+        lambda match: f"{match.group(1)}{match.group(2).lower()}",
+        normalized,
+    )
+    return normalized
+
+
+def build_expected_contract_snapshot(table) -> dict[str, object]:
+    """从批准 metadata 构建包含精确类型和全部约束的契约。"""
+
+    columns: dict[str, dict[str, object]] = {}
+    for column in table.c:
+        default = None
+        if column.server_default is not None:
+            default_argument = column.server_default.arg
+            if isinstance(default_argument, str) and _type_affinity_name(
+                column.type
+            ) not in {"Integer", "Numeric", "Float", "Boolean"}:
+                default = literal(default_argument).compile(
+                    dialect=postgresql.dialect(),
+                    compile_kwargs={"literal_binds": True},
+                )
+            elif hasattr(default_argument, "compile"):
+                default = default_argument.compile(
+                    dialect=postgresql.dialect(),
+                    compile_kwargs={"literal_binds": True},
+                )
+            else:
+                default = str(default_argument)
+        implicit_serial = (
+            column.primary_key
+            and len(table.primary_key.columns) == 1
+            and not column.foreign_keys
+            and _type_affinity_name(column.type) == "Integer"
+            and column.autoincrement in {True, "auto"}
+            and column.server_default is None
+        )
+        columns[column.name] = {
+            "type": _normalize_type(column.type),
+            "nullable": bool(column.nullable),
+            "default": _normalize_default(
+                default,
+                table_name=table.name,
+                column_name=column.name,
+                implicit_serial=implicit_serial,
+            ),
+        }
+
+    foreign_keys: set[tuple[tuple[str, ...], str, tuple[str, ...], str]] = set()
+    uniques: set[tuple[str, ...]] = set()
+    checks: set[str] = set()
+    for constraint in table.constraints:
+        if isinstance(constraint, ForeignKeyConstraint):
+            elements = list(constraint.elements)
+            foreign_keys.add(
+                (
+                    tuple(element.parent.name for element in elements),
+                    elements[0].column.table.name,
+                    tuple(element.column.name for element in elements),
+                    (constraint.ondelete or "NO ACTION").upper(),
+                )
+            )
+        elif isinstance(constraint, UniqueConstraint):
+            uniques.add(tuple(column.name for column in constraint.columns))
+        elif isinstance(constraint, CheckConstraint):
+            checks.add(_normalize_sql(constraint.sqltext) or "")
+
+    indexes: set[tuple[str, tuple[str, ...], bool, str | None, str | None]] = set()
+    for index in table.indexes:
+        expressions = tuple(_index_expression(value) for value in index.expressions)
+        if index.unique:
+            uniques.add(expressions)
+            continue
+        options = index.dialect_options["postgresql"]
+        indexes.add(
+            (
+                index.name or "",
+                expressions,
+                False,
+                options.get("using") or None,
+                _normalize_index_predicate(options.get("where"), table.name),
+            )
+        )
+    return {
+        "columns": columns,
+        "primary_key": tuple(column.name for column in table.primary_key.columns),
+        "foreign_keys": foreign_keys,
+        "uniques": uniques,
+        "indexes": indexes,
+        "required_named_unique_indexes": set(),
+        "checks": checks,
+    }
+
+
+def build_actual_contract_snapshot(inspector, table_name: str) -> dict[str, object]:
+    """从 PostgreSQL Inspector 构建与 metadata 同格式的实际契约。"""
+
+    columns: dict[str, dict[str, object]] = {}
+    for column in inspector.get_columns(table_name, schema="public"):
+        columns[column["name"]] = {
+            "type": _normalize_type(column["type"]),
+            "nullable": bool(column["nullable"]),
+            "default": _normalize_default(
+                column.get("default"),
+                table_name=table_name,
+                column_name=column["name"],
+            ),
+        }
+    primary_key = tuple(
+        inspector.get_pk_constraint(table_name, schema="public").get(
+            "constrained_columns", ()
+        )
+    )
+    foreign_keys = {
+        (
+            tuple(value.get("constrained_columns") or ()),
+            str(value.get("referred_table") or ""),
+            tuple(value.get("referred_columns") or ()),
+            str((value.get("options") or {}).get("ondelete") or "NO ACTION").upper(),
+        )
+        for value in inspector.get_foreign_keys(table_name, schema="public")
+    }
+    uniques = {
+        tuple(value.get("column_names") or ())
+        for value in inspector.get_unique_constraints(table_name, schema="public")
+    }
+    indexes: set[tuple[str, tuple[str, ...], bool, str | None, str | None]] = set()
+    named_unique_indexes: set[tuple[str, tuple[str, ...]]] = set()
+    for index in inspector.get_indexes(table_name, schema="public"):
+        expressions = tuple(
+            str(value)
+            for value in (index.get("expressions") or index.get("column_names") or ())
+        )
+        if index.get("unique"):
+            uniques.add(expressions)
+            if not index.get("duplicates_constraint"):
+                named_unique_indexes.add((str(index.get("name") or ""), expressions))
+            continue
+        options = index.get("dialect_options") or {}
+        indexes.add(
+            (
+                str(index.get("name") or ""),
+                expressions,
+                False,
+                options.get("postgresql_using"),
+                _normalize_index_predicate(
+                    options.get("postgresql_where"), table_name
+                ),
+            )
+        )
+    checks = {
+        _normalize_sql(value.get("sqltext")) or ""
+        for value in inspector.get_check_constraints(table_name, schema="public")
+    }
+    return {
+        "columns": columns,
+        "primary_key": primary_key,
+        "foreign_keys": foreign_keys,
+        "uniques": uniques,
+        "indexes": indexes,
+        "required_named_unique_indexes": named_unique_indexes,
+        "checks": checks,
+    }
+
+
+def _apply_primary_legacy_contract(table_name: str, expected: dict[str, object]) -> None:
+    if table_name == "user_achievements":
+        expected["required_named_unique_indexes"] = {
+            (
+                "uq_user_achievement_user_achievement",
+                ("user_id", "achievement_id"),
+            )
+        }
+        return
+    if table_name != "lessons":
+        return
+    expected["foreign_keys"] = {
+        value
+        for value in expected["foreign_keys"]
+        if value[0] != ("knowledge_node_id",)
+    }
+    expected["indexes"] = {
+        (
+            "idx_lesson_knowledge_node"
+            if value[0] == "ix_lessons_knowledge_node_id"
+            else value[0],
+            *value[1:],
+        )
+        for value in expected["indexes"]
+    }
+
+
+def remove_allowed_external_contract(
+    snapshot: dict[str, object],
+    allowed_columns: set[str],
+) -> None:
+    """从实际契约中移除完全属于白名单外部列的结构。"""
+
+    if not allowed_columns:
+        return
+
+    for column_name in allowed_columns:
+        snapshot.get("columns", {}).pop(column_name, None)
+
+    def only_allowed(columns: tuple[str, ...]) -> bool:
+        return bool(columns) and set(columns).issubset(allowed_columns)
+
+    snapshot["uniques"] = {
+        columns
+        for columns in snapshot.get("uniques", set())
+        if not only_allowed(columns)
+    }
+    snapshot["required_named_unique_indexes"] = {
+        value
+        for value in snapshot.get("required_named_unique_indexes", set())
+        if not only_allowed(value[1])
+    }
+    if "indexes" in snapshot:
+        snapshot["indexes"] = {
+            value for value in snapshot["indexes"] if not only_allowed(value[1])
+        }
+    if "foreign_keys" in snapshot:
+        snapshot["foreign_keys"] = {
+            value
+            for value in snapshot["foreign_keys"]
+            if not only_allowed(value[0])
+        }
+
+
+def validate_legacy_schema(engine: Engine | Connection, target_alias: str) -> None:
+    """在 stamp 前验证完整 legacy contract 和关键数据约束。"""
+
+    metadata = TARGET_METADATA[target_alias]
+    version_table = get_schema_version_table(target_alias)
+    inspector = inspect(engine)
+    actual_tables = set(inspector.get_table_names(schema="public"))
+    if version_table in actual_tables:
+        raise SchemaVersionError("数据库已经存在版本表，拒绝重复基线采用")
+    required_tables = set(metadata.tables)
+    validate_table_ownership(
+        target_alias=target_alias,
+        actual_tables=actual_tables,
+        required_tables=required_tables,
+    )
+
+    for table_name, table in metadata.tables.items():
+        expected = build_expected_contract_snapshot(table)
+        actual = build_actual_contract_snapshot(inspector, table_name)
+        required_columns = set(expected["columns"])
+        actual_columns = set(actual["columns"])
+        allowed_extra = ALLOWED_EXTERNAL_COLUMNS.get((target_alias, table_name), set())
+        unknown = actual_columns - required_columns - allowed_extra
+        if unknown:
+            raise SchemaVersionError(
+                f"基线表 {table_name} 包含未知列：" + ", ".join(sorted(unknown))
+            )
+        remove_allowed_external_contract(actual, allowed_extra)
+        if target_alias == "primary":
+            _apply_primary_legacy_contract(table_name, expected)
+        validate_contract_snapshot(table_name, expected, actual)
+
+    if target_alias == "primary":
+        connection_context = (
+            engine.connect() if isinstance(engine, Engine) else nullcontext(engine)
+        )
+        with connection_context as connection:
+            orphan_count = connection.execute(
+                text(
+                    "SELECT COUNT(*) FROM lessons l "
+                    "LEFT JOIN knowledge_nodes k ON k.id=l.knowledge_node_id "
+                    "WHERE l.knowledge_node_id IS NOT NULL AND k.id IS NULL"
+                )
+            ).scalar_one()
+            duplicate_count = connection.execute(
+                text(
+                    "SELECT COUNT(*) FROM ("
+                    "SELECT user_id, achievement_id FROM user_achievements "
+                    "GROUP BY user_id, achievement_id HAVING COUNT(*) > 1"
+                    ") duplicates"
+                )
+            ).scalar_one()
+            null_admin_count = connection.execute(
+                text("SELECT COUNT(*) FROM users WHERE is_admin IS NULL")
+            ).scalar_one()
+        if orphan_count:
+            raise SchemaVersionError("基线存在无效知识点关联，拒绝 stamp")
+        if duplicate_count:
+            raise SchemaVersionError("基线存在重复用户成就，拒绝 stamp")
+        if null_admin_count:
+            raise SchemaVersionError("基线存在空管理员标记，拒绝 stamp")
+
+
+def execute_migration(
+    *,
+    action: str,
+    target: MigrationTarget,
+    database_url: str,
+    revision: str | None,
+    approval_reference: str | None = None,
+    backup_reference: str | None = None,
+    confirm_empty_bootstrap: bool = False,
+) -> str | None:
+    """执行已经过参数与目标保护的 Alembic 动作。"""
+
+    config = _config(target.alias)
+    engine = create_engine(_sync_url(database_url))
+    try:
+        with engine.connect() as connection:
+            actual_database = connection.execute(text("SELECT current_database()"))
+            if actual_database.scalar_one() != target.database:
+                raise SchemaVersionError("数据库服务器返回的实际目标与已核验目标不一致")
+            actual_tables = set(inspect(connection).get_table_names(schema="public"))
+        current_before = _current_revision(engine, target.alias)
+        validate_release_authorization(
+            action=action,
+            target=target,
+            current_revision=current_before,
+            has_user_tables=bool(
+                actual_tables - {get_schema_version_table(target.alias)}
+            ),
+            approval_reference=approval_reference,
+            backup_reference=backup_reference,
+            confirm_empty_bootstrap=confirm_empty_bootstrap,
+        )
+        with _verified_environment(target.alias, database_url):
+            if action == "adopt-baseline":
+                with engine.begin() as connection:
+                    validate_legacy_schema(connection, target.alias)
+                    config.attributes["connection"] = connection
+                    try:
+                        command.stamp(config, BASELINE_REVISIONS[target.alias])
+                        command.upgrade(config, "head")
+                    finally:
+                        config.attributes.pop("connection", None)
+            elif action == "upgrade":
+                command.upgrade(config, revision or "head")
+            elif action == "check":
+                command.check(config)
+            elif action == "downgrade":
+                command.downgrade(config, revision)
+            elif action != "current":
+                raise SchemaVersionError("不支持的迁移动作")
+        return _current_revision(engine, target.alias)
+    finally:
+        engine.dispose()
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="AI-Learn 安全 Schema 管理入口",
+        allow_abbrev=False,
+    )
+    parser.add_argument(
+        "action", choices=("upgrade", "downgrade", "current", "check", "adopt-baseline")
+    )
+    parser.add_argument("--target", required=True, choices=("primary", "question-bank"))
+    parser.add_argument("--database-url-file", required=True)
+    parser.add_argument("--environment", required=True)
+    parser.add_argument("--expected-host", required=True)
+    parser.add_argument("--expected-database", required=True)
+    parser.add_argument("--revision")
+    parser.add_argument("--allow-baseline-adoption", action="store_true")
+    parser.add_argument("--allow-destructive-downgrade", action="store_true")
+    parser.add_argument("--allow-release", action="store_true")
+    parser.add_argument("--approval-reference")
+    parser.add_argument("--backup-reference")
+    parser.add_argument("--confirm-empty-bootstrap", action="store_true")
+    return parser
+
+
+def _safe_reference(value: str | None) -> str | None:
+    if value is None:
+        return None
+    if not value or len(value) > 120 or not all(
+        character.isalnum() or character in "-_.:/" for character in value
+    ):
+        raise SchemaVersionError("审批/备份参考号格式不安全")
+    return value
+
+
+def _audit(
+    *,
+    correlation_id: str,
+    action: str,
+    stage: str,
+    target_alias: str,
+    host: str,
+    database: str,
+    environment: str,
+    revision: str | None,
+    elapsed_ms: int,
+    result: str,
+    approval_reference: str | None,
+    backup_reference: str | None,
+    rollback_status: str,
+    error_type: str | None = None,
+) -> None:
+    def audit_token(value: object) -> str:
+        rendered = str(value)
+        if not rendered or len(rendered) > 160 or any(
+            not (character.isalnum() or character in "-_.:/")
+            for character in rendered
+        ):
+            return "invalid"
+        return rendered
+
+    fields = (
+        ("correlation_id", correlation_id),
+        ("action", action),
+        ("stage", stage),
+        ("target_alias", target_alias),
+        ("host", host),
+        ("database", database),
+        ("environment", environment),
+        ("revision", revision or "head"),
+        ("elapsed_ms", str(elapsed_ms)),
+        ("approval_reference", approval_reference or "none"),
+        ("backup_reference", backup_reference or "none"),
+        ("result", result),
+        ("rollback_status", rollback_status),
+        ("error_type", error_type or "none"),
+    )
+    print(
+        "schema_audit "
+        + " ".join(f"{key}={audit_token(value)}" for key, value in fields),
+        file=sys.stderr,
+    )
+
+
+def main() -> int:
+    args = build_parser().parse_args()
+    correlation_id = uuid.uuid4().hex
+    started_at = time.perf_counter()
+    approval_reference: str | None = None
+    backup_reference: str | None = None
+    try:
+        database_url = load_database_url(args.database_url_file)
+        approval_reference = _safe_reference(args.approval_reference)
+        backup_reference = _safe_reference(args.backup_reference)
+        validate_migration_action(
+            args.action,
+            target_alias=args.target,
+            revision=args.revision,
+            allow_baseline_adoption=args.allow_baseline_adoption,
+            allow_destructive_downgrade=args.allow_destructive_downgrade,
+        )
+        target = validate_migration_target(
+            database_url,
+            target_alias=args.target,
+            environment=args.environment,
+            expected_host=args.expected_host,
+            expected_database=args.expected_database,
+            allow_release=args.allow_release,
+        )
+        current = execute_migration(
+            action=args.action,
+            target=target,
+            database_url=database_url,
+            revision=args.revision,
+            approval_reference=approval_reference,
+            backup_reference=backup_reference,
+            confirm_empty_bootstrap=args.confirm_empty_bootstrap,
+        )
+        _audit(
+            correlation_id=correlation_id,
+            action=args.action,
+            stage="completed",
+            target_alias=args.target,
+            host=args.expected_host,
+            database=args.expected_database,
+            environment=args.environment,
+            revision=current or args.revision,
+            elapsed_ms=round((time.perf_counter() - started_at) * 1000),
+            result="success",
+            approval_reference=approval_reference,
+            backup_reference=backup_reference,
+            rollback_status="not_required",
+        )
+        print(
+            "Schema 目标已核验："
+            f"alias={target.alias} host={target.host} "
+            f"database={target.database} environment={target.environment}"
+        )
+        print(f"Schema revision：{current or 'base'}")
+        return 0
+    except SchemaVersionError as exc:
+        _audit(
+            correlation_id=correlation_id,
+            action=args.action,
+            stage="rejected",
+            target_alias=args.target,
+            host=args.expected_host,
+            database=args.expected_database,
+            environment=args.environment,
+            revision=args.revision,
+            elapsed_ms=round((time.perf_counter() - started_at) * 1000),
+            result="rejected",
+            approval_reference=approval_reference,
+            backup_reference=backup_reference,
+            rollback_status="transaction_rolled_back_or_not_started",
+            error_type=type(exc).__name__,
+        )
+        print(f"Schema 操作已拒绝：{exc}", file=sys.stderr)
+        return 2
+    except Exception as exc:
+        _audit(
+            correlation_id=correlation_id,
+            action=args.action,
+            stage="failed",
+            target_alias=args.target,
+            host=args.expected_host,
+            database=args.expected_database,
+            environment=args.environment,
+            revision=args.revision,
+            elapsed_ms=round((time.perf_counter() - started_at) * 1000),
+            result="failed",
+            approval_reference=approval_reference,
+            backup_reference=backup_reference,
+            rollback_status="transaction_rolled_back_or_requires_verified_restore",
+            error_type=type(exc).__name__,
+        )
+        print("Schema 操作失败，已停止；未对未知错误执行猜测性修复。", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -17,25 +17,18 @@ from typing import Optional
 
 from fastapi import APIRouter, Request, Depends, Form, Query
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from jinja2 import Environment, FileSystemLoader
+
+from app.core.database import AI_LearnAsyncSessionLocal
 
 router = APIRouter(prefix="/admin", tags=["管理后台"])
 
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin123")
 
-# 题库独立数据库连接（ai_learn 库，存放外部导入的题库数据）
-_AI_LEARN_DB_URL = os.getenv(
-    "AI_LEARN_DB_URL",
-    "postgresql+asyncpg://postgres:postgres@postgres:5432/ai_learn"
-)
-_ai_learn_engine = create_async_engine(_AI_LEARN_DB_URL, echo=False)
-AiLearnSessionLocal = async_sessionmaker(
-    _ai_learn_engine,
-    class_=AsyncSession,
-    expire_on_commit=False,
-)
+# 兼容旧依赖名，但统一复用 core 中受启动版本检查覆盖的题库 Session。
+AiLearnSessionLocal = AI_LearnAsyncSessionLocal
 
 SUBJECT_MAP = {
     "math": "数学",

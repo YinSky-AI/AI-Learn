@@ -124,7 +124,7 @@ class WrongBookService:
         statement = select(Question).join(WrongQuestion, WrongQuestion.question_id == Question.id).where(WrongQuestion.user_id == user_id, WrongQuestion.is_mastered.is_(False), WrongQuestion.next_review_at <= datetime.now(timezone.utc))
         if subject:
             statement = statement.where(WrongQuestion.subject == subject)
-        result = await self.db.execute(statement.order_by(desc(WrongQuestion.wrong_count), func.random()).limit(count))
+        result = await self.db.execute(statement.order_by(WrongQuestion.next_review_at, desc(WrongQuestion.wrong_count)).limit(count))
         return list(result.scalars().all())
 
     async def get_stats(self, user_id: uuid.UUID) -> dict:
@@ -132,5 +132,6 @@ class WrongBookService:
         total = (await self.db.execute(select(func.count(WrongQuestion.id)).where(base))).scalar_one()
         mastered = (await self.db.execute(select(func.count(WrongQuestion.id)).where(base, WrongQuestion.is_mastered.is_(True)))).scalar_one()
         rows = await self.db.execute(select(WrongQuestion.subject, func.count(WrongQuestion.id)).where(base, WrongQuestion.is_mastered.is_(False)).group_by(WrongQuestion.subject))
-        need_review = (await self.db.execute(select(func.count(WrongQuestion.id)).where(base, WrongQuestion.is_mastered.is_(False), WrongQuestion.last_wrong_at >= datetime.now(timezone.utc) - timedelta(days=3)))).scalar_one()
+        now = datetime.now(timezone.utc)
+        need_review = (await self.db.execute(select(func.count(WrongQuestion.id)).where(base, WrongQuestion.is_mastered.is_(False), WrongQuestion.next_review_at <= now))).scalar_one()
         return {"total": total, "mastered": mastered, "unmastered": total - mastered, "by_subject": {subject: count for subject, count in rows.all()}, "need_review_today": need_review}

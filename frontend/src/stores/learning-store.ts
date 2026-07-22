@@ -24,6 +24,7 @@ import {
   saveLocalChatHistory,
   clearLocalChatHistory,
 } from "@/lib/local-storage";
+import { createTutorSseParser } from "@/lib/sse";
 
 /**
  * 将后端 API 返回的课程字段映射为前端 Course 类型
@@ -510,6 +511,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let fullContent = "";
+      const parser = createTutorSseParser((data) => {
+        if (data.error) throw new Error("AI 辅导服务暂时不可用");
+        if (data.done) fullContent = data.reply ?? fullContent;
+        else if (data.content) fullContent += data.content;
+        set((state) => ({ chatMessages: state.chatMessages.map((msg) => msg.id === aiMessageId ? { ...msg, content: fullContent } : msg) }));
+      });
 
       if (reader) {
         while (true) {
@@ -518,7 +525,8 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
           const text = decoder.decode(value, { stream: true });
           // 解析 SSE 行
-          const lines = text.split("\n");
+          parser.push(text);
+          const lines: string[] = [];
           for (const line of lines) {
             if (line.startsWith("data: ")) {
               const jsonStr = line.slice(6);

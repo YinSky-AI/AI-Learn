@@ -8,6 +8,7 @@
  */
 
 import { create } from "zustand";
+import type { AvailabilityState } from "@/lib/availability";
 
 /** 加载状态接口 */
 interface LoadingState {
@@ -15,18 +16,22 @@ interface LoadingState {
   globalLoading: boolean;
   /** 各页面加载状态 */
   pageLoading: Record<string, boolean>;
+  availability: AvailabilityState;
   /** 设置全局加载状态 */
   setGlobalLoading: (loading: boolean) => void;
   /** 设置指定页面的加载状态 */
   setPageLoading: (page: string, loading: boolean) => void;
+  setAvailability: (state: AvailabilityState) => void;
 }
 
 export const useLoadingStore = create<LoadingState>((set) => ({
   globalLoading: false,
   pageLoading: {},
+  availability: "ready",
   setGlobalLoading: (loading) => set({ globalLoading: loading }),
   setPageLoading: (page, loading) =>
     set((state) => ({
       pageLoading: { ...state.pageLoading, [page]: loading },
     })),
+  setAvailability: (availability) => set({ availability }),
 }));

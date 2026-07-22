@@ -49,4 +49,4 @@
 - [x] [18 学习读模型](P2/18-learning-read-model.md)
 - [ ] [19 管理后台](P2/19-admin-backoffice.md)
 - [ ] [20 学生数据治理](P2/20-student-data-governance.md)
-- [ ] [21 客户端可用性](P2/21-client-availability.md)
+- [x] [21 客户端可用性](P2/21-client-availability.md)

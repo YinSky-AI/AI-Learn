@@ -11,7 +11,13 @@ export function createTutorSseParser(onEvent: (event: TutorStreamEvent) => void)
       for (const frame of frames) {
         const payload = frame.split("\n").filter((line) => line.startsWith("data:")).map((line) => line.slice(5).trimStart()).join("\n");
         if (!payload) continue;
-        try { onEvent(JSON.parse(payload) as TutorStreamEvent); } catch { /* retain no malformed user-visible output */ }
+        let event: TutorStreamEvent;
+        try {
+          event = JSON.parse(payload) as TutorStreamEvent;
+        } catch {
+          continue;
+        }
+        onEvent(event);
       }
     },
     finish() { buffer = ""; },

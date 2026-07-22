@@ -25,34 +25,19 @@ import {
   clearLocalChatHistory,
 } from "@/lib/local-storage";
 import { createTutorSseParser } from "@/lib/sse";
+import { mapCourseContract, mapLessonContract } from "@/lib/learning-contract";
+
+let activeTutorAbortController: AbortController | null = null;
 
 /**
  * 将后端 API 返回的课程字段映射为前端 Course 类型
  * @param apiCourse - 后端返回的原始课程对象
  * @returns 前端 Course 对象
  */
-function mapApiCourse(apiCourse: any): Course {
-  const id = apiCourse.id ?? apiCourse.slug ?? "";
-  return {
-    id,
-    slug: apiCourse.slug ?? id,
-    title: apiCourse.title ?? "",
-    description: apiCourse.description ?? "",
-    coverImage: apiCourse.image_url ?? apiCourse.coverImage ?? "/covers/default.jpg",
-    subject: apiCourse.subject ?? "math",
-    difficulty: apiCourse.difficulty ?? "beginner",
-    ageGroup: apiCourse.age_group ?? apiCourse.ageGroup ?? "06-09",
-    duration: apiCourse.duration ?? 0,
-    totalLessons: apiCourse.total_lessons ?? apiCourse.totalLessons ?? 0,
-    completedLessons: apiCourse.completed_lessons ?? apiCourse.completedLessons ?? 0,
-    progress: apiCourse.progress ?? 0,
-    rating: apiCourse.rating ?? 4.0,
-    enrollCount: apiCourse.enroll_count ?? apiCourse.enrollCount ?? 0,
-    tags: Array.isArray(apiCourse.tags) ? apiCourse.tags : [],
-    teacher: apiCourse.teacher ?? { id: "teacher-0", name: "AI学堂", avatar: "/avatars/default.jpg" },
-    createdAt: apiCourse.created_at ?? apiCourse.createdAt ?? new Date().toISOString(),
-    updatedAt: apiCourse.updated_at ?? apiCourse.updatedAt ?? new Date().toISOString(),
-  };
+function mapApiCourse(apiCourse: unknown): Course {
+  const mapped = mapCourseContract(apiCourse);
+  if (mapped) return mapped;
+  throw new Error("课程数据格式无效");
 }
 
 /**
@@ -60,20 +45,10 @@ function mapApiCourse(apiCourse: any): Course {
  * @param apiLesson - 后端返回的原始课时对象
  * @returns 前端 Lesson 对象
  */
-function mapApiLesson(apiLesson: any): Lesson {
-  return {
-    id: apiLesson.id ?? "",
-    courseId: apiLesson.course_id ?? apiLesson.courseId ?? "",
-    title: apiLesson.title ?? "",
-    description: apiLesson.description ?? "",
-    order: apiLesson.order ?? 0,
-    type: apiLesson.type ?? "text",
-    duration: apiLesson.duration ?? 0,
-    content: apiLesson.content ?? "",
-    completed: apiLesson.completed ?? false,
-    resources: apiLesson.resources ?? [],
-    knowledgeNodeId: apiLesson.knowledge_node_id ?? apiLesson.knowledgeNodeId ?? undefined,
-  };
+function mapApiLesson(apiLesson: unknown): Lesson {
+  const mapped = mapLessonContract(apiLesson);
+  if (mapped) return mapped;
+  throw new Error("课时数据格式无效");
 }
 
 /** 学习状态接口 */
@@ -125,6 +100,7 @@ interface LearningState {
   resetFilter: () => void;
   /** 发送 AI 消息（SSE 流式） */
   sendAIMessage: (message: string) => Promise<void>;
+  cancelAIMessage: () => void;
   /** 标记当前课时完成并切换到下一课时 */
   startLearning: () => Promise<void>;
   /** 报名课程 */
@@ -353,7 +329,9 @@ export const useLearningStore = create<LearningState>((set, get) => ({
           journeyStatus: course ? "ready" : "empty",
         });
       } catch {
-        // 后端不可用时 fallback 到 mock 数据
+        set({ isLoading: false, journeyStatus: "error" });
+        return;
+        /* 后端不可用时 fallback 到 mock 数据
         console.warn("后端 API 不可用，使用 mock 数据");
         const { getMockCourseDetail, getMockLessons } = await import("@/lib/content");
         let course = getMockCourseDetail(courseId);
@@ -384,7 +362,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
           chatMessages: localChat,
           isLoading: false,
           journeyStatus: "offline",
-        });
+        }); */
       }
     } catch (error) {
       console.error("获取课程详情失败:", error);
@@ -466,10 +444,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       const headers: Record<string, string> = { "Content-Type": "application/json" };
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
+      activeTutorAbortController = new AbortController();
       const response = await fetch(`${API_BASE_URL_FOR_CLIENT}/v1/ai/chat`, {
         method: "POST",
         headers,
         body: JSON.stringify({ message, context, conversationHistory }),
+        signal: activeTutorAbortController.signal,
       });
 
       if (!response.ok) throw new Error(`请求失败: ${response.status}`);
@@ -580,6 +560,14 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
       set({ isAIResponding: false, tutorStatus: fullContent ? "ready" : "unavailable" });
     } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        set((state) => ({
+          chatMessages: state.chatMessages.filter((msg) => msg.id !== aiMessageId),
+          isAIResponding: false,
+          tutorStatus: "ready",
+        }));
+        return;
+      }
       console.warn("AI 对话不可用", error instanceof Error ? error.name : "unknown_error");
       const unavailableContent = "AI 辅导服务暂时不可用，请稍后重试。";
       set((state) => ({
@@ -597,8 +585,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       if (currentState.currentCourse) {
         saveLocalChatHistory(currentState.currentCourse.id, currentState.chatMessages);
       }
+    } finally {
+      activeTutorAbortController = null;
     }
   },
+
+  cancelAIMessage: () => activeTutorAbortController?.abort(),
 
   /**
    * 标记当前课时完成并切换到下一课时

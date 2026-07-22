@@ -13,6 +13,7 @@ import logging
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
+from app.core.observability import correlation
 
 # 使用 "app.request" 命名空间的日志记录器，便于独立配置请求日志输出格式和目标
 logger = logging.getLogger("app.request")
@@ -44,14 +45,14 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
             Exception: 将异常继续向上抛出，同时记录错误日志
         """
         start_time = time.time()
-        client_host = request.client.host if request.client else "unknown"
+        context = correlation()
 
         try:
             response = await call_next(request)
             process_time = time.time() - start_time
             logger.info(
                 f"{request.method} {request.url.path} - {response.status_code} - "
-                f"{process_time:.3f}s - {client_host}"
+                f"{process_time:.3f}s - request_id={context['request_id']} run_id={context['run_id']}"
             )
             response.headers["X-Process-Time"] = f"{process_time:.3f}"
             return response
@@ -59,6 +60,6 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
             process_time = time.time() - start_time
             logger.error(
                 f"{request.method} {request.url.path} - ERROR - "
-                f"{process_time:.3f}s - {client_host} - {exc}"
+                f"{process_time:.3f}s - request_id={context['request_id']} run_id={context['run_id']} error_type={type(exc).__name__}"
             )
             raise

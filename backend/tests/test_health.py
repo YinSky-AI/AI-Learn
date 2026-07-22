@@ -9,6 +9,8 @@ async def test_health_check(client):
     data = response.json()
     assert data["code"] in {"SUCCESS", "SERVICE_UNAVAILABLE"}
     assert data["data"]["status"] in {"healthy", "unready"}
+    assert response.headers.get("X-Request-ID")
+    assert response.headers.get("X-Run-ID")
 
 
 @pytest.mark.asyncio

@@ -29,6 +29,7 @@ import time
 from typing import Any, AsyncGenerator, Optional
 
 from openai import AsyncOpenAI, APIError, APITimeoutError, RateLimitError
+from app.core.observability import correlation
 
 logger = logging.getLogger(__name__)
 
@@ -126,9 +127,10 @@ class AIProvider:
             self._total_prompt_tokens += usage.get("prompt_tokens", 0)
             self._total_completion_tokens += usage.get("completion_tokens", 0)
             self._total_requests += 1
+            context = correlation()
             logger.debug(
-                f"[AIProvider] Token 用量记录: prompt={usage.get('prompt_tokens', 0)} | "
-                f"completion={usage.get('completion_tokens', 0)}"
+                f"[AIProvider] usage request_id={context['request_id']} run_id={context['run_id']} "
+                f"prompt_tokens={usage.get('prompt_tokens', 0)} completion_tokens={usage.get('completion_tokens', 0)}"
             )
             return {
                 "prompt_tokens": usage.get("prompt_tokens", 0),
@@ -295,7 +297,7 @@ class AIProvider:
 
         except Exception as e:
             latency_ms = int((time.monotonic() - start_time) * 1000)
-            logger.error(f"AI Provider 生成失败（{latency_ms}ms）: {e}")
+            logger.error(f"AI Provider 生成失败 run_id={correlation()['run_id']} latency_ms={latency_ms} error_type={type(e).__name__}")
             raise
 
     async def generate_stream(
@@ -346,7 +348,7 @@ class AIProvider:
                             yield content
 
         except Exception as e:
-            logger.error(f"AI Provider 流式生成失败: {e}")
+            logger.error(f"AI Provider 流式生成失败 run_id={correlation()['run_id']} error_type={type(e).__name__}")
             raise
 
     @property

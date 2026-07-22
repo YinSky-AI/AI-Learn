@@ -27,6 +27,7 @@ from sqlalchemy import text
 
 from app.core.config import settings
 from app.core.security import decode_token
+from app.core.observability import request_id_var, run_id_var
 from app.core.redis import redis_client
 from app.core.database import ai_learn_engine, engine
 from app.core.schema_version import SchemaVersionError, verify_schema_targets
@@ -129,10 +130,15 @@ async def request_id_middleware(request: Request, call_next):
         Response: 携带 X-Request-ID 响应头的 FastAPI 响应对象
     """
     request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
+    run_id = str(uuid.uuid4())
     request.state.request_id = request_id
+    request.state.run_id = run_id
+    request_id_var.set(request_id)
+    run_id_var.set(run_id)
 
     response: Response = await call_next(request)
     response.headers["X-Request-ID"] = request_id
+    response.headers["X-Run-ID"] = run_id
     return response
 
 

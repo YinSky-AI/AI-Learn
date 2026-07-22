@@ -58,6 +58,14 @@ POST_BASELINE_TABLES = {
 POST_BASELINE_COLUMNS = {
     ("primary", "courses"): {"deleted_at"},
     ("primary", "lessons"): {"deleted_at"},
+    ("primary", "users"): {"credential_version", "credentials_revoked_at"},
+    ("primary", "generated_questions"): {
+        "generation_status",
+        "generation_attempts",
+        "generation_max_attempts",
+        "generation_failure_reason",
+    },
+    ("primary", "wrong_questions"): {"next_review_at"},
     ("question-bank", "questions"): {"deleted_at"},
 }
 
@@ -598,10 +606,22 @@ def validate_legacy_schema(engine: Engine | Connection, target_alias: str) -> No
             if not any(column in post_baseline_columns for column in value[1])
         }
         actual = build_actual_contract_snapshot(inspector, table_name)
+        for column_name in post_baseline_columns:
+            actual["columns"].pop(column_name, None)
+        actual["indexes"] = {
+            value
+            for value in actual["indexes"]
+            if not any(column in post_baseline_columns for column in value[1])
+        }
         required_columns = set(expected["columns"])
         actual_columns = set(actual["columns"])
         allowed_extra = ALLOWED_EXTERNAL_COLUMNS.get((target_alias, table_name), set())
-        unknown = actual_columns - required_columns - allowed_extra
+        unknown = (
+            actual_columns
+            - required_columns
+            - allowed_extra
+            - post_baseline_columns
+        )
         if unknown:
             raise SchemaVersionError(
                 f"基线表 {table_name} 包含未知列：" + ", ".join(sorted(unknown))

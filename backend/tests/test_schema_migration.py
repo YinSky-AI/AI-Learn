@@ -627,6 +627,22 @@ def test_baseline_contract_accepts_an_exact_match():
     validate_contract_snapshot("contract_table", contract, deepcopy(contract))
 
 
+def test_primary_baseline_excludes_account_columns_added_after_baseline():
+    assert schema_admin_module.POST_BASELINE_COLUMNS[("primary", "users")] == {
+        "credential_version",
+        "credentials_revoked_at",
+    }
+    assert schema_admin_module.POST_BASELINE_COLUMNS[("primary", "generated_questions")] == {
+        "generation_status",
+        "generation_attempts",
+        "generation_max_attempts",
+        "generation_failure_reason",
+    }
+    assert schema_admin_module.POST_BASELINE_COLUMNS[("primary", "wrong_questions")] == {
+        "next_review_at",
+    }
+
+
 def test_expected_contract_preserves_precision_timezone_and_array_item_type():
     metadata = MetaData()
     table = Table(

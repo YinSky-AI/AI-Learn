@@ -29,6 +29,16 @@ class SchemaMigrationDrillSafetyTests(unittest.TestCase):
         self.assertIn('DRILL_SECRET_ROOT = RUNTIME_ROOT / "drill-secrets"', source)
         self.assertNotIn('return RUNTIME_ROOT / "secrets" / filename', source)
 
+    def test_legacy_fixture_downgrades_both_databases_before_removing_version_stamps(self):
+        source = (
+            Path(__file__).resolve().parents[2]
+            / "scripts"
+            / "run_schema_migration_drill.py"
+        ).read_text(encoding="utf-8")
+        catalog_downgrade = source.index('alias="question-bank", host=SOURCE_HOST')
+        catalog_stamp_drop = source.index('DROP TABLE alembic_version_catalog;')
+        self.assertLess(catalog_downgrade, catalog_stamp_drop)
+
     def test_drill_accepts_only_the_four_fixed_tmpfs_databases(self):
         validate_schema_drill_targets(
             source_host="postgres-test",

@@ -1230,6 +1230,11 @@ def run_drill() -> dict[str, Any]:
                 database=PRIMARY_SOURCE_DATABASE, revision=PRIMARY_BASELINE,
                 allow_destructive=True,
             )
+            _schema_admin(
+                action="downgrade", alias="question-bank", host=SOURCE_HOST,
+                database=CATALOG_SOURCE_DATABASE, revision="catalog_0001_baseline",
+                allow_destructive=True,
+            )
             _psql(
                 SOURCE_HOST, PRIMARY_SOURCE_DATABASE,
                 "DROP TABLE alembic_version_learning;",

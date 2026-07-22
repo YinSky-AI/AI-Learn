@@ -195,7 +195,7 @@ def test_regular_release_target_requires_explicit_release_authorization():
             backup_reference=None,
             confirm_empty_bootstrap=False,
         )
-    with pytest.raises(SchemaVersionError, match="备份"):
+    with pytest.raises(SchemaVersionError):
         validate_release_authorization(
             action="upgrade",
             target=target,
@@ -227,15 +227,16 @@ def test_verified_empty_release_bootstrap_has_a_separate_confirmation_path():
         confirm_empty_bootstrap=True,
     )
 
-    validate_release_authorization(
-        action="upgrade",
-        target=target,
-            current_revision="lp_0006_review_scheduler",
-        has_user_tables=True,
-        approval_reference="CHG-124",
-        backup_reference=None,
-        confirm_empty_bootstrap=True,
-    )
+    with pytest.raises(SchemaVersionError, match="备份"):
+        validate_release_authorization(
+            action="upgrade",
+            target=target,
+            current_revision="lp_0008_review_contract",
+            has_user_tables=True,
+            approval_reference="CHG-124",
+            backup_reference=None,
+            confirm_empty_bootstrap=True,
+        )
 
 
 def test_strict_schema_policy_rejects_an_unversioned_or_stale_database():

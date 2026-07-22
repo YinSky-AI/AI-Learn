@@ -118,26 +118,62 @@ export interface LearningProgressResponse {
 /** AI 对话请求 */
 export interface ChatRequest {
   message: string;
+  message_type?: "question" | "answer" | "casual";
   context?: {
     courseId?: string;
     lessonId?: string;
     subject?: string;
+    question?: TutorQuestionContext;
+    is_correct?: boolean;
+    student_answer?: string;
   };
-  conversationHistory: Array<{
+  conversationHistory?: Array<{
     role: "user" | "assistant";
     content: string;
   }>;
 }
 
-/** AI 对话响应 */
+export interface TutorQuestionContext {
+  id: string;
+  question_text?: string;
+  correct_answer?: string;
+  explanation?: string;
+  knowledge_points?: string[];
+  difficulty?: string;
+  subject?: string;
+}
+
+export type TutorRole = "teacher" | "assistant" | "diagnostician" | "encourager";
+
+/** 四角色 AI 辅导响应。失败由客户端显示中文兜底文案，不暴露技术错误。 */
 export interface ChatResponse {
-  reply: string;
-  suggestions?: string[];
-  relatedResources?: Array<{
-    id: string;
-    title: string;
-    type: string;
+  messages: Array<{
+    role: TutorRole;
+    name: string;
+    content: string;
   }>;
+  suggested_next_step?: string;
+  diagnosis?: string;
+  mastery?: number;
+}
+
+/** 知识图谱节点；未学习节点的掌握度为 null。 */
+export interface KnowledgeGraphNode {
+  id: string;
+  name: string;
+  description?: string;
+  is_leaf: boolean;
+  mastery: number | null;
+  mastery_percent: number | null;
+  practice_href?: string;
+  children?: KnowledgeGraphNode[];
+}
+
+/** 当前用户的单学科知识图谱。 */
+export interface KnowledgeGraphResponse extends KnowledgeGraphNode {
+  subject: "math" | "chinese" | "english";
+  learned_leaf_count: number;
+  total_leaf_count: number;
 }
 
 /** 首页仪表盘数据响应 */

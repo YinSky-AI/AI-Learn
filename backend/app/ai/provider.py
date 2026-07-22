@@ -376,8 +376,16 @@ def get_ai_provider() -> AIProvider:
     """
     global _provider_instance
     if _provider_instance is None:
+        from app.core.config import settings
+
         logger.info("[AIProvider] 初始化全局 Provider 实例")
-        _provider_instance = AIProvider()
+        _provider_instance = AIProvider(
+            api_key=settings.DEEPSEEK_API_KEY,
+            base_url=settings.DEEPSEEK_BASE_URL,
+            model=settings.AI_MODEL_NAME,
+            default_max_tokens=settings.AI_MAX_TOKENS,
+            default_temperature=settings.AI_TEMPERATURE,
+        )
     return _provider_instance
 
 

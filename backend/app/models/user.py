@@ -56,6 +56,12 @@ class User(SoftDeleteModel, Base):
     # 积分和统计
     total_score = Column(Integer, default=0, server_default="0", comment="总积分")
     streak_days = Column(Integer, default=0, server_default="0", comment="连续学习天数")
+    current_correct_streak = Column(Integer, default=0, server_default="0", nullable=False, comment="当前连续答对题数")
+    max_correct_streak = Column(Integer, default=0, server_default="0", nullable=False, comment="最高连续答对题数")
+    total_answered = Column(Integer, default=0, server_default="0", nullable=False, comment="累计作答数")
+    correct_answered = Column(Integer, default=0, server_default="0", nullable=False, comment="累计答对数")
+    last_active_date = Column(Date, nullable=True, comment="最后学习日期")
+    study_days_count = Column(Integer, default=0, server_default="0", nullable=False, comment="累计学习天数")
 
     # 行为模型 (JSONB 灵活配置)
     behavior_profile = Column(JSONB, nullable=True, comment="用户行为模型（能力估计、行为模式、偏好冲突、置信度）")

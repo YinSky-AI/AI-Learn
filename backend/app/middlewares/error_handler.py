@@ -22,6 +22,13 @@ from app.schemas.common import ApiResponse
 logger = logging.getLogger(__name__)
 
 
+def user_message(detail: object, fallback: str) -> str:
+    """将异常详情转换为可安全展示给用户的纯文本。"""
+    if isinstance(detail, dict):
+        return str(detail.get("message") or fallback)
+    return str(detail) if isinstance(detail, str) else fallback
+
+
 def add_exception_handlers(app: FastAPI) -> None:
     """
     注册全局异常处理器
@@ -46,14 +53,9 @@ def add_exception_handlers(app: FastAPI) -> None:
         """
         logger.warning(f"HTTP {exc.status_code}: {exc.detail} - {request.url.path}")
 
-        # 提取用户友好的错误信息
-        # exc.detail 可能是 str 或 dict（FastAPI HTTPException 支持 dict）
-        if isinstance(exc.detail, dict):
-            code = exc.detail.get("code", f"HTTP_{exc.status_code}")
-            message = exc.detail.get("message", str(exc.detail))
-        else:
-            code = f"HTTP_{exc.status_code}"
-            message = str(exc.detail)
+        # 字典详情只允许影响用户消息，响应码始终由 HTTP 状态派生。
+        code = f"HTTP_{exc.status_code}"
+        message = user_message(exc.detail, "请求失败")
 
         return JSONResponse(
             status_code=exc.status_code,
@@ -70,17 +72,15 @@ def add_exception_handlers(app: FastAPI) -> None:
         处理请求参数校验异常
 
         捕获 Pydantic 模型验证失败、请求体格式错误等，
-        提取第一条错误信息记录日志，并返回详细的校验错误列表。
+        记录校验错误，并返回安全的通用提示。
         """
-        errors = exc.errors()
-        message = errors[0]["msg"] if errors else "请求参数验证失败"
-        logger.warning(f"Validation error: {message} - {request.url.path}")
+        logger.warning(f"Validation error - {request.url.path}")
         return JSONResponse(
             status_code=422,
             content=ApiResponse(
                 code="VALIDATION_ERROR",
-                message=message,
-                data={"errors": errors},
+                message=user_message(None, "请求参数验证失败"),
+                data=None,
             ).model_dump(),
         )
 
@@ -97,7 +97,7 @@ def add_exception_handlers(app: FastAPI) -> None:
             status_code=500,
             content=ApiResponse(
                 code="INTERNAL_ERROR",
-                message="服务器内部错误，请稍后重试",
+                message=user_message(None, "服务暂时不可用，请稍后重试"),
                 data=None,
             ).model_dump(),
         )

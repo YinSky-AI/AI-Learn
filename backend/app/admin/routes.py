@@ -815,7 +815,7 @@ async def course_create_api(
                 "tags": tags_value,
                 "is_active": body.get("is_active", True),
                 "sort_order": body.get("sort_order") or 0,
-                "slug": body.get("slug"),
+                "slug": body.get("slug") or None,
             },
         )
     except Exception as e:
@@ -865,7 +865,8 @@ async def course_update_api(
     for field in allowed_fields:
         if field in body:
             updates.append(f"{field} = :{field}")
-            params[field] = body[field]
+            # slug 空字符串转 None，避免唯一约束冲突
+            params[field] = body[field] if body[field] != "" else None
 
     # tags 需要特殊处理（字符串 -> JSON 数组）
     if "tags" in body:

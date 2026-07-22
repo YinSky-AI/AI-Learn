@@ -13,6 +13,7 @@ AI 出题相关 Pydantic Schema 模块
 这些 Schema 支撑 AI 自适应学习的题目生成、质量评估和历史管理功能。
 """
 
+from datetime import datetime
 from typing import Any, List, Optional
 from uuid import UUID
 
@@ -53,7 +54,25 @@ class GeneratedQuestionResponse(BaseModel):
     explanation: str
     knowledge_tags: Any
     quality_status: str
-    created_at: str
+    created_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class GeneratedQuestionPublicResponse(BaseModel):
+    """可直接展示给学习者的生成题目，不包含标准答案与解析。"""
+
+    id: UUID
+    batch_id: UUID
+    subject_code: str
+    course_topic: str
+    difficulty_level: str
+    question_type: str
+    question_body: str
+    options: Optional[List[dict]] = None
+    knowledge_tags: Any
+    quality_status: str
+    created_at: datetime
 
     model_config = {"from_attributes": True}
 
@@ -87,7 +106,7 @@ class BatchResponse(BaseModel):
     learning_goal: Optional[str] = None
     status: str
     prompt_version: str
-    created_at: str
+    created_at: datetime
 
     model_config = {"from_attributes": True}
 
@@ -128,7 +147,7 @@ class GenerateResultResponse(BaseModel):
     total_generated: int
     passed_count: int
     failed_count: int
-    questions: List[GeneratedQuestionResponse] = []
+    questions: List[GeneratedQuestionPublicResponse] = Field(default_factory=list)
 
 
 class QualityCheckResponse(BaseModel):

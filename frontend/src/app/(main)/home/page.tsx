@@ -209,7 +209,11 @@ export default function HomePage() {
             <Card className="shadow-card">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-base">继续学习</CardTitle>
-                <Badge variant="secondary" className="cursor-pointer">
+                <Badge
+                  variant="secondary"
+                  className="cursor-pointer hover:bg-gray-200 transition-colors"
+                  onClick={() => router.push("/learning")}
+                >
                   查看全部
                 </Badge>
               </CardHeader>
@@ -227,9 +231,15 @@ export default function HomePage() {
                     ))}
                   </div>
                 ) : (
-                  <p className="py-8 text-center text-sm text-brand-gray">
-                    暂无正在学习的课程，去探索页看看吧
-                  </p>
+                  <div className="flex flex-col items-center py-8">
+                    <p className="text-sm text-brand-gray">暂无正在学习的课程，去探索页看看吧</p>
+                    <button
+                      onClick={() => router.push("/explore")}
+                      className="mt-3 rounded-lg bg-brand-blue px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                    >
+                      去探索课程
+                    </button>
+                  </div>
                 )}
               </CardContent>
             </Card>

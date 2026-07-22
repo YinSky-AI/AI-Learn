@@ -125,7 +125,7 @@ class KnowledgeNode(BaseModel, Base):
         nullable=False,
         comment="适用年龄段",
     )
-    difficulty_level = Column(String(10), nullable=False, comment="难度: DIFF_EASY / DIFF_MEDIUM / DIFF_HARD")
+    difficulty_level = Column(String(20), nullable=False, comment="难度: DIFF_EASY / DIFF_MEDIUM / DIFF_HARD")
     content_type = Column(String(20), nullable=False, comment="类型: TYPE_READ / TYPE_QUIZ / TYPE_GAME")
     content_body = Column(Text, nullable=False, comment="知识内容主体（Markdown）")
     estimated_minutes = Column(Integer, default=5, server_default="5", comment="预计完成时长（分钟）")
@@ -184,7 +184,7 @@ class Question(Base):
         nullable=False,
         comment="所属知识点",
     )
-    difficulty_level = Column(String(10), nullable=False, comment="难度")
+    difficulty_level = Column(String(20), nullable=False, comment="难度")
     question_type = Column(String(20), nullable=False, comment="题型: CHOICE / MULTIPLE_CHOICE / FILL_BLANK")
     question_body = Column(Text, nullable=False, comment="题目内容（Markdown）")
     options = Column(JSONB, nullable=True, comment="选择题选项: [{key, value}]")

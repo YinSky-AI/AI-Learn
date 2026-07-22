@@ -10,7 +10,7 @@
  */
 
 import { create } from "zustand";
-import type { Course, CourseFilter, Lesson, ChatMessage, Subject, DifficultyLevel, AgeGroup } from "@/types";
+import type { Course, CourseFilter, Lesson, ChatMessage, Subject, DifficultyLevel, AgeGroup, QuizQuestion, QuizAnswer, QuizResult } from "@/types";
 import apiClient, { API_BASE_URL_FOR_CLIENT, TokenManager } from "@/lib/api-client";
 import { useAuthStore } from "@/stores/auth-store";
 import {
@@ -67,6 +67,7 @@ function mapApiLesson(apiLesson: any): Lesson {
     content: apiLesson.content ?? "",
     completed: apiLesson.completed ?? false,
     resources: apiLesson.resources ?? [],
+    knowledgeNodeId: apiLesson.knowledge_node_id ?? apiLesson.knowledgeNodeId ?? undefined,
   };
 }
 
@@ -96,6 +97,14 @@ interface LearningState {
   totalPages: number;
   /** 当前页 */
   currentPage: number;
+  /** 测验题目列表 */
+  quizQuestions: QuizQuestion[];
+  /** 用户测验答案 */
+  quizAnswers: QuizAnswer[];
+  /** 测验结果 */
+  quizResult: QuizResult | null;
+  /** 测验是否正在加载 */
+  isQuizLoading: boolean;
 
   /** 获取课程列表 */
   fetchCourses: (filter?: CourseFilter) => Promise<void>;
@@ -117,6 +126,14 @@ interface LearningState {
   clearChat: () => void;
   /** 设置加载状态 */
   setLoading: (loading: boolean) => void;
+  /** 获取测验题目 */
+  fetchQuizQuestions: (courseId: string, lessonId: string) => Promise<void>;
+  /** 设置测验答案 */
+  setQuizAnswer: (questionId: string, answer: string | string[]) => void;
+  /** 提交测验 */
+  submitQuiz: (courseId: string, lessonId: string) => Promise<QuizResult>;
+  /** 重置测验状态 */
+  resetQuiz: () => void;
 }
 
 /** 默认筛选条件 */
@@ -139,6 +156,10 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   isAIResponding: false,
   totalPages: 1,
   currentPage: 1,
+  quizQuestions: [],
+  quizAnswers: [],
+  quizResult: null,
+  isQuizLoading: false,
 
   /**
    * 获取课程列表
@@ -441,6 +462,39 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
       if (!response.ok) throw new Error(`请求失败: ${response.status}`);
 
+      // 当前辅导接口返回普通 JSON；保留下面的 SSE 分支以兼容旧部署。
+      const contentType = response.headers.get("content-type") ?? "";
+      if (contentType.includes("application/json")) {
+        type CourseTutorResponse = {
+          messages?: Array<{ name?: string; content: string }>;
+          suggested_next_step?: string;
+        };
+        const jsonPayload = (await response.json()) as CourseTutorResponse & {
+          data?: CourseTutorResponse;
+        };
+        const tutorResponse: CourseTutorResponse = jsonPayload.data ?? jsonPayload;
+        const replyParts = (tutorResponse.messages ?? []).map(
+          (item) => `${item.name || "AI 导师"}：${item.content}`
+        );
+        if (tutorResponse.suggested_next_step) {
+          replyParts.push(`下一步：${tutorResponse.suggested_next_step}`);
+        }
+        const fullContent = replyParts.join("\n\n");
+        if (!fullContent) throw new Error("AI 辅导老师暂时没有返回内容");
+
+        set((state) => ({
+          chatMessages: state.chatMessages.map((msg) =>
+            msg.id === aiMessageId ? { ...msg, content: fullContent } : msg
+          ),
+          isAIResponding: false,
+        }));
+        const currentState = get();
+        if (currentState.currentCourse) {
+          saveLocalChatHistory(currentState.currentCourse.id, currentState.chatMessages);
+        }
+        return;
+      }
+
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let fullContent = "";
@@ -617,6 +671,77 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
   /** 设置加载状态 */
   setLoading: (loading) => set({ isLoading: loading }),
+
+  /**
+   * 获取测验题目
+   * 调用 GET /v1/courses/{cid}/lessons/{lid}/quiz
+   * @param courseId - 课程 ID
+   * @param lessonId - 课时 ID
+   */
+  fetchQuizQuestions: async (courseId: string, lessonId: string) => {
+    set({ isQuizLoading: true });
+    try {
+      const data = await apiClient.get<any>(`/v1/courses/${courseId}/lessons/${lessonId}/quiz`);
+      const questions: QuizQuestion[] = (data.questions ?? []).map((q: any) => ({
+        id: q.id ?? "",
+        type: q.question_type ?? "CHOICE",
+        body: q.question_body ?? "",
+        options: Array.isArray(q.options) ? q.options : [],
+        correctAnswer: q.correct_answer ?? "",
+        explanation: q.explanation ?? "",
+      }));
+      set({ quizQuestions: questions, quizAnswers: [], quizResult: null, isQuizLoading: false });
+    } catch (error) {
+      console.error("获取测验题目失败:", error);
+      set({ isQuizLoading: false });
+    }
+  },
+
+  /**
+   * 设置某道题的答案
+   * 若该题已存在答案则覆盖，否则追加
+   * @param questionId - 题目 ID
+   * @param answer - 用户选择的答案
+   */
+  setQuizAnswer: (questionId: string, answer: string | string[]) => {
+    set((state) => {
+      const exists = state.quizAnswers.find((a) => a.questionId === questionId);
+      const newAnswers = exists
+        ? state.quizAnswers.map((a) => (a.questionId === questionId ? { ...a, answer } : a))
+        : [...state.quizAnswers, { questionId, answer }];
+      return { quizAnswers: newAnswers };
+    });
+  },
+
+  /**
+   * 提交测验答案
+   * @param courseId - 课程 ID
+   * @param lessonId - 课时 ID
+   * @returns 测验结果
+   */
+  submitQuiz: async (courseId: string, lessonId: string) => {
+    const { quizAnswers } = get();
+    try {
+      const data = await apiClient.post<any>(`/v1/courses/${courseId}/lessons/${lessonId}/quiz/submit`, {
+        answers: quizAnswers,
+      });
+      const result: QuizResult = {
+        score: data.score ?? 0,
+        correctCount: data.correct_count ?? data.correctCount ?? 0,
+        totalCount: data.total_count ?? data.totalCount ?? 0,
+        details: data.details ?? [],
+        passed: data.passed ?? false,
+      };
+      set({ quizResult: result });
+      return result;
+    } catch (error) {
+      console.error("提交测验失败:", error);
+      throw error;
+    }
+  },
+
+  /** 重置测验状态（清空答案与结果） */
+  resetQuiz: () => set({ quizAnswers: [], quizResult: null }),
 }));
 
 /**

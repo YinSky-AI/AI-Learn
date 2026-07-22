@@ -73,21 +73,11 @@ export const TokenManager = {
   },
 };
 
-/** 是否正在刷新 Token */
-let isRefreshing = false;
-/** Token 刷新等待队列 */
-let refreshSubscribers: Array<(token: string) => void> = [];
-
-/** 将等待的请求加入队列 */
-function subscribeTokenRefresh(cb: (token: string) => void) {
-  refreshSubscribers.push(cb);
-}
-
-/** Token 刷新成功后通知队列 */
-function onTokenRefreshed(token: string) {
-  refreshSubscribers.forEach((cb) => cb(token));
-  refreshSubscribers = [];
-}
+/**
+ * 同一时刻只允许一个刷新请求。所有收到 401 的请求共享这个 Promise，
+ * 因此刷新失败时也会一起 reject，不会留下永远等待的请求。
+ */
+let refreshPromise: Promise<string> | null = null;
 
 /**
  * 刷新 Token
@@ -102,7 +92,7 @@ async function refreshAccessToken(): Promise<string> {
   const response = await fetch(`${API_BASE_URL}/v1/auth/refresh`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ refreshToken }),
+    body: JSON.stringify({ refresh_token: refreshToken }),
   });
 
   if (!response.ok) {
@@ -115,6 +105,15 @@ async function refreshAccessToken(): Promise<string> {
   const tokenData = data.data || data;
   TokenManager.setTokens(tokenData.access_token, tokenData.refresh_token);
   return tokenData.access_token;
+}
+
+function getFreshAccessToken(): Promise<string> {
+  if (!refreshPromise) {
+    refreshPromise = refreshAccessToken().finally(() => {
+      refreshPromise = null;
+    });
+  }
+  return refreshPromise;
 }
 
 /**
@@ -190,36 +189,19 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
       // 处理 401 - 尝试刷新 Token（跳过认证端点，避免登录失败时误跳转）
       const isAuthEndpoint = endpoint.startsWith("/v1/auth/");
       if (response.status === 401 && !skipAuth && !isAuthEndpoint) {
-        if (isRefreshing) {
-          // 等待刷新完成
-          const newToken = await new Promise<string>((resolve) => {
-            subscribeTokenRefresh((token) => resolve(token));
-          });
+        try {
+          const newToken = await getFreshAccessToken();
           headers["Authorization"] = `Bearer ${newToken}`;
           response = await fetch(url, {
             ...fetchOptions,
             headers,
           });
-        } else {
-          isRefreshing = true;
-          try {
-            const newToken = await refreshAccessToken();
-            isRefreshing = false;
-            onTokenRefreshed(newToken);
-            headers["Authorization"] = `Bearer ${newToken}`;
-            response = await fetch(url, {
-              ...fetchOptions,
-              headers,
-            });
-          } catch (error) {
-            isRefreshing = false;
-            refreshSubscribers = [];
-            // 重定向到登录页
-            if (typeof window !== "undefined") {
-              window.location.href = "/login";
-            }
-            throw error;
+        } catch (error) {
+          // 刷新失败后统一清理并回到登录页
+          if (typeof window !== "undefined") {
+            window.location.href = "/login";
           }
+          throw error;
         }
       }
 

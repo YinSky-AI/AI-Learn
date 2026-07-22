@@ -67,6 +67,7 @@ services:
       - ./backend/.env
     environment:
       DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/learning_platform
+      AI_LEARN_DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/ai_learn
       REDIS_URL: redis://redis:6379/0
     ports:
       - "8000:8000"
@@ -91,6 +92,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        API_PROXY_TARGET: http://backend:8000
     container_name: ai-learn-frontend
     restart: unless-stopped
     environment:

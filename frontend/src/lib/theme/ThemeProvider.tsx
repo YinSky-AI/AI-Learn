@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { AgeGroup } from "@/types";
 import type { ThemeContextType } from "./types";
 import { AGE_THEMES, getDefaultTheme, getThemeByAgeGroup } from "./themes";
@@ -33,10 +33,10 @@ export function ThemeProvider({ children, initialAgeGroup }: ThemeProviderProps)
     return getThemeByAgeGroup(ageGroup);
   }, [ageGroup]);
 
-  const setTheme = (newAgeGroup: AgeGroup) => {
+  const setTheme = useCallback((newAgeGroup: AgeGroup) => {
     setAgeGroupState(newAgeGroup);
     setLocalStorage("alp_age_group", newAgeGroup);
-  };
+  }, []);
 
   const contextValue = useMemo<ThemeContextType>(
     () => ({

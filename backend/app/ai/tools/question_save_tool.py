@@ -4,20 +4,19 @@ backend/app/ai/tools/question_save_tool.py
 题目保存工具 —— QuestionSaveTool
 
 本模块负责将经过质量检查和安全审查的题目批量持久化到数据库，
-同时记录生成批次元信息，构建完整的题目生命周期档案。
+同时记录生成批次元信息和审题结论，构建完整的题目生命周期档案。
 
 持久化对象：
 - GeneratedQuestion 表：单道题目详情（题干、选项、答案、解析、标签等）
-- GeneratedQuestionBatch 表：批次元信息（用户、主题、难度、 Harness Run ID 等）
+- GeneratedQuestionBatch 表：批次元信息（用户、主题、难度等）
+- QuestionQualityCheck 表：审题 Agent 的通过结论
 
 关键约束：
-- 安全审查否决的题目不进入知识库（在 Harness 层已过滤）
-- 所有保存操作记录 ToolCallLog
-- 无数据库会话时降级运行，记录警告日志，不阻断主流程
+- 只有审题 Agent 通过的题目进入知识库
+- 事务由调用方统一管理，任一保存失败会回滚整个批次
 
 设计特点：
-- 异步批量保存，减少数据库往返
-- 异常内部捕获，返回结构化结果（saved_count / skipped_count / error）
+- 异步批量保存，在一次 flush 中写入批次、题目和审题记录
 - 携带完整批次元信息，支持后续追溯和分析
 """
 
@@ -26,8 +25,18 @@ from __future__ import annotations
 import logging
 import time
 import uuid
-from datetime import datetime
 from typing import Any, Optional
+
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.ai.prompts.question_generation import PROMPT_VERSION as GENERATION_PROMPT_VERSION
+from app.ai.prompts.question_review import PROMPT_VERSION as REVIEW_PROMPT_VERSION
+from app.models.ai_generated import (
+    GeneratedQuestion,
+    GeneratedQuestionBatch,
+    QuestionQualityCheck,
+)
+from app.schemas.question import QuestionGenerateRequest
 
 logger = logging.getLogger(__name__)
 
@@ -41,87 +50,111 @@ class QuestionSaveTool:
 
     tool_name = "QuestionSaveTool"
 
-    def __init__(self, db_session=None):
+    def __init__(self, request: QuestionGenerateRequest):
         """
         初始化保存工具
 
         Args:
-            db_session: SQLAlchemy 数据库会话
+            request: 当前生成请求，包含批次持久化所需元数据
         """
-        self._db_session = db_session
+        self._request = request
 
-    def set_db_session(self, db_session: Any) -> None:
-        """设置数据库会话"""
-        self._db_session = db_session
+    @staticmethod
+    def compute_similarity_hash(question_body: str) -> str:
+        """计算稳定题干指纹，用于同一用户题库内精确去重。"""
+        import hashlib
+
+        normalized = " ".join(question_body.split())
+        return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
     async def save_batch(
         self,
-        batch_id: str,
-        user_id: str,
-        questions: list[dict[str, Any]],
-        batch_meta: Optional[dict[str, Any]] = None,
-    ) -> dict[str, Any]:
+        db: AsyncSession,
+        result: Any,
+        user_id: uuid.UUID,
+    ) -> GeneratedQuestionBatch:
         """
         保存一批生成的题目
 
         Args:
-            batch_id: 批次 ID
+            db: learning_platform 数据库会话；事务由调用方管理
+            result: QuestionPipeline 返回的已审题结果
             user_id: 用户 ID
-            questions: 通过审查的题目列表
-            batch_meta: 批次元信息
 
         Returns:
-            保存结果 {saved_count, batch_id, skipped_count}
+            已持久化的完成批次
         """
         start_time = time.monotonic()
+        if not result.review.passed:
+            raise ValueError("未通过审题的题目不能保存")
 
-        if not self._db_session:
-            logger.warning("[QuestionSaveTool] 无数据库会话，跳过保存")
-            return {
-                "saved_count": 0,
-                "batch_id": batch_id,
-                "skipped_count": len(questions),
-                "message": "无数据库会话",
-            }
+        batch = GeneratedQuestionBatch(
+            id=uuid.uuid4(),
+            user_id=user_id,
+            age_group_code=self._request.age_group_code,
+            subject_code=self._request.subject_code,
+            course_topic=self._request.course_topic,
+            difficulty_level=self._request.difficulty_level,
+            question_types=self._request.question_types,
+            question_count=len(result.questions),
+            learning_goal=self._request.learning_goal,
+            status="completed",
+            prompt_version=GENERATION_PROMPT_VERSION,
+        )
+        db.add(batch)
 
-        try:
-            # TODO: 当数据库模型就绪后实现实际保存
-            # 1. 创建/更新 GeneratedQuestionBatch
-            # 2. 批量创建 GeneratedQuestion
-            # 3. 记录题目质量检查结果
-
-            saved_count = 0
-            skipped_count = len(questions)
-
-            latency_ms = int((time.monotonic() - start_time) * 1000)
-            result = {
-                "saved_count": saved_count,
-                "batch_id": batch_id,
-                "skipped_count": skipped_count,
-                "latency_ms": latency_ms,
-            }
-
-            logger.info(
-                f"[QuestionSaveTool] 批次保存完成: "
-                f"batch={batch_id} | saved={saved_count} | "
-                f"skipped={skipped_count} | latency={latency_ms}ms"
+        for question_data in result.questions:
+            question = GeneratedQuestion(
+                id=uuid.uuid4(),
+                batch_id=batch.id,
+                user_id=user_id,
+                knowledge_node_id=question_data.get("knowledge_node_id"),
+                subject_code=self._request.subject_code,
+                course_topic=self._request.course_topic,
+                difficulty_level=question_data.get(
+                    "difficulty", self._request.difficulty_level
+                ),
+                question_type=question_data.get(
+                    "question_type", self._request.question_types[0]
+                ),
+                question_body=question_data["question_body"],
+                options=question_data.get("options"),
+                correct_answer=question_data["correct_answer"],
+                explanation=question_data["explanation"],
+                knowledge_tags=question_data.get(
+                    "knowledge_tags", question_data.get("tags", [])
+                ),
+                source_prompt=(
+                    f"{GENERATION_PROMPT_VERSION}:"
+                    f"{self._request.subject_code}:{self._request.course_topic}"
+                ),
+                similarity_hash=self.compute_similarity_hash(
+                    question_data["question_body"]
+                ),
+                quality_status="passed",
+            )
+            db.add(question)
+            db.add(
+                QuestionQualityCheck(
+                    id=uuid.uuid4(),
+                    generated_question_id=question.id,
+                    check_type="review",
+                    status="passed",
+                    score=1.0,
+                    message=result.review.revision_notes or "审题通过",
+                    checker_version=REVIEW_PROMPT_VERSION,
+                )
             )
 
-            return result
-
-        except Exception as e:
-            latency_ms = int((time.monotonic() - start_time) * 1000)
-            logger.error(
-                f"[QuestionSaveTool] 保存失败 | batch={batch_id} | "
-                f"latency={latency_ms}ms | {e}"
-            )
-            return {
-                "saved_count": 0,
-                "batch_id": batch_id,
-                "skipped_count": len(questions),
-                "latency_ms": latency_ms,
-                "error": str(e),
-            }
+        await db.flush()
+        latency_ms = int((time.monotonic() - start_time) * 1000)
+        logger.info(
+            "[QuestionSaveTool] 批次保存完成: batch=%s | saved=%s | latency=%sms",
+            batch.id,
+            len(result.questions),
+            latency_ms,
+        )
+        return batch
 
     def get_tool_call_record(
         self,

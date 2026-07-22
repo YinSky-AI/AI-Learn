@@ -11,8 +11,9 @@
 - 会话完成和统计
 """
 
+from datetime import datetime
 from typing import Optional
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from pydantic import BaseModel, Field
 
@@ -38,11 +39,11 @@ class LearningSessionResponse(BaseModel):
     knowledge_node_id: UUID
     difficulty_level: str
     status: str
-    started_at: str
-    completed_at: Optional[str] = None
+    started_at: datetime
+    completed_at: Optional[datetime] = None
     correct_count: int
     total_questions: int
-    created_at: str
+    created_at: datetime
 
     model_config = {"from_attributes": True}
 
@@ -55,6 +56,7 @@ class AnswerSubmit(BaseModel):
     time_spent_seconds 必须大于等于 0。
     """
     question_id: UUID = Field(..., description="题目 ID")
+    answer_id: UUID = Field(default_factory=uuid4, description="正式作答事件 ID；重试必须复用同一 ID")
     user_answer: str = Field(..., description="用户答案")
     time_spent_seconds: int = Field(..., ge=0, description="答题用时（秒）")
 
@@ -87,7 +89,10 @@ class AnswerResult(BaseModel):
     is_correct: bool
     correct_answer: str
     explanation: Optional[str] = None
+    knowledge_point: Optional[str] = None
+    tutor_prompt: Optional[str] = None
     time_spent_seconds: int
+    gamification: Optional[dict] = None
 
     model_config = {"from_attributes": True}
 

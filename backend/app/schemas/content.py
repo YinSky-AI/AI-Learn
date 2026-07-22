@@ -119,7 +119,7 @@ class QuestionResponse(BaseModel):
     用于题目管理后台和错题回顾等需要查看答案的场景。
     """
     id: UUID
-    knowledge_node_id: UUID
+    knowledge_node_id: Optional[UUID] = None
     difficulty_level: str
     question_type: str
     question_body: str
@@ -147,6 +147,17 @@ class QuestionBrief(BaseModel):
     standard_time_seconds: int
 
     model_config = {"from_attributes": True}
+
+
+class KnowledgePracticeResponse(BaseModel):
+    """知识图谱专项练习；题目使用 QuestionBrief，绝不下发答案与解析。"""
+
+    graph_node_id: str
+    knowledge_node_id: UUID
+    name: str
+    subject: str
+    difficulty_level: str
+    questions: List[QuestionBrief]
 
 
 class QuestionFilter(BaseModel):

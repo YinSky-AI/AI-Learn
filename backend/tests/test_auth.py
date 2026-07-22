@@ -22,7 +22,7 @@ async def test_register_and_login(client):
     response = await client.post("/api/v1/auth/login", json=login_data)
     assert response.status_code == 200
     data = response.json()
-    assert data["code"] == "000000"
+    assert data["code"] == "SUCCESS"
     assert "access_token" in data["data"]
 
 
@@ -30,6 +30,7 @@ async def test_register_and_login(client):
 async def test_login_wrong_password(client):
     login_data = {"username": "wrong@example.com", "password": "wrongpass"}
     response = await client.post("/api/v1/auth/login", json=login_data)
-    assert response.status_code == 200
+    assert response.status_code == 401
     data = response.json()
-    assert data["code"] != "000000"
+    assert data["code"] == "HTTP_401"
+    assert data["message"] == "用户名或密码错误"

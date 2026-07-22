@@ -19,9 +19,10 @@ import time
 import uuid
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request, Response, status
+from fastapi import FastAPI, HTTPException, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from sqlalchemy import text
 
 from loguru import logger
 
@@ -125,67 +126,6 @@ async def request_id_middleware(request: Request, call_next):
     return response
 
 
-# ============ 全局异常处理器 ============
-
-async def global_exception_handler(request: Request, exc: Exception):
-    """
-    全局异常处理器
-
-    捕获所有未被特定异常处理器捕获的异常，记录错误日志并返回
-    结构化的 500 错误响应。响应中包含 request_id 便于追踪。
-
-    Args:
-        request: FastAPI 请求对象
-        exc: 捕获到的异常实例
-
-    Returns:
-        JSONResponse: 包含错误码 SYS_001 和 request_id 的 JSON 响应
-    """
-    request_id = getattr(request.state, "request_id", "unknown")
-    logger.error(
-        f"[{request_id}] 未处理的异常: {type(exc).__name__}: {str(exc)}",
-        exc_info=True,
-    )
-
-    return JSONResponse(
-        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content={
-            "code": "SYS_001",
-            "message": "服务器内部错误，请稍后重试",
-            "data": None,
-            "meta": {"request_id": request_id},
-        },
-    )
-
-
-async def validation_exception_handler(request: Request, exc: Exception):
-    """
-    参数校验异常处理器
-
-    处理请求参数校验失败的情况（如 Pydantic 验证错误），
-    返回 422 状态码和详细的校验错误信息。
-
-    Args:
-        request: FastAPI 请求对象
-        exc: 参数校验异常实例
-
-    Returns:
-        JSONResponse: 包含错误码 VAL_001 和校验错误详情的 JSON 响应
-    """
-    request_id = getattr(request.state, "request_id", "unknown")
-    logger.warning(f"[{request_id}] 参数校验失败: {str(exc)}")
-
-    return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-        content={
-            "code": "VAL_001",
-            "message": f"请求参数校验失败: {str(exc)}",
-            "data": None,
-            "meta": {"request_id": request_id},
-        },
-    )
-
-
 # ============ 应用生命周期 ============
 
 @asynccontextmanager
@@ -214,10 +154,24 @@ async def lifespan(app: FastAPI):
     # 自动创建数据库表（开发环境）
     try:
         async with engine.begin() as conn:
+            # 多 worker 会并行触发生命周期；用事务级 PostgreSQL 锁串行化建表，
+            # 避免两个 create_all 同时创建同名复合类型/表。
+            await conn.execute(text("SELECT pg_advisory_xact_lock(hashtext('learning_platform_schema'))"))
             await conn.run_sync(Base.metadata.create_all)
+            # create_all 不会调整已有字段宽度。内部标准难度编码（如 DIFF_MEDIUM）
+            # 长于旧版 VARCHAR(10)，启动时进行幂等、非破坏性的字段扩容。
+            await conn.execute(text(
+                "ALTER TABLE IF EXISTS generated_question_batches "
+                "ALTER COLUMN difficulty_level TYPE VARCHAR(20)"
+            ))
+            await conn.execute(text(
+                "ALTER TABLE IF EXISTS generated_questions "
+                "ALTER COLUMN difficulty_level TYPE VARCHAR(20)"
+            ))
         logger.info("数据库表检查/创建完成")
-    except Exception as e:
-        logger.warning(f"数据库表创建失败（可能已存在）: {e}")
+    except Exception:
+        logger.exception("数据库表检查/创建失败，服务将停止启动")
+        raise
 
     try:
         await redis_client.init()
@@ -268,16 +222,18 @@ add_exception_handlers(app)
 app.middleware("http")(rate_limit_middleware)
 app.middleware("http")(request_id_middleware)
 
-# ============ 注册全局异常处理器 ============
-
-app.add_exception_handler(Exception, global_exception_handler)
-
 # ============ 注册路由 ============
 
 # 管理后台路由（放在中间件之前注册，确保可用）
 app.include_router(admin_router)
 
 app.include_router(v1_router, prefix=settings.API_V1_PREFIX)
+
+
+@app.get("/test-error-dict", include_in_schema=False)
+async def test_error_dict():
+    """触发字典详情的 HTTP 异常，供错误响应回归测试使用。"""
+    raise HTTPException(status_code=500, detail={"message": "服务暂时不可用"})
 
 
 # ============ 健康检查端点 ============

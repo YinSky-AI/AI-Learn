@@ -26,6 +26,7 @@ from sqlalchemy import (
     UniqueConstraint,
     DateTime,
 )
+from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import BaseModel
@@ -165,12 +166,20 @@ class Lesson(BaseModel, Base):
     is_active: Mapped[bool] = mapped_column(
         Boolean, default=True, comment="是否启用"
     )
+    knowledge_node_id: Mapped[Optional[str]] = mapped_column(
+        PGUUID(as_uuid=True),
+        ForeignKey("knowledge_nodes.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+        comment="关联知识点ID（quiz 类型课时绑定）",
+    )
 
     # 关系
     course: Mapped["Course"] = relationship("Course", back_populates="lessons")
     user_lessons: Mapped[List["UserLesson"]] = relationship(
         "UserLesson", back_populates="lesson", lazy="selectin"
     )
+    knowledge_node_rel: Mapped[Optional["KnowledgeNode"]] = relationship("KnowledgeNode")
 
     __table_args__ = (
         Index("ix_lessons_course_order", "course_id", "order"),

@@ -36,6 +36,9 @@ class Base(DeclarativeBase):
 from app.models.user import User  # noqa: E402, F401
 from app.models.content import AgeGroup, Subject, KnowledgeNode, Question  # noqa: E402, F401
 from app.models.learning import LearningSession, Answer  # noqa: E402, F401
+from app.models.gamification import GamificationEvent  # noqa: E402, F401
+from app.models.daily_challenge import DailyChallenge, DailyChallengeQuestion, DailyChallengeAttempt, DailyChallengeAnswer  # noqa: E402, F401
+from app.models.wrong_book import WrongQuestion, WrongQuestionEvent  # noqa: E402, F401
 from app.models.achievement import Achievement, UserAchievement  # noqa: E402, F401
 from app.models.ai_generated import (  # noqa: E402, F401
     GeneratedQuestionBatch,
@@ -65,6 +68,13 @@ __all__ = [
     "Question",
     "LearningSession",
     "Answer",
+    "GamificationEvent",
+    "DailyChallenge",
+    "DailyChallengeQuestion",
+    "DailyChallengeAttempt",
+    "DailyChallengeAnswer",
+    "WrongQuestion",
+    "WrongQuestionEvent",
     "Achievement",
     "UserAchievement",
     "GeneratedQuestionBatch",

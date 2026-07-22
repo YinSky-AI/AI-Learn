@@ -167,6 +167,41 @@ export interface Lesson {
   content: string;
   completed: boolean;
   resources: Resource[];
+  knowledgeNodeId?: string;
+}
+
+/** 测验题目选项 */
+export interface QuizOption {
+  key: string;
+  value: string;
+}
+
+/** 测验题目 */
+export interface QuizQuestion {
+  id: string;
+  type: "CHOICE" | "MULTIPLE_CHOICE" | "FILL_BLANK";
+  body: string;
+  options?: QuizOption[];
+  explanation?: string;
+}
+
+/** 测验答案 */
+export interface QuizAnswer {
+  questionId: string;
+  answer: string | string[];
+}
+
+/** 测验结果 */
+export interface QuizResult {
+  score: number;
+  correctCount: number;
+  totalCount: number;
+  details?: Array<{
+    questionId: string;
+    correct: boolean;
+    correctAnswer?: string;
+  }>;
+  passed?: boolean;
 }
 
 /** 资源 */

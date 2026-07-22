@@ -41,6 +41,7 @@ Thumbs.db
 *.tsbuildinfo
 .pytest_cache/
 *.log
+frontend/.tmp-tdd-unknown/
 
 # 开发中间产物
 agents/
@@ -61,3 +62,4 @@ user_profile.md
 改进方案.md
 秋招冲刺改进方案.md
 竞品对比分析与改进建议.md
+.superpowers/

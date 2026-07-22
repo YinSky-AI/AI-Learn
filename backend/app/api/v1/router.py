@@ -21,6 +21,10 @@ from app.api.v1.achievement import router as achievement_router
 from app.api.v1.progress import router as progress_router
 from app.api.v1.courses import router as courses_router
 from app.api.v1.user_courses import router as user_courses_router
+from app.api.v1.wrong_book import router as wrong_book_router
+from app.api.v1.behavior import router as behavior_router
+from app.api.v1.daily_challenge import router as daily_challenge_router
+from app.api.v1.knowledge_graph import router as knowledge_graph_router
 
 # v1 总路由
 router = APIRouter()
@@ -36,3 +40,7 @@ router.include_router(achievement_router, prefix="/achievements", tags=["成就"
 router.include_router(progress_router, prefix="/progress", tags=["进度"])
 router.include_router(courses_router, prefix="/courses", tags=["课程"])
 router.include_router(user_courses_router, prefix="/user", tags=["用户课程"])
+router.include_router(wrong_book_router, prefix="/wrong-book", tags=["错题本"])
+router.include_router(knowledge_graph_router, prefix="/knowledge-graph", tags=["knowledge-graph"])
+router.include_router(behavior_router, prefix="/user/behavior", tags=["学习行为"])
+router.include_router(daily_challenge_router, prefix="/challenge", tags=["daily-challenge"])

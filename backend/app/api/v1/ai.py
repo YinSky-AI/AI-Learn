@@ -2,12 +2,12 @@
 """
 AI 助手与审计进化 API 模块
 
-提供 AI 智能辅导、流式对话、错题分析、技能管理、进化记录查询、错误日志查询等接口。
+提供四角色智能辅导、错题分析、技能管理、进化记录查询、错误日志查询等接口。
 部分接口支持可选认证，未登录用户也可使用基础 AI 聊天功能。
 
 主要功能：
     - AI 题目解析（占位）
-    - SSE 流式 AI 对话（支持上下文与多轮对话）
+    - 四角色苏格拉底式辅导（支持上下文与多轮对话）
     - 错题分析（占位）
     - 技能列表与详情查询（审计进化）
     - 用户行为档案查询
@@ -15,24 +15,25 @@ AI 助手与审计进化 API 模块
     - 用户会话记忆查询
 """
 
-import json
 import logging
 import uuid
 from typing import Any, Dict, List, Optional
 
-from fastapi import APIRouter, Depends, Query
-from fastapi.responses import StreamingResponse
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
 from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import joinedload
 
-from app.ai.provider import get_ai_provider
+from app.ai.harness import TutorHarness
+from app.ai.tutor import TutorMessage, TutorResponse
 from app.core.database import get_db
 from app.core.deps import get_current_user_id, get_current_user, get_current_user_id_optional
 from app.models.ai_generated import Skill, SessionMemory, ErrorLog, EvolutionRecord, HarnessRun
+from app.models.content import Question
+from app.models.learning import Answer, LearningSession
 from app.models.user import User
 from app.schemas.common import ApiResponse, paged_response, success_response
-from app.services import course_service
 
 logger = logging.getLogger(__name__)
 
@@ -46,6 +47,9 @@ router = APIRouter()
 class ChatRequest(BaseModel):
     """AI 聊天请求"""
     message: str = Field(..., min_length=1, description="用户消息")
+    message_type: str = Field(default="question", description="消息类型")
+    topic: str = Field(default="", description="当前知识点")
+    age_group: str = Field(default="9-12", description="学生年龄段")
     context: Optional[Dict[str, Any]] = Field(
         default=None,
         description="上下文信息，可包含 courseId, lessonId, subject, ageGroup 等",
@@ -54,12 +58,6 @@ class ChatRequest(BaseModel):
         default=None,
         description="对话历史，格式为 [{role, content}, ...]",
     )
-
-
-class ChatResponse(BaseModel):
-    """AI 聊天响应"""
-    reply: str = Field(..., description="AI 回复内容")
-    suggestions: Optional[List[str]] = Field(default=None, description="推荐的后续问题")
 
 
 # ==============================
@@ -149,232 +147,142 @@ async def analyze_errors(
 
 
 # ==============================
-# 通用 AI 聊天
+# 四角色辅导聊天
 # ==============================
 
-def _build_system_prompt(context: Optional[Dict[str, Any]] = None) -> str:
-    """
-    根据 context 构建适配不同年龄段和学科的 system prompt
 
-    Args:
-        context: 上下文字典，可包含 subject, ageGroup, courseId, lessonId 等
-
-    Returns:
-        构建好的 system prompt 字符串
-    """
-    subject = ""
-    age_group = ""
-    course_id = ""
-    lesson_id = ""
-
-    if context:
-        subject = context.get("subject", "")
-        age_group = context.get("ageGroup", "")
-        course_id = context.get("courseId", "")
-        lesson_id = context.get("lessonId", "")
-
-    # 根据年龄段适配语气和表达方式
-    if age_group in ("6-8", "小学低年级"):
-        tone = (
-            "你说话要非常温柔、亲切，像一个耐心的小学老师。"
-            "使用简单易懂的词语，多用比喻和例子来解释概念。"
-            "多用鼓励性的语言，避免使用复杂的术语。"
-            "回答要简短有趣，可以适当使用拟人化、小故事等方式。"
-        )
-    elif age_group in ("9-11", "小学高年级"):
-        tone = (
-            "你说话要友好、耐心，像一个善于引导的辅导老师。"
-            "使用清晰易懂的语言，适当引入简单的专业术语并加以解释。"
-            "可以通过类比和实际生活中的例子来帮助学生理解。"
-            "回答要有逻辑性但不过于学术，鼓励学生思考。"
-        )
-    elif age_group in ("12-14", "初中"):
-        tone = (
-            "你说话要专业但不生硬，像一个知识渊博的学长。"
-            "可以使用适当的专业术语，但要确保解释清楚。"
-            "注重知识点的深度和逻辑推理，引导学生建立知识体系。"
-            "鼓励批判性思维，可以提出引导性的反问。"
-        )
-    elif age_group in ("15-18", "高中"):
-        tone = (
-            "你说话要专业、严谨，像一个大学教授。"
-            "可以使用专业术语和抽象概念，注重深度分析。"
-            "回答要有深度和广度，可以涉及前沿知识和跨学科联系。"
-            "鼓励独立思考和深入研究。"
-        )
-    else:
-        tone = (
-            "你说话要清晰、友好，像一个乐于助人的学习助手。"
-            "根据用户的问题提供准确的解答，语言通俗易懂。"
-            "注重解释的逻辑性，适当使用例子辅助说明。"
-        )
-
-    # 学科相关指导
-    subject_guide = ""
-    if subject:
-        subject_guide = f"\n当前学科：{subject}。请围绕该学科知识进行回答。"
-
-    # 课程/课时上下文
-    course_guide = ""
-    if course_id:
-        course_guide = f"\n当前课程 ID：{course_id}。"
-    if lesson_id:
-        course_guide += f"\n当前课时 ID：{lesson_id}。请结合当前课时内容回答。"
-
-    system_prompt = (
-        f"你是一个智能学习助手，专门帮助学生学习各科知识。\n\n"
-        f"## 语气与风格要求\n{tone}\n\n"
-        f"## 回答要求\n"
-        f"- 回答要准确、有条理\n"
-        f"- 如果不确定答案，请诚实说明\n"
-        f"- 适当给出学习建议和相关的知识点扩展"
-        f"{subject_guide}{course_guide}\n"
-    )
-
-    return system_prompt
-
-
-@router.post("/chat")
+@router.post("/chat", response_model=ApiResponse[TutorResponse])
 async def chat(
     body: ChatRequest,
     user_id: Optional[uuid.UUID] = Depends(get_current_user_id_optional),
+):
+    """返回确定性的苏格拉底式辅导消息，不调用外部 AI。"""
+
+    try:
+        context = dict(body.context or {})
+        context["student_message"] = body.message
+        context.setdefault("topic", body.topic)
+        context.setdefault("age_group", body.age_group)
+        if body.message_type == "answer" and not context.get("student_answer"):
+            context["student_answer"] = body.message
+        if body.conversationHistory:
+            context["conversation_history"] = body.conversationHistory[-10:]
+
+        response = await TutorHarness().reply(context)
+        logger.info("四角色辅导完成: user_id=%s, roles=%s", user_id, len(response.messages))
+        return success_response(data=response, message="辅导回复生成成功")
+    except Exception:
+        logger.exception("四角色辅导失败: user_id=%s", user_id)
+        fallback = TutorResponse(
+            messages=[
+                TutorMessage(
+                    role="teacher",
+                    name="老师",
+                    content="暂时没有读懂你的问题，请换一种说法，并告诉我你已经想到哪一步。",
+                )
+            ],
+            suggested_next_step="请用一句话重新描述题目和你的思路。",
+            diagnosis="暂时无法完成完整诊断，请换一种说法说明已知条件和你的思路。",
+            teaching_strategy={
+                "approach": "standard",
+                "pace": "normal",
+                "focus_area": "题意与条件",
+            },
+            mastery=0.5,
+        )
+        return success_response(data=fallback, message="已提供基础辅导提示")
+
+
+class ExplainQuestionRequest(BaseModel):
+    """答题后请求辅导讲解。"""
+
+    question_id: uuid.UUID
+    # 兼容已有调用方；答案权限只信任服务端 Answer 记录，绝不使用这两个字段。
+    user_answer: Optional[str] = Field(default=None, deprecated=True)
+    is_correct: Optional[bool] = Field(default=None, deprecated=True)
+
+
+@router.post("/explain-question")
+async def explain_question_after_answer(
+    body: ExplainQuestionRequest,
+    user_id: Optional[uuid.UUID] = Depends(get_current_user_id_optional),
     db: AsyncSession = Depends(get_db),
 ):
-    """
-    通用 AI 聊天接口（SSE 流式输出）
+    """返回题目上下文和受诊断策略影响的导师首条回复。"""
 
-    接收用户消息，调用 DeepSeek AI 模型以 SSE 流式方式返回回复。
-    支持可选认证（未登录用户也可使用）。
-    支持传入上下文信息以适配不同学科和年龄段。
-    支持传入对话历史以实现多轮对话。
-    调用成功后自动保存对话记录到 ChatMessage 表。
-
-    Args:
-        body (ChatRequest): 聊天请求体（消息、上下文、对话历史）
-        user_id (Optional[uuid.UUID]): 当前登录用户 ID（可选认证）
-        db (AsyncSession): 异步数据库会话
-
-    Returns:
-        StreamingResponse: SSE 流式响应，包含 AI 回复片段与结束事件
-    """
-    # 构建 system prompt（根据学科与年龄段适配语气）
-    system_prompt = _build_system_prompt(body.context)
-
-    # 组装 messages 列表：system + 历史消息 + 当前用户消息
-    messages: List[Dict[str, str]] = [{"role": "system", "content": system_prompt}]
-
-    # 追加对话历史（限制最近 20 条，防止 token 过长）
-    if body.conversationHistory:
-        recent_history = body.conversationHistory[-20:]
-        for turn in recent_history:
-            role = turn.get("role", "user")
-            content = turn.get("content", "")
-            if role in ("user", "assistant") and content:
-                messages.append({"role": role, "content": content})
-
-    # 追加当前用户消息
-    messages.append({"role": "user", "content": body.message})
-
-    # 提取上下文中的课程/课时 ID（保持字符串格式）
-    context = body.context or {}
-    course_id = None
-    lesson_id = None
-    try:
-        raw_course = context.get("courseId")
-        raw_lesson = context.get("lessonId")
-        if raw_course:
-            course_id = str(raw_course)
-        if raw_lesson:
-            lesson_id = str(raw_lesson)
-    except (ValueError, TypeError):
-        pass
-
-    async def event_stream():
-        """内部 SSE 流生成器：逐块返回 AI 回复并在结束后保存记录。"""
-        try:
-            provider = get_ai_provider()
-            full_reply = ""
-
-            # 逐块流式生成并 yield SSE 事件
-            async for chunk in provider.generate_stream(messages=messages):
-                full_reply += chunk
-                # SSE 格式：data: {"content": "..."}\n\n
-                yield f"data: {json.dumps({'content': chunk}, ensure_ascii=False)}\n\n"
-
-            # 流结束后发送结束事件，包含完整回复和 suggestions
-            suggestions = _generate_suggestions(body.message, body.context)
-            yield f"data: {json.dumps({'done': True, 'reply': full_reply, 'suggestions': suggestions}, ensure_ascii=False)}\n\n"
-
-            logger.info(
-                f"AI Chat 流式完成: user_id={user_id}, "
-                f"reply_length={len(full_reply)}"
-            )
-
-            # 异步保存聊天记录（不阻塞流）
-            try:
-                await course_service.save_chat_message(
-                    db,
-                    user_id=user_id,
-                    role="user",
-                    content=body.message,
-                    course_id=course_id,
-                    lesson_id=lesson_id,
-                    context=context,
-                )
-                await course_service.save_chat_message(
-                    db,
-                    user_id=user_id,
-                    role="assistant",
-                    content=full_reply,
-                    course_id=course_id,
-                    lesson_id=lesson_id,
-                    context=context,
-                )
-            except Exception as save_err:
-                logger.warning(f"保存聊天记录失败: {save_err}")
-
-        except Exception as e:
-            logger.error(f"AI Chat 流式调用失败: user_id={user_id}, error={e}")
-            error_msg = "抱歉，AI 助手暂时无法回答您的问题，请稍后再试。"
-            yield f"data: {json.dumps({'error': True, 'content': error_msg}, ensure_ascii=False)}\n\n"
-
-    return StreamingResponse(
-        event_stream(),
-        media_type="text/event-stream",
-        headers={
-            "Cache-Control": "no-cache",
-            "Connection": "keep-alive",
-            "X-Accel-Buffering": "no",
-        },
+    result = await db.execute(
+        select(Question)
+        .options(joinedload(Question.knowledge_node_rel))
+        .where(Question.id == body.question_id)
     )
+    question = result.scalar_one_or_none()
+    if question is None:
+        raise HTTPException(status_code=404, detail="题目不存在")
 
+    verified_answer = None
+    if user_id is not None:
+        answer_result = await db.execute(
+            select(Answer)
+            .join(LearningSession, Answer.session_id == LearningSession.id)
+            .where(
+                Answer.question_id == body.question_id,
+                LearningSession.user_id == user_id,
+            )
+            .order_by(Answer.answered_at.desc())
+            .limit(1)
+        )
+        verified_answer = answer_result.scalar_one_or_none()
 
-def _generate_suggestions(
-    message: str,
-    context: Optional[Dict[str, Any]] = None,
-) -> List[str]:
-    """
-    根据用户消息和上下文生成推荐后续问题
+    knowledge_point = (
+        question.knowledge_node_rel.title
+        if question.knowledge_node_rel is not None
+        else "相关知识点"
+    )
+    context = {
+        "question": {
+            "question_body": question.question_body,
+            "knowledge_point": knowledge_point,
+        },
+        "student_answer": verified_answer.user_answer if verified_answer else None,
+        "is_correct": verified_answer.is_correct if verified_answer else None,
+        "student_message": (
+            "我做对了，想继续理解为什么。"
+            if verified_answer is not None and verified_answer.is_correct
+            else "请先提示我应该检查哪些条件和关系。"
+        ),
+        "topic": knowledge_point,
+    }
+    tutor_response = await TutorHarness().reply(context)
+    teacher_reply = next(
+        message for message in tutor_response.messages if message.role == "teacher"
+    )
+    logger.info(
+        "答题后辅导生成完成: user_id=%s, question_id=%s",
+        user_id,
+        body.question_id,
+    )
+    question_data = {
+        "id": str(question.id),
+        "text": question.question_body,
+        "knowledge_point": knowledge_point,
+    }
+    if verified_answer is not None:
+        question_data.update(
+            {
+                "correct_answer": question.correct_answer,
+                "explanation": question.explanation,
+            }
+        )
 
-    简单实现：基于学科和消息关键词返回通用建议
-    """
-    suggestions: List[str] = []
-    subject = ""
-
-    if context:
-        subject = context.get("subject", "")
-
-    # 通用学习建议
-    if subject:
-        suggestions.append(f"帮我复习一下{subject}的重点知识")
-        suggestions.append(f"给我出一道{subject}的练习题")
-    else:
-        suggestions.append("你能给我举个例子吗？")
-        suggestions.append("请用更简单的方式解释一下")
-
-    suggestions.append("我还有其他问题想问")
-
-    return suggestions[:3]
+    return success_response(
+        data={
+            "question": question_data,
+            "ai_reply": teacher_reply,
+            "tutor_response": tutor_response,
+            "answer_verified": verified_answer is not None,
+        },
+        message="题目辅导生成成功",
+    )
 
 
 # ==============================
@@ -587,6 +495,7 @@ async def list_error_logs(
     agent_name: Optional[str] = Query(None, description="Agent 名称"),
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
+    user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
     """
@@ -605,6 +514,9 @@ async def list_error_logs(
     Returns:
         ApiResponse: 分页错误日志列表
     """
+    if not user.is_admin:
+        raise HTTPException(status_code=403, detail="仅管理员可以查看错误日志")
+
     # 构建动态查询条件
     stmt = select(ErrorLog)
     count_stmt = select(func.count()).select_from(ErrorLog)

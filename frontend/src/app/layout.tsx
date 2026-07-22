@@ -7,13 +7,15 @@
  * - 使用 suppressHydrationWarning 避免服务端/客户端主题不一致的警告
  */
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/lib/theme/ThemeProvider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthInitializer } from "@/components/auth-initializer";
 import { ErrorBoundary } from "@/components/error-boundary";
+import { InstallPrompt } from "@/components/pwa/install-prompt";
+import { PwaRegistration } from "@/components/pwa/pwa-registration";
 
 /** Inter 字体配置，用于全局文本渲染 */
 const inter = Inter({
@@ -26,6 +28,14 @@ export const metadata: Metadata = {
   title: "AI学堂 - 智能学习平台",
   description: "适合6-18岁青少年的AI驱动个性化学习平台",
   keywords: ["AI学习", "青少年教育", "个性化学习", "智能辅导"],
+  manifest: "/manifest.json",
+  appleWebApp: { capable: true, statusBarStyle: "default", title: "AI学习助手" },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#2563eb",
 };
 
 /**
@@ -45,7 +55,9 @@ export default function RootLayout({
           <ThemeProvider>
             <TooltipProvider delayDuration={300}>
               <AuthInitializer />
+              <PwaRegistration />
               {children}
+              <InstallPrompt />
             </TooltipProvider>
           </ThemeProvider>
         </ErrorBoundary>

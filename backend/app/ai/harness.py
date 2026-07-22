@@ -1,811 +1,123 @@
-"""
-backend/app/ai/harness.py
-
-AI Harness 编排入口 —— 管理完整的 8 层闭环控制流程
-
-本模块为 AI 出题系统的中央编排器，负责协调 8 层 Agent 的有序执行、
-错误处理、反馈汇聚与工具调用审计。Harness 本身不直接承担业务判题逻辑，
-只负责流程编排和生命周期管理。
-
-执行流程：
-L1 CourseIntentAgent → L2 QuestionPlannerAgent → L3 QuestionMemoryAgent
-→ L4 QuestionGeneratorAgent → L5 QualityCheckAgent
-→ L6 SafetyAuditAgent + L6 QualityReviewAgent（并行）
-→ L7 FeedbackAggregator（内嵌）
-→ ToolHarness（保存题目、日志）
-→ L8 SummaryAgent（可选，会话结束时）
-
-核心职责：
-1. 编排 8 层 Agent 的执行流程
-2. 错误处理、重试、降级
-3. 记录 ToolCallLog
-4. 内嵌 FeedbackAggregator 子组件
-5. 注入 ControlSignal 到下一次循环
-6. 管理 HarnessRun 生命周期
-
-关键约束：
-- Harness 只负责编排和审计，不直接承担业务判题
-- 每个 Agent 单一职责
-- 所有工具调用必须记录 tool_name、input、output_summary、latency_ms、status、error
-- v0.1 不调用联网搜索
-"""
-
-from __future__ import annotations
+"""四角色辅导编排入口。"""
 
 import logging
-import time
-import uuid
-from datetime import datetime
-from typing import Any, Optional
+from typing import Any
 
-from backend.app.ai.schemas import (
-    HarnessRunContext,
-    HarnessRunStatus,
-    ToolCallRecord,
+from app.ai.provider import get_ai_provider
+from app.ai.tutor import (
+    DiagnosticianAgent,
+    EncouragerAgent,
+    MasteryState,
+    SharedState,
+    SocratesAgent,
+    StudentProfile,
+    TeacherAgent,
+    TutorResponse,
 )
-from backend.app.ai.agents.course_intent import CourseIntentAgent
-from backend.app.ai.agents.question_planner import QuestionPlannerAgent
-from backend.app.ai.agents.question_memory import QuestionMemoryAgent
-from backend.app.ai.agents.question_generator import QuestionGeneratorAgent
-from backend.app.ai.agents.quality_checker import QualityCheckAgent
-from backend.app.ai.agents.safety_auditor import SafetyAuditAgent
-from backend.app.ai.agents.quality_reviewer import QualityReviewAgent
-from backend.app.ai.agents.summary_agent import SummaryAgent
-from backend.app.ai.feedback_aggregator import FeedbackAggregator
-from backend.app.ai.error_logger import ErrorLogger
-from backend.app.ai.tools.question_memory_tool import QuestionMemoryTool
-from backend.app.ai.tools.question_save_tool import QuestionSaveTool
-from backend.app.ai.tools.audit_log_tool import AuditLogTool
-from backend.app.ai.tools.skill_retrieval_tool import SkillRetrievalTool
+from app.ai.tutor.agents import TutorProvider
+from app.core.config import settings
 
 logger = logging.getLogger(__name__)
 
-# 最大循环次数（防止无限循环）
-MAX_ITERATIONS = 3
-# 质量检查通过率阈值（低于此值触发重试）
-MIN_PASS_RATE = 0.5
+_AUTO_PROVIDER = object()
 
 
-class AIHarness:
-    """
-    AI 出题 Harness 编排器
-
-    管理完整的 8 层闭环控制流程。
-    """
+class TutorHarness:
+    """编排四角色辅导；Provider 不可用时逐角色安全降级。"""
 
     def __init__(
         self,
-        db_session: Optional[Any] = None,
-        skills_dir: Optional[str] = None,
-        evolution_dir: Optional[str] = None,
-    ):
-        """
-        初始化 AI Harness
-
-        Args:
-            db_session: 数据库会话（可选）
-            skills_dir: Skill 存储目录路径（可选）
-            evolution_dir: 进化记录目录路径（可选）
-        """
-        # 内嵌 FeedbackAggregator
-        self._feedback = FeedbackAggregator()
-
-        # 内嵌 ErrorLogger
-        self._error_logger = ErrorLogger()
-
-        # 初始化 8 层 Agent
-        self._course_intent = CourseIntentAgent(
-            error_logger=self._error_logger,
+        provider: TutorProvider | None | object = _AUTO_PROVIDER,
+        provider_timeout_seconds: float = 20.0,
+    ) -> None:
+        self._diagnostician = DiagnosticianAgent()
+        self._teacher = TeacherAgent()
+        self._assistant = SocratesAgent()
+        self._encourager = EncouragerAgent()
+        self._provider = (
+            self._resolve_configured_provider()
+            if provider is _AUTO_PROVIDER
+            else provider
         )
-        self._planner = QuestionPlannerAgent(
-            error_logger=self._error_logger,
-        )
-        self._memory = QuestionMemoryAgent(
-            error_logger=self._error_logger,
-        )
-        self._generator = QuestionGeneratorAgent(
-            error_logger=self._error_logger,
-        )
-        self._quality_checker = QualityCheckAgent(
-            error_logger=self._error_logger,
-        )
-        self._safety_auditor = SafetyAuditAgent(
-            error_logger=self._error_logger,
-        )
-        self._quality_reviewer = QualityReviewAgent(
-            error_logger=self._error_logger,
-        )
-        self._summary = SummaryAgent(
-            error_logger=self._error_logger,
-        )
+        self._provider_timeout_seconds = max(0.001, provider_timeout_seconds)
+        self._last_state: SharedState | None = None
 
-        # 初始化工具
-        self._memory_tool = QuestionMemoryTool(db_session=db_session)
-        self._save_tool = QuestionSaveTool(db_session=db_session)
-        self._audit_tool = AuditLogTool(db_session=db_session)
-        self._skill_tool = SkillRetrievalTool(skills_dir=skills_dir)
+    @staticmethod
+    def _resolve_configured_provider() -> TutorProvider | None:
+        """仅在应用已配置密钥时启用真实 Provider。"""
 
-        # 注入工具回调
-        self._memory.set_memory_search_callback(
-            self._memory_tool.search_similar_questions
-        )
-        self._summary.set_skills_dir(skills_dir or "")
-        self._summary.set_evolution_dir(evolution_dir or "")
-
-        # Harness 运行上下文
-        self._run_context: Optional[HarnessRunContext] = None
-
-    @property
-    def feedback(self) -> FeedbackAggregator:
-        """
-        获取 FeedbackAggregator 实例
-
-        Returns:
-            内嵌的反馈聚合器实例，用于读取控制信号
-        """
-        return self._feedback
-
-    @property
-    def error_logger(self) -> ErrorLogger:
-        """
-        获取 ErrorLogger 实例
-
-        Returns:
-            内嵌的错误日志记录器实例
-        """
-        return self._error_logger
-
-    async def generate(
-        self,
-        user_id: str,
-        user_input: str = "",
-        age_group: str = "",
-        subject: str = "",
-        course_topic: str = "",
-        difficulty: str = "medium",
-        question_types: Optional[list[str]] = None,
-        question_count: int = 10,
-        learning_goal: str = "",
-    ) -> dict[str, Any]:
-        """
-        执行完整的出题生成流程
-
-        这是 Harness 的主入口方法。
-
-        Args:
-            user_id: 用户 ID
-            user_input: 用户原始输入
-            age_group: 年龄分级
-            subject: 学科
-            course_topic: 课程主题
-            difficulty: 难度
-            question_types: 题型列表
-            question_count: 题目数量
-            learning_goal: 学习目标
-
-        Returns:
-            生成结果 {
-                "batch_id": str,
-                "questions": list,
-                "run_id": str,
-                "status": str,
-                "statistics": dict,
-            }
-        """
-        run_id = str(uuid.uuid4())
-        start_time = time.monotonic()
-
-        logger.info(f"[Harness] 开始生成 | run_id={run_id} | user={user_id}")
-
-        # 创建运行上下文
-        self._run_context = HarnessRunContext(
-            run_id=run_id,
-            user_id=user_id,
-            run_type="question_generation",
-            status=HarnessRunStatus.RUNNING,
-            input_payload={
-                "user_input": user_input,
-                "age_group": age_group,
-                "subject": subject,
-                "course_topic": course_topic,
-                "difficulty": difficulty,
-                "question_types": question_types or ["choice", "fill_blank"],
-                "question_count": question_count,
-                "learning_goal": learning_goal,
-            },
-        )
-
-        # 重置组件状态
-        self._feedback.reset()
-        self._error_logger.reset()
-        self._audit_tool.clear_cache()
-
+        if not settings.DEEPSEEK_API_KEY.strip():
+            return None
         try:
-            result = await self._run_generation_loop()
-
-            # 更新运行上下文
-            self._run_context.status = HarnessRunStatus.SUCCEEDED
-            self._run_context.output_summary = {
-                "question_count": len(result.get("questions", [])),
-                "batch_id": result.get("batch_id", ""),
-            }
-
-        except Exception as e:
-            logger.error(f"[Harness] 生成失败 | run_id={run_id} | {e}")
-            self._run_context.status = HarnessRunStatus.FAILED
-            self._run_context.error_message = str(e)
-
-            result = {
-                "batch_id": "",
-                "questions": [],
-                "run_id": run_id,
-                "status": "failed",
-                "error": str(e),
-                "statistics": {},
-            }
-
-        finally:
-            self._run_context.completed_at = datetime.utcnow()
-            total_ms = int((time.monotonic() - start_time) * 1000)
-            self._run_context.model_usage = {
-                "total_latency_ms": total_ms,
-            }
-
-            # 持久化错误日志
-            await self._error_logger.flush()
-
-            # 记录审计日志
-            await self._persist_tool_logs()
-
-        result["run_id"] = run_id
-        return result
-
-    async def _run_generation_loop(self) -> dict[str, Any]:
-        """
-        执行生成循环（支持最多 MAX_ITERATIONS 次重试）
-
-        Returns:
-            生成结果
-        """
-        all_passed_questions = []
-
-        for iteration in range(MAX_ITERATIONS):
-            logger.info(
-                f"[Harness] 循环 {iteration + 1}/{MAX_ITERATIONS} | "
-                f"run_id={self._run_context.run_id if self._run_context else 'unknown'}"
+            return get_ai_provider()
+        except Exception as exc:
+            logger.warning(
+                "辅导 Provider 初始化失败，将使用模板降级: error_type=%s",
+                type(exc).__name__,
             )
+            return None
 
-            self._run_context.iteration = iteration
+    async def reply(self, context: dict[str, Any]) -> TutorResponse:
+        """根据题目与学生上下文生成苏格拉底式角色消息。"""
 
-            # 获取当前控制信号
-            control_signal = self._feedback.get_signal_dict()
+        if not isinstance(context, dict):
+            raise ValueError("辅导上下文格式不正确")
 
-            # 执行 8 层流程
-            intent_params = await self._step1_course_intent(control_signal)
-            plan_result = await self._step2_question_plan(intent_params, control_signal)
-            memory_context = await self._step3_memory_retrieval(plan_result, control_signal)
-            generated = await self._step4_generate(plan_result, memory_context, control_signal)
-            qc_results = await self._step5_quality_check(generated, intent_params)
+        raw_question = context.get("question")
+        question = raw_question if isinstance(raw_question, dict) else None
+        raw_answer = context.get("student_answer")
+        student_answer = str(raw_answer).strip() if raw_answer is not None else None
+        profile_data = context.get("student_profile")
+        profile_data = profile_data if isinstance(profile_data, dict) else {}
+        raw_mastery = context.get("mastery", 0.5)
+        if isinstance(raw_mastery, dict):
+            raw_mastery = raw_mastery.get("level", 0.5)
+        try:
+            mastery_level = max(0.0, min(1.0, float(raw_mastery)))
+        except (TypeError, ValueError):
+            mastery_level = 0.5
+        raw_history = context.get("conversation_history")
+        history = raw_history[-10:] if isinstance(raw_history, list) else []
 
-            # 安全审查和质量趋势分析（并行执行）
-            safety_results = await self._step6a_safety_audit(generated, intent_params)
-            trend_report = await self._step6b_quality_review(generated, qc_results)
-
-            # 过滤通过的题目
-            passed_questions = self._filter_passed_questions(
-                generated["questions"], qc_results, safety_results
-            )
-
-            # 汇聚反馈信号
-            self._feedback.ingest_quality_checks(qc_results)
-            self._feedback.ingest_safety_audits(safety_results)
-            self._feedback.ingest_quality_trend(trend_report)
-            control_signal = self._feedback.compute_control_signal()
-
-            # 记录控制信号审计
-            await self._audit_tool.log_control_signal(
-                control_signal=control_signal,
-                run_id=self._run_context.run_id,
-            )
-
-            # 计算通过率
-            total_generated = len(generated["questions"])
-            total_passed = len(passed_questions)
-            pass_rate = total_passed / max(1, total_generated)
-
-            logger.info(
-                f"[Harness] 循环 {iteration + 1} 结果: "
-                f"generated={total_generated} | passed={total_passed} | "
-                f"pass_rate={pass_rate:.2f}"
-            )
-
-            all_passed_questions.extend(passed_questions)
-
-            # 通过率足够高或已到最大循环次数，退出
-            if pass_rate >= MIN_PASS_RATE or iteration >= MAX_ITERATIONS - 1:
-                break
-
-            logger.info(
-                f"[Harness] 通过率 {pass_rate:.2f} < {MIN_PASS_RATE}，继续循环"
-            )
-
-        # 保存通过的题目
-        batch_id = str(uuid.uuid4())
-        if all_passed_questions:
-            await self._save_questions(batch_id, all_passed_questions)
-
-        return {
-            "batch_id": batch_id,
-            "questions": all_passed_questions,
-            "status": "succeeded",
-            "statistics": {
-                "total_generated": total_generated,
-                "total_passed": len(all_passed_questions),
-                "iterations": iteration + 1,
-                "control_signal": control_signal,
-            },
-        }
-
-    # =========================================================================
-    # 8 层执行步骤
-    # =========================================================================
-
-    async def _step1_course_intent(
-        self, control_signal: dict
-    ) -> dict[str, Any]:
-        """
-        L1: 课程意图理解
-
-        如果输入已有完整参数，可跳过 LLM 调用。
-        """
-        step_name = "intent"
-        input_payload = self._run_context.input_payload
-
-        # 如果已有完整参数，跳过 LLM 调用
-        if (
-            input_payload.get("age_group")
-            and input_payload.get("subject")
-            and input_payload.get("course_topic")
-        ):
-            intent_params = {
-                "age_group": input_payload["age_group"],
-                "subject": input_payload["subject"],
-                "course_topic": input_payload["course_topic"],
-                "difficulty": input_payload.get("difficulty", "medium"),
-                "question_types": input_payload.get(
-                    "question_types", ["choice", "fill_blank"]
-                ),
-                "question_count": input_payload.get("question_count", 10),
-                "learning_goal": input_payload.get("learning_goal", ""),
-                "raw_input": input_payload.get("user_input", ""),
-                "clarification_required": False,
-            }
-            logger.info(f"[Harness] L1 跳过：参数已完整")
-        else:
-            intent_params = await self._course_intent.execute(
-                input_data=input_payload,
-                context={"run_id": self._run_context.run_id},
-            )
-
-        self._record_tool_call(
-            step_name=step_name,
-            tool_name="CourseIntentAgent",
-            input_summary={"raw_input": input_payload.get("user_input", "")[:100]},
-            output_summary={"topic": intent_params.get("course_topic", "")},
-        )
-
-        return intent_params
-
-    async def _step2_question_plan(
-        self, intent_params: dict, control_signal: dict
-    ) -> dict[str, Any]:
-        """L2: 出题规划"""
-        plan_input = {
-            **intent_params,
-            "control_signal": control_signal,
-        }
-        plan_result = await self._planner.execute(
-            input_data=plan_input,
-            context={"run_id": self._run_context.run_id},
-        )
-
-        self._record_tool_call(
-            step_name="plan",
-            tool_name="QuestionPlannerAgent",
-            input_summary={
-                "topic": intent_params.get("course_topic", ""),
-                "count": intent_params.get("question_count", 10),
-            },
-            output_summary={
-                "planned_count": plan_result.get("planned_count", 0),
-                "deviation": plan_result.get("deviation_declaration") is not None,
-            },
-        )
-
-        return plan_result
-
-    async def _step3_memory_retrieval(
-        self, plan_result: dict, control_signal: dict
-    ) -> dict[str, Any]:
-        """L3: 记忆检索"""
-        intent_params = self._run_context.input_payload
-
-        # 使用工具检索相似题目
-        similar_result = await self._memory_tool.search_similar_questions(
-            user_id=self._run_context.user_id,
-            subject=intent_params.get("subject", "数学"),
-            course_topic=intent_params.get("course_topic", ""),
-        )
-
-        # 检索 Skill 提示
-        skill_hints = await self._skill_tool.get_skill_hints(
-            subject=intent_params.get("subject", ""),
-            topic=intent_params.get("course_topic", ""),
-            age_group=intent_params.get("age_group", ""),
-            difficulty=intent_params.get("difficulty", ""),
-        )
-
-        memory_input = {
-            "subject": intent_params.get("subject", "数学"),
-            "course_topic": intent_params.get("course_topic", ""),
-            "difficulty": intent_params.get("difficulty", "medium"),
-            "retrieved_questions": similar_result.get("questions", []),
-            "user_preferences": await self._memory_tool.search_user_preferences(
-                self._run_context.user_id,
+        state = SharedState(
+            question=question,
+            student_answer=student_answer,
+            context=dict(context),
+            student_profile=StudentProfile(
+                age_group=str(profile_data.get("age_group") or context.get("age_group") or "9-12"),
+                subject=str(profile_data.get("subject") or context.get("subject") or ""),
+                topic=str(profile_data.get("topic") or context.get("topic") or ""),
+                frustration_level=float(profile_data.get("frustration_level") or 0.0),
             ),
-            "error_patterns": await self._memory_tool.search_error_patterns(
-                user_id=self._run_context.user_id,
-                subject=intent_params.get("subject", "数学"),
-                course_topic=intent_params.get("course_topic", ""),
-            ),
-            "skill_hints": skill_hints,
-            "control_signal": control_signal,
-        }
-
-        memory_context = await self._memory.execute(
-            input_data=memory_input,
-            context={"run_id": self._run_context.run_id},
+            mastery=MasteryState(level=mastery_level),
+            conversation_history=[turn for turn in history if isinstance(turn, dict)],
         )
 
-        self._record_tool_call(
-            step_name="memory",
-            tool_name="QuestionMemoryAgent",
-            input_summary={"topic": intent_params.get("course_topic", "")},
-            output_summary={
-                "avoid_count": len(memory_context.get("avoid_list", [])),
-                "skill_hints": len(memory_context.get("skill_hints", [])),
-            },
+        self._diagnostician.diagnose(state)
+        await self._teacher.respond(
+            state, self._provider, self._provider_timeout_seconds
         )
-
-        return memory_context
-
-    async def _step4_generate(
-        self,
-        plan_result: dict,
-        memory_context: dict,
-        control_signal: dict,
-    ) -> dict[str, Any]:
-        """L4: 题目生成"""
-        intent_params = self._run_context.input_payload
-
-        generated = await self._generator.execute(
-            input_data={
-                "age_group": intent_params.get("age_group", "10-12"),
-                "subject": intent_params.get("subject", "数学"),
-                "course_topic": intent_params.get("course_topic", ""),
-                "difficulty": intent_params.get("difficulty", "medium"),
-                "question_type": "choice",  # 按 plan 的题型分组生成
-                "question_count": plan_result.get("planned_count", 10),
-                "avoid_list": memory_context.get("avoid_list", []),
-                "skill_hints": memory_context.get("skill_hints", []),
-                "error_patterns": memory_context.get("error_patterns", []),
-                "coverage_gaps": memory_context.get("coverage_gaps", []),
-                "control_signal": control_signal,
-            },
-            context={"run_id": self._run_context.run_id},
+        await self._assistant.respond(
+            state, self._provider, self._provider_timeout_seconds
         )
-
-        self._record_tool_call(
-            step_name="generate",
-            tool_name="QuestionGeneratorAgent",
-            input_summary={"topic": intent_params.get("course_topic", "")},
-            output_summary={
-                "count": len(generated.get("questions", [])),
-                "deviation": generated.get("deviation_declaration") is not None,
-            },
+        await self._diagnostician.respond(
+            state, self._provider, self._provider_timeout_seconds
         )
-
-        return generated
-
-    async def _step5_quality_check(
-        self, generated: dict, intent_params: dict
-    ) -> list[dict]:
-        """L5: 快速质量检查（每道题必检）"""
-        questions = generated.get("questions", [])
-        qc_results = []
-
-        for question in questions:
-            result = await self._quality_checker.execute(
-                input_data={
-                    "question": question,
-                    "age_group": intent_params.get("age_group", "10-12"),
-                    "subject": intent_params.get("subject", "数学"),
-                    "expected_difficulty": intent_params.get("difficulty", "medium"),
-                },
-                context={"run_id": self._run_context.run_id},
+        if state.is_incorrect or state.is_frustrated:
+            await self._encourager.respond(
+                state, self._provider, self._provider_timeout_seconds
             )
-            qc_results.append(result)
+        self._last_state = state
 
-            # 记录审计日志
-            await self._audit_tool.log_quality_check(
-                question_id=question.get("id", ""),
-                passed=result.get("passed", False),
-                score=result.get("score", 0),
-                issues=result.get("issues", []),
-                run_id=self._run_context.run_id,
-            )
-
-        passed_count = sum(1 for r in qc_results if r.get("passed"))
-        self._record_tool_call(
-            step_name="quality",
-            tool_name="QualityCheckAgent",
-            input_summary={"total": len(questions)},
-            output_summary={"passed": passed_count, "failed": len(questions) - passed_count},
+        next_step = (
+            "请先回答老师提出的第一个问题，再尝试修正你的思路。"
+            if state.is_incorrect
+            else "请根据助教的小提示说出你的下一步思路。"
         )
-
-        return qc_results
-
-    async def _step6a_safety_audit(
-        self, generated: dict, intent_params: dict
-    ) -> list[dict]:
-        """L6a: 四维安全审查（QC 通过的题目）"""
-        questions = generated.get("questions", [])
-        safety_results = []
-
-        for question in questions:
-            result = await self._safety_auditor.execute(
-                input_data={
-                    "question": question,
-                    "age_group": intent_params.get("age_group", "10-12"),
-                    "subject": intent_params.get("subject", "数学"),
-                },
-                context={"run_id": self._run_context.run_id},
-            )
-            safety_results.append(result)
-
-            # 如果否决，通过 ErrorLogger 记录
-            if result.get("verdict") == "REJECT":
-                await self._error_logger.capture_safe_audit(
-                    agent_name="SafetyAuditAgent",
-                    step_name="safety_audit",
-                    question_id=question.get("id", ""),
-                    reason=result.get("blocking_issue", "未知原因"),
-                    context={"question_preview": question.get("question_body", "")[:100]},
-                )
-
-            # 记录审计日志
-            await self._audit_tool.log_safety_audit(
-                question_id=question.get("id", ""),
-                verdict=result.get("verdict", "PASS"),
-                scores=result.get("scores", {}),
-                issues=result.get("issues", []),
-                blocking_issue=result.get("blocking_issue"),
-                run_id=self._run_context.run_id,
-            )
-
-        return safety_results
-
-    async def _step6b_quality_review(
-        self, generated: dict, qc_results: list[dict]
-    ) -> dict[str, Any]:
-        """L6b: 抽样深度质量评估 + 趋势分析"""
-        questions = generated.get("questions", [])
-        intent_params = self._run_context.input_payload
-
-        # 选择抽样题目
-        sampled = self._quality_reviewer.select_samples(questions, qc_results)
-
-        if not sampled:
-            return {"trend": "stable", "system_quality_score": 0, "top_issues": []}
-
-        trend_report = await self._quality_reviewer.execute(
-            input_data={
-                "sampled_questions": sampled,
-                "quality_checks": qc_results,
-                "historical_scores": [],
-                "subject": intent_params.get("subject", "数学"),
-                "age_group": intent_params.get("age_group", "10-12"),
-            },
-            context={"run_id": self._run_context.run_id},
+        return TutorResponse(
+            messages=state.messages,
+            suggested_next_step=next_step,
+            diagnosis=state.diagnosis or "需要继续了解当前思路。",
+            teaching_strategy=state.teaching_strategy.as_dict(),
+            mastery=state.mastery.level,
         )
-
-        self._record_tool_call(
-            step_name="quality_review",
-            tool_name="QualityReviewAgent",
-            input_summary={"sampled": len(sampled), "total": len(questions)},
-            output_summary={"trend": trend_report.get("trend", "stable")},
-        )
-
-        return trend_report
-
-    # =========================================================================
-    # 辅助方法
-    # =========================================================================
-
-    def _filter_passed_questions(
-        self,
-        questions: list[dict],
-        qc_results: list[dict],
-        safety_results: list[dict],
-    ) -> list[dict]:
-        """
-        过滤通过的题目
-
-        通过条件：QC 检查通过 AND 安全审查 PASS。
-        任一环节未通过则题目被过滤掉，不进入最终输出。
-
-        Args:
-            questions: 生成的全部题目列表
-            qc_results: 质量检查结果列表
-            safety_results: 安全审查结果列表
-
-        Returns:
-            通过双重审查的题目列表
-        """
-        # 构建 ID 到结果的映射，便于快速查找
-        qc_map = {r.get("question_id", ""): r for r in qc_results}
-        safety_map = {r.get("question_id", ""): r for r in safety_results}
-
-        passed = []
-        for q in questions:
-            qid = q.get("id", "")
-            qc = qc_map.get(qid, {})
-            safety = safety_map.get(qid, {})
-
-            qc_passed = qc.get("passed", False)
-            safety_passed = safety.get("verdict") == "PASS"
-
-            # 双重检查均通过才保留
-            if qc_passed and safety_passed:
-                passed.append(q)
-
-        logger.info(
-            f"[Harness] 题目过滤: 原始={len(questions)} | 通过={len(passed)} | "
-            f"过滤={len(questions) - len(passed)}"
-        )
-        return passed
-
-    async def _save_questions(
-        self,
-        batch_id: str,
-        questions: list[dict],
-    ) -> None:
-        """
-        保存通过审查的题目到数据库
-
-        将最终通过质量检查和安全审查的题目批量持久化，
-        同时记录批次元信息以便后续追溯。
-
-        Args:
-            batch_id: 批次唯一标识
-            questions: 通过审查的题目列表
-        """
-        logger.info(f"[Harness] 开始保存题目 | batch_id={batch_id} | count={len(questions)}")
-
-        await self._save_tool.save_batch(
-            batch_id=batch_id,
-            user_id=self._run_context.user_id,
-            questions=questions,
-            batch_meta={
-                "age_group": self._run_context.input_payload.get("age_group", ""),
-                "subject": self._run_context.input_payload.get("subject", ""),
-                "course_topic": self._run_context.input_payload.get("course_topic", ""),
-                "difficulty": self._run_context.input_payload.get("difficulty", "medium"),
-                "prompt_version": "v0.1.0",
-                "harness_run_id": self._run_context.run_id,
-            },
-        )
-
-        self._record_tool_call(
-            step_name="save",
-            tool_name="QuestionSaveTool",
-            input_summary={"batch_id": batch_id, "count": len(questions)},
-            output_summary={"saved": len(questions)},
-        )
-
-    def _record_tool_call(
-        self,
-        step_name: str,
-        tool_name: str,
-        input_summary: dict,
-        output_summary: Optional[dict] = None,
-        status: str = "succeeded",
-        error_message: Optional[str] = None,
-    ) -> None:
-        """
-        记录工具调用日志
-
-        所有工具调用必须记录到运行上下文中，确保全流程可追溯。
-        记录内容包含步骤名、工具名、输入输出摘要、状态及错误信息。
-
-        Args:
-            step_name: 步骤名称（如 intent / plan / generate / quality / safety 等）
-            tool_name: 工具名称
-            input_summary: 输入摘要字典
-            output_summary: 输出摘要字典（可选）
-            status: 执行状态，默认为 succeeded
-            error_message: 错误信息（可选）
-        """
-        if self._run_context:
-            record = ToolCallRecord(
-                step_name=step_name,
-                tool_name=tool_name,
-                input_summary=input_summary,
-                output_summary=output_summary,
-                latency_ms=0,
-                status=status,
-                error_message=error_message,
-            )
-            self._run_context.tool_call_logs.append(record)
-            logger.debug(
-                f"[Harness] 工具调用记录: step={step_name} | tool={tool_name} | status={status}"
-            )
-
-    async def _persist_tool_logs(self) -> None:
-        """
-        持久化工具调用日志和审计日志
-
-        当前版本仅在内存中记录，待数据库模型就绪后将写入 ToolCallLog 表。
-        """
-        if not self._run_context or not self._db_available():
-            logger.debug("[Harness] 数据库不可用，跳过工具日志持久化")
-            return
-
-        # TODO: 当数据库模型就绪后持久化 ToolCallLog
-        for log in self._run_context.tool_call_logs:
-            logger.debug(
-                f"[Harness] ToolCall: step={log.step_name} | "
-                f"tool={log.tool_name} | status={log.status}"
-            )
-
-    def _db_available(self) -> bool:
-        """
-        检查数据库是否可用
-
-        Returns:
-            数据库会话已注入且不为 None 时返回 True
-        """
-        return self._memory_tool._db_session is not None
-
-    async def run_summary(
-        self,
-        session_data: dict[str, Any],
-        user_id: str,
-    ) -> dict[str, Any]:
-        """
-        执行会话总结（L8 SummaryAgent）
-
-        在出题流程结束后调用，触发 Hermes 五环机制：
-        记忆策划、Skill 创建、Skill 自改进、跨会话召回、用户建模。
-
-        Args:
-            session_data: 完整会话数据（包含生成记录、质量检查结果、用户交互等）
-            user_id: 用户 ID
-
-        Returns:
-            总结结果字典，包含 memory_items、skill_file、profile_update
-        """
-        logger.info(f"[Harness] 触发 L8 会话总结 | user={user_id}")
-        return await self._summary.execute_summary(
-            session_data=session_data,
-            user_id=user_id,
-        )
-
-    def get_run_context(self) -> Optional[HarnessRunContext]:
-        """
-        获取当前运行上下文
-
-        Returns:
-            当前 HarnessRunContext 实例，若未开始运行则返回 None
-        """
-        return self._run_context

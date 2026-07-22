@@ -4,6 +4,8 @@
 
 ## 任务定位
 
+- 本任务同时受 [全局执行规则](../00-global-execution-rules.md) 约束；如与本任务具体要求冲突，以全局规则为准。
+
 - 优先级 P1；风险中高（多 DTO/`any` 映射和巨大 store 导致状态歧义）。在传输 Seam 校验 DTO 并映射 canonical 学习模型，将 Learning Journey 与 AI/Practice 状态分离。
 - 非目标：不在此任务重新设计练习状态机或聊天传输，不以本地 fallback/假数据掩盖接口失败。
 

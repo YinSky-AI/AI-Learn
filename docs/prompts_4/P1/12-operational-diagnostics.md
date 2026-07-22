@@ -4,6 +4,8 @@
 
 ## 任务定位
 
+- 本任务同时受 [全局执行规则](../00-global-execution-rules.md) 约束；如与本任务具体要求冲突，以全局规则为准。
+
 - 优先级 P1；风险中高（AI 失败不可定位）。建立 Operational Run：request ID、run ID、HarnessRun、ToolCallLog 与 provider 阶段日志/指标可关联，且默认脱敏。
 - 非目标：不引入复杂分布式追踪平台，不记录 prompt、令牌或用户私密内容，不改变出题 Agent + 审题 Agent 两层。
 

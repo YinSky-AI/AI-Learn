@@ -211,7 +211,7 @@ async def generate_variant(
         data={
             "variant_id": str(variant.id),
             "parent_question_id": str(request.question_id),
-            "status": "pending",
+            "status": variant.quality_status,
             "message": "变式题生成任务已提交",
         },
         message="变式题生成任务已创建",

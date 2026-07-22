@@ -291,6 +291,16 @@ async def generate_variant(
     Raises:
         ValueError: 原题目不存在时抛出
     """
+    variant_id = uuid.uuid5(
+        uuid.NAMESPACE_URL,
+        f"ai-learn:variant:{user_id}:{original_question_id}:{difficulty_level or 'default'}",
+    )
+    existing_variant = (await db.execute(
+        select(GeneratedQuestion).where(GeneratedQuestion.id == variant_id)
+    )).scalar_one_or_none()
+    if existing_variant is not None:
+        return existing_variant
+
     stmt = select(GeneratedQuestion).where(
         GeneratedQuestion.id == original_question_id,
         GeneratedQuestion.user_id == user_id,
@@ -301,21 +311,25 @@ async def generate_variant(
     if original is None:
         raise ValueError("原题目不存在")
 
-    # 创建变式题记录（占位，等待 AI 填充内容）
+    # 创建终态失败记录，避免向调用方暴露空内容的 pending 题目。
     variant = GeneratedQuestion(
-        id=uuid.uuid4(),
+        id=variant_id,
         batch_id=original.batch_id,
         user_id=user_id,
         subject_code=original.subject_code,
         course_topic=original.course_topic,
         difficulty_level=difficulty_level or original.difficulty_level,
         question_type=original.question_type,
-        question_body="",  # 待 AI 填充
-        correct_answer="",  # 待 AI 填充
-        explanation="",  # 待 AI 填充
+        question_body="变式题生成作业已创建，等待可用的生成 Worker。",
+        correct_answer="UNAVAILABLE",
+        explanation="当前生成服务不可用，作业已记录为失败，可安全重试。",
         knowledge_tags=original.knowledge_tags,
-        source_prompt=f"variant_of_{original_question_id}",
+        source_prompt="variant_job_created",
         parent_question_id=original_question_id,
+        quality_status="failed",
+        generation_status="failed",
+        generation_attempts=1,
+        generation_failure_reason="worker_unavailable",
     )
     db.add(variant)
     await db.flush()

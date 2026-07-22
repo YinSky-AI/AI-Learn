@@ -242,6 +242,15 @@ async def test_batch_detail_and_variant_are_scoped_to_current_user(
 
     assert owner_variant.status_code == 200
     assert owner_variant.json()["data"]["parent_question_id"] == question_id
+    assert owner_variant.json()["data"]["status"] == "failed"
+    _override_generation_dependencies(owner_id, provider, monkeypatch)
+    repeated_variant = await api_client.post(
+        "/api/v1/questions/variant",
+        json={"question_id": question_id},
+    )
+    assert repeated_variant.status_code == 200
+    assert repeated_variant.json()["data"]["variant_id"] == owner_variant.json()["data"]["variant_id"]
+    assert repeated_variant.json()["data"]["status"] == "failed"
     assert owner_history.status_code == 200
     assert owner_history.json()["data"]["items"]
     assert all(

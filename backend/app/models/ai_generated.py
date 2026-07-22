@@ -163,6 +163,10 @@ class GeneratedQuestion(BaseModel, Base):
         server_default="unchecked",
         comment="质量状态: unchecked / passed / failed",
     )
+    generation_status = Column(String(20), nullable=False, default="succeeded", server_default="succeeded")
+    generation_attempts = Column(Integer, nullable=False, default=0, server_default="0")
+    generation_max_attempts = Column(Integer, nullable=False, default=3, server_default="3")
+    generation_failure_reason = Column(Text, nullable=True)
     parent_question_id = Column(
         UUID(as_uuid=True),
         ForeignKey("generated_questions.id", ondelete="SET NULL"),

@@ -38,7 +38,7 @@
 - [x] [10 流量保护与 AI 预算](P1/10-traffic-protection-and-ai-budget.md)
 - [x] [11 运行就绪](P1/11-runtime-readiness.md)
 - [x] [12 运行诊断](P1/12-operational-diagnostics.md)
-- [ ] [13 生成任务](P1/13-generation-job.md)
+- [x] [13 生成任务](P1/13-generation-job.md)
 - [ ] [14 练习会话](P1/14-practice-session.md)
 - [ ] [15 导师对话](P1/15-tutor-conversation.md)
 - [ ] [16 学习契约与旅程](P1/16-learning-contract-and-journey.md)

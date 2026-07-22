@@ -33,6 +33,26 @@ services:
     networks:
       - ai-learn-net
 
+  # 无持久卷、无宿主机端口，仅用于交付验证和迁移演练。
+  postgres-test:
+    image: postgres:16-alpine
+    profiles: ["delivery-test"]
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: learning_platform_test
+    tmpfs:
+      - /var/lib/postgresql/data
+    volumes:
+      - ./backend/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d learning_platform_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    networks:
+      - ai-learn-net
+
   # ---------------------------------------------------------------------------
   # Redis 7 - 缓存 & 会话存储
   # ---------------------------------------------------------------------------
@@ -64,7 +84,8 @@ services:
     container_name: ai-learn-backend
     restart: unless-stopped
     env_file:
-      - ./backend/.env
+      - path: ./backend/.env
+        required: false
     environment:
       DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/learning_platform
       AI_LEARN_DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/ai_learn
@@ -125,6 +146,12 @@ services:
     depends_on:
       - frontend
       - backend
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1/health | grep -q 'nginx ok'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
     networks:
       - ai-learn-net
 

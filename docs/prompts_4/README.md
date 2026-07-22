@@ -30,7 +30,7 @@
 - [ ] [05 答题提交事务](P0/05-answer-submission-transaction.md)
 - [ ] [06 学习维度与题库目录](P0/06-learning-dimensions-and-question-catalog.md)
 - [ ] [07 Schema 迁移](P0/07-schema-migration.md)
-- [ ] [08 交付验证](P0/08-delivery-verification.md)
+- [x] [08 交付验证](P0/08-delivery-verification.md)
 
 ### P1
 

@@ -1,10 +1,10 @@
 # =============================================================================
 # AI 智能学习平台 - Frontend Dockerfile
-# Node 18-alpine 多阶段构建
+# Node 20-alpine 多阶段构建
 # =============================================================================
 
 # -- Stage 1: 安装依赖 --
-FROM node:18-alpine AS deps
+FROM node:20-alpine AS deps
 
 WORKDIR /app
 
@@ -23,7 +23,7 @@ RUN if [ -f package-lock.json ]; then \
     fi
 
 # -- Stage 2: 构建阶段 --
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -43,7 +43,7 @@ ENV NODE_ENV=production
 RUN npm run build
 
 # -- Stage 3: 运行阶段 --
-FROM node:18-alpine AS runner
+FROM node:20-alpine AS runner
 
 WORKDIR /app
 

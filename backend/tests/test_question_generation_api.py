@@ -61,8 +61,8 @@ def test_generated_question_difficulty_columns_fit_platform_codes():
 
 @pytest_asyncio.fixture
 async def question_db_session():
-    database_url = os.getenv(
-        "QUESTION_TEST_DATABASE_URL",
+    database_url = os.getenv("QUESTION_TEST_DATABASE_URL") or os.getenv(
+        "TEST_DATABASE_URL",
         "postgresql+asyncpg://postgres:postgres@localhost:5432/learning_platform_test",
     )
     test_engine = create_async_engine(database_url, poolclass=NullPool)

@@ -23,6 +23,7 @@ from fastapi import FastAPI, HTTPException, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from loguru import logger
+from sqlalchemy import text
 
 from app.core.config import settings
 from app.core.security import decode_token
@@ -54,7 +55,7 @@ async def rate_limit_middleware(request: Request, call_next):
         Response: FastAPI 响应对象（可能被限流拦截）
     """
     # 跳过健康检查、文档路径和管理后台
-    skip_paths = {"/health", "/docs", "/redoc", "/openapi.json"}
+    skip_paths = {"/health", "/ready", "/live", "/docs", "/redoc", "/openapi.json"}
     if request.url.path in skip_paths or request.url.path.startswith("/admin"):
         return await call_next(request)
 
@@ -251,6 +252,39 @@ async def test_error_dict():
 
 # ============ 健康检查端点 ============
 
+@app.get("/live", tags=["系统"])
+async def liveness_check():
+    return {"code": "SUCCESS", "message": "服务进程存活", "data": {"status": "alive"}, "meta": None}
+
+
+async def _readiness_response() -> dict:
+    checks = {"database": False, "redis": False}
+    try:
+        async with engine.connect() as connection:
+            await connection.execute(text("SELECT 1"))
+        checks["database"] = True
+    except Exception:
+        logger.warning("readiness database check failed")
+    try:
+        await redis_client.client.ping()
+        checks["redis"] = True
+    except Exception:
+        logger.warning("readiness redis check failed")
+    ready = all(checks.values())
+    return {
+        "code": "SUCCESS" if ready else "SERVICE_UNAVAILABLE",
+        "message": "服务就绪" if ready else "依赖服务尚未就绪",
+        "data": {"status": "healthy" if ready else "unready", "checks": checks},
+        "meta": None,
+    }
+
+
+@app.get("/ready", tags=["系统"])
+async def readiness_check():
+    payload = await _readiness_response()
+    return JSONResponse(status_code=200 if payload["data"]["status"] == "healthy" else 503, content=payload)
+
+
 @app.get("/health", tags=["系统"])
 async def health_check():
     """
@@ -262,16 +296,9 @@ async def health_check():
     Returns:
         dict: 包含应用名称、版本和运行状态的标准化响应
     """
-    return {
-        "code": "SUCCESS",
-        "message": "服务运行正常",
-        "data": {
-            "app_name": settings.APP_NAME,
-            "version": settings.APP_VERSION,
-            "status": "healthy",
-        },
-        "meta": None,
-    }
+    payload = await _readiness_response()
+    payload["data"].update({"app_name": settings.APP_NAME, "version": settings.APP_VERSION})
+    return JSONResponse(status_code=200 if payload["data"]["status"] == "healthy" else 503, content=payload)
 
 
 @app.get("/", tags=["系统"])

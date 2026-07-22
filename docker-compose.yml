@@ -258,7 +258,7 @@ services:
       - frontend
       - backend
     healthcheck:
-      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1/health | grep -q 'nginx ok'"]
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1/health | grep -q '\"status\":\"healthy\"'"]
       interval: 10s
       timeout: 5s
       retries: 5

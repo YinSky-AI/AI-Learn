@@ -36,7 +36,7 @@
 
 - [x] [09 账号主体](P1/09-account-principal.md)
 - [x] [10 流量保护与 AI 预算](P1/10-traffic-protection-and-ai-budget.md)
-- [ ] [11 运行就绪](P1/11-runtime-readiness.md)
+- [x] [11 运行就绪](P1/11-runtime-readiness.md)
 - [ ] [12 运行诊断](P1/12-operational-diagnostics.md)
 - [ ] [13 生成任务](P1/13-generation-job.md)
 - [ ] [14 练习会话](P1/14-practice-session.md)

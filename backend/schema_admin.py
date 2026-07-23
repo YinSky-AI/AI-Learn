@@ -52,7 +52,14 @@ ALLOWED_EXTERNAL_COLUMNS = {
     ("primary", "users"): {"ruoyi_user_id"},
 }
 POST_BASELINE_TABLES = {
-    "primary": {"admin_change_audits", "generation_jobs"},
+    "primary": {
+        "admin_change_audits",
+        "generation_jobs",
+        "generated_practice_submissions",
+        "generated_practice_answers",
+        "generated_practice_reward_events",
+        "wrong_practice_attempts",
+    },
     "question-bank": {"admin_change_audits"},
 }
 POST_BASELINE_COLUMNS = {

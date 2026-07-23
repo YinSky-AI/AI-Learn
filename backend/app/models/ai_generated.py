@@ -18,7 +18,8 @@ AI 生成相关模型定义模块
 """
 
 from sqlalchemy import (
-    Column, String, Text, Integer, Float, Boolean, DateTime, Index, ForeignKey, text,
+    Boolean, CheckConstraint, Column, DateTime, Float, ForeignKey, Index,
+    Integer, String, Text, UniqueConstraint, text,
 )
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import relationship
@@ -199,6 +200,97 @@ class GeneratedQuestion(BaseModel, Base):
 
     def __repr__(self) -> str:
         return f"<GeneratedQuestion(id={self.id}, type={self.question_type})>"
+
+
+class GeneratedPracticeSubmission(BaseModel, Base):
+    """AI 生成题批次的一次幂等提交聚合。"""
+
+    __tablename__ = "generated_practice_submissions"
+
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    batch_id = Column(UUID(as_uuid=True), ForeignKey("generated_question_batches.id", ondelete="CASCADE"), nullable=False)
+    payload_fingerprint = Column(String(64), nullable=False)
+    total_count = Column(Integer, nullable=False)
+    correct_count = Column(Integer, nullable=False)
+    accuracy_rate = Column(Float, nullable=False)
+    time_spent_seconds = Column(Integer, nullable=False)
+    gamification = Column(JSONB, nullable=False, server_default="{}")
+
+    __table_args__ = (
+        CheckConstraint("total_count >= 0", name="ck_generated_practice_submission_total_nonnegative"),
+        CheckConstraint("correct_count >= 0", name="ck_generated_practice_submission_correct_nonnegative"),
+        CheckConstraint("time_spent_seconds >= 0", name="ck_generated_practice_submission_time_nonnegative"),
+        Index("idx_generated_practice_submission_user_created", "user_id", "created_at"),
+        Index("idx_generated_practice_submission_batch_created", "batch_id", "created_at"),
+    )
+
+
+class GeneratedPracticeAnswer(BaseModel, Base):
+    """AI 生成题提交中的服务端判题快照。"""
+
+    __tablename__ = "generated_practice_answers"
+
+    submission_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("generated_practice_submissions.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    generated_question_id = Column(
+        UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="CASCADE"), nullable=False
+    )
+    position = Column(Integer, nullable=False)
+    user_answer = Column(Text, nullable=False)
+    is_correct = Column(Boolean, nullable=False)
+    correct_answer = Column(Text, nullable=False)
+    explanation = Column(Text, nullable=True)
+    time_spent_seconds = Column(Integer, nullable=False)
+    answered_at = Column(DateTime(timezone=True), nullable=False, server_default=text("NOW()"))
+
+    __table_args__ = (
+        UniqueConstraint(
+            "submission_id", "generated_question_id",
+            name="uq_generated_practice_answer_submission_question",
+        ),
+        CheckConstraint("position >= 0", name="ck_generated_practice_answer_position_nonnegative"),
+        CheckConstraint("time_spent_seconds >= 0", name="ck_generated_practice_answer_time_nonnegative"),
+        Index("idx_generated_practice_answer_question", "generated_question_id"),
+    )
+
+
+class GeneratedPracticeRewardEvent(BaseModel, Base):
+    """同一用户同一生成题只保留首次答对奖励资格。"""
+
+    __tablename__ = "generated_practice_reward_events"
+
+    submission_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("generated_practice_submissions.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    generated_practice_answer_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("generated_practice_answers.id", ondelete="CASCADE"),
+        nullable=False,
+        unique=True,
+    )
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    generated_question_id = Column(
+        UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="CASCADE"), nullable=False
+    )
+    points_earned = Column(Integer, nullable=False, server_default="0")
+    base_points = Column(Integer, nullable=False, server_default="0")
+    streak_bonus = Column(Integer, nullable=False, server_default="0")
+    level = Column(Integer, nullable=False, server_default="1")
+    correct_streak = Column(Integer, nullable=False, server_default="0")
+    new_achievements = Column(JSONB, nullable=False, server_default="[]")
+
+    __table_args__ = (
+        UniqueConstraint(
+            "user_id", "generated_question_id",
+            name="uq_generated_practice_reward_user_question",
+        ),
+        Index("idx_generated_practice_reward_user_created", "user_id", "created_at"),
+    )
 
 
 class GenerationJob(BaseModel, Base):

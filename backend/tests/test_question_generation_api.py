@@ -19,8 +19,10 @@ from app.models.ai_generated import (
     GeneratedQuestionBatch,
     QuestionQualityCheck,
 )
+from app.models import Base
 from app.models.user import User
 from app.schemas.question import BatchResponse, GeneratedQuestionResponse
+from app.services.behavior_service import BehaviorService
 
 
 REQUEST_PAYLOAD = {
@@ -105,6 +107,57 @@ async def _create_user(db_session):
     )
     await db_session.commit()
     return user_id
+
+
+async def _create_practice_batch(db_session, user_id, *, status="completed"):
+    batch = GeneratedQuestionBatch(
+        id=uuid.uuid4(),
+        user_id=user_id,
+        age_group_code="10-12",
+        subject_code="数学",
+        course_topic="综合练习",
+        difficulty_level="medium",
+        question_types=["choice", "multiple_choice", "fill_blank"],
+        question_count=3,
+        learning_goal="验证作答闭环",
+        status=status,
+        prompt_version="v-test",
+    )
+    questions = [
+        GeneratedQuestion(
+            id=uuid.uuid4(), batch_id=batch.id, user_id=user_id,
+            subject_code="数学", course_topic="综合练习", difficulty_level="medium",
+            question_type="choice", question_body="单选题", options=[{"key": "A", "value": "正确"}],
+            correct_answer="A", explanation="单选解析", knowledge_tags=["单选"],
+            source_prompt="test", quality_status="passed",
+        ),
+        GeneratedQuestion(
+            id=uuid.uuid4(), batch_id=batch.id, user_id=user_id,
+            subject_code="数学", course_topic="综合练习", difficulty_level="medium",
+            question_type="multiple_choice", question_body="多选题",
+            options=[{"key": key, "value": key} for key in ("A", "B", "C")],
+            correct_answer="A,C", explanation="多选解析", knowledge_tags=["多选"],
+            source_prompt="test", quality_status="passed",
+        ),
+        GeneratedQuestion(
+            id=uuid.uuid4(), batch_id=batch.id, user_id=user_id,
+            subject_code="数学", course_topic="综合练习", difficulty_level="medium",
+            question_type="fill_blank", question_body="填空题", options=None,
+            correct_answer="42", explanation="填空解析", knowledge_tags=["填空"],
+            source_prompt="test", quality_status="passed",
+        ),
+        GeneratedQuestion(
+            id=uuid.uuid4(), batch_id=batch.id, user_id=user_id,
+            subject_code="数学", course_topic="综合练习", difficulty_level="medium",
+            question_type="choice", question_body="审题未通过题", options=[{"key": "A", "value": "A"}],
+            correct_answer="A", explanation="不应可提交", knowledge_tags=["失败"],
+            source_prompt="test", quality_status="failed",
+        ),
+    ]
+    db_session.add(batch)
+    db_session.add_all(questions)
+    await db_session.flush()
+    return batch, questions
 
 
 def _override_generation_dependencies(user_id, provider, monkeypatch):
@@ -268,15 +321,15 @@ async def test_batch_detail_and_variant_are_scoped_to_current_user(
 
     assert owner_variant.status_code == 200
     assert owner_variant.json()["data"]["parent_question_id"] == question_id
-    assert owner_variant.json()["data"]["status"] == "failed"
+    assert owner_variant.json()["data"]["status"] == "queued"
     _override_generation_dependencies(owner_id, provider, monkeypatch)
     repeated_variant = await api_client.post(
         "/api/v1/questions/variant",
         json={"question_id": question_id},
     )
     assert repeated_variant.status_code == 200
-    assert repeated_variant.json()["data"]["variant_id"] == owner_variant.json()["data"]["variant_id"]
-    assert repeated_variant.json()["data"]["status"] == "failed"
+    assert repeated_variant.json()["data"]["job_id"] == owner_variant.json()["data"]["job_id"]
+    assert repeated_variant.json()["data"]["status"] == "queued"
     assert owner_history.status_code == 200
     assert owner_history.json()["data"]["items"]
     assert all(
@@ -388,3 +441,174 @@ async def test_generate_rolls_back_when_review_fails(
     ).scalar_one()
     assert batch_count == 0
     assert len(provider.calls) == 6
+
+
+@pytest.mark.asyncio
+async def test_submit_completed_generated_batch_persists_feedback_and_replays_without_side_effects(
+    api_client,
+    question_db_session,
+):
+    assert "generated_practice_submissions" in Base.metadata.tables
+    assert "generated_practice_answers" in Base.metadata.tables
+    assert "generated_practice_reward_events" in Base.metadata.tables
+
+    user_id = await _create_user(question_db_session)
+    batch, questions = await _create_practice_batch(question_db_session, user_id)
+    submission_id = uuid.uuid4()
+    request = {
+        "submission_id": str(submission_id),
+        "answers": [
+            {"question_id": str(questions[0].id), "user_answer": "a", "time_spent_seconds": 2},
+            {"question_id": str(questions[1].id), "user_answer": " C, A ", "time_spent_seconds": 3},
+            {"question_id": str(questions[2].id), "user_answer": " 42 ", "time_spent_seconds": 4},
+        ],
+    }
+
+    async def override_user_id():
+        return user_id
+
+    app.dependency_overrides[get_current_user_id] = override_user_id
+    try:
+        first = await api_client.post(
+            f"/api/v1/questions/batches/{batch.id}/submit", json=request
+        )
+        replay = await api_client.post(
+            f"/api/v1/questions/batches/{batch.id}/submit", json=request
+        )
+    finally:
+        _clear_generation_dependencies()
+
+    assert first.status_code == 200
+    assert replay.status_code == 200
+    assert replay.json()["data"] == first.json()["data"]
+    payload = first.json()["data"]
+    assert payload["submission_id"] == str(submission_id)
+    assert payload["batch_id"] == str(batch.id)
+    assert payload["total_count"] == 3
+    assert payload["correct_count"] == 3
+    assert payload["accuracy_rate"] == 1.0
+    assert payload["time_spent_seconds"] == 9
+    assert [item["is_correct"] for item in payload["results"]] == [True, True, True]
+    assert [item["correct_answer"] for item in payload["results"]] == ["A", "A,C", "42"]
+    assert [item["explanation"] for item in payload["results"]] == ["单选解析", "多选解析", "填空解析"]
+
+    assert (await question_db_session.execute(
+        select(func.count()).select_from(Base.metadata.tables["generated_practice_submissions"])
+    )).scalar_one() == 1
+    assert (await question_db_session.execute(
+        select(func.count()).select_from(Base.metadata.tables["generated_practice_answers"])
+    )).scalar_one() == 3
+    assert (await question_db_session.execute(
+        select(func.count()).select_from(Base.metadata.tables["generated_practice_reward_events"])
+    )).scalar_one() == 3
+    user = await question_db_session.get(User, user_id)
+    assert user.total_answered == 3
+    assert user.correct_answered == 3
+    first_score = user.total_score
+    report = await BehaviorService(question_db_session).get_learning_report(user_id)
+    assert report["overview"]["total_answered"] == 3
+    assert report["subject_mastery"][0]["subject"] == "数学"
+
+    # 已持久化聚合的原样重放不应受后续批次状态变化影响。
+    batch.status = "failed"
+    await question_db_session.flush()
+    app.dependency_overrides[get_current_user_id] = override_user_id
+    try:
+        replay_after_state_change = await api_client.post(
+            f"/api/v1/questions/batches/{batch.id}/submit", json=request
+        )
+    finally:
+        _clear_generation_dependencies()
+    assert replay_after_state_change.status_code == 200
+    assert replay_after_state_change.json()["data"] == first.json()["data"]
+    await question_db_session.refresh(user)
+    assert user.total_answered == 3
+    batch.status = "completed"
+    await question_db_session.flush()
+
+    second_request = {**request, "submission_id": str(uuid.uuid4())}
+    app.dependency_overrides[get_current_user_id] = override_user_id
+    try:
+        second = await api_client.post(
+            f"/api/v1/questions/batches/{batch.id}/submit", json=second_request
+        )
+    finally:
+        _clear_generation_dependencies()
+    assert second.status_code == 200
+    await question_db_session.refresh(user)
+    assert user.total_answered == 6
+    assert user.correct_answered == 6
+    assert user.total_score == first_score
+    assert second.json()["data"]["gamification"]["points_earned"] == 0
+    assert (await question_db_session.execute(
+        select(func.count()).select_from(Base.metadata.tables["generated_practice_reward_events"])
+    )).scalar_one() == 3
+
+
+@pytest.mark.asyncio
+async def test_submit_generated_batch_enforces_owner_state_exact_passed_set_and_idempotency_conflict(
+    api_client,
+    question_db_session,
+):
+    owner_id = await _create_user(question_db_session)
+    attacker_id = await _create_user(question_db_session)
+    batch, questions = await _create_practice_batch(question_db_session, owner_id)
+    pending_batch, pending_questions = await _create_practice_batch(
+        question_db_session, owner_id, status="pending"
+    )
+    submission_id = uuid.uuid4()
+    complete_answers = [
+        {"question_id": str(question.id), "user_answer": question.correct_answer, "time_spent_seconds": 1}
+        for question in questions[:3]
+    ]
+
+    async def owner():
+        return owner_id
+
+    async def attacker():
+        return attacker_id
+
+    app.dependency_overrides[get_current_user_id] = attacker
+    foreign = await api_client.post(
+        f"/api/v1/questions/batches/{batch.id}/submit",
+        json={"submission_id": str(submission_id), "answers": complete_answers},
+    )
+    app.dependency_overrides[get_current_user_id] = owner
+    pending = await api_client.post(
+        f"/api/v1/questions/batches/{pending_batch.id}/submit",
+        json={
+            "submission_id": str(uuid.uuid4()),
+            "answers": [{"question_id": str(q.id), "user_answer": q.correct_answer, "time_spent_seconds": 1} for q in pending_questions[:3]],
+        },
+    )
+    incomplete = await api_client.post(
+        f"/api/v1/questions/batches/{batch.id}/submit",
+        json={"submission_id": str(uuid.uuid4()), "answers": complete_answers[:2]},
+    )
+    unapproved = await api_client.post(
+        f"/api/v1/questions/batches/{batch.id}/submit",
+        json={"submission_id": str(uuid.uuid4()), "answers": complete_answers + [{"question_id": str(questions[3].id), "user_answer": "A", "time_spent_seconds": 1}]},
+    )
+    accepted = await api_client.post(
+        f"/api/v1/questions/batches/{batch.id}/submit",
+        json={"submission_id": str(submission_id), "answers": complete_answers},
+    )
+    conflict_answers = [dict(item) for item in complete_answers]
+    conflict_answers[0]["user_answer"] = "B"
+    conflict = await api_client.post(
+        f"/api/v1/questions/batches/{batch.id}/submit",
+        json={"submission_id": str(submission_id), "answers": conflict_answers},
+    )
+    _clear_generation_dependencies()
+
+    assert foreign.status_code == 404
+    assert foreign.json()["message"] == "批次不存在"
+    assert pending.status_code == 409
+    assert pending.json()["message"] == "该批次尚未完成，无法提交"
+    assert incomplete.status_code == 422
+    assert incomplete.json()["message"] == "请完整且仅提交本批次已通过审核的每一道题"
+    assert unapproved.status_code == 422
+    assert unapproved.json()["message"] == "请完整且仅提交本批次已通过审核的每一道题"
+    assert accepted.status_code == 200
+    assert conflict.status_code == 409
+    assert conflict.json()["message"] == "提交编号已用于不同的作答内容"

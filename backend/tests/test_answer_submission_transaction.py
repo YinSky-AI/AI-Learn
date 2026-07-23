@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 from app.models.content import AgeGroup, KnowledgeNode, Question, Subject
 from app.models.learning import LearningSession
 from app.models.user import User
-from app.services.learning_service import submit_answer
+from app.services.learning_service import complete_session, submit_answer
 
 
 @pytest.mark.asyncio
@@ -133,3 +133,36 @@ async def test_concurrent_answers_same_session_preserve_counts_and_rewards(db_se
             text("SELECT COUNT(*) FROM answers WHERE id=:id"), {"id": failed_id}
         )
     ).scalar_one() == 0
+
+
+@pytest.mark.asyncio
+async def test_completed_owned_learning_session_can_be_completed_again(db_session):
+    user_id, node_id, session_id = (uuid.uuid4() for _ in range(3))
+    completed_at = datetime.now(timezone.utc)
+    await db_session.merge(Subject(code="SUBJ_COMPLETE", name="完成重放", sort_order=0))
+    await db_session.merge(AgeGroup(code="AGE_CMP", name="完成重放", min_age=10, max_age=12, theme_config={}))
+    db_session.add_all([
+        User(
+            id=user_id, nickname="完成重放用户", email=f"complete-{user_id}@example.test",
+            password_hash="hash", birth_date=date(2012, 1, 1), age_group="AGE_CMP",
+        ),
+        KnowledgeNode(
+            id=node_id, title="完成重放", subject_code="SUBJ_COMPLETE", age_group_code="AGE_CMP",
+            difficulty_level="DIFF_EASY", content_type="TYPE_QUIZ", content_body="测试",
+        ),
+    ])
+    await db_session.flush()
+    session = LearningSession(
+        id=session_id, user_id=user_id, knowledge_node_id=node_id,
+        difficulty_level="DIFF_EASY", status="completed",
+        started_at=completed_at, completed_at=completed_at,
+        total_questions=2, correct_count=1,
+    )
+    db_session.add(session)
+    await db_session.flush()
+
+    replayed = await complete_session(db_session, session_id, user_id)
+
+    assert replayed is session
+    assert replayed.status == "completed"
+    assert replayed.completed_at == completed_at

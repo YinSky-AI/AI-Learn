@@ -13,7 +13,7 @@ NON_PRODUCTION_ENVIRONMENTS = {"local", "ci", "test"}
 RELEASE_ENVIRONMENTS = NON_PRODUCTION_ENVIRONMENTS | {"staging", "production"}
 DISPOSABLE_DATABASE_SUFFIXES = ("_test", "_restore", "_recovery")
 EXPECTED_REVISIONS = {
-    "primary": "lp_0008_review_contract",
+    "primary": "lp_0009_practice_contract",
     "question-bank": "catalog_0002_admin_recovery",
 }
 VERSION_TABLES = {

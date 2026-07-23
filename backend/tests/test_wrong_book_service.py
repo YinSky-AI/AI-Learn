@@ -14,6 +14,15 @@ def test_review_scheduler_is_deterministic_and_distinguishes_success():
     assert (calculate_next_review_at(now=now, is_correct=False, review_count=3) - now).days == 1
 
 
+def test_multiple_choice_judging_uses_comma_delimited_option_sets():
+    from app.services.learning_service import judge_answer
+
+    question = SimpleNamespace(question_type="MULTIPLE_CHOICE", correct_answer="A,C")
+    assert judge_answer(question, " C, A ") is True
+    assert judge_answer(question, "CA,") is False
+    assert judge_answer(question, "A,A,C") is False
+
+
 class _ScalarResult:
     def __init__(self, value):
         self.value = value
@@ -277,3 +286,82 @@ async def test_answer_question_must_belong_to_session_knowledge_node():
 
     assert error.value.status_code == 400
     assert db.added == []
+
+
+@pytest.mark.asyncio
+async def test_wrong_book_practice_attempt_replays_without_incrementing_review_count(db_session):
+    from datetime import date, timezone
+    from fastapi import HTTPException
+    from app.models.content import AgeGroup, KnowledgeNode, Question, Subject
+    from app.models.user import User
+    from app.models.wrong_book import WrongQuestion
+    from app.services.wrong_book_service import WrongBookService
+
+    user_id, node_id, question_id = (uuid.uuid4() for _ in range(3))
+    db_session.add_all([
+        Subject(code="SUBJ_WB", name="错题幂等测试", sort_order=0),
+        AgeGroup(code="AGE_WB", name="测试年龄", min_age=10, max_age=12, theme_config={}),
+        User(
+            id=user_id, nickname="错题用户", email=f"wrong-{user_id}@example.test",
+            password_hash="hash", birth_date=date(2012, 1, 1), age_group="AGE_WB",
+        ),
+        KnowledgeNode(
+            id=node_id, title="集合判题", subject_code="SUBJ_WB", age_group_code="AGE_WB",
+            difficulty_level="DIFF_EASY", content_type="TYPE_QUIZ", content_body="测试",
+        ),
+    ])
+    await db_session.flush()
+    db_session.add(Question(
+        id=question_id, knowledge_node_id=node_id, difficulty_level="DIFF_EASY",
+        question_type="MULTIPLE_CHOICE", question_body="请选择", options=[{"key": "A"}, {"key": "C"}],
+        correct_answer="A,C", explanation="集合相等",
+    ))
+    db_session.add(WrongQuestion(
+        user_id=user_id, question_id=question_id, subject="数学", wrong_count=1,
+        first_wrong_at=datetime.now(timezone.utc), last_wrong_at=datetime.now(timezone.utc),
+        next_review_at=datetime.now(timezone.utc),
+    ))
+    await db_session.flush()
+    attempt_id = uuid.uuid4()
+    service = WrongBookService(db_session)
+
+    first = await service.submit_practice_answer(
+        user_id, question_id, "C,A", attempt_id=attempt_id
+    )
+    replay = await service.submit_practice_answer(
+        user_id, question_id, "C,A", attempt_id=attempt_id
+    )
+    record = (await db_session.execute(
+        __import__("sqlalchemy").select(WrongQuestion).where(
+            WrongQuestion.user_id == user_id, WrongQuestion.question_id == question_id
+        )
+    )).scalar_one()
+
+    assert first == replay
+    assert first["is_correct"] is True
+    assert record.review_count == 1
+    with pytest.raises(HTTPException, match="练习尝试编号已用于不同的作答内容") as error:
+        await service.submit_practice_answer(
+            user_id, question_id, "A", attempt_id=attempt_id
+        )
+    assert error.value.status_code == 409
+
+
+@pytest.mark.asyncio
+async def test_wrong_book_practice_payload_includes_question_type(monkeypatch):
+    from app.api.v1 import wrong_book as wrong_book_api
+
+    question = SimpleNamespace(
+        id=uuid.uuid4(), question_body="多选题", options=[],
+        difficulty_level="DIFF_EASY", question_type="MULTIPLE_CHOICE",
+    )
+
+    async def fake_practice(_self, _user_id, _subject, _count):
+        return [question]
+
+    monkeypatch.setattr(wrong_book_api.WrongBookService, "get_practice_questions", fake_practice)
+    response = await wrong_book_api.get_practice(
+        subject=None, count=5, user_id=uuid.uuid4(), db=object()
+    )
+
+    assert response["data"]["questions"][0]["question_type"] == "MULTIPLE_CHOICE"

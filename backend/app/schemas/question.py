@@ -166,3 +166,32 @@ class QualityCheckResponse(BaseModel):
     question_id: UUID
     checks: List[dict] = Field(default_factory=list, description="各项检查结果")
     overall_status: str = Field(..., description="整体状态")
+
+
+class GeneratedPracticeAnswerSubmit(BaseModel):
+    question_id: UUID
+    user_answer: str = Field(..., min_length=1, max_length=500)
+    time_spent_seconds: int = Field(..., ge=0)
+
+
+class GeneratedPracticeSubmitRequest(BaseModel):
+    submission_id: UUID
+    answers: List[GeneratedPracticeAnswerSubmit] = Field(..., min_length=1)
+
+
+class GeneratedPracticeAnswerResult(BaseModel):
+    question_id: UUID
+    is_correct: bool
+    correct_answer: str
+    explanation: Optional[str] = None
+
+
+class GeneratedPracticeSubmitResponse(BaseModel):
+    submission_id: UUID
+    batch_id: UUID
+    total_count: int
+    correct_count: int
+    accuracy_rate: float
+    time_spent_seconds: int
+    results: List[GeneratedPracticeAnswerResult]
+    gamification: dict

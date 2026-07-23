@@ -55,8 +55,16 @@ class BehaviorService:
             return profile
 
         node = getattr(question, "knowledge_node_rel", None)
-        point = getattr(node, "title", None) or "未分类知识点"
-        subject = getattr(node, "subject_code", None) or "未分类"
+        point = (
+            getattr(node, "title", None)
+            or getattr(question, "course_topic", None)
+            or "未分类知识点"
+        )
+        subject = (
+            getattr(node, "subject_code", None)
+            or getattr(question, "subject_code", None)
+            or "未分类"
+        )
         event_time = answered_at or datetime.now(timezone.utc)
         if event_time.tzinfo is None:
             event_time = event_time.replace(tzinfo=timezone.utc)

@@ -55,12 +55,22 @@ def judge_answer(question, user_answer):
     Returns:
         bool: 是否正确
     """
-    q_type = question.question_type
+    q_type = (question.question_type or "").upper()
     correct = question.correct_answer.strip()
     answer = user_answer.strip()
 
     if q_type == "MULTIPLE_CHOICE":
-        return "".join(sorted(answer.upper())) == "".join(sorted(correct.upper()))
+        answer_tokens = [token.strip().upper() for token in answer.split(",")]
+        correct_tokens = [token.strip().upper() for token in correct.split(",")]
+        if (
+            not answer_tokens
+            or not correct_tokens
+            or any(not token for token in answer_tokens + correct_tokens)
+            or len(set(answer_tokens)) != len(answer_tokens)
+            or len(set(correct_tokens)) != len(correct_tokens)
+        ):
+            return False
+        return set(answer_tokens) == set(correct_tokens)
     elif q_type == "CHOICE":
         return answer.upper() == correct.upper()
     elif q_type == "FILL_BLANK":
@@ -356,10 +366,13 @@ async def complete_session(
     """
     session = await get_session_by_id(db, session_id, user_id=user_id, for_update=True)
 
+    if session.status == "completed":
+        return session
+
     if session.status != "in_progress":
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail={"code": "BIZ_001", "message": "该会话已结束，无法重复完成"},
+            detail={"code": "BIZ_001", "message": "该会话已结束，无法完成"},
         )
 
     session.status = "completed"

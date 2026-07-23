@@ -1,19 +1,42 @@
 """错题本的事务内收录、筛选和复习服务。"""
 
+import hashlib
+import json
 import uuid
 from datetime import datetime, timedelta, timezone
 
-from sqlalchemy import desc, func, select
+from fastapi import HTTPException, status
+from sqlalchemy import desc, func, select, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
 
 from app.models.content import KnowledgeNode, Question
-from app.models.wrong_book import WrongQuestion, WrongQuestionEvent
+from app.models.wrong_book import WrongPracticeAttempt, WrongQuestion, WrongQuestionEvent
 from app.services.question_access import verified_answer_feedback
 
 
 SCHEDULER_VERSION = "v1"
+
+
+def _practice_fingerprint(question: Question, question_id: uuid.UUID, user_answer: str) -> str:
+    question_type = (question.question_type or "").upper()
+    answer = user_answer.strip()
+    if question_type == "MULTIPLE_CHOICE":
+        tokens = [token.strip().upper() for token in answer.split(",")]
+        normalized = ",".join(sorted(tokens)) if tokens and all(tokens) and len(set(tokens)) == len(tokens) else answer.upper()
+    elif question_type == "FILL_BLANK":
+        import re
+        normalized = re.sub(r'[\s\.,;:，。；：、！？!?\(\)（）\[\]【】]', '', answer).upper()
+    else:
+        normalized = answer.upper()
+    payload = json.dumps(
+        {"question_id": str(question_id), "user_answer": normalized},
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
 def calculate_next_review_at(*, now: datetime, is_correct: bool, review_count: int, difficulty_factor: float = 1.0) -> datetime:
@@ -70,8 +93,42 @@ class WrongBookService:
         await self.db.flush()
         return wrong_question
 
-    async def submit_practice_answer(self, user_id: uuid.UUID, question_id: uuid.UUID, user_answer: str) -> dict:
+    async def submit_practice_answer(
+        self,
+        user_id: uuid.UUID,
+        question_id: uuid.UUID,
+        user_answer: str,
+        *,
+        attempt_id: uuid.UUID,
+    ) -> dict:
         """服务端判定错题重练，确认题目归属后才返回答案与解析。"""
+        if isinstance(self.db, AsyncSession):
+            await self.db.execute(
+                text("SELECT pg_advisory_xact_lock(hashtextextended(:key, 0))"),
+                {"key": str(attempt_id)},
+            )
+        existing = await self.db.get(WrongPracticeAttempt, attempt_id)
+        if existing is not None:
+            if existing.user_id != user_id or existing.question_id != question_id:
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail="练习尝试编号已用于不同的作答内容",
+                )
+            question = await self.db.get(Question, question_id)
+            if question is None:
+                raise HTTPException(
+                    status_code=status.HTTP_410_GONE,
+                    detail="原题已删除，无法回放该练习结果",
+                )
+            if existing.payload_fingerprint != _practice_fingerprint(
+                question, question_id, user_answer
+            ):
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail="练习尝试编号已用于不同的作答内容",
+                )
+            return dict(existing.result_payload)
+
         result = await self.db.execute(
             select(WrongQuestion).options(joinedload(WrongQuestion.question)).where(
                 WrongQuestion.user_id == user_id,
@@ -84,6 +141,27 @@ class WrongBookService:
             return {"found": False}
         from app.services.learning_service import judge_answer
         is_correct = judge_answer(record.question, user_answer)
+        response = {
+            "found": True,
+            **verified_answer_feedback(
+                record.question,
+                verified_question_id=question_id,
+                is_correct=is_correct,
+            ),
+        }
+        self.db.add(
+            WrongPracticeAttempt(
+                id=attempt_id,
+                user_id=user_id,
+                question_id=question_id,
+                payload_fingerprint=_practice_fingerprint(
+                    record.question, question_id, user_answer
+                ),
+                result_payload=response,
+            )
+        )
+        # 先固化幂等结果，再改变复习调度字段。
+        await self.db.flush()
         record.review_count += 1
         current_factor = getattr(record, "difficulty_factor", 100)
         record.difficulty_factor = min(150, current_factor + 10) if is_correct else max(50, current_factor - 20)
@@ -98,14 +176,7 @@ class WrongBookService:
             record.is_mastered = True
             record.mastered_at = datetime.now(timezone.utc)
         await self.db.flush()
-        return {
-            "found": True,
-            **verified_answer_feedback(
-                record.question,
-                verified_question_id=question_id,
-                is_correct=is_correct,
-            ),
-        }
+        return response
 
     async def list_questions(self, user_id: uuid.UUID, subject: str | None, knowledge_point: str | None, is_mastered: bool | None, page: int, page_size: int) -> tuple[list[WrongQuestion], int]:
         filters = [WrongQuestion.user_id == user_id]

@@ -37,7 +37,7 @@ async def generate_reviewed_batch(
 ) -> GeneratedQuestionBatch:
     """在单一事务中生成、审核并保存一个完成批次。"""
     save_tool = QuestionSaveTool(request)
-    async with db.begin():
+    async with db.begin_nested():
         result = await pipeline.generate(request, user_id, db)
         batch = await save_tool.save_batch(db, result, user_id)
     return batch

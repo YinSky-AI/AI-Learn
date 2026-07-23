@@ -12,6 +12,7 @@ from app.ai.tools.question_memory_tool import QuestionMemoryTool
 from app.api.v1 import questions as questions_api
 from app.core.database import get_db
 from app.core.deps import get_current_user_id
+from app.core.security import create_access_token
 from app.main import app
 from app.models.ai_generated import (
     GeneratedQuestion,
@@ -121,6 +122,31 @@ def _override_generation_dependencies(user_id, provider, monkeypatch):
 
 def _clear_generation_dependencies():
     app.dependency_overrides.pop(get_current_user_id, None)
+
+
+@pytest.mark.asyncio
+async def test_generate_with_real_authenticated_session_uses_existing_transaction(
+    api_client,
+    question_db_session,
+    monkeypatch,
+):
+    user_id = await _create_user(question_db_session)
+    provider = FakeProvider(
+        [
+            json.dumps([GENERATED_QUESTION], ensure_ascii=False),
+            json.dumps({"passed": True, "revision_notes": ""}, ensure_ascii=False),
+        ]
+    )
+    monkeypatch.setattr(questions_api, "get_ai_provider", lambda: provider)
+
+    response = await api_client.post(
+        "/api/v1/questions/generate",
+        json=REQUEST_PAYLOAD,
+        headers={"Authorization": f"Bearer {create_access_token(user_id)}"},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["data"]["status"] == "completed"
 
 
 @pytest.mark.asyncio

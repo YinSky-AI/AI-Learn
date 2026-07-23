@@ -137,7 +137,7 @@ class Settings(BaseSettings):
     # ============ AI 服务配置（DeepSeek） ============
     DEEPSEEK_API_KEY: str = ""
     DEEPSEEK_BASE_URL: str = "https://api.deepseek.com/v1"
-    AI_MODEL_NAME: str = "deepseek-chat"
+    AI_MODEL_NAME: str = "deepseek-v4-flash"
     AI_MAX_TOKENS: int = 4096
     AI_TEMPERATURE: float = 0.7
 

@@ -34,7 +34,7 @@ from app.core.observability import correlation
 logger = logging.getLogger(__name__)
 
 # 默认模型配置（DeepSeek）
-DEFAULT_MODEL = "deepseek-chat"
+DEFAULT_MODEL = "deepseek-v4-flash"
 DEFAULT_MAX_TOKENS = 4096
 DEFAULT_TEMPERATURE = 0.7
 MAX_INPUT_CHARS = 32000

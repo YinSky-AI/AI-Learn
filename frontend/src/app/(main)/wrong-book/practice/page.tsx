@@ -9,8 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import apiClient, { TokenManager } from "@/lib/api-client";
 import {
-  createSubmitGuard,
-  createWrongBookRetryState,
+  createWrongBookPracticeController,
   normalizeMultiAnswer,
 } from "./practice-retry-state.mjs";
 
@@ -48,37 +47,52 @@ function WrongBookPracticeContent() {
   const [submitError, setSubmitError] = useState("");
   const [loading, setLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const submitGuardRef = useRef(createSubmitGuard());
-  const retryStateRef = useRef(createWrongBookRetryState());
+  const practiceControllerRef = useRef(createWrongBookPracticeController());
   const question = questions[index];
 
   useEffect(() => {
+    const loadGeneration = practiceControllerRef.current.beginLoad();
+    const abortController = new AbortController();
+    setQuestions([]);
+    setIndex(0);
+    setAnswer("");
+    setSelectedOptions(new Set());
+    setSubmitted(false);
+    setResult(null);
+    setAuthRequired(false);
+    setLoadError("");
+    setSubmitError("");
+    setIsSubmitting(false);
     void (async () => {
       setLoading(true);
-      setLoadError("");
       const token = TokenManager.getAccessToken();
       if (!token || TokenManager.isTokenExpired(token)) {
-        setAuthRequired(true);
-        setLoading(false);
+        if (practiceControllerRef.current.isCurrent(loadGeneration)) {
+          setAuthRequired(true);
+          setLoading(false);
+        }
         return;
       }
       try {
-        const data = await apiClient.get<{ questions: PracticeQuestion[] }>(`/v1/wrong-book/practice?count=5${subject ? `&subject=${encodeURIComponent(subject)}` : ""}`);
+        const data = await apiClient.get<{ questions: PracticeQuestion[] }>(`/v1/wrong-book/practice?count=5${subject ? `&subject=${encodeURIComponent(subject)}` : ""}`, undefined, { signal: abortController.signal });
+        if (!practiceControllerRef.current.isCurrent(loadGeneration) || abortController.signal.aborted) return;
         setQuestions(data.questions);
       } catch (cause: unknown) {
+        if (!practiceControllerRef.current.isCurrent(loadGeneration) || abortController.signal.aborted) return;
         if ((cause as { code?: number }).code === 401) setAuthRequired(true);
         else setLoadError("错题练习暂时无法加载，请稍后重试。");
       } finally {
-        setLoading(false);
+        if (practiceControllerRef.current.isCurrent(loadGeneration) && !abortController.signal.aborted) setLoading(false);
       }
     })();
+    return () => abortController.abort();
   }, [subject]);
 
   const isMultiSelect = question?.question_type === "MULTIPLE_CHOICE";
   const canonicalAnswer = isMultiSelect ? normalizeMultiAnswer(selectedOptions) : answer.trim();
 
   function handleOptionChange(key: string) {
-    if (submitted || isSubmitting || submitGuardRef.current.isSubmitting() || !question) return;
+    if (submitted || isSubmitting || practiceControllerRef.current.guard.isSubmitting() || !question) return;
     setSubmitError("");
     if (question.question_type === "MULTIPLE_CHOICE") {
       setSelectedOptions((previous) => {
@@ -94,14 +108,14 @@ function WrongBookPracticeContent() {
   }
 
   function handleFillChange(value: string) {
-    if (submitted || isSubmitting || submitGuardRef.current.isSubmitting()) return;
+    if (submitted || isSubmitting || practiceControllerRef.current.guard.isSubmitting()) return;
     setSubmitError("");
     setAnswer(value);
   }
 
   async function submit() {
-    if (!question || !canonicalAnswer || !submitGuardRef.current.begin()) return;
-    const nextAttempt = retryStateRef.current.prepare(question.id, canonicalAnswer);
+    if (!question || !canonicalAnswer || !practiceControllerRef.current.guard.begin()) return;
+    const nextAttempt = practiceControllerRef.current.prepare(question.id, canonicalAnswer);
     setIsSubmitting(true);
     setSubmitError("");
     try {
@@ -114,10 +128,10 @@ function WrongBookPracticeContent() {
     } catch (cause: unknown) {
       if ((cause as { code?: number }).code === 401) setAuthRequired(true);
       else {
-        setSubmitError(retryStateRef.current.fail().error);
+        setSubmitError(practiceControllerRef.current.fail().error);
       }
     } finally {
-      submitGuardRef.current.end();
+      practiceControllerRef.current.guard.end();
       setIsSubmitting(false);
     }
   }
@@ -128,7 +142,7 @@ function WrongBookPracticeContent() {
     setSelectedOptions(new Set());
     setSubmitted(false);
     setResult(null);
-    retryStateRef.current.reset();
+    practiceControllerRef.current.resetQuestion();
     setSubmitError("");
   }
 

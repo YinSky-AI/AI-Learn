@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   createSubmitGuard,
+  createWrongBookPracticeController,
   createWrongBookRetryState,
   createWrongBookAttempt,
   normalizeMultiAnswer,
@@ -60,4 +61,27 @@ test("wrong-book submission guard blocks double clicks until the request settles
   guard.end();
   assert.equal(guard.isSubmitting(), false);
   assert.equal(guard.begin(), true);
+});
+
+test("wrong-book rejects an older subject load and resets the previous answered attempt", () => {
+  let attemptNumber = 0;
+  const controller = createWrongBookPracticeController(() => `attempt-${++attemptNumber}`);
+  const subjectA = controller.beginLoad();
+  const originalAttempt = controller.prepare("question-a", "A");
+  assert.equal(controller.guard.begin(), true);
+
+  const subjectB = controller.beginLoad();
+  assert.equal(controller.isCurrent(subjectA), false);
+  assert.equal(controller.isCurrent(subjectB), true);
+  assert.equal(controller.guard.isSubmitting(), false);
+  assert.notEqual(controller.prepare("question-a", "A").attemptId, originalAttempt.attemptId);
+});
+
+test("wrong-book page wires load generations and interaction reset through its production controller", () => {
+  assert.match(source, /practiceControllerRef\.current\.beginLoad\(\)/);
+  assert.match(source, /practiceControllerRef\.current\.isCurrent\(loadGeneration\)/);
+  assert.match(source, /practiceControllerRef\.current\.guard\.begin\(\)/);
+  assert.match(source, /practiceControllerRef\.current\.guard\.isSubmitting\(\)/);
+  assert.match(source, /setSubmitted\(false\)/);
+  assert.match(source, /setResult\(null\)/);
 });

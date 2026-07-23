@@ -53,3 +53,31 @@ export function createSubmitGuard() {
     },
   };
 }
+
+export function createWrongBookPracticeController(createId = () => crypto.randomUUID()) {
+  const retry = createWrongBookRetryState(createId);
+  const guard = createSubmitGuard();
+  let loadGeneration = 0;
+  return {
+    guard,
+    beginLoad() {
+      loadGeneration += 1;
+      retry.reset();
+      guard.end();
+      return loadGeneration;
+    },
+    isCurrent(generation) {
+      return generation === loadGeneration;
+    },
+    prepare(questionId, userAnswer) {
+      return retry.prepare(questionId, userAnswer);
+    },
+    fail() {
+      return retry.fail();
+    },
+    resetQuestion() {
+      retry.reset();
+      guard.end();
+    },
+  };
+}

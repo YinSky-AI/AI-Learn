@@ -60,3 +60,12 @@ Status: DONE
 - 定向回归：`97 passed`；全量后端：`191 passed`。隔离库执行 `lp_0009 -> lp_0008 -> lp_0009 -> check`，结果均成功且 `No new upgrade operations detected.`；临时测试容器及密钥文件已清理。
 - Docker Desktop GUI 已目视核验：Engine running，`ai-learn` 的 frontend/backend/generation-worker/nginx/postgres/redis 均为绿色运行状态，未见错误提示；`docker compose ps --all` 同步确认 backend/frontend/nginx healthy，未残留 `postgres-test`。
 - 变式题测试断言未回退：当前生产实现明确返回持久化队列契约 `status=queued` 与 `job_id`；回退为旧 `failed/variant_id` 断言会使未改动生产代码的基线测试失败，因此保留现有断言并未修改任何变式题生产实现。
+
+## Review Fix Round 2 (2026-07-23)
+
+- 将已发布的 `lp_0009_practice_submission_contract.py` 精确恢复为 `8c9a72d` 中的原始内容，保留三条题目级联外键，保证迁移历史不可变。
+- 新增 `lp_0010_practice_history` 前向迁移，只删除经真实 PostgreSQL `pg_constraint` 核验的三条约束：`generated_practice_answers_generated_question_id_fkey`、`generated_practice_reward_events_generated_question_id_fkey`、`wrong_practice_attempts_question_id_fkey`；downgrade 使用相同名称和 `ON DELETE CASCADE` 精确恢复。
+- 应用批准 head 更新为 `lp_0010_practice_history`。`schema_admin` 通过当前迁移目录动态批准精确 revision，测试确认 `lp_0009` 和 `lp_0010` 都可作为显式 downgrade 目标；`models/__init__.py` 已正确导出四个相关历史模型，新增契约断言防止遗漏。
+- RED：expected head 仍为 `lp_0009` 且被改写的旧迁移缺失三条 FK，新增两个迁移断言均按预期失败。
+- 真实旧库路径：用恢复后的不可变迁移链将可丢弃数据库建到旧 head `lp_0009`，查询确认三条 FK 均存在；同一数据库升级到 `lp_0010` 后计数 `3 -> 0`，降级回 `lp_0009` 后 `0 -> 3`，再次升级后 `3 -> 0`，最终 drift check 返回 `No new upgrade operations detected.`。
+- 验收：迁移定向 `67 passed`；四文件定向 `98 passed`；全量后端 `192 passed`。`postgres-test` 和运行时测试密钥均已清理，`docker compose ps --all` 未见测试容器残留。

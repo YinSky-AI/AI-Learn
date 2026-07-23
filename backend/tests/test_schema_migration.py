@@ -2,6 +2,7 @@
 
 from copy import deepcopy
 import os
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -11,6 +12,7 @@ from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.engine import make_url
 
 import app.main as main_module
+import app.models as models_module
 from app.admin import routes as admin_routes
 from app.core import database as database_module
 from app.core.config import Settings
@@ -280,7 +282,7 @@ def test_unknown_schema_policy_is_rejected_with_plain_text():
 
 
 def test_two_database_targets_publish_independent_revision_heads():
-    assert get_expected_schema_revision("primary") == "lp_0009_practice_contract"
+    assert get_expected_schema_revision("primary") == "lp_0010_practice_history"
     assert get_expected_schema_revision("question-bank") == "catalog_0002_admin_recovery"
     assert get_schema_version_table("primary") == "alembic_version_learning"
     assert get_schema_version_table("question-bank") == "alembic_version_catalog"
@@ -459,6 +461,20 @@ def test_every_downgrade_requires_destructive_confirmation_then_accepts_exact_re
         "downgrade",
         target_alias="primary",
         revision="lp_0001_legacy_baseline",
+        allow_baseline_adoption=False,
+        allow_destructive_downgrade=True,
+    )
+    validate_migration_action(
+        "downgrade",
+        target_alias="primary",
+        revision="lp_0009_practice_contract",
+        allow_baseline_adoption=False,
+        allow_destructive_downgrade=True,
+    )
+    validate_migration_action(
+        "downgrade",
+        target_alias="primary",
+        revision="lp_0010_practice_history",
         allow_baseline_adoption=False,
         allow_destructive_downgrade=True,
     )
@@ -657,6 +673,13 @@ def test_practice_submission_contract_has_required_constraints_and_indexes():
     reward = metadata.tables["generated_practice_reward_events"]
     wrong_attempt = metadata.tables["wrong_practice_attempts"]
 
+    assert {
+        "GeneratedPracticeSubmission",
+        "GeneratedPracticeAnswer",
+        "GeneratedPracticeRewardEvent",
+        "WrongPracticeAttempt",
+    } <= set(models_module.__all__)
+
     assert submission.c.payload_fingerprint.nullable is False
     assert any(
         {column.name for column in index.columns} == {"user_id", "created_at"}
@@ -683,6 +706,61 @@ def test_practice_submission_contract_has_required_constraints_and_indexes():
         if constraint.__class__.__name__ == "CheckConstraint"
     )
     assert "time_spent_seconds >= 0" in check_sql
+
+
+def test_practice_history_fk_change_is_a_forward_reversible_migration():
+    migration_root = Path(schema_admin_module.CONFIG_FILES["primary"]).parent
+    lp_0009_source = (
+        migration_root
+        / "migrations"
+        / "primary"
+        / "versions"
+        / "lp_0009_practice_submission_contract.py"
+    ).read_text(encoding="utf-8")
+    assert lp_0009_source.count(
+        'ForeignKey("generated_questions.id", ondelete="CASCADE")'
+    ) == 2
+    assert (
+        'ForeignKey("questions.id", ondelete="CASCADE")' in lp_0009_source
+    )
+
+    script = schema_admin_module.ScriptDirectory.from_config(
+        schema_admin_module._config("primary")
+    )
+    assert script.get_current_head() == "lp_0010_practice_history"
+    revision = script.get_revision("lp_0010_practice_history")
+    assert revision.down_revision == "lp_0009_practice_contract"
+    source = Path(revision.path).read_text(encoding="utf-8")
+    constraints = (
+        (
+            "generated_practice_answers_generated_question_id_fkey",
+            "generated_practice_answers",
+            "generated_questions",
+            "generated_question_id",
+        ),
+        (
+            "generated_practice_reward_events_generated_question_id_fkey",
+            "generated_practice_reward_events",
+            "generated_questions",
+            "generated_question_id",
+        ),
+        (
+            "wrong_practice_attempts_question_id_fkey",
+            "wrong_practice_attempts",
+            "questions",
+            "question_id",
+        ),
+    )
+    for constraint, table, referred_table, column in constraints:
+        assert (
+            f'op.drop_constraint("{constraint}", "{table}", '
+            'type_="foreignkey")'
+        ) in source
+        assert constraint in source
+        assert table in source
+        assert referred_table in source
+        assert column in source
+        assert 'ondelete="CASCADE"' in source
 
 
 def test_expected_contract_preserves_precision_timezone_and_array_item_type():
@@ -880,7 +958,7 @@ def test_primary_allows_only_named_external_tables_and_catalog_allows_no_unknown
 @pytest.mark.asyncio
 async def test_schema_guard_checks_both_database_heads_before_startup():
     current = {
-        "primary": "lp_0009_practice_contract",
+        "primary": "lp_0010_practice_history",
         "question-bank": "catalog_0002_admin_recovery",
     }
 
@@ -905,7 +983,7 @@ async def test_schema_guard_checks_both_database_heads_before_startup():
 async def test_schema_guard_rejects_when_either_database_is_stale():
     async def revision_reader(_engine, target_alias):
         if target_alias == "primary":
-            return "lp_0009_practice_contract"
+            return "lp_0010_practice_history"
         return None
 
     with pytest.raises(SchemaVersionError, match="question-bank.*尚未纳入版本管理"):

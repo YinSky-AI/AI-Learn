@@ -331,7 +331,7 @@ async function loadQuestions(page = 1) {
 
     try {
         const res = await fetch('/admin/questions/api/list?' + params.toString());
-        const data = await res.json();
+        const data = await readAdminResponse(res);
         currentData = data;
         renderTable(data.items);
         renderPagination(data.total, data.page, data.page_size);
@@ -574,10 +574,12 @@ async function editQuestion(id) {
 
 // 删除题目
 async function deleteQuestion(id) {
-    if (!confirm('确定要删除这道题目吗？此操作不可恢复。')) return;
+    if (!confirm('确定停用这道题目吗？统计关联会保留，之后可以恢复。')) return;
+    const reason = prompt('请输入停用原因（至少 5 个字）');
+    if (!reason) return;
     try {
-        const res = await fetch(`/admin/questions/api/${id}`, { method: 'DELETE' });
-        const data = await res.json();
+        const res = await fetch(`/admin/questions/api/${id}`, { method: 'DELETE', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({reason}) });
+        const data = await readAdminResponse(res);
         if (data.success) {
             loadQuestions(currentPage);
         } else {

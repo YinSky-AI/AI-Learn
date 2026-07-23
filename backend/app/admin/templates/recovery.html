@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}恢复中心{% endblock %}
+
+{% block content %}
+<div class="mb-6 flex items-center justify-between">
+    <div>
+        <h1 class="text-2xl font-bold text-gray-800">恢复中心</h1>
+        <p class="text-sm text-gray-500 mt-1">停用对象保留原有关联数据；恢复操作需要填写原因并写入审计。物理清理不属于普通后台流程，须由独立运维审批。</p>
+    </div>
+    <button onclick="loadDeleted()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">刷新</button>
+</div>
+<div id="recovery-status" class="mb-4 text-sm text-gray-500">正在加载…</div>
+<div id="recovery-sections" class="grid grid-cols-1 xl:grid-cols-2 gap-5"></div>
+{% endblock %}
+
+{% block extra_script %}
+<script>
+const recoverySources = [
+    {type: 'course', title: '课程', url: '/admin/courses/api/list?state=deleted&page_size=100', name: item => item.title},
+    {type: 'lesson', title: '课时', url: '/admin/lessons/api/list?state=deleted&page_size=200', name: item => item.title},
+    {type: 'question', title: '题目', url: '/admin/questions/api/list?state=deleted&page_size=100', name: item => item.content},
+    {type: 'user', title: '用户', url: '/admin/users/api/list?state=deleted&page_size=100', name: item => item.nickname || item.email},
+];
+
+function escapeRecoveryText(value) {
+    const node = document.createElement('div');
+    node.textContent = String(value || '-');
+    return node.innerHTML;
+}
+
+async function loadDeleted() {
+    const status = document.getElementById('recovery-status');
+    status.textContent = '正在加载…';
+    try {
+        const payloads = await Promise.all(recoverySources.map(async source => {
+            const response = await fetch(source.url);
+            const data = await readAdminResponse(response);
+            if (!response.ok) throw new Error(data.message || `${source.title}加载失败`);
+            return {source, items: data.items || []};
+        }));
+        document.getElementById('recovery-sections').innerHTML = payloads.map(({source, items}) => `
+            <section class="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
+                <h2 class="text-lg font-semibold text-gray-800 mb-3">${source.title}（${items.length}）</h2>
+                ${items.length ? `<div class="space-y-2">${items.map(item => `
+                    <div class="flex items-center justify-between gap-3 border-t border-gray-50 pt-2">
+                        <div class="min-w-0">
+                            <div class="text-sm text-gray-800 truncate">${escapeRecoveryText(source.name(item))}</div>
+                            <div class="text-xs text-gray-400 font-mono">${escapeRecoveryText(item.id)}</div>
+                        </div>
+                        <button onclick="restoreItem('${source.type}', '${item.id}')" class="text-sm text-blue-600 hover:text-blue-800 whitespace-nowrap">恢复</button>
+                    </div>`).join('')}</div>` : '<p class="text-sm text-gray-400">暂无待恢复对象</p>'}
+            </section>`).join('');
+        status.textContent = '仅显示已停用对象；普通管理列表仍默认隐藏它们。';
+    } catch (error) {
+        status.textContent = error.message || '恢复列表加载失败';
+    }
+}
+
+async function restoreItem(type, id) {
+    const reason = prompt('请输入恢复原因（至少 5 个字）');
+    if (!reason) return;
+    const plural = {course: 'courses', lesson: 'lessons', question: 'questions', user: 'users'}[type];
+    const response = await fetch(`/admin/${plural}/api/${id}/restore`, {
+        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({reason})
+    });
+    const data = await readAdminResponse(response);
+    if (!response.ok) { alert(data.message || '恢复失败'); return; }
+    await loadDeleted();
+}
+
+loadDeleted();
+</script>
+{% endblock %}

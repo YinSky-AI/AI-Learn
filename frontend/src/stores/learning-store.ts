@@ -14,40 +14,30 @@ import type { Course, CourseFilter, Lesson, ChatMessage, Subject, DifficultyLeve
 import apiClient, { API_BASE_URL_FOR_CLIENT, TokenManager } from "@/lib/api-client";
 import { useAuthStore } from "@/stores/auth-store";
 import {
+  mapQuizQuestion,
+  type QuizQuestionPayload,
+} from "@/components/learning/quiz-question-mapper";
+import {
   getAllLocalCourseProgress,
   getLocalChatHistory,
   saveLocalCourseProgress,
   saveLocalChatHistory,
   clearLocalChatHistory,
 } from "@/lib/local-storage";
+import { createTutorSseParser } from "@/lib/sse";
+import { mapCourseContract, mapLessonContract } from "@/lib/learning-contract";
+
+let activeTutorAbortController: AbortController | null = null;
 
 /**
  * 将后端 API 返回的课程字段映射为前端 Course 类型
  * @param apiCourse - 后端返回的原始课程对象
  * @returns 前端 Course 对象
  */
-function mapApiCourse(apiCourse: any): Course {
-  const id = apiCourse.id ?? apiCourse.slug ?? "";
-  return {
-    id,
-    slug: apiCourse.slug ?? id,
-    title: apiCourse.title ?? "",
-    description: apiCourse.description ?? "",
-    coverImage: apiCourse.image_url ?? apiCourse.coverImage ?? "/covers/default.jpg",
-    subject: apiCourse.subject ?? "math",
-    difficulty: apiCourse.difficulty ?? "beginner",
-    ageGroup: apiCourse.age_group ?? apiCourse.ageGroup ?? "06-09",
-    duration: apiCourse.duration ?? 0,
-    totalLessons: apiCourse.total_lessons ?? apiCourse.totalLessons ?? 0,
-    completedLessons: apiCourse.completed_lessons ?? apiCourse.completedLessons ?? 0,
-    progress: apiCourse.progress ?? 0,
-    rating: apiCourse.rating ?? 4.0,
-    enrollCount: apiCourse.enroll_count ?? apiCourse.enrollCount ?? 0,
-    tags: Array.isArray(apiCourse.tags) ? apiCourse.tags : [],
-    teacher: apiCourse.teacher ?? { id: "teacher-0", name: "AI学堂", avatar: "/avatars/default.jpg" },
-    createdAt: apiCourse.created_at ?? apiCourse.createdAt ?? new Date().toISOString(),
-    updatedAt: apiCourse.updated_at ?? apiCourse.updatedAt ?? new Date().toISOString(),
-  };
+function mapApiCourse(apiCourse: unknown): Course {
+  const mapped = mapCourseContract(apiCourse);
+  if (mapped) return mapped;
+  throw new Error("课程数据格式无效");
 }
 
 /**
@@ -55,20 +45,10 @@ function mapApiCourse(apiCourse: any): Course {
  * @param apiLesson - 后端返回的原始课时对象
  * @returns 前端 Lesson 对象
  */
-function mapApiLesson(apiLesson: any): Lesson {
-  return {
-    id: apiLesson.id ?? "",
-    courseId: apiLesson.course_id ?? apiLesson.courseId ?? "",
-    title: apiLesson.title ?? "",
-    description: apiLesson.description ?? "",
-    order: apiLesson.order ?? 0,
-    type: apiLesson.type ?? "text",
-    duration: apiLesson.duration ?? 0,
-    content: apiLesson.content ?? "",
-    completed: apiLesson.completed ?? false,
-    resources: apiLesson.resources ?? [],
-    knowledgeNodeId: apiLesson.knowledge_node_id ?? apiLesson.knowledgeNodeId ?? undefined,
-  };
+function mapApiLesson(apiLesson: unknown): Lesson {
+  const mapped = mapLessonContract(apiLesson);
+  if (mapped) return mapped;
+  throw new Error("课时数据格式无效");
 }
 
 /** 学习状态接口 */
@@ -93,6 +73,8 @@ interface LearningState {
   isLoading: boolean;
   /** 是否 AI 正在回复 */
   isAIResponding: boolean;
+  tutorStatus: "idle" | "streaming" | "ready" | "unavailable";
+  journeyStatus: "loading" | "ready" | "empty" | "error" | "offline";
   /** 总页数 */
   totalPages: number;
   /** 当前页 */
@@ -118,6 +100,7 @@ interface LearningState {
   resetFilter: () => void;
   /** 发送 AI 消息（SSE 流式） */
   sendAIMessage: (message: string) => Promise<void>;
+  cancelAIMessage: () => void;
   /** 标记当前课时完成并切换到下一课时 */
   startLearning: () => Promise<void>;
   /** 报名课程 */
@@ -154,6 +137,8 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   chatMessages: [],
   isLoading: false,
   isAIResponding: false,
+  tutorStatus: "idle",
+  journeyStatus: "loading",
   totalPages: 1,
   currentPage: 1,
   quizQuestions: [],
@@ -341,9 +326,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
           currentLesson: lessons.find((l) => !l.completed) || lessons[0] || null,
           chatMessages: localChat,
           isLoading: false,
+          journeyStatus: course ? "ready" : "empty",
         });
       } catch {
-        // 后端不可用时 fallback 到 mock 数据
+        set({ isLoading: false, journeyStatus: "error" });
+        return;
+        /* 后端不可用时 fallback 到 mock 数据
         console.warn("后端 API 不可用，使用 mock 数据");
         const { getMockCourseDetail, getMockLessons } = await import("@/lib/content");
         let course = getMockCourseDetail(courseId);
@@ -373,11 +361,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
           currentLesson: lessons.find((l) => !l.completed) || lessons[0] || null,
           chatMessages: localChat,
           isLoading: false,
-        });
+          journeyStatus: "offline",
+        }); */
       }
     } catch (error) {
       console.error("获取课程详情失败:", error);
-      set({ isLoading: false });
+      set({ isLoading: false, journeyStatus: "error" });
     }
   },
 
@@ -415,6 +404,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
     set((state) => ({
       chatMessages: [...state.chatMessages, userMessage],
       isAIResponding: true,
+      tutorStatus: "streaming",
     }));
 
     // 创建一个空的 AI 消息占位，用于实时更新流式内容
@@ -454,10 +444,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       const headers: Record<string, string> = { "Content-Type": "application/json" };
       if (token) headers["Authorization"] = `Bearer ${token}`;
 
+      activeTutorAbortController = new AbortController();
       const response = await fetch(`${API_BASE_URL_FOR_CLIENT}/v1/ai/chat`, {
         method: "POST",
         headers,
         body: JSON.stringify({ message, context, conversationHistory }),
+        signal: activeTutorAbortController.signal,
       });
 
       if (!response.ok) throw new Error(`请求失败: ${response.status}`);
@@ -487,6 +479,7 @@ export const useLearningStore = create<LearningState>((set, get) => ({
             msg.id === aiMessageId ? { ...msg, content: fullContent } : msg
           ),
           isAIResponding: false,
+          tutorStatus: "ready",
         }));
         const currentState = get();
         if (currentState.currentCourse) {
@@ -498,6 +491,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let fullContent = "";
+      const parser = createTutorSseParser((data) => {
+        if (data.error) throw new Error("AI 辅导服务暂时不可用");
+        if (data.done) fullContent = data.reply ?? fullContent;
+        else if (data.content) fullContent += data.content;
+        set((state) => ({ chatMessages: state.chatMessages.map((msg) => msg.id === aiMessageId ? { ...msg, content: fullContent } : msg) }));
+      });
 
       if (reader) {
         while (true) {
@@ -506,7 +505,8 @@ export const useLearningStore = create<LearningState>((set, get) => ({
 
           const text = decoder.decode(value, { stream: true });
           // 解析 SSE 行
-          const lines = text.split("\n");
+          parser.push(text);
+          const lines: string[] = [];
           for (const line of lines) {
             if (line.startsWith("data: ")) {
               const jsonStr = line.slice(6);
@@ -558,26 +558,26 @@ export const useLearningStore = create<LearningState>((set, get) => ({
         saveLocalChatHistory(currentState.currentCourse.id, currentState.chatMessages);
       }
 
-      set({ isAIResponding: false });
+      set({ isAIResponding: false, tutorStatus: fullContent ? "ready" : "unavailable" });
     } catch (error) {
-      console.error("AI 对话失败，使用 fallback 回复:", error);
-
-      // fallback 模拟回复
-      const fallbackReplies = [
-        "抱歉，AI 服务暂时无法连接。你可以先尝试自行探索课程内容，稍后再来问我问题。",
-        "我目前处于离线模式，无法提供智能回复。请确保网络连接正常后重试。",
-        "连接出现问题，请检查后端服务是否正常运行。",
-      ];
-      const fallbackContent = fallbackReplies[Math.floor(Math.random() * fallbackReplies.length)];
-
-      // 更新 AI 占位消息为 fallback 内容
+      if (error instanceof DOMException && error.name === "AbortError") {
+        set((state) => ({
+          chatMessages: state.chatMessages.filter((msg) => msg.id !== aiMessageId),
+          isAIResponding: false,
+          tutorStatus: "ready",
+        }));
+        return;
+      }
+      console.warn("AI 对话不可用", error instanceof Error ? error.name : "unknown_error");
+      const unavailableContent = "AI 辅导服务暂时不可用，请稍后重试。";
       set((state) => ({
         chatMessages: state.chatMessages.map((msg) =>
           msg.id === aiMessageId
-            ? { ...msg, content: fallbackContent }
+            ? { ...msg, content: unavailableContent }
             : msg
         ),
         isAIResponding: false,
+        tutorStatus: "unavailable",
       }));
 
       // 保存到 localStorage
@@ -585,8 +585,12 @@ export const useLearningStore = create<LearningState>((set, get) => ({
       if (currentState.currentCourse) {
         saveLocalChatHistory(currentState.currentCourse.id, currentState.chatMessages);
       }
+    } finally {
+      activeTutorAbortController = null;
     }
   },
+
+  cancelAIMessage: () => activeTutorAbortController?.abort(),
 
   /**
    * 标记当前课时完成并切换到下一课时
@@ -681,15 +685,10 @@ export const useLearningStore = create<LearningState>((set, get) => ({
   fetchQuizQuestions: async (courseId: string, lessonId: string) => {
     set({ isQuizLoading: true });
     try {
-      const data = await apiClient.get<any>(`/v1/courses/${courseId}/lessons/${lessonId}/quiz`);
-      const questions: QuizQuestion[] = (data.questions ?? []).map((q: any) => ({
-        id: q.id ?? "",
-        type: q.question_type ?? "CHOICE",
-        body: q.question_body ?? "",
-        options: Array.isArray(q.options) ? q.options : [],
-        correctAnswer: q.correct_answer ?? "",
-        explanation: q.explanation ?? "",
-      }));
+      const data = await apiClient.get<QuizQuestionPayload[]>(`/v1/courses/${courseId}/lessons/${lessonId}/quiz`);
+      const questions: QuizQuestion[] = data
+        .map((question) => mapQuizQuestion(question))
+        .filter((question): question is NonNullable<typeof question> => question !== null);
       set({ quizQuestions: questions, quizAnswers: [], quizResult: null, isQuizLoading: false });
     } catch (error) {
       console.error("获取测验题目失败:", error);

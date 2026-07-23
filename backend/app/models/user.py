@@ -14,7 +14,7 @@
 
 from datetime import date, datetime
 
-from sqlalchemy import Boolean, Column, Date, Float, Integer, String, Index, text
+from sqlalchemy import Boolean, Column, Date, DateTime, Float, Integer, String, Index, text
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 
 from app.core.database import SoftDeleteModel
@@ -68,11 +68,15 @@ class User(SoftDeleteModel, Base):
 
     # 登录信息
     last_login_date = Column(Date, nullable=True, comment="上次登录日期")
+    credential_version = Column(Integer, nullable=False, default=1, server_default=text("1"),
+                                comment="凭证版本，用于全局作废")
+    credentials_revoked_at = Column(DateTime(timezone=True), nullable=True,
+                                     comment="最近一次凭证撤销时间")
 
     # 管理后台关联（预留字段）
     admin_user_id = Column(Integer, nullable=True, unique=True,
                            comment="管理后台用户 ID，用于关联外部管理系统")
-    is_admin = Column(Boolean, default=False, server_default=text("false"),
+    is_admin = Column(Boolean, nullable=False, default=False, server_default=text("false"),
                      comment="是否为管理员")
 
     # 索引

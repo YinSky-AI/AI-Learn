@@ -23,30 +23,30 @@
 
 ### P0
 
-- [ ] [01 题目访问隔离](P0/01-question-access.md)
-- [ ] [02 访问控制](P0/02-access-control.md)
-- [ ] [03 管理变更保护](P0/03-administrative-change.md)
-- [ ] [04 备份与恢复](P0/04-backup-and-recovery.md)
-- [ ] [05 答题提交事务](P0/05-answer-submission-transaction.md)
-- [ ] [06 学习维度与题库目录](P0/06-learning-dimensions-and-question-catalog.md)
-- [ ] [07 Schema 迁移](P0/07-schema-migration.md)
-- [ ] [08 交付验证](P0/08-delivery-verification.md)
+- [x] [01 题目访问隔离](P0/01-question-access.md)
+- [x] [02 访问控制](P0/02-access-control.md)
+- [x] [03 管理变更保护](P0/03-administrative-change.md)
+- [x] [04 备份与恢复](P0/04-backup-and-recovery.md)
+- [x] [05 答题提交事务](P0/05-answer-submission-transaction.md)
+- [x] [06 学习维度与题库目录](P0/06-learning-dimensions-and-question-catalog.md)
+- [x] [07 Schema 迁移](P0/07-schema-migration.md)
+- [x] [08 交付验证](P0/08-delivery-verification.md)
 
 ### P1
 
-- [ ] [09 账号主体](P1/09-account-principal.md)
-- [ ] [10 流量保护与 AI 预算](P1/10-traffic-protection-and-ai-budget.md)
-- [ ] [11 运行就绪](P1/11-runtime-readiness.md)
-- [ ] [12 运行诊断](P1/12-operational-diagnostics.md)
-- [ ] [13 生成任务](P1/13-generation-job.md)
-- [ ] [14 练习会话](P1/14-practice-session.md)
-- [ ] [15 导师对话](P1/15-tutor-conversation.md)
-- [ ] [16 学习契约与旅程](P1/16-learning-contract-and-journey.md)
-- [ ] [17 复习调度](P1/17-review-scheduler.md)
+- [x] [09 账号主体](P1/09-account-principal.md)
+- [x] [10 流量保护与 AI 预算](P1/10-traffic-protection-and-ai-budget.md)
+- [x] [11 运行就绪](P1/11-runtime-readiness.md)
+- [x] [12 运行诊断](P1/12-operational-diagnostics.md)
+- [x] [13 生成任务](P1/13-generation-job.md)
+- [x] [14 练习会话](P1/14-practice-session.md)
+- [x] [15 导师对话](P1/15-tutor-conversation.md)
+- [x] [16 学习契约与旅程](P1/16-learning-contract-and-journey.md)
+- [x] [17 复习调度](P1/17-review-scheduler.md)
 
 ### P2
 
-- [ ] [18 学习读模型](P2/18-learning-read-model.md)
-- [ ] [19 管理后台](P2/19-admin-backoffice.md)
+- [x] [18 学习读模型](P2/18-learning-read-model.md)
+- [x] [19 管理后台](P2/19-admin-backoffice.md)
 - [ ] [20 学生数据治理](P2/20-student-data-governance.md)
-- [ ] [21 客户端可用性](P2/21-client-availability.md)
+- [x] [21 客户端可用性](P2/21-client-availability.md)

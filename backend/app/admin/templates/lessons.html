@@ -219,9 +219,11 @@ async function toggleStatus(id, active) {
 }
 
 function deleteLesson(id, title) {
-    if (!confirm(`确定要删除课时「${title}」吗？此操作不可恢复。`)) return;
-    fetch(`/admin/lessons/api/${id}`, { method: 'DELETE' })
-        .then(r => r.json())
+    if (!confirm(`确定停用课时「${title}」吗？学习记录会保留，之后可以恢复。`)) return;
+    const reason = prompt('请输入停用原因（至少 5 个字）');
+    if (!reason) return;
+    fetch(`/admin/lessons/api/${id}`, { method: 'DELETE', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({reason}) })
+        .then(r => readAdminResponse(r))
         .then(data => {
             if (data.success) { loadData(currentPage); }
             else { alert(data.message || '删除失败'); }

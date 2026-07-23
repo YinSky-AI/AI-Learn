@@ -34,6 +34,7 @@ from app.models.content import Question
 from app.models.learning import Answer, LearningSession
 from app.models.user import User
 from app.schemas.common import ApiResponse, paged_response, success_response
+from app.services.course_service import save_chat_message
 
 logger = logging.getLogger(__name__)
 
@@ -46,16 +47,16 @@ router = APIRouter()
 
 class ChatRequest(BaseModel):
     """AI 聊天请求"""
-    message: str = Field(..., min_length=1, description="用户消息")
-    message_type: str = Field(default="question", description="消息类型")
-    topic: str = Field(default="", description="当前知识点")
-    age_group: str = Field(default="9-12", description="学生年龄段")
+    message: str = Field(..., min_length=1, max_length=8000, description="用户消息")
+    message_type: str = Field(default="question", max_length=32, description="消息类型")
+    topic: str = Field(default="", max_length=200, description="当前知识点")
+    age_group: str = Field(default="9-12", max_length=20, description="学生年龄段")
     context: Optional[Dict[str, Any]] = Field(
         default=None,
         description="上下文信息，可包含 courseId, lessonId, subject, ageGroup 等",
     )
     conversationHistory: Optional[List[Dict[str, str]]] = Field(
-        default=None,
+        default=None, max_length=20,
         description="对话历史，格式为 [{role, content}, ...]",
     )
 
@@ -155,6 +156,7 @@ async def analyze_errors(
 async def chat(
     body: ChatRequest,
     user_id: Optional[uuid.UUID] = Depends(get_current_user_id_optional),
+    db: AsyncSession = Depends(get_db),
 ):
     """返回确定性的苏格拉底式辅导消息，不调用外部 AI。"""
 
@@ -169,6 +171,13 @@ async def chat(
             context["conversation_history"] = body.conversationHistory[-10:]
 
         response = await TutorHarness().reply(context)
+        if user_id is not None:
+            course_id = context.get("courseId")
+            lesson_id = context.get("lessonId")
+            await save_chat_message(db, str(user_id), "user", body.message, course_id, lesson_id, {"topic": body.topic})
+            for tutor_message in response.messages:
+                await save_chat_message(db, str(user_id), "assistant", tutor_message.content, course_id, lesson_id, {"role": tutor_message.role})
+            await db.flush()
         logger.info("四角色辅导完成: user_id=%s, roles=%s", user_id, len(response.messages))
         return success_response(data=response, message="辅导回复生成成功")
     except Exception:

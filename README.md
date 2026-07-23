@@ -32,19 +32,65 @@ cp backend/.env.example backend/.env
 
 根据实际需要修改 `backend/.env` 中的数据库连接、JWT 密钥等配置。
 
-### 3. 启动服务
+### 3. 全新 Compose 首次启动
 
-使用 Docker Compose 一键启动所有服务：
+全新空 volume 不能直接启动应用。先通过显式 profile 将两个数据库分别迁移到批准 head：
 
-```bash
-docker-compose up -d
-```
-
-或使用 Make 命令：
+先准备三个仅当前用户可读、UTF-8 无 BOM 的非空单行 secret 文件：PostgreSQL 密码、指向 `postgres/learning_platform` 的主库 DSN，以及使用同一密码并指向 `postgres/ai_learn` 的题库 DSN。以下路径均须替换为本机绝对路径：
 
 ```bash
-make up
+make schema-bootstrap \
+  approval_reference="CHG-LOCAL-BOOTSTRAP" \
+  postgres_password_file="/secure/ai-learn/postgres_password" \
+  primary_database_url_file="/secure/ai-learn/primary_database_url" \
+  catalog_database_url_file="/secure/ai-learn/catalog_database_url"
 ```
+
+总目标会先处理主业务库，再处理题库。没有 Make 时按同一顺序分别运行两个明确服务：
+
+```bash
+POSTGRES_PASSWORD_SECRET_FILE="/secure/ai-learn/postgres_password" \
+docker compose up -d --wait postgres
+POSTGRES_PASSWORD_SECRET_FILE="/secure/ai-learn/postgres_password" \
+PRIMARY_DATABASE_URL_SECRET_FILE="/secure/ai-learn/primary_database_url" \
+docker compose --profile schema-bootstrap run --build --rm \
+  -e SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE="CHG-LOCAL-BOOTSTRAP" schema-bootstrap-primary
+POSTGRES_PASSWORD_SECRET_FILE="/secure/ai-learn/postgres_password" \
+CATALOG_DATABASE_URL_SECRET_FILE="/secure/ai-learn/catalog_database_url" \
+docker compose --profile schema-bootstrap run --build --rm \
+  -e SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE="CHG-LOCAL-BOOTSTRAP" schema-bootstrap-catalog
+```
+
+两个服务分别固定核验 `postgres/learning_platform` 与 `postgres/ai_learn`，并为普通数据库传入 `--allow-release`、审批号和 `--confirm-empty-bootstrap`。每个服务会先只读查询 current：已在批准 head 时成功退出且不重复写入；未版本化或 stale 的非空库由于没有备份证明会由安全 Adapter 拒绝，历史库必须走备份恢复与基线采用流程。
+
+如果主业务库已成功而题库失败，不要清库；修复失败原因后只继续题库：
+
+```bash
+make schema-bootstrap-catalog \
+  approval_reference="CHG-LOCAL-BOOTSTRAP" \
+  postgres_password_file="/secure/ai-learn/postgres_password" \
+  database_url_file="/secure/ai-learn/catalog_database_url"
+```
+
+反向的部分完成状态使用 `make schema-bootstrap-primary ... postgres_password_file=... database_url_file=...`。总目标也可安全重跑，因为已经位于批准 head 的单库只做只读确认；运维记录仍应明确哪个 root 已完成、哪个 root 待继续。
+
+bootstrap 成功后，必须用 `strict` 重新创建并启动 backend：
+
+```bash
+# POSIX shell
+POSTGRES_PASSWORD_SECRET_FILE="/secure/ai-learn/postgres_password" \
+PRIMARY_DATABASE_URL_SECRET_FILE="/secure/ai-learn/primary_database_url" \
+CATALOG_DATABASE_URL_SECRET_FILE="/secure/ai-learn/catalog_database_url" \
+SCHEMA_VERSION_POLICY=strict docker compose up -d --build
+
+# PowerShell
+$env:POSTGRES_PASSWORD_SECRET_FILE="C:\secure\ai-learn\postgres_password"
+$env:PRIMARY_DATABASE_URL_SECRET_FILE="C:\secure\ai-learn\primary_database_url"
+$env:CATALOG_DATABASE_URL_SECRET_FILE="C:\secure\ai-learn\catalog_database_url"
+$env:SCHEMA_VERSION_POLICY="strict"; docker compose up -d --build
+```
+
+Compose 默认仍保留 `warn`，仅用于当前尚未获准写入版本表的历史持久卷。`warn` 只读校验完整 legacy contract；全新空库会拒绝启动，不会以“健康但未迁移”的状态假绿。历史库不要运行 bootstrap，按[双数据库 Schema 迁移运行手册](docs/operations/schema-migrations.md)完成备份、恢复演练和 adoption。
 
 ### 4. 访问服务
 
@@ -81,7 +127,9 @@ docker-compose exec backend python seed_data.py
 │   │   ├── models/         # SQLAlchemy 数据模型
 │   │   ├── schemas/        # Pydantic 数据校验模型
 │   │   └── services/       # 业务逻辑服务层
-│   ├── alembic/            # 数据库迁移脚本
+│   ├── migrations/         # primary 与 question-bank 两个独立 revision root
+│   ├── alembic-primary.ini
+│   ├── alembic-question-bank.ini
 │   ├── Dockerfile
 │   ├── requirements.txt
 │   └── seed_data.py        # 种子数据脚本
@@ -129,8 +177,11 @@ make logs           # 查看日志
 make backend-logs   # 查看后端日志
 make frontend-logs  # 查看前端日志
 make test           # 运行后端测试
-make migrate        # 执行数据库迁移
-make migrate-create msg="描述"  # 创建新迁移
+make migrate        # 显式参数齐全后，通过安全 Adapter 执行单个 root 的 upgrade head
+make migrate-create # 当前会非零拒绝；安全 Adapter 尚不支持 revision create
+make schema-bootstrap approval_reference="CHG-..." postgres_password_file="..." primary_database_url_file="..." catalog_database_url_file="..." # 依次处理全新空 Compose 双库
+make schema-bootstrap-primary approval_reference="CHG-..." postgres_password_file="..." database_url_file="..." # 单独继续主业务库
+make schema-bootstrap-catalog approval_reference="CHG-..." postgres_password_file="..." database_url_file="..." # 单独继续题库
 make seed           # 初始化种子数据
 make fmt            # 格式化代码
 make lint           # 代码检查
@@ -152,43 +203,41 @@ docker-compose exec backend pytest -v
 
 ## 数据库迁移
 
-本项目使用 Alembic 管理数据库迁移。
+Schema 只由两个互相隔离的 Alembic root 管理：
 
-### 执行迁移
+| 目标 | 配置 | 版本目录 | 版本表 | 批准 head |
+| --- | --- | --- | --- | --- |
+| `primary` | `backend/alembic-primary.ini` | `backend/migrations/primary/versions/` | `alembic_version_learning` | `lp_0002_owned_contract` |
+| `question-bank` | `backend/alembic-question-bank.ini` | `backend/migrations/question_bank/versions/` | `alembic_version_catalog` | `catalog_0001_baseline` |
 
-将数据库升级到最新版本：
-
-```bash
-make migrate
-```
-
-或：
+禁止使用隐式默认 root 的 `alembic upgrade head`。每个数据库必须独立核验和执行；普通数据库发布还必须提供审批与已验证备份。例如主业务库发布：
 
 ```bash
-docker-compose exec backend alembic upgrade head
+make migrate \
+  target=primary \
+  database_url_file='/secure/ai-learn/primary_database_url' \
+  environment=staging \
+  expected_host='<second-person-confirmed-host>' \
+  expected_database=learning_platform \
+  allow_release=true \
+  approval_reference='CHG-1234' \
+  backup_reference='BKP-5678' \
+  confirm_empty_bootstrap=false
 ```
 
-### 创建新迁移
+`make migrate` 固定执行所选 root 的 `upgrade head`。目标参数和两个布尔值缺一即非零失败；`allow_release=true` 时审批号必需，且 `confirm_empty_bootstrap=false` 时备份号必需。真正空库显式设置 `confirm_empty_bootstrap=true` 后可以省略 `backup_reference`，最终仍由 Adapter 实查空库；如果数据库非空，Adapter 会拒绝。普通执行不会回显连接串。题库发布必须另行执行，并把目标改为 `question-bank` / `ai_learn`。全新空 Compose 请优先使用前述拆分 bootstrap targets，不要把通用发布命令当作自动启动钩子。
 
-修改模型后，自动生成迁移脚本：
+`make migrate-create` 当前始终非零拒绝，因为安全 Adapter 尚未实现 revision create；它不会创建文件，也不会以成功提示冒充执行。创建 revision 时必须先选择一个 root，保持另一 root 不变，并按运维手册完成 review、双 root drift check、downgrade/upgrade 和隔离演练。
+
+历史库 adoption、显式 downgrade、备份恢复和发布后 `strict` 检查的完整命令见[双数据库 Schema 迁移运行手册](docs/operations/schema-migrations.md)。
+
+### CI 门禁与证据
 
 ```bash
-make migrate-create msg="add_user_table"
+python scripts/verify.py full
 ```
 
-或：
-
-```bash
-docker-compose exec backend alembic revision --autogenerate -m "add_user_table"
-```
-
-> 提示：生成迁移脚本后，请务必检查脚本内容，确认变更是否符合预期。
-
-### 回滚迁移
-
-```bash
-docker-compose exec backend alembic downgrade -1
-```
+完整门禁会在隔离数据库对 `primary` 与 `question-bank` 分别运行 Alembic drift check，并执行 P0-07 双 root 空库 upgrade、downgrade/upgrade、基线采用、备份恢复和 strict 启动演练。GitHub Actions 的 `schema-migration-evidence` artifact 只上传 `drill-report.json` 及备份 manifest/SHA-256 证据，不上传临时密钥、数据库密码或加密归档正文。
 
 ## 健康检查
 

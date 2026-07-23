@@ -89,6 +89,8 @@ interface AnswerResultPayload {
   gamification?: GamificationReward | null;
 }
 
+type PracticeSessionState = "idle" | "answering" | "submitting" | "submitted" | "completing" | "completed" | "error";
+
 /**
  * 获取题型标签与图标
  */
@@ -124,6 +126,7 @@ export default function QuizPractice({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isFinishing, setIsFinishing] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [sessionState, setSessionState] = useState<PracticeSessionState>("idle");
 
   const totalCount = questions.length;
   const currentQuestion = questions[currentIndex];
@@ -135,6 +138,7 @@ export default function QuizPractice({
     setSelectedOptions(new Set());
     setQuestionStartedAt(Date.now());
     setSubmitError("");
+    setSessionState("answering");
   }, [currentIndex]);
 
   const progress = useMemo(
@@ -175,6 +179,7 @@ export default function QuizPractice({
   const handleSubmit = useCallback(async () => {
     if (!currentQuestion || !userAnswer.trim() || isSubmitting) return;
     setIsSubmitting(true);
+    setSessionState("submitting");
     setSubmitError("");
     try {
       let activeSessionId = sessionId;
@@ -213,7 +218,9 @@ export default function QuizPractice({
         },
       }));
       setSubmitted(true);
+      setSessionState("submitted");
     } catch {
+      setSessionState("error");
       setSubmitError("答案提交失败，请稍后重试。");
     } finally {
       setIsSubmitting(false);
@@ -222,12 +229,13 @@ export default function QuizPractice({
 
   /** 进入下一题 */
   const handleNext = useCallback(() => {
+    if (sessionState !== "submitted") return;
     if (currentIndex < totalCount - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
       setShowSummary(true);
     }
-  }, [currentIndex, totalCount]);
+  }, [currentIndex, sessionState, totalCount]);
 
   const handleExplain = useCallback(() => {
     setIsTutorOpen(true);
@@ -236,6 +244,7 @@ export default function QuizPractice({
   /** 再练一次 */
   const handleRetry = useCallback(async () => {
     setSubmitError("");
+    setSessionState("answering");
     if (sessionId) {
       try {
         await apiClient.post(`/v1/learning/sessions/${sessionId}/complete`, {});
@@ -259,6 +268,7 @@ export default function QuizPractice({
   const handleFinish = useCallback(async () => {
     if (isFinishing) return;
     setIsFinishing(true);
+    setSessionState("completing");
     setSubmitError("");
     try {
       if (sessionId) {
@@ -272,7 +282,9 @@ export default function QuizPractice({
       accuracy: totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0,
       timeSpentSeconds,
     });
+    setSessionState("completed");
     } catch {
+      setSessionState("error");
       setSubmitError("本次测验暂时无法结算，请稍后重试。");
     } finally {
       setIsFinishing(false);

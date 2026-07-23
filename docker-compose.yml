@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
       POSTGRES_DB: learning_platform
       POSTGRES_INITDB_ARGS: "-E UTF-8"
     ports:
@@ -23,6 +23,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql:ro
+    secrets:
+      - postgres_password
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d learning_platform"]
       interval: 10s
@@ -30,6 +32,59 @@ services:
       retries: 5
       start_period: 30s
     # 注意：若 init-db.sql 不存在，首次启动时 Docker 会报文件不存在警告，请确保文件已创建
+    networks:
+      - ai-learn-net
+
+  # 无持久卷、无宿主机端口，仅用于交付验证和迁移演练。
+  postgres-test:
+    image: postgres:16-alpine
+    profiles: ["delivery-test"]
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_DB: learning_platform_test
+    tmpfs:
+      - /var/lib/postgresql/data
+    volumes:
+      - ./backend/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql:ro
+    secrets:
+      - postgres_password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d learning_platform_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    networks:
+      - ai-learn-net
+
+  # 独立 tmpfs 恢复目标；只允许 P0-04/P0-07 隔离演练。
+  postgres-restore:
+    image: postgres:16-alpine
+    profiles: ["delivery-test"]
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_DB: learning_platform_restore
+    tmpfs:
+      - /var/lib/postgresql/data
+    volumes:
+      - ./backend/init-db.sql:/docker-entrypoint-initdb.d/01-init-db.sql:ro
+    secrets:
+      - postgres_password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d learning_platform_restore"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+    networks:
+      - ai-learn-net
+
+  # 一次性运维 Adapter；不随业务服务启动，不包含凭据或持久卷。
+  backup-tool:
+    build:
+      context: ./ops/backup
+      dockerfile: Dockerfile
+    profiles: ["delivery-test"]
     networks:
       - ai-learn-net
 
@@ -63,12 +118,16 @@ services:
       dockerfile: Dockerfile
     container_name: ai-learn-backend
     restart: unless-stopped
-    env_file:
-      - ./backend/.env
     environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/learning_platform
-      AI_LEARN_DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/ai_learn
+      DATABASE_URL_FILE: /run/secrets/primary_database_url
+      AI_LEARN_DATABASE_URL_FILE: /run/secrets/catalog_database_url
+      # 现有本地持久卷尚未获准 adoption；全新 bootstrap 后必须显式覆盖为 strict。
+      SCHEMA_VERSION_POLICY: ${SCHEMA_VERSION_POLICY:-warn}
       REDIS_URL: redis://redis:6379/0
+      ADMIN_COOKIE_SECURE: ${ADMIN_COOKIE_SECURE:-false}
+    secrets:
+      - primary_database_url
+      - catalog_database_url
     ports:
       - "8000:8000"
     depends_on:
@@ -82,6 +141,97 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+    networks:
+      - ai-learn-net
+
+  generation-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    command: ["python", "run_generation_worker.py"]
+    environment:
+      DATABASE_URL_FILE: /run/secrets/primary_database_url
+      AI_LEARN_DATABASE_URL_FILE: /run/secrets/catalog_database_url
+    secrets:
+      - primary_database_url
+      - catalog_database_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - ai-learn-net
+
+  # 两个 bootstrap 服务可独立重跑；已在批准 head 时只读确认并成功退出。
+  schema-bootstrap-primary:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    profiles: ["schema-bootstrap"]
+    restart: "no"
+    environment:
+      SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE: ${SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE:-}
+      SCHEMA_TARGET_HOST: ${PRIMARY_SCHEMA_TARGET_HOST:-postgres}
+      SCHEMA_TARGET_DATABASE: ${PRIMARY_SCHEMA_TARGET_DATABASE:-learning_platform}
+      SCHEMA_DATABASE_URL_FILE: /run/secrets/primary_database_url
+    secrets:
+      - primary_database_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        if [ -z "$${SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE:-}" ]; then
+          echo "主业务库 Schema bootstrap 已拒绝：缺少 SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE。" >&2
+          exit 2
+        fi
+        python schema_admin.py upgrade \
+          --target primary \
+          --database-url-file "$${SCHEMA_DATABASE_URL_FILE}" \
+          --environment local \
+          --expected-host "$${SCHEMA_TARGET_HOST}" \
+          --expected-database "$${SCHEMA_TARGET_DATABASE}" \
+          --allow-release \
+          --approval-reference "$$SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE" \
+          --confirm-empty-bootstrap
+    networks:
+      - ai-learn-net
+
+  schema-bootstrap-catalog:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    profiles: ["schema-bootstrap"]
+    restart: "no"
+    environment:
+      SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE: ${SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE:-}
+      SCHEMA_TARGET_HOST: ${CATALOG_SCHEMA_TARGET_HOST:-postgres}
+      SCHEMA_TARGET_DATABASE: ${CATALOG_SCHEMA_TARGET_DATABASE:-ai_learn}
+      SCHEMA_DATABASE_URL_FILE: /run/secrets/catalog_database_url
+    secrets:
+      - catalog_database_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command:
+      - /bin/sh
+      - -ec
+      - |
+        if [ -z "$${SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE:-}" ]; then
+          echo "题库 Schema bootstrap 已拒绝：缺少 SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE。" >&2
+          exit 2
+        fi
+        python schema_admin.py upgrade \
+          --target question-bank \
+          --database-url-file "$${SCHEMA_DATABASE_URL_FILE}" \
+          --environment local \
+          --expected-host "$${SCHEMA_TARGET_HOST}" \
+          --expected-database "$${SCHEMA_TARGET_DATABASE}" \
+          --allow-release \
+          --approval-reference "$$SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE" \
+          --confirm-empty-bootstrap
     networks:
       - ai-learn-net
 
@@ -125,6 +275,12 @@ services:
     depends_on:
       - frontend
       - backend
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1/health | grep -q '\"status\":\"healthy\"'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
     networks:
       - ai-learn-net
 
@@ -138,6 +294,15 @@ volumes:
     driver: local
   redis_data:
     driver: local
+
+# URL 与密码只通过宿主机受限文件注入；默认路径位于已忽略的任务运行目录。
+secrets:
+  postgres_password:
+    file: ${POSTGRES_PASSWORD_SECRET_FILE:-./test/.runtime/P0-07/secrets/postgres_password}
+  primary_database_url:
+    file: ${PRIMARY_DATABASE_URL_SECRET_FILE:-./test/.runtime/P0-07/secrets/primary_database_url}
+  catalog_database_url:
+    file: ${CATALOG_DATABASE_URL_SECRET_FILE:-./test/.runtime/P0-07/secrets/catalog_database_url}
 
 # =============================================================================
 # 自定义桥接网络

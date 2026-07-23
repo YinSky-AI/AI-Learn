@@ -146,8 +146,8 @@ async def register_user(
     await db.flush()  # 获取数据库生成的 ID
 
     # 生成 JWT Token 对
-    access_token = create_access_token(user.id)
-    refresh_token = create_refresh_token(user.id)
+    access_token = create_access_token(user.id, user.credential_version)
+    refresh_token = create_refresh_token(user.id, user.credential_version)
 
     return TokenResponse(
         access_token=access_token,
@@ -215,8 +215,8 @@ async def login_user(
     await db.flush()
 
     # 生成 JWT Token 对
-    access_token = create_access_token(user.id)
-    refresh_token = create_refresh_token(user.id)
+    access_token = create_access_token(user.id, user.credential_version)
+    refresh_token = create_refresh_token(user.id, user.credential_version)
 
     return TokenResponse(
         access_token=access_token,
@@ -263,11 +263,11 @@ async def refresh_token(
 
     # 从 payload 提取用户 ID 并查询用户状态
     user_id = uuid.UUID(payload["sub"])
-    stmt = select(User).where(User.id == user_id, User.deleted_at.is_(None))
+    stmt = select(User).where(User.id == user_id, User.deleted_at.is_(None)).with_for_update()
     result = await db.execute(stmt)
     user = result.scalar_one_or_none()
 
-    if user is None:
+    if user is None or int(payload.get("ver", 1)) != int(user.credential_version or 1):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail={
@@ -276,9 +276,12 @@ async def refresh_token(
             },
         )
 
-    # 生成新的 Token 对
-    access_token = create_access_token(user.id)
-    new_refresh_token = create_refresh_token(user.id)
+    # 轮换凭证版本：旧 refresh/access token 立即失效，且并发刷新只有一个请求能成功。
+    user.credential_version = int(user.credential_version or 1) + 1
+    user.credentials_revoked_at = datetime.now(timezone.utc)
+    await db.flush()
+    access_token = create_access_token(user.id, user.credential_version)
+    new_refresh_token = create_refresh_token(user.id, user.credential_version)
 
     return TokenResponse(
         access_token=access_token,

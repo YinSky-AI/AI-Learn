@@ -1,6 +1,5 @@
 import hashlib
 import json
-import os
 import uuid
 from datetime import date, datetime, timezone
 
@@ -8,16 +7,13 @@ import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import func, select
-from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.pool import NullPool
 
 from app.ai.tools.question_memory_tool import QuestionMemoryTool
 from app.api.v1 import questions as questions_api
 from app.core.database import get_db
 from app.core.deps import get_current_user_id
+from app.core.security import create_access_token
 from app.main import app
-from app.models import Base
 from app.models.ai_generated import (
     GeneratedQuestion,
     GeneratedQuestionBatch,
@@ -41,7 +37,16 @@ GENERATED_QUESTION = {
     "question_type": "choice",
     "question_body": "小明吃了八分之三块蛋糕，又吃了八分之二块，一共吃了多少？",
     "options": [
-        {"key": "A", "value": "八分之五"},
+        {
+            "key": "A",
+            "value": "八分之五",
+            "is_correct": True,
+            "metadata": {
+                "correct_answer": "A",
+                "analysis": "同分母直接相加",
+                "safe_hint": "先观察分母",
+            },
+        },
         {"key": "B", "value": "八分之六"},
     ],
     "correct_answer": "A",
@@ -60,26 +65,8 @@ def test_generated_question_difficulty_columns_fit_platform_codes():
 
 
 @pytest_asyncio.fixture
-async def question_db_session():
-    database_url = os.getenv(
-        "QUESTION_TEST_DATABASE_URL",
-        "postgresql+asyncpg://postgres:postgres@localhost:5432/learning_platform_test",
-    )
-    test_engine = create_async_engine(database_url, poolclass=NullPool)
-    async with test_engine.begin() as connection:
-        await connection.run_sync(Base.metadata.drop_all)
-        await connection.run_sync(Base.metadata.create_all)
-    session_factory = sessionmaker(
-        test_engine,
-        class_=AsyncSession,
-        expire_on_commit=False,
-    )
-    async with session_factory() as session:
-        yield session
-        await session.rollback()
-    async with test_engine.begin() as connection:
-        await connection.run_sync(Base.metadata.drop_all)
-    await test_engine.dispose()
+async def question_db_session(db_session):
+    yield db_session
 
 
 @pytest_asyncio.fixture
@@ -138,6 +125,31 @@ def _clear_generation_dependencies():
 
 
 @pytest.mark.asyncio
+async def test_generate_with_real_authenticated_session_uses_existing_transaction(
+    api_client,
+    question_db_session,
+    monkeypatch,
+):
+    user_id = await _create_user(question_db_session)
+    provider = FakeProvider(
+        [
+            json.dumps([GENERATED_QUESTION], ensure_ascii=False),
+            json.dumps({"passed": True, "revision_notes": ""}, ensure_ascii=False),
+        ]
+    )
+    monkeypatch.setattr(questions_api, "get_ai_provider", lambda: provider)
+
+    response = await api_client.post(
+        "/api/v1/questions/generate",
+        json=REQUEST_PAYLOAD,
+        headers={"Authorization": f"Bearer {create_access_token(user_id)}"},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["data"]["status"] == "completed"
+
+
+@pytest.mark.asyncio
 async def test_generate_persists_reviewed_questions(
     api_client,
     question_db_session,
@@ -166,6 +178,10 @@ async def test_generate_persists_reviewed_questions(
     assert generated_payload["question_body"] == GENERATED_QUESTION["question_body"]
     assert "correct_answer" not in generated_payload
     assert "explanation" not in generated_payload
+    assert "is_correct" not in generated_payload["options"][0]
+    assert "correct_answer" not in generated_payload["options"][0]["metadata"]
+    assert "analysis" not in generated_payload["options"][0]["metadata"]
+    assert generated_payload["options"][0]["metadata"]["safe_hint"] == "先观察分母"
     batch_id = uuid.UUID(payload["data"]["batch_id"])
 
     batch = await question_db_session.get(GeneratedQuestionBatch, batch_id)
@@ -236,6 +252,8 @@ async def test_batch_detail_and_variant_are_scoped_to_current_user(
     assert len(owner_questions) == 1
     assert "correct_answer" not in owner_questions[0]
     assert "explanation" not in owner_questions[0]
+    assert "is_correct" not in owner_questions[0]["options"][0]
+    assert "correct_answer" not in owner_questions[0]["options"][0]["metadata"]
 
     question_id = owner_questions[0]["id"]
     _override_generation_dependencies(owner_id, provider, monkeypatch)
@@ -250,11 +268,29 @@ async def test_batch_detail_and_variant_are_scoped_to_current_user(
 
     assert owner_variant.status_code == 200
     assert owner_variant.json()["data"]["parent_question_id"] == question_id
+    assert owner_variant.json()["data"]["status"] == "failed"
+    _override_generation_dependencies(owner_id, provider, monkeypatch)
+    repeated_variant = await api_client.post(
+        "/api/v1/questions/variant",
+        json={"question_id": question_id},
+    )
+    assert repeated_variant.status_code == 200
+    assert repeated_variant.json()["data"]["variant_id"] == owner_variant.json()["data"]["variant_id"]
+    assert repeated_variant.json()["data"]["status"] == "failed"
     assert owner_history.status_code == 200
     assert owner_history.json()["data"]["items"]
     assert all(
         "correct_answer" not in item and "explanation" not in item
         for item in owner_history.json()["data"]["items"]
+    )
+    history_items_with_options = [
+        item for item in owner_history.json()["data"]["items"] if item["options"]
+    ]
+    assert history_items_with_options
+    assert all(
+        "is_correct" not in item["options"][0]
+        and "analysis" not in item["options"][0]["metadata"]
+        for item in history_items_with_options
     )
 
     attacker_id = await _create_user(question_db_session)

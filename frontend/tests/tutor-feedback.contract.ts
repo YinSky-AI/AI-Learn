@@ -29,7 +29,6 @@ const mappedQuestion = mapQuizQuestion({
   id: "question-1",
   question_type: "CHOICE",
   question_body: "1 + 1 等于几？",
-  correct_answer: "B",
   difficulty_level: "intermediate",
   knowledge_points: ["加法"],
 });
@@ -37,7 +36,7 @@ if (!mappedQuestion || mappedQuestion.difficulty !== "intermediate" || mappedQue
   throw new Error("题目映射应兼容 difficulty_level 与 knowledge_points");
 }
 
-if (mapQuizQuestion({ id: "unknown", question_type: "ESSAY", question_body: "说明原因", correct_answer: "" }) !== null) {
+if (mapQuizQuestion({ id: "unknown", question_type: "ESSAY", question_body: "说明原因" }) !== null) {
   throw new Error("未知题型不得被强制伪装为可作答题型");
 }
 

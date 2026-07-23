@@ -11,31 +11,33 @@
     - AI 审查记录查询
 """
 
-import os
+import hmac
+import hashlib
+import json
+import secrets
 from pathlib import Path
 from typing import Optional
 
 from fastapi import APIRouter, Request, Depends, Form, Query
-from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse, PlainTextResponse
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
 from jinja2 import Environment, FileSystemLoader
+from loguru import logger
+
+from app.core.database import AI_LearnAsyncSessionLocal
+from app.services.admin_auth import (
+    CSRF_COOKIE_NAME,
+    LOGIN_CSRF_COOKIE_NAME,
+    SESSION_COOKIE_NAME,
+)
+from app.services.admin_changes import AdminChangeService
+from app.services.admin_course_service import build_course_update, serialize_tags
 
 router = APIRouter(prefix="/admin", tags=["管理后台"])
 
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin123")
-
-# 题库独立数据库连接（ai_learn 库，存放外部导入的题库数据）
-_AI_LEARN_DB_URL = os.getenv(
-    "AI_LEARN_DB_URL",
-    "postgresql+asyncpg://postgres:postgres@postgres:5432/ai_learn"
-)
-_ai_learn_engine = create_async_engine(_AI_LEARN_DB_URL, echo=False)
-AiLearnSessionLocal = async_sessionmaker(
-    _ai_learn_engine,
-    class_=AsyncSession,
-    expire_on_commit=False,
-)
+# 兼容旧依赖名，但统一复用 core 中受启动版本检查覆盖的题库 Session。
+AiLearnSessionLocal = AI_LearnAsyncSessionLocal
 
 SUBJECT_MAP = {
     "math": "数学",
@@ -72,6 +74,7 @@ async def get_db():
             await session.commit()
         except Exception:
             await session.rollback()
+            raise
 
 
 async def get_ai_learn_db():
@@ -95,10 +98,9 @@ def _check_session(request: Request):
     """
     HTML 页面会话检查
 
-    检查请求中是否携带有效的 admin_session Cookie，
-    未登录则返回重定向到登录页面。
+    中间件已完成签名、过期、撤销和角色复核；此处仅保留路由级纵深防御。
     """
-    if request.cookies.get("admin_session") != "authenticated":
+    if not getattr(request.state, "admin_principal", None):
         return RedirectResponse(url="/admin/login", status_code=302)
     return None
 
@@ -107,21 +109,66 @@ def _check_api_auth(request: Request):
     """
     API 端点会话验证
 
-    检查请求中是否携带有效的 admin_session Cookie，
-    未登录则返回 401 JSON 响应。
+    中间件已完成统一授权；此处仅防止路由被脱离应用单独挂载后失守。
     """
-    if request.cookies.get("admin_session") != "authenticated":
-        return JSONResponse(
-            status_code=401,
-            content={"success": False, "message": "未登录或会话已过期"},
-        )
+    if not getattr(request.state, "admin_principal", None):
+        return PlainTextResponse("未登录或会话已过期", status_code=401)
     return None
+
+
+async def _apply_admin_change(request: Request, db: AsyncSession, entity_type: str, entity_id: str, action: str):
+    try:
+        body = await request.json()
+    except Exception:
+        body = {}
+    try:
+        result = await AdminChangeService(db).change(
+            action=action,
+            entity_type=entity_type,
+            entity_id=entity_id,
+            actor_id=request.state.admin_principal.user_id,
+            reason=str(body.get("reason", "")),
+            request_id=getattr(request.state, "request_id", "unassigned"),
+        )
+    except ValueError as exc:
+        return PlainTextResponse(str(exc), status_code=400)
+    if not result.changed:
+        status_code = 404 if result.message == "目标不存在" else 409
+        return PlainTextResponse(result.message, status_code=status_code)
+    return JSONResponse(
+        status_code=200,
+        content={"success": result.changed, "message": result.message, "impact_scope": result.impact_scope},
+    )
 
 
 # ============ 登录 / 登出 ============
 
+def _login_response(request: Request, error: str = "", status_code: int = 200):
+    service = request.app.state.admin_auth_service
+    csrf_token = secrets.token_urlsafe(32)
+    template = jinja_env.get_template("login.html")
+    response = HTMLResponse(
+        template.render(error=error, csrf_token=csrf_token),
+        status_code=status_code,
+    )
+    response.set_cookie(
+        LOGIN_CSRF_COOKIE_NAME,
+        csrf_token,
+        max_age=600,
+        secure=service.cookie_secure,
+        httponly=True,
+        samesite="strict",
+        path="/admin/login",
+    )
+    return response
+
+
+def _login_identifier_fingerprint(identifier: str) -> str:
+    return hashlib.sha256(identifier.strip().lower().encode("utf-8")).hexdigest()[:12]
+
+
 @router.get("/login", response_class=HTMLResponse)
-async def login_page(error: str = ""):
+async def login_page(request: Request, error: str = ""):
     """
     管理后台登录页面
 
@@ -133,16 +180,20 @@ async def login_page(error: str = ""):
     Returns:
         HTMLResponse: 登录页面 HTML
     """
-    template = jinja_env.get_template("login.html")
-    return HTMLResponse(template.render(error=error))
+    return _login_response(request, error)
 
 
 @router.post("/login")
-async def login_submit(password: str = Form(...)):
+async def login_submit(
+    request: Request,
+    identifier: str = Form(...),
+    password: str = Form(...),
+    csrf_token: str = Form(...),
+):
     """
     管理后台登录提交
 
-    校验密码，通过后设置 admin_session Cookie 并重定向到仪表盘。
+    校验登录 CSRF、平台管理员账号与密码，成功后创建可撤销签名会话。
 
     Args:
         password (str): 提交的密码
@@ -150,26 +201,90 @@ async def login_submit(password: str = Form(...)):
     Returns:
         RedirectResponse: 登录成功重定向到仪表盘，失败返回登录页
     """
-    if password == ADMIN_PASSWORD:
-        response = RedirectResponse(url="/admin", status_code=302)
-        response.set_cookie("admin_session", "authenticated", max_age=86400, httponly=True)
-        return response
-    template = jinja_env.get_template("login.html")
-    return HTMLResponse(template.render(error="密码错误，请重试"))
+    cookie_csrf = request.cookies.get(LOGIN_CSRF_COOKIE_NAME, "")
+    if not cookie_csrf or not hmac.compare_digest(cookie_csrf, csrf_token):
+        return PlainTextResponse("安全校验失败，请刷新页面后重试", status_code=403)
+
+    service = request.app.state.admin_auth_service
+    request_id = getattr(request.state, "request_id", "unassigned")
+    identifier_fingerprint = _login_identifier_fingerprint(identifier)
+    try:
+        user = await service.authenticate(identifier, password)
+    except Exception as exc:
+        logger.bind(audit_event="admin_login_unavailable").error(
+            "admin_audit event=admin_login_unavailable identifier_fingerprint={} "
+            "request_id={} error_type={}",
+            identifier_fingerprint,
+            request_id,
+            type(exc).__name__,
+        )
+        return _login_response(request, "登录服务暂不可用，请稍后重试", status_code=503)
+    if user is None:
+        logger.bind(audit_event="admin_login_rejected").warning(
+            "admin_audit event=admin_login_rejected identifier_fingerprint={} "
+            "request_id={}",
+            identifier_fingerprint,
+            request_id,
+        )
+        return _login_response(request, "账号或密码错误", status_code=401)
+
+    try:
+        issued = await service.create_session(user)
+    except Exception as exc:
+        logger.bind(audit_event="admin_login_unavailable").error(
+            "admin_audit event=admin_login_unavailable actor_id={} request_id={} "
+            "error_type={}",
+            user.id,
+            request_id,
+            type(exc).__name__,
+        )
+        return _login_response(request, "登录服务暂不可用，请稍后重试", status_code=503)
+    logger.bind(audit_event="admin_login_succeeded").info(
+        "admin_audit event=admin_login_succeeded actor_id={} request_id={}",
+        user.id,
+        request_id,
+    )
+    response = RedirectResponse(url="/admin", status_code=302)
+    response.set_cookie(
+        SESSION_COOKIE_NAME,
+        issued.token,
+        max_age=service.session_ttl_seconds,
+        secure=service.cookie_secure,
+        httponly=True,
+        samesite="strict",
+        path="/admin",
+    )
+    response.set_cookie(
+        CSRF_COOKIE_NAME,
+        issued.csrf_token,
+        max_age=service.session_ttl_seconds,
+        secure=service.cookie_secure,
+        httponly=False,
+        samesite="strict",
+        path="/admin",
+    )
+    response.delete_cookie(LOGIN_CSRF_COOKIE_NAME, path="/admin/login")
+    return response
 
 
-@router.get("/logout")
-async def logout():
+@router.post("/logout")
+async def logout(request: Request, csrf_token: str = Form(...)):
     """
     管理后台退出登录
 
-    清除 admin_session Cookie 并重定向到登录页面。
+    校验会话绑定的 CSRF，服务端撤销会话后清除 Cookie。
 
     Returns:
         RedirectResponse: 重定向到登录页
     """
+    principal = getattr(request.state, "admin_principal", None)
+    if principal is None or not hmac.compare_digest(principal.csrf_token, csrf_token):
+        return PlainTextResponse("安全校验失败，请刷新页面后重试", status_code=403)
+    service = request.app.state.admin_auth_service
+    await service.revoke_session(request.cookies.get(SESSION_COOKIE_NAME))
     response = RedirectResponse(url="/admin/login", status_code=302)
-    response.delete_cookie("admin_session")
+    response.delete_cookie(SESSION_COOKIE_NAME, path="/admin")
+    response.delete_cookie(CSRF_COOKIE_NAME, path="/admin")
     return response
 
 
@@ -201,7 +316,7 @@ async def dashboard(request: Request, db: AsyncSession = Depends(get_db)):
 
     # 总课程数
     total_courses = (await db.execute(
-        text("SELECT COUNT(*) FROM public.courses")
+        text("SELECT COUNT(*) FROM public.courses WHERE deleted_at IS NULL")
     )).scalar()
 
     # 总学习时长（秒）
@@ -222,7 +337,7 @@ async def dashboard(request: Request, db: AsyncSession = Depends(get_db)):
     # 课程报名排行 TOP 10
     top_rows = (await db.execute(text(
         "SELECT title, subject, enroll_count, rating "
-        "FROM public.courses ORDER BY enroll_count DESC NULLS LAST LIMIT 10"
+        "FROM public.courses WHERE deleted_at IS NULL ORDER BY enroll_count DESC NULLS LAST LIMIT 10"
     ))).fetchall()
 
     top_courses = []
@@ -237,7 +352,7 @@ async def dashboard(request: Request, db: AsyncSession = Depends(get_db)):
     # 学科分布
     subject_rows = (await db.execute(text(
         "SELECT subject, COUNT(*) AS cnt "
-        "FROM public.courses GROUP BY subject ORDER BY cnt DESC"
+        "FROM public.courses WHERE deleted_at IS NULL GROUP BY subject ORDER BY cnt DESC"
     ))).fetchall()
 
     max_count = subject_rows[0][1] if subject_rows else 1
@@ -296,6 +411,7 @@ async def courses_api_list(
     subject: Optional[str] = Query(None),
     difficulty: Optional[str] = Query(None),
     is_active: Optional[str] = Query(None),
+    state: str = Query("active", pattern="^(active|deleted)$"),
     page: int = Query(1, ge=1),
     page_size: int = Query(15, ge=1, le=100),
 ):
@@ -321,7 +437,7 @@ async def courses_api_list(
     if auth:
         return auth
 
-    conditions = []
+    conditions = ["deleted_at IS NOT NULL" if state == "deleted" else "deleted_at IS NULL"]
     params: dict = {}
 
     # 动态构建筛选条件
@@ -411,7 +527,10 @@ async def course_detail_api(
         return auth
     try:
         result = await db.execute(
-            text("SELECT id, title, subject, difficulty, age_group, total_lessons, is_active FROM courses WHERE id = :id"),
+            text(
+                "SELECT id, title, subject, difficulty, age_group, total_lessons, is_active "
+                "FROM courses WHERE id = :id AND deleted_at IS NULL"
+            ),
             {"id": course_id}
         )
         row = result.fetchone()
@@ -429,8 +548,8 @@ async def course_detail_api(
                 "is_active": row[6],
             }
         })
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"success": False, "message": str(e)})
+    except Exception:
+        return PlainTextResponse("课程信息查询失败", status_code=500)
 
 
 @router.put("/courses/api/{course_id}/status")
@@ -464,7 +583,10 @@ async def course_status_api(
         return JSONResponse(status_code=400, content={"success": False, "message": "缺少 is_active 参数"})
 
     await db.execute(
-        text("UPDATE public.courses SET is_active = :is_active, updated_at = NOW() WHERE id = :id"),
+        text(
+            "UPDATE public.courses SET is_active = :is_active, updated_at = NOW() "
+            "WHERE id = :id AND deleted_at IS NULL"
+        ),
         {"is_active": new_status, "id": course_id},
     )
 
@@ -494,28 +616,12 @@ async def course_delete_api(
     if auth:
         return auth
 
-    # 按依赖顺序清理关联数据
-    await db.execute(
-        text("DELETE FROM public.user_lessons WHERE course_id = :id"),
-        {"id": course_id},
-    )
-    await db.execute(
-        text("DELETE FROM public.user_courses WHERE course_id = :id"),
-        {"id": course_id},
-    )
-    await db.execute(
-        text("DELETE FROM public.lessons WHERE course_id = :id"),
-        {"id": course_id},
-    )
-    result = await db.execute(
-        text("DELETE FROM public.courses WHERE id = :id"),
-        {"id": course_id},
-    )
+    return await _apply_admin_change(request, db, "course", course_id, "soft_delete")
 
-    if result.rowcount == 0:
-        return JSONResponse(status_code=404, content={"success": False, "message": "课程不存在"})
 
-    return {"success": True, "message": "课程已删除"}
+@router.post("/courses/api/{course_id}/restore")
+async def course_restore_api(course_id: str, request: Request, db: AsyncSession = Depends(get_db)):
+    return await _apply_admin_change(request, db, "course", course_id, "restore")
 
 
 # ============ 课时管理页面 ============
@@ -564,6 +670,16 @@ async def users_page(request: Request, db: AsyncSession = Depends(get_db)):
     return HTMLResponse(template.render(active_page="users"))
 
 
+@router.get("/recovery", response_class=HTMLResponse)
+async def recovery_page(request: Request):
+    """集中展示可恢复对象，避免管理员必须预先保存对象 ID。"""
+    redirect = _check_session(request)
+    if redirect:
+        return redirect
+    template = jinja_env.get_template("recovery.html")
+    return HTMLResponse(template.render(active_page="recovery"))
+
+
 # ============ 用户 API ============
 
 @router.get("/users/api/list")
@@ -572,6 +688,7 @@ async def users_api_list(
     db: AsyncSession = Depends(get_db),
     keyword: Optional[str] = Query(None),
     age_group: Optional[str] = Query(None),
+    state: str = Query("active", pattern="^(active|deleted)$"),
     page: int = Query(1, ge=1),
     page_size: int = Query(15, ge=1, le=100),
 ):
@@ -595,7 +712,7 @@ async def users_api_list(
     if auth:
         return auth
 
-    conditions = ["deleted_at IS NULL"]
+    conditions = ["deleted_at IS NOT NULL" if state == "deleted" else "deleted_at IS NULL"]
     params: dict = {}
 
     # 动态构建筛选条件
@@ -692,7 +809,7 @@ async def user_update_api(
 
     updates.append("updated_at = NOW()")
 
-    sql = f"UPDATE public.users SET {', '.join(updates)} WHERE id = :id"
+    sql = f"UPDATE public.users SET {', '.join(updates)} WHERE id = :id AND deleted_at IS NULL"
     result = await db.execute(text(sql), params)
 
     if result.rowcount == 0:
@@ -724,24 +841,12 @@ async def user_delete_api(
     if auth:
         return auth
 
-    # 按依赖顺序清理关联数据
-    await db.execute(
-        text("DELETE FROM public.user_lessons WHERE user_id = :id"),
-        {"id": user_id},
-    )
-    await db.execute(
-        text("DELETE FROM public.user_courses WHERE user_id = :id"),
-        {"id": user_id},
-    )
-    result = await db.execute(
-        text("DELETE FROM public.users WHERE id = :id"),
-        {"id": user_id},
-    )
+    return await _apply_admin_change(request, db, "user", user_id, "soft_delete")
 
-    if result.rowcount == 0:
-        return JSONResponse(status_code=404, content={"success": False, "message": "用户不存在"})
 
-    return {"success": True, "message": "用户已删除"}
+@router.post("/users/api/{user_id}/restore")
+async def user_restore_api(user_id: str, request: Request, db: AsyncSession = Depends(get_db)):
+    return await _apply_admin_change(request, db, "user", user_id, "restore")
 
 
 # ============ 课程创建 API ============
@@ -773,7 +878,7 @@ async def course_create_api(
     except Exception:
         return JSONResponse(status_code=400, content={"success": False, "message": "无效的请求数据"})
 
-    import uuid, json
+    import uuid
 
     course_id = str(uuid.uuid4())
 
@@ -782,15 +887,7 @@ async def course_create_api(
         return JSONResponse(status_code=400, content={"success": False, "message": "缺少必填字段 title"})
 
     # 处理 tags：前端传逗号分隔字符串，数据库存 JSON 数组
-    tags_raw = body.get("tags")
-    tags_value = None
-    if tags_raw:
-        if isinstance(tags_raw, str):
-            tags_value = json.dumps([t.strip() for t in tags_raw.split(",") if t.strip()])
-        elif isinstance(tags_raw, list):
-            tags_value = json.dumps(tags_raw)
-        else:
-            tags_value = json.dumps([str(tags_raw)])
+    tags_value = serialize_tags(body.get("tags"))
 
     try:
         await db.execute(
@@ -818,8 +915,8 @@ async def course_create_api(
                 "slug": body.get("slug") or None,
             },
         )
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"success": False, "message": f"创建失败: {str(e)}"})
+    except Exception:
+        return PlainTextResponse("课程创建失败", status_code=500)
 
     return {"success": True, "message": "课程已创建", "id": course_id}
 
@@ -854,40 +951,16 @@ async def course_update_api(
     except Exception:
         return JSONResponse(status_code=400, content={"success": False, "message": "无效的请求数据"})
 
-    allowed_fields = [
-        "title", "description", "subject", "difficulty", "age_group",
-        "duration", "image_url", "is_active", "sort_order", "slug",
-    ]
-    updates = []
-    params: dict = {"id": course_id}
+    updates, params = build_course_update({**body, "id": course_id})
 
-    # 动态构建允许字段的更新
-    for field in allowed_fields:
-        if field in body:
-            updates.append(f"{field} = :{field}")
-            # slug 空字符串转 None，避免唯一约束冲突
-            params[field] = body[field] if body[field] != "" else None
-
-    # tags 需要特殊处理（字符串 -> JSON 数组）
-    if "tags" in body:
-        tags_raw = body["tags"]
-        if tags_raw:
-            if isinstance(tags_raw, str):
-                params["tags"] = json.dumps([t.strip() for t in tags_raw.split(",") if t.strip()])
-            elif isinstance(tags_raw, list):
-                params["tags"] = json.dumps(tags_raw)
-            else:
-                params["tags"] = json.dumps([str(tags_raw)])
-        else:
-            params["tags"] = None
-        updates.append("tags = :tags")
+    # Field normalization is handled by the admin course service.
 
     if not updates:
         return JSONResponse(status_code=400, content={"success": False, "message": "没有需要更新的字段"})
 
     updates.append("updated_at = NOW()")
 
-    sql = f"UPDATE public.courses SET {', '.join(updates)} WHERE id = :id"
+    sql = f"UPDATE public.courses SET {', '.join(updates)} WHERE id = :id AND deleted_at IS NULL"
     result = await db.execute(text(sql), params)
 
     if result.rowcount == 0:
@@ -902,7 +975,8 @@ async def course_update_api(
 async def lessons_api_list(
     request: Request,
     db: AsyncSession = Depends(get_db),
-    course_id: str = Query(...),
+    course_id: Optional[str] = Query(None),
+    state: str = Query("active", pattern="^(active|deleted)$"),
     page: int = Query(1, ge=1),
     page_size: int = Query(50, ge=1, le=200),
 ):
@@ -925,10 +999,19 @@ async def lessons_api_list(
     if auth:
         return auth
 
+    if state == "active" and not course_id:
+        return PlainTextResponse("课程 ID 不能为空", status_code=400)
+    conditions = ["deleted_at IS NOT NULL" if state == "deleted" else "deleted_at IS NULL"]
+    params: dict = {}
+    if course_id:
+        conditions.append("course_id = :course_id")
+        params["course_id"] = course_id
+    where = " AND ".join(conditions)
+
     # 查询总数
     total = (await db.execute(
-        text("SELECT COUNT(*) FROM public.lessons WHERE course_id = :course_id"),
-        {"course_id": course_id},
+        text(f"SELECT COUNT(*) FROM public.lessons WHERE {where}"),
+        params,
     )).scalar()
 
     # 分页数据
@@ -937,10 +1020,10 @@ async def lessons_api_list(
         text(
             'SELECT id, course_id, title, description, type, duration, "order", '
             "content, is_active, created_at "
-            "FROM public.lessons WHERE course_id = :course_id "
+            f"FROM public.lessons WHERE {where} "
             'ORDER BY "order" LIMIT :limit OFFSET :offset'
         ),
-        {"course_id": course_id, "limit": page_size, "offset": offset},
+        {**params, "limit": page_size, "offset": offset},
     )).fetchall()
 
     items = []
@@ -1002,6 +1085,13 @@ async def lesson_create_api(
 
     lesson_id = str(uuid.uuid4())
 
+    course_exists = (await db.execute(
+        text("SELECT 1 FROM public.courses WHERE id = :id AND deleted_at IS NULL"),
+        {"id": course_id},
+    )).scalar_one_or_none()
+    if course_exists is None:
+        return PlainTextResponse("课程不存在或已移入可恢复状态", status_code=404)
+
     try:
         await db.execute(
             text(
@@ -1025,13 +1115,14 @@ async def lesson_create_api(
         await db.execute(
             text(
                 "UPDATE public.courses SET total_lessons = ("
-                "SELECT COUNT(*) FROM public.lessons WHERE course_id = :id AND is_active = true"
+                "SELECT COUNT(*) FROM public.lessons "
+                "WHERE course_id = :id AND is_active = true AND deleted_at IS NULL"
                 "), updated_at = NOW() WHERE id = :id"
             ),
             {"id": course_id},
         )
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"success": False, "message": f"创建失败: {str(e)}"})
+    except Exception:
+        return PlainTextResponse("课时创建失败", status_code=500)
 
     return {"success": True, "message": "课时已创建", "id": lesson_id}
 
@@ -1081,29 +1172,40 @@ async def lesson_update_api(
     if not updates:
         return JSONResponse(status_code=400, content={"success": False, "message": "没有需要更新的字段"})
 
+    original_course_id = (await db.execute(
+        text("SELECT course_id FROM public.lessons WHERE id=:id AND deleted_at IS NULL FOR UPDATE"),
+        {"id": lesson_id},
+    )).scalar_one_or_none()
+    if original_course_id is None:
+        return PlainTextResponse("课时不存在", status_code=404)
+    if "course_id" in body:
+        target_course = (await db.execute(
+            text("SELECT id FROM public.courses WHERE id=:id AND deleted_at IS NULL"),
+            {"id": body["course_id"]},
+        )).scalar_one_or_none()
+        if target_course is None:
+            return PlainTextResponse("目标课程不存在或已移入可恢复状态", status_code=400)
+
     updates.append("updated_at = NOW()")
 
-    sql = f"UPDATE public.lessons SET {', '.join(updates)} WHERE id = :id"
+    sql = f"UPDATE public.lessons SET {', '.join(updates)} WHERE id = :id AND deleted_at IS NULL"
     result = await db.execute(text(sql), params)
 
     if result.rowcount == 0:
         return JSONResponse(status_code=404, content={"success": False, "message": "课时不存在"})
 
-    # 若修改了 order 或 is_active，重新计算课程的 total_lessons
-    if "order" in body or "is_active" in body:
-        course_row = (await db.execute(
-            text("SELECT course_id FROM public.lessons WHERE id = :id"),
-            {"id": lesson_id},
-        )).fetchone()
-
-        if course_row and course_row[0]:
+    # 移动、排序或启停课时时，同时维护旧课程与新课程的活动课时计数。
+    if {"course_id", "order", "is_active"}.intersection(body):
+        affected_course_ids = {str(original_course_id), str(body.get("course_id", original_course_id))}
+        for affected_course_id in affected_course_ids:
             await db.execute(
                 text(
                     "UPDATE public.courses SET total_lessons = ("
-                    "SELECT COUNT(*) FROM public.lessons WHERE course_id = :cid AND is_active = true"
+                    "SELECT COUNT(*) FROM public.lessons "
+                    "WHERE course_id = :cid AND is_active = true AND deleted_at IS NULL"
                     "), updated_at = NOW() WHERE id = :cid"
                 ),
-                {"cid": str(course_row[0])},
+                {"cid": affected_course_id},
             )
 
     return {"success": True, "message": "课时已更新"}
@@ -1134,45 +1236,12 @@ async def lesson_delete_api(
     if auth:
         return auth
 
-    # 先获取 lesson 的 course_id
-    lesson_row = (await db.execute(
-        text("SELECT course_id FROM public.lessons WHERE id = :id"),
-        {"id": lesson_id},
-    )).fetchone()
+    return await _apply_admin_change(request, db, "lesson", lesson_id, "soft_delete")
 
-    if not lesson_row:
-        return JSONResponse(status_code=404, content={"success": False, "message": "课时不存在"})
 
-    course_id = str(lesson_row[0])
-
-    # 按依赖顺序清理关联数据
-    await db.execute(
-        text("DELETE FROM public.user_lessons WHERE lesson_id = :id"),
-        {"id": lesson_id},
-    )
-    await db.execute(
-        text("DELETE FROM public.chat_messages WHERE lesson_id = :id"),
-        {"id": lesson_id},
-    )
-    result = await db.execute(
-        text("DELETE FROM public.lessons WHERE id = :id"),
-        {"id": lesson_id},
-    )
-
-    if result.rowcount == 0:
-        return JSONResponse(status_code=404, content={"success": False, "message": "课时不存在"})
-
-    # 重新计算课程的 total_lessons
-    await db.execute(
-        text(
-            "UPDATE public.courses SET total_lessons = ("
-            "SELECT COUNT(*) FROM public.lessons WHERE course_id = :cid AND is_active = true"
-            "), updated_at = NOW() WHERE id = :cid"
-        ),
-        {"cid": course_id},
-    )
-
-    return {"success": True, "message": "课时已删除"}
+@router.post("/lessons/api/{lesson_id}/restore")
+async def lesson_restore_api(lesson_id: str, request: Request, db: AsyncSession = Depends(get_db)):
+    return await _apply_admin_change(request, db, "lesson", lesson_id, "restore")
 
 
 # ============ 课时详情 API ============
@@ -1204,7 +1273,7 @@ async def lesson_detail_api(
         text(
             'SELECT id, course_id, title, description, type, duration, "order", '
             "content, is_active, created_at, updated_at "
-            "FROM public.lessons WHERE id = :id"
+            "FROM public.lessons WHERE id = :id AND deleted_at IS NULL"
         ),
         {"id": lesson_id},
     )).fetchone()
@@ -1266,11 +1335,14 @@ async def lessons_reorder_api(
             if item_id is None or item_order is None:
                 continue
             await db.execute(
-                text('UPDATE public.lessons SET "order" = :order, updated_at = NOW() WHERE id = :id'),
+                text(
+                    'UPDATE public.lessons SET "order" = :order, updated_at = NOW() '
+                    "WHERE id = :id AND deleted_at IS NULL"
+                ),
                 {"id": item_id, "order": item_order},
             )
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"success": False, "message": f"排序失败: {str(e)}"})
+    except Exception:
+        return PlainTextResponse("课时排序失败", status_code=500)
 
     return {"success": True, "message": "排序已更新"}
 
@@ -1308,6 +1380,7 @@ async def questions_api_list(
     difficulty: Optional[str] = Query(None),
     question_type: Optional[str] = Query(None, alias="type"),
     keyword: Optional[str] = Query(None),
+    state: str = Query("active", pattern="^(active|deleted)$"),
     page: int = Query(1, ge=1),
     page_size: int = Query(15, ge=1, le=100),
 ):
@@ -1334,7 +1407,7 @@ async def questions_api_list(
     if auth:
         return auth
 
-    conditions = ["TRUE"]
+    conditions = ["deleted_at IS NOT NULL" if state == "deleted" else "deleted_at IS NULL"]
     params: dict = {}
 
     if subject:
@@ -1426,7 +1499,7 @@ async def question_detail_api(
                 "SELECT id, subject, age_group, difficulty, grade, content, "
                 "options, correct_answer, explanation, type, tags, source, "
                 "language "
-                "FROM public.questions WHERE id = :id"
+                "FROM public.questions WHERE id = :id AND deleted_at IS NULL"
             ),
             {"id": question_id},
         )).fetchone()
@@ -1452,8 +1525,8 @@ async def question_detail_api(
                 "language": row[12],
             }
         })
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"success": False, "message": str(e)})
+    except Exception:
+        return PlainTextResponse("题目信息查询失败", status_code=500)
 
 
 @router.post("/questions/api/create")
@@ -1527,8 +1600,8 @@ async def question_create_api(
             },
         )
         question_id = result.scalar()
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"success": False, "message": f"创建失败: {str(e)}"})
+    except Exception:
+        return PlainTextResponse("题目创建失败", status_code=500)
 
     return {"success": True, "message": "题目已创建", "id": question_id}
 
@@ -1601,7 +1674,7 @@ async def question_update_api(
 
     updates.append("created_at = NOW()")
 
-    sql = f"UPDATE public.questions SET {', '.join(updates)} WHERE id = :id"
+    sql = f"UPDATE public.questions SET {', '.join(updates)} WHERE id = :id AND deleted_at IS NULL"
     result = await db.execute(text(sql), params)
 
     if result.rowcount == 0:
@@ -1631,15 +1704,12 @@ async def question_delete_api(
     if auth:
         return auth
 
-    result = await db.execute(
-        text("DELETE FROM public.questions WHERE id = :id"),
-        {"id": question_id},
-    )
+    return await _apply_admin_change(request, db, "question", str(question_id), "soft_delete")
 
-    if result.rowcount == 0:
-        return JSONResponse(status_code=404, content={"success": False, "message": "题目不存在"})
 
-    return {"success": True, "message": "题目已删除"}
+@router.post("/questions/api/{question_id}/restore")
+async def question_restore_api(question_id: int, request: Request, db: AsyncSession = Depends(get_ai_learn_db)):
+    return await _apply_admin_change(request, db, "question", str(question_id), "restore")
 
 
 @router.post("/questions/api/import")
@@ -1724,9 +1794,9 @@ async def questions_import_api(
                 },
             )
             imported += 1
-        except Exception as e:
+        except Exception:
             failed += 1
-            errors.append({"index": idx, "reason": str(e)})
+            errors.append({"index": idx, "reason": "题目数据无效或写入失败"})
 
     return {
         "success": True,

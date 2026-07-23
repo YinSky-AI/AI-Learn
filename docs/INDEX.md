@@ -4,7 +4,7 @@
 
 ## 当前入口
 
-- [`../agent.md`](../agent.md)：项目提示词体系的顶层入口。
+- [`../AGENTS.md`](../AGENTS.md)：Codex 与其他编码 Agent 自动读取的项目工作规则；它不参与应用运行时。
 - [`prompts_3/`](prompts_3/)：当前已实施功能的设计依据，包含两层 AI 出题、四角色辅导、错题本、游戏化、行为报告、知识图谱、PWA 和竞赛系统。
 - [`prompts_4/README.md`](prompts_4/README.md)：基于优化报告拆分的尚未实施优化待办包；提示词已编写，不代表功能已经实施。
 - [`reviews/project-optimization-summary.html`](reviews/project-optimization-summary.html)：合并后的架构、安全、交付、性能和产品优化报告。
@@ -13,7 +13,7 @@
 
 - [`advises/`](advises/)：产品构想、竞品分析与改进建议。
 - [`prompts_1/`](prompts_1/)：初始产品、架构、数据模型、测试与验收设计。
-- [`prompts_2/`](prompts_2/)：历史题库方案，仅作历史参考；当前 AI 出题以 `prompts_3` 的两层出题/审题设计为准。
+- [`prompts_2（已废弃）/`](prompts_2（已废弃）/)：历史题库方案，仅供追溯；当前 AI 出题以 `prompts_3` 的两层出题/审题设计为准，不恢复旧的复杂 Agent 分层。
 
 ## 审查与归档
 
@@ -29,8 +29,8 @@
 
 ## 文档使用顺序
 
-1. 先阅读根目录 `agent.md` 了解项目总体目标和提示词入口。
+1. 先阅读根目录 `AGENTS.md` 了解项目事实、工作流程、安全边界和验收要求。
 2. 新功能和当前实现以 `prompts_3/` 为主要设计依据。
 3. 产品方向参考 `advises/`，早期背景参考 `prompts_1/`。
-4. `prompts_2/` 只用于理解历史题库方案，不恢复其中已经废弃的复杂 Agent 分层。
+4. `prompts_2（已废弃）/` 只用于理解历史题库方案，不恢复其中已经废弃的复杂 Agent 分层。
 5. 开始下一轮重构前，先查看合并优化报告中的优先级和依赖关系。

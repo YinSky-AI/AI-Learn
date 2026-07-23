@@ -37,10 +37,13 @@
         </div>
         <div class="flex items-center space-x-4">
             <a href="/admin" class="text-gray-300 hover:text-white text-sm">仪表盘</a>
-            <a href="/admin/logout" class="text-gray-300 hover:text-red-400 text-sm flex items-center space-x-1">
+            <form method="POST" action="/admin/logout" class="inline">
+                <input type="hidden" name="csrf_token" id="admin-logout-csrf">
+                <button type="submit" class="text-gray-300 hover:text-red-400 text-sm flex items-center space-x-1">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                 <span>退出</span>
-            </a>
+                </button>
+            </form>
         </div>
     </nav>
 
@@ -68,6 +71,10 @@
                     <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
                     用户管理
                 </a>
+                <a href="/admin/recovery" class="sidebar-link flex items-center px-5 py-3 text-sm {% if active_page == 'recovery' %}active{% endif %}">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M3 10l4-4m-4 4l4 4m4-8h2a6 6 0 010 12H9"/></svg>
+                    恢复中心
+                </a>
             </div>
         </aside>
 
@@ -77,6 +84,31 @@
         </main>
     </div>
 
+    <script>
+        (() => {
+            const csrfToken = decodeURIComponent(
+                (document.cookie.match(/(?:^|; )admin_csrf=([^;]*)/) || [])[1] || ''
+            );
+            const logoutToken = document.getElementById('admin-logout-csrf');
+            if (logoutToken) logoutToken.value = csrfToken;
+            const originalFetch = window.fetch.bind(window);
+            window.readAdminResponse = async (response) => {
+                const contentType = response.headers.get('content-type') || '';
+                if (contentType.includes('application/json')) return response.json();
+                const message = await response.text();
+                return { success: response.ok, message: message || '请求失败' };
+            };
+            window.fetch = (input, init = {}) => {
+                const method = String(init.method || 'GET').toUpperCase();
+                if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
+                    const headers = new Headers(init.headers || {});
+                    headers.set('X-CSRF-Token', csrfToken);
+                    init = { ...init, headers };
+                }
+                return originalFetch(input, init);
+            };
+        })();
+    </script>
     {% block extra_script %}{% endblock %}
 </body>
 </html>

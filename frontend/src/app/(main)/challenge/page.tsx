@@ -6,6 +6,23 @@ import { MainLayout } from "@/components/layout/main-layout";
 import { Button } from "@/components/ui/button";
 import apiClient from "@/lib/api-client";
 
+type PracticeScope = {
+  ageGroup: string;
+  subject: string;
+  topic: string;
+  difficulty: string;
+  questionType: string;
+};
+
+// 未来将用于每日挑战筛选；当前每日挑战仍使用服务端统一题目，保证排行榜公平。
+const futurePracticeScope: PracticeScope = {
+  ageGroup: "",
+  subject: "",
+  topic: "",
+  difficulty: "",
+  questionType: "",
+};
+
 type Option = { key: string; value: string };
 type Question = {
   id: string;
@@ -55,6 +72,11 @@ function ChallengeContent() {
   const [remaining, setRemaining] = useState(0);
   const submitEventId = useRef("");
   const autoSubmitted = useRef(false);
+  const typeInstruction = (question: Question) => {
+    if (question.question_type === "MULTIPLE_CHOICE") return "多选题 · 可选择多项";
+    if (question.question_type === "FILL_BLANK") return "填空题 · 请填写 1 个空";
+    return "单选题 · 请选择 1 项";
+  };
 
   useEffect(() => {
     if (!challenge || challenge.completed) return;
@@ -145,14 +167,19 @@ function ChallengeContent() {
           <div className="flex items-center gap-3">
             <span className="rounded-2xl bg-white/15 p-3"><Trophy className="h-8 w-8" /></span>
             <div>
-              <h1 className="text-2xl font-bold">每日挑战</h1>
-              <p className="mt-1 text-blue-100">服务端计时计分，每天只有一次成绩机会。</p>
+              <h1 className="text-2xl font-bold">挑战与练习</h1>
+              <p className="mt-1 text-blue-100">每日挑战计时计分；也可按自己的目标进入 AI 自定义练习。</p>
             </div>
           </div>
           {!challenge && (
-            <Button className="bg-white text-blue-700 hover:bg-blue-50" disabled={loading} onClick={start}>
-              {loading ? "准备题目中…" : "开始今日挑战"}
-            </Button>
+            <div className="flex flex-wrap gap-2">
+              <Button className="bg-white text-blue-700 hover:bg-blue-50" disabled={loading} onClick={start}>
+                {loading ? "准备题目中…" : "每日挑战"}
+              </Button>
+              <Button variant="outline" className="border-white/50 bg-white/10 text-white hover:bg-white/20 hover:text-white" onClick={() => window.location.assign("/ai-questions")}>
+                AI 自定义练习
+              </Button>
+            </div>
           )}
         </div>
       </section>
@@ -196,28 +223,39 @@ function ChallengeContent() {
             const selected = new Set((answers[question.id] || "").split(",").filter(Boolean));
             return (
               <article key={question.id} className="rounded-2xl border bg-white p-5 shadow-sm">
-                <p className="font-medium">{question.position}. {question.question_body}</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="font-medium">{question.position}. {question.question_body}</p>
+                  <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">{typeInstruction(question)}</span>
+                </div>
                 {question.options.length ? (
                   <div className="mt-4 grid gap-2">
                     {question.options.map((option) => (
-                      <button
+                      <label
                         key={option.key}
-                        type="button"
-                        onClick={() => selectOption(question, option.key)}
-                        className={`rounded-lg border p-3 text-left text-sm transition ${selected.has(option.key) ? "border-blue-600 bg-blue-50 text-blue-800" : "hover:bg-gray-50"}`}
+                        className={`flex cursor-pointer items-center gap-3 rounded-lg border p-3 text-left text-sm transition ${selected.has(option.key) ? "border-blue-600 bg-blue-50 text-blue-800" : "hover:bg-gray-50"}`}
                       >
+                        <input
+                          type={question.question_type === "MULTIPLE_CHOICE" ? "checkbox" : "radio"}
+                          name={question.id}
+                          checked={selected.has(option.key)}
+                          onChange={() => selectOption(question, option.key)}
+                          aria-label={typeInstruction(question)}
+                        />
                         {option.key}. {option.value}
-                      </button>
+                      </label>
                     ))}
                   </div>
                 ) : (
-                  <input
-                    className="mt-4 w-full rounded-lg border px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-                    value={answers[question.id] || ""}
-                    onChange={(event) => setAnswers((current) => ({ ...current, [question.id]: event.target.value }))}
-                    placeholder="请输入答案"
-                    maxLength={500}
-                  />
+                  <label className="mt-4 block text-sm text-gray-600">
+                    填空 1
+                    <input
+                      className="mt-2 w-full rounded-lg border px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                      value={answers[question.id] || ""}
+                      onChange={(event) => setAnswers((current) => ({ ...current, [question.id]: event.target.value }))}
+                      placeholder="请输入这一空的答案"
+                      maxLength={500}
+                    />
+                  </label>
                 )}
               </article>
             );

@@ -43,6 +43,7 @@ from app.models.achievement import Achievement, UserAchievement  # noqa: E402, F
 from app.models.ai_generated import (  # noqa: E402, F401
     GeneratedQuestionBatch,
     GeneratedQuestion,
+    GenerationJob,
     QuestionQualityCheck,
     HarnessRun,
     ToolCallLog,
@@ -58,6 +59,7 @@ from app.models.course import (  # noqa: E402, F401
     UserLesson,
     ChatMessage,
 )
+from app.models.admin_change import AdminChangeAudit  # noqa: E402, F401
 
 __all__ = [
     "Base",
@@ -79,6 +81,7 @@ __all__ = [
     "UserAchievement",
     "GeneratedQuestionBatch",
     "GeneratedQuestion",
+    "GenerationJob",
     "QuestionQualityCheck",
     "HarnessRun",
     "ToolCallLog",
@@ -91,4 +94,5 @@ __all__ = [
     "UserCourse",
     "UserLesson",
     "ChatMessage",
+    "AdminChangeAudit",
 ]

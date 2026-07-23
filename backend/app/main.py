@@ -22,17 +22,20 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from loguru import logger
 from sqlalchemy import text
 
-from loguru import logger
-
 from app.core.config import settings
+from app.core.security import decode_token
+from app.core.observability import request_id_var, run_id_var
 from app.core.redis import redis_client
-from app.core.database import engine
-from app.models import Base
+from app.core.database import ai_learn_engine, engine
+from app.core.schema_version import SchemaVersionError, verify_schema_targets
 from app.api.v1.router import router as v1_router
 from app.admin.routes import router as admin_router
 from app.middlewares import add_exception_handlers, RequestLoggingMiddleware
+from app.middlewares.admin_access import AdminAccessMiddleware
+from app.services.admin_auth import AdminAuthService
 
 
 # ============ 速率限制中间件（基于 Redis 滑动窗口）============
@@ -53,12 +56,20 @@ async def rate_limit_middleware(request: Request, call_next):
         Response: FastAPI 响应对象（可能被限流拦截）
     """
     # 跳过健康检查、文档路径和管理后台
-    skip_paths = {"/health", "/docs", "/redoc", "/openapi.json"}
+    skip_paths = {"/health", "/ready", "/live", "/docs", "/redoc", "/openapi.json"}
     if request.url.path in skip_paths or request.url.path.startswith("/admin"):
         return await call_next(request)
 
     # 获取客户端标识（优先使用用户ID，否则使用 IP）
-    client_id = request.headers.get("X-Client-ID") or request.client.host
+    client_id = request.client.host or "unknown"
+    authorization = request.headers.get("Authorization", "")
+    if authorization.lower().startswith("bearer "):
+        try:
+            payload = decode_token(authorization[7:].strip())
+            if payload.get("type") == "access" and payload.get("sub"):
+                client_id = f"user:{payload['sub']}"
+        except ValueError:
+            pass
     key = f"rate:{client_id}"
 
     try:
@@ -66,14 +77,16 @@ async def rate_limit_middleware(request: Request, call_next):
         window_start = current_time - 60  # 60秒窗口
 
         # 使用 Redis 有序集合实现滑动窗口
-        now = f"{current_time:.3f}"
-        await redis_client.client.zadd(key, {now: current_time})
-        # 清理窗口外的记录
-        await redis_client.client.zremrangebyscore(key, 0, window_start)
-        # 统计窗口内请求数
-        count = await redis_client.client.zcard(key)
+        member = f"{current_time:.6f}:{uuid.uuid4().hex}"
+        count = await redis_client.client.eval(
+            "local key=KEYS[1]; local now=tonumber(ARGV[1]); "
+            "redis.call('ZREMRANGEBYSCORE', key, 0, now-tonumber(ARGV[2])); "
+            "redis.call('ZADD', key, now, ARGV[3]); "
+            "redis.call('EXPIRE', key, 120); return redis.call('ZCARD', key)",
+            1, key, current_time, 60, member,
+        )
 
-        if count > settings.RATE_LIMIT_PER_MINUTE:
+        if count > settings.RATE_LIMIT_PER_MINUTE + settings.RATE_LIMIT_BURST:
             response = JSONResponse(
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
                 content={
@@ -92,8 +105,6 @@ async def rate_limit_middleware(request: Request, call_next):
                 response.headers["Access-Control-Allow-Origin"] = "*"
             return response
 
-        # 设置 key 过期时间
-        await redis_client.client.expire(key, 120)
     except Exception as e:
         # Redis 不可用时不阻止请求，仅记录日志
         logger.warning(f"速率限制检查失败（已跳过）: {e}")
@@ -119,10 +130,15 @@ async def request_id_middleware(request: Request, call_next):
         Response: 携带 X-Request-ID 响应头的 FastAPI 响应对象
     """
     request_id = request.headers.get("X-Request-ID", str(uuid.uuid4()))
+    run_id = str(uuid.uuid4())
     request.state.request_id = request_id
+    request.state.run_id = run_id
+    request_id_var.set(request_id)
+    run_id_var.set(run_id)
 
     response: Response = await call_next(request)
     response.headers["X-Request-ID"] = request_id
+    response.headers["X-Run-ID"] = run_id
     return response
 
 
@@ -134,11 +150,11 @@ async def lifespan(app: FastAPI):
     应用生命周期管理器
 
     使用异步上下文管理器管理应用的启动和关闭过程：
-    - 启动阶段：自动创建数据库表、初始化 Redis 连接
+    - 启动阶段：只读核验两个数据库 revision、初始化 Redis 连接
     - 关闭阶段：安全关闭 Redis 连接
 
-    数据库创建失败和 Redis 连接失败时仅记录警告日志，不会阻止应用启动，
-    确保服务具备降级运行能力。
+    Schema strict 策略不匹配时阻止启动；warn 仅用于未完成基线采用的本地兼容期。
+    Redis 连接失败时记录警告并使用降级模式。
 
     Args:
         app: FastAPI 应用实例
@@ -151,26 +167,28 @@ async def lifespan(app: FastAPI):
     logger.info(f"版本: {settings.APP_VERSION}")
     logger.info(f"调试模式: {settings.DEBUG}")
 
-    # 自动创建数据库表（开发环境）
     try:
-        async with engine.begin() as conn:
-            # 多 worker 会并行触发生命周期；用事务级 PostgreSQL 锁串行化建表，
-            # 避免两个 create_all 同时创建同名复合类型/表。
-            await conn.execute(text("SELECT pg_advisory_xact_lock(hashtext('learning_platform_schema'))"))
-            await conn.run_sync(Base.metadata.create_all)
-            # create_all 不会调整已有字段宽度。内部标准难度编码（如 DIFF_MEDIUM）
-            # 长于旧版 VARCHAR(10)，启动时进行幂等、非破坏性的字段扩容。
-            await conn.execute(text(
-                "ALTER TABLE IF EXISTS generated_question_batches "
-                "ALTER COLUMN difficulty_level TYPE VARCHAR(20)"
-            ))
-            await conn.execute(text(
-                "ALTER TABLE IF EXISTS generated_questions "
-                "ALTER COLUMN difficulty_level TYPE VARCHAR(20)"
-            ))
-        logger.info("数据库表检查/创建完成")
-    except Exception:
-        logger.exception("数据库表检查/创建失败，服务将停止启动")
+        schema_statuses = await verify_schema_targets(
+            {"primary": engine, "question-bank": ai_learn_engine},
+            policy=settings.SCHEMA_VERSION_POLICY,
+        )
+        for target_alias, schema_status in zip(
+            ("primary", "question-bank"), schema_statuses, strict=True
+        ):
+            if schema_status.compatible:
+                logger.info(
+                    "Schema revision 已核验: alias={} revision={}",
+                    target_alias,
+                    schema_status.expected_revision,
+                )
+            else:
+                logger.warning(
+                    "Schema revision 兼容期警告: alias={} message={}",
+                    target_alias,
+                    schema_status.message,
+                )
+    except SchemaVersionError as exc:
+        logger.error("Schema 版本检查失败，服务将停止启动: {}", exc)
         raise
 
     try:
@@ -201,6 +219,7 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
 )
+app.state.admin_auth_service = AdminAuthService()
 
 # ============ 注册中间件 ============
 
@@ -215,6 +234,7 @@ app.add_middleware(
 
 # 注册请求日志中间件
 app.add_middleware(RequestLoggingMiddleware)
+app.add_middleware(AdminAccessMiddleware)
 # 注册全局异常处理器
 add_exception_handlers(app)
 
@@ -238,6 +258,39 @@ async def test_error_dict():
 
 # ============ 健康检查端点 ============
 
+@app.get("/live", tags=["系统"])
+async def liveness_check():
+    return {"code": "SUCCESS", "message": "服务进程存活", "data": {"status": "alive"}, "meta": None}
+
+
+async def _readiness_response() -> dict:
+    checks = {"database": False, "redis": False}
+    try:
+        async with engine.connect() as connection:
+            await connection.execute(text("SELECT 1"))
+        checks["database"] = True
+    except Exception:
+        logger.warning("readiness database check failed")
+    try:
+        await redis_client.client.ping()
+        checks["redis"] = True
+    except Exception:
+        logger.warning("readiness redis check failed")
+    ready = all(checks.values())
+    return {
+        "code": "SUCCESS" if ready else "SERVICE_UNAVAILABLE",
+        "message": "服务就绪" if ready else "依赖服务尚未就绪",
+        "data": {"status": "healthy" if ready else "unready", "checks": checks},
+        "meta": None,
+    }
+
+
+@app.get("/ready", tags=["系统"])
+async def readiness_check():
+    payload = await _readiness_response()
+    return JSONResponse(status_code=200 if payload["data"]["status"] == "healthy" else 503, content=payload)
+
+
 @app.get("/health", tags=["系统"])
 async def health_check():
     """
@@ -249,16 +302,9 @@ async def health_check():
     Returns:
         dict: 包含应用名称、版本和运行状态的标准化响应
     """
-    return {
-        "code": "SUCCESS",
-        "message": "服务运行正常",
-        "data": {
-            "app_name": settings.APP_NAME,
-            "version": settings.APP_VERSION,
-            "status": "healthy",
-        },
-        "meta": None,
-    }
+    payload = await _readiness_response()
+    payload["data"].update({"app_name": settings.APP_NAME, "version": settings.APP_VERSION})
+    return JSONResponse(status_code=200 if payload["data"]["status"] == "healthy" else 503, content=payload)
 
 
 @app.get("/", tags=["系统"])

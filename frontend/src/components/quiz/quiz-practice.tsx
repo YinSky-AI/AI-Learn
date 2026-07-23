@@ -10,7 +10,7 @@
 
 "use client";
 
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import React, { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,11 @@ import { TutorChat } from "@/components/ai/tutor-chat";
 import type { GamificationReward } from "@/components/gamification/reward-summary";
 import apiClient from "@/lib/api-client";
 import { cn } from "@/lib/utils";
+import {
+  createSubmitGuard,
+  resolveAnswerRequest,
+  serverStatsToCompletionResult,
+} from "./quiz-retry-state.mjs";
 import {
   CheckCircle2,
   XCircle,
@@ -89,6 +94,20 @@ interface AnswerResultPayload {
   gamification?: GamificationReward | null;
 }
 
+interface SessionStatsPayload {
+  correct_count: number;
+  total_questions: number;
+  accuracy_rate: number;
+  total_time_seconds: number;
+}
+
+interface AnswerRequestPayload {
+  questionId: string;
+  answerId: string;
+  userAnswer: string;
+  timeSpentSeconds: number;
+}
+
 type PracticeSessionState = "idle" | "answering" | "submitting" | "submitted" | "completing" | "completed" | "error";
 
 /**
@@ -127,6 +146,9 @@ export default function QuizPractice({
   const [isFinishing, setIsFinishing] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [sessionState, setSessionState] = useState<PracticeSessionState>("idle");
+  const [completionStats, setCompletionStats] = useState<SessionStatsPayload | null>(null);
+  const answerRequestRef = useRef<AnswerRequestPayload | null>(null);
+  const submitGuardRef = useRef(createSubmitGuard());
 
   const totalCount = questions.length;
   const currentQuestion = questions[currentIndex];
@@ -139,6 +161,7 @@ export default function QuizPractice({
     setQuestionStartedAt(Date.now());
     setSubmitError("");
     setSessionState("answering");
+    answerRequestRef.current = null;
   }, [currentIndex]);
 
   const progress = useMemo(
@@ -148,13 +171,13 @@ export default function QuizPractice({
 
   /** 单选题选择 */
   const handleSingleSelect = useCallback((key: string) => {
-    if (submitted) return;
+    if (submitted || isSubmitting || submitGuardRef.current.isSubmitting()) return;
     setUserAnswer(key);
-  }, [submitted]);
+  }, [isSubmitting, submitted]);
 
   /** 多选题切换 */
   const handleMultiToggle = useCallback((key: string) => {
-    if (submitted) return;
+    if (submitted || isSubmitting || submitGuardRef.current.isSubmitting()) return;
     setSelectedOptions((prev) => {
       const next = new Set(prev);
       if (next.has(key)) {
@@ -167,17 +190,17 @@ export default function QuizPractice({
       setUserAnswer(sorted.join(","));
       return next;
     });
-  }, [submitted]);
+  }, [isSubmitting, submitted]);
 
   /** 填空题输入 */
   const handleFillInput = useCallback((value: string) => {
-    if (submitted) return;
+    if (submitted || isSubmitting || submitGuardRef.current.isSubmitting()) return;
     setUserAnswer(value);
-  }, [submitted]);
+  }, [isSubmitting, submitted]);
 
   /** 提交当前题：会话创建、判题、错题与奖励均由服务端事务完成。 */
   const handleSubmit = useCallback(async () => {
-    if (!currentQuestion || !userAnswer.trim() || isSubmitting) return;
+    if (!currentQuestion || !userAnswer.trim() || !submitGuardRef.current.begin()) return;
     setIsSubmitting(true);
     setSessionState("submitting");
     setSubmitError("");
@@ -193,13 +216,20 @@ export default function QuizPractice({
         setSessionId(activeSessionId);
       }
 
+      const answerRequest = resolveAnswerRequest(
+        answerRequestRef.current,
+        currentQuestion.id,
+        userAnswer,
+        Math.max(0, Math.round((Date.now() - questionStartedAt) / 1000)),
+      );
+      answerRequestRef.current = answerRequest;
       const answer = await apiClient.post<AnswerResultPayload>(
         `/v1/learning/sessions/${activeSessionId}/answer`,
         {
-          question_id: currentQuestion.id,
-          answer_id: crypto.randomUUID(),
-          user_answer: userAnswer,
-          time_spent_seconds: Math.max(0, Math.round((Date.now() - questionStartedAt) / 1000)),
+          question_id: answerRequest.questionId,
+          answer_id: answerRequest.answerId,
+          user_answer: answerRequest.userAnswer,
+          time_spent_seconds: answerRequest.timeSpentSeconds,
         }
       );
       setResults((previous) => ({
@@ -223,9 +253,10 @@ export default function QuizPractice({
       setSessionState("error");
       setSubmitError("答案提交失败，请稍后重试。");
     } finally {
+      submitGuardRef.current.end();
       setIsSubmitting(false);
     }
-  }, [currentQuestion, difficultyLevel, isSubmitting, knowledgeNodeId, questionStartedAt, sessionId, userAnswer]);
+  }, [currentQuestion, difficultyLevel, knowledgeNodeId, questionStartedAt, sessionId, userAnswer]);
 
   /** 进入下一题 */
   const handleNext = useCallback(() => {
@@ -260,6 +291,8 @@ export default function QuizPractice({
     setShowSummary(false);
     setSelectedOptions(new Set());
     setSessionId(null);
+    setCompletionStats(null);
+    answerRequestRef.current = null;
     setStartTime(Date.now());
     setQuestionStartedAt(Date.now());
   }, [sessionId]);
@@ -271,18 +304,19 @@ export default function QuizPractice({
     setSessionState("completing");
     setSubmitError("");
     try {
+      let serverStats: SessionStatsPayload | null = null;
       if (sessionId) {
-        await apiClient.post(`/v1/learning/sessions/${sessionId}/complete`, {});
+        serverStats = await apiClient.post<SessionStatsPayload>(`/v1/learning/sessions/${sessionId}/complete`, {});
       }
-    const correctCount = Object.values(results).filter((r) => r.isCorrect).length;
-    const timeSpentSeconds = Math.round((Date.now() - startTime) / 1000);
-    onComplete({
-      correctCount,
-      totalCount,
-      accuracy: totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0,
-      timeSpentSeconds,
-    });
-    setSessionState("completed");
+      const localResult = {
+        correctCount: Object.values(results).filter((r) => r.isCorrect).length,
+        totalCount,
+        accuracy: totalCount > 0 ? Math.round((Object.values(results).filter((r) => r.isCorrect).length / totalCount) * 100) : 0,
+        timeSpentSeconds: Math.round((Date.now() - startTime) / 1000),
+      };
+      if (serverStats) setCompletionStats(serverStats);
+      onComplete(serverStats ? serverStatsToCompletionResult(serverStats) : localResult);
+      setSessionState("completed");
     } catch {
       setSessionState("error");
       setSubmitError("本次测验暂时无法结算，请稍后重试。");
@@ -305,9 +339,14 @@ export default function QuizPractice({
 
   // 结果汇总页
   if (showSummary) {
-    const correctCount = Object.values(results).filter((r) => r.isCorrect).length;
-    const accuracy = totalCount > 0 ? Math.round((correctCount / totalCount) * 100) : 0;
-    const timeSpentSeconds = Math.round((Date.now() - startTime) / 1000);
+    const summary = completionStats
+      ? serverStatsToCompletionResult(completionStats)
+      : {
+          correctCount: Object.values(results).filter((r) => r.isCorrect).length,
+          totalCount,
+          accuracy: totalCount > 0 ? Math.round((Object.values(results).filter((r) => r.isCorrect).length / totalCount) * 100) : 0,
+          timeSpentSeconds: Math.round((Date.now() - startTime) / 1000),
+        };
 
     return (
       <Card className="shadow-card overflow-hidden">
@@ -321,15 +360,15 @@ export default function QuizPractice({
           {/* 核心数据 */}
           <div className="grid grid-cols-3 gap-4">
             <div className="flex flex-col items-center rounded-xl bg-green-50 p-4">
-              <span className="text-2xl font-bold text-green-600">{correctCount}</span>
+              <span className="text-2xl font-bold text-green-600">{summary.correctCount}</span>
               <span className="text-xs text-green-700 mt-1">答对题数</span>
             </div>
             <div className="flex flex-col items-center rounded-xl bg-blue-50 p-4">
-              <span className="text-2xl font-bold text-brand-blue">{accuracy}%</span>
+              <span className="text-2xl font-bold text-brand-blue">{summary.accuracy}%</span>
               <span className="text-xs text-blue-700 mt-1">正确率</span>
             </div>
             <div className="flex flex-col items-center rounded-xl bg-amber-50 p-4">
-              <span className="text-2xl font-bold text-amber-600">{timeSpentSeconds}</span>
+              <span className="text-2xl font-bold text-amber-600">{summary.timeSpentSeconds}</span>
               <span className="text-xs text-amber-700 mt-1">用时(秒)</span>
             </div>
           </div>
@@ -443,7 +482,7 @@ export default function QuizPractice({
                   placeholder="请输入你的答案..."
                   value={userAnswer}
                   onChange={(e) => handleFillInput(e.target.value)}
-                  disabled={submitted}
+                  disabled={submitted || isSubmitting}
                   className={cn(
                     "h-11",
                     submitted &&
@@ -477,7 +516,7 @@ export default function QuizPractice({
                 return (
                   <button
                     key={option.key}
-                    disabled={submitted}
+                    disabled={submitted || isSubmitting}
                     onClick={() =>
                       currentQuestion.type === "CHOICE"
                         ? handleSingleSelect(option.key)

@@ -49,3 +49,14 @@ Status: DONE
 - 本轮只在可丢弃测试库演练迁移，未对常规/生产数据库执行迁移，也未重建正在运行的完整应用编排；集成重建属于 Task 4。
 - 测试保留了仓库既有的 `datetime.utcnow()` 弃用警告与一条 health resource warning，本次没有新增对应调用。
 - 定向测试中的旧变式题断言与当前持久化队列事实不一致；已只将测试更新为当前 `queued/job_id` 契约，未改动变式题实现。
+
+## Review Fix (2026-07-23)
+
+- 修复错题重练竞态：更新 `review_count`、`difficulty_factor` 和 `next_review_at` 前对归属当前用户的 `wrong_questions` 行执行 `FOR UPDATE`；真实双会话测试确认两个不同 attempt 均被保留，最终 `review_count=2`、`difficulty_factor=120`。
+- AI 提交与错题 attempt 的幂等指纹改为只依赖初始请求快照，不再读取当前 `question_type`；历史答案/奖励/attempt 的题目 ID 改为不可变引用值，不再因题目删除被级联清除。同 ID 同原请求在题目删除、题型变化或批次状态变化后仍返回持久化快照，不同请求返回 HTTP 409，所有权校验保持不变。
+- 错题 API 在 Task 3 前保持兼容：`attempt_id` 可省略，服务端生成 UUID；显式 ID 仍提供幂等语义。
+- 新增错题 attempt 的 `created` / `replayed` / `conflict` 追踪日志，只记录 attempt 哈希键，不记录答案或完整用户 ID。
+- 新增 AI 提交真实双会话并发测试，以及第二题奖励写入后注入异常的事务回滚测试；回滚后 submission、answers、reward events、用户统计和行为报告均无半成品。
+- 定向回归：`97 passed`；全量后端：`191 passed`。隔离库执行 `lp_0009 -> lp_0008 -> lp_0009 -> check`，结果均成功且 `No new upgrade operations detected.`；临时测试容器及密钥文件已清理。
+- Docker Desktop GUI 已目视核验：Engine running，`ai-learn` 的 frontend/backend/generation-worker/nginx/postgres/redis 均为绿色运行状态，未见错误提示；`docker compose ps --all` 同步确认 backend/frontend/nginx healthy，未残留 `postgres-test`。
+- 变式题测试断言未回退：当前生产实现明确返回持久化队列契约 `status=queued` 与 `job_id`；回退为旧 `failed/variant_id` 断言会使未改动生产代码的基线测试失败，因此保留现有断言并未修改任何变式题生产实现。

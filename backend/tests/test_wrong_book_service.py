@@ -1,8 +1,12 @@
+import asyncio
+import logging
 import uuid
-from datetime import datetime
+from datetime import date, datetime, timezone
 from types import SimpleNamespace
 
 import pytest
+from sqlalchemy import func, select
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 
 def test_review_scheduler_is_deterministic_and_distinguishes_success():
@@ -365,3 +369,193 @@ async def test_wrong_book_practice_payload_includes_question_type(monkeypatch):
     )
 
     assert response["data"]["questions"][0]["question_type"] == "MULTIPLE_CHOICE"
+
+
+def test_wrong_book_practice_attempt_id_is_temporarily_optional():
+    from app.api.v1.wrong_book import PracticeAnswerSubmit
+
+    assert PracticeAnswerSubmit.model_fields["attempt_id"].is_required() is False
+
+
+@pytest.mark.asyncio
+async def test_wrong_book_api_generates_attempt_id_when_legacy_client_omits_it(monkeypatch):
+    from app.api.v1 import wrong_book as wrong_book_api
+
+    captured = {}
+
+    async def fake_submit(_self, user_id, question_id, user_answer, *, attempt_id):
+        captured.update(
+            user_id=user_id,
+            question_id=question_id,
+            user_answer=user_answer,
+            attempt_id=attempt_id,
+        )
+        return {"found": True, "is_correct": True}
+
+    monkeypatch.setattr(
+        wrong_book_api.WrongBookService, "submit_practice_answer", fake_submit
+    )
+    user_id, question_id = uuid.uuid4(), uuid.uuid4()
+    request = wrong_book_api.PracticeAnswerSubmit(
+        question_id=question_id, user_answer="A"
+    )
+
+    await wrong_book_api.submit_practice_answer(request, user_id=user_id, db=object())
+
+    assert captured["user_id"] == user_id
+    assert captured["question_id"] == question_id
+    assert isinstance(captured["attempt_id"], uuid.UUID)
+
+
+async def _create_real_wrong_practice_record(db_session, *, suffix: str):
+    from app.models.content import AgeGroup, KnowledgeNode, Question, Subject
+    from app.models.user import User
+    from app.models.wrong_book import WrongQuestion
+
+    user_id, node_id, question_id = (uuid.uuid4() for _ in range(3))
+    subject_code = f"WB_{suffix}"
+    age_code = f"WA_{suffix}"
+    db_session.add_all(
+        [
+            Subject(code=subject_code, name="Wrong practice", sort_order=0),
+            AgeGroup(
+                code=age_code,
+                name="Wrong practice age",
+                min_age=10,
+                max_age=12,
+                theme_config={},
+            ),
+            User(
+                id=user_id,
+                nickname="Wrong practice user",
+                email=f"wrong-practice-{user_id}@example.test",
+                password_hash="hash",
+                birth_date=date(2012, 1, 1),
+                age_group=age_code,
+            ),
+            KnowledgeNode(
+                id=node_id,
+                title="Sets",
+                subject_code=subject_code,
+                age_group_code=age_code,
+                difficulty_level="DIFF_EASY",
+                content_type="TYPE_QUIZ",
+                content_body="test",
+            ),
+        ]
+    )
+    await db_session.flush()
+    question = Question(
+        id=question_id,
+        knowledge_node_id=node_id,
+        difficulty_level="DIFF_EASY",
+        question_type="MULTIPLE_CHOICE",
+        question_body="Choose",
+        options=[{"key": "A"}, {"key": "C"}],
+        correct_answer="A,C",
+        explanation="Both",
+    )
+    db_session.add_all(
+        [
+            question,
+            WrongQuestion(
+                user_id=user_id,
+                question_id=question_id,
+                subject="Math",
+                wrong_count=1,
+                first_wrong_at=datetime.now(timezone.utc),
+                last_wrong_at=datetime.now(timezone.utc),
+                next_review_at=datetime.now(timezone.utc),
+            ),
+        ]
+    )
+    await db_session.commit()
+    return user_id, question_id, question
+
+
+@pytest.mark.asyncio
+async def test_concurrent_wrong_practice_attempts_preserve_both_schedule_updates(db_session):
+    from app.models.wrong_book import WrongPracticeAttempt, WrongQuestion
+    from app.services.wrong_book_service import WrongBookService
+
+    user_id, question_id, _ = await _create_real_wrong_practice_record(
+        db_session, suffix="CONC"
+    )
+    session_factory = async_sessionmaker(
+        db_session.bind,
+        class_=AsyncSession,
+        expire_on_commit=False,
+        autoflush=False,
+    )
+
+    async def submit_once():
+        async with session_factory() as session:
+            result = await WrongBookService(session).submit_practice_answer(
+                user_id, question_id, "C,A", attempt_id=uuid.uuid4()
+            )
+            await session.commit()
+            return result
+
+    results = await asyncio.gather(submit_once(), submit_once())
+
+    assert all(result["is_correct"] is True for result in results)
+    db_session.expire_all()
+    record = (
+        await db_session.execute(
+            select(WrongQuestion).where(
+                WrongQuestion.user_id == user_id,
+                WrongQuestion.question_id == question_id,
+            )
+        )
+    ).scalar_one()
+    attempt_count = (
+        await db_session.execute(
+            select(func.count()).select_from(WrongPracticeAttempt).where(
+                WrongPracticeAttempt.user_id == user_id,
+                WrongPracticeAttempt.question_id == question_id,
+            )
+        )
+    ).scalar_one()
+    assert attempt_count == 2
+    assert record.review_count == 2
+    assert record.difficulty_factor == 120
+
+
+@pytest.mark.asyncio
+async def test_wrong_practice_replay_uses_immutable_request_snapshot_and_logs_safely(
+    db_session, caplog
+):
+    from fastapi import HTTPException
+    from app.models.wrong_book import WrongPracticeAttempt
+    from app.services.wrong_book_service import WrongBookService
+
+    user_id, question_id, question = await _create_real_wrong_practice_record(
+        db_session, suffix="SNAP"
+    )
+    attempt_id = uuid.uuid4()
+    service = WrongBookService(db_session)
+    with caplog.at_level(logging.INFO, logger="app.services.wrong_book_service"):
+        first = await service.submit_practice_answer(
+            user_id, question_id, " C, A ", attempt_id=attempt_id
+        )
+        await db_session.commit()
+        await db_session.delete(question)
+        await db_session.commit()
+        replay = await service.submit_practice_answer(
+            user_id, question_id, " C, A ", attempt_id=attempt_id
+        )
+        with pytest.raises(HTTPException) as error:
+            await service.submit_practice_answer(
+                user_id, question_id, "A", attempt_id=attempt_id
+            )
+
+    assert replay == first
+    assert error.value.status_code == 409
+    assert await db_session.get(WrongPracticeAttempt, attempt_id) is not None
+    log_text = caplog.text
+    assert "result=created" in log_text
+    assert "result=replayed" in log_text
+    assert "result=conflict" in log_text
+    assert "attempt_key=" in log_text
+    assert str(user_id) not in log_text
+    assert "C, A" not in log_text

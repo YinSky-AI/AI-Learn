@@ -236,7 +236,7 @@ class GeneratedPracticeAnswer(BaseModel, Base):
         nullable=False,
     )
     generated_question_id = Column(
-        UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="CASCADE"), nullable=False
+        UUID(as_uuid=True), nullable=False
     )
     position = Column(Integer, nullable=False)
     user_answer = Column(Text, nullable=False)
@@ -275,7 +275,7 @@ class GeneratedPracticeRewardEvent(BaseModel, Base):
     )
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     generated_question_id = Column(
-        UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="CASCADE"), nullable=False
+        UUID(as_uuid=True), nullable=False
     )
     points_earned = Column(Integer, nullable=False, server_default="0")
     base_points = Column(Integer, nullable=False, server_default="0")

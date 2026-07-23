@@ -673,6 +673,9 @@ def test_practice_submission_contract_has_required_constraints_and_indexes():
         if constraint.__class__.__name__ == "UniqueConstraint"
     )
     assert wrong_attempt.c.payload_fingerprint.nullable is False
+    assert not answer.c.generated_question_id.foreign_keys
+    assert not reward.c.generated_question_id.foreign_keys
+    assert not wrong_attempt.c.question_id.foreign_keys
     check_sql = " ".join(
         str(constraint.sqltext)
         for table in (submission, answer)

@@ -58,7 +58,7 @@ class WrongPracticeAttempt(BaseModel, Base):
     __tablename__ = "wrong_practice_attempts"
 
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    question_id = Column(UUID(as_uuid=True), ForeignKey("questions.id", ondelete="CASCADE"), nullable=False)
+    question_id = Column(UUID(as_uuid=True), nullable=False)
     payload_fingerprint = Column(String(64), nullable=False)
     result_payload = Column(JSONB, nullable=False)
 

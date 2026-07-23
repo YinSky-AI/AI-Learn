@@ -1,3 +1,4 @@
+import asyncio
 import hashlib
 import json
 import uuid
@@ -7,6 +8,7 @@ import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy import func, select
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from app.ai.tools.question_memory_tool import QuestionMemoryTool
 from app.api.v1 import questions as questions_api
@@ -15,13 +17,20 @@ from app.core.deps import get_current_user_id
 from app.core.security import create_access_token
 from app.main import app
 from app.models.ai_generated import (
+    GeneratedPracticeAnswer,
+    GeneratedPracticeRewardEvent,
+    GeneratedPracticeSubmission,
     GeneratedQuestion,
     GeneratedQuestionBatch,
     QuestionQualityCheck,
 )
 from app.models import Base
 from app.models.user import User
-from app.schemas.question import BatchResponse, GeneratedQuestionResponse
+from app.schemas.question import (
+    BatchResponse,
+    GeneratedPracticeSubmitRequest,
+    GeneratedQuestionResponse,
+)
 from app.services.behavior_service import BehaviorService
 
 
@@ -501,6 +510,7 @@ async def test_submit_completed_generated_batch_persists_feedback_and_replays_wi
     assert (await question_db_session.execute(
         select(func.count()).select_from(Base.metadata.tables["generated_practice_reward_events"])
     )).scalar_one() == 3
+
     user = await question_db_session.get(User, user_id)
     assert user.total_answered == 3
     assert user.correct_answered == 3
@@ -543,6 +553,30 @@ async def test_submit_completed_generated_batch_persists_feedback_and_replays_wi
     assert (await question_db_session.execute(
         select(func.count()).select_from(Base.metadata.tables["generated_practice_reward_events"])
     )).scalar_one() == 3
+
+    # A persisted submission owns immutable answer snapshots. Replaying the
+    # original request must not depend on mutable generated-question rows.
+    await question_db_session.delete(questions[0])
+    questions[1].question_type = "fill_blank"
+    await question_db_session.commit()
+    app.dependency_overrides[get_current_user_id] = override_user_id
+    try:
+        replay_after_question_changes = await api_client.post(
+            f"/api/v1/questions/batches/{batch.id}/submit", json=request
+        )
+        changed_request = {
+            **request,
+            "answers": [dict(answer) for answer in request["answers"]],
+        }
+        changed_request["answers"][0]["user_answer"] = "B"
+        conflict_after_question_changes = await api_client.post(
+            f"/api/v1/questions/batches/{batch.id}/submit", json=changed_request
+        )
+    finally:
+        _clear_generation_dependencies()
+    assert replay_after_question_changes.status_code == 200
+    assert replay_after_question_changes.json()["data"] == first.json()["data"]
+    assert conflict_after_question_changes.status_code == 409
 
 
 @pytest.mark.asyncio
@@ -612,3 +646,151 @@ async def test_submit_generated_batch_enforces_owner_state_exact_passed_set_and_
     assert accepted.status_code == 200
     assert conflict.status_code == 409
     assert conflict.json()["message"] == "提交编号已用于不同的作答内容"
+
+
+@pytest.mark.asyncio
+async def test_concurrent_identical_generated_practice_submissions_commit_once(
+    question_db_session,
+):
+    from app.services.generated_practice_service import submit_generated_practice
+
+    user_id = await _create_user(question_db_session)
+    batch, questions = await _create_practice_batch(question_db_session, user_id)
+    await question_db_session.commit()
+    submission_id = uuid.uuid4()
+    request = GeneratedPracticeSubmitRequest.model_validate(
+        {
+            "submission_id": submission_id,
+            "answers": [
+                {
+                    "question_id": question.id,
+                    "user_answer": question.correct_answer,
+                    "time_spent_seconds": 1,
+                }
+                for question in questions[:3]
+            ],
+        }
+    )
+    session_factory = async_sessionmaker(
+        question_db_session.bind,
+        class_=AsyncSession,
+        expire_on_commit=False,
+        autoflush=False,
+    )
+
+    async def submit_once():
+        async with session_factory() as session:
+            result = await submit_generated_practice(
+                session, batch_id=batch.id, user_id=user_id, request=request
+            )
+            await session.commit()
+            return result
+
+    first, replay = await asyncio.gather(submit_once(), submit_once())
+
+    assert first == replay
+    assert (
+        await question_db_session.execute(
+            select(func.count()).select_from(GeneratedPracticeSubmission).where(
+                GeneratedPracticeSubmission.id == submission_id
+            )
+        )
+    ).scalar_one() == 1
+    assert (
+        await question_db_session.execute(
+            select(func.count()).select_from(GeneratedPracticeAnswer).where(
+                GeneratedPracticeAnswer.submission_id == submission_id
+            )
+        )
+    ).scalar_one() == 3
+    assert (
+        await question_db_session.execute(
+            select(func.count()).select_from(GeneratedPracticeRewardEvent).where(
+                GeneratedPracticeRewardEvent.submission_id == submission_id
+            )
+        )
+    ).scalar_one() == 3
+    question_db_session.expire_all()
+    user = await question_db_session.get(User, user_id)
+    assert user.total_answered == 3
+    assert user.correct_answered == 3
+
+
+@pytest.mark.asyncio
+async def test_generated_practice_injected_failure_rolls_back_all_side_effects(
+    question_db_session, monkeypatch
+):
+    from app.services import generated_practice_service
+
+    user_id = await _create_user(question_db_session)
+    batch, questions = await _create_practice_batch(question_db_session, user_id)
+    await question_db_session.commit()
+    submission_id = uuid.uuid4()
+    request = GeneratedPracticeSubmitRequest.model_validate(
+        {
+            "submission_id": submission_id,
+            "answers": [
+                {
+                    "question_id": question.id,
+                    "user_answer": question.correct_answer,
+                    "time_spent_seconds": 1,
+                }
+                for question in questions[:3]
+            ],
+        }
+    )
+    original_reward = generated_practice_service.reward_generated_practice_answer
+    calls = 0
+
+    async def fail_after_first_reward(*args, **kwargs):
+        nonlocal calls
+        calls += 1
+        result = await original_reward(*args, **kwargs)
+        if calls == 2:
+            raise RuntimeError("injected generated-practice failure")
+        return result
+
+    monkeypatch.setattr(
+        generated_practice_service,
+        "reward_generated_practice_answer",
+        fail_after_first_reward,
+    )
+    session_factory = async_sessionmaker(
+        question_db_session.bind,
+        class_=AsyncSession,
+        expire_on_commit=False,
+        autoflush=False,
+    )
+    async with session_factory() as session:
+        with pytest.raises(RuntimeError, match="injected generated-practice"):
+            await generated_practice_service.submit_generated_practice(
+                session, batch_id=batch.id, user_id=user_id, request=request
+            )
+        await session.rollback()
+
+    for model, predicate in (
+        (
+            GeneratedPracticeSubmission,
+            GeneratedPracticeSubmission.id == submission_id,
+        ),
+        (
+            GeneratedPracticeAnswer,
+            GeneratedPracticeAnswer.submission_id == submission_id,
+        ),
+        (
+            GeneratedPracticeRewardEvent,
+            GeneratedPracticeRewardEvent.submission_id == submission_id,
+        ),
+    ):
+        assert (
+            await question_db_session.execute(
+                select(func.count()).select_from(model).where(predicate)
+            )
+        ).scalar_one() == 0
+    question_db_session.expire_all()
+    user = await question_db_session.get(User, user_id)
+    assert user.total_answered == 0
+    assert user.correct_answered == 0
+    assert user.total_score == 0
+    report = await BehaviorService(question_db_session).get_learning_report(user_id)
+    assert report["overview"]["total_answered"] == 0

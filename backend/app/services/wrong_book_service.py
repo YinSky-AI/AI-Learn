@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import logging
 import uuid
 from datetime import datetime, timedelta, timezone
 
@@ -17,26 +18,23 @@ from app.services.question_access import verified_answer_feedback
 
 
 SCHEDULER_VERSION = "v1"
+logger = logging.getLogger(__name__)
 
 
-def _practice_fingerprint(question: Question, question_id: uuid.UUID, user_answer: str) -> str:
-    question_type = (question.question_type or "").upper()
-    answer = user_answer.strip()
-    if question_type == "MULTIPLE_CHOICE":
-        tokens = [token.strip().upper() for token in answer.split(",")]
-        normalized = ",".join(sorted(tokens)) if tokens and all(tokens) and len(set(tokens)) == len(tokens) else answer.upper()
-    elif question_type == "FILL_BLANK":
-        import re
-        normalized = re.sub(r'[\s\.,;:，。；：、！？!?\(\)（）\[\]【】]', '', answer).upper()
-    else:
-        normalized = answer.upper()
+def _immutable_practice_fingerprint(
+    question_id: uuid.UUID, user_answer: str
+) -> str:
     payload = json.dumps(
-        {"question_id": str(question_id), "user_answer": normalized},
+        {"question_id": str(question_id), "user_answer": user_answer.strip()},
         ensure_ascii=False,
         sort_keys=True,
         separators=(",", ":"),
     )
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _attempt_log_key(value: uuid.UUID) -> str:
+    return hashlib.sha256(str(value).encode("utf-8")).hexdigest()[:12]
 
 
 def calculate_next_review_at(*, now: datetime, is_correct: bool, review_count: int, difficulty_factor: float = 1.0) -> datetime:
@@ -110,23 +108,29 @@ class WrongBookService:
         existing = await self.db.get(WrongPracticeAttempt, attempt_id)
         if existing is not None:
             if existing.user_id != user_id or existing.question_id != question_id:
+                logger.info(
+                    "Wrong practice attempt result=conflict attempt_key=%s",
+                    _attempt_log_key(attempt_id),
+                )
                 raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
                     detail="练习尝试编号已用于不同的作答内容",
                 )
-            question = await self.db.get(Question, question_id)
-            if question is None:
-                raise HTTPException(
-                    status_code=status.HTTP_410_GONE,
-                    detail="原题已删除，无法回放该练习结果",
-                )
-            if existing.payload_fingerprint != _practice_fingerprint(
-                question, question_id, user_answer
+            if existing.payload_fingerprint != _immutable_practice_fingerprint(
+                question_id, user_answer
             ):
+                logger.info(
+                    "Wrong practice attempt result=conflict attempt_key=%s",
+                    _attempt_log_key(attempt_id),
+                )
                 raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
                     detail="练习尝试编号已用于不同的作答内容",
                 )
+            logger.info(
+                "Wrong practice attempt result=replayed attempt_key=%s",
+                _attempt_log_key(attempt_id),
+            )
             return dict(existing.result_payload)
 
         result = await self.db.execute(
@@ -134,7 +138,7 @@ class WrongBookService:
                 WrongQuestion.user_id == user_id,
                 WrongQuestion.question_id == question_id,
                 WrongQuestion.is_mastered.is_(False),
-            )
+            ).with_for_update(of=WrongQuestion)
         )
         record = result.scalar_one_or_none()
         if record is None:
@@ -154,8 +158,8 @@ class WrongBookService:
                 id=attempt_id,
                 user_id=user_id,
                 question_id=question_id,
-                payload_fingerprint=_practice_fingerprint(
-                    record.question, question_id, user_answer
+                payload_fingerprint=_immutable_practice_fingerprint(
+                    question_id, user_answer
                 ),
                 result_payload=response,
             )
@@ -176,6 +180,10 @@ class WrongBookService:
             record.is_mastered = True
             record.mastered_at = datetime.now(timezone.utc)
         await self.db.flush()
+        logger.info(
+            "Wrong practice attempt result=created attempt_key=%s",
+            _attempt_log_key(attempt_id),
+        )
         return response
 
     async def list_questions(self, user_id: uuid.UUID, subject: str | None, knowledge_point: str | None, is_mastered: bool | None, page: int, page_size: int) -> tuple[list[WrongQuestion], int]:

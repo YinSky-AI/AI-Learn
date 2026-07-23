@@ -16,7 +16,7 @@ router = APIRouter()
 
 
 class PracticeAnswerSubmit(BaseModel):
-    attempt_id: uuid.UUID
+    attempt_id: uuid.UUID | None = None
     question_id: uuid.UUID
     user_answer: str = Field(min_length=1, max_length=500)
 
@@ -43,7 +43,7 @@ async def submit_practice_answer(request: PracticeAnswerSubmit, user_id: uuid.UU
         user_id,
         request.question_id,
         request.user_answer,
-        attempt_id=request.attempt_id,
+        attempt_id=request.attempt_id or uuid.uuid4(),
     )
     if not result.get("found"):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail={"code": "BIZ_001", "message": "错题不存在或无权练习"})

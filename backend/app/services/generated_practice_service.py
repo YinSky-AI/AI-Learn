@@ -5,7 +5,6 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
-import re
 import uuid
 from datetime import datetime, timezone
 
@@ -27,28 +26,12 @@ from app.services.learning_service import judge_answer
 
 
 logger = logging.getLogger(__name__)
-_FILL_PUNCTUATION = re.compile(r"[\s\.,;:，。；：、！？!?\(\)（）\[\]【】]")
-
-
-def _normalized_answer(question_type: str, value: str) -> str:
-    """按判题语义规范化答案，供幂等指纹使用。"""
-    answer = value.strip()
-    normalized_type = (question_type or "").upper()
-    if normalized_type == "MULTIPLE_CHOICE":
-        tokens = [token.strip().upper() for token in answer.split(",")]
-        if tokens and all(tokens) and len(set(tokens)) == len(tokens):
-            return ",".join(sorted(tokens))
-        return answer.upper()
-    if normalized_type == "FILL_BLANK":
-        return _FILL_PUNCTUATION.sub("", answer).upper()
-    return answer.upper()
 
 
 def _payload_fingerprint(
     *,
     batch_id: uuid.UUID,
     request: GeneratedPracticeSubmitRequest,
-    questions: dict[uuid.UUID, GeneratedQuestion],
 ) -> str:
     canonical = {
         "batch_id": str(batch_id),
@@ -56,9 +39,7 @@ def _payload_fingerprint(
             (
                 {
                     "question_id": str(item.question_id),
-                    "user_answer": _normalized_answer(
-                        questions[item.question_id].question_type, item.user_answer
-                    ),
+                    "user_answer": item.user_answer.strip(),
                     "time_spent_seconds": item.time_spent_seconds,
                 }
                 for item in request.answers
@@ -148,33 +129,8 @@ async def submit_generated_practice(
                 status_code=status.HTTP_409_CONFLICT,
                 detail="提交编号已用于不同的作答内容",
             )
-        persisted_answers = await _submission_answers(db, existing.id)
-        persisted_ids = {answer.generated_question_id for answer in persisted_answers}
-        submitted_ids = {item.question_id for item in request.answers}
-        replay_questions = list(
-            (
-                await db.execute(
-                    select(GeneratedQuestion).where(
-                        GeneratedQuestion.id.in_(persisted_ids),
-                        GeneratedQuestion.batch_id == batch_id,
-                        GeneratedQuestion.user_id == user_id,
-                    )
-                )
-            ).scalars().all()
-        )
-        replay_questions_by_id = {
-            question.id: question for question in replay_questions
-        }
-        if (
-            len(request.answers) != len(persisted_answers)
-            or submitted_ids != persisted_ids
-            or set(replay_questions_by_id) != persisted_ids
-            or existing.payload_fingerprint
-            != _payload_fingerprint(
-                batch_id=batch_id,
-                request=request,
-                questions=replay_questions_by_id,
-            )
+        if existing.payload_fingerprint != _payload_fingerprint(
+            batch_id=batch_id, request=request
         ):
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
@@ -216,9 +172,7 @@ async def submit_generated_practice(
             detail="请完整且仅提交本批次已通过审核的每一道题",
         )
 
-    fingerprint = _payload_fingerprint(
-        batch_id=batch_id, request=request, questions=questions_by_id
-    )
+    fingerprint = _payload_fingerprint(batch_id=batch_id, request=request)
     user = (
         await db.execute(select(User).where(User.id == user_id).with_for_update())
     ).scalar_one_or_none()

@@ -230,19 +230,14 @@ function ChallengeContent() {
                 {question.options.length ? (
                   <div className="mt-4 grid gap-2">
                     {question.options.map((option) => (
-                      <label
+                      <button
                         key={option.key}
+                        type="button"
+                        onClick={() => selectOption(question, option.key)}
                         className={`flex cursor-pointer items-center gap-3 rounded-lg border p-3 text-left text-sm transition ${selected.has(option.key) ? "border-blue-600 bg-blue-50 text-blue-800" : "hover:bg-gray-50"}`}
                       >
-                        <input
-                          type={question.question_type === "MULTIPLE_CHOICE" ? "checkbox" : "radio"}
-                          name={question.id}
-                          checked={selected.has(option.key)}
-                          onChange={() => selectOption(question, option.key)}
-                          aria-label={typeInstruction(question)}
-                        />
                         {option.key}. {option.value}
-                      </label>
+                      </button>
                     ))}
                   </div>
                 ) : (

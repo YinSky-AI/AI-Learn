@@ -113,3 +113,16 @@ async def test_provider_rejects_oversized_input_and_output_budget_before_network
         await provider.generate([{"role": "user", "content": "01234567890"}])
     with pytest.raises(ValueError, match="输出预算"):
         await provider.generate([{"role": "user", "content": "ok"}], max_tokens=9)
+
+
+@pytest.mark.asyncio
+async def test_provider_preserves_upstream_error_when_generation_fails(monkeypatch):
+    provider = AIProvider(api_key="test")
+
+    async def fail_request(*_args, **_kwargs):
+        raise RuntimeError("upstream request failed")
+
+    monkeypatch.setattr(provider, "_retry_call", fail_request)
+
+    with pytest.raises(RuntimeError, match="upstream request failed"):
+        await provider.generate([{"role": "user", "content": "ok"}])

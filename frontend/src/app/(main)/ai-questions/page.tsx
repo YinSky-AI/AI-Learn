@@ -33,7 +33,10 @@ const SUBJECTS = [
 function getErrorMessage(error: unknown): string {
   if (error && typeof error === "object" && "message" in error) {
     const message = (error as { message?: unknown }).message;
-    if (typeof message === "string" && message.trim()) return message;
+    if (typeof message === "string" && message.trim()) {
+      if (message.includes("aborted")) return "AI 出题等待超时，请稍后重试。";
+      return message;
+    }
   }
   return "AI 出题暂时没有完成，请稍后再试。";
 }
@@ -67,7 +70,7 @@ export default function AIQuestionsPage() {
         question_types: [questionType],
         question_count: count,
         learning_goal: `围绕${topic.trim()}进行适龄练习`,
-      });
+      }, { timeout: 90_000 });
       setQuestions(result.questions || []);
       setBatchId(result.batch_id);
       if (!result.questions?.length) setError("题目已经生成，但没有通过审题，请调整主题后再试。");

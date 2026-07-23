@@ -17,6 +17,11 @@ test("AI question page calls the two-agent generation API", () => {
   assert.match(page, /question_types/);
 });
 
+test("AI question page allows enough time for the two-agent workflow", () => {
+  assert.match(page, /timeout:\s*90_000/);
+  assert.match(page, /AI 出题等待超时，请稍后重试/);
+});
+
 test("global AI question shortcut routes to the two-agent page", () => {
   assert.match(floating, /router\.push\("\/ai-questions"\)/);
   assert.match(floating, /onQuickPrompt=/);

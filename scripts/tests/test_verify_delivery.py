@@ -58,6 +58,12 @@ class DeliveryVerificationTests(unittest.TestCase):
         self.assertIn('"/run/secrets/primary_database_url"', runner)
         self.assertIn('"/run/secrets/catalog_database_url"', runner)
 
+    def test_backend_test_runner_removes_the_disposable_database_by_default(self):
+        runner = (ROOT / "scripts" / "run_backend_tests.py").read_text(encoding="utf-8")
+
+        self.assertIn('os.getenv("KEEP_TEST_DB")', runner)
+        self.assertIn('[*compose, "rm", "-sf", "postgres-test"]', runner)
+
     def test_backend_tests_never_recreate_schema_from_orm_metadata(self):
         sources = [
             ROOT / "backend" / "tests" / "conftest.py",

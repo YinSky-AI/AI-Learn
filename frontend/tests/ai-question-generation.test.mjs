@@ -28,3 +28,9 @@ test("AI question page only renders the public question contract", () => {
   assert.match(page, /quality_status/);
   assert.doesNotMatch(page, /correct_answer|explanation/);
 });
+
+test("AI-generated questions support selecting an answer without exposing answers", () => {
+  assert.match(page, /const \[answers, setAnswers\]/);
+  assert.match(page, /onClick=\{\(\) => selectOption\(question, option\.key\)\}/);
+  assert.match(page, /填空 1/);
+});

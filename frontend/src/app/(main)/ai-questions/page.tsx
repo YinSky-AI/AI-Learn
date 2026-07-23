@@ -49,6 +49,7 @@ export default function AIQuestionsPage() {
   const [batchId, setBatchId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [answers, setAnswers] = useState<Record<string, string>>({});
 
   async function generate(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -56,6 +57,7 @@ export default function AIQuestionsPage() {
     setLoading(true);
     setError("");
     setQuestions([]);
+    setAnswers({});
     try {
       const result = await apiClient.post<GenerateResult>("/v1/questions/generate", {
         age_group_code: ageGroup,
@@ -74,6 +76,19 @@ export default function AIQuestionsPage() {
     } finally {
       setLoading(false);
     }
+  }
+
+  function selectOption(question: GeneratedQuestion, key: string) {
+    if (question.question_type !== "MULTIPLE_CHOICE") {
+      setAnswers((current) => ({ ...current, [question.id]: key }));
+      return;
+    }
+    const selected = new Set((answers[question.id] || "").split(",").filter(Boolean));
+    selected.has(key) ? selected.delete(key) : selected.add(key);
+    setAnswers((current) => ({
+      ...current,
+      [question.id]: Array.from(selected).sort().join(","),
+    }));
   }
 
   return (
@@ -136,14 +151,42 @@ export default function AIQuestionsPage() {
               <h2 className="text-lg font-bold text-gray-900">审核通过的题目</h2>
               <span className="flex items-center gap-1 text-xs text-emerald-700"><CheckCircle2 className="h-4 w-4" />共 {questions.length} 道 · 批次 {batchId.slice(0, 8)}</span>
             </div>
-            {questions.map((question, index) => (
-              <article key={question.id} className="rounded-2xl border bg-white p-5 shadow-sm">
-                <div className="flex flex-wrap gap-2"><Badge>第 {index + 1} 题</Badge><Badge variant="outline">{question.question_type}</Badge><Badge variant="outline">审题已通过</Badge></div>
-                <h3 className="mt-4 text-base font-semibold leading-7 text-gray-900">{question.question_body}</h3>
-                {question.options?.length ? <div className="mt-4 grid gap-2 sm:grid-cols-2">{question.options.map((option) => <div key={option.key} className="rounded-lg border bg-gray-50 p-3 text-sm"><span className="mr-2 font-semibold text-brand-blue">{option.key}.</span>{option.value}</div>)}</div> : null}
-                {question.knowledge_tags?.length ? <div className="mt-4 flex flex-wrap gap-2">{question.knowledge_tags.map((tag) => <Badge key={tag} variant="secondary">{tag}</Badge>)}</div> : null}
-              </article>
-            ))}
+            {questions.map((question, index) => {
+              const selected = new Set((answers[question.id] || "").split(",").filter(Boolean));
+              return (
+                <article key={question.id} className="rounded-2xl border bg-white p-5 shadow-sm">
+                  <div className="flex flex-wrap gap-2"><Badge>第 {index + 1} 题</Badge><Badge variant="outline">{question.question_type}</Badge><Badge variant="outline">审题已通过</Badge></div>
+                  <h3 className="mt-4 text-base font-semibold leading-7 text-gray-900">{question.question_body}</h3>
+                  {question.options?.length ? (
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                      {question.options.map((option) => (
+                        <button
+                          key={option.key}
+                          type="button"
+                          aria-pressed={selected.has(option.key)}
+                          onClick={() => selectOption(question, option.key)}
+                          className={`rounded-lg border p-3 text-left text-sm transition ${selected.has(option.key) ? "border-brand-blue bg-blue-50 text-blue-800" : "bg-gray-50 hover:bg-gray-100"}`}
+                        >
+                          <span className="mr-2 font-semibold text-brand-blue">{option.key}.</span>{option.value}
+                        </button>
+                      ))}
+                    </div>
+                  ) : question.question_type === "FILL_BLANK" ? (
+                    <label className="mt-4 block text-sm text-gray-600">
+                      填空 1
+                      <input
+                        className="mt-2 min-h-11 w-full rounded-lg border border-gray-300 px-3 outline-none focus:border-brand-blue focus:ring-2 focus:ring-blue-100"
+                        value={answers[question.id] || ""}
+                        onChange={(event) => setAnswers((current) => ({ ...current, [question.id]: event.target.value }))}
+                        placeholder="请输入这一空的答案"
+                        maxLength={500}
+                      />
+                    </label>
+                  ) : null}
+                  {question.knowledge_tags?.length ? <div className="mt-4 flex flex-wrap gap-2">{question.knowledge_tags.map((tag) => <Badge key={tag} variant="secondary">{tag}</Badge>)}</div> : null}
+                </article>
+              );
+            })}
           </section>
         )}
       </main>

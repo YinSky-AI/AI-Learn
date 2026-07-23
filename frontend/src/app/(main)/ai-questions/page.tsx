@@ -1,11 +1,19 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { CheckCircle2, Loader2, Sparkles, XCircle } from "lucide-react";
 import { MainLayout } from "@/components/layout/main-layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import apiClient from "@/lib/api-client";
+import {
+  getOrCreateSubmissionPayload,
+  getSubmissionErrorMessage,
+  hasNormalizedAnswerChanged,
+  indexSubmissionResults,
+  invalidateSubmissionPayload,
+  normalizeAnswer,
+} from "./practice-submission.mjs";
 
 type GeneratedQuestion = {
   id: string;
@@ -42,6 +50,15 @@ type GeneratedPracticeSubmitResult = {
 
 type PracticeSubmissionState = "answering" | "submitting" | "submitted" | "error";
 
+type SubmissionPayload = {
+  submission_id: string;
+  answers: Array<{
+    question_id: string;
+    user_answer: string;
+    time_spent_seconds: number;
+  }>;
+};
+
 const SUBJECTS = [
   ["SUBJ_MATH", "数学"], ["SUBJ_CHINESE", "语文"], ["SUBJ_ENGLISH", "英语"],
   ["SUBJ_SCIENCE", "科学"], ["SUBJ_PHYSICS", "物理"], ["SUBJ_CHEMISTRY", "化学"],
@@ -71,26 +88,6 @@ function getErrorMessage(error: unknown): string {
   return "AI 出题暂时没有完成，请稍后再试。";
 }
 
-function getSubmissionErrorMessage(error: unknown): string {
-  const detail = error && typeof error === "object" ? error as { code?: unknown; message?: unknown; name?: unknown } : {};
-  const code = typeof detail.code === "number" ? detail.code : Number(detail.code);
-  const message = typeof detail.message === "string" ? detail.message.toLowerCase() : "";
-
-  if (detail.name === "AbortError" || message.includes("abort") || message.includes("timeout")) {
-    return "提交超时，请稍后重试。";
-  }
-  if (code === 401 || code === 403) {
-    return "登录状态已失效，请重新登录后提交。";
-  }
-  if (code === 409 || code === 422 || message.includes("review") || message.includes("validation")) {
-    return "题目审核或答案校验未通过，请重新出题后再试。";
-  }
-  if (code === 502 || code === 503 || message.includes("provider") || message.includes("unavailable")) {
-    return "出题服务暂时不可用，请稍后再试。";
-  }
-  return "答案提交失败，请稍后重试。";
-}
-
 export default function AIQuestionsPage() {
   const [topic, setTopic] = useState("");
   const [subject, setSubject] = useState("SUBJ_MATH");
@@ -103,21 +100,28 @@ export default function AIQuestionsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [questionStartedAt, setQuestionStartedAt] = useState<Record<string, number>>({});
-  const [batchStartedAt, setBatchStartedAt] = useState<number | null>(null);
   const [practiceState, setPracticeState] = useState<PracticeSubmissionState>("answering");
   const [submissionId, setSubmissionId] = useState<string | null>(null);
   const [submissionResult, setSubmissionResult] = useState<GeneratedPracticeSubmitResult | null>(null);
+  const answersRef = useRef<Record<string, string>>({});
+  const batchStartedAtRef = useRef<number | null>(null);
+  const questionChangedAtRef = useRef<Record<string, number>>({});
+  const submissionPayloadRef = useRef<SubmissionPayload | null>(null);
+  const submissionInFlightRef = useRef(false);
 
   const isAnswerLocked = practiceState === "submitting" || practiceState === "submitted";
-  const answersComplete = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
+  const answersComplete = questions.length > 0 && questions.every((question) => Boolean(normalizeAnswer(answers[question.id], question.question_type)));
+  const resultsByQuestionId = submissionResult ? indexSubmissionResults(submissionResult.results) : {};
 
   function resetPractice() {
     setQuestions([]);
     setBatchId("");
     setAnswers({});
-    setQuestionStartedAt({});
-    setBatchStartedAt(null);
+    answersRef.current = {};
+    batchStartedAtRef.current = null;
+    questionChangedAtRef.current = {};
+    submissionPayloadRef.current = invalidateSubmissionPayload(submissionPayloadRef.current, { isNewBatch: true });
+    submissionInFlightRef.current = false;
     setPracticeState("answering");
     setSubmissionId(null);
     setSubmissionResult(null);
@@ -143,8 +147,8 @@ export default function AIQuestionsPage() {
       const generatedQuestions = result.questions || [];
       setQuestions(generatedQuestions);
       setBatchId(result.batch_id);
-      setBatchStartedAt(startedAt);
-      setQuestionStartedAt(Object.fromEntries(generatedQuestions.map((question) => [question.id, startedAt])));
+      batchStartedAtRef.current = startedAt;
+      questionChangedAtRef.current = Object.fromEntries(generatedQuestions.map((question) => [question.id, startedAt]));
       if (!generatedQuestions.length) setError("题目已经生成，但没有通过审题，请调整主题后再试。");
     } catch (cause) {
       setError(getErrorMessage(cause));
@@ -155,10 +159,20 @@ export default function AIQuestionsPage() {
 
   function updateAnswer(questionId: string, answer: string | ((currentAnswer: string) => string)) {
     if (isAnswerLocked) return;
-    setAnswers((current) => ({
-      ...current,
-      [questionId]: typeof answer === "function" ? answer(current[questionId] || "") : answer,
-    }));
+    const questionType = questions.find((question) => question.id === questionId)?.question_type || "CHOICE";
+    const currentAnswer = answersRef.current[questionId] || "";
+    const nextAnswer = typeof answer === "function" ? answer(currentAnswer) : answer;
+    const nextAnswers = { ...answersRef.current, [questionId]: nextAnswer };
+    answersRef.current = nextAnswers;
+    setAnswers(nextAnswers);
+    if (!hasNormalizedAnswerChanged(currentAnswer, nextAnswer, questionType)) return;
+
+    questionChangedAtRef.current = { ...questionChangedAtRef.current, [questionId]: Date.now() };
+    submissionPayloadRef.current = invalidateSubmissionPayload(submissionPayloadRef.current, {
+      currentAnswer,
+      nextAnswer,
+      questionType,
+    });
     setSubmissionId(null);
     setSubmissionResult(null);
     setError("");
@@ -178,29 +192,33 @@ export default function AIQuestionsPage() {
   }
 
   async function submitAnswers() {
-    if (!batchId || !answersComplete || isAnswerLocked) return;
-    const activeSubmissionId = submissionId || crypto.randomUUID();
-    if (!submissionId) setSubmissionId(activeSubmissionId);
+    const currentAnswersComplete = questions.length > 0 && questions.every((question) => Boolean(normalizeAnswer(answersRef.current[question.id], question.question_type)));
+    if (!batchId || !currentAnswersComplete || isAnswerLocked || submissionInFlightRef.current) return;
+    const payload = getOrCreateSubmissionPayload(submissionPayloadRef.current, {
+      submissionId: submissionId || crypto.randomUUID(),
+      questions,
+      answers: answersRef.current,
+      batchStartedAt: batchStartedAtRef.current,
+      questionChangedAt: questionChangedAtRef.current,
+      submittedAt: Date.now(),
+    }) as SubmissionPayload;
+    submissionPayloadRef.current = payload;
+    submissionInFlightRef.current = true;
+    setSubmissionId(payload.submission_id);
     setPracticeState("submitting");
     setError("");
-    const submittedAt = Date.now();
     try {
       const result = await apiClient.post<GeneratedPracticeSubmitResult>(
         `/v1/questions/batches/${batchId}/submit`,
-        {
-          submission_id: activeSubmissionId,
-          answers: questions.map((question) => ({
-            question_id: question.id,
-            user_answer: answers[question.id].trim(),
-            time_spent_seconds: Math.max(0, Math.round((submittedAt - (questionStartedAt[question.id] || batchStartedAt || submittedAt)) / 1000)),
-          })),
-        },
+        payload,
       );
       setSubmissionResult(result);
       setPracticeState("submitted");
     } catch (cause) {
       setPracticeState("error");
       setError(getSubmissionErrorMessage(cause));
+    } finally {
+      submissionInFlightRef.current = false;
     }
   }
 
@@ -266,7 +284,7 @@ export default function AIQuestionsPage() {
             </div>
             {questions.map((question, index) => {
               const selected = new Set((answers[question.id] || "").split(",").filter(Boolean));
-              const result = submissionResult?.results.find((item) => item.question_id === question.id);
+              const result = resultsByQuestionId[question.id];
               return (
                 <article key={question.id} className="rounded-2xl border bg-white p-5 shadow-sm">
                   <div className="flex flex-wrap gap-2"><Badge>第 {index + 1} 题</Badge><Badge variant="outline">{getQuestionTypeLabel(question.question_type)}</Badge><Badge variant="outline">审题已通过</Badge></div>

@@ -69,3 +69,11 @@ Status: DONE
 - RED：expected head 仍为 `lp_0009` 且被改写的旧迁移缺失三条 FK，新增两个迁移断言均按预期失败。
 - 真实旧库路径：用恢复后的不可变迁移链将可丢弃数据库建到旧 head `lp_0009`，查询确认三条 FK 均存在；同一数据库升级到 `lp_0010` 后计数 `3 -> 0`，降级回 `lp_0009` 后 `0 -> 3`，再次升级后 `3 -> 0`，最终 drift check 返回 `No new upgrade operations detected.`。
 - 验收：迁移定向 `67 passed`；四文件定向 `98 passed`；全量后端 `192 passed`。`postgres-test` 和运行时测试密钥均已清理，`docker compose ps --all` 未见测试容器残留。
+
+## Review Fix Round 3 (2026-07-23)
+
+- 在标准 `backend/tests/test_schema_migration.py` 路径新增真实 PostgreSQL 自动回归。测试内创建两个随机 `learning_platform_*_test` 数据库，并在 `finally` 中终止残留连接、删除精确数据库目标。
+- 数据迁移库自动升级到旧 head `lp_0009`，插入用户、批次、生成题、提交、答案快照、奖励事件、标准题和错题 attempt；确认三条旧 FK 存在后升级 `lp_0010`。
+- 升级后自动确认三条 FK 消失，三类历史行、非空列、唯一约束与查询索引完整保留；删除生成题和标准题后，历史答案、奖励和错题 attempt 仍各保留一行。
+- 第二个干净库自动完成 `lp_0010 -> lp_0009 -> lp_0010`，验证 downgrade/upgrade 均可执行。该回归随标准迁移测试命令运行，不再依赖人工演练。
+- 验收：迁移定向 `68 passed`；四文件定向 `99 passed`；全量后端 `193 passed`。标准脚本已移除 `postgres-test`，运行时 secret 目录无残留文件。

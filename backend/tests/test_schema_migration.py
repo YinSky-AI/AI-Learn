@@ -1,13 +1,15 @@
 """Schema 版本检查和迁移目标保护。"""
 
 from copy import deepcopy
+from datetime import date
 import os
 from pathlib import Path
 from types import SimpleNamespace
+import uuid
 
 import pytest
 from sqlalchemy import Column, DateTime, MetaData, Numeric, String, Table
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.engine import make_url
 
@@ -29,6 +31,7 @@ from schema_admin import (
     _normalize_index_predicate,
     build_parser,
     build_expected_contract_snapshot,
+    execute_migration,
     load_database_url,
     remove_allowed_external_contract,
     validate_release_authorization,
@@ -761,6 +764,346 @@ def test_practice_history_fk_change_is_a_forward_reversible_migration():
         assert referred_table in source
         assert column in source
         assert 'ondelete="CASCADE"' in source
+
+
+@pytest.mark.asyncio
+async def test_legacy_practice_history_upgrade_preserves_real_postgres_data(db_engine):
+    """Exercise lp_0009 -> lp_0010 against isolated PostgreSQL databases."""
+    source_url = make_url(db_engine.url.render_as_string(hide_password=False))
+    admin_url = source_url.set(
+        drivername="postgresql+psycopg2", database="postgres"
+    )
+    admin_engine = create_engine(admin_url, isolation_level="AUTOCOMMIT")
+    database_names = [
+        f"learning_platform_history_data_{uuid.uuid4().hex[:10]}_test",
+        f"learning_platform_history_roundtrip_{uuid.uuid4().hex[:10]}_test",
+    ]
+    constraint_names = {
+        "generated_practice_answers_generated_question_id_fkey",
+        "generated_practice_reward_events_generated_question_id_fkey",
+        "wrong_practice_attempts_question_id_fkey",
+    }
+
+    def database_url(database_name: str) -> str:
+        return source_url.set(database=database_name).render_as_string(
+            hide_password=False
+        )
+
+    def target(database_name: str):
+        return validate_migration_target(
+            database_url(database_name),
+            target_alias="primary",
+            environment="test",
+            expected_host=source_url.host,
+            expected_database=database_name,
+        )
+
+    def foreign_key_names(engine) -> set[str]:
+        with engine.connect() as connection:
+            return set(
+                connection.execute(
+                    text(
+                        "SELECT conname FROM pg_constraint "
+                        "WHERE conname IN ("
+                        "'generated_practice_answers_generated_question_id_fkey',"
+                        "'generated_practice_reward_events_generated_question_id_fkey',"
+                        "'wrong_practice_attempts_question_id_fkey'"
+                        ")"
+                    )
+                ).scalars()
+            )
+
+    created_databases: list[str] = []
+    try:
+        with admin_engine.connect() as connection:
+            for database_name in database_names:
+                connection.exec_driver_sql(f'CREATE DATABASE "{database_name}"')
+                created_databases.append(database_name)
+
+        data_database, roundtrip_database = database_names
+        assert execute_migration(
+            action="upgrade",
+            target=target(data_database),
+            database_url=database_url(data_database),
+            revision="lp_0009_practice_contract",
+        ) == "lp_0009_practice_contract"
+
+        data_engine = create_engine(
+            source_url.set(
+                drivername="postgresql+psycopg2", database=data_database
+            )
+        )
+        try:
+            assert foreign_key_names(data_engine) == constraint_names
+            metadata = MetaData()
+            metadata.reflect(data_engine)
+            user_id = uuid.uuid4()
+            node_id = uuid.uuid4()
+            canonical_question_id = uuid.uuid4()
+            batch_id = uuid.uuid4()
+            generated_question_id = uuid.uuid4()
+            submission_id = uuid.uuid4()
+            answer_id = uuid.uuid4()
+            reward_id = uuid.uuid4()
+            attempt_id = uuid.uuid4()
+            with data_engine.begin() as connection:
+                connection.execute(
+                    metadata.tables["subjects"].insert(),
+                    {"code": "MIG_MATH", "name": "Migration math"},
+                )
+                connection.execute(
+                    metadata.tables["age_groups"].insert(),
+                    {
+                        "code": "MIG_AGE",
+                        "name": "Migration age",
+                        "min_age": 10,
+                        "max_age": 12,
+                        "theme_config": {},
+                    },
+                )
+                connection.execute(
+                    metadata.tables["users"].insert(),
+                    {
+                        "id": user_id,
+                        "nickname": "Migration user",
+                        "email": f"migration-{user_id}@example.test",
+                        "password_hash": "hash",
+                        "birth_date": date(2012, 1, 1),
+                        "age_group": "MIG_AGE",
+                    },
+                )
+                connection.execute(
+                    metadata.tables["knowledge_nodes"].insert(),
+                    {
+                        "id": node_id,
+                        "title": "Migration node",
+                        "subject_code": "MIG_MATH",
+                        "age_group_code": "MIG_AGE",
+                        "difficulty_level": "DIFF_EASY",
+                        "content_type": "TYPE_QUIZ",
+                        "content_body": "Migration content",
+                    },
+                )
+                connection.execute(
+                    metadata.tables["questions"].insert(),
+                    {
+                        "id": canonical_question_id,
+                        "knowledge_node_id": node_id,
+                        "difficulty_level": "DIFF_EASY",
+                        "question_type": "CHOICE",
+                        "question_body": "Canonical question",
+                        "options": [{"key": "A"}],
+                        "correct_answer": "A",
+                        "explanation": "Canonical explanation",
+                    },
+                )
+                connection.execute(
+                    metadata.tables["generated_question_batches"].insert(),
+                    {
+                        "id": batch_id,
+                        "user_id": user_id,
+                        "age_group_code": "MIG_AGE",
+                        "subject_code": "MIG_MATH",
+                        "course_topic": "Migration topic",
+                        "difficulty_level": "DIFF_EASY",
+                        "question_types": ["choice"],
+                        "question_count": 1,
+                        "status": "completed",
+                        "prompt_version": "migration-test",
+                    },
+                )
+                connection.execute(
+                    metadata.tables["generated_questions"].insert(),
+                    {
+                        "id": generated_question_id,
+                        "batch_id": batch_id,
+                        "user_id": user_id,
+                        "subject_code": "MIG_MATH",
+                        "course_topic": "Migration topic",
+                        "difficulty_level": "DIFF_EASY",
+                        "question_type": "choice",
+                        "question_body": "Generated question",
+                        "options": [{"key": "A"}],
+                        "correct_answer": "A",
+                        "explanation": "Generated explanation",
+                        "knowledge_tags": ["migration"],
+                        "source_prompt": "migration-test",
+                        "quality_status": "passed",
+                    },
+                )
+                connection.execute(
+                    metadata.tables["generated_practice_submissions"].insert(),
+                    {
+                        "id": submission_id,
+                        "user_id": user_id,
+                        "batch_id": batch_id,
+                        "payload_fingerprint": "a" * 64,
+                        "total_count": 1,
+                        "correct_count": 1,
+                        "accuracy_rate": 1.0,
+                        "time_spent_seconds": 2,
+                        "gamification": {},
+                    },
+                )
+                connection.execute(
+                    metadata.tables["generated_practice_answers"].insert(),
+                    {
+                        "id": answer_id,
+                        "submission_id": submission_id,
+                        "generated_question_id": generated_question_id,
+                        "position": 0,
+                        "user_answer": "A",
+                        "is_correct": True,
+                        "correct_answer": "A",
+                        "explanation": "Snapshot explanation",
+                        "time_spent_seconds": 2,
+                    },
+                )
+                connection.execute(
+                    metadata.tables["generated_practice_reward_events"].insert(),
+                    {
+                        "id": reward_id,
+                        "submission_id": submission_id,
+                        "generated_practice_answer_id": answer_id,
+                        "user_id": user_id,
+                        "generated_question_id": generated_question_id,
+                    },
+                )
+                connection.execute(
+                    metadata.tables["wrong_practice_attempts"].insert(),
+                    {
+                        "id": attempt_id,
+                        "user_id": user_id,
+                        "question_id": canonical_question_id,
+                        "payload_fingerprint": "b" * 64,
+                        "result_payload": {"found": True, "is_correct": True},
+                    },
+                )
+        finally:
+            data_engine.dispose()
+
+        assert execute_migration(
+            action="upgrade",
+            target=target(data_database),
+            database_url=database_url(data_database),
+            revision="lp_0010_practice_history",
+        ) == "lp_0010_practice_history"
+
+        data_engine = create_engine(
+            source_url.set(
+                drivername="postgresql+psycopg2", database=data_database
+            )
+        )
+        try:
+            assert foreign_key_names(data_engine) == set()
+            inspector = inspect(data_engine)
+            for table_name, column_name in (
+                ("generated_practice_answers", "generated_question_id"),
+                ("generated_practice_reward_events", "generated_question_id"),
+                ("wrong_practice_attempts", "question_id"),
+            ):
+                columns = {
+                    column["name"]: column
+                    for column in inspector.get_columns(table_name)
+                }
+                assert columns[column_name]["nullable"] is False
+            assert {
+                constraint["name"]
+                for constraint in inspector.get_unique_constraints(
+                    "generated_practice_answers"
+                )
+            } >= {"uq_generated_practice_answer_submission_question"}
+            assert {
+                constraint["name"]
+                for constraint in inspector.get_unique_constraints(
+                    "generated_practice_reward_events"
+                )
+            } >= {"uq_generated_practice_reward_user_question"}
+            assert {
+                index["name"]
+                for index in inspector.get_indexes("generated_practice_answers")
+            } >= {"idx_generated_practice_answer_question"}
+            assert {
+                index["name"]
+                for index in inspector.get_indexes("generated_practice_reward_events")
+            } >= {"idx_generated_practice_reward_user_created"}
+            assert {
+                index["name"]
+                for index in inspector.get_indexes("wrong_practice_attempts")
+            } >= {"idx_wrong_practice_attempt_user_question"}
+
+            with data_engine.begin() as connection:
+                for table_name in (
+                    "generated_practice_answers",
+                    "generated_practice_reward_events",
+                    "wrong_practice_attempts",
+                ):
+                    assert connection.execute(
+                        text(f'SELECT COUNT(*) FROM "{table_name}"')
+                    ).scalar_one() == 1
+                connection.execute(
+                    text("DELETE FROM generated_questions WHERE id=:id"),
+                    {"id": generated_question_id},
+                )
+                connection.execute(
+                    text("DELETE FROM questions WHERE id=:id"),
+                    {"id": canonical_question_id},
+                )
+                assert connection.execute(
+                    text(
+                        "SELECT COUNT(*) FROM generated_practice_answers "
+                        "WHERE id=:id"
+                    ),
+                    {"id": answer_id},
+                ).scalar_one() == 1
+                assert connection.execute(
+                    text(
+                        "SELECT COUNT(*) FROM generated_practice_reward_events "
+                        "WHERE id=:id"
+                    ),
+                    {"id": reward_id},
+                ).scalar_one() == 1
+                assert connection.execute(
+                    text(
+                        "SELECT COUNT(*) FROM wrong_practice_attempts WHERE id=:id"
+                    ),
+                    {"id": attempt_id},
+                ).scalar_one() == 1
+        finally:
+            data_engine.dispose()
+
+        assert execute_migration(
+            action="upgrade",
+            target=target(roundtrip_database),
+            database_url=database_url(roundtrip_database),
+            revision="lp_0010_practice_history",
+        ) == "lp_0010_practice_history"
+        assert execute_migration(
+            action="downgrade",
+            target=target(roundtrip_database),
+            database_url=database_url(roundtrip_database),
+            revision="lp_0009_practice_contract",
+        ) == "lp_0009_practice_contract"
+        assert execute_migration(
+            action="upgrade",
+            target=target(roundtrip_database),
+            database_url=database_url(roundtrip_database),
+            revision="lp_0010_practice_history",
+        ) == "lp_0010_practice_history"
+    finally:
+        with admin_engine.connect() as connection:
+            for database_name in reversed(created_databases):
+                connection.execute(
+                    text(
+                        "SELECT pg_terminate_backend(pid) FROM pg_stat_activity "
+                        "WHERE datname=:database_name AND pid <> pg_backend_pid()"
+                    ),
+                    {"database_name": database_name},
+                )
+                connection.exec_driver_sql(
+                    f'DROP DATABASE IF EXISTS "{database_name}"'
+                )
+        admin_engine.dispose()
 
 
 def test_expected_contract_preserves_precision_timezone_and_array_item_type():

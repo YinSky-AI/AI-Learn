@@ -6,13 +6,31 @@ import uuid
 
 import pytest
 from fastapi import HTTPException
-from sqlalchemy import text
+from sqlalchemy import CheckConstraint, text
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from app.models.content import AgeGroup, KnowledgeNode, Question, Subject
-from app.models.learning import LearningSession
+from app.models.ai_generated import GeneratedPracticeAnswer
+from app.models.adaptive_learning import DiagnosisJob
+from app.models.learning import Answer, LearningSession
 from app.models.user import User
 from app.services.learning_service import complete_session, submit_answer
+
+
+def test_answer_models_persist_bounded_optional_evidence():
+    for model in (Answer, GeneratedPracticeAnswer):
+        table = model.__table__
+        assert isinstance(table.c.solution_steps.type, JSONB)
+        assert table.c.solution_steps.nullable is False
+        assert table.c.student_confidence.nullable is True
+        checks = " ".join(
+            str(constraint.sqltext)
+            for constraint in table.constraints
+            if isinstance(constraint, CheckConstraint)
+        )
+        assert "student_confidence" in checks
+        assert ">= 1" in checks and "<= 5" in checks
 
 
 @pytest.mark.asyncio
@@ -55,7 +73,15 @@ async def test_concurrent_answers_same_session_preserve_counts_and_rewards(db_se
     async def submit(answer_id: uuid.UUID):
         async with session_factory() as session:
             result = await submit_answer(
-                session, session_id, user_id, question_id, answer_id, "A", 3
+                session,
+                session_id,
+                user_id,
+                question_id,
+                answer_id,
+                "A",
+                3,
+                ["1+1=2"],
+                5,
             )
             await session.commit()
             return result
@@ -75,6 +101,13 @@ async def test_concurrent_answers_same_session_preserve_counts_and_rewards(db_se
             {"id": user_id},
         )
     ).scalar_one() == 2
+    assert (
+        await db_session.execute(
+            text("SELECT COUNT(*) FROM diagnosis_jobs WHERE user_id=:id"),
+            {"id": user_id},
+        )
+    ).scalar_one() == 2
+    assert all(result["diagnosis_status"] == "pending" for result in results)
 
     replay_id = uuid.uuid4()
     async with session_factory() as session:
@@ -84,6 +117,21 @@ async def test_concurrent_answers_same_session_preserve_counts_and_rewards(db_se
         replay = await submit_answer(session, session_id, user_id, question_id, replay_id, "A", 3)
         await session.commit()
     assert replay["gamification"]["replayed"] is True
+    async with session_factory() as session:
+        with pytest.raises(HTTPException) as evidence_conflict:
+            await submit_answer(
+                session,
+                session_id,
+                user_id,
+                question_id,
+                replay_id,
+                "A",
+                3,
+                ["1+1=2"],
+                5,
+            )
+        await session.rollback()
+    assert evidence_conflict.value.status_code == 409
     await db_session.refresh(await db_session.get(LearningSession, session_id))
     assert (await db_session.get(LearningSession, session_id)).total_questions == 3
 
@@ -131,6 +179,34 @@ async def test_concurrent_answers_same_session_preserve_counts_and_rewards(db_se
     assert (
         await db_session.execute(
             text("SELECT COUNT(*) FROM answers WHERE id=:id"), {"id": failed_id}
+        )
+    ).scalar_one() == 0
+
+    from app.services import learning_service
+
+    async def fail_diagnosis_enqueue(*_args, **_kwargs):
+        raise RuntimeError("injected diagnosis enqueue failure")
+
+    monkeypatch.setattr(
+        learning_service, "enqueue_diagnosis_job", fail_diagnosis_enqueue
+    )
+    enqueue_failed_id = uuid.uuid4()
+    async with session_factory() as session:
+        with pytest.raises(RuntimeError, match="diagnosis enqueue"):
+            await submit_answer(
+                session,
+                session_id,
+                user_id,
+                question_id,
+                enqueue_failed_id,
+                "A",
+                3,
+            )
+        await session.rollback()
+    assert (
+        await db_session.execute(
+            text("SELECT COUNT(*) FROM answers WHERE id=:id"),
+            {"id": enqueue_failed_id},
         )
     ).scalar_one() == 0
 

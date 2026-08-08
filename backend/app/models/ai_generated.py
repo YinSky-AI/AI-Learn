@@ -244,6 +244,8 @@ class GeneratedPracticeAnswer(BaseModel, Base):
     correct_answer = Column(Text, nullable=False)
     explanation = Column(Text, nullable=True)
     time_spent_seconds = Column(Integer, nullable=False)
+    solution_steps = Column(JSONB, nullable=False, default=list, server_default=text("'[]'::jsonb"))
+    student_confidence = Column(Integer, nullable=True)
     answered_at = Column(DateTime(timezone=True), nullable=False, server_default=text("NOW()"))
 
     __table_args__ = (
@@ -253,6 +255,10 @@ class GeneratedPracticeAnswer(BaseModel, Base):
         ),
         CheckConstraint("position >= 0", name="ck_generated_practice_answer_position_nonnegative"),
         CheckConstraint("time_spent_seconds >= 0", name="ck_generated_practice_answer_time_nonnegative"),
+        CheckConstraint(
+            "student_confidence IS NULL OR (student_confidence >= 1 AND student_confidence <= 5)",
+            name="ck_generated_practice_answer_student_confidence",
+        ),
         Index("idx_generated_practice_answer_question", "generated_question_id"),
     )
 

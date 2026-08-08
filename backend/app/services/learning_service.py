@@ -27,10 +27,16 @@ from app.models.content import Question
 from app.models.learning import LearningSession, Answer
 from app.models.user import User
 from app.models.gamification import GamificationEvent
+from app.models.adaptive_learning import DiagnosisJob
+from app.domain.equation_taxonomy import KnowledgePointCode
 from app.services.gamification_service import event_to_payload, reward_answer_event
 from app.services.wrong_book_service import WrongBookService
 from app.services.behavior_service import BehaviorService
 from app.services.question_access import verified_answer_feedback
+from app.services.diagnosis_job_service import (
+    DiagnosisAnswerReference,
+    enqueue_diagnosis_job,
+)
 
 
 def _submission_log_key(value: uuid.UUID | int) -> str:
@@ -80,7 +86,12 @@ def judge_answer(question, user_answer):
     return answer.upper() == correct.upper()
 
 
-def _build_answer_result(answer: Answer, question: Question, gamification: dict | None = None) -> dict:
+def _build_answer_result(
+    answer: Answer,
+    question: Question,
+    diagnosis_job: DiagnosisJob,
+    gamification: dict | None = None,
+) -> dict:
     knowledge_point = question.knowledge_node_rel.title if question.knowledge_node_rel is not None else None
     tutor_prompt = None
     if not answer.is_correct:
@@ -102,7 +113,39 @@ def _build_answer_result(answer: Answer, question: Question, gamification: dict 
         "tutor_prompt": tutor_prompt,
         "time_spent_seconds": answer.time_spent_seconds,
         "gamification": gamification,
+        "diagnosis_job_id": diagnosis_job.id,
+        "diagnosis_status": (
+            "succeeded" if diagnosis_job.status == "succeeded" else "pending"
+        ),
     }
+
+
+def _question_knowledge_point_code(question: Question) -> KnowledgePointCode:
+    code = getattr(question.knowledge_node_rel, "code", None)
+    try:
+        return KnowledgePointCode(code)
+    except (TypeError, ValueError):
+        return KnowledgePointCode.EQUATION_EQUIVALENCE
+
+
+async def _answer_diagnosis_job(
+    db: AsyncSession,
+    *,
+    answer: Answer,
+    question: Question,
+    user_id: uuid.UUID,
+) -> DiagnosisJob:
+    return await enqueue_diagnosis_job(
+        db,
+        DiagnosisAnswerReference(standard_answer_id=answer.id),
+        user_id,
+        input_snapshot={
+            "equation": question.question_body,
+            "is_correct": answer.is_correct,
+            "solution_steps": list(answer.solution_steps or []),
+            "knowledge_point_code": _question_knowledge_point_code(question).value,
+        },
+    )
 
 
 async def create_session(
@@ -196,6 +239,8 @@ async def submit_answer(
     answer_id: uuid.UUID,
     user_answer: str,
     time_spent_seconds: int,
+    solution_steps: list[str] | None = None,
+    confidence: int | None = None,
 ) -> dict:
     """
     提交答案
@@ -245,6 +290,8 @@ async def submit_answer(
             or existing_answer.question_id != question_id
             or existing_answer.user_answer != user_answer
             or existing_answer.time_spent_seconds != time_spent_seconds
+            or list(existing_answer.solution_steps or []) != list(solution_steps or [])
+            or existing_answer.student_confidence != confidence
         ):
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
@@ -263,7 +310,15 @@ async def submit_answer(
             _submission_log_key(session_id),
             _submission_log_key(answer_id),
         )
-        return _build_answer_result(existing_answer, question, event_to_payload(event) if event else None)
+        diagnosis_job = await _answer_diagnosis_job(
+            db, answer=existing_answer, question=question, user_id=user_id
+        )
+        return _build_answer_result(
+            existing_answer,
+            question,
+            diagnosis_job,
+            event_to_payload(event) if event else None,
+        )
 
     result = await db.execute(stmt)
     question = result.scalar_one_or_none()
@@ -302,11 +357,16 @@ async def submit_answer(
         user_answer=user_answer,
         is_correct=is_correct,
         time_spent_seconds=time_spent_seconds,
+        solution_steps=list(solution_steps or []),
+        student_confidence=confidence,
         answered_at=datetime.now(timezone.utc),
     )
     db.add(answer)
     # AsyncSession 关闭 autoflush；先写入 answers，才能安全写入引用它的错题事件。
     await db.flush()
+    diagnosis_job = await _answer_diagnosis_job(
+        db, answer=answer, question=question, user_id=user_id
+    )
 
     # 答题记录和错题收录使用同一个数据库事务，任一失败都会统一回滚。
     if not is_correct:
@@ -341,7 +401,7 @@ async def submit_answer(
         _submission_log_key(answer_id),
         is_correct,
     )
-    return _build_answer_result(answer, question, gamification)
+    return _build_answer_result(answer, question, diagnosis_job, gamification)
 
 
 async def complete_session(

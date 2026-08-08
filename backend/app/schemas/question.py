@@ -14,7 +14,7 @@ AI 出题相关 Pydantic Schema 模块
 """
 
 from datetime import datetime
-from typing import Any, List, Optional
+from typing import Any, List, Literal, Optional
 from uuid import UUID
 
 from pydantic import BaseModel, Field, field_validator
@@ -172,6 +172,15 @@ class GeneratedPracticeAnswerSubmit(BaseModel):
     question_id: UUID
     user_answer: str = Field(..., min_length=1, max_length=500)
     time_spent_seconds: int = Field(..., ge=0)
+    solution_steps: List[str] = Field(default_factory=list, max_length=12)
+    confidence: Optional[int] = Field(default=None, ge=1, le=5)
+
+    @field_validator("solution_steps")
+    @classmethod
+    def validate_solution_steps(cls, steps: List[str]) -> List[str]:
+        if any(len(step) > 200 for step in steps):
+            raise ValueError("每个解题步骤最多 200 个字符")
+        return steps
 
 
 class GeneratedPracticeSubmitRequest(BaseModel):
@@ -184,6 +193,8 @@ class GeneratedPracticeAnswerResult(BaseModel):
     is_correct: bool
     correct_answer: str
     explanation: Optional[str] = None
+    diagnosis_job_id: UUID
+    diagnosis_status: Literal["pending", "succeeded"]
 
 
 class GeneratedPracticeSubmitResponse(BaseModel):

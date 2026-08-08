@@ -7,6 +7,7 @@ from datetime import date, datetime, timezone
 import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
+from pydantic import ValidationError
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
@@ -24,14 +25,22 @@ from app.models.ai_generated import (
     GeneratedQuestionBatch,
     QuestionQualityCheck,
 )
+from app.models.adaptive_learning import DiagnosisJob
 from app.models import Base
 from app.models.user import User
 from app.schemas.question import (
     BatchResponse,
+    GeneratedPracticeAnswerSubmit,
     GeneratedPracticeSubmitRequest,
     GeneratedQuestionResponse,
 )
 from app.services.behavior_service import BehaviorService
+from app.services.generated_practice_service import (
+    _legacy_payload_fingerprint,
+    _payload_fingerprint,
+    _payload_fingerprint_matches,
+)
+from app.schemas.learning import AnswerSubmit
 
 
 REQUEST_PAYLOAD = {
@@ -43,6 +52,134 @@ REQUEST_PAYLOAD = {
     "question_count": 1,
     "learning_goal": "掌握同分母分数加法",
 }
+
+
+def test_answer_evidence_contract_is_backward_compatible_and_bounded():
+    question_id = uuid.uuid4()
+    ordinary_id = uuid.uuid4()
+
+    generated_old = GeneratedPracticeAnswerSubmit(
+        question_id=question_id, user_answer="x=4", time_spent_seconds=2
+    )
+    ordinary_old = AnswerSubmit(
+        question_id=question_id,
+        answer_id=ordinary_id,
+        user_answer="x=4",
+        time_spent_seconds=2,
+    )
+    assert generated_old.solution_steps == [] and generated_old.confidence is None
+    assert ordinary_old.solution_steps == [] and ordinary_old.confidence is None
+
+    generated = GeneratedPracticeAnswerSubmit(
+        question_id=question_id,
+        user_answer="x=4",
+        time_spent_seconds=2,
+        solution_steps=["2x=8", "x=4"],
+        confidence=4,
+    )
+    assert generated.solution_steps == ["2x=8", "x=4"]
+    assert generated.confidence == 4
+
+    for model, base in (
+        (
+            GeneratedPracticeAnswerSubmit,
+            {"question_id": question_id, "user_answer": "x=4", "time_spent_seconds": 2},
+        ),
+        (
+            AnswerSubmit,
+            {
+                "question_id": question_id,
+                "answer_id": ordinary_id,
+                "user_answer": "x=4",
+                "time_spent_seconds": 2,
+            },
+        ),
+    ):
+        with pytest.raises(ValidationError):
+            model(**base, solution_steps=["x=1"] * 13)
+        with pytest.raises(ValidationError):
+            model(**base, solution_steps=["x" * 201])
+        with pytest.raises(ValidationError):
+            model(**base, confidence=0)
+        with pytest.raises(ValidationError):
+            model(**base, confidence=6)
+
+
+def test_generated_submission_fingerprint_includes_evidence_and_is_key_order_stable():
+    batch_id = uuid.uuid4()
+    question_id = uuid.uuid4()
+    submission_id = uuid.uuid4()
+    base = {
+        "submission_id": submission_id,
+        "answers": [
+            {
+                "question_id": question_id,
+                "user_answer": "x=4",
+                "time_spent_seconds": 3,
+                "solution_steps": ["2x=8", "x=4"],
+                "confidence": 4,
+            }
+        ],
+    }
+    reordered = {
+        "answers": [
+            {
+                "confidence": 4,
+                "solution_steps": ["2x=8", "x=4"],
+                "time_spent_seconds": 3,
+                "user_answer": "x=4",
+                "question_id": question_id,
+            }
+        ],
+        "submission_id": submission_id,
+    }
+    original = GeneratedPracticeSubmitRequest.model_validate(base)
+    assert _payload_fingerprint(
+        batch_id=batch_id, request=original
+    ) == _payload_fingerprint(
+        batch_id=batch_id,
+        request=GeneratedPracticeSubmitRequest.model_validate(reordered),
+    )
+
+    changed_steps = original.model_copy(deep=True)
+    changed_steps.answers[0].solution_steps = ["2x=10", "x=4"]
+    changed_confidence = original.model_copy(deep=True)
+    changed_confidence.answers[0].confidence = 2
+    assert _payload_fingerprint(batch_id=batch_id, request=changed_steps) != _payload_fingerprint(
+        batch_id=batch_id, request=original
+    )
+    assert _payload_fingerprint(batch_id=batch_id, request=changed_confidence) != _payload_fingerprint(
+        batch_id=batch_id, request=original
+    )
+
+
+def test_legacy_fingerprint_is_accepted_only_for_a_request_without_new_evidence():
+    batch_id = uuid.uuid4()
+    request = GeneratedPracticeSubmitRequest.model_validate(
+        {
+            "submission_id": uuid.uuid4(),
+            "answers": [
+                {
+                    "question_id": uuid.uuid4(),
+                    "user_answer": "x=4",
+                    "time_spent_seconds": 3,
+                }
+            ],
+        }
+    )
+    legacy = _legacy_payload_fingerprint(batch_id=batch_id, request=request)
+    assert _payload_fingerprint_matches(legacy, batch_id=batch_id, request=request)
+
+    with_steps = request.model_copy(deep=True)
+    with_steps.answers[0].solution_steps = ["2x=8", "x=4"]
+    with_confidence = request.model_copy(deep=True)
+    with_confidence.answers[0].confidence = 4
+    assert not _payload_fingerprint_matches(
+        legacy, batch_id=batch_id, request=with_steps
+    )
+    assert not _payload_fingerprint_matches(
+        legacy, batch_id=batch_id, request=with_confidence
+    )
 
 GENERATED_QUESTION = {
     "question_type": "choice",
@@ -467,7 +604,13 @@ async def test_submit_completed_generated_batch_persists_feedback_and_replays_wi
     request = {
         "submission_id": str(submission_id),
         "answers": [
-            {"question_id": str(questions[0].id), "user_answer": "a", "time_spent_seconds": 2},
+            {
+                "question_id": str(questions[0].id),
+                "user_answer": "a",
+                "time_spent_seconds": 2,
+                "solution_steps": ["2x=8", "x=4"],
+                "confidence": 4,
+            },
             {"question_id": str(questions[1].id), "user_answer": " C, A ", "time_spent_seconds": 3},
             {"question_id": str(questions[2].id), "user_answer": " 42 ", "time_spent_seconds": 4},
         ],
@@ -500,6 +643,8 @@ async def test_submit_completed_generated_batch_persists_feedback_and_replays_wi
     assert [item["is_correct"] for item in payload["results"]] == [True, True, True]
     assert [item["correct_answer"] for item in payload["results"]] == ["A", "A,C", "42"]
     assert [item["explanation"] for item in payload["results"]] == ["单选解析", "多选解析", "填空解析"]
+    assert all(item["diagnosis_status"] == "pending" for item in payload["results"])
+    assert len({item["diagnosis_job_id"] for item in payload["results"]}) == 3
 
     assert (await question_db_session.execute(
         select(func.count()).select_from(Base.metadata.tables["generated_practice_submissions"])
@@ -510,6 +655,18 @@ async def test_submit_completed_generated_batch_persists_feedback_and_replays_wi
     assert (await question_db_session.execute(
         select(func.count()).select_from(Base.metadata.tables["generated_practice_reward_events"])
     )).scalar_one() == 3
+    assert (await question_db_session.execute(
+        select(func.count()).select_from(DiagnosisJob).where(
+            DiagnosisJob.user_id == user_id
+        )
+    )).scalar_one() == 3
+    stored_answers = list((await question_db_session.execute(
+        select(GeneratedPracticeAnswer)
+        .where(GeneratedPracticeAnswer.submission_id == submission_id)
+        .order_by(GeneratedPracticeAnswer.position)
+    )).scalars().all())
+    assert stored_answers[0].solution_steps == ["2x=8", "x=4"]
+    assert stored_answers[0].student_confidence == 4
 
     user = await question_db_session.get(User, user_id)
     assert user.total_answered == 3
@@ -633,6 +790,12 @@ async def test_submit_generated_batch_enforces_owner_state_exact_passed_set_and_
         f"/api/v1/questions/batches/{batch.id}/submit",
         json={"submission_id": str(submission_id), "answers": conflict_answers},
     )
+    evidence_conflict_answers = [dict(item) for item in complete_answers]
+    evidence_conflict_answers[0]["solution_steps"] = ["x=5"]
+    evidence_conflict = await api_client.post(
+        f"/api/v1/questions/batches/{batch.id}/submit",
+        json={"submission_id": str(submission_id), "answers": evidence_conflict_answers},
+    )
     _clear_generation_dependencies()
 
     assert foreign.status_code == 404
@@ -646,6 +809,7 @@ async def test_submit_generated_batch_enforces_owner_state_exact_passed_set_and_
     assert accepted.status_code == 200
     assert conflict.status_code == 409
     assert conflict.json()["message"] == "提交编号已用于不同的作答内容"
+    assert evidence_conflict.status_code == 409
 
 
 @pytest.mark.asyncio
@@ -780,6 +944,10 @@ async def test_generated_practice_injected_failure_rolls_back_all_side_effects(
         (
             GeneratedPracticeRewardEvent,
             GeneratedPracticeRewardEvent.submission_id == submission_id,
+        ),
+        (
+            DiagnosisJob,
+            DiagnosisJob.user_id == user_id,
         ),
     ):
         assert (

@@ -98,6 +98,8 @@ async def submit_answer(
         answer_id=request.answer_id,
         user_answer=request.user_answer,
         time_spent_seconds=request.time_spent_seconds,
+        solution_steps=request.solution_steps,
+        confidence=request.confidence,
     )
     return success_response(
         data=AnswerResult.model_validate(answer_result),

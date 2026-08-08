@@ -12,10 +12,10 @@
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import Literal, Optional
 from uuid import UUID, uuid4
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class LearningSessionCreate(BaseModel):
@@ -59,6 +59,15 @@ class AnswerSubmit(BaseModel):
     answer_id: UUID = Field(default_factory=uuid4, description="正式作答事件 ID；重试必须复用同一 ID")
     user_answer: str = Field(..., description="用户答案")
     time_spent_seconds: int = Field(..., ge=0, description="答题用时（秒）")
+    solution_steps: list[str] = Field(default_factory=list, max_length=12)
+    confidence: Optional[int] = Field(default=None, ge=1, le=5)
+
+    @field_validator("solution_steps")
+    @classmethod
+    def validate_solution_steps(cls, steps: list[str]) -> list[str]:
+        if any(len(step) > 200 for step in steps):
+            raise ValueError("每个解题步骤最多 200 个字符")
+        return steps
 
 
 class AnswerResponse(BaseModel):
@@ -93,6 +102,8 @@ class AnswerResult(BaseModel):
     tutor_prompt: Optional[str] = None
     time_spent_seconds: int
     gamification: Optional[dict] = None
+    diagnosis_job_id: UUID
+    diagnosis_status: Literal["pending", "succeeded"]
 
     model_config = {"from_attributes": True}
 

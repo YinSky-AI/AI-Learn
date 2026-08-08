@@ -18,11 +18,17 @@ from app.models.ai_generated import (
     GeneratedQuestion,
     GeneratedQuestionBatch,
 )
+from app.models.adaptive_learning import DiagnosisJob
 from app.models.user import User
+from app.domain.equation_taxonomy import KnowledgePointCode
 from app.schemas.question import GeneratedPracticeSubmitRequest
 from app.services.behavior_service import BehaviorService
 from app.services.gamification_service import reward_generated_practice_answer
 from app.services.learning_service import judge_answer
+from app.services.diagnosis_job_service import (
+    DiagnosisAnswerReference,
+    enqueue_diagnosis_job,
+)
 
 
 logger = logging.getLogger(__name__)
@@ -33,6 +39,34 @@ def _payload_fingerprint(
     batch_id: uuid.UUID,
     request: GeneratedPracticeSubmitRequest,
 ) -> str:
+    canonical = {
+        "batch_id": str(batch_id),
+        "answers": sorted(
+            (
+                {
+                    "question_id": str(item.question_id),
+                    "user_answer": item.user_answer.strip(),
+                    "time_spent_seconds": item.time_spent_seconds,
+                    "solution_steps": list(item.solution_steps),
+                    "confidence": item.confidence,
+                }
+                for item in request.answers
+            ),
+            key=lambda item: item["question_id"],
+        ),
+    }
+    encoded = json.dumps(
+        canonical, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def _legacy_payload_fingerprint(
+    *,
+    batch_id: uuid.UUID,
+    request: GeneratedPracticeSubmitRequest,
+) -> str:
+    """Reproduce the pre-evidence fingerprint for safe historical replay only."""
     canonical = {
         "batch_id": str(batch_id),
         "answers": sorted(
@@ -53,8 +87,39 @@ def _payload_fingerprint(
     return hashlib.sha256(encoded).hexdigest()
 
 
+def _payload_fingerprint_matches(
+    stored: str,
+    *,
+    batch_id: uuid.UUID,
+    request: GeneratedPracticeSubmitRequest,
+) -> bool:
+    if stored == _payload_fingerprint(batch_id=batch_id, request=request):
+        return True
+    has_new_evidence = any(
+        answer.solution_steps or answer.confidence is not None
+        for answer in request.answers
+    )
+    return not has_new_evidence and stored == _legacy_payload_fingerprint(
+        batch_id=batch_id, request=request
+    )
+
+
 def _submission_log_key(value: uuid.UUID) -> str:
     return hashlib.sha256(str(value).encode("utf-8")).hexdigest()[:12]
+
+
+def _generated_knowledge_point_code(question: GeneratedQuestion | None) -> KnowledgePointCode:
+    tags = (
+        question.knowledge_tags
+        if question is not None and isinstance(question.knowledge_tags, list)
+        else []
+    )
+    for tag in tags:
+        try:
+            return KnowledgePointCode(str(tag))
+        except ValueError:
+            continue
+    return KnowledgePointCode.EQUATION_EQUIVALENCE
 
 
 async def _build_response(
@@ -62,6 +127,43 @@ async def _build_response(
     submission: GeneratedPracticeSubmission,
 ) -> dict:
     answers = await _submission_answers(db, submission.id)
+    jobs = list(
+        (
+            await db.execute(
+                select(DiagnosisJob).where(
+                    DiagnosisJob.generated_answer_id.in_([answer.id for answer in answers])
+                )
+            )
+        ).scalars().all()
+    )
+    jobs_by_answer = {job.generated_answer_id: job for job in jobs}
+    missing_answers = [answer for answer in answers if answer.id not in jobs_by_answer]
+    if missing_answers:
+        question_ids = [answer.generated_question_id for answer in missing_answers]
+        questions = list(
+            (
+                await db.execute(
+                    select(GeneratedQuestion).where(GeneratedQuestion.id.in_(question_ids))
+                )
+            ).scalars().all()
+        )
+        questions_by_id = {question.id: question for question in questions}
+        for answer in missing_answers:
+            question = questions_by_id.get(answer.generated_question_id)
+            job = await enqueue_diagnosis_job(
+                db,
+                DiagnosisAnswerReference(generated_answer_id=answer.id),
+                submission.user_id,
+                input_snapshot={
+                    "equation": question.question_body if question is not None else "x=x",
+                    "is_correct": answer.is_correct,
+                    "solution_steps": list(answer.solution_steps or []),
+                    "knowledge_point_code": _generated_knowledge_point_code(
+                        question
+                    ).value,
+                },
+            )
+            jobs_by_answer[answer.id] = job
     return {
         "submission_id": submission.id,
         "batch_id": submission.batch_id,
@@ -75,6 +177,12 @@ async def _build_response(
                 "is_correct": answer.is_correct,
                 "correct_answer": answer.correct_answer,
                 "explanation": answer.explanation,
+                "diagnosis_job_id": jobs_by_answer[answer.id].id,
+                "diagnosis_status": (
+                    "succeeded"
+                    if jobs_by_answer[answer.id].status == "succeeded"
+                    else "pending"
+                ),
             }
             for answer in answers
         ],
@@ -129,8 +237,8 @@ async def submit_generated_practice(
                 status_code=status.HTTP_409_CONFLICT,
                 detail="提交编号已用于不同的作答内容",
             )
-        if existing.payload_fingerprint != _payload_fingerprint(
-            batch_id=batch_id, request=request
+        if not _payload_fingerprint_matches(
+            existing.payload_fingerprint, batch_id=batch_id, request=request
         ):
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
@@ -210,10 +318,23 @@ async def submit_generated_practice(
             correct_answer=question.correct_answer,
             explanation=question.explanation,
             time_spent_seconds=submitted.time_spent_seconds,
+            solution_steps=list(submitted.solution_steps),
+            student_confidence=submitted.confidence,
             answered_at=now,
         )
         db.add(answer)
         await db.flush()
+        await enqueue_diagnosis_job(
+            db,
+            DiagnosisAnswerReference(generated_answer_id=answer.id),
+            user_id,
+            input_snapshot={
+                "equation": question.question_body,
+                "is_correct": is_correct,
+                "solution_steps": list(submitted.solution_steps),
+                "knowledge_point_code": _generated_knowledge_point_code(question).value,
+            },
+        )
         await BehaviorService(db).update_after_answer(
             user_id=user_id,
             answer_id=answer.id,

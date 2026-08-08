@@ -13,8 +13,8 @@
 LearningSession 是答题记录的聚合根，Answer 是会话内的子记录。
 """
 
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Index, ForeignKey, text
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import CheckConstraint, Column, Integer, String, Boolean, DateTime, Index, ForeignKey, text
+from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import relationship
 
 from app.core.database import BaseModel
@@ -122,6 +122,8 @@ class Answer(BaseModel, Base):
     user_answer = Column(String(500), nullable=False, comment="用户答案")
     is_correct = Column(Boolean, nullable=False, comment="是否正确")
     time_spent_seconds = Column(Integer, nullable=False, comment="用时（秒）")
+    solution_steps = Column(JSONB, nullable=False, default=list, server_default=text("'[]'::jsonb"))
+    student_confidence = Column(Integer, nullable=True)
     answered_at = Column(
         DateTime(timezone=True),
         nullable=False,
@@ -134,6 +136,10 @@ class Answer(BaseModel, Base):
 
     # 索引
     __table_args__ = (
+        CheckConstraint(
+            "student_confidence IS NULL OR (student_confidence >= 1 AND student_confidence <= 5)",
+            name="ck_answer_student_confidence",
+        ),
         Index("idx_answer_session", "session_id"),
         Index("idx_answer_question", "question_id"),
     )

@@ -26,6 +26,7 @@ from app.models.ai_generated import (
     GeneratedQuestion,
     GenerationJob,
 )
+from app.models.content import KnowledgeNode, Question
 from app.ai.tools.question_save_tool import QuestionSaveTool
 from app.schemas.question import QuestionGenerateRequest
 
@@ -34,15 +35,16 @@ from app.schemas.question import QuestionGenerateRequest
 class ClaimedGenerationJob:
     job_id: uuid.UUID
     user_id: uuid.UUID
-    source_question_id: uuid.UUID
+    source_question_id: uuid.UUID | None
     target_difficulty: str
     lease_owner: str
+    source_standard_question_id: uuid.UUID | None = None
 
 
 @dataclass(frozen=True, slots=True)
 class GenerationJobContext:
     job: ClaimedGenerationJob
-    batch_id: uuid.UUID
+    batch_id: uuid.UUID | None
     age_group_code: str
     subject_code: str
     course_topic: str
@@ -101,6 +103,42 @@ async def enqueue_variant_job(
     return job
 
 
+async def enqueue_standard_variant_job(
+    db: AsyncSession,
+    original_question_id: uuid.UUID,
+    user_id: uuid.UUID,
+    difficulty_level: str,
+) -> GenerationJob:
+    original = (
+        await db.execute(
+            select(Question).where(Question.id == original_question_id)
+        )
+    ).scalar_one_or_none()
+    if original is None:
+        raise ValueError("原题目不存在")
+    key = hashlib.sha256(
+        f"standard-variant:{user_id}:{original_question_id}:{difficulty_level}".encode()
+    ).hexdigest()
+    existing = (
+        await db.execute(
+            select(GenerationJob).where(GenerationJob.idempotency_key == key)
+        )
+    ).scalar_one_or_none()
+    if existing is not None:
+        return existing
+    job = GenerationJob(
+        user_id=user_id,
+        source_question_id=None,
+        source_standard_question_id=original_question_id,
+        target_difficulty=difficulty_level,
+        idempotency_key=key,
+        status="queued",
+    )
+    db.add(job)
+    await db.flush()
+    return job
+
+
 async def claim_next_generation_job(
     db: AsyncSession, worker_id: str, lease_seconds: int = 120
 ) -> ClaimedGenerationJob | None:
@@ -129,6 +167,7 @@ async def claim_next_generation_job(
         source_question_id=job.source_question_id,
         target_difficulty=job.target_difficulty,
         lease_owner=worker_id,
+        source_standard_question_id=job.source_standard_question_id,
     )
 
 
@@ -158,30 +197,52 @@ async def load_generation_job_context(
     """Copy all model inputs in a short read transaction."""
     async with session_factory() as db:
         async with db.begin():
+            if claimed.source_question_id is not None:
+                source = (
+                    await db.execute(
+                        select(GeneratedQuestion).where(
+                            GeneratedQuestion.id == claimed.source_question_id
+                        )
+                    )
+                ).scalar_one_or_none()
+                if source is None:
+                    raise GenerationContextError("source_question_missing")
+                batch = (
+                    await db.execute(
+                        select(GeneratedQuestionBatch).where(
+                            GeneratedQuestionBatch.id == source.batch_id
+                        )
+                    )
+                ).scalar_one_or_none()
+                if batch is None:
+                    raise GenerationContextError("source_batch_missing")
+                return GenerationJobContext(
+                    job=claimed,
+                    batch_id=batch.id,
+                    age_group_code=batch.age_group_code,
+                    subject_code=source.subject_code,
+                    course_topic=source.course_topic,
+                    question_type=source.question_type,
+                )
+
             source = (
                 await db.execute(
-                    select(GeneratedQuestion).where(
-                        GeneratedQuestion.id == claimed.source_question_id
+                    select(Question).where(
+                        Question.id == claimed.source_standard_question_id
                     )
                 )
             ).scalar_one_or_none()
             if source is None:
                 raise GenerationContextError("source_question_missing")
-            batch = (
-                await db.execute(
-                    select(GeneratedQuestionBatch).where(
-                        GeneratedQuestionBatch.id == source.batch_id
-                    )
-                )
-            ).scalar_one_or_none()
-            if batch is None:
-                raise GenerationContextError("source_batch_missing")
+            node = await db.get(KnowledgeNode, source.knowledge_node_id)
+            if node is None:
+                raise GenerationContextError("source_knowledge_node_missing")
             return GenerationJobContext(
                 job=claimed,
-                batch_id=batch.id,
-                age_group_code=batch.age_group_code,
-                subject_code=source.subject_code,
-                course_topic=source.course_topic,
+                batch_id=None,
+                age_group_code=node.age_group_code,
+                subject_code=node.subject_code,
+                course_topic=node.title,
                 question_type=source.question_type,
             )
 
@@ -205,9 +266,26 @@ async def persist_generation_result(
                 or job.lease_owner != context.job.lease_owner
             ):
                 return
+            batch_id = context.batch_id
+            if batch_id is None:
+                batch = GeneratedQuestionBatch(
+                    user_id=context.job.user_id,
+                    age_group_code=context.age_group_code,
+                    subject_code=context.subject_code,
+                    course_topic=context.course_topic,
+                    difficulty_level=context.job.target_difficulty,
+                    question_types=[context.question_type],
+                    question_count=1,
+                    learning_goal=None,
+                    status="completed",
+                    prompt_version="adaptive-equation-v1",
+                )
+                db.add(batch)
+                await db.flush()
+                batch_id = batch.id
             saved = await save_generated_questions(
                 db,
-                context.batch_id,
+                batch_id,
                 context.job.user_id,
                 questions,
                 context.subject_code,
@@ -215,7 +293,8 @@ async def persist_generation_result(
                 context.job.target_difficulty,
             )
             for question in saved:
-                question.parent_question_id = context.job.source_question_id
+                if context.job.source_question_id is not None:
+                    question.parent_question_id = context.job.source_question_id
                 question.quality_status = "passed"
             await complete_generation_job(db, job, saved[0].id)
 

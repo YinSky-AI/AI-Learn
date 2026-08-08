@@ -210,6 +210,12 @@ async def persist_diagnosis_result(
                 diagnosis,
                 correct=bool(claimed.input_snapshot["is_correct"]),
             )
+            diagnosis.input_snapshot = {
+                **dict(claimed.input_snapshot),
+                "mastery_before": str(mastery.before),
+                "mastery_after": str(mastery.after),
+                "mastery_model_version": mastery.state.model_version,
+            }
             prerequisite_code = None
             prerequisites = mastery.knowledge_node.prerequisites or []
             if prerequisites:

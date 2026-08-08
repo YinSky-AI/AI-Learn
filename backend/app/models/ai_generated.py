@@ -306,7 +306,12 @@ class GenerationJob(BaseModel, Base):
 
     idempotency_key = Column(String(128), nullable=False, unique=True)
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    source_question_id = Column(UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="CASCADE"), nullable=False)
+    source_question_id = Column(UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="CASCADE"), nullable=True)
+    source_standard_question_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("questions.id", ondelete="CASCADE"),
+        nullable=True,
+    )
     target_difficulty = Column(String(20), nullable=False)
     status = Column(String(20), nullable=False, default="queued", server_default="queued")
     attempts = Column(Integer, nullable=False, default=0, server_default="0")
@@ -317,6 +322,11 @@ class GenerationJob(BaseModel, Base):
     result_question_id = Column(UUID(as_uuid=True), ForeignKey("generated_questions.id", ondelete="SET NULL"), nullable=True)
 
     __table_args__ = (
+        CheckConstraint(
+            "((source_question_id IS NOT NULL AND source_standard_question_id IS NULL) OR "
+            "(source_question_id IS NULL AND source_standard_question_id IS NOT NULL))",
+            name="ck_generation_job_exactly_one_source",
+        ),
         Index("idx_generation_job_status_lease", "status", "lease_expires_at"),
         Index("idx_generation_job_user_created", "user_id", "created_at"),
     )

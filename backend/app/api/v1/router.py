@@ -25,6 +25,7 @@ from app.api.v1.wrong_book import router as wrong_book_router
 from app.api.v1.behavior import router as behavior_router
 from app.api.v1.daily_challenge import router as daily_challenge_router
 from app.api.v1.knowledge_graph import router as knowledge_graph_router
+from app.api.v1.adaptive import router as adaptive_router
 
 # v1 总路由
 router = APIRouter()
@@ -44,3 +45,4 @@ router.include_router(wrong_book_router, prefix="/wrong-book", tags=["错题本"
 router.include_router(knowledge_graph_router, prefix="/knowledge-graph", tags=["knowledge-graph"])
 router.include_router(behavior_router, prefix="/user/behavior", tags=["学习行为"])
 router.include_router(daily_challenge_router, prefix="/challenge", tags=["daily-challenge"])
+router.include_router(adaptive_router, prefix="/adaptive", tags=["自适应学习"])

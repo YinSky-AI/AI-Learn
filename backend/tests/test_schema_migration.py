@@ -285,7 +285,7 @@ def test_unknown_schema_policy_is_rejected_with_plain_text():
 
 
 def test_two_database_targets_publish_independent_revision_heads():
-    assert get_expected_schema_revision("primary") == "lp_0012_answer_evidence"
+    assert get_expected_schema_revision("primary") == "lp_0013_generation_job_sources"
     assert get_expected_schema_revision("question-bank") == "catalog_0002_admin_recovery"
     assert get_schema_version_table("primary") == "alembic_version_learning"
     assert get_schema_version_table("question-bank") == "alembic_version_catalog"
@@ -300,7 +300,7 @@ def test_adaptive_diagnosis_is_reversible_below_the_primary_head():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
-    assert script.get_current_head() == "lp_0012_answer_evidence"
+    assert script.get_current_head() == "lp_0013_generation_job_sources"
     revision = script.get_revision("lp_0011_adaptive_diagnosis")
     assert revision.down_revision == "lp_0010_practice_history"
     source = Path(revision.path).read_text(encoding="utf-8")
@@ -317,7 +317,7 @@ def test_adaptive_diagnosis_is_reversible_below_the_primary_head():
     assert 'op.drop_column("knowledge_nodes", "code")' in source
 
 
-def test_answer_evidence_is_the_reversible_primary_head():
+def test_answer_evidence_is_reversible_below_the_primary_head():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
@@ -331,6 +331,20 @@ def test_answer_evidence_is_the_reversible_primary_head():
     assert "ck_answer_student_confidence" in source
     assert "ck_generated_practice_answer_student_confidence" in source
     assert 'op.drop_column(table, "solution_steps")' in source
+
+
+def test_generation_job_sources_are_the_reversible_primary_head():
+    script = schema_admin_module.ScriptDirectory.from_config(
+        schema_admin_module._config("primary")
+    )
+    revision = script.get_revision("lp_0013_generation_job_sources")
+    assert revision.down_revision == "lp_0012_answer_evidence"
+    source = Path(revision.path).read_text(encoding="utf-8")
+    assert '"source_standard_question_id"' in source
+    assert "ck_generation_job_exactly_one_source" in source
+    assert "fk_generation_job_standard_source" in source
+    assert 'op.drop_column("generation_jobs", "source_standard_question_id")' in source
+    assert "DELETE FROM generation_jobs WHERE source_question_id IS NULL" in source
 
 
 def test_adaptive_migration_backfill_only_maps_unambiguous_legacy_keys(monkeypatch):
@@ -809,7 +823,7 @@ def test_practice_history_fk_change_is_a_forward_reversible_migration():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
-    assert script.get_current_head() == "lp_0012_answer_evidence"
+    assert script.get_current_head() == "lp_0013_generation_job_sources"
     revision = script.get_revision("lp_0010_practice_history")
     assert revision.down_revision == "lp_0009_practice_contract"
     source = Path(revision.path).read_text(encoding="utf-8")
@@ -1380,7 +1394,7 @@ def test_primary_allows_only_named_external_tables_and_catalog_allows_no_unknown
 @pytest.mark.asyncio
 async def test_schema_guard_checks_both_database_heads_before_startup():
     current = {
-        "primary": "lp_0012_answer_evidence",
+        "primary": "lp_0013_generation_job_sources",
         "question-bank": "catalog_0002_admin_recovery",
     }
 
@@ -1405,7 +1419,7 @@ async def test_schema_guard_checks_both_database_heads_before_startup():
 async def test_schema_guard_rejects_when_either_database_is_stale():
     async def revision_reader(_engine, target_alias):
         if target_alias == "primary":
-            return "lp_0012_answer_evidence"
+            return "lp_0013_generation_job_sources"
         return None
 
     with pytest.raises(SchemaVersionError, match="question-bank.*尚未纳入版本管理"):

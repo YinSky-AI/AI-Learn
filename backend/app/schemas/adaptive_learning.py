@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 from enum import StrEnum
-from typing import Any
+from typing import Any, Literal
+from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from app.domain.equation_taxonomy import KnowledgePointCode, MisconceptionCode
+from app.services.question_access import sanitize_public_value
 
 
 class DiagnosisStatus(StrEnum):
@@ -84,3 +86,57 @@ def bounded_token_usage(value: Any) -> dict[str, int] | None:
         if isinstance(value.get(key), int) and 0 <= value[key] <= 10_000_000
     }
     return result or None
+
+
+class PublicDiagnosis(BaseModel):
+    status: DiagnosisStatus
+    knowledge_point_code: KnowledgePointCode
+    misconception_code: MisconceptionCode | None = None
+    first_invalid_step: int | None = Field(default=None, ge=2)
+    evidence: str = Field(max_length=500)
+    confidence: float = Field(ge=0, le=1)
+
+
+class PublicMasteryChange(BaseModel):
+    before: float | None = Field(default=None, ge=0, le=1)
+    after: float | None = Field(default=None, ge=0, le=1)
+    model_version: str | None = None
+
+
+class PublicNextAction(BaseModel):
+    decision_id: UUID
+    action: str
+    reason_codes: list[str] = Field(default_factory=list, max_length=5)
+
+
+class DiagnosisJobResponse(BaseModel):
+    job_id: UUID
+    state: Literal["pending", "succeeded", "failed"]
+    retryable: bool | None = None
+    message: str | None = None
+    diagnosis: PublicDiagnosis | None = None
+    mastery: PublicMasteryChange | None = None
+    next_action: PublicNextAction | None = None
+
+
+class AdaptiveQuestionPublic(BaseModel):
+    source: Literal["ordinary", "generated"]
+    id: UUID
+    knowledge_node_id: UUID | None = None
+    difficulty_level: str
+    question_type: str
+    question_body: str
+    options: list[dict[str, Any]] | None = None
+    standard_time_seconds: int
+    sort_order: int | None = None
+
+    @field_validator("options", mode="before")
+    @classmethod
+    def sanitize_options(cls, value):
+        return sanitize_public_value(value)
+
+
+class AdaptiveNextResponse(BaseModel):
+    state: Literal["ready", "pending_generation"]
+    question: AdaptiveQuestionPublic | None = None
+    generation_job_id: UUID | None = None

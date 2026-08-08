@@ -20,7 +20,7 @@ async def get_knowledge_graph(
     user_id: uuid.UUID = Depends(get_current_user_id),
     db: AsyncSession = Depends(get_db),
 ):
-    """返回三学科 MVP 图谱，并使用当前用户的行为报告补充掌握度。"""
+    """返回展示图谱，并使用数据库知识节点与 BKT 状态补充运行时事实。"""
     try:
         graph = await KnowledgeGraphService(db).get_for_user(user_id, subject)
     except UnknownSubjectError as error:

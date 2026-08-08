@@ -29,6 +29,8 @@ openai==1.58.1
 python-dotenv==1.0.1
 httpx==0.28.1
 python-multipart==0.0.20
+lark==1.3.1
+sympy==1.14.0
 
 # 日志
 loguru==0.7.3

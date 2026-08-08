@@ -63,6 +63,12 @@ from app.models.course import (  # noqa: E402, F401
     ChatMessage,
 )
 from app.models.admin_change import AdminChangeAudit  # noqa: E402, F401
+from app.models.adaptive_learning import (  # noqa: E402, F401
+    AdaptationDecision,
+    AnswerDiagnosis,
+    DiagnosisJob,
+    KnowledgeMasteryState,
+)
 
 __all__ = [
     "Base",
@@ -102,4 +108,8 @@ __all__ = [
     "UserLesson",
     "ChatMessage",
     "AdminChangeAudit",
+    "DiagnosisJob",
+    "AnswerDiagnosis",
+    "KnowledgeMasteryState",
+    "AdaptationDecision",
 ]

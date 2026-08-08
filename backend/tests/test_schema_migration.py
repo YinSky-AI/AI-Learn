@@ -285,13 +285,69 @@ def test_unknown_schema_policy_is_rejected_with_plain_text():
 
 
 def test_two_database_targets_publish_independent_revision_heads():
-    assert get_expected_schema_revision("primary") == "lp_0010_practice_history"
+    assert get_expected_schema_revision("primary") == "lp_0011_adaptive_diagnosis"
     assert get_expected_schema_revision("question-bank") == "catalog_0002_admin_recovery"
     assert get_schema_version_table("primary") == "alembic_version_learning"
     assert get_schema_version_table("question-bank") == "alembic_version_catalog"
 
     with pytest.raises(SchemaVersionError, match="目标别名"):
         get_expected_schema_revision("unknown")
+
+
+def test_adaptive_diagnosis_is_the_reversible_primary_head():
+    """Publishing incomplete adaptive storage or a wrong parent must make this fail."""
+
+    script = schema_admin_module.ScriptDirectory.from_config(
+        schema_admin_module._config("primary")
+    )
+    assert script.get_current_head() == "lp_0011_adaptive_diagnosis"
+    revision = script.get_revision("lp_0011_adaptive_diagnosis")
+    assert revision.down_revision == "lp_0010_practice_history"
+    source = Path(revision.path).read_text(encoding="utf-8")
+    for table_name in (
+        "diagnosis_jobs",
+        "answer_diagnoses",
+        "knowledge_mastery_states",
+        "adaptation_decisions",
+    ):
+        assert f'"{table_name}"' in source
+        assert f'op.drop_table("{table_name}")' in source
+    assert "legacy-" in source
+    assert 'op.add_column("knowledge_nodes"' in source
+    assert 'op.drop_column("knowledge_nodes", "code")' in source
+
+
+def test_adaptive_migration_backfill_only_maps_unambiguous_legacy_keys(monkeypatch):
+    """Mapping duplicate titles or rewriting the legacy JSON must make this fail."""
+
+    script = schema_admin_module.ScriptDirectory.from_config(
+        schema_admin_module._config("primary")
+    )
+    revision = script.get_revision("lp_0011_adaptive_diagnosis")
+    namespace = {}
+    exec(Path(revision.path).read_text(encoding="utf-8"), namespace)
+
+    statements = []
+
+    class RecordingOperations:
+        def __getattr__(self, name):
+            if name == "execute":
+                return lambda statement: statements.append(str(statement))
+            return lambda *_args, **_kwargs: None
+
+    monkeypatch.setitem(namespace, "op", RecordingOperations())
+    namespace["upgrade"]()
+    backfill = next(
+        statement
+        for statement in statements
+        if "INSERT INTO knowledge_mastery_states" in statement
+    )
+
+    assert "exact_node.code = entry.key" in backfill
+    assert "title_count.title = entry.key" in backfill
+    assert "SELECT COUNT(*)" in backfill
+    assert "ON CONFLICT (user_id, knowledge_node_id, model_version) DO NOTHING" in backfill
+    assert "UPDATE users" not in backfill
 
 
 def test_owned_schema_keeps_admin_flag_non_nullable():
@@ -478,6 +534,13 @@ def test_every_downgrade_requires_destructive_confirmation_then_accepts_exact_re
         "downgrade",
         target_alias="primary",
         revision="lp_0010_practice_history",
+        allow_baseline_adoption=False,
+        allow_destructive_downgrade=True,
+    )
+    validate_migration_action(
+        "downgrade",
+        target_alias="primary",
+        revision="lp_0011_adaptive_diagnosis",
         allow_baseline_adoption=False,
         allow_destructive_downgrade=True,
     )
@@ -730,7 +793,7 @@ def test_practice_history_fk_change_is_a_forward_reversible_migration():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
-    assert script.get_current_head() == "lp_0010_practice_history"
+    assert script.get_current_head() == "lp_0011_adaptive_diagnosis"
     revision = script.get_revision("lp_0010_practice_history")
     assert revision.down_revision == "lp_0009_practice_contract"
     source = Path(revision.path).read_text(encoding="utf-8")
@@ -1301,7 +1364,7 @@ def test_primary_allows_only_named_external_tables_and_catalog_allows_no_unknown
 @pytest.mark.asyncio
 async def test_schema_guard_checks_both_database_heads_before_startup():
     current = {
-        "primary": "lp_0010_practice_history",
+        "primary": "lp_0011_adaptive_diagnosis",
         "question-bank": "catalog_0002_admin_recovery",
     }
 
@@ -1326,7 +1389,7 @@ async def test_schema_guard_checks_both_database_heads_before_startup():
 async def test_schema_guard_rejects_when_either_database_is_stale():
     async def revision_reader(_engine, target_alias):
         if target_alias == "primary":
-            return "lp_0010_practice_history"
+            return "lp_0011_adaptive_diagnosis"
         return None
 
     with pytest.raises(SchemaVersionError, match="question-bank.*尚未纳入版本管理"):

@@ -12,8 +12,10 @@
 - 题目：与知识点绑定的预置练习题
 """
 
+import uuid
+
 from sqlalchemy import (
-    Column, Float, Integer, String, Text, Boolean, Index, ForeignKey,
+    Column, Float, Integer, String, Text, Boolean, Index, ForeignKey, text,
 )
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 from sqlalchemy.orm import relationship
@@ -111,6 +113,16 @@ class KnowledgeNode(BaseModel, Base):
 
     __tablename__ = "knowledge_nodes"
 
+    code = Column(
+        String(64),
+        nullable=False,
+        unique=True,
+        default=lambda: f"legacy-{uuid.uuid4().hex[:12]}",
+        server_default=text(
+            "('legacy-' || substring(replace(uuid_generate_v4()::text, '-', '') from 1 for 12))"
+        ),
+        comment="稳定知识点编码",
+    )
     title = Column(String(200), nullable=False, comment="标题")
     description = Column(Text, nullable=True, comment="简介")
     subject_code = Column(

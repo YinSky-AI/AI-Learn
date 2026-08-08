@@ -174,6 +174,30 @@ services:
     networks:
       - ai-learn-net
 
+  diagnosis-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    command: ["python", "run_diagnosis_worker.py"]
+    env_file:
+      - ./backend/.env
+    environment:
+      DEBUG: "false"
+      DATABASE_URL: ""
+      AI_LEARN_DATABASE_URL: ""
+      DATABASE_URL_FILE: /run/secrets/primary_database_url
+      AI_LEARN_DATABASE_URL_FILE: /run/secrets/catalog_database_url
+      JWT_SECRET_KEY: your-super-secret-key-change-in-production
+    secrets:
+      - primary_database_url
+      - catalog_database_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - ai-learn-net
+
   # 两个 bootstrap 服务可独立重跑；已在批准 head 时只读确认并成功退出。
   schema-bootstrap-primary:
     build:

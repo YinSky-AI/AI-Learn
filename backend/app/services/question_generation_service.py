@@ -14,6 +14,7 @@ AI 出题服务模块
 
 import uuid
 import hashlib
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import List, Optional
 
@@ -27,6 +28,33 @@ from app.models.ai_generated import (
 )
 from app.ai.tools.question_save_tool import QuestionSaveTool
 from app.schemas.question import QuestionGenerateRequest
+
+
+@dataclass(frozen=True, slots=True)
+class ClaimedGenerationJob:
+    job_id: uuid.UUID
+    user_id: uuid.UUID
+    source_question_id: uuid.UUID
+    target_difficulty: str
+    lease_owner: str
+
+
+@dataclass(frozen=True, slots=True)
+class GenerationJobContext:
+    job: ClaimedGenerationJob
+    batch_id: uuid.UUID
+    age_group_code: str
+    subject_code: str
+    course_topic: str
+    question_type: str
+
+
+class GenerationContextError(RuntimeError):
+    """A fixed, non-sensitive failure category from snapshot loading."""
+
+    def __init__(self, reason: str) -> None:
+        self.reason = reason
+        super().__init__(reason)
 
 
 async def generate_reviewed_batch(
@@ -73,7 +101,9 @@ async def enqueue_variant_job(
     return job
 
 
-async def claim_next_generation_job(db: AsyncSession, worker_id: str, lease_seconds: int = 120) -> GenerationJob | None:
+async def claim_next_generation_job(
+    db: AsyncSession, worker_id: str, lease_seconds: int = 120
+) -> ClaimedGenerationJob | None:
     now = datetime.now(timezone.utc)
     job = (await db.execute(
         select(GenerationJob)
@@ -93,7 +123,13 @@ async def claim_next_generation_job(db: AsyncSession, worker_id: str, lease_seco
     job.lease_expires_at = now + timedelta(seconds=lease_seconds)
     job.failure_reason = None
     await db.flush()
-    return job
+    return ClaimedGenerationJob(
+        job_id=job.id,
+        user_id=job.user_id,
+        source_question_id=job.source_question_id,
+        target_difficulty=job.target_difficulty,
+        lease_owner=worker_id,
+    )
 
 
 async def complete_generation_job(db: AsyncSession, job: GenerationJob, result_question_id: uuid.UUID) -> None:
@@ -116,37 +152,117 @@ async def retry_or_fail_generation_job(db: AsyncSession, job: GenerationJob, rea
     await db.flush()
 
 
-async def process_claimed_generation_job(db: AsyncSession, job: GenerationJob, pipeline) -> None:
-    """Run exactly the existing generator + reviewer pipeline for one claimed job."""
-    source = (await db.execute(select(GeneratedQuestion).where(GeneratedQuestion.id == job.source_question_id))).scalar_one_or_none()
-    if source is None:
-        await retry_or_fail_generation_job(db, job, "source_question_missing")
-        return
-    batch = (await db.execute(select(GeneratedQuestionBatch).where(GeneratedQuestionBatch.id == source.batch_id))).scalar_one_or_none()
-    if batch is None:
-        await retry_or_fail_generation_job(db, job, "source_batch_missing")
-        return
-    request = QuestionGenerateRequest(
-        age_group_code=batch.age_group_code,
-        subject_code=source.subject_code,
-        course_topic=source.course_topic,
-        difficulty_level=job.target_difficulty,
-        question_types=[source.question_type],
-        question_count=1,
-        learning_goal=None,
-    )
+async def load_generation_job_context(
+    session_factory, claimed: ClaimedGenerationJob
+) -> GenerationJobContext:
+    """Copy all model inputs in a short read transaction."""
+    async with session_factory() as db:
+        async with db.begin():
+            source = (
+                await db.execute(
+                    select(GeneratedQuestion).where(
+                        GeneratedQuestion.id == claimed.source_question_id
+                    )
+                )
+            ).scalar_one_or_none()
+            if source is None:
+                raise GenerationContextError("source_question_missing")
+            batch = (
+                await db.execute(
+                    select(GeneratedQuestionBatch).where(
+                        GeneratedQuestionBatch.id == source.batch_id
+                    )
+                )
+            ).scalar_one_or_none()
+            if batch is None:
+                raise GenerationContextError("source_batch_missing")
+            return GenerationJobContext(
+                job=claimed,
+                batch_id=batch.id,
+                age_group_code=batch.age_group_code,
+                subject_code=source.subject_code,
+                course_topic=source.course_topic,
+                question_type=source.question_type,
+            )
+
+
+async def persist_generation_result(
+    session_factory, context: GenerationJobContext, questions: list
+) -> None:
+    """Save reviewed questions and complete the lease in one short transaction."""
+    async with session_factory() as db:
+        async with db.begin():
+            job = (
+                await db.execute(
+                    select(GenerationJob)
+                    .where(GenerationJob.id == context.job.job_id)
+                    .with_for_update()
+                )
+            ).scalar_one_or_none()
+            if (
+                job is None
+                or job.status != "running"
+                or job.lease_owner != context.job.lease_owner
+            ):
+                return
+            saved = await save_generated_questions(
+                db,
+                context.batch_id,
+                context.job.user_id,
+                questions,
+                context.subject_code,
+                context.course_topic,
+                context.job.target_difficulty,
+            )
+            for question in saved:
+                question.parent_question_id = context.job.source_question_id
+                question.quality_status = "passed"
+            await complete_generation_job(db, job, saved[0].id)
+
+
+async def _mark_generation_attempt(
+    session_factory, claimed: ClaimedGenerationJob, reason: str
+) -> None:
+    async with session_factory() as db:
+        async with db.begin():
+            job = (
+                await db.execute(
+                    select(GenerationJob)
+                    .where(GenerationJob.id == claimed.job_id)
+                    .with_for_update()
+                )
+            ).scalar_one_or_none()
+            if (
+                job is not None
+                and job.status == "running"
+                and job.lease_owner == claimed.lease_owner
+            ):
+                await retry_or_fail_generation_job(db, job, reason)
+
+
+async def process_claimed_generation_job(
+    session_factory, claimed: ClaimedGenerationJob, pipeline
+) -> None:
+    """Run Generator and Reviewer only after the snapshot transaction closes."""
     try:
-        result = await pipeline.generate(request, str(job.user_id), db)
-        saved = await save_generated_questions(
-            db, batch.id, job.user_id, result.questions, source.subject_code,
-            source.course_topic, job.target_difficulty,
+        context = await load_generation_job_context(session_factory, claimed)
+        request = QuestionGenerateRequest(
+            age_group_code=context.age_group_code,
+            subject_code=context.subject_code,
+            course_topic=context.course_topic,
+            difficulty_level=claimed.target_difficulty,
+            question_types=[context.question_type],
+            question_count=1,
+            learning_goal=None,
         )
-        for question in saved:
-            question.parent_question_id = source.id
-            question.quality_status = "passed"
-        await complete_generation_job(db, job, saved[0].id)
+        result = await pipeline.generate(request, str(claimed.user_id), None)
+        await persist_generation_result(session_factory, context, result.questions)
+    except GenerationContextError as exc:
+        await _mark_generation_attempt(session_factory, claimed, exc.reason)
     except Exception:
-        await retry_or_fail_generation_job(db, job, "generation_or_review_failed")
+        await _mark_generation_attempt(
+            session_factory, claimed, "generation_or_review_failed"
+        )
 
 
 async def create_generation_batch(

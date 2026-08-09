@@ -88,6 +88,7 @@ test("diagnosis polling exposes only a fixed terminal failure and api client own
     message: "诊断暂时未完成，请稍后重试。",
   });
   assert.match(hook, /apiClient\.get<DiagnosisJobResponse>/);
+  assert.match(hook, /\/v1\/adaptive\/diagnoses\/jobs\/\$\{currentJobId\}/);
   assert.match(hook, /AbortController/);
   assert.match(apiClient, /AbortSignal\.any\(\[controller\.signal, externalSignal\]\)/);
 });

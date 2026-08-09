@@ -26,7 +26,7 @@ export function useDiagnosisPolling(jobId: string | null, questionId: string) {
       signal: controller.signal,
       request: (currentJobId: string, signal: AbortSignal) =>
         apiClient.get<DiagnosisJobResponse>(
-          `/v1/adaptive/diagnoses/${currentJobId}`,
+          `/v1/adaptive/diagnoses/jobs/${currentJobId}`,
           undefined,
           { signal },
         ),

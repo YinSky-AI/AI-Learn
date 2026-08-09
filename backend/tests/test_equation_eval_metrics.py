@@ -1,7 +1,7 @@
 import pytest
 
 from evals.equation_diagnosis.metrics import EvalPrediction, compute_metrics, percentile
-from evals.equation_diagnosis.schema import EvalCase
+from evals.equation_diagnosis.schema import DATASET_VERSION, EvalCase
 
 
 def make_case(
@@ -14,7 +14,7 @@ def make_case(
     return EvalCase.model_validate(
         {
             "id": case_id,
-            "dataset_version": "equation-diagnosis-eval-v1",
+            "dataset_version": DATASET_VERSION,
             "category": "diagnostic_error" if status == "diagnosed" else "insufficient_evidence",
             "question": "解方程 2x+2=10。",
             "equation": "2x+2=10",

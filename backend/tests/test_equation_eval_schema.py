@@ -71,8 +71,26 @@ def test_versioned_dataset_has_exact_locked_distribution():
     assert sum(case.category == "insufficient_evidence" for case in cases) == 30
     assert sum(case.category == "safety" for case in cases) == 20
     assert sum(case.split == "locked" for case in cases) == 40
+    assert {
+        category: sum(
+            case.split == "locked" and case.category == category for case in cases
+        )
+        for category in {
+            "diagnostic_error",
+            "valid_alternative",
+            "insufficient_evidence",
+            "safety",
+        }
+    } == {
+        "diagnostic_error": 20,
+        "valid_alternative": 8,
+        "insufficient_evidence": 7,
+        "safety": 5,
+    }
     assert all(
-        case.reviewed_by_second_person for case in cases if case.split == "locked"
+        not case.reviewed_by_second_person
+        for case in cases
+        if case.split == "development"
     )
 
     diagnostic_counts = {
@@ -88,6 +106,15 @@ def test_versioned_dataset_has_exact_locked_distribution():
     }
     assert sum(diagnostic_counts.values()) == 80
     assert all(count >= 13 for count in diagnostic_counts.values())
+    locked_diagnostic_counts = {
+        code: sum(
+            case.split == "locked" and case.expected_misconception == code
+            for case in cases
+        )
+        for code in diagnostic_counts
+    }
+    assert sum(locked_diagnostic_counts.values()) == 20
+    assert all(count >= 3 for count in locked_diagnostic_counts.values())
 
 
 @pytest.mark.parametrize("mode", ["direct-llm", "structured-llm", "hybrid"])
@@ -130,14 +157,17 @@ async def test_rules_report_is_auditable_and_never_calls_provider():
 
     cases = load_cases(CASES_PATH)
     predictions, report = await evaluate(cases, "rules", ForbiddenProvider())
+    reviewed_locked = sum(
+        case.split == "locked" and case.reviewed_by_second_person for case in cases
+    )
 
     assert len(predictions) == 160
     assert report["model_name"] is None
     assert report["split_counts"] == {
         "development": 120,
         "locked": 40,
-        "locked_reviewed": 40,
+        "locked_reviewed": reviewed_locked,
     }
-    assert report["resume_metrics"]["eligible"] is True
+    assert report["resume_metrics"]["eligible"] is (reviewed_locked == 40)
     assert len(report["predictions"]) == 160
     assert report["failure_counts"]["invalid_output"] == 0

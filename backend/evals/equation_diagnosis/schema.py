@@ -13,7 +13,7 @@ from app.schemas.adaptive_learning import DiagnosisStatus
 from app.services.adaptive_policy import AdaptationAction
 
 
-DATASET_VERSION = "equation-diagnosis-eval-v1"
+DATASET_VERSION = "equation-diagnosis-eval-v2"
 
 
 class EvalCase(BaseModel):

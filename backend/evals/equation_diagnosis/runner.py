@@ -6,7 +6,9 @@ import argparse
 import asyncio
 from dataclasses import asdict
 import json
+import os
 from pathlib import Path
+import re
 import subprocess
 from time import perf_counter
 from typing import Literal
@@ -72,6 +74,9 @@ def ensure_provider_run_allowed(
 
 
 def _git_commit() -> str:
+    attested_commit = os.getenv("AI_LEARN_EVAL_GIT_COMMIT", "").strip().lower()
+    if re.fullmatch(r"(?:[0-9a-f]{40}|[0-9a-f]{64})", attested_commit):
+        return attested_commit
     try:
         return subprocess.run(
             ["git", "rev-parse", "HEAD"],

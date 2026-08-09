@@ -11,6 +11,7 @@ from evals.equation_diagnosis.schema import (
 )
 from evals.equation_diagnosis.runner import (
     ProviderRunNotAllowed,
+    _git_commit,
     _model_prompt,
     ensure_provider_run_allowed,
     evaluate,
@@ -129,6 +130,13 @@ def test_model_modes_fail_closed_without_explicit_permission_and_key(mode: str):
 
 def test_rules_mode_never_requires_provider_permission():
     ensure_provider_run_allowed("rules", allow_provider=False, api_key="")
+
+
+def test_git_commit_accepts_explicit_container_attestation(monkeypatch):
+    commit = "a" * 40
+    monkeypatch.setenv("AI_LEARN_EVAL_GIT_COMMIT", commit)
+
+    assert _git_commit() == commit
 
 
 def test_model_prompt_declares_the_exact_json_output_contract():

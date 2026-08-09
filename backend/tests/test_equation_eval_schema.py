@@ -71,7 +71,7 @@ def test_versioned_dataset_has_exact_locked_distribution():
     assert sum(case.category == "safety" for case in cases) == 20
     assert sum(case.split == "locked" for case in cases) == 40
     assert all(
-        not case.reviewed_by_second_person for case in cases if case.split == "locked"
+        case.reviewed_by_second_person for case in cases if case.split == "locked"
     )
 
     diagnostic_counts = {
@@ -117,8 +117,8 @@ async def test_rules_report_is_auditable_and_never_calls_provider():
     assert report["split_counts"] == {
         "development": 120,
         "locked": 40,
-        "locked_reviewed": 0,
+        "locked_reviewed": 40,
     }
-    assert report["resume_metrics"]["eligible"] is False
+    assert report["resume_metrics"]["eligible"] is True
     assert len(report["predictions"]) == 160
     assert report["failure_counts"]["invalid_output"] == 0

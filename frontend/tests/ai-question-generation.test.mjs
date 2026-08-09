@@ -114,10 +114,47 @@ test("AI practice retry reuses the exact frozen request body after a lost respon
   assert.deepEqual(retry, first);
   assert.equal(JSON.stringify(retry), JSON.stringify(first));
   assert.deepEqual(first.answers, [
-    { question_id: "q-1", user_answer: "A", time_spent_seconds: 1 },
-    { question_id: "q-2", user_answer: "A,B", time_spent_seconds: 7 },
+    { question_id: "q-1", user_answer: "A", time_spent_seconds: 1, solution_steps: [] },
+    { question_id: "q-2", user_answer: "A,B", time_spent_seconds: 7, solution_steps: [] },
   ]);
   assert.equal(first.answers.reduce((total, answer) => total + answer.time_spent_seconds, 0), 8);
+});
+
+test("AI practice serializes ordered nonblank solution steps and optional confidence", () => {
+  const questions = [
+    { id: "q-1", question_type: "FILL_BLANK" },
+    { id: "q-2", question_type: "FILL_BLANK" },
+  ];
+  const first = getOrCreateSubmissionPayload(null, {
+    submissionId: "submission-evidence",
+    questions,
+    answers: { "q-1": "x=4", "q-2": "x=5" },
+    solutionSteps: {
+      "q-1": [" 2x=8 ", "", " x=4 "],
+      "q-2": ["   "],
+    },
+    confidences: { "q-1": 4 },
+    batchStartedAt: 0,
+    questionChangedAt: { "q-1": 1_000, "q-2": 2_000 },
+    submittedAt: 3_000,
+  });
+  const retry = getOrCreateSubmissionPayload(first, {
+    submissionId: "different-id",
+    questions,
+    answers: { "q-1": "changed", "q-2": "changed" },
+    solutionSteps: { "q-1": ["changed"] },
+    confidences: { "q-1": 1 },
+    batchStartedAt: 0,
+    questionChangedAt: {},
+    submittedAt: 9_000,
+  });
+
+  assert.deepEqual(first.answers[0].solution_steps, ["2x=8", "x=4"]);
+  assert.equal(first.answers[0].confidence, 4);
+  assert.deepEqual(first.answers[1].solution_steps, []);
+  assert.equal("confidence" in first.answers[1], false);
+  assert.equal(retry, first);
+  assert.equal(JSON.stringify(retry), JSON.stringify(first));
 });
 
 test("AI practice only invalidates a submission for a normalized answer change or a new batch", () => {

@@ -5,7 +5,11 @@ import { CheckCircle2, Loader2, Sparkles, XCircle } from "lucide-react";
 import { MainLayout } from "@/components/layout/main-layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { DiagnosisResult } from "@/components/learning/diagnosis-result";
+import { SolutionStepsInput } from "@/components/learning/solution-steps-input";
+import { useDiagnosisPolling } from "@/components/learning/use-diagnosis-polling";
 import apiClient from "@/lib/api-client";
+import type { GeneratedPracticeResult, GeneratedPracticeSubmitResult } from "@/types/api";
 import {
   getOrCreateSubmissionPayload,
   getSubmissionErrorMessage,
@@ -32,22 +36,6 @@ type GenerateResult = {
   questions: GeneratedQuestion[];
 };
 
-type GeneratedPracticeSubmitResult = {
-  submission_id: string;
-  batch_id: string;
-  total_count: number;
-  correct_count: number;
-  accuracy_rate: number;
-  time_spent_seconds: number;
-  results: Array<{
-    question_id: string;
-    is_correct: boolean;
-    correct_answer: string;
-    explanation?: string | null;
-  }>;
-  gamification: Record<string, unknown>;
-};
-
 type PracticeSubmissionState = "answering" | "submitting" | "submitted" | "error";
 
 type SubmissionPayload = {
@@ -56,8 +44,15 @@ type SubmissionPayload = {
     question_id: string;
     user_answer: string;
     time_spent_seconds: number;
+    solution_steps: string[];
+    confidence?: number;
   }>;
 };
+
+function QuestionDiagnosis({ result }: { result: GeneratedPracticeResult }) {
+  const diagnosis = useDiagnosisPolling(result.diagnosis_job_id, result.question_id);
+  return diagnosis ? <DiagnosisResult result={diagnosis} /> : null;
+}
 
 const SUBJECTS = [
   ["SUBJ_MATH", "数学"], ["SUBJ_CHINESE", "语文"], ["SUBJ_ENGLISH", "英语"],
@@ -100,6 +95,8 @@ export default function AIQuestionsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [solutionSteps, setSolutionSteps] = useState<Record<string, string[]>>({});
+  const [confidences, setConfidences] = useState<Record<string, number | undefined>>({});
   const [practiceState, setPracticeState] = useState<PracticeSubmissionState>("answering");
   const [submissionId, setSubmissionId] = useState<string | null>(null);
   const [submissionResult, setSubmissionResult] = useState<GeneratedPracticeSubmitResult | null>(null);
@@ -117,6 +114,8 @@ export default function AIQuestionsPage() {
     setQuestions([]);
     setBatchId("");
     setAnswers({});
+    setSolutionSteps({});
+    setConfidences({});
     answersRef.current = {};
     batchStartedAtRef.current = null;
     questionChangedAtRef.current = {};
@@ -146,6 +145,8 @@ export default function AIQuestionsPage() {
       const startedAt = Date.now();
       const generatedQuestions = result.questions || [];
       setQuestions(generatedQuestions);
+      setSolutionSteps(Object.fromEntries(generatedQuestions.map((question) => [question.id, [""]])));
+      setConfidences({});
       setBatchId(result.batch_id);
       batchStartedAtRef.current = startedAt;
       questionChangedAtRef.current = Object.fromEntries(generatedQuestions.map((question) => [question.id, startedAt]));
@@ -191,6 +192,27 @@ export default function AIQuestionsPage() {
     });
   }
 
+  function invalidateEvidencePayload() {
+    submissionPayloadRef.current = null;
+    setSubmissionId(null);
+    setSubmissionResult(null);
+    setError("");
+    setPracticeState("answering");
+  }
+
+  function updateSolutionSteps(questionId: string, steps: string[]) {
+    if (isAnswerLocked) return;
+    setSolutionSteps((current) => ({ ...current, [questionId]: steps }));
+    invalidateEvidencePayload();
+  }
+
+  function updateConfidence(questionId: string, value: string) {
+    if (isAnswerLocked) return;
+    const confidence = value ? Number(value) : undefined;
+    setConfidences((current) => ({ ...current, [questionId]: confidence }));
+    invalidateEvidencePayload();
+  }
+
   async function submitAnswers() {
     const currentAnswersComplete = questions.length > 0 && questions.every((question) => Boolean(normalizeAnswer(answersRef.current[question.id], question.question_type)));
     if (!batchId || !currentAnswersComplete || isAnswerLocked || submissionInFlightRef.current) return;
@@ -198,6 +220,8 @@ export default function AIQuestionsPage() {
       submissionId: submissionId || crypto.randomUUID(),
       questions,
       answers: answersRef.current,
+      solutionSteps,
+      confidences,
       batchStartedAt: batchStartedAtRef.current,
       questionChangedAt: questionChangedAtRef.current,
       submittedAt: Date.now(),
@@ -303,12 +327,33 @@ export default function AIQuestionsPage() {
                       ))}
                     </div>
                   ) : null}
+                  <SolutionStepsInput
+                    value={solutionSteps[question.id] || [""]}
+                    onChange={(steps) => updateSolutionSteps(question.id, steps)}
+                    disabled={isAnswerLocked}
+                  />
+                  <label className="mt-3 block text-sm font-medium text-gray-700">
+                    作答信心（选填）
+                    <select
+                      value={confidences[question.id] || ""}
+                      onChange={(event) => updateConfidence(question.id, event.target.value)}
+                      disabled={isAnswerLocked}
+                      className="mt-2 min-h-11 w-full rounded-lg border border-gray-300 bg-white px-3 sm:w-64"
+                      aria-label={`第 ${index + 1} 题作答信心`}
+                    >
+                      <option value="">暂不选择</option>
+                      {[1, 2, 3, 4, 5].map((confidence) => <option key={confidence} value={confidence}>{confidence} - {confidence === 1 ? "很不确定" : confidence === 5 ? "非常确定" : "一般"}</option>)}
+                    </select>
+                  </label>
                   {result && (
-                    <div className={`mt-4 rounded-xl border p-4 text-sm ${result.is_correct ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-rose-200 bg-rose-50 text-rose-800"}`}>
-                      <p className="flex items-center gap-2 font-semibold">{result.is_correct ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}服务端判定：{result.is_correct ? "回答正确" : "回答错误"}</p>
-                      <p className="mt-2">正确答案：{result.correct_answer}</p>
-                      {result.explanation && <p className="mt-2">解析：{result.explanation}</p>}
-                    </div>
+                    <>
+                      <div className={`mt-4 rounded-xl border p-4 text-sm ${result.is_correct ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-rose-200 bg-rose-50 text-rose-800"}`}>
+                        <p className="flex items-center gap-2 font-semibold">{result.is_correct ? <CheckCircle2 className="h-4 w-4" /> : <XCircle className="h-4 w-4" />}服务端判定：{result.is_correct ? "回答正确" : "回答错误"}</p>
+                        <p className="mt-2">正确答案：{result.correct_answer}</p>
+                        {result.explanation && <p className="mt-2">解析：{result.explanation}</p>}
+                      </div>
+                      <QuestionDiagnosis result={result} />
+                    </>
                   )}
                   {question.knowledge_tags?.length ? <div className="mt-4 flex flex-wrap gap-2">{question.knowledge_tags.map((tag) => <Badge key={tag} variant="secondary">{tag}</Badge>)}</div> : null}
                 </article>

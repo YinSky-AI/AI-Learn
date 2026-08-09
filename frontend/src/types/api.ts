@@ -176,6 +176,59 @@ export interface KnowledgeGraphResponse extends KnowledgeGraphNode {
   total_leaf_count: number;
 }
 
+export type DiagnosisStatus = "diagnosed" | "insufficient_evidence" | "not_required";
+
+export interface AdaptiveDiagnosis {
+  status: DiagnosisStatus;
+  knowledge_point_code: string;
+  misconception_code?: string | null;
+  first_invalid_step?: number | null;
+  evidence: string;
+  confidence: number;
+}
+
+export interface MasteryChangeResponse {
+  before?: number | null;
+  after?: number | null;
+  model_version?: string | null;
+}
+
+export interface AdaptiveNextAction {
+  decision_id: string;
+  action: string;
+  reason_codes: string[];
+}
+
+export interface DiagnosisJobResponse {
+  job_id: string;
+  state: "pending" | "succeeded" | "failed";
+  retryable?: boolean;
+  message?: string;
+  diagnosis?: AdaptiveDiagnosis;
+  mastery?: MasteryChangeResponse;
+  next_action?: AdaptiveNextAction | null;
+}
+
+export interface GeneratedPracticeResult {
+  question_id: string;
+  is_correct: boolean;
+  correct_answer: string;
+  explanation?: string | null;
+  diagnosis_job_id: string;
+  diagnosis_status: "pending" | "succeeded";
+}
+
+export interface GeneratedPracticeSubmitResult {
+  submission_id: string;
+  batch_id: string;
+  total_count: number;
+  correct_count: number;
+  accuracy_rate: number;
+  time_spent_seconds: number;
+  results: GeneratedPracticeResult[];
+  gamification: Record<string, unknown>;
+}
+
 /** 首页仪表盘数据响应 */
 export interface DashboardResponse {
   welcomeMessage: string;

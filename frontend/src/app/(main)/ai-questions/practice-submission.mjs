@@ -52,11 +52,22 @@ export function getOrCreateSubmissionPayload(existingPayload, input) {
   const timeSpentByQuestionId = allocateQuestionTime(input);
   return {
     submission_id: input.submissionId,
-    answers: input.questions.map((question) => ({
-      question_id: question.id,
-      user_answer: normalizeAnswer(input.answers[question.id], question.question_type),
-      time_spent_seconds: timeSpentByQuestionId[question.id],
-    })),
+    answers: input.questions.map((question) => {
+      const solutionSteps = (input.solutionSteps?.[question.id] || [])
+        .map((step) => String(step).trim())
+        .filter(Boolean)
+        .slice(0, 12);
+      const confidence = input.confidences?.[question.id];
+      return {
+        question_id: question.id,
+        user_answer: normalizeAnswer(input.answers[question.id], question.question_type),
+        time_spent_seconds: timeSpentByQuestionId[question.id],
+        solution_steps: solutionSteps,
+        ...(Number.isInteger(confidence) && confidence >= 1 && confidence <= 5
+          ? { confidence }
+          : {}),
+      };
+    }),
   };
 }
 

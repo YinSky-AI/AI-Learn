@@ -177,10 +177,11 @@ async def test_new_answer_is_flushed_before_wrong_event_is_written(monkeypatch):
     user_id, session_id, question_id, answer_id = (uuid.uuid4() for _ in range(4))
     learning_session = SimpleNamespace(user_id=user_id, status="in_progress", total_questions=0, correct_count=0)
     question = SimpleNamespace(
-        question_type="CHOICE", correct_answer="A", explanation="解析", id=question_id,
+        question_type="CHOICE", question_body="解方程 x+1=2。",
+        correct_answer="A", explanation="解析", id=question_id,
         knowledge_node_rel=SimpleNamespace(title="知识点", subject_code="数学"),
     )
-    db = _SubmissionSession(learning_session, None, question, None)
+    db = _SubmissionSession(learning_session, None, question, None, None)
 
     async def verify_flush_before_event(self, **_kwargs):
         assert db.flush_count >= 1
@@ -204,11 +205,15 @@ async def test_retried_answer_id_returns_existing_result_without_new_side_effect
     user_id, session_id, question_id, answer_id = (uuid.uuid4() for _ in range(4))
     learning_session = SimpleNamespace(user_id=user_id, status="completed", total_questions=1, correct_count=0)
     question = SimpleNamespace(
-        question_type="CHOICE", correct_answer="A", explanation="解析", id=question_id,
+        question_type="CHOICE", question_body="解方程 x+1=2。",
+        correct_answer="A", explanation="解析", id=question_id,
         knowledge_node_rel=SimpleNamespace(title="知识点", subject_code="数学"),
     )
     existing = Answer(id=answer_id, session_id=session_id, question_id=question_id, user_answer="B", is_correct=False, time_spent_seconds=3)
-    db = _SubmissionSession(learning_session, existing, question, None)
+    existing_diagnosis_job = SimpleNamespace(id=uuid.uuid4(), status="queued")
+    db = _SubmissionSession(
+        learning_session, existing, question, None, existing_diagnosis_job
+    )
 
     async def should_not_record(self, **_kwargs):
         raise AssertionError("重试不应再次收录错题")

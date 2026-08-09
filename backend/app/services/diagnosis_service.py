@@ -34,7 +34,15 @@ class _RuleCandidate:
     confidence: float
 
 
-def _abstain(knowledge_point: KnowledgePointCode, evidence: str) -> ErrorDiagnosisResult:
+def _abstain(
+    knowledge_point: KnowledgePointCode,
+    evidence: str,
+    *,
+    prompt_version: str | None = None,
+    model_name: str | None = None,
+    latency_ms: int | None = None,
+    token_usage: dict[str, int] | None = None,
+) -> ErrorDiagnosisResult:
     return ErrorDiagnosisResult(
         status=DiagnosisStatus.INSUFFICIENT_EVIDENCE,
         knowledge_point_code=knowledge_point,
@@ -42,6 +50,29 @@ def _abstain(knowledge_point: KnowledgePointCode, evidence: str) -> ErrorDiagnos
         confidence=0.0,
         source=DiagnosisSource.FALLBACK,
         rule_version=RULE_VERSION,
+        prompt_version=prompt_version,
+        model_name=model_name,
+        latency_ms=latency_ms,
+        token_usage=token_usage,
+    )
+
+
+def _provider_abstain(
+    knowledge_point: KnowledgePointCode,
+    evidence: str,
+    response: dict[str, object],
+) -> ErrorDiagnosisResult:
+    return _abstain(
+        knowledge_point,
+        evidence,
+        prompt_version=ERROR_DIAGNOSIS_PROMPT_VERSION,
+        model_name=str(response.get("model")) if response.get("model") else None,
+        latency_ms=(
+            response.get("latency_ms")
+            if isinstance(response.get("latency_ms"), int)
+            else None
+        ),
+        token_usage=bounded_token_usage(response.get("usage")),
     )
 
 
@@ -138,9 +169,16 @@ async def _diagnose_with_provider(
             temperature=0.1,
             response_format={"type": "json_object"},
         )
-        output = ErrorDiagnosisLLMOutput.model_validate_json(response.get("content", ""))
     except Exception:
         return _abstain(diagnosis_input.knowledge_point_code, "模型归类不可用，当前证据不足")
+    try:
+        output = ErrorDiagnosisLLMOutput.model_validate_json(response.get("content", ""))
+    except Exception:
+        return _provider_abstain(
+            diagnosis_input.knowledge_point_code,
+            "模型归类不可用，当前证据不足",
+            response,
+        )
 
     transition = verification.first_invalid_transition
     concrete_codes = {
@@ -158,10 +196,18 @@ async def _diagnose_with_provider(
         or output.evidence not in {steps[transition], steps[transition + 1]}
         or output.confidence < 0.60
     ):
-        return _abstain(diagnosis_input.knowledge_point_code, "模型证据未通过校验，当前证据不足")
+        return _provider_abstain(
+            diagnosis_input.knowledge_point_code,
+            "模型证据未通过校验，当前证据不足",
+            response,
+        )
     definition = MISCONCEPTION_DEFINITIONS[output.misconception_code]
     if output.knowledge_point_code is not definition.knowledge_point_code:
-        return _abstain(diagnosis_input.knowledge_point_code, "模型知识点未通过校验，当前证据不足")
+        return _provider_abstain(
+            diagnosis_input.knowledge_point_code,
+            "模型知识点未通过校验，当前证据不足",
+            response,
+        )
     return ErrorDiagnosisResult(
         status=DiagnosisStatus.DIAGNOSED,
         misconception_code=output.misconception_code,

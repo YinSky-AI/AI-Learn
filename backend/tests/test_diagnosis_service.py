@@ -204,6 +204,13 @@ async def test_invalid_or_hallucinated_provider_output_safely_abstains(content: 
     assert result.status is DiagnosisStatus.INSUFFICIENT_EVIDENCE
     assert result.misconception_code is None
     assert result.first_invalid_transition is None
+    assert result.model_name == "test-model"
+    assert result.latency_ms == 12
+    assert result.token_usage == {
+        "prompt_tokens": 10,
+        "completion_tokens": 5,
+        "total_tokens": 15,
+    }
 
 
 @pytest.mark.asyncio

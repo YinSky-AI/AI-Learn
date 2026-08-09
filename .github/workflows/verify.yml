@@ -61,6 +61,7 @@ jobs:
             test/acceptance/P0-04/backups
             test/acceptance/P0-04/drill-report.json
             test/acceptance/P0-04/logs
+            test/acceptance/adaptive-learning/*.json
 
       - name: Upload P0-07 schema migration evidence
         if: always()

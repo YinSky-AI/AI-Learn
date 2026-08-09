@@ -33,6 +33,7 @@ class DeliveryVerificationTests(unittest.TestCase):
             labels,
             [
                 "交付脚本单元测试",
+                "方程诊断规则评测",
                 "前端测试",
                 "前端类型检查",
                 "前端生产构建",

@@ -259,6 +259,9 @@ async def test_no_candidate_enqueues_one_recoverable_generation_job(db_session):
     job = await db_session.get(GenerationJob, first["generation_job_id"])
     assert job.source_standard_question_id is None
     assert job.source_question_id == source.id
+    assert job.target_knowledge_point_code == target.code
+    assert job.target_misconception_code == decision.target_misconception_code
+    assert job.policy_version == decision.policy_version
     assert isinstance(first["generation_job_id"], uuid.UUID)
 
 
@@ -355,3 +358,6 @@ async def test_standard_answer_without_candidate_enqueues_one_generation_job(db_
     job = await db_session.get(GenerationJob, first["generation_job_id"])
     assert job.source_standard_question_id == question.id
     assert job.source_question_id is None
+    assert job.target_knowledge_point_code == target.code
+    assert job.target_misconception_code == decision.target_misconception_code
+    assert job.policy_version == decision.policy_version

@@ -78,6 +78,20 @@ class TutorHarness:
             mastery_level = 0.5
         raw_history = context.get("conversation_history")
         history = raw_history[-10:] if isinstance(raw_history, list) else []
+        raw_diagnosis = context.get("diagnosis")
+        diagnosis_data = raw_diagnosis if isinstance(raw_diagnosis, dict) else {}
+        diagnosis_status = diagnosis_data.get("status")
+        if diagnosis_status not in {
+            "diagnosed",
+            "insufficient_evidence",
+            "not_required",
+        }:
+            diagnosis_status = None
+        evidence = diagnosis_data.get("evidence")
+        misconception_name = diagnosis_data.get("misconception_display_name")
+        raw_action = context.get("next_action")
+        action_data = raw_action if isinstance(raw_action, dict) else {}
+        next_action = action_data.get("action")
 
         state = SharedState(
             question=question,
@@ -91,6 +105,22 @@ class TutorHarness:
             ),
             mastery=MasteryState(level=mastery_level),
             conversation_history=[turn for turn in history if isinstance(turn, dict)],
+            diagnosis_status=diagnosis_status,
+            diagnosis_evidence=(
+                str(evidence).strip()[:500] if isinstance(evidence, str) else ""
+            ),
+            misconception_display_name=(
+                str(misconception_name).strip()[:100]
+                if isinstance(misconception_name, str)
+                else ""
+            ),
+            mastery_band=str(context.get("mastery_band") or "unknown")[:32],
+            next_action=(
+                str(next_action).strip()[:64]
+                if isinstance(next_action, str) and next_action.strip()
+                else "ask_diagnostic_question"
+            ),
+            student_message=str(context.get("student_message") or "").strip()[:500],
         )
 
         self._diagnostician.diagnose(state)

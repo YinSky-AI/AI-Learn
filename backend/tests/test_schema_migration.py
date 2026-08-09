@@ -285,7 +285,7 @@ def test_unknown_schema_policy_is_rejected_with_plain_text():
 
 
 def test_two_database_targets_publish_independent_revision_heads():
-    assert get_expected_schema_revision("primary") == "lp_0013_generation_job_sources"
+    assert get_expected_schema_revision("primary") == "lp_0014_adaptive_generation"
     assert get_expected_schema_revision("question-bank") == "catalog_0002_admin_recovery"
     assert get_schema_version_table("primary") == "alembic_version_learning"
     assert get_schema_version_table("question-bank") == "alembic_version_catalog"
@@ -300,7 +300,7 @@ def test_adaptive_diagnosis_is_reversible_below_the_primary_head():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
-    assert script.get_current_head() == "lp_0013_generation_job_sources"
+    assert script.get_current_head() == "lp_0014_adaptive_generation"
     revision = script.get_revision("lp_0011_adaptive_diagnosis")
     assert revision.down_revision == "lp_0010_practice_history"
     source = Path(revision.path).read_text(encoding="utf-8")
@@ -345,6 +345,25 @@ def test_generation_job_sources_are_the_reversible_primary_head():
     assert "fk_generation_job_standard_source" in source
     assert 'op.drop_column("generation_jobs", "source_standard_question_id")' in source
     assert "DELETE FROM generation_jobs WHERE source_question_id IS NULL" in source
+
+
+def test_adaptive_generation_metadata_is_reversible_at_the_primary_head():
+    script = schema_admin_module.ScriptDirectory.from_config(
+        schema_admin_module._config("primary")
+    )
+    revision = script.get_revision("lp_0014_adaptive_generation")
+    assert revision.down_revision == "lp_0013_generation_job_sources"
+    source = Path(revision.path).read_text(encoding="utf-8")
+    for column in (
+        "target_knowledge_point_code",
+        "target_misconception_code",
+        "generation_policy_version",
+        "parent_standard_question_id",
+        "policy_version",
+    ):
+        assert f'"{column}"' in source
+    assert 'op.drop_column("generated_questions", "parent_standard_question_id")' in source
+    assert 'op.drop_column("generation_jobs", "target_knowledge_point_code")' in source
 
 
 def test_adaptive_migration_backfill_only_maps_unambiguous_legacy_keys(monkeypatch):
@@ -823,7 +842,7 @@ def test_practice_history_fk_change_is_a_forward_reversible_migration():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
-    assert script.get_current_head() == "lp_0013_generation_job_sources"
+    assert script.get_current_head() == "lp_0014_adaptive_generation"
     revision = script.get_revision("lp_0010_practice_history")
     assert revision.down_revision == "lp_0009_practice_contract"
     source = Path(revision.path).read_text(encoding="utf-8")
@@ -1394,7 +1413,7 @@ def test_primary_allows_only_named_external_tables_and_catalog_allows_no_unknown
 @pytest.mark.asyncio
 async def test_schema_guard_checks_both_database_heads_before_startup():
     current = {
-        "primary": "lp_0013_generation_job_sources",
+        "primary": "lp_0014_adaptive_generation",
         "question-bank": "catalog_0002_admin_recovery",
     }
 
@@ -1419,7 +1438,7 @@ async def test_schema_guard_checks_both_database_heads_before_startup():
 async def test_schema_guard_rejects_when_either_database_is_stale():
     async def revision_reader(_engine, target_alias):
         if target_alias == "primary":
-            return "lp_0013_generation_job_sources"
+            return "lp_0014_adaptive_generation"
         return None
 
     with pytest.raises(SchemaVersionError, match="question-bank.*尚未纳入版本管理"):

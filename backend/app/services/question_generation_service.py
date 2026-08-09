@@ -29,6 +29,7 @@ from app.models.ai_generated import (
 from app.models.content import KnowledgeNode, Question
 from app.ai.tools.question_save_tool import QuestionSaveTool
 from app.schemas.question import QuestionGenerateRequest
+from app.ai.question_pipeline import AdaptiveGenerationContext
 
 
 @dataclass(frozen=True, slots=True)
@@ -39,6 +40,9 @@ class ClaimedGenerationJob:
     target_difficulty: str
     lease_owner: str
     source_standard_question_id: uuid.UUID | None = None
+    target_knowledge_point_code: str | None = None
+    target_misconception_code: str | None = None
+    policy_version: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -65,10 +69,10 @@ async def generate_reviewed_batch(
     request: QuestionGenerateRequest,
     pipeline,
 ) -> GeneratedQuestionBatch:
-    """在单一事务中生成、审核并保存一个完成批次。"""
+    """Provider 完成后再用短事务保存已审核批次。"""
     save_tool = QuestionSaveTool(request)
+    result = await pipeline.generate(request, user_id, None)
     async with db.begin_nested():
-        result = await pipeline.generate(request, user_id, db)
         batch = await save_tool.save_batch(db, result, user_id)
     return batch
 
@@ -78,6 +82,10 @@ async def enqueue_variant_job(
     original_question_id: uuid.UUID,
     user_id: uuid.UUID,
     difficulty_level: Optional[str] = None,
+    *,
+    target_knowledge_point_code: str | None = None,
+    target_misconception_code: str | None = None,
+    policy_version: str | None = None,
 ) -> GenerationJob:
     """Persist an idempotent variant job without inserting a placeholder question."""
     original = (await db.execute(select(GeneratedQuestion).where(
@@ -87,7 +95,10 @@ async def enqueue_variant_job(
     if original is None:
         raise ValueError("原题目不存在")
     target_difficulty = difficulty_level or original.difficulty_level
-    key = hashlib.sha256(f"variant:{user_id}:{original_question_id}:{target_difficulty}".encode()).hexdigest()
+    key = hashlib.sha256(
+        f"variant:{user_id}:{original_question_id}:{target_difficulty}:"
+        f"{target_knowledge_point_code}:{target_misconception_code}:{policy_version}".encode()
+    ).hexdigest()
     existing = (await db.execute(select(GenerationJob).where(GenerationJob.idempotency_key == key))).scalar_one_or_none()
     if existing is not None:
         return existing
@@ -95,6 +106,9 @@ async def enqueue_variant_job(
         user_id=user_id,
         source_question_id=original_question_id,
         target_difficulty=target_difficulty,
+        target_knowledge_point_code=target_knowledge_point_code,
+        target_misconception_code=target_misconception_code,
+        policy_version=policy_version,
         idempotency_key=key,
         status="queued",
     )
@@ -108,6 +122,10 @@ async def enqueue_standard_variant_job(
     original_question_id: uuid.UUID,
     user_id: uuid.UUID,
     difficulty_level: str,
+    *,
+    target_knowledge_point_code: str | None = None,
+    target_misconception_code: str | None = None,
+    policy_version: str | None = None,
 ) -> GenerationJob:
     original = (
         await db.execute(
@@ -117,7 +135,8 @@ async def enqueue_standard_variant_job(
     if original is None:
         raise ValueError("原题目不存在")
     key = hashlib.sha256(
-        f"standard-variant:{user_id}:{original_question_id}:{difficulty_level}".encode()
+        f"standard-variant:{user_id}:{original_question_id}:{difficulty_level}:"
+        f"{target_knowledge_point_code}:{target_misconception_code}:{policy_version}".encode()
     ).hexdigest()
     existing = (
         await db.execute(
@@ -131,6 +150,9 @@ async def enqueue_standard_variant_job(
         source_question_id=None,
         source_standard_question_id=original_question_id,
         target_difficulty=difficulty_level,
+        target_knowledge_point_code=target_knowledge_point_code,
+        target_misconception_code=target_misconception_code,
+        policy_version=policy_version,
         idempotency_key=key,
         status="queued",
     )
@@ -168,6 +190,9 @@ async def claim_next_generation_job(
         target_difficulty=job.target_difficulty,
         lease_owner=worker_id,
         source_standard_question_id=job.source_standard_question_id,
+        target_knowledge_point_code=job.target_knowledge_point_code,
+        target_misconception_code=job.target_misconception_code,
+        policy_version=job.policy_version,
     )
 
 
@@ -295,6 +320,25 @@ async def persist_generation_result(
             for question in saved:
                 if context.job.source_question_id is not None:
                     question.parent_question_id = context.job.source_question_id
+                else:
+                    question.parent_standard_question_id = (
+                        context.job.source_standard_question_id
+                    )
+                question.target_knowledge_point_code = (
+                    context.job.target_knowledge_point_code
+                )
+                question.target_misconception_code = (
+                    context.job.target_misconception_code
+                )
+                question.generation_policy_version = context.job.policy_version
+                tags = list(question.knowledge_tags or [])
+                for code in (
+                    context.job.target_knowledge_point_code,
+                    context.job.target_misconception_code,
+                ):
+                    if code and code not in tags:
+                        tags.append(code)
+                question.knowledge_tags = tags
                 question.quality_status = "passed"
             await complete_generation_job(db, job, saved[0].id)
 
@@ -334,7 +378,24 @@ async def process_claimed_generation_job(
             question_count=1,
             learning_goal=None,
         )
-        result = await pipeline.generate(request, str(claimed.user_id), None)
+        adaptive_context = None
+        if claimed.target_knowledge_point_code and claimed.policy_version:
+            parent_id = claimed.source_question_id or claimed.source_standard_question_id
+            adaptive_context = AdaptiveGenerationContext(
+                target_knowledge_point_code=claimed.target_knowledge_point_code,
+                target_misconception_code=claimed.target_misconception_code,
+                parent_question_id=str(parent_id),
+                policy_version=claimed.policy_version,
+            )
+        if adaptive_context is None:
+            result = await pipeline.generate(request, str(claimed.user_id), None)
+        else:
+            result = await pipeline.generate(
+                request,
+                str(claimed.user_id),
+                None,
+                adaptive_context=adaptive_context,
+            )
         await persist_generation_result(session_factory, context, result.questions)
     except GenerationContextError as exc:
         await _mark_generation_attempt(session_factory, claimed, exc.reason)

@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 
 
 TutorRole = Literal["teacher", "assistant", "diagnostician", "encourager"]
+DiagnosisStatus = Literal["diagnosed", "insufficient_evidence", "not_required"]
 
 
 class TutorMessage(BaseModel):
@@ -83,6 +84,12 @@ class SharedState:
     teaching_strategy: TeachingStrategy = field(default_factory=TeachingStrategy)
     agent_notes: dict[str, list[str]] = field(default_factory=dict)
     conversation_history: list[dict[str, str]] = field(default_factory=list)
+    diagnosis_status: DiagnosisStatus | None = None
+    diagnosis_evidence: str = ""
+    misconception_display_name: str = ""
+    mastery_band: str = "unknown"
+    next_action: str = "ask_diagnostic_question"
+    student_message: str = ""
 
     @property
     def is_incorrect(self) -> bool:
@@ -140,21 +147,24 @@ class SharedState:
         result_status = "尚未判定"
         if isinstance(self.context.get("is_correct"), bool):
             result_status = "回答正确" if not self.is_incorrect else "回答有误"
-
         sections = [
             f"学生年龄段：{self.student_profile.age_group}",
             f"学科：{self.student_profile.subject or '未提供'}",
             f"题目：{self.question_text}",
+            f"学生当前问题：{self.student_message or '未提供'}",
             f"知识点：{self.knowledge_point}",
             f"学生作答：{self.student_attempt or '尚未作答'}",
             f"服务端判定：{result_status}",
-            f"掌握度：{self.mastery.level:.3f}",
+            f"掌握度区间：{self.mastery_band}",
+            f"已验证证据：{self.diagnosis_evidence or '尚无可用于定位错因的已验证步骤证据'}",
+            f"错因：{self.misconception_display_name or '尚未确定'}",
+            f"下一动作：{self.next_action}",
             (
                 "教学策略："
                 f"{self.teaching_strategy.approach} / {self.teaching_strategy.pace} / "
                 f"{self.teaching_strategy.focus_area}"
             ),
-            f"诊断：{self.diagnosis or '需要继续了解当前思路。'}",
+            f"辅导依据：{self.diagnosis or '证据不足，需要继续了解当前思路。'}",
         ]
         note = self.latest_note(target)
         if note:

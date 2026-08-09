@@ -8,6 +8,7 @@ from app.models.adaptive_learning import (
     KnowledgeMasteryState,
 )
 from app.models.content import KnowledgeNode
+from app.models.ai_generated import GeneratedQuestion, GenerationJob
 
 
 def constraint_sql(table) -> str:
@@ -131,3 +132,17 @@ def test_knowledge_node_code_is_the_unique_non_null_runtime_key():
     code = KnowledgeNode.__table__.c.code
     assert code.nullable is False
     assert code.unique is True
+
+
+def test_adaptive_generation_metadata_is_persisted_in_typed_columns():
+    assert {
+        "target_knowledge_point_code",
+        "target_misconception_code",
+        "generation_policy_version",
+        "parent_standard_question_id",
+    } <= set(GeneratedQuestion.__table__.c.keys())
+    assert {
+        "target_knowledge_point_code",
+        "target_misconception_code",
+        "policy_version",
+    } <= set(GenerationJob.__table__.c.keys())

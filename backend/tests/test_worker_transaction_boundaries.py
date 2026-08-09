@@ -6,6 +6,7 @@ import app.services.diagnosis_job_service as diagnosis_service
 import app.services.question_generation_service as generation_service
 import run_diagnosis_worker
 import run_generation_worker
+from app.models.ai_generated import GeneratedQuestion, GenerationJob
 from app.services.diagnosis_job_service import ClaimedDiagnosisJob
 from app.services.question_generation_service import (
     ClaimedGenerationJob,
@@ -170,6 +171,9 @@ async def test_generation_pipeline_runs_after_snapshot_session_closes(monkeypatc
         source_question_id=uuid.uuid4(),
         target_difficulty="DIFF_MEDIUM",
         lease_owner="worker-1",
+        target_knowledge_point_code="normalize_coefficient",
+        target_misconception_code="coefficient_normalization_error",
+        policy_version="adaptive-policy-v1",
     )
     context = GenerationJobContext(
         job=claimed,
@@ -190,9 +194,13 @@ async def test_generation_pipeline_runs_after_snapshot_session_closes(monkeypatc
         order.append("result_transaction")
 
     class Pipeline:
-        async def generate(self, _request, _user_id, db):
+        async def generate(self, _request, _user_id, db, adaptive_context=None):
             assert db is None
             assert not tracker.transaction_open
+            assert adaptive_context.target_knowledge_point_code == "normalize_coefficient"
+            assert adaptive_context.target_misconception_code == "coefficient_normalization_error"
+            assert adaptive_context.policy_version == "adaptive-policy-v1"
+            assert adaptive_context.parent_question_id == str(claimed.source_question_id)
             order.append("provider_finished")
             return type("Result", (), {"questions": [{"question_body": "q"}]})()
 
@@ -204,6 +212,116 @@ async def test_generation_pipeline_runs_after_snapshot_session_closes(monkeypatc
     )
 
     assert order == ["snapshot_closed", "provider_finished", "result_transaction"]
+
+
+@pytest.mark.asyncio
+async def test_synchronous_generation_finishes_provider_before_save_transaction(monkeypatch):
+    tracker = Tracker()
+    order = []
+
+    class Db:
+        def begin_nested(self):
+            return TransactionContext(tracker)
+
+    class Pipeline:
+        async def generate(self, _request, _user_id, db):
+            assert db is None
+            assert not tracker.transaction_open
+            order.append("provider_finished")
+            return object()
+
+    class SaveTool:
+        def __init__(self, _request):
+            pass
+
+        async def save_batch(self, _db, _result, _user_id):
+            assert tracker.transaction_open
+            assert order == ["provider_finished"]
+            order.append("saved")
+            return object()
+
+    monkeypatch.setattr(generation_service, "QuestionSaveTool", SaveTool)
+
+    await generation_service.generate_reviewed_batch(
+        Db(), uuid.uuid4(), object(), Pipeline()
+    )
+
+    assert order == ["provider_finished", "saved"]
+
+
+@pytest.mark.asyncio
+async def test_generation_result_persists_adaptive_codes_and_policy(monkeypatch):
+    user_id = uuid.uuid4()
+    claimed = ClaimedGenerationJob(
+        job_id=uuid.uuid4(),
+        user_id=user_id,
+        source_question_id=uuid.uuid4(),
+        target_difficulty="DIFF_MEDIUM",
+        lease_owner="worker-1",
+        target_knowledge_point_code="normalize_coefficient",
+        target_misconception_code="coefficient_normalization_error",
+        policy_version="adaptive-policy-v1",
+    )
+    context = GenerationJobContext(
+        job=claimed,
+        batch_id=uuid.uuid4(),
+        age_group_code="AGE_13_15",
+        subject_code="SUBJ_MATH",
+        course_topic="一元一次方程",
+        question_type="FILL_BLANK",
+    )
+    job = GenerationJob(
+        id=claimed.job_id,
+        user_id=user_id,
+        source_question_id=claimed.source_question_id,
+        target_difficulty=claimed.target_difficulty,
+        idempotency_key="test-adaptive-result",
+        status="running",
+        lease_owner=claimed.lease_owner,
+    )
+    question = GeneratedQuestion(
+        id=uuid.uuid4(),
+        batch_id=context.batch_id,
+        user_id=user_id,
+        subject_code="SUBJ_MATH",
+        course_topic="一元一次方程",
+        difficulty_level="DIFF_MEDIUM",
+        question_type="FILL_BLANK",
+        question_body="2x=8",
+        correct_answer="x=4",
+        explanation="两边同时除以 2",
+        knowledge_tags=[],
+        source_prompt="safe-summary",
+    )
+
+    class Result:
+        def scalar_one_or_none(self):
+            return job
+
+    class Session(FakeSession):
+        async def execute(self, _statement):
+            return Result()
+
+        async def flush(self):
+            pass
+
+    async def fake_save(*_args, **_kwargs):
+        return [question]
+
+    monkeypatch.setattr(generation_service, "save_generated_questions", fake_save)
+    await generation_service.persist_generation_result(
+        lambda: Session(Tracker()), context, [{"question_body": "2x=8"}]
+    )
+
+    assert question.parent_question_id == claimed.source_question_id
+    assert question.target_knowledge_point_code == "normalize_coefficient"
+    assert question.target_misconception_code == "coefficient_normalization_error"
+    assert question.generation_policy_version == "adaptive-policy-v1"
+    assert question.knowledge_tags == [
+        "normalize_coefficient",
+        "coefficient_normalization_error",
+    ]
+    assert job.status == "succeeded"
 
 
 @pytest.mark.asyncio

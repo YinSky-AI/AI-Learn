@@ -168,6 +168,18 @@ class GeneratedQuestion(BaseModel, Base):
     generation_attempts = Column(Integer, nullable=False, default=0, server_default="0")
     generation_max_attempts = Column(Integer, nullable=False, default=3, server_default="3")
     generation_failure_reason = Column(Text, nullable=True)
+    target_knowledge_point_code = Column(
+        String(64),
+        ForeignKey("knowledge_nodes.code", ondelete="RESTRICT"),
+        nullable=True,
+    )
+    target_misconception_code = Column(String(64), nullable=True)
+    generation_policy_version = Column(String(64), nullable=True)
+    parent_standard_question_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("questions.id", ondelete="SET NULL"),
+        nullable=True,
+    )
     parent_question_id = Column(
         UUID(as_uuid=True),
         ForeignKey("generated_questions.id", ondelete="SET NULL"),
@@ -313,6 +325,13 @@ class GenerationJob(BaseModel, Base):
         nullable=True,
     )
     target_difficulty = Column(String(20), nullable=False)
+    target_knowledge_point_code = Column(
+        String(64),
+        ForeignKey("knowledge_nodes.code", ondelete="RESTRICT"),
+        nullable=True,
+    )
+    target_misconception_code = Column(String(64), nullable=True)
+    policy_version = Column(String(64), nullable=True)
     status = Column(String(20), nullable=False, default="queued", server_default="queued")
     attempts = Column(Integer, nullable=False, default=0, server_default="0")
     max_attempts = Column(Integer, nullable=False, default=3, server_default="3")

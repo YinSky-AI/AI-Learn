@@ -276,6 +276,9 @@ async def get_next_for_decision(
             source_answer.generated_question_id,
             user_id,
             target.difficulty_level,
+            target_knowledge_point_code=target.code,
+            target_misconception_code=decision.target_misconception_code,
+            policy_version=decision.policy_version,
         )
     else:
         source_answer = await db.get(Answer, diagnosis.standard_answer_id)
@@ -286,5 +289,8 @@ async def get_next_for_decision(
             source_answer.question_id,
             user_id,
             target.difficulty_level,
+            target_knowledge_point_code=target.code,
+            target_misconception_code=decision.target_misconception_code,
+            policy_version=decision.policy_version,
         )
     return {"state": "pending_generation", "generation_job_id": job.id}

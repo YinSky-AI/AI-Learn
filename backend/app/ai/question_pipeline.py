@@ -37,6 +37,16 @@ class GeneratedBatchResult:
     review: QuestionReviewResult
 
 
+@dataclass(frozen=True, slots=True)
+class AdaptiveGenerationContext:
+    """Internal-only constraints for a diagnosis-grounded variant."""
+
+    target_knowledge_point_code: str
+    target_misconception_code: str | None
+    parent_question_id: str
+    policy_version: str
+
+
 class QuestionPipeline:
     """只编排出题 Agent 和审题 Agent 的生成流程。"""
 
@@ -48,6 +58,7 @@ class QuestionPipeline:
         request: QuestionGenerateRequest,
         user_id: str,
         db: Any,
+        adaptive_context: AdaptiveGenerationContext | None = None,
     ) -> GeneratedBatchResult:
         """生成题目并立即审题，最多进行三次生成尝试。"""
         del user_id, db
@@ -55,8 +66,8 @@ class QuestionPipeline:
 
         for attempt in range(MAX_ATTEMPTS):
             logger.info("两层出题流水线第 %s/%s 次生成", attempt + 1, MAX_ATTEMPTS)
-            questions = await self._generate_questions(request, revision_notes)
-            review = await self._review_questions(request, questions)
+            questions = await self._generate_questions(request, revision_notes, adaptive_context)
+            review = await self._review_questions(request, questions, adaptive_context)
             if review.passed:
                 logger.info("两层出题流水线审题通过")
                 return GeneratedBatchResult(questions=questions, review=review)
@@ -70,6 +81,7 @@ class QuestionPipeline:
         self,
         request: QuestionGenerateRequest,
         revision_notes: str,
+        adaptive_context: AdaptiveGenerationContext | None,
     ) -> list[dict[str, Any]]:
         messages = build_question_generation_prompt(
             age_group=request.age_group_code,
@@ -79,6 +91,7 @@ class QuestionPipeline:
             question_type=request.question_types[0],
             question_count=request.question_count,
             revision_notes=revision_notes,
+            adaptive_context=adaptive_context,
         )
         response = await self._provider.generate(messages)
         parsed = self._parse_response(response, "题目生成结果格式无效，请稍后重试")
@@ -90,8 +103,11 @@ class QuestionPipeline:
         self,
         request: QuestionGenerateRequest,
         questions: list[dict[str, Any]],
+        adaptive_context: AdaptiveGenerationContext | None,
     ) -> QuestionReviewResult:
-        response = await self._provider.generate(build_question_review_prompt(request, questions))
+        response = await self._provider.generate(
+            build_question_review_prompt(request, questions, adaptive_context)
+        )
         parsed = self._parse_response(response, "题目审核结果格式无效，请稍后重试")
         if not isinstance(parsed, dict) or not isinstance(parsed.get("passed"), bool):
             raise QuestionGenerationError("题目审核结果格式无效，请稍后重试")

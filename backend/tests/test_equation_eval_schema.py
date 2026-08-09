@@ -11,6 +11,7 @@ from evals.equation_diagnosis.schema import (
 )
 from evals.equation_diagnosis.runner import (
     ProviderRunNotAllowed,
+    _model_prompt,
     ensure_provider_run_allowed,
     evaluate,
 )
@@ -101,6 +102,24 @@ def test_model_modes_fail_closed_without_explicit_permission_and_key(mode: str):
 
 def test_rules_mode_never_requires_provider_permission():
     ensure_provider_run_allowed("rules", allow_provider=False, api_key="")
+
+
+def test_model_prompt_declares_the_exact_json_output_contract():
+    case = EvalCase.model_validate(valid_case())
+    system_prompt = _model_prompt(case)[0]["content"]
+
+    for field in (
+        "status",
+        "misconception_code",
+        "knowledge_point_code",
+        "first_invalid_transition",
+        "evidence",
+        "confidence",
+    ):
+        assert field in system_prompt
+    assert "distribution_error" in system_prompt
+    assert "insufficient_evidence" in system_prompt
+    assert "null" in system_prompt
 
 
 @pytest.mark.asyncio

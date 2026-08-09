@@ -137,12 +137,23 @@ def _model_prompt(case: EvalCase) -> list[dict[str, str]]:
         "is_correct": case.is_correct,
         "knowledge_point_code": case.knowledge_point_code.value,
     }
+    misconception_values = ", ".join(code.value for code in MisconceptionCode)
+    knowledge_point_values = ", ".join(code.value for code in KnowledgePointCode)
     return [
         {
             "role": "system",
             "content": (
-                "你是方程错因分类器。只返回 JSON；不得补写学生未提供的步骤。"
-                "status 只能为 diagnosed、insufficient_evidence、not_required。"
+                "你是方程错因分类器。只返回一个 JSON 对象，不要 Markdown 代码块，"
+                "不得补写学生未提供的步骤。JSON 必须且只能包含以下字段："
+                "status、misconception_code、knowledge_point_code、"
+                "first_invalid_transition、evidence、confidence。"
+                "status 只能为 diagnosed、insufficient_evidence、not_required；"
+                f"misconception_code 只能为 {misconception_values} 之一或 null；"
+                f"knowledge_point_code 只能为 {knowledge_point_values} 之一；"
+                "first_invalid_transition 只能为 0 到 11 的整数或 null；"
+                "evidence 必须直接引用输入中的方程或步骤；confidence 必须为 0 到 1。"
+                "diagnosed 必须提供 misconception_code 和 first_invalid_transition；"
+                "其他 status 的这两个字段必须为 null。"
             ),
         },
         {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},

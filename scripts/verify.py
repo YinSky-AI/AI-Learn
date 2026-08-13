@@ -54,6 +54,10 @@ class FullGateSecretFiles:
             self.primary_database_url_file,
             self.catalog_database_url_file,
         ):
+            try:
+                secret_file.chmod(0o600)
+            except OSError:
+                pass
             secret_file.unlink(missing_ok=True)
         for directory in (self.password_file.parent, self.runtime_root):
             try:
@@ -68,7 +72,7 @@ def _write_runtime_secret(path: Path, value: str) -> None:
     if path.read_bytes().startswith(b"\xef\xbb\xbf"):
         raise RuntimeError("运行时 secret 禁止包含 UTF-8 BOM")
     try:
-        path.chmod(0o600)
+        path.chmod(0o444)
     except OSError:
         # Windows ACL 由当前用户目录继承；容器只读挂载仍是强制边界。
         pass
@@ -140,6 +144,10 @@ def prepare_full_gate_secrets(
 
     secret_root = runtime_root / "secrets"
     secret_root.mkdir(parents=True, exist_ok=True)
+    try:
+        secret_root.chmod(0o700)
+    except OSError:
+        pass
     files = FullGateSecretFiles(
         runtime_root=runtime_root,
         password_file=secret_root / "postgres_password",

@@ -1,8 +1,10 @@
+import os
 import shutil
 import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+import stat
 from urllib.parse import quote
 
 from scripts.verify_delivery import (
@@ -131,8 +133,15 @@ class DeliveryVerificationTests(unittest.TestCase):
                 }
                 self.assertEqual(environment["DELIVERY_TEST_ENV"], "ci")
                 self.assertTrue(all(path.is_file() for path in secret_paths))
+                if os.name == "posix":
+                    self.assertEqual(
+                        stat.S_IMODE(runtime_root.joinpath("secrets").stat().st_mode),
+                        0o700,
+                    )
                 for path in secret_paths:
                     self.assertFalse(path.read_bytes().startswith(b"\xef\xbb\xbf"))
+                    if os.name == "posix":
+                        self.assertEqual(stat.S_IMODE(path.stat().st_mode), 0o444)
                 self.assertNotIn("postgresql+asyncpg://", " ".join(environment.values()))
 
             self.assertTrue(all(not path.exists() for path in secret_paths))

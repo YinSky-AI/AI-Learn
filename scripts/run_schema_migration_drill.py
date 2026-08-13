@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from datetime import UTC, datetime
 import hashlib
 import json
@@ -52,6 +53,25 @@ PRIMARY_MANAGED_TABLES = (
 CATALOG_MANAGED_TABLES = (
     "admin_change_audits", "knowledge_points", "question_knowledge", "question_stats", "questions",
 )
+PRIMARY_LEGACY_CONTENT_EXCLUDED_COLUMNS = {
+    "answers": ("solution_steps", "student_confidence"),
+    "courses": ("deleted_at",),
+    "generated_questions": (
+        "generation_attempts",
+        "generation_failure_reason",
+        "generation_max_attempts",
+        "generation_policy_version",
+        "generation_status",
+        "parent_standard_question_id",
+        "target_knowledge_point_code",
+        "target_misconception_code",
+    ),
+    "knowledge_nodes": ("code",),
+    "lessons": ("deleted_at",),
+    "users": ("credential_version", "credentials_revoked_at"),
+    "wrong_questions": ("difficulty_factor", "next_review_at", "scheduler_version"),
+}
+CATALOG_LEGACY_CONTENT_EXCLUDED_COLUMNS = {"questions": ("deleted_at",)}
 
 
 class SchemaMigrationDrillError(RuntimeError):
@@ -415,6 +435,23 @@ def content_digest(table_row_hashes: dict[str, list[str]]) -> str:
     return hashlib.sha256("\n".join(lines).encode("utf-8")).hexdigest()
 
 
+def assert_business_rows_preserved(
+    label: str,
+    before: dict[str, Any],
+    after: dict[str, Any],
+) -> None:
+    """要求所有旧业务行仍存在，同时允许迁移增加确定性种子行。"""
+
+    before_hashes = before["business_row_hashes"]
+    after_hashes = after["business_row_hashes"]
+    for table_name, row_hashes in before_hashes.items():
+        missing = Counter(row_hashes) - Counter(after_hashes.get(table_name, []))
+        if missing:
+            raise SchemaMigrationDrillError(
+                f"{label} adoption/upgrade 改变了受管理表已有行内容"
+            )
+
+
 def _database_fingerprint(
     host: str,
     database: str,
@@ -422,6 +459,7 @@ def _database_fingerprint(
     managed_tables: tuple[str, ...],
     version_table: str,
     head_revision: str,
+    legacy_content_excluded_columns: dict[str, tuple[str, ...]],
 ) -> dict[str, Any]:
     """对精确受管表、列/default/约束/索引和全表行数做确定性摘要。"""
 
@@ -509,7 +547,8 @@ SELECT item FROM (
             for row_hash in _psql(
                 host,
                 database,
-                f"SELECT md5((to_jsonb(row_value) - 'deleted_at')::text) "
+                "SELECT md5((to_jsonb(row_value) - "
+                f"{_sql_array(legacy_content_excluded_columns.get(table_name, ()))})::text) "
                 f"FROM public.\"{table_name}\" row_value ORDER BY 1;",
             ).splitlines()
             if row_hash
@@ -527,6 +566,7 @@ SELECT item FROM (
         "data_sha256": hashlib.sha256(data_rows.encode("utf-8")).hexdigest(),
         "content_sha256": content_digest(table_row_hashes),
         "business_content_sha256": content_digest(business_row_hashes),
+        "business_row_hashes": business_row_hashes,
     }
 
 
@@ -537,6 +577,7 @@ def _primary_fingerprint(host: str, database: str) -> dict[str, Any]:
         managed_tables=PRIMARY_MANAGED_TABLES,
         version_table="alembic_version_learning",
         head_revision=PRIMARY_HEAD,
+        legacy_content_excluded_columns=PRIMARY_LEGACY_CONTENT_EXCLUDED_COLUMNS,
     )
 
 
@@ -547,6 +588,7 @@ def _catalog_fingerprint(host: str, database: str) -> dict[str, Any]:
         managed_tables=CATALOG_MANAGED_TABLES,
         version_table="alembic_version_catalog",
         head_revision=CATALOG_HEAD,
+        legacy_content_excluded_columns=CATALOG_LEGACY_CONTENT_EXCLUDED_COLUMNS,
     )
 
 
@@ -1322,12 +1364,7 @@ def run_drill() -> dict[str, Any]:
                 ("primary", primary_backup["restored_fingerprint_before_adoption"], final_primary_restore),
                 ("question-bank", catalog_backup["restored_fingerprint_before_adoption"], final_catalog_restore),
             ):
-                if before["business_content_sha256"] != after["business_content_sha256"]:
-                    raise SchemaMigrationDrillError(f"{label} adoption/upgrade 改变了受管理表行内容")
-                before_counts = {k: v for k, v in before["table_row_counts"].items() if k != "admin_change_audits"}
-                after_counts = {k: v for k, v in after["table_row_counts"].items() if k != "admin_change_audits"}
-                if before_counts != after_counts:
-                    raise SchemaMigrationDrillError(f"{label} adoption/upgrade 改变了受管理表行数")
+                assert_business_rows_preserved(label, before, after)
             primary_backup["adoption_content_preserved"] = True
             catalog_backup["adoption_content_preserved"] = True
             adoption_evidence = {

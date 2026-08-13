@@ -7,6 +7,7 @@ from backend.app.core.schema_version import get_expected_schema_revision
 from scripts.run_schema_migration_drill import (
     PRIMARY_HEAD,
     SchemaMigrationDrillError,
+    assert_business_rows_preserved,
     assert_no_secret_material,
     assert_revision_observation,
     content_digest,
@@ -111,6 +112,30 @@ class SchemaMigrationDrillSafetyTests(unittest.TestCase):
 
         self.assertEqual(first, reordered)
         self.assertNotEqual(first, changed)
+
+    def test_legacy_adoption_preserves_existing_rows_but_allows_seed_rows(self):
+        before = {
+            "business_row_hashes": {
+                "knowledge_nodes": ["legacy-node"],
+                "users": ["legacy-user"],
+            }
+        }
+        after = {
+            "business_row_hashes": {
+                "knowledge_nodes": ["equation-seed", "legacy-node"],
+                "users": ["legacy-user"],
+                "diagnosis_jobs": [],
+            }
+        }
+
+        assert_business_rows_preserved("primary", before, after)
+
+        after["business_row_hashes"]["users"] = ["changed-user"]
+        with self.assertRaisesRegex(
+            SchemaMigrationDrillError,
+            "primary adoption/upgrade 改变了受管理表已有行内容",
+        ):
+            assert_business_rows_preserved("primary", before, after)
 
     def test_secret_material_is_rejected_from_metadata_payloads(self):
         assert_no_secret_material(

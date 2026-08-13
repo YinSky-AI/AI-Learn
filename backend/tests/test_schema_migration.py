@@ -301,7 +301,7 @@ def test_unknown_schema_policy_is_rejected_with_plain_text():
 
 
 def test_two_database_targets_publish_independent_revision_heads():
-    assert get_expected_schema_revision("primary") == "lp_0016_knowledge_node_code_comment"
+    assert get_expected_schema_revision("primary") == "lp_0016_node_code_comment"
     assert get_expected_schema_revision("question-bank") == "catalog_0002_admin_recovery"
     assert get_schema_version_table("primary") == "alembic_version_learning"
     assert get_schema_version_table("question-bank") == "alembic_version_catalog"
@@ -316,7 +316,7 @@ def test_adaptive_diagnosis_is_reversible_below_the_primary_head():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
-    assert script.get_current_head() == "lp_0016_knowledge_node_code_comment"
+    assert script.get_current_head() == "lp_0016_node_code_comment"
     revision = script.get_revision("lp_0011_adaptive_diagnosis")
     assert revision.down_revision == "lp_0010_practice_history"
     source = Path(revision.path).read_text(encoding="utf-8")
@@ -407,8 +407,9 @@ def test_knowledge_node_code_comment_is_reversible_at_the_primary_head():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
-    assert script.get_current_head() == "lp_0016_knowledge_node_code_comment"
-    revision = script.get_revision("lp_0016_knowledge_node_code_comment")
+    assert script.get_current_head() == "lp_0016_node_code_comment"
+    assert len(script.get_current_head()) <= 32
+    revision = script.get_revision("lp_0016_node_code_comment")
     assert revision.down_revision == "lp_0015_equation_knowledge_nodes"
     source = Path(revision.path).read_text(encoding="utf-8")
     assert source.count('"knowledge_nodes"') == 2
@@ -893,7 +894,7 @@ def test_practice_history_fk_change_is_a_forward_reversible_migration():
     script = schema_admin_module.ScriptDirectory.from_config(
         schema_admin_module._config("primary")
     )
-    assert script.get_current_head() == "lp_0016_knowledge_node_code_comment"
+    assert script.get_current_head() == "lp_0016_node_code_comment"
     revision = script.get_revision("lp_0010_practice_history")
     assert revision.down_revision == "lp_0009_practice_contract"
     source = Path(revision.path).read_text(encoding="utf-8")
@@ -1464,7 +1465,7 @@ def test_primary_allows_only_named_external_tables_and_catalog_allows_no_unknown
 @pytest.mark.asyncio
 async def test_schema_guard_checks_both_database_heads_before_startup():
     current = {
-        "primary": "lp_0016_knowledge_node_code_comment",
+        "primary": "lp_0016_node_code_comment",
         "question-bank": "catalog_0002_admin_recovery",
     }
 
@@ -1489,7 +1490,7 @@ async def test_schema_guard_checks_both_database_heads_before_startup():
 async def test_schema_guard_rejects_when_either_database_is_stale():
     async def revision_reader(_engine, target_alias):
         if target_alias == "primary":
-            return "lp_0016_knowledge_node_code_comment"
+            return "lp_0016_node_code_comment"
         return None
 
     with pytest.raises(SchemaVersionError, match="question-bank.*尚未纳入版本管理"):

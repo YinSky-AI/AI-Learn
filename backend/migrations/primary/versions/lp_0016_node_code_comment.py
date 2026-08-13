@@ -1,6 +1,6 @@
 """align the knowledge node code comment
 
-Revision ID: lp_0016_knowledge_node_code_comment
+Revision ID: lp_0016_node_code_comment
 Revises: lp_0015_equation_knowledge_nodes
 """
 
@@ -8,7 +8,7 @@ import sqlalchemy as sa
 from alembic import op
 
 
-revision = "lp_0016_knowledge_node_code_comment"
+revision = "lp_0016_node_code_comment"
 down_revision = "lp_0015_equation_knowledge_nodes"
 branch_labels = None
 depends_on = None

@@ -30,6 +30,23 @@ def upgrade() -> None:
     )
     op.execute(
         """
+        UPDATE knowledge_nodes AS node
+        SET code = canonical.canonical_code
+        FROM (
+            VALUES
+                ('00000000-0000-4000-8000-000000000101'::uuid, 'equation_equivalence'),
+                ('00000000-0000-4000-8000-000000000102'::uuid, 'distributive_expansion'),
+                ('00000000-0000-4000-8000-000000000103'::uuid, 'combine_like_terms'),
+                ('00000000-0000-4000-8000-000000000104'::uuid, 'move_terms_sign'),
+                ('00000000-0000-4000-8000-000000000105'::uuid, 'normalize_coefficient'),
+                ('00000000-0000-4000-8000-000000000106'::uuid, 'equation_word_modeling')
+        ) AS canonical(seed_id, canonical_code)
+        WHERE node.id = canonical.seed_id
+          AND node.code LIKE 'legacy-%'
+        """
+    )
+    op.execute(
+        """
         INSERT INTO knowledge_nodes (
             id, code, title, description, subject_code, age_group_code,
             difficulty_level, content_type, content_body, estimated_minutes,

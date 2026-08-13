@@ -401,6 +401,11 @@ def test_equation_taxonomy_nodes_are_seeded_at_the_primary_head():
     assert "ON CONFLICT (code) DO NOTHING" in source
     assert "SUBJ_MATH" in source
     assert "AGE_12_14" in source
+    restore_codes = source.index("UPDATE knowledge_nodes AS node")
+    seed_nodes = source.index("INSERT INTO knowledge_nodes")
+    assert restore_codes < seed_nodes
+    assert "node.code LIKE 'legacy-%'" in source
+    assert "AS canonical(seed_id, canonical_code)" in source
 
 
 def test_knowledge_node_code_comment_is_reversible_at_the_primary_head():

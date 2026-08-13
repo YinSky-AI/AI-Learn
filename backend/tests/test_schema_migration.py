@@ -13,6 +13,7 @@ from sqlalchemy import Column, DateTime, MetaData, Numeric, String, Table
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.engine import make_url
+from sqlalchemy.exc import IntegrityError
 
 import app.main as main_module
 import app.models as models_module
@@ -30,6 +31,7 @@ from app.catalog import catalog_metadata
 from schema_admin import (
     _audit,
     _safe_autogenerate_detail,
+    _safe_integrity_detail,
     _normalize_index_predicate,
     build_parser,
     build_expected_contract_snapshot,
@@ -71,6 +73,30 @@ def test_autogenerate_failure_detail_exposes_schema_drift_without_credentials():
     assert "postgresql" not in detail
 
     assert _safe_autogenerate_detail(RuntimeError("password=secret")) is None
+
+
+def test_integrity_failure_detail_exposes_only_database_identifiers():
+    diagnostic = SimpleNamespace(
+        constraint_name="knowledge_nodes_pkey",
+        table_name="knowledge_nodes",
+        column_name="id",
+        sqlstate="23505",
+    )
+    error = IntegrityError(
+        "INSERT INTO knowledge_nodes VALUES (...) ",
+        {"password": "secret"},
+        SimpleNamespace(diag=diagnostic),
+    )
+
+    detail = _safe_integrity_detail(error)
+
+    assert detail == (
+        "sqlstate=23505 constraint=knowledge_nodes_pkey "
+        "table=knowledge_nodes column=id"
+    )
+    assert "secret" not in detail
+    assert "INSERT" not in detail
+    assert _safe_integrity_detail(RuntimeError("password=secret")) is None
 
 
 def test_migration_target_accepts_only_the_verified_primary_disposable_database():

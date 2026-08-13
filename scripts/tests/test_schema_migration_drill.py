@@ -3,7 +3,9 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
+from backend.app.core.schema_version import get_expected_schema_revision
 from scripts.run_schema_migration_drill import (
+    PRIMARY_HEAD,
     SchemaMigrationDrillError,
     assert_no_secret_material,
     assert_revision_observation,
@@ -14,6 +16,9 @@ from scripts.run_schema_migration_drill import (
 
 
 class SchemaMigrationDrillSafetyTests(unittest.TestCase):
+    def test_primary_drill_head_matches_the_runtime_schema_contract(self):
+        self.assertEqual(PRIMARY_HEAD, get_expected_schema_revision("primary"))
+
     def test_partial_failure_retries_catalog_single_entry_before_aggregate_repeat(self):
         source = (
             Path(__file__).resolve().parents[2]

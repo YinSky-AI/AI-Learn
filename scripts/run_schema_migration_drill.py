@@ -31,7 +31,7 @@ CATALOG_BOOTSTRAP_DATABASE = "ai_learn_bootstrap"
 ENVIRONMENT = os.getenv("DELIVERY_TEST_ENV", "local")
 BACKEND_PROBE_CONTAINER = "ai-learn-schema-drill-backend"
 
-PRIMARY_HEAD = "lp_0008_review_contract"
+PRIMARY_HEAD = "lp_0016_node_code_comment"
 PRIMARY_BASELINE = "lp_0001_legacy_baseline"
 CATALOG_HEAD = "catalog_0002_admin_recovery"
 PERSISTENT_HOST = "postgres"

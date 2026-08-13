@@ -51,7 +51,7 @@ def upgrade() -> None:
     op.add_column("knowledge_nodes", sa.Column("code", sa.String(length=64), nullable=True))
     op.execute(
         "UPDATE knowledge_nodes SET code = 'legacy-' || "
-        "substring(replace(id::text, '-', '') from 1 for 12) WHERE code IS NULL"
+        "replace(id::text, '-', '') WHERE code IS NULL"
     )
     op.alter_column("knowledge_nodes", "code", nullable=False)
     op.create_unique_constraint("uq_knowledge_nodes_code", "knowledge_nodes", ["code"])

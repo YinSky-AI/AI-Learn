@@ -357,6 +357,8 @@ def test_adaptive_diagnosis_is_reversible_below_the_primary_head():
     assert "legacy-" in source
     assert 'op.add_column("knowledge_nodes"' in source
     assert 'op.drop_column("knowledge_nodes", "code")' in source
+    assert "replace(id::text, '-', '') WHERE code IS NULL" in source
+    assert "substring(replace(id::text, '-', '') from 1 for 12)" not in source
 
 
 def test_answer_evidence_is_reversible_below_the_primary_head():

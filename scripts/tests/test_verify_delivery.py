@@ -1,3 +1,5 @@
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -22,6 +24,27 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class DeliveryVerificationTests(unittest.TestCase):
+    def test_compose_config_does_not_require_a_local_backend_env_file(self):
+        docker = shutil.which("docker")
+        if docker is None:
+            self.skipTest("docker is required to validate the Compose contract")
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            compose_path = Path(temp_dir) / "docker-compose.yml"
+            compose_path.write_text(
+                (ROOT / "docker-compose.yml").read_text(encoding="utf-8"),
+                encoding="utf-8",
+            )
+            result = subprocess.run(
+                [docker, "compose", "-f", str(compose_path), "config", "--profiles"],
+                check=False,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+            )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_smoke_uses_the_public_gateway_by_default(self):
         args = build_parser().parse_args([])
 

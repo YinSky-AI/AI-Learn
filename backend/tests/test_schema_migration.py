@@ -38,6 +38,7 @@ from schema_admin import (
     execute_migration,
     load_database_url,
     remove_allowed_external_contract,
+    remove_post_baseline_contract,
     validate_release_authorization,
     validate_contract_snapshot,
     validate_migration_action,
@@ -1391,6 +1392,42 @@ def test_external_column_whitelist_removes_only_its_own_constraints():
     assert snapshot["required_named_unique_indexes"] == {
         ("users_email_key", ("email",))
     }
+
+
+def test_post_baseline_columns_remove_every_dependent_contract_item():
+    snapshot = {
+        "columns": {"id": {}, "code": {}, "confidence": {}},
+        "primary_key": ("id",),
+        "uniques": {("id",), ("code",), ("id", "code")},
+        "required_named_unique_indexes": {
+            ("uq_id", ("id",)),
+            ("uq_code", ("code",)),
+        },
+        "indexes": {
+            ("ix_id", ("id",), False, None, None),
+            ("ix_code", ("code",), False, None, None),
+        },
+        "foreign_keys": {
+            (("id",), "parents", ("id",), "CASCADE"),
+            (("code",), "parents", ("code",), "RESTRICT"),
+        },
+        "checks": {
+            "id IS NOT NULL",
+            "confidence IS NULL OR confidence >= 1",
+        },
+    }
+
+    remove_post_baseline_contract(snapshot, {"code", "confidence"})
+
+    assert set(snapshot["columns"]) == {"id"}
+    assert snapshot["primary_key"] == ("id",)
+    assert snapshot["uniques"] == {("id",)}
+    assert snapshot["required_named_unique_indexes"] == {("uq_id", ("id",))}
+    assert snapshot["indexes"] == {("ix_id", ("id",), False, None, None)}
+    assert snapshot["foreign_keys"] == {
+        (("id",), "parents", ("id",), "CASCADE")
+    }
+    assert snapshot["checks"] == {"id IS NOT NULL"}
 
 
 def test_expected_contract_supports_literal_string_server_defaults():

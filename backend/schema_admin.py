@@ -630,6 +630,58 @@ def remove_allowed_external_contract(
         }
 
 
+def remove_post_baseline_contract(
+    snapshot: dict[str, object],
+    post_baseline_columns: set[str],
+) -> None:
+    """移除基线之后新增列及所有引用这些列的契约项。"""
+
+    if not post_baseline_columns:
+        return
+
+    for column_name in post_baseline_columns:
+        snapshot.get("columns", {}).pop(column_name, None)
+
+    def references_column(values: tuple[str, ...]) -> bool:
+        return bool(set(values) & post_baseline_columns)
+
+    def expression_references_column(expression: str) -> bool:
+        return any(
+            re.search(
+                rf"(?<![A-Za-z0-9_$]){re.escape(column)}(?![A-Za-z0-9_$])",
+                expression,
+                flags=re.IGNORECASE,
+            )
+            for column in post_baseline_columns
+        )
+
+    snapshot["uniques"] = {
+        columns
+        for columns in snapshot.get("uniques", set())
+        if not references_column(columns)
+    }
+    snapshot["required_named_unique_indexes"] = {
+        value
+        for value in snapshot.get("required_named_unique_indexes", set())
+        if not references_column(value[1])
+    }
+    snapshot["indexes"] = {
+        value
+        for value in snapshot.get("indexes", set())
+        if not any(expression_references_column(expression) for expression in value[1])
+    }
+    snapshot["foreign_keys"] = {
+        value
+        for value in snapshot.get("foreign_keys", set())
+        if not references_column(value[0])
+    }
+    snapshot["checks"] = {
+        expression
+        for expression in snapshot.get("checks", set())
+        if not expression_references_column(expression)
+    }
+
+
 def validate_legacy_schema(engine: Engine | Connection, target_alias: str) -> None:
     """在 stamp 前验证完整 legacy contract 和关键数据约束。"""
 
@@ -651,20 +703,9 @@ def validate_legacy_schema(engine: Engine | Connection, target_alias: str) -> No
             continue
         expected = build_expected_contract_snapshot(table)
         post_baseline_columns = POST_BASELINE_COLUMNS.get((target_alias, table_name), set())
-        for column_name in post_baseline_columns:
-            expected["columns"].pop(column_name, None)
-        expected["indexes"] = {
-            value for value in expected["indexes"]
-            if not any(column in post_baseline_columns for column in value[1])
-        }
+        remove_post_baseline_contract(expected, post_baseline_columns)
         actual = build_actual_contract_snapshot(inspector, table_name)
-        for column_name in post_baseline_columns:
-            actual["columns"].pop(column_name, None)
-        actual["indexes"] = {
-            value
-            for value in actual["indexes"]
-            if not any(column in post_baseline_columns for column in value[1])
-        }
+        remove_post_baseline_contract(actual, post_baseline_columns)
         required_columns = set(expected["columns"])
         actual_columns = set(actual["columns"])
         allowed_extra = ALLOWED_EXTERNAL_COLUMNS.get((target_alias, table_name), set())

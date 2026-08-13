@@ -24,6 +24,7 @@ class Step:
     label: str
     command: tuple[str, ...]
     cwd: Path = ROOT
+    environment: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -230,7 +231,33 @@ def build_steps(mode: str) -> list[Step]:
         Step("隔离后端测试", (sys.executable, "scripts/run_backend_tests.py")),
         Step("加密备份与隔离恢复演练", (sys.executable, "scripts/run_backup_restore_drill.py")),
         Step("双数据库 Schema 迁移演练", (sys.executable, "scripts/run_schema_migration_drill.py")),
-        Step("Compose 构建与启动", ("docker", "compose", "up", "-d", "--build", "--wait")),
+        Step(
+            "Compose 依赖服务启动",
+            ("docker", "compose", "up", "-d", "--wait", "postgres", "redis"),
+        ),
+        Step(
+            "Compose 主业务库 bootstrap",
+            (
+                "docker", "compose", "--profile", "schema-bootstrap", "run",
+                "--build", "--rm", "--no-deps", "-e",
+                "SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE=CI-FULL-GATE",
+                "schema-bootstrap-primary",
+            ),
+        ),
+        Step(
+            "Compose 题库 bootstrap",
+            (
+                "docker", "compose", "--profile", "schema-bootstrap", "run",
+                "--build", "--rm", "--no-deps", "-e",
+                "SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE=CI-FULL-GATE",
+                "schema-bootstrap-catalog",
+            ),
+        ),
+        Step(
+            "Compose 构建与启动",
+            ("docker", "compose", "up", "-d", "--build", "--wait"),
+            environment=(("SCHEMA_VERSION_POLICY", "strict"),),
+        ),
         Step("Docker smoke", (sys.executable, "scripts/verify_delivery.py")),
         Step("真实浏览器 E2E", ("npm", "run", "e2e"), ROOT / "frontend"),
     ]
@@ -267,6 +294,7 @@ def run(mode: str) -> int:
                 return 2
             environment = build_subprocess_env()
             environment.update(secret_environment)
+            environment.update(step.environment)
             result = subprocess.run(
                 command,
                 cwd=step.cwd,

@@ -64,12 +64,28 @@ class DeliveryVerificationTests(unittest.TestCase):
                 "隔离后端测试",
                 "加密备份与隔离恢复演练",
                 "双数据库 Schema 迁移演练",
+                "Compose 依赖服务启动",
+                "Compose 主业务库 bootstrap",
+                "Compose 题库 bootstrap",
                 "Compose 构建与启动",
                 "Docker smoke",
                 "真实浏览器 E2E",
             ],
         )
         self.assertIn("discover", build_steps("fast")[0].command)
+
+    def test_full_gate_bootstraps_empty_compose_databases_before_strict_start(self):
+        steps = build_steps("full")
+        labels = [step.label for step in steps]
+        primary = steps[labels.index("Compose 主业务库 bootstrap")]
+        catalog = steps[labels.index("Compose 题库 bootstrap")]
+        start = steps[labels.index("Compose 构建与启动")]
+
+        self.assertLess(labels.index(primary.label), labels.index(start.label))
+        self.assertLess(labels.index(catalog.label), labels.index(start.label))
+        self.assertIn("schema-bootstrap-primary", primary.command)
+        self.assertIn("schema-bootstrap-catalog", catalog.command)
+        self.assertEqual(dict(start.environment)["SCHEMA_VERSION_POLICY"], "strict")
 
     def test_full_gate_runs_both_alembic_drift_checks(self):
         backend_step = next(

@@ -33,7 +33,7 @@ test("后端健康端点保持公开契约", async ({ request }) => {
   expect(response.ok()).toBeTruthy();
   await expect(response.json()).resolves.toMatchObject({
     code: "SUCCESS",
-    message: "服务运行正常",
+    message: "服务就绪",
     data: { status: "healthy" },
   });
 });

@@ -24,13 +24,7 @@
 
 ### 2. 配置环境变量
 
-复制后端环境变量模板并编辑：
-
-```bash
-cp backend/.env.example backend/.env
-```
-
-根据实际需要修改 `backend/.env` 中的数据库连接、JWT 密钥等配置。
+`backend/.env` 是可选的本地配置文件，仓库不提供需要复制的模板。需要覆盖非敏感默认值或配置本地 AI Provider 时可自行创建；该文件已被 Git 忽略，禁止提交真实密钥。Compose 的 PostgreSQL 密码及两个数据库 DSN 不写入 `.env`，统一使用下一节所述的文件型 secret 注入；非开发环境还必须替换默认 JWT 密钥。
 
 ### 3. 全新 Compose 首次启动
 
@@ -237,7 +231,11 @@ make migrate \
 python scripts/verify.py full
 ```
 
-完整门禁会在隔离数据库对 `primary` 与 `question-bank` 分别运行 Alembic drift check，并执行 P0-07 双 root 空库 upgrade、downgrade/upgrade、基线采用、备份恢复和 strict 启动演练。GitHub Actions 的 `schema-migration-evidence` artifact 只上传 `drill-report.json` 及备份 manifest/SHA-256 证据，不上传临时密钥、数据库密码或加密归档正文。
+`full` 是本地与 GitHub Actions 共用的 15 步交付门禁，按顺序执行交付脚本单测、160 条方程诊断规则评测、前端测试/类型检查/生产构建、后端镜像与隔离测试、加密备份恢复、双数据库迁移、Compose 空库 bootstrap 与 strict 启动、Docker smoke 以及真实浏览器 E2E；任一步失败即返回非零退出码。
+
+门禁会为当前运行创建临时随机的文件型 secret，并在结束后清理；也可显式传入 `POSTGRES_PASSWORD_SECRET_FILE`、`PRIMARY_DATABASE_URL_SECRET_FILE` 和 `CATALOG_DATABASE_URL_SECRET_FILE` 复用受控凭据。自动 bootstrap 只作用于门禁创建的可丢弃空数据库，不会采用或迁移现有的未版本化数据库。GitHub Actions 的 `schema-migration-evidence` artifact 只上传 `drill-report.json` 及备份 manifest/SHA-256 证据，不上传临时密钥、数据库密码或加密归档正文。
+
+截至 2026-08-13，PR #4 已在 GitHub Actions clean runner 上完整通过该门禁（[Delivery verification #31675270726](https://github.com/YinSky-AI/AI-Learn/actions/runs/31675270726)），其中真实浏览器 E2E 为 12 项通过。该记录是当前分支的可复现交付证据，不代表生产环境效果或线上可用性承诺。
 
 ## 健康检查
 

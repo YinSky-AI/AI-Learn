@@ -25,6 +25,7 @@ SOURCE_HOST = "postgres-test"
 PRIMARY_SOURCE_DATABASE = "learning_platform_test"
 CATALOG_SOURCE_DATABASE = "ai_learn_test"
 RESTORE_HOST = "postgres-restore"
+SCHEMA_DRILL_SERVICES = (SOURCE_HOST, RESTORE_HOST, "redis")
 PRIMARY_RESTORE_DATABASE = "learning_platform_restore"
 CATALOG_RESTORE_DATABASE = "ai_learn_restore"
 PRIMARY_BOOTSTRAP_DATABASE = "learning_platform_bootstrap"
@@ -1017,9 +1018,8 @@ def run_drill() -> dict[str, Any]:
             "-d",
             "--force-recreate",
             "--wait",
-            SOURCE_HOST,
-            RESTORE_HOST,
-            stage="四目标 tmpfs PostgreSQL 启动",
+            *SCHEMA_DRILL_SERVICES,
+            stage="Schema 演练依赖服务启动",
         )
         _ensure_database(SOURCE_HOST, CATALOG_SOURCE_DATABASE)
         _ensure_database(RESTORE_HOST, CATALOG_RESTORE_DATABASE)
@@ -1475,9 +1475,8 @@ def run_drill() -> dict[str, Any]:
         _compose(
             *compose,
             "stop",
-            SOURCE_HOST,
-            RESTORE_HOST,
-            stage="停止四目标 tmpfs PostgreSQL",
+            *SCHEMA_DRILL_SERVICES,
+            stage="停止 Schema 演练依赖服务",
             echo=False,
         )
         for runtime_file in (

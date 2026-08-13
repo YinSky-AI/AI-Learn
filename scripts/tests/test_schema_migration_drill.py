@@ -6,6 +6,7 @@ from pathlib import Path
 from backend.app.core.schema_version import get_expected_schema_revision
 from scripts.run_schema_migration_drill import (
     PRIMARY_HEAD,
+    SCHEMA_DRILL_SERVICES,
     SchemaMigrationDrillError,
     assert_business_rows_preserved,
     assert_no_secret_material,
@@ -17,6 +18,12 @@ from scripts.run_schema_migration_drill import (
 
 
 class SchemaMigrationDrillSafetyTests(unittest.TestCase):
+    def test_schema_drill_starts_redis_for_the_strict_health_probe(self):
+        self.assertEqual(
+            SCHEMA_DRILL_SERVICES,
+            ("postgres-test", "postgres-restore", "redis"),
+        )
+
     def test_primary_drill_head_matches_the_runtime_schema_contract(self):
         self.assertEqual(PRIMARY_HEAD, get_expected_schema_revision("primary"))
 

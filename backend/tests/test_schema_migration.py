@@ -854,6 +854,17 @@ def test_primary_baseline_excludes_account_columns_added_after_baseline():
         "generation_attempts",
         "generation_max_attempts",
         "generation_failure_reason",
+        "target_knowledge_point_code",
+        "target_misconception_code",
+        "generation_policy_version",
+        "parent_standard_question_id",
+    }
+    assert schema_admin_module.POST_BASELINE_COLUMNS[("primary", "knowledge_nodes")] == {
+        "code",
+    }
+    assert schema_admin_module.POST_BASELINE_COLUMNS[("primary", "answers")] == {
+        "solution_steps",
+        "student_confidence",
     }
     assert schema_admin_module.POST_BASELINE_COLUMNS[("primary", "wrong_questions")] == {
         "next_review_at", "scheduler_version", "difficulty_factor",
@@ -863,6 +874,10 @@ def test_primary_baseline_excludes_account_columns_added_after_baseline():
         "generated_practice_answers",
         "generated_practice_reward_events",
         "wrong_practice_attempts",
+        "diagnosis_jobs",
+        "answer_diagnoses",
+        "knowledge_mastery_states",
+        "adaptation_decisions",
     } <= schema_admin_module.POST_BASELINE_TABLES["primary"]
 
 

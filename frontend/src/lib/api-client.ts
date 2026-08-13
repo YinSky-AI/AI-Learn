@@ -175,16 +175,22 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
   let lastError: Error | null = null;
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), timeout);
+      timeoutId = setTimeout(() => controller.abort(), timeout);
+      const externalSignal = fetchOptions.signal;
+      const requestSignal = externalSignal
+        ? AbortSignal.any([controller.signal, externalSignal])
+        : controller.signal;
 
       let response = await fetch(url, {
         ...fetchOptions,
-        signal: controller.signal,
+        signal: requestSignal,
       });
 
       clearTimeout(timeoutId);
+      timeoutId = null;
 
       // 处理 401 - 尝试刷新 Token（跳过认证端点，避免登录失败时误跳转）
       const isAuthEndpoint = endpoint.startsWith("/v1/auth/");
@@ -195,6 +201,7 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
           response = await fetch(url, {
             ...fetchOptions,
             headers,
+            signal: externalSignal,
           });
         } catch (error) {
           // 刷新失败后统一清理并回到登录页
@@ -259,6 +266,7 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
 
       return data.data;
     } catch (error) {
+      if (timeoutId) clearTimeout(timeoutId);
       lastError = error as Error;
       // 网络错误且未达最大重试次数时重试
       if (attempt < maxRetries && (

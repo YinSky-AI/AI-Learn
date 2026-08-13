@@ -20,7 +20,7 @@ class _Session:
 
 
 @pytest.mark.asyncio
-async def test_answer_event_updates_mastery_and_ignores_same_persisted_answer_id():
+async def test_answer_event_updates_activity_but_not_legacy_knowledge_mastery():
     user = SimpleNamespace(id=uuid.uuid4(), behavior_profile=None)
     session = _Session(user)
     service = BehaviorService(session)
@@ -46,13 +46,10 @@ async def test_answer_event_updates_mastery_and_ignores_same_persisted_answer_id
         answered_at=datetime(2026, 7, 21, tzinfo=timezone.utc),
     )
 
-    mastery = first["knowledge_mastery"]["一元一次方程"]
-    assert mastery["total"] == 1
-    assert mastery["correct"] == 1
-    assert mastery["level"] == pytest.approx(0.65)
+    assert first["knowledge_mastery"] == {}
     assert first["subject_mastery"]["math"]["level"] == 1
     assert first["study_stats"]["total_time_minutes"] == pytest.approx(1.5)
-    assert duplicate["knowledge_mastery"]["一元一次方程"]["total"] == 1
+    assert duplicate["knowledge_mastery"] == {}
     assert session.flushes == 1
 
 

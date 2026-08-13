@@ -168,33 +168,20 @@ class DiagnosticianAgent(TutorAgent):
         return "你用简洁、友好的语言说明当前误区和应优先检查的知识点。"
 
     def diagnose(self, state: SharedState) -> None:
-        """根据回答更新共享诊断、掌握度、策略和角色留言。"""
+        """只消费服务端已验证诊断，不在 Tutor 内重新判题或猜测错因。"""
 
-        has_result = isinstance(state.context.get("is_correct"), bool)
-        if has_result:
-            state.mastery.record(state.is_incorrect is False)
-
-        if state.is_incorrect:
-            if state.student_attempt:
-                state.diagnosis = (
-                    f"针对“{state.question_text}”，你写的“{state.student_attempt}”可能混淆了"
-                    f"{state.knowledge_point}中的题目关系，需要回到条件和运算含义。"
-                )
-            else:
-                state.diagnosis = (
-                    f"针对“{state.question_text}”，还需要先确认{state.knowledge_point}中的"
-                    "已知条件和所求内容。"
-                )
+        if state.diagnosis_status == "diagnosed" and state.diagnosis_evidence:
+            misconception = state.misconception_display_name or "已定位的步骤错误"
+            state.diagnosis = f"已验证：{state.diagnosis_evidence}；当前需要巩固{misconception}。"
             state.teaching_strategy.approach = "simplified"
             state.teaching_strategy.pace = "slow"
-            state.teaching_strategy.focus_area = f"{state.knowledge_point}的题意和运算含义"
-            state.add_note("teacher", "先确认所求量，不要展开完整计算。")
-            state.add_note("assistant", "用小步骤或图示帮助学生检查原思路。")
+            state.teaching_strategy.focus_area = misconception
+            state.add_note("teacher", "围绕已验证的第一处无效变形追问，不要重新判断错因。")
+            state.add_note("assistant", "用一个小步骤帮助学生检查已定位的变形。")
             state.add_note("encourager", "肯定学生已做出的尝试，再邀请完成一个小步骤。")
-        elif has_result:
+        elif state.diagnosis_status == "not_required":
             state.diagnosis = (
-                f"针对“{state.question_text}”，当前回答方向正确，可以继续说明"
-                f"{state.knowledge_point}的推理依据。"
+                f"服务端已确认本次作答无需错因诊断，可以继续说明{state.knowledge_point}的推理依据。"
             )
             state.teaching_strategy.approach = "deep"
             state.teaching_strategy.pace = "normal"
@@ -203,11 +190,14 @@ class DiagnosticianAgent(TutorAgent):
             state.add_note("assistant", "引导学生检查能否迁移到相似情境。")
         else:
             state.diagnosis = (
-                f"针对“{state.question_text}”，信息不足，需要围绕{state.knowledge_point}"
-                "追问学生当前思路。"
+                "诊断证据不足，尚不能确定具体错因；需要请学生补充当前步骤。"
             )
-            state.add_note("teacher", "先询问学生已经想到哪一步。")
-            state.add_note("assistant", "提供一个可选择的小步骤。")
+            state.teaching_strategy.approach = "clarification"
+            state.teaching_strategy.pace = "slow"
+            state.teaching_strategy.focus_area = "补充可验证的解题步骤"
+            state.add_note("teacher", "先询问学生已经想到哪一步，不要猜测错误原因。")
+            state.add_note("assistant", "只追问一个可验证的中间步骤。")
+            state.add_note("encourager", "肯定学生愿意补充思路，再邀请写出一个步骤。")
 
         if state.is_frustrated:
             state.student_profile.frustration_level = max(

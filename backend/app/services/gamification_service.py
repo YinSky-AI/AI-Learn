@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.achievement import Achievement, UserAchievement
 from app.models.gamification import GamificationEvent
+from app.models.ai_generated import GeneratedPracticeRewardEvent
 
 
 ACHIEVEMENTS = (
@@ -41,7 +42,14 @@ def get_level_progress(total_score: int) -> tuple[int, int, int]:
     return level, total_score - threshold, get_level_up_points(level)
 
 
-def apply_answer_reward(user, *, is_correct: bool, difficulty: str, today: date | None = None) -> dict:
+def apply_answer_reward(
+    user,
+    *,
+    is_correct: bool,
+    difficulty: str,
+    today: date | None = None,
+    award_points: bool = True,
+) -> dict:
     """只根据服务端判题结果更新用户统计；调用方必须在同一事务中持久化。"""
     today = today or date.today()
     previous_level = calculate_level(user.total_score or 0)
@@ -60,16 +68,17 @@ def apply_answer_reward(user, *, is_correct: bool, difficulty: str, today: date 
         user.current_correct_streak = (user.current_correct_streak or 0) + 1
         user.max_correct_streak = max(user.max_correct_streak or 0, user.current_correct_streak)
         user.correct_answered = (user.correct_answered or 0) + 1
-        streak_bonus = int(base_points * min(user.current_correct_streak * 0.1, 0.5))
-        points_earned = base_points + streak_bonus
-        user.total_score = (user.total_score or 0) + points_earned
+        if award_points:
+            streak_bonus = int(base_points * min(user.current_correct_streak * 0.1, 0.5))
+            points_earned = base_points + streak_bonus
+            user.total_score = (user.total_score or 0) + points_earned
     else:
         user.current_correct_streak = 0
 
     level = calculate_level(user.total_score or 0)
     return {
         "points_earned": points_earned,
-        "base_points": base_points if is_correct else 0,
+        "base_points": base_points if is_correct and award_points else 0,
         "streak_bonus": streak_bonus,
         "total_points": user.total_score or 0,
         "level": level,
@@ -117,6 +126,51 @@ async def reward_answer_event(db: AsyncSession, *, user, answer, difficulty: str
     event = GamificationEvent(answer_id=answer.id, user_id=user.id, points_earned=payload["points_earned"], base_points=payload["base_points"], streak_bonus=payload["streak_bonus"], level=payload["level"], correct_streak=payload["streak"], new_achievements=new_achievements)
     db.add(event)
     await db.flush()
+    return payload
+
+
+async def reward_generated_practice_answer(
+    db: AsyncSession,
+    *,
+    user,
+    answer,
+    question,
+) -> dict:
+    """统计每次 AI 作答，但每题只在首次答对时发放积分。"""
+    existing_reward = None
+    if answer.is_correct:
+        existing_reward = (
+            await db.execute(
+                select(GeneratedPracticeRewardEvent).where(
+                    GeneratedPracticeRewardEvent.user_id == user.id,
+                    GeneratedPracticeRewardEvent.generated_question_id == question.id,
+                )
+            )
+        ).scalar_one_or_none()
+    reward_eligible = answer.is_correct and existing_reward is None
+    payload = apply_answer_reward(
+        user,
+        is_correct=answer.is_correct,
+        difficulty=question.difficulty_level,
+        award_points=reward_eligible,
+    )
+    payload["new_achievements"] = await _award_new_achievements(db, user)
+    if reward_eligible:
+        db.add(
+            GeneratedPracticeRewardEvent(
+                submission_id=answer.submission_id,
+                generated_practice_answer_id=answer.id,
+                user_id=user.id,
+                generated_question_id=question.id,
+                points_earned=payload["points_earned"],
+                base_points=payload["base_points"],
+                streak_bonus=payload["streak_bonus"],
+                level=payload["level"],
+                correct_streak=payload["streak"],
+                new_achievements=payload["new_achievements"],
+            )
+        )
+        await db.flush()
     return payload
 
 

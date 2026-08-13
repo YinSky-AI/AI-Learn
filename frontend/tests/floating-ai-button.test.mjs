@@ -39,3 +39,18 @@ test("floating tutor exposes one-click prompts and learning-page context", () =>
   assert.match(tutor, /quickPrompts/);
   assert.match(tutor, /sendMessage\(prompt\)/);
 });
+
+test("expanded AI panel supports bounded desktop dragging from its header", () => {
+  const floating = read("src/components/ai/floating-ai-button.tsx");
+  const draggingPath = path.join(root, "src/components/ai/use-draggable-panel.ts");
+  assert.equal(existsSync(draggingPath), true, "dragging behavior should be isolated and reusable");
+  const dragging = read("src/components/ai/use-draggable-panel.ts");
+
+  assert.match(floating, /useDraggablePanel/);
+  assert.match(floating, /dragHandleProps/);
+  assert.match(floating, /panelPositioned/);
+  assert.match(dragging, /matchMedia\(DESKTOP_MEDIA_QUERY\)/);
+  assert.match(dragging, /setPointerCapture/);
+  assert.match(dragging, /onPointerCancel/);
+  assert.match(dragging, /clampPanelPosition/);
+});

@@ -3,7 +3,7 @@
 from datetime import datetime
 
 from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Index, Integer, String, Text, UniqueConstraint
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import relationship
 
 from app.core.database import BaseModel
@@ -50,3 +50,18 @@ class WrongQuestionEvent(BaseModel, Base):
     question_id = Column(UUID(as_uuid=True), ForeignKey("questions.id", ondelete="CASCADE"), nullable=False)
 
     __table_args__ = (Index("idx_wrong_question_event_user_question", "user_id", "question_id"),)
+
+
+class WrongPracticeAttempt(BaseModel, Base):
+    """错题重练的幂等作答事件。"""
+
+    __tablename__ = "wrong_practice_attempts"
+
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    question_id = Column(UUID(as_uuid=True), nullable=False)
+    payload_fingerprint = Column(String(64), nullable=False)
+    result_payload = Column(JSONB, nullable=False)
+
+    __table_args__ = (
+        Index("idx_wrong_practice_attempt_user_question", "user_id", "question_id"),
+    )

@@ -28,9 +28,11 @@ from app.schemas.question import (
     QuestionGenerateRequest,
     GeneratedQuestionPublicResponse,
     BatchResponse,
+    GeneratedPracticeSubmitRequest,
+    GeneratedPracticeSubmitResponse,
     VariantRequest,
 )
-from app.services import question_generation_service
+from app.services import generated_practice_service, question_generation_service
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -169,6 +171,25 @@ async def get_batch_detail(
         },
         message="获取批次详情成功",
     )
+
+
+@router.post(
+    "/batches/{batch_id}/submit",
+    response_model=ApiResponse[GeneratedPracticeSubmitResponse],
+)
+async def submit_batch_answers(
+    batch_id: uuid.UUID,
+    request: GeneratedPracticeSubmitRequest,
+    user_id: uuid.UUID = Depends(get_current_user_id),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await generated_practice_service.submit_generated_practice(
+        db,
+        batch_id=batch_id,
+        user_id=user_id,
+        request=request,
+    )
+    return success_response(data=result, message="练习提交成功")
 
 
 @router.post("/variant", response_model=ApiResponse)

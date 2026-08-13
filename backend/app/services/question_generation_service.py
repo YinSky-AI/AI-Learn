@@ -14,6 +14,7 @@ AI 出题服务模块
 
 import uuid
 import hashlib
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import List, Optional
 
@@ -25,8 +26,41 @@ from app.models.ai_generated import (
     GeneratedQuestion,
     GenerationJob,
 )
+from app.models.content import KnowledgeNode, Question
 from app.ai.tools.question_save_tool import QuestionSaveTool
 from app.schemas.question import QuestionGenerateRequest
+from app.ai.question_pipeline import AdaptiveGenerationContext
+
+
+@dataclass(frozen=True, slots=True)
+class ClaimedGenerationJob:
+    job_id: uuid.UUID
+    user_id: uuid.UUID
+    source_question_id: uuid.UUID | None
+    target_difficulty: str
+    lease_owner: str
+    source_standard_question_id: uuid.UUID | None = None
+    target_knowledge_point_code: str | None = None
+    target_misconception_code: str | None = None
+    policy_version: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class GenerationJobContext:
+    job: ClaimedGenerationJob
+    batch_id: uuid.UUID | None
+    age_group_code: str
+    subject_code: str
+    course_topic: str
+    question_type: str
+
+
+class GenerationContextError(RuntimeError):
+    """A fixed, non-sensitive failure category from snapshot loading."""
+
+    def __init__(self, reason: str) -> None:
+        self.reason = reason
+        super().__init__(reason)
 
 
 async def generate_reviewed_batch(
@@ -35,10 +69,10 @@ async def generate_reviewed_batch(
     request: QuestionGenerateRequest,
     pipeline,
 ) -> GeneratedQuestionBatch:
-    """在单一事务中生成、审核并保存一个完成批次。"""
+    """Provider 完成后再用短事务保存已审核批次。"""
     save_tool = QuestionSaveTool(request)
+    result = await pipeline.generate(request, user_id, None)
     async with db.begin_nested():
-        result = await pipeline.generate(request, user_id, db)
         batch = await save_tool.save_batch(db, result, user_id)
     return batch
 
@@ -48,6 +82,10 @@ async def enqueue_variant_job(
     original_question_id: uuid.UUID,
     user_id: uuid.UUID,
     difficulty_level: Optional[str] = None,
+    *,
+    target_knowledge_point_code: str | None = None,
+    target_misconception_code: str | None = None,
+    policy_version: str | None = None,
 ) -> GenerationJob:
     """Persist an idempotent variant job without inserting a placeholder question."""
     original = (await db.execute(select(GeneratedQuestion).where(
@@ -57,7 +95,10 @@ async def enqueue_variant_job(
     if original is None:
         raise ValueError("原题目不存在")
     target_difficulty = difficulty_level or original.difficulty_level
-    key = hashlib.sha256(f"variant:{user_id}:{original_question_id}:{target_difficulty}".encode()).hexdigest()
+    key = hashlib.sha256(
+        f"variant:{user_id}:{original_question_id}:{target_difficulty}:"
+        f"{target_knowledge_point_code}:{target_misconception_code}:{policy_version}".encode()
+    ).hexdigest()
     existing = (await db.execute(select(GenerationJob).where(GenerationJob.idempotency_key == key))).scalar_one_or_none()
     if existing is not None:
         return existing
@@ -65,6 +106,9 @@ async def enqueue_variant_job(
         user_id=user_id,
         source_question_id=original_question_id,
         target_difficulty=target_difficulty,
+        target_knowledge_point_code=target_knowledge_point_code,
+        target_misconception_code=target_misconception_code,
+        policy_version=policy_version,
         idempotency_key=key,
         status="queued",
     )
@@ -73,7 +117,53 @@ async def enqueue_variant_job(
     return job
 
 
-async def claim_next_generation_job(db: AsyncSession, worker_id: str, lease_seconds: int = 120) -> GenerationJob | None:
+async def enqueue_standard_variant_job(
+    db: AsyncSession,
+    original_question_id: uuid.UUID,
+    user_id: uuid.UUID,
+    difficulty_level: str,
+    *,
+    target_knowledge_point_code: str | None = None,
+    target_misconception_code: str | None = None,
+    policy_version: str | None = None,
+) -> GenerationJob:
+    original = (
+        await db.execute(
+            select(Question).where(Question.id == original_question_id)
+        )
+    ).scalar_one_or_none()
+    if original is None:
+        raise ValueError("原题目不存在")
+    key = hashlib.sha256(
+        f"standard-variant:{user_id}:{original_question_id}:{difficulty_level}:"
+        f"{target_knowledge_point_code}:{target_misconception_code}:{policy_version}".encode()
+    ).hexdigest()
+    existing = (
+        await db.execute(
+            select(GenerationJob).where(GenerationJob.idempotency_key == key)
+        )
+    ).scalar_one_or_none()
+    if existing is not None:
+        return existing
+    job = GenerationJob(
+        user_id=user_id,
+        source_question_id=None,
+        source_standard_question_id=original_question_id,
+        target_difficulty=difficulty_level,
+        target_knowledge_point_code=target_knowledge_point_code,
+        target_misconception_code=target_misconception_code,
+        policy_version=policy_version,
+        idempotency_key=key,
+        status="queued",
+    )
+    db.add(job)
+    await db.flush()
+    return job
+
+
+async def claim_next_generation_job(
+    db: AsyncSession, worker_id: str, lease_seconds: int = 120
+) -> ClaimedGenerationJob | None:
     now = datetime.now(timezone.utc)
     job = (await db.execute(
         select(GenerationJob)
@@ -93,7 +183,17 @@ async def claim_next_generation_job(db: AsyncSession, worker_id: str, lease_seco
     job.lease_expires_at = now + timedelta(seconds=lease_seconds)
     job.failure_reason = None
     await db.flush()
-    return job
+    return ClaimedGenerationJob(
+        job_id=job.id,
+        user_id=job.user_id,
+        source_question_id=job.source_question_id,
+        target_difficulty=job.target_difficulty,
+        lease_owner=worker_id,
+        source_standard_question_id=job.source_standard_question_id,
+        target_knowledge_point_code=job.target_knowledge_point_code,
+        target_misconception_code=job.target_misconception_code,
+        policy_version=job.policy_version,
+    )
 
 
 async def complete_generation_job(db: AsyncSession, job: GenerationJob, result_question_id: uuid.UUID) -> None:
@@ -116,37 +216,193 @@ async def retry_or_fail_generation_job(db: AsyncSession, job: GenerationJob, rea
     await db.flush()
 
 
-async def process_claimed_generation_job(db: AsyncSession, job: GenerationJob, pipeline) -> None:
-    """Run exactly the existing generator + reviewer pipeline for one claimed job."""
-    source = (await db.execute(select(GeneratedQuestion).where(GeneratedQuestion.id == job.source_question_id))).scalar_one_or_none()
-    if source is None:
-        await retry_or_fail_generation_job(db, job, "source_question_missing")
-        return
-    batch = (await db.execute(select(GeneratedQuestionBatch).where(GeneratedQuestionBatch.id == source.batch_id))).scalar_one_or_none()
-    if batch is None:
-        await retry_or_fail_generation_job(db, job, "source_batch_missing")
-        return
-    request = QuestionGenerateRequest(
-        age_group_code=batch.age_group_code,
-        subject_code=source.subject_code,
-        course_topic=source.course_topic,
-        difficulty_level=job.target_difficulty,
-        question_types=[source.question_type],
-        question_count=1,
-        learning_goal=None,
-    )
+async def load_generation_job_context(
+    session_factory, claimed: ClaimedGenerationJob
+) -> GenerationJobContext:
+    """Copy all model inputs in a short read transaction."""
+    async with session_factory() as db:
+        async with db.begin():
+            if claimed.source_question_id is not None:
+                source = (
+                    await db.execute(
+                        select(GeneratedQuestion).where(
+                            GeneratedQuestion.id == claimed.source_question_id
+                        )
+                    )
+                ).scalar_one_or_none()
+                if source is None:
+                    raise GenerationContextError("source_question_missing")
+                batch = (
+                    await db.execute(
+                        select(GeneratedQuestionBatch).where(
+                            GeneratedQuestionBatch.id == source.batch_id
+                        )
+                    )
+                ).scalar_one_or_none()
+                if batch is None:
+                    raise GenerationContextError("source_batch_missing")
+                return GenerationJobContext(
+                    job=claimed,
+                    batch_id=batch.id,
+                    age_group_code=batch.age_group_code,
+                    subject_code=source.subject_code,
+                    course_topic=source.course_topic,
+                    question_type=source.question_type,
+                )
+
+            source = (
+                await db.execute(
+                    select(Question).where(
+                        Question.id == claimed.source_standard_question_id
+                    )
+                )
+            ).scalar_one_or_none()
+            if source is None:
+                raise GenerationContextError("source_question_missing")
+            node = await db.get(KnowledgeNode, source.knowledge_node_id)
+            if node is None:
+                raise GenerationContextError("source_knowledge_node_missing")
+            return GenerationJobContext(
+                job=claimed,
+                batch_id=None,
+                age_group_code=node.age_group_code,
+                subject_code=node.subject_code,
+                course_topic=node.title,
+                question_type=source.question_type,
+            )
+
+
+async def persist_generation_result(
+    session_factory, context: GenerationJobContext, questions: list
+) -> None:
+    """Save reviewed questions and complete the lease in one short transaction."""
+    async with session_factory() as db:
+        async with db.begin():
+            job = (
+                await db.execute(
+                    select(GenerationJob)
+                    .where(GenerationJob.id == context.job.job_id)
+                    .with_for_update()
+                )
+            ).scalar_one_or_none()
+            if (
+                job is None
+                or job.status != "running"
+                or job.lease_owner != context.job.lease_owner
+            ):
+                return
+            batch_id = context.batch_id
+            if batch_id is None:
+                batch = GeneratedQuestionBatch(
+                    user_id=context.job.user_id,
+                    age_group_code=context.age_group_code,
+                    subject_code=context.subject_code,
+                    course_topic=context.course_topic,
+                    difficulty_level=context.job.target_difficulty,
+                    question_types=[context.question_type],
+                    question_count=1,
+                    learning_goal=None,
+                    status="completed",
+                    prompt_version="adaptive-equation-v1",
+                )
+                db.add(batch)
+                await db.flush()
+                batch_id = batch.id
+            saved = await save_generated_questions(
+                db,
+                batch_id,
+                context.job.user_id,
+                questions,
+                context.subject_code,
+                context.course_topic,
+                context.job.target_difficulty,
+            )
+            for question in saved:
+                if context.job.source_question_id is not None:
+                    question.parent_question_id = context.job.source_question_id
+                else:
+                    question.parent_standard_question_id = (
+                        context.job.source_standard_question_id
+                    )
+                question.target_knowledge_point_code = (
+                    context.job.target_knowledge_point_code
+                )
+                question.target_misconception_code = (
+                    context.job.target_misconception_code
+                )
+                question.generation_policy_version = context.job.policy_version
+                tags = list(question.knowledge_tags or [])
+                for code in (
+                    context.job.target_knowledge_point_code,
+                    context.job.target_misconception_code,
+                ):
+                    if code and code not in tags:
+                        tags.append(code)
+                question.knowledge_tags = tags
+                question.quality_status = "passed"
+            await complete_generation_job(db, job, saved[0].id)
+
+
+async def _mark_generation_attempt(
+    session_factory, claimed: ClaimedGenerationJob, reason: str
+) -> None:
+    async with session_factory() as db:
+        async with db.begin():
+            job = (
+                await db.execute(
+                    select(GenerationJob)
+                    .where(GenerationJob.id == claimed.job_id)
+                    .with_for_update()
+                )
+            ).scalar_one_or_none()
+            if (
+                job is not None
+                and job.status == "running"
+                and job.lease_owner == claimed.lease_owner
+            ):
+                await retry_or_fail_generation_job(db, job, reason)
+
+
+async def process_claimed_generation_job(
+    session_factory, claimed: ClaimedGenerationJob, pipeline
+) -> None:
+    """Run Generator and Reviewer only after the snapshot transaction closes."""
     try:
-        result = await pipeline.generate(request, str(job.user_id), db)
-        saved = await save_generated_questions(
-            db, batch.id, job.user_id, result.questions, source.subject_code,
-            source.course_topic, job.target_difficulty,
+        context = await load_generation_job_context(session_factory, claimed)
+        request = QuestionGenerateRequest(
+            age_group_code=context.age_group_code,
+            subject_code=context.subject_code,
+            course_topic=context.course_topic,
+            difficulty_level=claimed.target_difficulty,
+            question_types=[context.question_type],
+            question_count=1,
+            learning_goal=None,
         )
-        for question in saved:
-            question.parent_question_id = source.id
-            question.quality_status = "passed"
-        await complete_generation_job(db, job, saved[0].id)
+        adaptive_context = None
+        if claimed.target_knowledge_point_code and claimed.policy_version:
+            parent_id = claimed.source_question_id or claimed.source_standard_question_id
+            adaptive_context = AdaptiveGenerationContext(
+                target_knowledge_point_code=claimed.target_knowledge_point_code,
+                target_misconception_code=claimed.target_misconception_code,
+                parent_question_id=str(parent_id),
+                policy_version=claimed.policy_version,
+            )
+        if adaptive_context is None:
+            result = await pipeline.generate(request, str(claimed.user_id), None)
+        else:
+            result = await pipeline.generate(
+                request,
+                str(claimed.user_id),
+                None,
+                adaptive_context=adaptive_context,
+            )
+        await persist_generation_result(session_factory, context, result.questions)
+    except GenerationContextError as exc:
+        await _mark_generation_attempt(session_factory, claimed, exc.reason)
     except Exception:
-        await retry_or_fail_generation_job(db, job, "generation_or_review_failed")
+        await _mark_generation_attempt(
+            session_factory, claimed, "generation_or_review_failed"
+        )
 
 
 async def create_generation_batch(

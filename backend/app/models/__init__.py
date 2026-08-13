@@ -38,11 +38,14 @@ from app.models.content import AgeGroup, Subject, KnowledgeNode, Question  # noq
 from app.models.learning import LearningSession, Answer  # noqa: E402, F401
 from app.models.gamification import GamificationEvent  # noqa: E402, F401
 from app.models.daily_challenge import DailyChallenge, DailyChallengeQuestion, DailyChallengeAttempt, DailyChallengeAnswer  # noqa: E402, F401
-from app.models.wrong_book import WrongQuestion, WrongQuestionEvent  # noqa: E402, F401
+from app.models.wrong_book import WrongPracticeAttempt, WrongQuestion, WrongQuestionEvent  # noqa: E402, F401
 from app.models.achievement import Achievement, UserAchievement  # noqa: E402, F401
 from app.models.ai_generated import (  # noqa: E402, F401
     GeneratedQuestionBatch,
     GeneratedQuestion,
+    GeneratedPracticeSubmission,
+    GeneratedPracticeAnswer,
+    GeneratedPracticeRewardEvent,
     GenerationJob,
     QuestionQualityCheck,
     HarnessRun,
@@ -60,6 +63,12 @@ from app.models.course import (  # noqa: E402, F401
     ChatMessage,
 )
 from app.models.admin_change import AdminChangeAudit  # noqa: E402, F401
+from app.models.adaptive_learning import (  # noqa: E402, F401
+    AdaptationDecision,
+    AnswerDiagnosis,
+    DiagnosisJob,
+    KnowledgeMasteryState,
+)
 
 __all__ = [
     "Base",
@@ -77,10 +86,14 @@ __all__ = [
     "DailyChallengeAnswer",
     "WrongQuestion",
     "WrongQuestionEvent",
+    "WrongPracticeAttempt",
     "Achievement",
     "UserAchievement",
     "GeneratedQuestionBatch",
     "GeneratedQuestion",
+    "GeneratedPracticeSubmission",
+    "GeneratedPracticeAnswer",
+    "GeneratedPracticeRewardEvent",
     "GenerationJob",
     "QuestionQualityCheck",
     "HarnessRun",
@@ -95,4 +108,8 @@ __all__ = [
     "UserLesson",
     "ChatMessage",
     "AdminChangeAudit",
+    "DiagnosisJob",
+    "AnswerDiagnosis",
+    "KnowledgeMasteryState",
+    "AdaptationDecision",
 ]

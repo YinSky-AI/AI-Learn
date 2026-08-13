@@ -55,22 +55,14 @@ class BehaviorService:
             return profile
 
         node = getattr(question, "knowledge_node_rel", None)
-        point = getattr(node, "title", None) or "未分类知识点"
-        subject = getattr(node, "subject_code", None) or "未分类"
+        subject = (
+            getattr(node, "subject_code", None)
+            or getattr(question, "subject_code", None)
+            or "未分类"
+        )
         event_time = answered_at or datetime.now(timezone.utc)
         if event_time.tzinfo is None:
             event_time = event_time.replace(tzinfo=timezone.utc)
-        timestamp = event_time.isoformat()
-
-        knowledge = profile["knowledge_mastery"].setdefault(
-            point, {"level": 0.5, "total": 0, "correct": 0, "last_updated": None}
-        )
-        knowledge["total"] += 1
-        knowledge["correct"] += int(is_correct)
-        level = float(knowledge.get("level", 0.5))
-        knowledge["level"] = round(min(1.0, level + 0.3 * (1.0 - level)) if is_correct else max(0.0, level - 0.3 * level), 4)
-        knowledge["last_updated"] = timestamp
-
         subject_data = profile["subject_mastery"].setdefault(subject, {"level": 0.5, "total": 0, "correct": 0})
         subject_data["total"] += 1
         subject_data["correct"] += int(is_correct)

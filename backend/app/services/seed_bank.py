@@ -12,7 +12,110 @@ import random
 import re
 import json
 import copy
+from dataclasses import dataclass
 from typing import Optional
+
+from app.domain.equation_taxonomy import KnowledgePointCode
+
+
+@dataclass(frozen=True)
+class EquationKnowledgeNodeSeed:
+    code: KnowledgePointCode
+    title: str
+    description: str
+    prerequisite_codes: tuple[KnowledgePointCode, ...]
+    difficulty_level: str = "DIFF_MEDIUM"
+
+
+EQUATION_KNOWLEDGE_NODE_SEEDS = (
+    EquationKnowledgeNodeSeed(
+        KnowledgePointCode.EQUATION_EQUIVALENCE,
+        "等式与等价变形",
+        "理解方程两边保持相等所允许的等价变形。",
+        (),
+        "DIFF_EASY",
+    ),
+    EquationKnowledgeNodeSeed(
+        KnowledgePointCode.DISTRIBUTIVE_EXPANSION,
+        "去括号与分配律",
+        "正确使用分配律展开一元一次方程。",
+        (KnowledgePointCode.EQUATION_EQUIVALENCE,),
+    ),
+    EquationKnowledgeNodeSeed(
+        KnowledgePointCode.COMBINE_LIKE_TERMS,
+        "合并同类项",
+        "在方程变形中正确合并同类项。",
+        (KnowledgePointCode.DISTRIBUTIVE_EXPANSION,),
+    ),
+    EquationKnowledgeNodeSeed(
+        KnowledgePointCode.MOVE_TERMS_SIGN,
+        "移项与符号变化",
+        "理解移项是等式两边执行相同运算的简写。",
+        (KnowledgePointCode.EQUATION_EQUIVALENCE,),
+    ),
+    EquationKnowledgeNodeSeed(
+        KnowledgePointCode.NORMALIZE_COEFFICIENT,
+        "系数化为 1",
+        "通过等式两边同除以非零系数求解未知数。",
+        (KnowledgePointCode.EQUATION_EQUIVALENCE,),
+    ),
+    EquationKnowledgeNodeSeed(
+        KnowledgePointCode.EQUATION_WORD_MODELING,
+        "应用题列方程",
+        "把实际数量关系建模为一元一次方程。",
+        (
+            KnowledgePointCode.DISTRIBUTIVE_EXPANSION,
+            KnowledgePointCode.COMBINE_LIKE_TERMS,
+            KnowledgePointCode.MOVE_TERMS_SIGN,
+            KnowledgePointCode.NORMALIZE_COEFFICIENT,
+        ),
+        "DIFF_HARD",
+    ),
+)
+
+
+async def upsert_equation_knowledge_nodes(
+    db,
+    *,
+    subject_code: str,
+    age_group_code: str,
+):
+    """Upsert canonical equation nodes and resolve prerequisite codes to UUIDs."""
+
+    from sqlalchemy import select
+
+    from app.models.content import KnowledgeNode
+
+    codes = [seed.code.value for seed in EQUATION_KNOWLEDGE_NODE_SEEDS]
+    result = await db.execute(select(KnowledgeNode).where(KnowledgeNode.code.in_(codes)))
+    existing = {node.code: node for node in result.scalars().all()}
+    ordered = []
+    for position, seed in enumerate(EQUATION_KNOWLEDGE_NODE_SEEDS):
+        node = existing.get(seed.code.value)
+        if node is None:
+            node = KnowledgeNode(code=seed.code.value)
+            db.add(node)
+            existing[seed.code.value] = node
+        node.title = seed.title
+        node.description = seed.description
+        node.subject_code = subject_code
+        node.age_group_code = age_group_code
+        node.difficulty_level = seed.difficulty_level
+        node.content_type = "TYPE_QUIZ"
+        node.content_body = seed.description
+        node.estimated_minutes = 8
+        node.sort_order = position
+        node.is_active = True
+        node.prerequisites = []
+        ordered.append(node)
+    await db.flush()
+    for seed, node in zip(EQUATION_KNOWLEDGE_NODE_SEEDS, ordered, strict=True):
+        node.prerequisites = [
+            existing[prerequisite.value].id
+            for prerequisite in seed.prerequisite_codes
+        ]
+    await db.flush()
+    return ordered
 
 
 # ============================================================

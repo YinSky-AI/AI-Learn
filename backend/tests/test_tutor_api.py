@@ -48,6 +48,9 @@ class _FakeSession:
         self.added.append(value)
 
     async def flush(self):
+        for value in self.added:
+            if hasattr(value, "id") and value.id is None:
+                value.id = uuid.uuid4()
         return None
 
 
@@ -104,20 +107,27 @@ async def test_encourager_only_joins_wrong_or_frustrated_contexts():
 
 
 @pytest.mark.asyncio
-async def test_diagnosis_updates_strategy_consumed_by_later_agents():
+async def test_verified_diagnosis_updates_strategy_without_recomputing_mastery():
     response = await TutorHarness().reply(
         {
             "question": {"question_body": "十二个苹果平均分给三个人，每人几个？"},
             "student_answer": "十二加三。",
             "is_correct": False,
             "mastery": 0.6,
+            "diagnosis": {
+                "status": "diagnosed",
+                "evidence": "第 2 步到第 3 步不再等价",
+                "misconception_display_name": "移项符号错误",
+            },
+            "mastery_band": "developing",
+            "next_action": {"action": "practice_misconception"},
         }
     )
 
     messages = {message.role: message.content for message in response.messages}
     assert response.teaching_strategy["approach"] == "simplified"
     assert response.teaching_strategy["pace"] == "slow"
-    assert response.mastery < 0.6
+    assert response.mastery == 0.6
     assert "放慢" in messages["teacher"]
     assert "拆成" in messages["assistant"]
 

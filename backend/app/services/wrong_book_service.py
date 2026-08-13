@@ -1,19 +1,40 @@
 """错题本的事务内收录、筛选和复习服务。"""
 
+import hashlib
+import json
+import logging
 import uuid
 from datetime import datetime, timedelta, timezone
 
-from sqlalchemy import desc, func, select
+from fastapi import HTTPException, status
+from sqlalchemy import desc, func, select, text
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import joinedload
 
 from app.models.content import KnowledgeNode, Question
-from app.models.wrong_book import WrongQuestion, WrongQuestionEvent
+from app.models.wrong_book import WrongPracticeAttempt, WrongQuestion, WrongQuestionEvent
 from app.services.question_access import verified_answer_feedback
 
 
 SCHEDULER_VERSION = "v1"
+logger = logging.getLogger(__name__)
+
+
+def _immutable_practice_fingerprint(
+    question_id: uuid.UUID, user_answer: str
+) -> str:
+    payload = json.dumps(
+        {"question_id": str(question_id), "user_answer": user_answer.strip()},
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _attempt_log_key(value: uuid.UUID) -> str:
+    return hashlib.sha256(str(value).encode("utf-8")).hexdigest()[:12]
 
 
 def calculate_next_review_at(*, now: datetime, is_correct: bool, review_count: int, difficulty_factor: float = 1.0) -> datetime:
@@ -70,20 +91,81 @@ class WrongBookService:
         await self.db.flush()
         return wrong_question
 
-    async def submit_practice_answer(self, user_id: uuid.UUID, question_id: uuid.UUID, user_answer: str) -> dict:
+    async def submit_practice_answer(
+        self,
+        user_id: uuid.UUID,
+        question_id: uuid.UUID,
+        user_answer: str,
+        *,
+        attempt_id: uuid.UUID,
+    ) -> dict:
         """服务端判定错题重练，确认题目归属后才返回答案与解析。"""
+        if isinstance(self.db, AsyncSession):
+            await self.db.execute(
+                text("SELECT pg_advisory_xact_lock(hashtextextended(:key, 0))"),
+                {"key": str(attempt_id)},
+            )
+        existing = await self.db.get(WrongPracticeAttempt, attempt_id)
+        if existing is not None:
+            if existing.user_id != user_id or existing.question_id != question_id:
+                logger.info(
+                    "Wrong practice attempt result=conflict attempt_key=%s",
+                    _attempt_log_key(attempt_id),
+                )
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail="练习尝试编号已用于不同的作答内容",
+                )
+            if existing.payload_fingerprint != _immutable_practice_fingerprint(
+                question_id, user_answer
+            ):
+                logger.info(
+                    "Wrong practice attempt result=conflict attempt_key=%s",
+                    _attempt_log_key(attempt_id),
+                )
+                raise HTTPException(
+                    status_code=status.HTTP_409_CONFLICT,
+                    detail="练习尝试编号已用于不同的作答内容",
+                )
+            logger.info(
+                "Wrong practice attempt result=replayed attempt_key=%s",
+                _attempt_log_key(attempt_id),
+            )
+            return dict(existing.result_payload)
+
         result = await self.db.execute(
             select(WrongQuestion).options(joinedload(WrongQuestion.question)).where(
                 WrongQuestion.user_id == user_id,
                 WrongQuestion.question_id == question_id,
                 WrongQuestion.is_mastered.is_(False),
-            )
+            ).with_for_update(of=WrongQuestion)
         )
         record = result.scalar_one_or_none()
         if record is None:
             return {"found": False}
         from app.services.learning_service import judge_answer
         is_correct = judge_answer(record.question, user_answer)
+        response = {
+            "found": True,
+            **verified_answer_feedback(
+                record.question,
+                verified_question_id=question_id,
+                is_correct=is_correct,
+            ),
+        }
+        self.db.add(
+            WrongPracticeAttempt(
+                id=attempt_id,
+                user_id=user_id,
+                question_id=question_id,
+                payload_fingerprint=_immutable_practice_fingerprint(
+                    question_id, user_answer
+                ),
+                result_payload=response,
+            )
+        )
+        # 先固化幂等结果，再改变复习调度字段。
+        await self.db.flush()
         record.review_count += 1
         current_factor = getattr(record, "difficulty_factor", 100)
         record.difficulty_factor = min(150, current_factor + 10) if is_correct else max(50, current_factor - 20)
@@ -98,14 +180,11 @@ class WrongBookService:
             record.is_mastered = True
             record.mastered_at = datetime.now(timezone.utc)
         await self.db.flush()
-        return {
-            "found": True,
-            **verified_answer_feedback(
-                record.question,
-                verified_question_id=question_id,
-                is_correct=is_correct,
-            ),
-        }
+        logger.info(
+            "Wrong practice attempt result=created attempt_key=%s",
+            _attempt_log_key(attempt_id),
+        )
+        return response
 
     async def list_questions(self, user_id: uuid.UUID, subject: str | None, knowledge_point: str | None, is_mastered: bool | None, page: int, page_size: int) -> tuple[list[WrongQuestion], int]:
         filters = [WrongQuestion.user_id == user_id]

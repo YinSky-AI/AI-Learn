@@ -16,6 +16,7 @@ router = APIRouter()
 
 
 class PracticeAnswerSubmit(BaseModel):
+    attempt_id: uuid.UUID | None = None
     question_id: uuid.UUID
     user_answer: str = Field(min_length=1, max_length=500)
 
@@ -33,15 +34,23 @@ async def get_stats(user_id: uuid.UUID = Depends(get_current_user_id), db: Async
 @router.get("/practice")
 async def get_practice(subject: str | None = None, count: int = Query(5, ge=1, le=20), user_id: uuid.UUID = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
     questions = await WrongBookService(db).get_practice_questions(user_id, subject, count)
-    return success_response({"questions": [{"id": str(q.id), "question_text": q.question_body, "options": sanitize_public_value(q.options), "subject": subject, "difficulty": q.difficulty_level} for q in questions], "count": len(questions)})
+    return success_response({"questions": [{"id": str(q.id), "question_text": q.question_body, "options": sanitize_public_value(q.options), "subject": subject, "difficulty": q.difficulty_level, "question_type": q.question_type} for q in questions], "count": len(questions)})
 
 
 @router.post("/practice/answer")
 async def submit_practice_answer(request: PracticeAnswerSubmit, user_id: uuid.UUID = Depends(get_current_user_id), db: AsyncSession = Depends(get_db)):
-    result = await WrongBookService(db).submit_practice_answer(user_id, request.question_id, request.user_answer)
-    if not result.pop("found"):
+    result = await WrongBookService(db).submit_practice_answer(
+        user_id,
+        request.question_id,
+        request.user_answer,
+        attempt_id=request.attempt_id or uuid.uuid4(),
+    )
+    if not result.get("found"):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail={"code": "BIZ_001", "message": "错题不存在或无权练习"})
-    return success_response(result, "答案提交成功")
+    return success_response(
+        {key: value for key, value in result.items() if key != "found"},
+        "答案提交成功",
+    )
 
 
 @router.get("")

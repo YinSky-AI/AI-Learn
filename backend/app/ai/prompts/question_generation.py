@@ -72,6 +72,7 @@ def build_question_generation_prompt(
     coverage_gaps: list[str] = None,
     control_signal: dict = None,
     revision_notes: str = "",
+    adaptive_context=None,
 ) -> list[dict[str, str]]:
     """
     构建出题 Prompt
@@ -150,6 +151,18 @@ def build_question_generation_prompt(
 - 用户能力估计: {state.get('ability', 0.5)}
 """
 
+    adaptive_section = ""
+    if adaptive_context is not None:
+        adaptive_section = f"""
+## 自适应变式约束（必须满足）
+- 目标知识点代码: {adaptive_context.target_knowledge_point_code}
+- 目标错因代码: {adaptive_context.target_misconception_code or '无特定错因'}
+- 父题 ID: {adaptive_context.parent_question_id}
+- 策略版本: {adaptive_context.policy_version}
+- 新题必须实际考查目标知识点；存在目标错因时，干扰项或关键步骤必须能暴露该错误模式。
+- 不得复述父题答案、完整解析或内部诊断 Prompt。
+"""
+
     system_prompt = f"""你是一位专业的教育出题专家。请根据以下要求生成高质量的题目。
 
 ## 版本: {PROMPT_VERSION}
@@ -168,7 +181,7 @@ def build_question_generation_prompt(
 - 语言水平: {req['language_level']}
 - 推荐场景: {req['scenario_examples']}
 - 禁止内容: {req['avoid']}
-{avoid_section}{skill_section}{error_section}{gap_section}{control_section}
+{avoid_section}{skill_section}{error_section}{gap_section}{control_section}{adaptive_section}
 
 ## 审题修订意见
 {revision_notes or "无。请直接按基本要求生成题目。"}

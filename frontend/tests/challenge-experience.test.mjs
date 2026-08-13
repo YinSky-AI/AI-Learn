@@ -18,3 +18,7 @@ test("daily challenge reserves a typed filter hook without changing its API cont
   assert.match(challenge, /未来将用于每日挑战筛选/);
   assert.match(challenge, /"\/v1\/challenge\/daily\/start"/);
 });
+
+test("daily challenge keeps the original full-option click interaction", () => {
+  assert.match(challenge, /<button\s+key=\{option\.key\}\s+type="button"\s+onClick=\{\(\) => selectOption\(question, option\.key\)\}/);
+});

@@ -1,6 +1,10 @@
+import os
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+import stat
 from urllib.parse import quote
 
 from scripts.verify_delivery import (
@@ -22,6 +26,27 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class DeliveryVerificationTests(unittest.TestCase):
+    def test_compose_config_does_not_require_a_local_backend_env_file(self):
+        docker = shutil.which("docker")
+        if docker is None:
+            self.skipTest("docker is required to validate the Compose contract")
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            compose_path = Path(temp_dir) / "docker-compose.yml"
+            compose_path.write_text(
+                (ROOT / "docker-compose.yml").read_text(encoding="utf-8"),
+                encoding="utf-8",
+            )
+            result = subprocess.run(
+                [docker, "compose", "-f", str(compose_path), "config", "--profiles"],
+                check=False,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+            )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_smoke_uses_the_public_gateway_by_default(self):
         args = build_parser().parse_args([])
 
@@ -33,6 +58,7 @@ class DeliveryVerificationTests(unittest.TestCase):
             labels,
             [
                 "交付脚本单元测试",
+                "方程诊断规则评测",
                 "前端测试",
                 "前端类型检查",
                 "前端生产构建",
@@ -40,12 +66,28 @@ class DeliveryVerificationTests(unittest.TestCase):
                 "隔离后端测试",
                 "加密备份与隔离恢复演练",
                 "双数据库 Schema 迁移演练",
+                "Compose 依赖服务启动",
+                "Compose 主业务库 bootstrap",
+                "Compose 题库 bootstrap",
                 "Compose 构建与启动",
                 "Docker smoke",
                 "真实浏览器 E2E",
             ],
         )
         self.assertIn("discover", build_steps("fast")[0].command)
+
+    def test_full_gate_bootstraps_empty_compose_databases_before_strict_start(self):
+        steps = build_steps("full")
+        labels = [step.label for step in steps]
+        primary = steps[labels.index("Compose 主业务库 bootstrap")]
+        catalog = steps[labels.index("Compose 题库 bootstrap")]
+        start = steps[labels.index("Compose 构建与启动")]
+
+        self.assertLess(labels.index(primary.label), labels.index(start.label))
+        self.assertLess(labels.index(catalog.label), labels.index(start.label))
+        self.assertIn("schema-bootstrap-primary", primary.command)
+        self.assertIn("schema-bootstrap-catalog", catalog.command)
+        self.assertEqual(dict(start.environment)["SCHEMA_VERSION_POLICY"], "strict")
 
     def test_full_gate_runs_both_alembic_drift_checks(self):
         backend_step = next(
@@ -57,6 +99,12 @@ class DeliveryVerificationTests(unittest.TestCase):
         self.assertIn('"check"', runner)
         self.assertIn('"/run/secrets/primary_database_url"', runner)
         self.assertIn('"/run/secrets/catalog_database_url"', runner)
+
+    def test_backend_test_runner_removes_the_disposable_database_by_default(self):
+        runner = (ROOT / "scripts" / "run_backend_tests.py").read_text(encoding="utf-8")
+
+        self.assertIn('os.getenv("KEEP_TEST_DB")', runner)
+        self.assertIn('[*compose, "rm", "-sf", "postgres-test"]', runner)
 
     def test_backend_tests_never_recreate_schema_from_orm_metadata(self):
         sources = [
@@ -85,8 +133,15 @@ class DeliveryVerificationTests(unittest.TestCase):
                 }
                 self.assertEqual(environment["DELIVERY_TEST_ENV"], "ci")
                 self.assertTrue(all(path.is_file() for path in secret_paths))
+                if os.name == "posix":
+                    self.assertEqual(
+                        stat.S_IMODE(runtime_root.joinpath("secrets").stat().st_mode),
+                        0o700,
+                    )
                 for path in secret_paths:
                     self.assertFalse(path.read_bytes().startswith(b"\xef\xbb\xbf"))
+                    if os.name == "posix":
+                        self.assertEqual(stat.S_IMODE(path.stat().st_mode), 0o444)
                 self.assertNotIn("postgresql+asyncpg://", " ".join(environment.values()))
 
             self.assertTrue(all(not path.exists() for path in secret_paths))

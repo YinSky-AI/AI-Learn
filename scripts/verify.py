@@ -24,6 +24,7 @@ class Step:
     label: str
     command: tuple[str, ...]
     cwd: Path = ROOT
+    environment: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -53,6 +54,10 @@ class FullGateSecretFiles:
             self.primary_database_url_file,
             self.catalog_database_url_file,
         ):
+            try:
+                secret_file.chmod(0o600)
+            except OSError:
+                pass
             secret_file.unlink(missing_ok=True)
         for directory in (self.password_file.parent, self.runtime_root):
             try:
@@ -67,7 +72,7 @@ def _write_runtime_secret(path: Path, value: str) -> None:
     if path.read_bytes().startswith(b"\xef\xbb\xbf"):
         raise RuntimeError("运行时 secret 禁止包含 UTF-8 BOM")
     try:
-        path.chmod(0o600)
+        path.chmod(0o444)
     except OSError:
         # Windows ACL 由当前用户目录继承；容器只读挂载仍是强制边界。
         pass
@@ -139,6 +144,10 @@ def prepare_full_gate_secrets(
 
     secret_root = runtime_root / "secrets"
     secret_root.mkdir(parents=True, exist_ok=True)
+    try:
+        secret_root.chmod(0o700)
+    except OSError:
+        pass
     files = FullGateSecretFiles(
         runtime_root=runtime_root,
         password_file=secret_root / "postgres_password",
@@ -203,6 +212,19 @@ def build_steps(mode: str) -> list[Step]:
                 "-v",
             ),
         ),
+        Step(
+            "方程诊断规则评测",
+            (
+                sys.executable,
+                "-m",
+                "evals.equation_diagnosis.runner",
+                "--mode",
+                "rules",
+                "--output",
+                "../test/acceptance/adaptive-learning/rules.json",
+            ),
+            ROOT / "backend",
+        ),
         Step("前端测试", ("npm", "test"), ROOT / "frontend"),
         Step("前端类型检查", ("npm", "run", "typecheck"), ROOT / "frontend"),
         Step("前端生产构建", ("npm", "run", "build"), ROOT / "frontend"),
@@ -217,7 +239,33 @@ def build_steps(mode: str) -> list[Step]:
         Step("隔离后端测试", (sys.executable, "scripts/run_backend_tests.py")),
         Step("加密备份与隔离恢复演练", (sys.executable, "scripts/run_backup_restore_drill.py")),
         Step("双数据库 Schema 迁移演练", (sys.executable, "scripts/run_schema_migration_drill.py")),
-        Step("Compose 构建与启动", ("docker", "compose", "up", "-d", "--build", "--wait")),
+        Step(
+            "Compose 依赖服务启动",
+            ("docker", "compose", "up", "-d", "--wait", "postgres", "redis"),
+        ),
+        Step(
+            "Compose 主业务库 bootstrap",
+            (
+                "docker", "compose", "--profile", "schema-bootstrap", "run",
+                "--build", "--rm", "--no-deps", "-e",
+                "SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE=CI-FULL-GATE",
+                "schema-bootstrap-primary",
+            ),
+        ),
+        Step(
+            "Compose 题库 bootstrap",
+            (
+                "docker", "compose", "--profile", "schema-bootstrap", "run",
+                "--build", "--rm", "--no-deps", "-e",
+                "SCHEMA_BOOTSTRAP_APPROVAL_REFERENCE=CI-FULL-GATE",
+                "schema-bootstrap-catalog",
+            ),
+        ),
+        Step(
+            "Compose 构建与启动",
+            ("docker", "compose", "up", "-d", "--build", "--wait"),
+            environment=(("SCHEMA_VERSION_POLICY", "strict"),),
+        ),
         Step("Docker smoke", (sys.executable, "scripts/verify_delivery.py")),
         Step("真实浏览器 E2E", ("npm", "run", "e2e"), ROOT / "frontend"),
     ]
@@ -254,6 +302,7 @@ def run(mode: str) -> int:
                 return 2
             environment = build_subprocess_env()
             environment.update(secret_environment)
+            environment.update(step.environment)
             result = subprocess.run(
                 command,
                 cwd=step.cwd,

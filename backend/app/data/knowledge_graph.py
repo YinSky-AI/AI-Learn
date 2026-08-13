@@ -1,7 +1,7 @@
 """知识图谱 MVP 的三学科静态层级。
 
-图谱负责表达知识结构；用户掌握度始终来自行为报告，不在此处保存。
-``mastery_keys`` 兼容当前题库的知识标签和历史知识节点标题。
+图谱只表达展示层级；运行时知识点属性与掌握度来自数据库。
+``legacy_aliases`` 仅用于兼容历史知识节点标题。
 """
 
 from __future__ import annotations
@@ -9,13 +9,22 @@ from __future__ import annotations
 from typing import Any
 
 
-def _leaf(node_id: str, name: str, description: str, *mastery_keys: str) -> dict[str, Any]:
-    return {
+def _leaf(
+    node_id: str,
+    name: str,
+    description: str,
+    *legacy_aliases: str,
+    knowledge_code: str | None = None,
+) -> dict[str, Any]:
+    leaf = {
         "id": node_id,
         "name": name,
         "description": description,
-        "mastery_keys": (name, *mastery_keys),
+        "legacy_aliases": (name, *legacy_aliases),
     }
+    if knowledge_code is not None:
+        leaf["knowledge_code"] = knowledge_code
+    return leaf
 
 
 KNOWLEDGE_GRAPHS: dict[str, dict[str, Any]] = {
@@ -48,7 +57,12 @@ KNOWLEDGE_GRAPHS: dict[str, dict[str, Any]] = {
                 "name": "代数与数据",
                 "description": "用符号、方程和统计方法描述数量关系。",
                 "children": [
-                    _leaf("math-equations", "方程", "理解等量关系，并能列方程、解方程。", "一元一次方程", "方程求解", "简易方程"),
+                    _leaf("math-equations", "方程", "理解等量关系，并能列方程、解方程。", "等式与等价变形", "一元一次方程", "方程求解", "简易方程", knowledge_code="equation_equivalence"),
+                    _leaf("math-equation-distribution", "去括号与分配律", "正确展开含括号的一元一次方程。", "分配律", "去括号", knowledge_code="distributive_expansion"),
+                    _leaf("math-equation-like-terms", "合并同类项", "在方程变形中正确合并同类项。", "同类项", knowledge_code="combine_like_terms"),
+                    _leaf("math-equation-move-terms", "移项与符号变化", "理解移项与等式两边同运算。", "移项", "符号变化", knowledge_code="move_terms_sign"),
+                    _leaf("math-equation-normalize", "系数化为 1", "正确处理未知数前的非零系数。", "系数化一", knowledge_code="normalize_coefficient"),
+                    _leaf("math-equation-modeling", "应用题列方程", "把实际数量关系建模为一元一次方程。", "列方程", knowledge_code="equation_word_modeling"),
                     _leaf("math-ratio", "比和比例", "理解比、比例和百分数在生活中的应用。", "比例", "比例应用", "百分数"),
                     _leaf("math-statistics", "数据统计", "会读取统计图表并用平均数等指标分析数据。", "统计图表", "平均数", "数据分析"),
                 ],

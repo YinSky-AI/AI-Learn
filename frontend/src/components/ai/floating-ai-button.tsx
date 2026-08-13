@@ -8,18 +8,16 @@ import { Button } from "@/components/ui/button";
 import { useLearningStore } from "@/stores/learning-store";
 import { cn } from "@/lib/utils";
 import type { TutorQuestionContext } from "@/types/api";
+import { useDraggablePanel } from "./use-draggable-panel";
 
-const TutorChat = dynamic(
-  () => import("./tutor-chat").then((module) => module.TutorChat),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex h-full items-center justify-center text-sm text-slate-500">
-        AI 辅导老师正在准备…
-      </div>
-    ),
-  },
-);
+const TutorChat = dynamic(() => import("./tutor-chat").then((module) => module.TutorChat), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full items-center justify-center text-sm text-slate-500">
+      AI 辅导老师正在准备…
+    </div>
+  ),
+});
 
 const QUICK_PROMPTS = ["给我讲讲这个知识点", "出一道题考考我", "这个难不难"];
 type PanelState = "closed" | "open" | "minimized";
@@ -31,6 +29,8 @@ export function FloatingAIButton() {
   const currentCourse = useLearningStore((state) => state.currentCourse);
   const currentLesson = useLearningStore((state) => state.currentLesson);
   const [panelState, setPanelState] = useState<PanelState>("closed");
+  const { panelRef, panelStyle, panelPositioned, isDragging, dragHandleProps } =
+    useDraggablePanel();
 
   const isLearningPage = pathname === "/learning" || pathname.startsWith("/learning/");
   const questionContext = useMemo<TutorQuestionContext | undefined>(() => {
@@ -57,7 +57,7 @@ export function FloatingAIButton() {
           aria-label={panelState === "minimized" ? "恢复 AI 辅导老师" : "打开 AI 辅导老师"}
           className={cn(
             "fixed bottom-20 right-4 z-40 flex min-h-14 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg transition hover:scale-105 hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 active:scale-95 lg:bottom-8 lg:right-8",
-            panelState === "minimized" ? "gap-2 px-4" : "h-14 w-14",
+            panelState === "minimized" ? "gap-2 px-4" : "h-14 w-14"
           )}
         >
           <MessageCircle className="h-6 w-6" aria-hidden />
@@ -67,21 +67,33 @@ export function FloatingAIButton() {
 
       {panelState !== "closed" && (
         <aside
+          ref={panelRef}
           role="dialog"
           aria-label="AI 辅导老师对话面板"
           aria-hidden={panelState === "minimized"}
+          style={panelStyle}
           className={cn(
             "fixed inset-x-3 bottom-20 top-20 z-40 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl lg:bottom-8 lg:left-auto lg:right-8 lg:top-auto lg:h-[min(720px,calc(100vh-4rem))] lg:w-[420px]",
-            panelState === "minimized" && "hidden",
+            panelPositioned &&
+              "lg:bottom-auto lg:left-[var(--panel-left)] lg:right-auto lg:top-[var(--panel-top)]",
+            panelState === "minimized" && "hidden"
           )}
         >
-          <header className="flex shrink-0 items-start gap-3 bg-gradient-to-r from-blue-600 to-violet-600 px-4 py-3 text-white">
+          <header
+            {...dragHandleProps}
+            className={cn(
+              "flex shrink-0 items-start gap-3 bg-gradient-to-r from-blue-600 to-violet-600 px-4 py-3 text-white lg:cursor-grab",
+              isDragging && "select-none lg:cursor-grabbing"
+            )}
+          >
             <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/15">
               <Sparkles className="h-5 w-5" aria-hidden />
             </span>
             <div className="min-w-0 flex-1">
               <h2 className="font-semibold">AI 辅导老师</h2>
-              <p className="truncate text-xs text-white/80" title={learningLabel}>{learningLabel}</p>
+              <p className="truncate text-xs text-white/80" title={learningLabel}>
+                {learningLabel}
+              </p>
             </div>
             <Button
               type="button"

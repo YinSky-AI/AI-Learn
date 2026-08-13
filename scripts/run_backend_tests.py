@@ -61,6 +61,7 @@ def _schema_command(
 
 def main() -> int:
     environment = os.getenv("DELIVERY_TEST_ENV", "local")
+    keep_test_database = os.getenv("KEEP_TEST_DB") == "1"
     database = "learning_platform_test"
     question_database = "ai_learn_test"
     password = secrets.token_urlsafe(24)
@@ -167,10 +168,17 @@ def main() -> int:
             environment=subprocess_environment,
         )
     finally:
-        _run(
-            [*compose, "stop", "postgres-test"],
-            environment=subprocess_environment,
-        )
+        if keep_test_database:
+            _run(
+                [*compose, "stop", "postgres-test"],
+                environment=subprocess_environment,
+            )
+            print("已保留隔离 PostgreSQL 测试容器（KEEP_TEST_DB=1）。")
+        else:
+            _run(
+                [*compose, "rm", "-sf", "postgres-test"],
+                environment=subprocess_environment,
+            )
         for runtime_file in (password_file, primary_url_file, catalog_url_file):
             runtime_file.unlink(missing_ok=True)
 

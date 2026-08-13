@@ -34,7 +34,7 @@ from app.core.observability import correlation
 logger = logging.getLogger(__name__)
 
 # 默认模型配置（DeepSeek）
-DEFAULT_MODEL = "deepseek-chat"
+DEFAULT_MODEL = "deepseek-v4-flash"
 DEFAULT_MAX_TOKENS = 4096
 DEFAULT_TEMPERATURE = 0.7
 MAX_INPUT_CHARS = 32000
@@ -191,7 +191,8 @@ class AIProvider:
             except APIError as e:
                 last_error = e
                 # 其他 API 错误（5xx 服务端错误才重试）
-                if e.status_code and e.status_code >= 500:
+                status_code = getattr(e, "status_code", None)
+                if status_code and status_code >= 500:
                     wait_time = min(
                         RETRY_BASE_WAIT * (2 ** attempt),
                         RETRY_MAX_WAIT,
@@ -270,6 +271,7 @@ class AIProvider:
         if tool_choice is not None:
             kwargs["tool_choice"] = tool_choice
 
+        start_time = time.monotonic()
         try:
             async with self._concurrency:
                 response = await self._retry_call(self._client.chat.completions.create, **kwargs)
